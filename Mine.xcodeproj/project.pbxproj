@@ -20,11 +20,11 @@
 		BBC8A09415B9D26D00DF58F6 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		BBC8A09615B9D26D00DF58F6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		BBC8A09815B9D26D00DF58F6 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		BBC8A09C15B9D26D00DF58F6 /* Mine-Info.plist */ = {isa = PBXFileReference; path = "Mine-Info.plist"; sourceTree = "<group>"; };
+		BBC8A09C15B9D26D00DF58F6 /* Mine-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Mine-Info.plist"; sourceTree = "<group>"; };
 		BBC8A09E15B9D26D00DF58F6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		BBC8A0A015B9D26D00DF58F6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		BBC8A0A215B9D26D00DF58F6 /* Mine-Prefix.pch */ = {isa = PBXFileReference; path = "Mine-Prefix.pch"; sourceTree = "<group>"; };
-		BBC8A0A315B9D26D00DF58F6 /* DWAppDelegate.h */ = {isa = PBXFileReference; path = DWAppDelegate.h; sourceTree = "<group>"; };
+		BBC8A0A215B9D26D00DF58F6 /* Mine-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Mine-Prefix.pch"; sourceTree = "<group>"; };
+		BBC8A0A315B9D26D00DF58F6 /* DWAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DWAppDelegate.h; sourceTree = "<group>"; };
 		BBC8A0A415B9D26D00DF58F6 /* DWAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DWAppDelegate.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -192,7 +192,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -210,7 +210,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
