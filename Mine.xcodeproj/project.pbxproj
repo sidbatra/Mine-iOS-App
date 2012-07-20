@@ -1,0 +1,265 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BBC8A09515B9D26D00DF58F6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBC8A09415B9D26D00DF58F6 /* UIKit.framework */; };
+		BBC8A09715B9D26D00DF58F6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBC8A09615B9D26D00DF58F6 /* Foundation.framework */; };
+		BBC8A09915B9D26D00DF58F6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBC8A09815B9D26D00DF58F6 /* CoreGraphics.framework */; };
+		BBC8A09F15B9D26D00DF58F6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BBC8A09D15B9D26D00DF58F6 /* InfoPlist.strings */; };
+		BBC8A0A115B9D26D00DF58F6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BBC8A0A015B9D26D00DF58F6 /* main.m */; };
+		BBC8A0A515B9D26D00DF58F6 /* DWAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BBC8A0A415B9D26D00DF58F6 /* DWAppDelegate.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		BBC8A09015B9D26D00DF58F6 /* Mine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mine.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BBC8A09415B9D26D00DF58F6 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		BBC8A09615B9D26D00DF58F6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		BBC8A09815B9D26D00DF58F6 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		BBC8A09C15B9D26D00DF58F6 /* Mine-Info.plist */ = {isa = PBXFileReference; path = "Mine-Info.plist"; sourceTree = "<group>"; };
+		BBC8A09E15B9D26D00DF58F6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		BBC8A0A015B9D26D00DF58F6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		BBC8A0A215B9D26D00DF58F6 /* Mine-Prefix.pch */ = {isa = PBXFileReference; path = "Mine-Prefix.pch"; sourceTree = "<group>"; };
+		BBC8A0A315B9D26D00DF58F6 /* DWAppDelegate.h */ = {isa = PBXFileReference; path = DWAppDelegate.h; sourceTree = "<group>"; };
+		BBC8A0A415B9D26D00DF58F6 /* DWAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DWAppDelegate.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BBC8A08D15B9D26D00DF58F6 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BBC8A09515B9D26D00DF58F6 /* UIKit.framework in Frameworks */,
+				BBC8A09715B9D26D00DF58F6 /* Foundation.framework in Frameworks */,
+				BBC8A09915B9D26D00DF58F6 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BBC8A08515B9D26C00DF58F6 = {
+			isa = PBXGroup;
+			children = (
+				BBC8A09A15B9D26D00DF58F6 /* Mine */,
+				BBC8A09315B9D26D00DF58F6 /* Frameworks */,
+				BBC8A09115B9D26D00DF58F6 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		BBC8A09115B9D26D00DF58F6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BBC8A09015B9D26D00DF58F6 /* Mine.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BBC8A09315B9D26D00DF58F6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BBC8A09415B9D26D00DF58F6 /* UIKit.framework */,
+				BBC8A09615B9D26D00DF58F6 /* Foundation.framework */,
+				BBC8A09815B9D26D00DF58F6 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BBC8A09A15B9D26D00DF58F6 /* Mine */ = {
+			isa = PBXGroup;
+			children = (
+				BBC8A0A315B9D26D00DF58F6 /* DWAppDelegate.h */,
+				BBC8A0A415B9D26D00DF58F6 /* DWAppDelegate.m */,
+				BBC8A09B15B9D26D00DF58F6 /* Supporting Files */,
+			);
+			path = Mine;
+			sourceTree = "<group>";
+		};
+		BBC8A09B15B9D26D00DF58F6 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BBC8A09C15B9D26D00DF58F6 /* Mine-Info.plist */,
+				BBC8A09D15B9D26D00DF58F6 /* InfoPlist.strings */,
+				BBC8A0A015B9D26D00DF58F6 /* main.m */,
+				BBC8A0A215B9D26D00DF58F6 /* Mine-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BBC8A08F15B9D26D00DF58F6 /* Mine */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BBC8A0A815B9D26D00DF58F6 /* Build configuration list for PBXNativeTarget "Mine" */;
+			buildPhases = (
+				BBC8A08C15B9D26D00DF58F6 /* Sources */,
+				BBC8A08D15B9D26D00DF58F6 /* Frameworks */,
+				BBC8A08E15B9D26D00DF58F6 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Mine;
+			productName = Mine;
+			productReference = BBC8A09015B9D26D00DF58F6 /* Mine.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BBC8A08715B9D26C00DF58F6 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = DW;
+				LastUpgradeCheck = 0430;
+				ORGANIZATIONNAME = "Denwen, Inc.";
+			};
+			buildConfigurationList = BBC8A08A15B9D26C00DF58F6 /* Build configuration list for PBXProject "Mine" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = BBC8A08515B9D26C00DF58F6;
+			productRefGroup = BBC8A09115B9D26D00DF58F6 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BBC8A08F15B9D26D00DF58F6 /* Mine */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BBC8A08E15B9D26D00DF58F6 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BBC8A09F15B9D26D00DF58F6 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BBC8A08C15B9D26D00DF58F6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BBC8A0A115B9D26D00DF58F6 /* main.m in Sources */,
+				BBC8A0A515B9D26D00DF58F6 /* DWAppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		BBC8A09D15B9D26D00DF58F6 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BBC8A09E15B9D26D00DF58F6 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		BBC8A0A615B9D26D00DF58F6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		BBC8A0A715B9D26D00DF58F6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		BBC8A0A915B9D26D00DF58F6 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Mine/Mine-Prefix.pch";
+				INFOPLIST_FILE = "Mine/Mine-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		BBC8A0AA15B9D26D00DF58F6 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Mine/Mine-Prefix.pch";
+				INFOPLIST_FILE = "Mine/Mine-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BBC8A08A15B9D26C00DF58F6 /* Build configuration list for PBXProject "Mine" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BBC8A0A615B9D26D00DF58F6 /* Debug */,
+				BBC8A0A715B9D26D00DF58F6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BBC8A0A815B9D26D00DF58F6 /* Build configuration list for PBXNativeTarget "Mine" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BBC8A0A915B9D26D00DF58F6 /* Debug */,
+				BBC8A0AA15B9D26D00DF58F6 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BBC8A08715B9D26C00DF58F6 /* Project object */;
+}
