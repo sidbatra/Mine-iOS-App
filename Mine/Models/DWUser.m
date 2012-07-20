@@ -8,8 +8,12 @@
 
 #import "DWUser.h"
 
+static NSString* const kEncodeKeyID         = @"DWUser_id";
 static NSString* const kEncodeKeyFirstName  = @"DWUser_firstName";
 static NSString* const kEncodeKeyLastName   = @"DWUser_lastName";
+
+static NSString* const kKeyFirstName        = @"first_name";
+static NSString* const kKeyLastName         = @"last_name";
 
 
 
@@ -27,17 +31,16 @@ static NSString* const kEncodeKeyLastName   = @"DWUser_lastName";
     self = [super init];
     
     if(self) {
-        //self.databaseID             = [[coder decodeObjectForKey:kDiskKeyID] integerValue];
+        self.databaseID             = [[coder decodeObjectForKey:kEncodeKeyID] integerValue];
         self.firstName              = [coder decodeObjectForKey:kEncodeKeyFirstName];
         self.lastName               = [coder decodeObjectForKey:kEncodeKeyLastName];
     }
     
-    /*
+    
     if(self.databaseID)
         [self mount];
     else 
         self = nil;
-     */
     
     [self attachObservers];
      
@@ -47,7 +50,7 @@ static NSString* const kEncodeKeyLastName   = @"DWUser_lastName";
 //----------------------------------------------------------------------------------------------------
 - (void)encodeWithCoder:(NSCoder*)coder {
     
-    //[coder encodeObject:[NSNumber numberWithInt:self.databaseID]    	forKey:kDiskKeyID];
+    [coder encodeObject:[NSNumber numberWithInt:self.databaseID]    	forKey:kEncodeKeyID];
     [coder encodeObject:self.firstName                                  forKey:kEncodeKeyFirstName];
     [coder encodeObject:self.lastName                                   forKey:kEncodeKeyLastName];
 }
@@ -61,6 +64,13 @@ static NSString* const kEncodeKeyLastName   = @"DWUser_lastName";
     }
 	
 	return self;  
+}
+
+//----------------------------------------------------------------------------------------------------
+-(void)dealloc{
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
+	
+	NSLog(@"user released %d",self.databaseID);
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -84,10 +94,19 @@ static NSString* const kEncodeKeyLastName   = @"DWUser_lastName";
 }
 
 //----------------------------------------------------------------------------------------------------
--(void)dealloc{
-	[[NSNotificationCenter defaultCenter] removeObserver:self];
+- (void)update:(NSDictionary*)user {
+    [super update:user];
 	
-	//NSLog(@"user released %d",_databaseID);
+    NSString *firstName = [user objectForKey:kKeyFirstName];
+    NSString *lastName  = [user objectForKey:kKeyLastName];
+    
+    if(firstName && ![firstName isKindOfClass:[NSNull class]] && ![self.firstName isEqualToString:firstName])
+        self.firstName = firstName;
+    
+    if(lastName && ![lastName isKindOfClass:[NSNull class]] && ![self.lastName isEqualToString:lastName])
+        self.lastName = lastName;
 }
+
+
 
 @end

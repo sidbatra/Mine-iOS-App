@@ -8,7 +8,7 @@
 #import "NSObject+Helpers.h"
 #import "DWConstants.h"
 
-static NSInteger const kMPDefaultDatabaseID        = -1;
+static NSInteger const kDefaultDatabaseID        = -1;
 
 /**
  * Private method and property declarations
@@ -72,7 +72,7 @@ static NSInteger const kMPDefaultDatabaseID        = -1;
 	
 	if(self) {
 		_pointerCount	= 0;
-		_databaseID		= kMPDefaultDatabaseID;
+		_databaseID		= kDefaultDatabaseID;
 	}
 	
 	return self;  
@@ -108,7 +108,8 @@ static NSInteger const kMPDefaultDatabaseID        = -1;
 
 //----------------------------------------------------------------------------------------------------
 - (void)update:(NSDictionary*)objectJSON {
-    self.databaseID = [[objectJSON objectForKey:kKeyID] integerValue];
+    if(self.databaseID == kDefaultDatabaseID)
+        self.databaseID = [[objectJSON objectForKey:kKeyID] integerValue];
 }
 
 @end
