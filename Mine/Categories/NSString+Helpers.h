@@ -30,6 +30,10 @@
  */
 - (NSData*)sha256;
 
+/*
+ */
+- (NSString *)MD5String;
+
 /**
  * Generates a random alphanumeric string of variable length
  */
