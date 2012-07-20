@@ -28,6 +28,10 @@
 		BB9F710015B9E7C90099C80A /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9F70FA15B9E7C90099C80A /* SBJsonWriter.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		BB9F710515B9EBBE0099C80A /* DWSession.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9F710415B9EBBE0099C80A /* DWSession.m */; };
 		BB9F710915B9EBED0099C80A /* DWUser.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9F710815B9EBED0099C80A /* DWUser.m */; };
+		BB9F710F15BA02B90099C80A /* DWMemoryPool.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9F710C15BA02B90099C80A /* DWMemoryPool.m */; };
+		BB9F711015BA02B90099C80A /* DWPoolObject.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9F710E15BA02B90099C80A /* DWPoolObject.m */; };
+		BB9F711415BA033D0099C80A /* NSObject+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9F711315BA033D0099C80A /* NSObject+Helpers.m */; };
+		BB9F711715BA04140099C80A /* DWConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9F711615BA04140099C80A /* DWConstants.m */; };
 		BBC8A09515B9D26D00DF58F6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBC8A09415B9D26D00DF58F6 /* UIKit.framework */; };
 		BBC8A09715B9D26D00DF58F6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBC8A09615B9D26D00DF58F6 /* Foundation.framework */; };
 		BBC8A09915B9D26D00DF58F6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBC8A09815B9D26D00DF58F6 /* CoreGraphics.framework */; };
@@ -81,6 +85,14 @@
 		BB9F710415B9EBBE0099C80A /* DWSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWSession.m; sourceTree = "<group>"; };
 		BB9F710715B9EBED0099C80A /* DWUser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWUser.h; sourceTree = "<group>"; };
 		BB9F710815B9EBED0099C80A /* DWUser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWUser.m; sourceTree = "<group>"; };
+		BB9F710B15BA02B90099C80A /* DWMemoryPool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWMemoryPool.h; sourceTree = "<group>"; };
+		BB9F710C15BA02B90099C80A /* DWMemoryPool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWMemoryPool.m; sourceTree = "<group>"; };
+		BB9F710D15BA02B90099C80A /* DWPoolObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWPoolObject.h; sourceTree = "<group>"; };
+		BB9F710E15BA02B90099C80A /* DWPoolObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWPoolObject.m; sourceTree = "<group>"; };
+		BB9F711215BA033D0099C80A /* NSObject+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+Helpers.h"; sourceTree = "<group>"; };
+		BB9F711315BA033D0099C80A /* NSObject+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+Helpers.m"; sourceTree = "<group>"; };
+		BB9F711515BA04140099C80A /* DWConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWConstants.h; sourceTree = "<group>"; };
+		BB9F711615BA04140099C80A /* DWConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWConstants.m; sourceTree = "<group>"; };
 		BBC8A09015B9D26D00DF58F6 /* Mine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBC8A09415B9D26D00DF58F6 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		BBC8A09615B9D26D00DF58F6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -196,6 +208,26 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		BB9F710A15BA02B90099C80A /* MemoryPool */ = {
+			isa = PBXGroup;
+			children = (
+				BB9F710B15BA02B90099C80A /* DWMemoryPool.h */,
+				BB9F710C15BA02B90099C80A /* DWMemoryPool.m */,
+				BB9F710D15BA02B90099C80A /* DWPoolObject.h */,
+				BB9F710E15BA02B90099C80A /* DWPoolObject.m */,
+			);
+			path = MemoryPool;
+			sourceTree = "<group>";
+		};
+		BB9F711115BA033D0099C80A /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				BB9F711215BA033D0099C80A /* NSObject+Helpers.h */,
+				BB9F711315BA033D0099C80A /* NSObject+Helpers.m */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
 		BBC8A08515B9D26C00DF58F6 = {
 			isa = PBXGroup;
 			children = (
@@ -231,10 +263,14 @@
 		BBC8A09A15B9D26D00DF58F6 /* Mine */ = {
 			isa = PBXGroup;
 			children = (
+				BB9F711115BA033D0099C80A /* Categories */,
+				BB9F710A15BA02B90099C80A /* MemoryPool */,
 				BB9F710615B9EBDE0099C80A /* Models */,
 				BB9F710215B9EBA50099C80A /* Session */,
 				BBC8A0A315B9D26D00DF58F6 /* DWAppDelegate.h */,
 				BBC8A0A415B9D26D00DF58F6 /* DWAppDelegate.m */,
+				BB9F711515BA04140099C80A /* DWConstants.h */,
+				BB9F711615BA04140099C80A /* DWConstants.m */,
 				BBC8A09B15B9D26D00DF58F6 /* Supporting Files */,
 			);
 			path = Mine;
@@ -333,6 +369,10 @@
 				BB9F710015B9E7C90099C80A /* SBJsonWriter.m in Sources */,
 				BB9F710515B9EBBE0099C80A /* DWSession.m in Sources */,
 				BB9F710915B9EBED0099C80A /* DWUser.m in Sources */,
+				BB9F710F15BA02B90099C80A /* DWMemoryPool.m in Sources */,
+				BB9F711015BA02B90099C80A /* DWPoolObject.m in Sources */,
+				BB9F711415BA033D0099C80A /* NSObject+Helpers.m in Sources */,
+				BB9F711715BA04140099C80A /* DWConstants.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
