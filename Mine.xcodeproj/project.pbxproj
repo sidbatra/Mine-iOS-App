@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BB2B93C915BA3F78002C3DA0 /* DWAppRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = BB2B93C815BA3F78002C3DA0 /* DWAppRequest.m */; };
 		BB9F70AB15B9E62F0099C80A /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB9F70AA15B9E62F0099C80A /* CFNetwork.framework */; };
 		BB9F70AE15B9E6400099C80A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB9F70AD15B9E6400099C80A /* SystemConfiguration.framework */; };
 		BB9F70B015B9E6450099C80A /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB9F70AF15B9E6450099C80A /* MobileCoreServices.framework */; };
@@ -34,7 +35,6 @@
 		BB9F711715BA04140099C80A /* DWConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9F711615BA04140099C80A /* DWConstants.m */; };
 		BB9F711C15BA14F40099C80A /* NSData+Crypto.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9F711915BA14F40099C80A /* NSData+Crypto.m */; };
 		BB9F711D15BA14F40099C80A /* NSString+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9F711B15BA14F40099C80A /* NSString+Helpers.m */; };
-		BB9F712915BA1A580099C80A /* DWDenwenRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9F712015BA1A580099C80A /* DWDenwenRequest.m */; };
 		BB9F712A15BA1A580099C80A /* DWImageRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9F712215BA1A580099C80A /* DWImageRequest.m */; };
 		BB9F712B15BA1A580099C80A /* DWRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9F712415BA1A580099C80A /* DWRequest.m */; };
 		BB9F712C15BA1A580099C80A /* DWRequestsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9F712615BA1A580099C80A /* DWRequestsManager.m */; };
@@ -47,6 +47,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		BB2B93C715BA3F78002C3DA0 /* DWAppRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWAppRequest.h; sourceTree = "<group>"; };
+		BB2B93C815BA3F78002C3DA0 /* DWAppRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWAppRequest.m; sourceTree = "<group>"; };
 		BB9F70AA15B9E62F0099C80A /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		BB9F70AD15B9E6400099C80A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		BB9F70AF15B9E6450099C80A /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
@@ -103,8 +105,6 @@
 		BB9F711915BA14F40099C80A /* NSData+Crypto.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Crypto.m"; sourceTree = "<group>"; };
 		BB9F711A15BA14F40099C80A /* NSString+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Helpers.h"; sourceTree = "<group>"; };
 		BB9F711B15BA14F40099C80A /* NSString+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Helpers.m"; sourceTree = "<group>"; };
-		BB9F711F15BA1A580099C80A /* DWDenwenRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWDenwenRequest.h; sourceTree = "<group>"; };
-		BB9F712015BA1A580099C80A /* DWDenwenRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWDenwenRequest.m; sourceTree = "<group>"; };
 		BB9F712115BA1A580099C80A /* DWImageRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWImageRequest.h; sourceTree = "<group>"; };
 		BB9F712215BA1A580099C80A /* DWImageRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWImageRequest.m; sourceTree = "<group>"; };
 		BB9F712315BA1A580099C80A /* DWRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWRequest.h; sourceTree = "<group>"; };
@@ -253,12 +253,12 @@
 		BB9F711E15BA1A580099C80A /* Networking */ = {
 			isa = PBXGroup;
 			children = (
+				BB2B93C715BA3F78002C3DA0 /* DWAppRequest.h */,
+				BB2B93C815BA3F78002C3DA0 /* DWAppRequest.m */,
 				BB9F712515BA1A580099C80A /* DWRequestsManager.h */,
 				BB9F712615BA1A580099C80A /* DWRequestsManager.m */,
 				BB9F712315BA1A580099C80A /* DWRequest.h */,
 				BB9F712415BA1A580099C80A /* DWRequest.m */,
-				BB9F711F15BA1A580099C80A /* DWDenwenRequest.h */,
-				BB9F712015BA1A580099C80A /* DWDenwenRequest.m */,
 				BB9F712115BA1A580099C80A /* DWImageRequest.h */,
 				BB9F712215BA1A580099C80A /* DWImageRequest.m */,
 			);
@@ -413,10 +413,10 @@
 				BB9F711715BA04140099C80A /* DWConstants.m in Sources */,
 				BB9F711C15BA14F40099C80A /* NSData+Crypto.m in Sources */,
 				BB9F711D15BA14F40099C80A /* NSString+Helpers.m in Sources */,
-				BB9F712915BA1A580099C80A /* DWDenwenRequest.m in Sources */,
 				BB9F712A15BA1A580099C80A /* DWImageRequest.m in Sources */,
 				BB9F712B15BA1A580099C80A /* DWRequest.m in Sources */,
 				BB9F712C15BA1A580099C80A /* DWRequestsManager.m in Sources */,
+				BB2B93C915BA3F78002C3DA0 /* DWAppRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -10,7 +10,7 @@
 #import "ASIDownloadCache.h"
 
 // Requests
-#import "DWDenwenRequest.h"
+#import "DWAppRequest.h"
 #import "DWImageRequest.h"
 
 #import "NSString+Helpers.h"
@@ -77,7 +77,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWRequestsManager);
     NSString *requestURL = [self createAppRequestURL:localRequestURL
                                         authenticate:authenticate];
     
-    DWDenwenRequest *request  = [DWDenwenRequest requestWithRequestURL:requestURL 
+    DWAppRequest *request  = [DWAppRequest requestWithRequestURL:requestURL 
                                                    successNotification:successNotification
                                                      errorNotification:errorNotification
                                                             resourceID:0
@@ -113,7 +113,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWRequestsManager);
 	NSString *requestURL = [self createAppRequestURL:localRequestURL
                                         authenticate:authenticate];
 	
-	DWDenwenRequest *request = [DWDenwenRequest requestWithRequestURL:requestURL
+	DWAppRequest *request = [DWAppRequest requestWithRequestURL:requestURL
                                                   successNotification:successNotification
                                                     errorNotification:errorNotification
                                                            resourceID:resourceID

@@ -1,5 +1,5 @@
 //
-//  DWDenwenRequest.h
+//  DWAppRequest.h
 //  Copyright 2011 Denwen. All rights reserved.
 //	
 
@@ -10,7 +10,7 @@
 /**
  * Handles requests made to the Denwen server
  */
-@interface DWDenwenRequest : DWRequest {
+@interface DWAppRequest : DWRequest {
 }
 
 @end

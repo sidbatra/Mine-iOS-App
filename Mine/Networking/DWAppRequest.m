@@ -1,9 +1,9 @@
 //
-//  DWDenwenRequest.m
+//  DWAppRequest.m
 //  Copyright 2011 Denwen. All rights reserved.
 //	
 
-#import "DWDenwenRequest.h"
+#import "DWAppRequest.h"
 
 #import "JSON.h"
 #import "DWConstants.h"
@@ -17,7 +17,7 @@ static NSString* const kMsgNoConnectivity   = @"No internet connection.";
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
-@implementation DWDenwenRequest
+@implementation DWAppRequest
 
 //----------------------------------------------------------------------------------------------------
 - (void)processResponse:(NSString*)responseString andResponseData:(NSData*)responseData {
