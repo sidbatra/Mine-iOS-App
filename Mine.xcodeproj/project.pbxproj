@@ -13,6 +13,8 @@
 		BB174D5015BB426D00DB50CA /* DWCryptography.m in Sources */ = {isa = PBXBuildFile; fileRef = BB174D4F15BB426D00DB50CA /* DWCryptography.m */; };
 		BB26986F15BB653900037453 /* DWTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB26986D15BB653900037453 /* DWTestViewController.m */; };
 		BB26987015BB653900037453 /* DWTestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB26986E15BB653900037453 /* DWTestViewController.xib */; };
+		BB26987715BB6F3E00037453 /* DWImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BB26987615BB6F3E00037453 /* DWImageManager.m */; };
+		BB26987A15BB6F9100037453 /* DWRequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BB26987915BB6F9100037453 /* DWRequestManager.m */; };
 		BB2B93C915BA3F78002C3DA0 /* DWAppRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = BB2B93C815BA3F78002C3DA0 /* DWAppRequest.m */; };
 		BB9F70AB15B9E62F0099C80A /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB9F70AA15B9E62F0099C80A /* CFNetwork.framework */; };
 		BB9F70AE15B9E6400099C80A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB9F70AD15B9E6400099C80A /* SystemConfiguration.framework */; };
@@ -42,7 +44,6 @@
 		BB9F711D15BA14F40099C80A /* NSString+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9F711B15BA14F40099C80A /* NSString+Helpers.m */; };
 		BB9F712A15BA1A580099C80A /* DWImageRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9F712215BA1A580099C80A /* DWImageRequest.m */; };
 		BB9F712B15BA1A580099C80A /* DWRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9F712415BA1A580099C80A /* DWRequest.m */; };
-		BB9F712C15BA1A580099C80A /* DWRequestsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9F712615BA1A580099C80A /* DWRequestsManager.m */; };
 		BBC8A09515B9D26D00DF58F6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBC8A09415B9D26D00DF58F6 /* UIKit.framework */; };
 		BBC8A09715B9D26D00DF58F6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBC8A09615B9D26D00DF58F6 /* Foundation.framework */; };
 		BBC8A09915B9D26D00DF58F6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBC8A09815B9D26D00DF58F6 /* CoreGraphics.framework */; };
@@ -62,6 +63,10 @@
 		BB26986C15BB653900037453 /* DWTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWTestViewController.h; sourceTree = "<group>"; };
 		BB26986D15BB653900037453 /* DWTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWTestViewController.m; sourceTree = "<group>"; };
 		BB26986E15BB653900037453 /* DWTestViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DWTestViewController.xib; sourceTree = "<group>"; };
+		BB26987515BB6F3E00037453 /* DWImageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWImageManager.h; sourceTree = "<group>"; };
+		BB26987615BB6F3E00037453 /* DWImageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWImageManager.m; sourceTree = "<group>"; };
+		BB26987815BB6F9100037453 /* DWRequestManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWRequestManager.h; sourceTree = "<group>"; };
+		BB26987915BB6F9100037453 /* DWRequestManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWRequestManager.m; sourceTree = "<group>"; };
 		BB2B93C715BA3F78002C3DA0 /* DWAppRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWAppRequest.h; sourceTree = "<group>"; };
 		BB2B93C815BA3F78002C3DA0 /* DWAppRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWAppRequest.m; sourceTree = "<group>"; };
 		BB9F70AA15B9E62F0099C80A /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -122,8 +127,6 @@
 		BB9F712215BA1A580099C80A /* DWImageRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWImageRequest.m; sourceTree = "<group>"; };
 		BB9F712315BA1A580099C80A /* DWRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWRequest.h; sourceTree = "<group>"; };
 		BB9F712415BA1A580099C80A /* DWRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWRequest.m; sourceTree = "<group>"; };
-		BB9F712515BA1A580099C80A /* DWRequestsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWRequestsManager.h; sourceTree = "<group>"; };
-		BB9F712615BA1A580099C80A /* DWRequestsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWRequestsManager.m; sourceTree = "<group>"; };
 		BBC8A09015B9D26D00DF58F6 /* Mine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBC8A09415B9D26D00DF58F6 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		BBC8A09615B9D26D00DF58F6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -196,6 +199,15 @@
 				BB26986E15BB653900037453 /* DWTestViewController.xib */,
 			);
 			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		BB26987115BB6E0600037453 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				BB26987515BB6F3E00037453 /* DWImageManager.h */,
+				BB26987615BB6F3E00037453 /* DWImageManager.m */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 		BB9F70B315B9E6A60099C80A /* External */ = {
@@ -310,8 +322,8 @@
 		BB9F711E15BA1A580099C80A /* Networking */ = {
 			isa = PBXGroup;
 			children = (
-				BB9F712515BA1A580099C80A /* DWRequestsManager.h */,
-				BB9F712615BA1A580099C80A /* DWRequestsManager.m */,
+				BB26987815BB6F9100037453 /* DWRequestManager.h */,
+				BB26987915BB6F9100037453 /* DWRequestManager.m */,
 				BB9F712315BA1A580099C80A /* DWRequest.h */,
 				BB9F712415BA1A580099C80A /* DWRequest.m */,
 				BB2B93C715BA3F78002C3DA0 /* DWAppRequest.h */,
@@ -362,6 +374,7 @@
 				BB174D4215BA405900DB50CA /* Constants */,
 				BB174D4D15BB425900DB50CA /* Cryptography */,
 				BB174D4615BA43C700DB50CA /* DataControllers */,
+				BB26987115BB6E0600037453 /* Managers */,
 				BB9F710A15BA02B90099C80A /* MemoryPool */,
 				BB9F710615B9EBDE0099C80A /* Models */,
 				BB9F711E15BA1A580099C80A /* Networking */,
@@ -472,13 +485,14 @@
 				BB9F711D15BA14F40099C80A /* NSString+Helpers.m in Sources */,
 				BB9F712A15BA1A580099C80A /* DWImageRequest.m in Sources */,
 				BB9F712B15BA1A580099C80A /* DWRequest.m in Sources */,
-				BB9F712C15BA1A580099C80A /* DWRequestsManager.m in Sources */,
 				BB2B93C915BA3F78002C3DA0 /* DWAppRequest.m in Sources */,
 				BB174D4115BA404200DB50CA /* DWAppDelegate.m in Sources */,
 				BB174D4515BA405900DB50CA /* DWConstants.m in Sources */,
 				BB174D4915BA43DC00DB50CA /* DWUsersController.m in Sources */,
 				BB174D5015BB426D00DB50CA /* DWCryptography.m in Sources */,
 				BB26986F15BB653900037453 /* DWTestViewController.m in Sources */,
+				BB26987715BB6F3E00037453 /* DWImageManager.m in Sources */,
+				BB26987A15BB6F9100037453 /* DWRequestManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

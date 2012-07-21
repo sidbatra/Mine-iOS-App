@@ -1,9 +1,9 @@
 //
-//  DWRequestsManager.m
+//  DWRequestManager.m
 //  Copyright 2011 Denwen. All rights reserved.
 //	
 
-#import "DWRequestsManager.h"
+#import "DWRequestManager.h"
 #import "DWSession.h"
 #import "DWConstants.h"
 
@@ -22,7 +22,7 @@
 /**
  * Private method and property declarations
  */
-@interface DWRequestsManager()
+@interface DWRequestManager()
 
 /**
  * Form the complete URL with or without authentication to send
@@ -38,9 +38,9 @@
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
-@implementation DWRequestsManager
+@implementation DWRequestManager
 
-SYNTHESIZE_SINGLETON_FOR_CLASS(DWRequestsManager);
+SYNTHESIZE_SINGLETON_FOR_CLASS(DWRequestManager);
 
 //----------------------------------------------------------------------------------------------------
 - (NSString*)createAppRequestURL:(NSString*)localRequestURL 

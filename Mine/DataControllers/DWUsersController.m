@@ -11,7 +11,7 @@
 #import "DWCryptography.h"
 #import "NSString+Helpers.h"
 
-#import "DWRequestsManager.h"
+#import "DWRequestManager.h"
 #import "DWConstants.h"
 
 
@@ -78,12 +78,12 @@ static NSString* const kNUserLoadError  = @"NUserLoadError";
 - (void)getUserWithID:(NSInteger)userID; {
     NSString *localURL = [NSString stringWithFormat:kGetUserURI,[DWCryptography obfuscate:userID]];
 
-    [[DWRequestsManager sharedDWRequestsManager] createAppRequest:localURL
-                                              successNotification:kNUserLoaded
-                                                errorNotification:kNUserLoadError
-                                                    requestMethod:kGet
-                                                     authenticate:NO
-                                                       resourceID:userID];
+    [[DWRequestManager sharedDWRequestManager] createAppRequest:localURL
+                                            successNotification:kNUserLoaded
+                                              errorNotification:kNUserLoadError
+                                                  requestMethod:kGet
+                                                   authenticate:NO
+                                                     resourceID:userID];
 }
 
 

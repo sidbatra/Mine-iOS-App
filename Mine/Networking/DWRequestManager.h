@@ -1,5 +1,5 @@
 //
-//  DWRequestsManager.h
+//  DWRequestManager.h
 //  Copyright 2011 Denwen. All rights reserved.
 //	
 
@@ -9,14 +9,14 @@
  * DWRequestsManager enables absracted access to all network operations
  * via a simple interface
  */
-@interface DWRequestsManager : NSObject {
+@interface DWRequestManager : NSObject {
 
 }
 
 /**
  * Shared sole instance of the class
  */
-+ (DWRequestsManager *)sharedDWRequestsManager;
++ (DWRequestManager *)sharedDWRequestManager;
 
 
 /**

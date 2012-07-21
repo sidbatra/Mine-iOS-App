@@ -64,9 +64,9 @@ static NSInteger const kCacheTimeout = 15 * 24 * 60 * 60;
 													 resourceID:theResourceID
                                                        callerID:0];
 	
-	[imageRequest setDownloadCache:[ASIDownloadCache sharedCache]];
-	[imageRequest setCacheStoragePolicy:ASICachePermanentlyCacheStoragePolicy];
-	[imageRequest setSecondsToCache:kCacheTimeout];
+	//[imageRequest setDownloadCache:[ASIDownloadCache sharedCache]];
+	//[imageRequest setCacheStoragePolicy:ASICachePermanentlyCacheStoragePolicy];
+	//[imageRequest setSecondsToCache:kCacheTimeout];
 	
 	return imageRequest;
 }
