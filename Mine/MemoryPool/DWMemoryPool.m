@@ -97,15 +97,9 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWMemoryPool);
     
     for(NSMutableDictionary *pool in [self.memoryPool allValues]) {
         
-        for(id<NSObject> object in [pool allValues]) {
-            
-            #pragma clang diagnostic push
-            #pragma clang diagnostic ignored "-Warc-performSelector-leaks"
-            
-                if([object respondsToSelector:sel])
-                    [object performSelector:sel];
-            
-            #pragma clang diagnostic pop
+        for(id<NSObject> object in [pool allValues]) {            
+            if([object respondsToSelector:sel])
+                [object performSelector:sel];
         }
     }
 }

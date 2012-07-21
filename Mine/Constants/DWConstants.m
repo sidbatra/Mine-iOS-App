@@ -23,7 +23,7 @@ NSString* const kPost               = @"POST";
 NSString* const kPut				= @"PUT";
 NSString* const kDelete				= @"DELETE";
 NSString* const kAppProtocol        = @"http://";
-NSString* const kClientName         = @"@iphone";
+NSString* const kClientName         = @"iphone";
 
 #if ENVIRONMENT == DEVELOPMENT
 NSString* const kAppServer      = @"sbat.getmine.com";

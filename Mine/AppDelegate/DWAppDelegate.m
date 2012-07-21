@@ -8,7 +8,6 @@
 
 #import "DWAppDelegate.h"
 
-#import "DWRequestsManager.h"
 
 @implementation DWAppDelegate
 

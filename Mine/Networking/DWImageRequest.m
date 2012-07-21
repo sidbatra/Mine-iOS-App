@@ -31,8 +31,6 @@ static NSInteger const kCacheTimeout = 15 * 24 * 60 * 60;
 	[[NSNotificationCenter defaultCenter] postNotificationName:self.successNotification 
 														object:nil
 													  userInfo:info];
-	
-	
 }
 
 //----------------------------------------------------------------------------------------------------

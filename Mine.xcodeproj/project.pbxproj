@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		BB174D4115BA404200DB50CA /* DWAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BB174D4015BA404200DB50CA /* DWAppDelegate.m */; };
 		BB174D4515BA405900DB50CA /* DWConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = BB174D4415BA405900DB50CA /* DWConstants.m */; };
+		BB174D4915BA43DC00DB50CA /* DWUsersController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB174D4815BA43DC00DB50CA /* DWUsersController.m */; };
 		BB2B93C915BA3F78002C3DA0 /* DWAppRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = BB2B93C815BA3F78002C3DA0 /* DWAppRequest.m */; };
 		BB9F70AB15B9E62F0099C80A /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB9F70AA15B9E62F0099C80A /* CFNetwork.framework */; };
 		BB9F70AE15B9E6400099C80A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB9F70AD15B9E6400099C80A /* SystemConfiguration.framework */; };
@@ -51,6 +52,8 @@
 		BB174D4015BA404200DB50CA /* DWAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWAppDelegate.m; sourceTree = "<group>"; };
 		BB174D4315BA405900DB50CA /* DWConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWConstants.h; sourceTree = "<group>"; };
 		BB174D4415BA405900DB50CA /* DWConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWConstants.m; sourceTree = "<group>"; };
+		BB174D4715BA43DC00DB50CA /* DWUsersController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWUsersController.h; sourceTree = "<group>"; };
+		BB174D4815BA43DC00DB50CA /* DWUsersController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWUsersController.m; sourceTree = "<group>"; };
 		BB2B93C715BA3F78002C3DA0 /* DWAppRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWAppRequest.h; sourceTree = "<group>"; };
 		BB2B93C815BA3F78002C3DA0 /* DWAppRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWAppRequest.m; sourceTree = "<group>"; };
 		BB9F70AA15B9E62F0099C80A /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -157,6 +160,15 @@
 				BB174D4415BA405900DB50CA /* DWConstants.m */,
 			);
 			path = Constants;
+			sourceTree = "<group>";
+		};
+		BB174D4615BA43C700DB50CA /* DataControllers */ = {
+			isa = PBXGroup;
+			children = (
+				BB174D4715BA43DC00DB50CA /* DWUsersController.h */,
+				BB174D4815BA43DC00DB50CA /* DWUsersController.m */,
+			);
+			path = DataControllers;
 			sourceTree = "<group>";
 		};
 		BB9F70B315B9E6A60099C80A /* External */ = {
@@ -321,6 +333,7 @@
 				BB174D3E15BA404200DB50CA /* AppDelegate */,
 				BB9F711115BA033D0099C80A /* Categories */,
 				BB174D4215BA405900DB50CA /* Constants */,
+				BB174D4615BA43C700DB50CA /* DataControllers */,
 				BB9F710A15BA02B90099C80A /* MemoryPool */,
 				BB9F710615B9EBDE0099C80A /* Models */,
 				BB9F711E15BA1A580099C80A /* Networking */,
@@ -433,6 +446,7 @@
 				BB2B93C915BA3F78002C3DA0 /* DWAppRequest.m in Sources */,
 				BB174D4115BA404200DB50CA /* DWAppDelegate.m in Sources */,
 				BB174D4515BA405900DB50CA /* DWConstants.m in Sources */,
+				BB174D4915BA43DC00DB50CA /* DWUsersController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -502,6 +516,7 @@
 				GCC_PREFIX_HEADER = "Mine/Mine-Prefix.pch";
 				INFOPLIST_FILE = "Mine/Mine-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				"WARNING_CFLAGS[arch=*]" = "-Wno-arc-performSelector-leaks";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -513,6 +528,7 @@
 				GCC_PREFIX_HEADER = "Mine/Mine-Prefix.pch";
 				INFOPLIST_FILE = "Mine/Mine-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				"WARNING_CFLAGS[arch=*]" = "-Wno-arc-performSelector-leaks";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

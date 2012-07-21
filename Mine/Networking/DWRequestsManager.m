@@ -50,7 +50,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWRequestsManager);
                             kAppServer,
                             localRequestURL];
     
-    [url appendFormat:@"&v=%@&client=",kVersion,kClientName];
+    [url appendFormat:@"&v=%@&auth_client=%@",kVersion,kClientName];
     
     if(authenticate && [[DWSession sharedDWSession] isAuthenticated])
         [url appendFormat:@"&auth_id=%@",
@@ -112,7 +112,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWRequestsManager);
 	
 	NSString *requestURL = [self createAppRequestURL:localRequestURL
                                         authenticate:authenticate];
-	
+    
 	DWAppRequest *request = [DWAppRequest requestWithRequestURL:requestURL
                                                   successNotification:successNotification
                                                     errorNotification:errorNotification
