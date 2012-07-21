@@ -54,8 +54,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWRequestsManager);
     [url appendFormat:@"&v=%@&auth_client=%@",kVersion,kClientName];
     
     if(authenticate && [[DWSession sharedDWSession] isAuthenticated])
-        [url appendFormat:@"&auth_id=%@",
-         [[[NSString stringWithFormat:@"%d",[DWSession sharedDWSession].currentUser.databaseID] encrypt:kClientEncryptionPhrase] stringByEncodingHTMLCharacters]];
+        [url appendFormat:@"&auth_id=%@",[[DWCryptography obfuscate:[DWSession sharedDWSession].currentUser.databaseID] stringByEncodingHTMLCharacters]];
     
     [url appendFormat:@"&auth_secret=%@",[DWCryptography MD5:[NSString stringWithFormat:@"--%@--%@",kClientSalt,url]]];
                             
