@@ -60,7 +60,7 @@
 }
 
 - (void)userLoaded:(DWUser*)user {
-    NSLog(@"%@ %@",user.firstName,user.lastName);
+    NSLog(@"%@ %@ %@ %@ %@  %@ %@  %d",user.firstName,user.lastName,user.gender,user.handle,user.byline,user.squareImageURL,user.largeImageURL,user.purchasesCount);
 }
 
 @end
