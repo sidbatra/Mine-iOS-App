@@ -8,8 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DWAppDelegate : UIResponder <UIApplicationDelegate>
+#import "DWTestViewController.h"
+
+@interface DWAppDelegate : UIResponder <UIApplicationDelegate> {
+    DWTestViewController *_testViewController;
+}
 
 @property (strong, nonatomic) UIWindow *window;
+@property (strong, nonatomic) DWTestViewController *testViewController;
 
 @end

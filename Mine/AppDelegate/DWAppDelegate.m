@@ -12,12 +12,16 @@
 @implementation DWAppDelegate
 
 @synthesize window = _window;
+@synthesize testViewController = _testViewController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.testViewController = [[DWTestViewController alloc] init];
+    
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
+    [self.window addSubview:self.testViewController.view];
     [self.window makeKeyAndVisible]; 
     
     return YES;

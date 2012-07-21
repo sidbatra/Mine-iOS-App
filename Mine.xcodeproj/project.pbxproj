@@ -11,6 +11,8 @@
 		BB174D4515BA405900DB50CA /* DWConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = BB174D4415BA405900DB50CA /* DWConstants.m */; };
 		BB174D4915BA43DC00DB50CA /* DWUsersController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB174D4815BA43DC00DB50CA /* DWUsersController.m */; };
 		BB174D5015BB426D00DB50CA /* DWCryptography.m in Sources */ = {isa = PBXBuildFile; fileRef = BB174D4F15BB426D00DB50CA /* DWCryptography.m */; };
+		BB26986F15BB653900037453 /* DWTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB26986D15BB653900037453 /* DWTestViewController.m */; };
+		BB26987015BB653900037453 /* DWTestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB26986E15BB653900037453 /* DWTestViewController.xib */; };
 		BB2B93C915BA3F78002C3DA0 /* DWAppRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = BB2B93C815BA3F78002C3DA0 /* DWAppRequest.m */; };
 		BB9F70AB15B9E62F0099C80A /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB9F70AA15B9E62F0099C80A /* CFNetwork.framework */; };
 		BB9F70AE15B9E6400099C80A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB9F70AD15B9E6400099C80A /* SystemConfiguration.framework */; };
@@ -57,6 +59,9 @@
 		BB174D4815BA43DC00DB50CA /* DWUsersController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWUsersController.m; sourceTree = "<group>"; };
 		BB174D4E15BB426D00DB50CA /* DWCryptography.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWCryptography.h; sourceTree = "<group>"; };
 		BB174D4F15BB426D00DB50CA /* DWCryptography.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWCryptography.m; sourceTree = "<group>"; };
+		BB26986C15BB653900037453 /* DWTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWTestViewController.h; sourceTree = "<group>"; };
+		BB26986D15BB653900037453 /* DWTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWTestViewController.m; sourceTree = "<group>"; };
+		BB26986E15BB653900037453 /* DWTestViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DWTestViewController.xib; sourceTree = "<group>"; };
 		BB2B93C715BA3F78002C3DA0 /* DWAppRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWAppRequest.h; sourceTree = "<group>"; };
 		BB2B93C815BA3F78002C3DA0 /* DWAppRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWAppRequest.m; sourceTree = "<group>"; };
 		BB9F70AA15B9E62F0099C80A /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -181,6 +186,16 @@
 				BB174D4F15BB426D00DB50CA /* DWCryptography.m */,
 			);
 			path = Cryptography;
+			sourceTree = "<group>";
+		};
+		BB26986B15BB653900037453 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				BB26986C15BB653900037453 /* DWTestViewController.h */,
+				BB26986D15BB653900037453 /* DWTestViewController.m */,
+				BB26986E15BB653900037453 /* DWTestViewController.xib */,
+			);
+			path = ViewControllers;
 			sourceTree = "<group>";
 		};
 		BB9F70B315B9E6A60099C80A /* External */ = {
@@ -352,6 +367,7 @@
 				BB9F711E15BA1A580099C80A /* Networking */,
 				BB9F710215B9EBA50099C80A /* Session */,
 				BBC8A09B15B9D26D00DF58F6 /* Supporting Files */,
+				BB26986B15BB653900037453 /* ViewControllers */,
 			);
 			path = Mine;
 			sourceTree = "<group>";
@@ -420,6 +436,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BBC8A09F15B9D26D00DF58F6 /* InfoPlist.strings in Resources */,
+				BB26987015BB653900037453 /* DWTestViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -461,6 +478,7 @@
 				BB174D4515BA405900DB50CA /* DWConstants.m in Sources */,
 				BB174D4915BA43DC00DB50CA /* DWUsersController.m in Sources */,
 				BB174D5015BB426D00DB50CA /* DWCryptography.m in Sources */,
+				BB26986F15BB653900037453 /* DWTestViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

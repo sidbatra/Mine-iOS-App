@@ -8,13 +8,14 @@
 
 #import "DWUsersController.h"
 
+#import "DWCryptography.h"
 #import "NSString+Helpers.h"
 
 #import "DWRequestsManager.h"
 #import "DWConstants.h"
 
 
-static NSString* const kGetUserURI = @"/users/%d.json?";
+static NSString* const kGetUserURI = @"/users/%@.json?";
 
 
 static NSString* const kNUserLoaded     = @"NUserLoad";
@@ -75,8 +76,8 @@ static NSString* const kNUserLoadError  = @"NUserLoadError";
 
 //----------------------------------------------------------------------------------------------------
 - (void)getUserWithID:(NSInteger)userID; {
-    NSString *localURL = [NSString stringWithFormat:kGetUserURI,userID];
-    
+    NSString *localURL = [NSString stringWithFormat:kGetUserURI,[DWCryptography obfuscate:userID]];
+
     [[DWRequestsManager sharedDWRequestsManager] createAppRequest:localURL
                                               successNotification:kNUserLoaded
                                                 errorNotification:kNUserLoadError
