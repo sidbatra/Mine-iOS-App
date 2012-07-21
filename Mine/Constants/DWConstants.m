@@ -40,7 +40,9 @@ NSString* const kClientEncryptionPhrase   = @"f0837530983794e3";
 
 
 //----------------------------------------------------------------------------------------------------
-NSString* const kNEnteringLowMemoryState = @"NEnteringLowMemoryState";
+NSString* const kNEnteringLowMemoryState    = @"NEnteringLowMemoryState";
+NSString* const kNImageDownloaded           = @"NImageDownloaded";
+NSString* const kNImageDownloadError        = @"NImageDownloadError";
 
 //----------------------------------------------------------------------------------------------------
 NSString* const kKeyID          = @"id";
@@ -48,6 +50,7 @@ NSString* const kKeyCallerID    = @"caller_id";
 NSString* const kKeyResourceID  = @"resource_id";
 NSString* const kKeyMessage     = @"message";
 NSString* const kKeyResponse    = @"response";
+NSString* const kKeyURL         = @"url";
 NSString* const kKeyImage       = @"image";
 NSString* const kKeyError       = @"error";
 

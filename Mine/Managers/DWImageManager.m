@@ -45,12 +45,15 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWImageManager);
 		self.imagePool = [NSMutableDictionary dictionary];
         
         
-        /*
         [[NSNotificationCenter defaultCenter] addObserver:self 
-												 selector:@selector(lowMemoryState:) 
-													 name:kNEnteringLowMemoryState
+												 selector:@selector(imageDownloaded:) 
+													 name:kNImageDownloaded
 												   object:nil];
-         */
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self 
+												 selector:@selector(imageDownloadError:) 
+													 name:kNImageDownloadError
+												   object:nil];
 	}
 	
 	return self;
@@ -61,5 +64,30 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWImageManager);
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark Notifications
+
+//----------------------------------------------------------------------------------------------------
+- (void)imageDownloaded:(NSNotification*)notification {
+    
+    NSDictionary *info = [notification userInfo];
+    NSString *url = [info objectForKey:kKeyURL];
+    
+    //UIImage *image = [info objectForKey:kKeyImage];
+    NSLog(@"DOWNLOADED - %@",url);
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)imageDownloadError:(NSNotification*)notification {
+    
+    NSDictionary *info = [notification userInfo];
+    NSString *url = [info objectForKey:kKeyURL];
+    
+    NSLog(@"ERROR - %@",url);
+    //UIImage *image = [info objectForKey:kKeyImage];
+}
 
 @end

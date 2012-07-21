@@ -30,6 +30,8 @@ extern NSString* const kClientEncryptionPhrase;
  * Notifications
  */
 extern NSString* const kNEnteringLowMemoryState;
+extern NSString* const kNImageDownloaded;
+extern NSString* const kNImageDownloadError;
 
 
 /**
@@ -40,6 +42,7 @@ extern NSString* const kKeyCallerID;
 extern NSString* const kKeyResourceID;
 extern NSString* const kKeyMessage;
 extern NSString* const kKeyResponse;
+extern NSString* const kKeyURL;
 extern NSString* const kKeyImage;
 extern NSString* const kKeyError;
 

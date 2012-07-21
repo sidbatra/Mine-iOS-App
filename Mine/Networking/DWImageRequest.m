@@ -11,22 +11,49 @@
 static NSInteger const kCacheTimeout = 15 * 24 * 60 * 60;
 
 
+/**
+ * Private declarations
+ */
+@interface DWImageRequest() {
+    NSString *_dwImageURL;
+}
+
+/**
+ * URL of the image being downloaded.
+ */
+@property (nonatomic,copy) NSString* dwImageURL;
+
+@end
+
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 @implementation DWImageRequest
 
+@synthesize dwImageURL = _dwImageURL;
 
 //----------------------------------------------------------------------------------------------------
 - (void)processResponse:(NSString*)responseString andResponseData:(NSData*)responseData {
-	/**
-	 * Package the received image along with its type and owner info
-	 */
-	NSDictionary *info	= [NSDictionary dictionaryWithObjectsAndKeys:
-							  [NSNumber numberWithInt:self.resourceID]	,kKeyResourceID,
-							  [UIImage imageWithData:responseData]		,kKeyImage,
-							  nil];
+
+    UIImage *image = [UIImage imageWithData:responseData];
+    
+    
+    NSDictionary *info	= [NSDictionary dictionaryWithObjectsAndKeys:
+                           self.dwImageURL     ,kKeyURL,
+                           image                ,kKeyImage,
+                           nil];
+    
+	[[NSNotificationCenter defaultCenter] postNotificationName:kNImageDownloaded
+														object:nil
+													  userInfo:info];
+    
+    
+	info = [NSDictionary dictionaryWithObjectsAndKeys:
+            [NSNumber numberWithInt:self.resourceID]	,kKeyResourceID,
+            image                                       ,kKeyImage,
+            nil];
 		
 	[[NSNotificationCenter defaultCenter] postNotificationName:self.successNotification 
 														object:nil
@@ -35,11 +62,20 @@ static NSInteger const kCacheTimeout = 15 * 24 * 60 * 60;
 
 //----------------------------------------------------------------------------------------------------
 - (void)processError:(NSError*)theError {
-	
-	NSDictionary *info = [NSDictionary dictionaryWithObjectsAndKeys:
-						  [NSNumber numberWithInt:self.resourceID]		,kKeyResourceID,
-						  theError										,kKeyError,
-						  nil];
+
+    NSDictionary *info	= [NSDictionary dictionaryWithObjectsAndKeys:
+                           self.dwImageURL     ,kKeyURL,
+                           nil];
+    
+	[[NSNotificationCenter defaultCenter] postNotificationName:kNImageDownloadError
+														object:nil
+													  userInfo:info];
+    
+    
+	info = [NSDictionary dictionaryWithObjectsAndKeys:
+            [NSNumber numberWithInt:self.resourceID]		,kKeyResourceID,
+            theError										,kKeyError,
+            nil];
 	
 	[[NSNotificationCenter defaultCenter] postNotificationName:self.errorNotification
 														object:nil
@@ -56,7 +92,7 @@ static NSInteger const kCacheTimeout = 15 * 24 * 60 * 60;
 + (id)requestWithRequestURL:(NSString*)requestURL 
 		successNotification:(NSString*)theSuccessNotification
 		  errorNotification:(NSString*)theErrorNotification
-				 resourceID:(NSInteger)theResourceID{
+				 resourceID:(NSInteger)theResourceID {
 	
 	DWImageRequest *imageRequest = [super requestWithRequestURL:requestURL
 											successNotification:theSuccessNotification
@@ -64,9 +100,11 @@ static NSInteger const kCacheTimeout = 15 * 24 * 60 * 60;
 													 resourceID:theResourceID
                                                        callerID:0];
 	
-	//[imageRequest setDownloadCache:[ASIDownloadCache sharedCache]];
-	//[imageRequest setCacheStoragePolicy:ASICachePermanentlyCacheStoragePolicy];
-	//[imageRequest setSecondsToCache:kCacheTimeout];
+    imageRequest.dwImageURL = requestURL;
+    
+	[imageRequest setDownloadCache:[ASIDownloadCache sharedCache]];
+	[imageRequest setCacheStoragePolicy:ASICachePermanentlyCacheStoragePolicy];
+	[imageRequest setSecondsToCache:kCacheTimeout];
 	
 	return imageRequest;
 }
