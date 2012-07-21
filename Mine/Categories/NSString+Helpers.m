@@ -7,10 +7,10 @@
 #import "NSString+Helpers.h"
 
 
-static NSString* const kEncryptionPhrase        = @"9u124hgd35677";
 static NSString* const kAlphanumericLetters     = @"abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 static NSInteger const kRandomStringMinLength   = 7;
 static NSInteger const kRandomStringMaxLength   = 10;
+
 
 
 //----------------------------------------------------------------------------------------------------
@@ -45,8 +45,9 @@ static NSInteger const kRandomStringMaxLength   = 10;
 }
 
 //----------------------------------------------------------------------------------------------------
--(NSString*) encrypt {
-	NSData *key			= [NSData dataWithBytes:[[kEncryptionPhrase sha256] bytes] 
+-(NSString*)encrypt:(NSString*)phrase {
+    
+	NSData *key			= [NSData dataWithBytes:[[phrase sha256] bytes] 
 										 length:kCCKeySizeAES128];
 	NSData *cipher		= [[self dataUsingEncoding:NSUTF8StringEncoding] aesEncryptedDataWithKey:key];
 	

@@ -23,7 +23,7 @@
 /**
  * Encrytion with a pre-decided key and AES128
  */
-- (NSString*)encrypt;
+- (NSString*)encrypt:(NSString*)phrase;
 
 /**
  * Computes sha256 

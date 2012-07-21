@@ -8,6 +8,8 @@
 
 #import "DWAppDelegate.h"
 
+#import "DWRequestsManager.h"
+
 @implementation DWAppDelegate
 
 @synthesize window = _window;
@@ -18,6 +20,7 @@
     // Override point for customization after application launch.
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible]; 
+    
     return YES;
 }
 
