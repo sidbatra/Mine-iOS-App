@@ -8,7 +8,7 @@
 #import "DWRequest.h"
 
 /**
- * Handles requests made to the Denwen server
+ * Handles requests made to the App server
  */
 @interface DWAppRequest : DWRequest {
 }
