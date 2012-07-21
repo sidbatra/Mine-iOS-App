@@ -51,7 +51,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWRequestsManager);
                             kAppServer,
                             localRequestURL];
     
-    [url appendFormat:@"&v=%@&auth_client=%@",kVersion,kClientName];
+    [url appendFormat:@"&v=%@&auth_client=%@&auth_time=%d",kVersion,kClientName,(NSInteger)[[NSDate date] timeIntervalSince1970]];
     
     if(authenticate && [[DWSession sharedDWSession] isAuthenticated])
         [url appendFormat:@"&auth_id=%@",[[DWCryptography obfuscate:[DWSession sharedDWSession].currentUser.databaseID] stringByEncodingHTMLCharacters]];
