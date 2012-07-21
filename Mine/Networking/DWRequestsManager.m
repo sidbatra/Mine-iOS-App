@@ -14,6 +14,7 @@
 #import "DWImageRequest.h"
 
 #import "NSString+Helpers.h"
+#import "DWCryptography.h"
 #import "SynthesizeSingleton.h"
 
 
@@ -56,7 +57,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWRequestsManager);
         [url appendFormat:@"&auth_id=%@",
          [[[NSString stringWithFormat:@"%d",[DWSession sharedDWSession].currentUser.databaseID] encrypt:kClientEncryptionPhrase] stringByEncodingHTMLCharacters]];
     
-    [url appendFormat:@"&auth_secret=%@",[[NSString stringWithFormat:@"--%@--%@",kClientSalt,url] MD5String]];
+    [url appendFormat:@"&auth_secret=%@",[DWCryptography MD5:[NSString stringWithFormat:@"--%@--%@",kClientSalt,url]]];
                             
 	return	[NSString stringWithString:url];
 }

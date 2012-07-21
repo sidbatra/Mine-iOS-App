@@ -10,6 +10,7 @@
 		BB174D4115BA404200DB50CA /* DWAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BB174D4015BA404200DB50CA /* DWAppDelegate.m */; };
 		BB174D4515BA405900DB50CA /* DWConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = BB174D4415BA405900DB50CA /* DWConstants.m */; };
 		BB174D4915BA43DC00DB50CA /* DWUsersController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB174D4815BA43DC00DB50CA /* DWUsersController.m */; };
+		BB174D5015BB426D00DB50CA /* DWCryptography.m in Sources */ = {isa = PBXBuildFile; fileRef = BB174D4F15BB426D00DB50CA /* DWCryptography.m */; };
 		BB2B93C915BA3F78002C3DA0 /* DWAppRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = BB2B93C815BA3F78002C3DA0 /* DWAppRequest.m */; };
 		BB9F70AB15B9E62F0099C80A /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB9F70AA15B9E62F0099C80A /* CFNetwork.framework */; };
 		BB9F70AE15B9E6400099C80A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB9F70AD15B9E6400099C80A /* SystemConfiguration.framework */; };
@@ -54,6 +55,8 @@
 		BB174D4415BA405900DB50CA /* DWConstants.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWConstants.m; sourceTree = "<group>"; };
 		BB174D4715BA43DC00DB50CA /* DWUsersController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWUsersController.h; sourceTree = "<group>"; };
 		BB174D4815BA43DC00DB50CA /* DWUsersController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWUsersController.m; sourceTree = "<group>"; };
+		BB174D4E15BB426D00DB50CA /* DWCryptography.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWCryptography.h; sourceTree = "<group>"; };
+		BB174D4F15BB426D00DB50CA /* DWCryptography.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWCryptography.m; sourceTree = "<group>"; };
 		BB2B93C715BA3F78002C3DA0 /* DWAppRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWAppRequest.h; sourceTree = "<group>"; };
 		BB2B93C815BA3F78002C3DA0 /* DWAppRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWAppRequest.m; sourceTree = "<group>"; };
 		BB9F70AA15B9E62F0099C80A /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -171,6 +174,15 @@
 			path = DataControllers;
 			sourceTree = "<group>";
 		};
+		BB174D4D15BB425900DB50CA /* Cryptography */ = {
+			isa = PBXGroup;
+			children = (
+				BB174D4E15BB426D00DB50CA /* DWCryptography.h */,
+				BB174D4F15BB426D00DB50CA /* DWCryptography.m */,
+			);
+			path = Cryptography;
+			sourceTree = "<group>";
+		};
 		BB9F70B315B9E6A60099C80A /* External */ = {
 			isa = PBXGroup;
 			children = (
@@ -272,10 +284,10 @@
 			children = (
 				BB9F711815BA14F40099C80A /* NSData+Crypto.h */,
 				BB9F711915BA14F40099C80A /* NSData+Crypto.m */,
-				BB9F711A15BA14F40099C80A /* NSString+Helpers.h */,
-				BB9F711B15BA14F40099C80A /* NSString+Helpers.m */,
 				BB9F711215BA033D0099C80A /* NSObject+Helpers.h */,
 				BB9F711315BA033D0099C80A /* NSObject+Helpers.m */,
+				BB9F711A15BA14F40099C80A /* NSString+Helpers.h */,
+				BB9F711B15BA14F40099C80A /* NSString+Helpers.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -333,6 +345,7 @@
 				BB174D3E15BA404200DB50CA /* AppDelegate */,
 				BB9F711115BA033D0099C80A /* Categories */,
 				BB174D4215BA405900DB50CA /* Constants */,
+				BB174D4D15BB425900DB50CA /* Cryptography */,
 				BB174D4615BA43C700DB50CA /* DataControllers */,
 				BB9F710A15BA02B90099C80A /* MemoryPool */,
 				BB9F710615B9EBDE0099C80A /* Models */,
@@ -447,6 +460,7 @@
 				BB174D4115BA404200DB50CA /* DWAppDelegate.m in Sources */,
 				BB174D4515BA405900DB50CA /* DWConstants.m in Sources */,
 				BB174D4915BA43DC00DB50CA /* DWUsersController.m in Sources */,
+				BB174D5015BB426D00DB50CA /* DWCryptography.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
