@@ -65,10 +65,4 @@ static NSString* const kMsgNoConnectivity   = @"No internet connection.";
 													  userInfo:info];
 }
 
-/*
- [request setDownloadCache:[ASIDownloadCache sharedCache]];
- [request setCacheStoragePolicy:ASICachePermanentlyCacheStoragePolicy];
- [request setSecondsToCache:1000000];
- */
-
 @end

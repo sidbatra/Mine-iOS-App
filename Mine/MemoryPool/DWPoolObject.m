@@ -8,7 +8,7 @@
 #import "NSObject+Helpers.h"
 #import "DWConstants.h"
 
-static NSInteger const kDefaultDatabaseID        = -1;
+static NSInteger const kDefaultDatabaseID   = -1;
 
 /**
  * Private method and property declarations

@@ -130,7 +130,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWSession);
 //----------------------------------------------------------------------------------------------------
 - (void)destroy {
     
-    //[self.currentUser destroy];
+    [self.currentUser destroy];
 	self.currentUser = nil;
     
     [self erase];
