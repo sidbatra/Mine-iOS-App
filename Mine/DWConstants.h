@@ -39,7 +39,7 @@ extern NSString* const kKeyID;
 extern NSString* const kKeyCallerID;
 extern NSString* const kKeyResourceID;
 extern NSString* const kKeyMessage;
-extern NSString* const kKeyData;
+extern NSString* const kKeyResponse;
 extern NSString* const kKeyImage;
 extern NSString* const kKeyError;
 

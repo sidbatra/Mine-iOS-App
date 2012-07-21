@@ -42,7 +42,7 @@ static NSString* const kMsgNoConnectivity   = @"No internet connection.";
         NSDictionary *info = [NSDictionary dictionaryWithObjectsAndKeys:
                               [NSNumber numberWithInt:self.resourceID]	,kKeyResourceID,
                               [NSNumber numberWithInt:self.callerID]    ,kKeyCallerID,
-                              response                                  ,kKeyData,
+                              response                                  ,kKeyResponse,
                               nil];
         
         [[NSNotificationCenter defaultCenter] postNotificationName:self.successNotification 
