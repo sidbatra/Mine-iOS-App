@@ -52,6 +52,8 @@
 		BBC8A09915B9D26D00DF58F6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBC8A09815B9D26D00DF58F6 /* CoreGraphics.framework */; };
 		BBC8A09F15B9D26D00DF58F6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BBC8A09D15B9D26D00DF58F6 /* InfoPlist.strings */; };
 		BBC8A0A115B9D26D00DF58F6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BBC8A0A015B9D26D00DF58F6 /* main.m */; };
+		BBE42F3F15BCAD9E000F6AE1 /* DWTableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = BBE42F3D15BCAD9E000F6AE1 /* DWTableViewDataSource.m */; };
+		BBE42F4315BCB734000F6AE1 /* DWTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBE42F4215BCB734000F6AE1 /* DWTableViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -144,6 +146,11 @@
 		BBC8A09E15B9D26D00DF58F6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		BBC8A0A015B9D26D00DF58F6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		BBC8A0A215B9D26D00DF58F6 /* Mine-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Mine-Prefix.pch"; sourceTree = "<group>"; };
+		BBE42F3C15BCAD9E000F6AE1 /* DWTableViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWTableViewDataSource.h; sourceTree = "<group>"; };
+		BBE42F3D15BCAD9E000F6AE1 /* DWTableViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWTableViewDataSource.m; sourceTree = "<group>"; };
+		BBE42F4115BCB734000F6AE1 /* DWTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWTableViewController.h; sourceTree = "<group>"; };
+		BBE42F4215BCB734000F6AE1 /* DWTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWTableViewController.m; sourceTree = "<group>"; };
+		BBE42F4515BCB838000F6AE1 /* DWModelPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWModelPresenter.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -392,9 +399,12 @@
 				BB26987115BB6E0600037453 /* Managers */,
 				BB9F710A15BA02B90099C80A /* MemoryPool */,
 				BB9F710615B9EBDE0099C80A /* Models */,
+				BBE42F4415BCB838000F6AE1 /* ModelPresenters */,
 				BB9F711E15BA1A580099C80A /* Networking */,
 				BB9F710215B9EBA50099C80A /* Session */,
 				BBC8A09B15B9D26D00DF58F6 /* Supporting Files */,
+				BBE42F3615BCAD9D000F6AE1 /* TableViewControllers */,
+				BBE42F3A15BCAD9D000F6AE1 /* TableViewDataSources */,
 				BB26986B15BB653900037453 /* ViewControllers */,
 			);
 			path = Mine;
@@ -409,6 +419,48 @@
 				BBC8A0A215B9D26D00DF58F6 /* Mine-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		BBE42F3615BCAD9D000F6AE1 /* TableViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				BBE42F3715BCAD9D000F6AE1 /* Base */,
+			);
+			path = TableViewControllers;
+			sourceTree = "<group>";
+		};
+		BBE42F3715BCAD9D000F6AE1 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				BBE42F4115BCB734000F6AE1 /* DWTableViewController.h */,
+				BBE42F4215BCB734000F6AE1 /* DWTableViewController.m */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		BBE42F3A15BCAD9D000F6AE1 /* TableViewDataSources */ = {
+			isa = PBXGroup;
+			children = (
+				BBE42F3B15BCAD9E000F6AE1 /* Base */,
+			);
+			path = TableViewDataSources;
+			sourceTree = "<group>";
+		};
+		BBE42F3B15BCAD9E000F6AE1 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				BBE42F3C15BCAD9E000F6AE1 /* DWTableViewDataSource.h */,
+				BBE42F3D15BCAD9E000F6AE1 /* DWTableViewDataSource.m */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		BBE42F4415BCB838000F6AE1 /* ModelPresenters */ = {
+			isa = PBXGroup;
+			children = (
+				BBE42F4515BCB838000F6AE1 /* DWModelPresenter.h */,
+			);
+			path = ModelPresenters;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -511,6 +563,8 @@
 				BB26987D15BB956700037453 /* DWPurchase.m in Sources */,
 				BB26988015BBA2E300037453 /* DWStore.m in Sources */,
 				BB26988315BBA75B00037453 /* DWFeedController.m in Sources */,
+				BBE42F3F15BCAD9E000F6AE1 /* DWTableViewDataSource.m in Sources */,
+				BBE42F4315BCB734000F6AE1 /* DWTableViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
