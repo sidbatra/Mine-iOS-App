@@ -64,7 +64,7 @@ static NSString* const kNFeedLoadError  = @"NFeedLoadError";
                                             successNotification:kNFeedLoaded
                                               errorNotification:kNFeedLoadError
                                                   requestMethod:kGet
-                                                   authenticate:NO];
+                                                   authenticate:YES];
 }
 
 
