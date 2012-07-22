@@ -20,10 +20,14 @@ static NSString* const kMsgNoConnectivity   = @"No internet connection.";
 @implementation DWAppRequest
 
 //----------------------------------------------------------------------------------------------------
-- (void)processResponse:(NSString*)responseString andResponseData:(NSData*)responseData {
+- (void)processResponse:(NSString*)responseString 
+        andResponseData:(NSData*)responseData {
     
     NSDictionary *response      = [responseString JSONValue];
-    NSDictionary *errorInfo     = [response objectForKey:kKeyError];
+    NSDictionary *errorInfo     = nil;
+    
+    if([response isKindOfClass:[NSDictionary class]])
+       errorInfo = [response objectForKey:kKeyError];
     
     
     if(!response) {

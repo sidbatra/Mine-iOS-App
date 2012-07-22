@@ -18,6 +18,8 @@
 @implementation DWTestViewController
 
 @synthesize usersController = _usersController;
+@synthesize feedController = _feedController;
+
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -26,6 +28,9 @@
         // Custom initialization
         self.usersController = [[DWUsersController alloc] init];
         self.usersController.delegate = self;
+        
+        self.feedController = [[DWFeedController alloc] init];
+        self.feedController.delegate = self;
         
         
         
@@ -46,7 +51,8 @@
     
     NSLog(@"Test View Controller Loaded");
     
-    [self.usersController getUserWithID:1];
+    //[self.usersController getUserWithID:1];
+    [self.feedController getPurchasesBefore:0];
 }
 
 
@@ -74,4 +80,14 @@
     
     NSLog(@"SIZE - %f %f",image.size.width,image.size.height);
 }
+
+
+- (void)feedLoaded:(NSMutableArray *)purchases {
+    NSLog(@"PURCHASES LOADED - %d",[purchases count]);
+}
+
+- (void)feedLoadError:(NSString *)error {
+    NSLog(@"ERROR LOADING PURACHES _ %@",error);
+}
+
 @end

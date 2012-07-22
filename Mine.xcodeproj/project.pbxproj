@@ -17,6 +17,7 @@
 		BB26987A15BB6F9100037453 /* DWRequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BB26987915BB6F9100037453 /* DWRequestManager.m */; };
 		BB26987D15BB956700037453 /* DWPurchase.m in Sources */ = {isa = PBXBuildFile; fileRef = BB26987C15BB956700037453 /* DWPurchase.m */; };
 		BB26988015BBA2E300037453 /* DWStore.m in Sources */ = {isa = PBXBuildFile; fileRef = BB26987F15BBA2E300037453 /* DWStore.m */; };
+		BB26988315BBA75B00037453 /* DWFeedController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB26988215BBA75B00037453 /* DWFeedController.m */; };
 		BB2B93C915BA3F78002C3DA0 /* DWAppRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = BB2B93C815BA3F78002C3DA0 /* DWAppRequest.m */; };
 		BB9F70AB15B9E62F0099C80A /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB9F70AA15B9E62F0099C80A /* CFNetwork.framework */; };
 		BB9F70AE15B9E6400099C80A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB9F70AD15B9E6400099C80A /* SystemConfiguration.framework */; };
@@ -73,6 +74,8 @@
 		BB26987C15BB956700037453 /* DWPurchase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWPurchase.m; sourceTree = "<group>"; };
 		BB26987E15BBA2E300037453 /* DWStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWStore.h; sourceTree = "<group>"; };
 		BB26987F15BBA2E300037453 /* DWStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWStore.m; sourceTree = "<group>"; };
+		BB26988115BBA75B00037453 /* DWFeedController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWFeedController.h; sourceTree = "<group>"; };
+		BB26988215BBA75B00037453 /* DWFeedController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWFeedController.m; sourceTree = "<group>"; };
 		BB2B93C715BA3F78002C3DA0 /* DWAppRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWAppRequest.h; sourceTree = "<group>"; };
 		BB2B93C815BA3F78002C3DA0 /* DWAppRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWAppRequest.m; sourceTree = "<group>"; };
 		BB9F70AA15B9E62F0099C80A /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
@@ -182,6 +185,8 @@
 		BB174D4615BA43C700DB50CA /* DataControllers */ = {
 			isa = PBXGroup;
 			children = (
+				BB26988115BBA75B00037453 /* DWFeedController.h */,
+				BB26988215BBA75B00037453 /* DWFeedController.m */,
 				BB174D4715BA43DC00DB50CA /* DWUsersController.h */,
 				BB174D4815BA43DC00DB50CA /* DWUsersController.m */,
 			);
@@ -505,6 +510,7 @@
 				BB26987A15BB6F9100037453 /* DWRequestManager.m in Sources */,
 				BB26987D15BB956700037453 /* DWPurchase.m in Sources */,
 				BB26988015BBA2E300037453 /* DWStore.m in Sources */,
+				BB26988315BBA75B00037453 /* DWFeedController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
