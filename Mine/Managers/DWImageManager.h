@@ -36,4 +36,9 @@
  */
 - (id)fetch:(NSString*)url;
 
+/**
+ * Remove image from the pool.
+ */
+- (void)remove:(NSString*)url;
+
 @end

@@ -99,6 +99,11 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWImageManager);
     return [value isKindOfClass:[NSNull class]] ? nil : value;
 }
 
+//----------------------------------------------------------------------------------------------------
+- (void)remove:(NSString*)url {
+    [self.imagePool removeObjectForKey:url];
+}
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
@@ -126,7 +131,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWImageManager);
     
     NSLog(@"ERROR - %@",url);
     
-    [self.imagePool removeObjectForKey:url];
+    [self remove:url];
 }
 
 @end

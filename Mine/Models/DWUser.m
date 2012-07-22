@@ -114,6 +114,8 @@ static NSString* const kKeyPurchasesCount   = @"purchases_count";
 
 //----------------------------------------------------------------------------------------------------
 - (void)freeMemory {
+    [[DWImageManager sharedDWImageManager] remove:self.squareImageURL];
+    [[DWImageManager sharedDWImageManager] remove:self.largeImageURL];
 }
 
 //----------------------------------------------------------------------------------------------------
