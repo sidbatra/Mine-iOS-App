@@ -9,6 +9,8 @@
 #import <Foundation/Foundation.h>
 
 #import "DWPoolObject.h"
+#import "DWUser.h"
+#import "DWStore.h"
 
 
 /**
@@ -29,6 +31,9 @@ extern NSString* const kNImgPurchaseGiantLoadError;
     NSString        *_fbObjectID;
     
     NSDate          *_createdAt;
+    
+    DWUser          *_user;
+    DWStore         *_store;
 }
 
 /**
@@ -60,6 +65,17 @@ extern NSString* const kNImgPurchaseGiantLoadError;
  * Date the purchase was created.
  */
 @property (nonatomic,strong) NSDate *createdAt;
+
+
+/**
+ * The User who created the purchase.
+ */
+@property (nonatomic,strong) DWUser *user;
+
+/**
+ * The Store where the purchase was made
+ */
+@property (nonatomic,strong) DWStore *store;
 
 
 /**

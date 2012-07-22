@@ -21,6 +21,8 @@ static NSString* const kKeySourceURL        = @"source_url";
 static NSString* const kKeyGiantImageURL    = @"giant_url";
 static NSString* const kKeyFbObjectID       = @"fb_object_id";
 static NSString* const kKeyCreatedAt        = @"created_at";
+static NSString* const kKeyUser             = @"user";
+static NSString* const kKeyStore            = @"store";
 
 
 
@@ -35,7 +37,8 @@ static NSString* const kKeyCreatedAt        = @"created_at";
 @synthesize giantImageURL   = _giantImageURL;
 @synthesize fbObjectID      = _fbObjectID;
 @synthesize createdAt       = _createdAt;
-
+@synthesize user            = _user;
+@synthesize store           = _store;
 
 
 //----------------------------------------------------------------------------------------------------
@@ -51,6 +54,9 @@ static NSString* const kKeyCreatedAt        = @"created_at";
 //----------------------------------------------------------------------------------------------------
 -(void)dealloc{
 	[self freeMemory];
+    
+    [self.user destroy];
+    [self.store destroy];
     
 	NSLog(@"Purchase released %d",self.databaseID);
 }
@@ -71,6 +77,9 @@ static NSString* const kKeyCreatedAt        = @"created_at";
     NSString *fbObjectID    = [purchase objectForKey:kKeyFbObjectID];
     
     NSString *createdAt     = [purchase objectForKey:kKeyCreatedAt];
+    
+    NSDictionary *user      = [purchase objectForKey:kKeyUser];
+    NSDictionary *store     = [purchase objectForKey:kKeyStore];
     
     
     if(title && ![self.title isEqualToString:title])
@@ -95,6 +104,20 @@ static NSString* const kKeyCreatedAt        = @"created_at";
 
         self.createdAt = [format dateFromString:createdAt];
     }
+    
+    if(user) {
+        if(self.user)
+            [self.user update:user];
+        else
+            self.user = [DWUser create:user];
+    }
+    
+    if(store) {
+        if(self.store)
+            [self.store update:store];
+        else
+            self.store = [DWStore create:store];
+    }
 }
 
 
@@ -117,6 +140,8 @@ static NSString* const kKeyCreatedAt        = @"created_at";
 //----------------------------------------------------------------------------------------------------
 - (void)debug {
     NSLog(@"%@ %@ %@ %@ %@ %@",self.title,self.endorsement,self.sourceURL,self.giantImageURL,self.fbObjectID,self.createdAt);
+    [self.user debug];
+    [self.store debug];
 }
 
 @end
