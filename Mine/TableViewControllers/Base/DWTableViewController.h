@@ -7,6 +7,18 @@
 
 #import "DWTableViewDataSource.h"
 
+
+
+/**
+ * Model presenter hash key names
+ */
+extern NSString* const kModelKeyPresenter;
+extern NSString* const kModelKeyPresenterStyle;
+extern NSString* const kModelKeyIdentifier;
+
+
+
+
 //#import "EGORefreshTableHeaderView.h"
 
 /**
@@ -17,7 +29,7 @@
     
     DWTableViewDataSource       *_tableViewDataSource;
     
-    NSMutableDictionary         *_modelPresentationStyle;
+    NSMutableDictionary         *_modelPresenters;
     
     /*
     BOOL                        _isPullToRefreshActive;
@@ -34,10 +46,10 @@
 @property (nonatomic,strong) DWTableViewDataSource *tableViewDataSource;
 
 /**
- * Holds a mapping of preesntation styles for the model objects that the table view
- * renders. It starts of empty, which means the default style for all models.
+ * Holds a mapping of the Presenter class, Presenter style and Identifier
+ * for each 
  */
-@property (nonatomic,strong) NSMutableDictionary *modelPresentationStyle;
+@property (nonatomic,strong) NSMutableDictionary *modelPresenters;
 
 /**
  * View for pull to refresh added above the table view

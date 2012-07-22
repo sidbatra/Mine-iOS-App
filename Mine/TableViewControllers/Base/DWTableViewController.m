@@ -9,6 +9,12 @@
 //#import "DWErrorView.h"
 #import "NSObject+Helpers.h"
 
+
+NSString* const kModelKeyPresenter          = @"ModelKeyPresenter";
+NSString* const kModelKeyPresenterStyle     = @"ModelKeyPresenterStyle";
+NSString* const kModelKeyIdentifier         = @"ModelKeyIdentifier";
+
+
 static NSString* const kPresenterClassSuffix        = @"Presenter";
 static NSString* const kMsgNetworkError             = @"No connection; pull to retry.";
 
@@ -17,22 +23,6 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
  * Private method and property declarations
  */
 @interface DWTableViewController()
-
-/**
- * Get an object of the presenter class for the given className
- */
-- (Class)presenterClassForClassName:(NSString*)className;
-
-/**
- * Get the presentation style for the given class name
- */
-- (NSInteger)presentationStyleForClassName:(NSString*)className;
-
-/**
- * Generate and return the identifier for the given class name and style
- */
-- (NSString*)identifierForClassName:(NSString*)className 
-                          withStyle:(NSInteger)style;
 
 /**
  * Pass the newly available resource to all visible cells to check
@@ -70,7 +60,7 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
 @implementation DWTableViewController
 
 @synthesize tableViewDataSource     = _tableViewDataSource;
-@synthesize modelPresentationStyle  = _modelPresentationStyle;
+@synthesize modelPresenters         = _modelPresenters;
 /*
 @synthesize refreshHeaderView       = _refreshHeaderView;
 @synthesize loadingView             = _loadingView;
@@ -82,7 +72,6 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
     self = [super init];
     
     if (self) {
-        self.modelPresentationStyle = [NSMutableDictionary dictionary];
     }
     return self;
 }
@@ -169,16 +158,18 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
 	for (NSIndexPath *indexPath in visiblePaths) {            
         
         id object = [self.tableViewDataSource objectAtIndex:indexPath.row
-                                             forSection:indexPath.section];
+                                                 forSection:indexPath.section];
         
-        NSString *className     = [[object class] className];
-        id cell                 = [self.tableView cellForRowAtIndexPath:indexPath];
+        NSDictionary *presenter = [self presenterForModel:object];
         
-        Class<DWModelPresenter> modelPresenter = [self presenterClassForClassName:className];
+        Class<DWModelPresenter> modelPresenter = [presenter objectForKey:kModelKeyPresenter];
+        NSInteger modelPresenterStyle = [(NSNumber*)[presenter objectForKey:kModelKeyPresenterStyle] integerValue];
+        
+        id cell = [self.tableView cellForRowAtIndexPath:indexPath];
         
         [modelPresenter updatePresentationForCell:cell
                                          ofObject:object
-                            withPresentationStyle:[self presentationStyleForClassName:className]
+                            withPresentationStyle:modelPresenterStyle
                                   withNewResource:resource
                                  havingResourceID:resourceID
                                            ofType:resourceType];
@@ -219,22 +210,8 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
  */
 
 //----------------------------------------------------------------------------------------------------
-- (Class)presenterClassForClassName:(NSString*)className {
-    return NSClassFromString([NSString stringWithFormat:@"%@%@",className,kPresenterClassSuffix]);
-}
-
-//----------------------------------------------------------------------------------------------------
-- (NSInteger)presentationStyleForClassName:(NSString*)className {
-    //NSString *style = [self.modelPresentationStyle objectForKey:className];
-    //return style ? [style integerValue] : kPresentationStyleDefault;
-    return 0;
-}
-
-//----------------------------------------------------------------------------------------------------
-- (NSString*)identifierForClassName:(NSString*)className 
-                          withStyle:(NSInteger)style {
-    
-    return [NSString stringWithFormat:@"%@_%d",className,style];
+- (NSDictionary*)presenterForModel:(id)object {
+    return [self.modelPresenters objectForKey:[object className]];
 }
 
 
@@ -263,14 +240,16 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 	
     id object = [self.tableViewDataSource objectAtIndex:indexPath.row
-                                         forSection:indexPath.section];
+                                             forSection:indexPath.section];
     
-    NSString *className = [[object class] className];
+    NSDictionary *presenter = [self presenterForModel:object];
 
-    Class<DWModelPresenter> modelPresenter = [self presenterClassForClassName:className];
+    Class<DWModelPresenter> modelPresenter = [presenter objectForKey:kModelKeyPresenter];
+    NSInteger modelPresenterStyle = [(NSNumber*)[presenter objectForKey:kModelKeyPresenterStyle] integerValue];
+    
     
 	return [modelPresenter heightForObject:object
-                     withPresentationStyle:[self presentationStyleForClassName:className]];
+                     withPresentationStyle:modelPresenterStyle];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -279,21 +258,19 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
     id object = [self.tableViewDataSource objectAtIndex:indexPath.row
                                          forSection:indexPath.section];
     
-    NSString *className     = [[object class] className];
-    NSInteger style         = [self presentationStyleForClassName:className];
-    NSString* identifier    = [self identifierForClassName:className 
-                                                 withStyle:style];
+    NSDictionary *presenter = [self presenterForModel:object];
     
-    id cell                 = [tableView dequeueReusableCellWithIdentifier:identifier];
+    Class<DWModelPresenter> modelPresenter = [presenter objectForKey:kModelKeyPresenter];
+    NSInteger modelPresenterStyle = [(NSNumber*)[presenter objectForKey:kModelKeyPresenterStyle] integerValue];
+    NSString* modelIdentifier = [presenter objectForKey:kModelKeyIdentifier];
     
-    
-    Class<DWModelPresenter> modelPresenter = [self presenterClassForClassName:className];
+    id cell = [tableView dequeueReusableCellWithIdentifier:modelIdentifier];
     
 	return [modelPresenter cellForObject:object
                             withBaseCell:cell
-                      withCellIdentifier:identifier
+                      withCellIdentifier:modelIdentifier
                             withDelegate:self
-                    andPresentationStyle:style];
+                    andPresentationStyle:modelPresenterStyle];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -302,15 +279,17 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
     id object = [self.tableViewDataSource objectAtIndex:indexPath.row
                                          forSection:indexPath.section];
     
-    NSString *className     = [[object class] className];
-    NSInteger style         = [self presentationStyleForClassName:className];
-    id cell                 = [self.tableView cellForRowAtIndexPath:indexPath];
+    NSDictionary *presenter = [self presenterForModel:object];
+
+    Class<DWModelPresenter> modelPresenter = [presenter objectForKey:kModelKeyPresenter];
+    NSInteger modelPresenterStyle = [(NSNumber*)[presenter objectForKey:kModelKeyPresenterStyle] integerValue];
     
-    Class<DWModelPresenter> modelPresenter = [self presenterClassForClassName:className];
+    id cell = [self.tableView cellForRowAtIndexPath:indexPath];
     
+
     [modelPresenter cellClickedForObject:object
                             withBaseCell:cell
-                   withPresentationStyle:style
+                   withPresentationStyle:modelPresenterStyle
                             withDelegate:self];
 }
 

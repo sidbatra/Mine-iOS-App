@@ -50,11 +50,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    NSLog(@"Test View Controller Loaded");
-    
+
     //[self.usersController getUserWithID:1];
-    [self.feedController getPurchasesBefore:0];
+    //[self.feedController getPurchasesBefore:0];
     //[self.feedController getPurchasesBefore:1339021725];
 }
 
@@ -65,7 +63,6 @@
 
 - (void)userLoaded:(DWUser*)user {
     [user debug];
-    [[DWSession sharedDWSession] create:user];
     //[user downloadSquareImage];
 }
 
