@@ -59,6 +59,10 @@
     [user downloadSquareImage];
 }
 
+- (void)userLoadError:(NSString*)error {
+    NSLog(@"ERROR LOADING USER - %@",error);
+}
+
 
 - (void)squareImageLoaded:(NSNotification*)notification {
     NSDictionary *info = [notification userInfo];

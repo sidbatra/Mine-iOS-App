@@ -55,6 +55,6 @@
 /**
  * Error loading user information
  */
-- (void)userLoadError:(DWUser*)user;
+- (void)userLoadError:(NSString*)error;
 
 @end
