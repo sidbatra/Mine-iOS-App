@@ -102,14 +102,14 @@ static NSString* const kNUserLoadError  = @"NUserLoadError";
         return;
     
     
-    NSDictionary *userInfo  = [notification userInfo];
-    NSInteger resourceID    = [[userInfo objectForKey:kKeyResourceID] integerValue];
+    NSDictionary *info      = [notification userInfo];
+    NSInteger resourceID    = [[info objectForKey:kKeyResourceID] integerValue];
     
     if(resourceID != (NSInteger)[self.delegate performSelector:idSel])
         return;
     
     
-    NSDictionary *response  = [userInfo objectForKey:kKeyResponse];
+    NSDictionary *response  = [info objectForKey:kKeyResponse];
     DWUser *user            = [DWUser create:response];    
     
     [self.delegate performSelector:usersSel

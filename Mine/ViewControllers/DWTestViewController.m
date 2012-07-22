@@ -46,7 +46,7 @@
     
     NSLog(@"Test View Controller Loaded");
     
-    //[self.usersController getUserWithID:1];
+    [self.usersController getUserWithID:1];
 }
 
 
