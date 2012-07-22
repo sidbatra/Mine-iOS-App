@@ -109,7 +109,7 @@ static NSString* const kKeyPurchasesCount   = @"purchases_count";
 -(void)dealloc{
 	[self freeMemory];
     
-	NSLog(@"user released %d",self.databaseID);
+	NSLog(@"User released %d",self.databaseID);
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -143,10 +143,10 @@ static NSString* const kKeyPurchasesCount   = @"purchases_count";
     if(gender && ![gender isKindOfClass:[NSNull class]] && ![self.gender isEqualToString:gender])
         self.gender = gender;
     
-    if(handle && ![handle isKindOfClass:[NSNull class]] && ![self.handle isEqualToString:handle])
+    if(handle && ![self.handle isEqualToString:handle])
         self.handle = handle;
     
-    if(byline && ![byline isKindOfClass:[NSNull class]] && ![self.byline isEqualToString:byline])
+    if(byline && ![self.byline isEqualToString:byline])
         self.byline = byline;
     
     
@@ -192,6 +192,11 @@ static NSString* const kKeyPurchasesCount   = @"purchases_count";
                                                withResourceID:self.databaseID
                                           successNotification:kNImgUserLargeLoaded
                                             errorNotification:kNImgUserLargeLoadError];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)debug {
+    NSLog(@"%@ %@ %@ %@ %@  %@ %@  %d",self.firstName,self.lastName,self.gender,self.handle,self.byline,self.squareImageURL,self.largeImageURL,self.purchasesCount);
 }
 
 

@@ -46,9 +46,7 @@
     
     NSLog(@"Test View Controller Loaded");
     
-    [self.usersController getUserWithID:1];
-    
-    
+    //[self.usersController getUserWithID:1];
 }
 
 
@@ -57,7 +55,7 @@
 }
 
 - (void)userLoaded:(DWUser*)user {
-    NSLog(@"%@ %@ %@ %@ %@  %@ %@  %d",user.firstName,user.lastName,user.gender,user.handle,user.byline,user.squareImageURL,user.largeImageURL,user.purchasesCount);
+    [user debug];
     [user downloadSquareImage];
 }
 

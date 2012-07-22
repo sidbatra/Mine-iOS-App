@@ -54,6 +54,9 @@ NSString* const kKeyURL         = @"url";
 NSString* const kKeyImage       = @"image";
 NSString* const kKeyError       = @"error";
 
+//----------------------------------------------------------------------------------------------------
+NSString* const kRailsDateTimeFormat = @"yyyy-MM-dd'T'HH:mm:ss'-07:00'";
+
 
 
 //----------------------------------------------------------------------------------------------------

@@ -98,4 +98,9 @@ extern NSString* const kNImgUserLargeLoadError;
  */
 - (void)downloadLargeImage;
 
+/**
+ * Prints out key fields for debugging.
+ */
+- (void)debug;
+
 @end

@@ -46,6 +46,10 @@ extern NSString* const kKeyURL;
 extern NSString* const kKeyImage;
 extern NSString* const kKeyError;
 
+/**
+ * Misc
+ */
+extern NSString* const kRailsDateTimeFormat;
 
 
 @interface DWConstants : NSObject
