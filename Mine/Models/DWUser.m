@@ -7,6 +7,7 @@
 //
 
 #import "DWUser.h"
+#import "DWImageManager.h"
 
 
 NSString* const kNImgUserSquareLoaded       = @"NImgUserSquareLoaded";
@@ -159,5 +160,38 @@ static NSString* const kKeyPurchasesCount   = @"purchases_count";
 }
 
 
+//----------------------------------------------------------------------------------------------------
+- (id)squareImage {
+    return [[DWImageManager sharedDWImageManager] fetch:self.squareImageURL];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (id)largeImage {
+    return [[DWImageManager sharedDWImageManager] fetch:self.largeImageURL];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)downloadSquareImage {
+    if(!self.squareImageURL)
+        return;
+    
+    [[DWImageManager sharedDWImageManager] downloadImageAtURL:self.squareImageURL
+                                               withResourceID:self.databaseID
+                                          successNotification:kNImgUserSquareLoaded
+                                            errorNotification:kNImgUserSquareLoadError]; 
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)downloadLargeImage {
+    if(!self.largeImageURL)
+        return;
+    
+    [[DWImageManager sharedDWImageManager] downloadImageAtURL:self.largeImageURL
+                                               withResourceID:self.databaseID
+                                          successNotification:kNImgUserLargeLoaded
+                                            errorNotification:kNImgUserLargeLoadError];
+}
+
 
 @end
+

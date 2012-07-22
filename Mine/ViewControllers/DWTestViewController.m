@@ -9,6 +9,7 @@
 #import "DWTestViewController.h"
 #import "DWRequestManager.h"
 #import "DWImageManager.h"
+#import "DWConstants.h"
 
 @interface DWTestViewController ()
 
@@ -25,6 +26,13 @@
         // Custom initialization
         self.usersController = [[DWUsersController alloc] init];
         self.usersController.delegate = self;
+        
+        
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self 
+												 selector:@selector(squareImageLoaded:) 
+													 name:kNImgUserSquareLoaded
+												   object:nil];
     }
     return self;
 }
@@ -39,6 +47,8 @@
     NSLog(@"Test View Controller Loaded");
     
     [self.usersController getUserWithID:1];
+    
+    
 }
 
 - (void)viewDidUnload
@@ -62,11 +72,20 @@
 
 - (void)userLoaded:(DWUser*)user {
     NSLog(@"%@ %@ %@ %@ %@  %@ %@  %d",user.firstName,user.lastName,user.gender,user.handle,user.byline,user.squareImageURL,user.largeImageURL,user.purchasesCount);
+    [user downloadSquareImage];
     
-    [[DWImageManager sharedDWImageManager] downloadImageAtURL:user.squareImageURL
-                                           withResourceID:1 
-                                      successNotification:kNImgUserSquareLoaded
-                                        errorNotification:kNImgUserSquareLoadError];
+    //UIImage *image = [user squareImage];
+    //NSLog(@"SIZE - %f %f",image.size.width,image.size.height);
 }
 
+
+- (void)squareImageLoaded:(NSNotification*)notification {
+    NSDictionary *info = [notification userInfo];
+    //NSString *url = [info objectForKey:kKeyURL];
+    
+    DWUser *user = [DWUser fetch:1];
+    UIImage *image = [user squareImage];// [info objectForKey:kKeyImage];
+    
+    NSLog(@"SIZE - %f %f",image.size.width,image.size.height);
+}
 @end
