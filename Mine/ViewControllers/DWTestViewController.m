@@ -9,6 +9,8 @@
 #import "DWTestViewController.h"
 #import "DWRequestManager.h"
 #import "DWImageManager.h"
+#import "DWPurchase.h"
+#import "DWSession.h"
 #import "DWConstants.h"
 
 @interface DWTestViewController ()
@@ -53,6 +55,7 @@
     
     //[self.usersController getUserWithID:1];
     [self.feedController getPurchasesBefore:0];
+    //[self.feedController getPurchasesBefore:1339021725];
 }
 
 
@@ -62,7 +65,8 @@
 
 - (void)userLoaded:(DWUser*)user {
     [user debug];
-    [user downloadSquareImage];
+    [[DWSession sharedDWSession] create:user];
+    //[user downloadSquareImage];
 }
 
 - (void)userLoadError:(NSString*)error {
@@ -84,6 +88,16 @@
 
 - (void)feedLoaded:(NSMutableArray *)purchases {
     NSLog(@"PURCHASES LOADED - %d",[purchases count]);
+    
+    //for(DWPurchase *purchase in purchases) {
+    //    [purchase debug];
+    //}
+    
+    //DWPurchase *first = [purchases objectAtIndex:0];
+    //[first debug];
+    
+    //NSLog(@"TIME - %d",(NSInteger)[first.createdAt timeIntervalSince1970]);
+    //NSLog(@"TIME - %ld",);
 }
 
 - (void)feedLoadError:(NSString *)error {

@@ -101,7 +101,8 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWImageManager);
 
 //----------------------------------------------------------------------------------------------------
 - (void)remove:(NSString*)url {
-    [self.imagePool removeObjectForKey:url];
+    if(url)
+        [self.imagePool removeObjectForKey:url];
 }
 
 

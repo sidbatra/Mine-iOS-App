@@ -55,10 +55,12 @@ static NSString* const kNFeedLoadError  = @"NFeedLoadError";
     NSLog(@"Feed controller released");
 }
 
-
 //----------------------------------------------------------------------------------------------------
-- (void)getPurchasesBefore:(NSTimeInterval)before {
-    NSString *localURL = [NSString stringWithFormat:kGetURI,10];
+- (void)getPurchasesBefore:(NSInteger)before {
+    NSMutableString *localURL = [NSMutableString stringWithFormat:kGetURI,10];
+    
+    if(before != 0)
+        [localURL appendFormat:@"&before=%d",before];
     
     [[DWRequestManager sharedDWRequestManager] createAppRequest:localURL
                                             successNotification:kNFeedLoaded

@@ -26,7 +26,7 @@
 /**
  * Fetch purchases before the given time
  */
-- (void)getPurchasesBefore:(NSTimeInterval)before;
+- (void)getPurchasesBefore:(NSInteger)before;
 
 @end
 
