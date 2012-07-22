@@ -10,7 +10,6 @@
  * entry in the hash which is in-turn a hash to store objects by unique ids.
  */
 @interface DWMemoryPool : NSObject {
-    NSMutableDictionary    *_memoryPool;
 }
 
 /**

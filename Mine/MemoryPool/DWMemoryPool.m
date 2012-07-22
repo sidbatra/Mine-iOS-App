@@ -12,7 +12,9 @@
 /**
  * Private method and property declarations
  */
-@interface DWMemoryPool()
+@interface DWMemoryPool() {
+    NSMutableDictionary    *_memoryPool;
+}
 
 /**
  * Each keys in the dictionary is a dictionary 

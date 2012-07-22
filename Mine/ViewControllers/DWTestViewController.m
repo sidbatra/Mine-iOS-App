@@ -38,7 +38,6 @@
     
     NSLog(@"Test View Controller Loaded");
     
-    [DWImageManager sharedDWImageManager];
     [self.usersController getUserWithID:1];
 }
 
@@ -64,10 +63,10 @@
 - (void)userLoaded:(DWUser*)user {
     NSLog(@"%@ %@ %@ %@ %@  %@ %@  %d",user.firstName,user.lastName,user.gender,user.handle,user.byline,user.squareImageURL,user.largeImageURL,user.purchasesCount);
     
-    [[DWRequestManager sharedDWRequestManager] getImageAt:user.squareImageURL
+    [[DWImageManager sharedDWImageManager] downloadImageAtURL:user.squareImageURL
                                            withResourceID:1 
-                                      successNotification:@"SMALLIMAGE"
-                                        errorNotification:@"SMALLIMAGEERROR"];
+                                      successNotification:kNImgUserSquareLoaded
+                                        errorNotification:kNImgUserSquareLoadError];
 }
 
 @end

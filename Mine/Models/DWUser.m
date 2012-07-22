@@ -8,6 +8,14 @@
 
 #import "DWUser.h"
 
+
+NSString* const kNImgUserSquareLoaded       = @"NImgUserSquareLoaded";
+NSString* const kNImgUserSquareLoadError    = @"NImgUserSquareLoadError";
+NSString* const kNImgUserLargeLoaded        = @"NImgUserLargeLoaded";
+NSString* const kNImgUserLargeLoadError     = @"NImgUserLargeLoadError";
+
+
+
 static NSString* const kEncodeKeyID             = @"DWUser_id";
 static NSString* const kEncodeKeyFirstName      = @"DWUser_firstName";
 static NSString* const kEncodeKeyLastName       = @"DWUser_lastName";

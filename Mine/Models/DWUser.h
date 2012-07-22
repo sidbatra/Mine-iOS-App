@@ -10,6 +10,18 @@
 
 #import "DWPoolObject.h"
 
+
+/**
+ * Notifications
+ */
+extern NSString* const kNImgUserSquareLoaded;
+extern NSString* const kNImgUserSquareLoadError;
+extern NSString* const kNImgUserLargeLoaded;
+extern NSString* const kNImgUserLargeLoadError;
+
+/**
+ * Representation of the User model mounted on the MemoryPool
+ */
 @interface DWUser : DWPoolObject<NSCoding>  {
 	NSString        *_firstName;
 	NSString        *_lastName;
