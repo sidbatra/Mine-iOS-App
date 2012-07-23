@@ -21,6 +21,7 @@
 
 @synthesize usersController = _usersController;
 @synthesize feedController = _feedController;
+@synthesize feedViewController = _feedViewController;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -34,6 +35,7 @@
         self.feedController = [[DWFeedController alloc] init];
         self.feedController.delegate = self;
         
+        self.feedViewController = [[DWFeedViewController alloc] init];
         
         
         [[NSNotificationCenter defaultCenter] addObserver:self 
@@ -51,6 +53,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+    //self.feedViewController.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.width);
+    [self.view addSubview:self.feedViewController.tableView];
     //[self.usersController getUserWithID:1];
     //[self.feedController getPurchasesBefore:0];
     //[self.feedController getPurchasesBefore:1339021725];

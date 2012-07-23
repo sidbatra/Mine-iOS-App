@@ -10,9 +10,9 @@
 #import "NSObject+Helpers.h"
 
 
-NSString* const kModelKeyPresenter          = @"ModelKeyPresenter";
-NSString* const kModelKeyPresenterStyle     = @"ModelKeyPresenterStyle";
-NSString* const kModelKeyIdentifier         = @"ModelKeyIdentifier";
+static NSString* const kModelKeyPresenter          = @"ModelKeyPresenter";
+static NSString* const kModelKeyPresenterStyle     = @"ModelKeyPresenterStyle";
+static NSString* const kModelKeyIdentifier         = @"ModelKeyIdentifier";
 
 
 static NSString* const kPresenterClassSuffix        = @"Presenter";
@@ -22,7 +22,18 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
 /**
  * Private method and property declarations
  */
-@interface DWTableViewController()
+@interface DWTableViewController() {
+    NSMutableDictionary         *_modelPresenters;
+}
+
+/**
+ * Holds a mapping of the Presenter class, Presenter style and Identifier
+ * for each 
+ */
+@property (nonatomic,strong) NSMutableDictionary *modelPresenters;
+
+
+
 
 /**
  * Pass the newly available resource to all visible cells to check
@@ -72,6 +83,7 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
     self = [super init];
     
     if (self) {
+        self.modelPresenters = [NSMutableDictionary dictionary];
     }
     return self;
 }
@@ -91,8 +103,8 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
     
     [self disableScrolling];
 
-    self.tableView.backgroundColor          = [UIColor clearColor];
-	self.tableView.separatorStyle           = UITableViewCellSeparatorStyleNone;
+    self.tableView.backgroundColor  = [UIColor clearColor];
+	self.tableView.separatorStyle   = UITableViewCellSeparatorStyleNone;
 
     /*
     
@@ -108,7 +120,7 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
      
 	[self.tableView addSubview:self.refreshHeaderView];
     */
-     
+    
     self.tableViewDataSource.delegate   = self;
     
     /*
@@ -143,6 +155,17 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
 - (void)scrollToTop {
     [self.tableView scrollRectToVisible:CGRectMake(0,0,1,1) 
                                animated:NO];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)addModelPresenterForClass:(Class)class 
+                        withStyle:(NSInteger)style
+                    withPresenter:(Class)presenter {
+    
+    [self.modelPresenters setObject:[NSDictionary dictionaryWithObjectsAndKeys:
+                                     presenter,kModelKeyPresenter,
+                                     [NSNumber numberWithInteger:style],kModelKeyPresenterStyle,
+                                     @"DWPurchaseFeedCell_0", kModelKeyIdentifier, nil] forKey:[class className]];
 }
 
 //----------------------------------------------------------------------------------------------------

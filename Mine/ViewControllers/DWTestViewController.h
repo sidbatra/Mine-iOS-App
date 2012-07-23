@@ -9,14 +9,17 @@
 #import <UIKit/UIKit.h>
 
 #import "DWUsersController.h"
+#import "DWFeedViewController.h"
 #import "DWFeedController.h"
 
 @interface DWTestViewController : UIViewController<DWUsersControllerDelegate,DWFeedControllerDelegate> {
     DWUsersController *_usersController;
     DWFeedController *_feedController;
+    DWFeedViewController *_feedViewController;
 }
 
 @property (strong,nonatomic) DWUsersController *usersController;
 @property (strong,nonatomic) DWFeedController *feedController;
+@property (nonatomic,strong) DWFeedViewController *feedViewController;
 
 @end

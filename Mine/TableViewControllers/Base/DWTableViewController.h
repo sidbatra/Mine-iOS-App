@@ -9,16 +9,6 @@
 
 
 
-/**
- * Model presenter hash key names
- */
-extern NSString* const kModelKeyPresenter;
-extern NSString* const kModelKeyPresenterStyle;
-extern NSString* const kModelKeyIdentifier;
-
-
-
-
 //#import "EGORefreshTableHeaderView.h"
 
 /**
@@ -28,8 +18,6 @@ extern NSString* const kModelKeyIdentifier;
 @interface DWTableViewController : UITableViewController<DWTableViewDataSourceDelegate/*,EGORefreshTableHeaderDelegate*/> {
     
     DWTableViewDataSource       *_tableViewDataSource;
-    
-    NSMutableDictionary         *_modelPresenters;
     
     /*
     BOOL                        _isPullToRefreshActive;
@@ -44,12 +32,6 @@ extern NSString* const kModelKeyIdentifier;
  * Custom overrideable datasource object for populating the table view.
  */
 @property (nonatomic,strong) DWTableViewDataSource *tableViewDataSource;
-
-/**
- * Holds a mapping of the Presenter class, Presenter style and Identifier
- * for each 
- */
-@property (nonatomic,strong) NSMutableDictionary *modelPresenters;
 
 /**
  * View for pull to refresh added above the table view
@@ -71,6 +53,13 @@ extern NSString* const kModelKeyIdentifier;
  * Scroll the table view to the top
  */
 - (void)scrollToTop;
+
+/**
+ * Add a model presenter mapping.
+ */
+- (void)addModelPresenterForClass:(Class)class 
+                        withStyle:(NSInteger)style
+                    withPresenter:(Class)presenter;
 
 @end
 

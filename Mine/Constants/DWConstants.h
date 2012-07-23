@@ -51,6 +51,10 @@ extern NSString* const kKeyError;
  */
 extern NSString* const kRailsDateTimeFormat;
 
+/**
+ * Model presenters
+ */
+extern NSInteger const kDefaultModelPresenter;
 
 @interface DWConstants : NSObject
 @end
