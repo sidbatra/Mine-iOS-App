@@ -59,6 +59,8 @@
 		BBE42F4F15BDBB79000F6AE1 /* DWFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBE42F4E15BDBB79000F6AE1 /* DWFeedViewController.m */; };
 		BBE42F5215BDBBFC000F6AE1 /* DWFeedViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = BBE42F5115BDBBFC000F6AE1 /* DWFeedViewDataSource.m */; };
 		BBE42F5615BE0F58000F6AE1 /* DWLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = BBE42F5515BE0F58000F6AE1 /* DWLoadingView.m */; };
+		BBE42F5A15BE188C000F6AE1 /* EGORefreshTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = BBE42F5915BE188C000F6AE1 /* EGORefreshTableHeaderView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		BBE42F5C15BE18DF000F6AE1 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBE42F5B15BE18DF000F6AE1 /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -166,6 +168,9 @@
 		BBE42F5115BDBBFC000F6AE1 /* DWFeedViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWFeedViewDataSource.m; sourceTree = "<group>"; };
 		BBE42F5415BE0F58000F6AE1 /* DWLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWLoadingView.h; sourceTree = "<group>"; };
 		BBE42F5515BE0F58000F6AE1 /* DWLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWLoadingView.m; sourceTree = "<group>"; };
+		BBE42F5815BE188C000F6AE1 /* EGORefreshTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGORefreshTableHeaderView.h; sourceTree = "<group>"; };
+		BBE42F5915BE188C000F6AE1 /* EGORefreshTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGORefreshTableHeaderView.m; sourceTree = "<group>"; };
+		BBE42F5B15BE18DF000F6AE1 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,6 +178,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BBE42F5C15BE18DF000F6AE1 /* QuartzCore.framework in Frameworks */,
 				BB9F70B215B9E6630099C80A /* libz.dylib in Frameworks */,
 				BB9F70B015B9E6450099C80A /* MobileCoreServices.framework in Frameworks */,
 				BB9F70AE15B9E6400099C80A /* SystemConfiguration.framework in Frameworks */,
@@ -247,8 +253,9 @@
 			isa = PBXGroup;
 			children = (
 				BB9F710115B9EB850099C80A /* SynthesizeSingleton.h */,
-				BB9F70ED15B9E7C90099C80A /* JSON */,
 				BB9F70B415B9E6A60099C80A /* ASI */,
+				BBE42F5715BE188C000F6AE1 /* EGOTableViewPullRefresh */,
+				BB9F70ED15B9E7C90099C80A /* JSON */,
 				BB9F70DA15B9E6A60099C80A /* Reachability */,
 			);
 			path = External;
@@ -393,6 +400,7 @@
 		BBC8A09315B9D26D00DF58F6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BBE42F5B15BE18DF000F6AE1 /* QuartzCore.framework */,
 				BB9F70B115B9E6630099C80A /* libz.dylib */,
 				BB9F70AF15B9E6450099C80A /* MobileCoreServices.framework */,
 				BB9F70AD15B9E6400099C80A /* SystemConfiguration.framework */,
@@ -505,6 +513,15 @@
 			path = Mine/Views;
 			sourceTree = "<group>";
 		};
+		BBE42F5715BE188C000F6AE1 /* EGOTableViewPullRefresh */ = {
+			isa = PBXGroup;
+			children = (
+				BBE42F5815BE188C000F6AE1 /* EGORefreshTableHeaderView.h */,
+				BBE42F5915BE188C000F6AE1 /* EGORefreshTableHeaderView.m */,
+			);
+			path = EGOTableViewPullRefresh;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -612,6 +629,7 @@
 				BBE42F4F15BDBB79000F6AE1 /* DWFeedViewController.m in Sources */,
 				BBE42F5215BDBBFC000F6AE1 /* DWFeedViewDataSource.m in Sources */,
 				BBE42F5615BE0F58000F6AE1 /* DWLoadingView.m in Sources */,
+				BBE42F5A15BE188C000F6AE1 /* EGORefreshTableHeaderView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

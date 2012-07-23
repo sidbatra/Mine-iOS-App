@@ -348,7 +348,7 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
 //----------------------------------------------------------------------------------------------------
 - (void)reloadTableView {
     [self enableScrolling];
-    self.loadingView.hidden         = YES;
+    self.loadingView.hidden  = YES;
     //self.errorView.hidden           = YES;
     
     [self.tableView reloadData];
