@@ -38,7 +38,7 @@ NSInteger const kPurchaseFeedCellHeight = 30;
                                                                                 self.contentView.frame.size.width-40,
                                                                                 kPurchaseFeedCellHeight)];
     messageLabel.font				= [UIFont fontWithName:@"HelveticaNeue" size:13];	
-    messageLabel.textColor			= [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.25];
+    messageLabel.textColor			= [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0];
     messageLabel.backgroundColor	= [UIColor clearColor];
     messageLabel.textAlignment		= UITextAlignmentCenter;
     

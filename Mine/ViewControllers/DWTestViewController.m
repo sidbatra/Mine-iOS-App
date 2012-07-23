@@ -53,7 +53,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    //self.feedViewController.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.width);
+    self.feedViewController.view.frame = self.view.frame;// CGRectMake(0, 50, self.view.frame.size.width, 100);
     [self.view addSubview:self.feedViewController.tableView];
     //[self.usersController getUserWithID:1];
     //[self.feedController getPurchasesBefore:0];
