@@ -5,7 +5,7 @@
 
 #import "DWTableViewController.h"
 #import "DWModelPresenter.h"
-//#import "DWLoadingView.h"
+#import "DWLoadingView.h"
 //#import "DWErrorView.h"
 #import "NSObject+Helpers.h"
 
@@ -31,6 +31,7 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
  * for each 
  */
 @property (nonatomic,strong) NSMutableDictionary *modelPresenters;
+
 
 
 
@@ -72,9 +73,9 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
 
 @synthesize tableViewDataSource     = _tableViewDataSource;
 @synthesize modelPresenters         = _modelPresenters;
+@synthesize loadingView             = _loadingView;
 /*
 @synthesize refreshHeaderView       = _refreshHeaderView;
-@synthesize loadingView             = _loadingView;
 @synthesize errorView               = _errorView;
 */
  
@@ -123,13 +124,13 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
     
     self.tableViewDataSource.delegate   = self;
     
-    /*
     if(!self.loadingView)
-        self.loadingView = [self getTableLoadingView];
+        self.loadingView = [self tableLoadingView];
     
     [self.view addSubview:self.loadingView];
     
     
+    /*
     if(!self.errorView) {
         self.errorView          = [self getTableErrorView];
         self.errorView.hidden   = YES;
@@ -217,12 +218,12 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
     self.tableView.bounces          = NO;
 }
 
-/*
 //----------------------------------------------------------------------------------------------------
-- (UIView*)getTableLoadingView {
-    return [[DWLoadingView alloc] initWithFrame:self.tableView.frame];
+- (UIView*)tableLoadingView {
+    return [[DWLoadingView alloc] initWithFrame:self.view.frame];
 }
 
+/*
 //----------------------------------------------------------------------------------------------------
 - (UIView*)getTableErrorView {
     DWErrorView *errorView  = [[DWErrorView alloc] initWithFrame:self.tableView.frame];
@@ -347,7 +348,7 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
 //----------------------------------------------------------------------------------------------------
 - (void)reloadTableView {
     [self enableScrolling];
-    //self.loadingView.hidden         = YES;
+    self.loadingView.hidden         = YES;
     //self.errorView.hidden           = YES;
     
     [self.tableView reloadData];

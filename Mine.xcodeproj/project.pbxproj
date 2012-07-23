@@ -58,6 +58,7 @@
 		BBE42F4C15BCCB7A000F6AE1 /* DWPurchaseFeedPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = BBE42F4B15BCCB7A000F6AE1 /* DWPurchaseFeedPresenter.m */; };
 		BBE42F4F15BDBB79000F6AE1 /* DWFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBE42F4E15BDBB79000F6AE1 /* DWFeedViewController.m */; };
 		BBE42F5215BDBBFC000F6AE1 /* DWFeedViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = BBE42F5115BDBBFC000F6AE1 /* DWFeedViewDataSource.m */; };
+		BBE42F5615BE0F58000F6AE1 /* DWLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = BBE42F5515BE0F58000F6AE1 /* DWLoadingView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -163,6 +164,8 @@
 		BBE42F4E15BDBB79000F6AE1 /* DWFeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWFeedViewController.m; sourceTree = "<group>"; };
 		BBE42F5015BDBBFC000F6AE1 /* DWFeedViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWFeedViewDataSource.h; sourceTree = "<group>"; };
 		BBE42F5115BDBBFC000F6AE1 /* DWFeedViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWFeedViewDataSource.m; sourceTree = "<group>"; };
+		BBE42F5415BE0F58000F6AE1 /* DWLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWLoadingView.h; sourceTree = "<group>"; };
+		BBE42F5515BE0F58000F6AE1 /* DWLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWLoadingView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -373,6 +376,7 @@
 			children = (
 				BB9F70B315B9E6A60099C80A /* External */,
 				BBC8A09A15B9D26D00DF58F6 /* Mine */,
+				BBE42F5315BE0F58000F6AE1 /* Views */,
 				BBC8A09315B9D26D00DF58F6 /* Frameworks */,
 				BBC8A09115B9D26D00DF58F6 /* Products */,
 			);
@@ -491,6 +495,16 @@
 			path = TableViewCells;
 			sourceTree = "<group>";
 		};
+		BBE42F5315BE0F58000F6AE1 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				BBE42F5415BE0F58000F6AE1 /* DWLoadingView.h */,
+				BBE42F5515BE0F58000F6AE1 /* DWLoadingView.m */,
+			);
+			name = Views;
+			path = Mine/Views;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -597,6 +611,7 @@
 				BBE42F4C15BCCB7A000F6AE1 /* DWPurchaseFeedPresenter.m in Sources */,
 				BBE42F4F15BDBB79000F6AE1 /* DWFeedViewController.m in Sources */,
 				BBE42F5215BDBBFC000F6AE1 /* DWFeedViewDataSource.m in Sources */,
+				BBE42F5615BE0F58000F6AE1 /* DWLoadingView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

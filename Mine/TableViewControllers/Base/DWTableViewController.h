@@ -19,11 +19,11 @@
     
     DWTableViewDataSource       *_tableViewDataSource;
     
+    UIView                      *_loadingView;
     /*
     BOOL                        _isPullToRefreshActive;
     
 	EGORefreshTableHeaderView   *_refreshHeaderView;
-    UIView                      *_loadingView;
     UIView                      *_errorView;
      */
 }
@@ -33,15 +33,16 @@
  */
 @property (nonatomic,strong) DWTableViewDataSource *tableViewDataSource;
 
-/**
- * View for pull to refresh added above the table view
- */
-//@property (nonatomic) EGORefreshTableHeaderView *refreshHeaderView;
 
 /**
  * View displayed when results are being fetched from the server
  */
-//@property (nonatomic) UIView *loadingView;
+@property (nonatomic,strong) UIView *loadingView;
+
+/**
+ * View for pull to refresh added above the table view
+ */
+//@property (nonatomic) EGORefreshTableHeaderView *refreshHeaderView;
 
 /**
  * View displayed when an error occurs
@@ -60,6 +61,14 @@
 - (void)addModelPresenterForClass:(Class)class 
                         withStyle:(NSInteger)style
                     withPresenter:(Class)presenter;
+
+
+
+/**
+ * Template method which can be overriden for custom laoding views which is a UIView 
+ * displayed while the data is being loaded
+ */
+- (UIView*)tableLoadingView;
 
 @end
 
