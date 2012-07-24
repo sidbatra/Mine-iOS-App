@@ -43,6 +43,12 @@ NSString* const kClientEncryptionPhrase   = @"f0837530983794e3";
 NSString* const kNEnteringLowMemoryState    = @"NEnteringLowMemoryState";
 NSString* const kNImageDownloaded           = @"NImageDownloaded";
 NSString* const kNImageDownloadError        = @"NImageDownloadError";
+NSString* const kNFacebookURLOpened         = @"NFacebookURLOpened";
+
+
+//----------------------------------------------------------------------------------------------------
+NSString* const kFacebookAppID  = @"245230762190915";
+
 
 //----------------------------------------------------------------------------------------------------
 NSString* const kKeyID          = @"id";

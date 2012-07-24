@@ -30,6 +30,11 @@
  */
 - (void)getUserWithID:(NSInteger)userID;
 
+/**
+ * Create user from facebook authentication
+ */
+- (void)createUserFromFacebookWithAccessToken:(NSString*)accessToken;
+
 @end
 
 
@@ -46,6 +51,16 @@
  * Used for pinging the delegate for a resource id
  */
 - (NSInteger)userResourceID;
+
+/**
+ * Fired when a user is created
+ */
+- (void)userCreated:(DWUser*)user;
+
+/**
+ * Error message while creating a user
+ */
+- (void)userCreationError:(NSString*)error;
 
 /**
  * User information loaded from the app server

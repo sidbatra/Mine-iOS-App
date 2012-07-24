@@ -7,6 +7,7 @@
 //
 
 #import "DWAppDelegate.h"
+#import "DWConstants.h"
 
 
 @implementation DWAppDelegate
@@ -52,6 +53,23 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+//----------------------------------------------------------------------------------------------------
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:kNFacebookURLOpened 
+                                                        object:url];
+    return YES;
+}
+
+//----------------------------------------------------------------------------------------------------
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url 
+  sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:kNFacebookURLOpened 
+                                                        object:url];
+    return YES;
 }
 
 @end

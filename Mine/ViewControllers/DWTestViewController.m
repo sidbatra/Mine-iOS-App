@@ -21,6 +21,7 @@
 
 @synthesize usersController = _usersController;
 @synthesize feedController = _feedController;
+@synthesize facebookConnect = _facebookConnect;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -34,7 +35,8 @@
         self.feedController = [[DWFeedController alloc] init];
         self.feedController.delegate = self;
         
-        
+        self.facebookConnect = [[DWFacebookConnect alloc] init];
+        self.facebookConnect.delegate = self;
         
         [[NSNotificationCenter defaultCenter] addObserver:self 
 												 selector:@selector(squareImageLoaded:) 
@@ -50,6 +52,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    //[self.facebookConnect authorize];
 
     //[self.usersController getUserWithID:1];
     //[self.feedController getPurchasesBefore:0];
@@ -68,6 +72,15 @@
 
 - (void)userLoadError:(NSString*)error {
     NSLog(@"ERROR LOADING USER - %@",error);
+}
+
+- (void)userCreated:(DWUser*)user {
+    [user debug];
+    [[DWSession sharedDWSession] create:user];
+}
+
+- (void)userCreationError:(NSString*)error {
+    NSLog(@"Error creating user");
 }
 
 
@@ -99,6 +112,23 @@
 
 - (void)feedLoadError:(NSString *)error {
     NSLog(@"ERROR LOADING PURACHES _ %@",error);
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWFacebookConnectDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)fbAuthenticatedWithToken:(NSString *)accessToken {
+    NSLog(@"facebook authenticated");
+    [self.usersController createUserFromFacebookWithAccessToken:accessToken];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)fbAuthenticationFailed {    
+    NSLog(@"facebook authentication failed");
 }
 
 @end

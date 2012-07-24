@@ -13,13 +13,17 @@
 
 #import "DWRequestManager.h"
 #import "DWConstants.h"
+#import "DWSession.h"
 
 
-static NSString* const kGetUserURI = @"/users/%@.json?";
+static NSString* const kNewUserURI      = @"/users.json?using=facebook&access_token=%@&src=iphone";
+static NSString* const kGetUserURI      = @"/users/%@.json?";
 
 
-static NSString* const kNUserLoaded     = @"NUserLoad";
-static NSString* const kNUserLoadError  = @"NUserLoadError";
+static NSString* const kNNewUserCreated         = @"NUserCreated";
+static NSString* const kNNewUserCreateError     = @"NUserCreateError";
+static NSString* const kNUserLoaded             = @"NUserLoad";
+static NSString* const kNUserLoadError          = @"NUserLoadError";
 
 
 /**
@@ -46,6 +50,16 @@ static NSString* const kNUserLoadError  = @"NUserLoadError";
     if(self) {
         
         [[NSNotificationCenter defaultCenter] addObserver:self 
+												 selector:@selector(userCreated:) 
+													 name:kNNewUserCreated
+												   object:nil];
+		
+		[[NSNotificationCenter defaultCenter] addObserver:self 
+												 selector:@selector(userCreationError:) 
+													 name:kNNewUserCreateError
+												   object:nil];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self 
 												 selector:@selector(userLoaded:) 
 													 name:kNUserLoaded
 												   object:nil];
@@ -63,8 +77,26 @@ static NSString* const kNUserLoadError  = @"NUserLoadError";
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     
-    NSLog(@"Users controller released");
+    NSLog(@"Users controller released"); 
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark Create
+
+//----------------------------------------------------------------------------------------------------
+- (void)createUserFromFacebookWithAccessToken:(NSString*)accessToken {
     
+    NSString *localURL = [NSString stringWithFormat:kNewUserURI,
+                          [accessToken stringByEncodingHTMLCharacters]];
+    
+    [[DWRequestManager sharedDWRequestManager] createAppRequest:localURL
+                                            successNotification:kNNewUserCreated
+                                              errorNotification:kNNewUserCreateError
+                                                  requestMethod:kPost
+                                                   authenticate:NO];
 }
 
 
@@ -90,6 +122,36 @@ static NSString* const kNUserLoadError  = @"NUserLoadError";
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
 #pragma mark Notifications
+
+//----------------------------------------------------------------------------------------------------
+- (void)userCreated:(NSNotification*)notification {
+    
+    SEL sel = @selector(userCreated:);
+    
+    if(![self.delegate respondsToSelector:sel])
+        return;
+    
+    NSDictionary *info      = [notification userInfo];
+    NSDictionary *response  = [info objectForKey:kKeyResponse];
+    DWUser *user            = [DWUser create:response];   
+    
+    [self.delegate performSelector:sel
+                        withObject:user];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)userCreationError:(NSNotification*)notification {
+    
+    SEL sel = @selector(userCreationError:);
+    
+    if(![self.delegate respondsToSelector:sel])
+        return;
+    
+    NSError *error = [[notification userInfo] objectForKey:kKeyError];
+    
+    [self.delegate performSelector:sel 
+                        withObject:[error localizedDescription]];
+}
 
 //----------------------------------------------------------------------------------------------------
 - (void)userLoaded:(NSNotification*)notification {

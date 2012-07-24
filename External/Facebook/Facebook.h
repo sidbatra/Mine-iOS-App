@@ -126,6 +126,8 @@
  */
 - (void)fbDidNotLogin:(BOOL)cancelled;
 
+@optional
+
 /**
  * Called after the access token was extended. If your application has any
  * references to the previous access token (for example, if your application

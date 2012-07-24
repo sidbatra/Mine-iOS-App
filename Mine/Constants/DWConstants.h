@@ -32,7 +32,13 @@ extern NSString* const kClientEncryptionPhrase;
 extern NSString* const kNEnteringLowMemoryState;
 extern NSString* const kNImageDownloaded;
 extern NSString* const kNImageDownloadError;
+extern NSString* const kNFacebookURLOpened;
 
+
+/**
+ * Third Party Aps
+ */
+extern NSString* const kFacebookAppID;
 
 /**
  * JSON key names
