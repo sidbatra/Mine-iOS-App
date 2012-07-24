@@ -7,23 +7,20 @@
 
 #import "DWTableViewDataSource.h"
 
-
-
-//#import "EGORefreshTableHeaderView.h"
+#import "EGORefreshTableHeaderView.h"
 
 /**
  * Customized version of UITableViewController which forms the base 
  * for every table view controller in the app
  */
-@interface DWTableViewController : UITableViewController<DWTableViewDataSourceDelegate/*,EGORefreshTableHeaderDelegate*/> {
+@interface DWTableViewController : UITableViewController<DWTableViewDataSourceDelegate,EGORefreshTableHeaderDelegate> {
     
     DWTableViewDataSource       *_tableViewDataSource;
     
     UIView                      *_loadingView;
-    /*
-    BOOL                        _isPullToRefreshActive;
     
-	EGORefreshTableHeaderView   *_refreshHeaderView;
+    
+    /*
     UIView                      *_errorView;
      */
 }
@@ -33,16 +30,10 @@
  */
 @property (nonatomic,strong) DWTableViewDataSource *tableViewDataSource;
 
-
 /**
  * View displayed when results are being fetched from the server
  */
 @property (nonatomic,strong) UIView *loadingView;
-
-/**
- * View for pull to refresh added above the table view
- */
-//@property (nonatomic) EGORefreshTableHeaderView *refreshHeaderView;
 
 /**
  * View displayed when an error occurs
@@ -54,6 +45,13 @@
  * Scroll the table view to the top
  */
 - (void)scrollToTop;
+
+
+/**
+ * Method to disable pull to refresh for certain table views
+ */
+- (void)disablePullToRefresh;
+
 
 /**
  * Add a model presenter mapping.

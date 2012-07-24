@@ -24,6 +24,11 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
  */
 @interface DWTableViewController() {
     NSMutableDictionary         *_modelPresenters;
+    
+    BOOL                        _isPullToRefreshActive;
+    BOOL                        _disablePullToRefresh;
+    
+	EGORefreshTableHeaderView   *_refreshHeaderView;
 }
 
 /**
@@ -32,7 +37,10 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
  */
 @property (nonatomic,strong) NSMutableDictionary *modelPresenters;
 
-
+/**
+ * View for pull to refresh added above the table view
+ */
+@property (nonatomic,strong) EGORefreshTableHeaderView *refreshHeaderView;
 
 
 
@@ -43,13 +51,6 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
 - (void)provideResourceToVisibleCells:(NSInteger)resourceType
                              resource:(id)resource
                            resourceID:(NSInteger)resourceID;
-
-
-/**
- * Method to disable pull to refresh for certain table views
- */
-//- (void)disablePullToRefresh;
-
 
 /**
  * Enable scrolling & bouncing for the table view
@@ -74,8 +75,9 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
 @synthesize tableViewDataSource     = _tableViewDataSource;
 @synthesize modelPresenters         = _modelPresenters;
 @synthesize loadingView             = _loadingView;
-/*
 @synthesize refreshHeaderView       = _refreshHeaderView;
+
+/*
 @synthesize errorView               = _errorView;
 */
  
@@ -107,22 +109,20 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
     self.tableView.backgroundColor  = [UIColor redColor];
 	self.tableView.separatorStyle   = UITableViewCellSeparatorStyleNone;
 
-    /*
-    
-    self.refreshHeaderView = [[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f, 
-																						  0.0f - self.tableView.bounds.size.height,
-																						  self.view.frame.size.width,
-																						  self.tableView.bounds.size.height)];
-	self.refreshHeaderView.delegate = self;
-    
-	[self.refreshHeaderView applyBackgroundImage:nil
-								   withFadeImage:nil
-							 withBackgroundColor:[UIColor clearColor]];
-     
-	[self.tableView addSubview:self.refreshHeaderView];
-    */
     
     self.tableViewDataSource.delegate   = self;
+    
+    
+    if(!self.refreshHeaderView && !_disablePullToRefresh) {
+        self.refreshHeaderView = [[EGORefreshTableHeaderView alloc] initWithFrame:CGRectMake(0.0f, 
+                                                                                              0.0f - self.tableView.bounds.size.height,
+                                                                                              self.view.frame.size.width,
+                                                                                              self.tableView.bounds.size.height)];
+        self.refreshHeaderView.delegate = self;
+    }
+    
+    [self.tableView addSubview:self.refreshHeaderView];
+    
     
     if(!self.loadingView)
         self.loadingView = [self tableLoadingView];
@@ -143,8 +143,6 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
 //----------------------------------------------------------------------------------------------------
 - (void)viewDidUnload {
     [super viewDidUnload];
-    
-    //self.refreshHeaderView   = nil;
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -156,6 +154,14 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
 - (void)scrollToTop {
     [self.tableView scrollRectToVisible:CGRectMake(0,0,1,1) 
                                animated:NO];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)disablePullToRefresh {
+    _disablePullToRefresh = YES;
+    
+    [self.refreshHeaderView removeFromSuperview];
+    self.refreshHeaderView = nil;
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -200,12 +206,6 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
     }
 }
 
-/*
-//----------------------------------------------------------------------------------------------------
-- (void)disablePullToRefresh {
-    self.refreshHeaderView = nil;
-}
-*/
 //----------------------------------------------------------------------------------------------------
 - (void)enableScrolling {
     self.tableView.scrollEnabled    = YES;    
@@ -318,7 +318,7 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
 }
 
 
-/*
+
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
@@ -337,7 +337,6 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
 //----------------------------------------------------------------------------------------------------
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
 }
-*/
  
 
 //----------------------------------------------------------------------------------------------------
@@ -353,8 +352,8 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
     
     [self.tableView reloadData];
 
-    //[self.refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self.tableView];
-    //_isPullToRefreshActive          = NO;    
+    [self.refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self.tableView];
+    _isPullToRefreshActive          = NO;    
 }
 
 /*
@@ -439,7 +438,6 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
 }
 
 
-/*
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
@@ -460,7 +458,6 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
 - (NSDate*)egoRefreshTableHeaderDataSourceLastUpdated:(EGORefreshTableHeaderView*)view {
 	return nil;
 }
-*/
 
 /*
 //----------------------------------------------------------------------------------------------------
