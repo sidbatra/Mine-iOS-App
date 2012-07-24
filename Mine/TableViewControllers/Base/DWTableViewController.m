@@ -63,6 +63,11 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
 - (void)disableScrolling;
 
 
+/**
+ * Return the model presenter NSDictionary for the given object's class
+ */
+- (NSDictionary*)presenterForModel:(id)object;
+
 @end
 
 
@@ -150,6 +155,83 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
     [super didReceiveMemoryWarning];
 }
 
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark Private interface
+
+
+//----------------------------------------------------------------------------------------------------
+- (void)provideResourceToVisibleCells:(NSInteger)resourceType
+                             resource:(id)resource
+                           resourceID:(NSInteger)resourceID {
+    
+    if(![self isViewLoaded])
+        return;
+    
+    NSArray *visiblePaths = [self.tableView indexPathsForVisibleRows];
+    
+	for (NSIndexPath *indexPath in visiblePaths) {            
+        
+        id object = [self.tableViewDataSource objectAtIndex:indexPath.row
+                                                 forSection:indexPath.section];
+        
+        NSDictionary *presenter = [self presenterForModel:object];
+        
+        Class<DWModelPresenter> modelPresenter = [presenter objectForKey:kModelKeyPresenter];
+        NSInteger modelPresenterStyle = [(NSNumber*)[presenter objectForKey:kModelKeyPresenterStyle] integerValue];
+        
+        id cell = [self.tableView cellForRowAtIndexPath:indexPath];
+        
+        [modelPresenter updatePresentationForCell:cell
+                                         ofObject:object
+                            withPresentationStyle:modelPresenterStyle
+                                  withNewResource:resource
+                                 havingResourceID:resourceID
+                                           ofType:resourceType];
+    }
+}
+
+
+//----------------------------------------------------------------------------------------------------
+- (void)enableScrolling {
+    self.tableView.scrollEnabled    = YES;    
+    self.tableView.bounces          = YES;
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)disableScrolling {
+    self.tableView.scrollEnabled    = NO;    
+    self.tableView.bounces          = NO;
+}
+
+//----------------------------------------------------------------------------------------------------
+- (NSDictionary*)presenterForModel:(id)object {
+    return [self.modelPresenters objectForKey:[object className]];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark Public interface
+
+//----------------------------------------------------------------------------------------------------
+- (UIView*)tableLoadingView {
+    return [[DWLoadingView alloc] initWithFrame:self.view.frame];
+}
+
+/*
+ //----------------------------------------------------------------------------------------------------
+ - (UIView*)getTableErrorView {
+ DWErrorView *errorView  = [[DWErrorView alloc] initWithFrame:self.tableView.frame];
+ errorView.delegate      = self;
+ 
+ return errorView;
+ }
+ */
+
 //----------------------------------------------------------------------------------------------------
 - (void)scrollToTop {
     [self.tableView scrollRectToVisible:CGRectMake(0,0,1,1) 
@@ -173,69 +255,6 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
                                      presenter,kModelKeyPresenter,
                                      [NSNumber numberWithInteger:style],kModelKeyPresenterStyle,
                                      @"DWPurchaseFeedCell_0", kModelKeyIdentifier, nil] forKey:[class className]];
-}
-
-//----------------------------------------------------------------------------------------------------
-- (void)provideResourceToVisibleCells:(NSInteger)resourceType
-                             resource:(id)resource
-                           resourceID:(NSInteger)resourceID {
-    
-    if(![self isViewLoaded])
-        return;
-    
-    NSArray *visiblePaths = [self.tableView indexPathsForVisibleRows];
-
-	for (NSIndexPath *indexPath in visiblePaths) {            
-        
-        id object = [self.tableViewDataSource objectAtIndex:indexPath.row
-                                                 forSection:indexPath.section];
-        
-        NSDictionary *presenter = [self presenterForModel:object];
-        
-        Class<DWModelPresenter> modelPresenter = [presenter objectForKey:kModelKeyPresenter];
-        NSInteger modelPresenterStyle = [(NSNumber*)[presenter objectForKey:kModelKeyPresenterStyle] integerValue];
-        
-        id cell = [self.tableView cellForRowAtIndexPath:indexPath];
-        
-        [modelPresenter updatePresentationForCell:cell
-                                         ofObject:object
-                            withPresentationStyle:modelPresenterStyle
-                                  withNewResource:resource
-                                 havingResourceID:resourceID
-                                           ofType:resourceType];
-    }
-}
-
-//----------------------------------------------------------------------------------------------------
-- (void)enableScrolling {
-    self.tableView.scrollEnabled    = YES;    
-    self.tableView.bounces          = YES;
-}
-
-//----------------------------------------------------------------------------------------------------
-- (void)disableScrolling {
-    self.tableView.scrollEnabled    = NO;    
-    self.tableView.bounces          = NO;
-}
-
-//----------------------------------------------------------------------------------------------------
-- (UIView*)tableLoadingView {
-    return [[DWLoadingView alloc] initWithFrame:self.view.frame];
-}
-
-/*
-//----------------------------------------------------------------------------------------------------
-- (UIView*)getTableErrorView {
-    DWErrorView *errorView  = [[DWErrorView alloc] initWithFrame:self.tableView.frame];
-    errorView.delegate      = self;
-    
-    return errorView;
-}
- */
-
-//----------------------------------------------------------------------------------------------------
-- (NSDictionary*)presenterForModel:(id)object {
-    return [self.modelPresenters objectForKey:[object className]];
 }
 
 
