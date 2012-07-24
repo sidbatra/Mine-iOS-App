@@ -22,6 +22,7 @@
 @synthesize usersController = _usersController;
 @synthesize feedController = _feedController;
 @synthesize facebookConnect = _facebookConnect;
+@synthesize feedViewController = _feedViewController;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -37,6 +38,9 @@
         
         self.facebookConnect = [[DWFacebookConnect alloc] init];
         self.facebookConnect.delegate = self;
+
+        self.feedViewController = [[DWFeedViewController alloc] init];
+        
         
         [[NSNotificationCenter defaultCenter] addObserver:self 
 												 selector:@selector(squareImageLoaded:) 
@@ -55,6 +59,8 @@
     
     //[self.facebookConnect authorize];
 
+    self.feedViewController.view.frame = self.view.frame;// CGRectMake(0, 50, self.view.frame.size.width, 100);
+    [self.view addSubview:self.feedViewController.tableView];
     //[self.usersController getUserWithID:1];
     //[self.feedController getPurchasesBefore:0];
     //[self.feedController getPurchasesBefore:1339021725];

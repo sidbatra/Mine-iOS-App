@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 #import "DWUsersController.h"
+#import "DWFeedViewController.h"
 #import "DWFeedController.h"
 #import "DWFacebookConnect.h"
 
@@ -16,10 +17,14 @@
     DWUsersController *_usersController;
     DWFeedController *_feedController;
     DWFacebookConnect *_facebookConnect;
+    DWFeedViewController *_feedViewController;
+
 }
 
 @property (strong,nonatomic) DWUsersController *usersController;
 @property (strong,nonatomic) DWFeedController *feedController;
 @property (strong,nonatomic) DWFacebookConnect *facebookConnect;
+@property (nonatomic,strong) DWFeedViewController *feedViewController;
+
 
 @end

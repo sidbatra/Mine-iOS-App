@@ -26,7 +26,7 @@ NSString* const kAppProtocol        = @"http://";
 NSString* const kClientName         = @"iphone";
 
 #if ENVIRONMENT == DEVELOPMENT
-NSString* const kAppServer      = @"sbat.getmine.com";
+NSString* const kAppServer      = @"drao.getmine.com";
 #elif ENVIRONMENT == STAGING
 NSString* const kAppServer	= @"staging.getmine.com";
 #elif ENVIRONMENT == PRODUCTION
@@ -63,6 +63,8 @@ NSString* const kKeyError       = @"error";
 //----------------------------------------------------------------------------------------------------
 NSString* const kRailsDateTimeFormat = @"yyyy-MM-dd'T'HH:mm:ss'-07:00'";
 
+//----------------------------------------------------------------------------------------------------
+NSInteger const kDefaultModelPresenter = 0;
 
 
 //----------------------------------------------------------------------------------------------------

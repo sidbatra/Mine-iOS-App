@@ -19,9 +19,10 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.testViewController = [[DWTestViewController alloc] init];
+    self.testViewController.view.frame = CGRectMake(0,20,self.window.frame.size.width,self.window.frame.size.height);
     
     // Override point for customization after application launch.
-    self.window.backgroundColor = [UIColor whiteColor];
+    self.window.backgroundColor = [UIColor blackColor];
     [self.window addSubview:self.testViewController.view];
     [self.window makeKeyAndVisible]; 
     

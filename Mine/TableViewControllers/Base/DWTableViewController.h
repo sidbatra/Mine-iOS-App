@@ -7,35 +7,20 @@
 
 #import "DWTableViewDataSource.h"
 
-
-
-/**
- * Model presenter hash key names
- */
-extern NSString* const kModelKeyPresenter;
-extern NSString* const kModelKeyPresenterStyle;
-extern NSString* const kModelKeyIdentifier;
-
-
-
-
-//#import "EGORefreshTableHeaderView.h"
+#import "EGORefreshTableHeaderView.h"
 
 /**
  * Customized version of UITableViewController which forms the base 
  * for every table view controller in the app
  */
-@interface DWTableViewController : UITableViewController<DWTableViewDataSourceDelegate/*,EGORefreshTableHeaderDelegate*/> {
+@interface DWTableViewController : UITableViewController<DWTableViewDataSourceDelegate,EGORefreshTableHeaderDelegate> {
     
     DWTableViewDataSource       *_tableViewDataSource;
     
-    NSMutableDictionary         *_modelPresenters;
+    UIView                      *_loadingView;
+    
     
     /*
-    BOOL                        _isPullToRefreshActive;
-    
-	EGORefreshTableHeaderView   *_refreshHeaderView;
-    UIView                      *_loadingView;
     UIView                      *_errorView;
      */
 }
@@ -46,20 +31,9 @@ extern NSString* const kModelKeyIdentifier;
 @property (nonatomic,strong) DWTableViewDataSource *tableViewDataSource;
 
 /**
- * Holds a mapping of the Presenter class, Presenter style and Identifier
- * for each 
- */
-@property (nonatomic,strong) NSMutableDictionary *modelPresenters;
-
-/**
- * View for pull to refresh added above the table view
- */
-//@property (nonatomic) EGORefreshTableHeaderView *refreshHeaderView;
-
-/**
  * View displayed when results are being fetched from the server
  */
-//@property (nonatomic) UIView *loadingView;
+@property (nonatomic,strong) UIView *loadingView;
 
 /**
  * View displayed when an error occurs
@@ -71,6 +45,28 @@ extern NSString* const kModelKeyIdentifier;
  * Scroll the table view to the top
  */
 - (void)scrollToTop;
+
+
+/**
+ * Method to disable pull to refresh for certain table views
+ */
+- (void)disablePullToRefresh;
+
+
+/**
+ * Add a model presenter mapping.
+ */
+- (void)addModelPresenterForClass:(Class)class 
+                        withStyle:(NSInteger)style
+                    withPresenter:(Class)presenter;
+
+
+
+/**
+ * Template method which can be overriden for custom laoding views which is a UIView 
+ * displayed while the data is being loaded
+ */
+- (UIView*)tableLoadingView;
 
 @end
 
