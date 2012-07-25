@@ -6,8 +6,9 @@
 #import "DWTabBarController.h"
 #import "DWConstants.h"
 
-#define kApplicationFrame	CGRectMake(0,20,320,460)
-#define kFullScreenFrame	CGRectMake(0,0,320,460)
+//#define kFullScreenFrame	CGRectMake(0,0,320,460)
+static NSInteger const kScreenHeight    = 460;
+static CGRect const kFullScreenFrame    = { {0,0}, {320, kScreenHeight} };
 
 //static NSString* const kImgTopShadow        = @"shadow_top.png";
 //static NSString* const kImgBottomShadow     = @"shadow_bottom.png";
@@ -17,10 +18,16 @@
  * Declarations for private methods and properties
  */
 @interface DWTabBarController() {
+    NSMutableArray      *_subControllers;
+
     //UIImageView         *_topShadowView;
     //UIImageView         *_backgroundView;
-	NSMutableArray      *_subControllers;
 }
+
+/**
+ * Controllers added to the tab bar 
+ */
+@property (nonatomic,strong) NSMutableArray *subControllers;
 
 /**
  * Image view with a shadow just below the navigation bar
@@ -31,11 +38,6 @@
  * Image view for background used throughout the logged in mode
  */
 //@property (nonatomic) UIImageView *backgroundView;
-
-/**
- * Controllers added to the tab bar 
- */
-@property (nonatomic,strong) NSMutableArray *subControllers;
 
 
 /**
@@ -48,6 +50,11 @@
  */
 - (void)removeViewAtIndex:(NSInteger)index;
 
+/**
+ * Returns a CGRect object to be used a frame by all sub controllers.
+ */
+- (CGRect)subControllerFrame;
+
 @end
 
 
@@ -58,10 +65,11 @@
 @implementation DWTabBarController
 
 @synthesize tabBar                  = _tabBar;
-//@synthesize topShadowView           = _topShadowView;
-//@synthesize backgroundView          = _backgroundView;
 @synthesize subControllers          = _subControllers;
 @synthesize delegate                = _delegate;
+//@synthesize topShadowView           = _topShadowView;
+//@synthesize backgroundView          = _backgroundView;
+
 
 //----------------------------------------------------------------------------------------------------
 - (id)init {
@@ -78,9 +86,9 @@
         self.topShadowView              = [[UIImageView alloc] initWithImage:
                                             [UIImage imageNamed:kImgTopShadow]];
         self.topShadowView.frame        = CGRectMake(0,44,320,5);
-        */
         
-        //self.backgroundView             = [DWGUIManager backgroundImageViewWithFrame:kFullScreenFrame];
+        self.backgroundView             = [DWGUIManager backgroundImageViewWithFrame:kFullScreenFrame];
+        */
 	}
 	
 	return self;
@@ -118,18 +126,11 @@
 	return [self.subControllers objectAtIndex:self.tabBar.selectedIndex];
 }
 
-/*
-//----------------------------------------------------------------------------------------------------
-- (void)resetFrame {
-	self.view.frame = kApplicationFrame;
-}
- */
-
 //----------------------------------------------------------------------------------------------------
 - (void)addViewAtIndex:(NSInteger)index {
 	
 	UIViewController *controller = [self.subControllers objectAtIndex:index];
-    controller.view.frame = CGRectMake(0,0,self.view.frame.size.width,460-self.tabBar.frame.size.height);
+    controller.view.frame = [self subControllerFrame];
 	
     [self.view addSubview:controller.view];
 
@@ -140,6 +141,11 @@
 //----------------------------------------------------------------------------------------------------
 - (void)removeViewAtIndex:(NSInteger)index {
 	[((UIViewController*)[self.subControllers objectAtIndex:index]).view removeFromSuperview];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (CGRect)subControllerFrame {
+    return CGRectMake(0,0,self.view.frame.size.width,kScreenHeight-self.tabBar.frame.size.height);
 }
 
 
@@ -156,15 +162,13 @@
 //----------------------------------------------------------------------------------------------------
 - (void)enableFullScreen {
 	self.tabBar.hidden = YES;
-    
     self.selectedController.view.frame = kFullScreenFrame;
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)disableFullScreen {
 	self.tabBar.hidden = NO;
-    
-    self.selectedController.view.frame = CGRectMake(0,0,self.view.frame.size.width,460-self.tabBar.frame.size.height);
+    self.selectedController.view.frame = [self subControllerFrame];
 }
 
 /*
@@ -222,14 +226,6 @@
 	
 	[_delegate selectedTabModifiedFrom:oldSelectedIndex
 									to:newSelectedIndex];
-    
-    if(!isSpecial)
-        [[NSNotificationCenter defaultCenter] postNotificationName:kNTabSelectionChanged
-															object:nil
-														  userInfo:[NSDictionary dictionaryWithObjectsAndKeys:
-																	[NSNumber numberWithInt:oldSelectedIndex],kKeyOldSelectedIndex,
-																	[NSNumber numberWithInt:newSelectedIndex],kKeySelectedIndex,
-																	nil]];
      */
 }
 
