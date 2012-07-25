@@ -9,23 +9,33 @@
 #import "DWAppDelegate.h"
 #import "DWConstants.h"
 
-static NSString* const kImgPlacesOn					= @"tab_teams_on.png";
-static NSString* const kImgPlacesOff				= @"tab_teams_off.png";
-static NSString* const kImgCreateOn					= @"tab_create_off.png";
-static NSString* const kImgCreateOff				= @"tab_create_off.png";
-static NSString* const kImgFeedOn					= @"tab_feed_on.png";
-static NSString* const kImgFeedOff					= @"tab_feed_off.png";
+
+/**
+ * Private declarations
+ */
+@interface DWAppDelegate() {
+    DWTabBarController	*_tabBarController;
+}
+
+/**
+ * Custom tab bar controller which is the base view added to window.
+ */
+@property (strong, nonatomic) DWTabBarController *tabBarController;
+
+@end
 
 
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
 @implementation DWAppDelegate
 
-@synthesize window = _window;
-@synthesize tabBarController = _tabBarController;
+@synthesize window              = _window;
+@synthesize tabBarController    = _tabBarController;
 
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    
+//----------------------------------------------------------------------------------------------------
+- (void)setupTabBarController {
     
     UIViewController *_a = [[UIViewController alloc] init];
     _a.view.backgroundColor = [UIColor redColor];
@@ -44,33 +54,43 @@ static NSString* const kImgFeedOff					= @"tab_feed_off.png";
     
     
     self.tabBarController.tabBar.frame = CGRectMake(0, 411, 320, 49);
-  
+    
     [self.tabBarController.tabBar addTabWithWidth:114 
-                                  normalImageName:kImgFeedOff
-                                selectedImageName:kImgFeedOn
+                                  normalImageName:@"tab_feed_off.png"
+                                selectedImageName:@"tab_feed_on.png"
                              highlightedImageName:nil
                              isMappedToController:YES
                                        isSelected:YES];
     
     [self.tabBarController.tabBar addTabWithWidth:92
-                                  normalImageName:kImgCreateOff
-                                selectedImageName:kImgCreateOff
-                             highlightedImageName:kImgCreateOn
-                             isMappedToController:YES
-                                       isSelected:NO];
-    
-    [self.tabBarController.tabBar addTabWithWidth:114
-                                  normalImageName:kImgPlacesOff
-                                selectedImageName:kImgPlacesOn
+                                  normalImageName:@"tab_create_off.png"
+                                selectedImageName:@"tab_create_off.png"
                              highlightedImageName:nil
                              isMappedToController:YES
                                        isSelected:NO];
     
-    
-    // Override point for customization after application launch.
-    self.window.backgroundColor = [UIColor blackColor];
-    [self.window addSubview:self.tabBarController.view];
+    [self.tabBarController.tabBar addTabWithWidth:114
+                                  normalImageName:@"tab_teams_off.png"
+                                selectedImageName:@"tab_teams_on.png"
+                             highlightedImageName:nil
+                             isMappedToController:YES
+                                       isSelected:NO];
+}
 
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark Application notifications
+
+//----------------------------------------------------------------------------------------------------
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
+{
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    
+    [self setupTabBarController];
+    
+    [self.window addSubview:self.tabBarController.view];    
     [self.window makeKeyAndVisible]; 
     
     return YES;

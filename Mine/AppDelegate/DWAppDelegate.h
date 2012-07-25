@@ -10,11 +10,15 @@
 
 #import "DWTabBarController.h"
 
-@interface DWAppDelegate : UIResponder <UIApplicationDelegate> {    
-    DWTabBarController	*_tabBarController;
+/**
+ * Custom app delegate
+ */
+@interface DWAppDelegate : UIResponder<UIApplicationDelegate> {    
 }
 
+/**
+ * Window for the application
+ */
 @property (strong, nonatomic) UIWindow *window;
-@property (strong, nonatomic) DWTabBarController *tabBarController;
 
 @end
