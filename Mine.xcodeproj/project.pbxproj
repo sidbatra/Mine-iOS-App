@@ -14,6 +14,8 @@
 		262376B515BF6C0A00B3A037 /* FBFrictionlessRequestSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 262376AD15BF6C0A00B3A037 /* FBFrictionlessRequestSettings.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		262376B615BF6C0A00B3A037 /* FBLoginDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 262376AF15BF6C0A00B3A037 /* FBLoginDialog.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		262376B715BF6C0A00B3A037 /* FBRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 262376B115BF6C0A00B3A037 /* FBRequest.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		BB06360815BF7258001F26E1 /* post_retry.png in Resources */ = {isa = PBXBuildFile; fileRef = BB06360415BF7258001F26E1 /* post_retry.png */; };
+		BB06360C15BF726D001F26E1 /* DWErrorView.m in Sources */ = {isa = PBXBuildFile; fileRef = BB06360B15BF726D001F26E1 /* DWErrorView.m */; };
 		BB174D4115BA404200DB50CA /* DWAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BB174D4015BA404200DB50CA /* DWAppDelegate.m */; };
 		BB174D4515BA405900DB50CA /* DWConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = BB174D4415BA405900DB50CA /* DWConstants.m */; };
 		BB174D4915BA43DC00DB50CA /* DWUsersController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB174D4815BA43DC00DB50CA /* DWUsersController.m */; };
@@ -85,6 +87,11 @@
 		262376B015BF6C0A00B3A037 /* FBRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FBRequest.h; path = Facebook/FBRequest.h; sourceTree = "<group>"; };
 		262376B115BF6C0A00B3A037 /* FBRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FBRequest.m; path = Facebook/FBRequest.m; sourceTree = "<group>"; };
 		262376B815BF6CBA00B3A037 /* Facebook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Facebook.h; path = Facebook/Facebook.h; sourceTree = "<group>"; };
+		BB06360415BF7258001F26E1 /* post_retry.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = post_retry.png; sourceTree = "<group>"; };
+		BB06360615BF7258001F26E1 /* DWErrorViewProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWErrorViewProtocol.h; sourceTree = "<group>"; };
+		BB06360715BF7258001F26E1 /* DWModelPresenterProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWModelPresenterProtocol.h; sourceTree = "<group>"; };
+		BB06360A15BF726D001F26E1 /* DWErrorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWErrorView.h; sourceTree = "<group>"; };
+		BB06360B15BF726D001F26E1 /* DWErrorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWErrorView.m; sourceTree = "<group>"; };
 		BB174D3F15BA404200DB50CA /* DWAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWAppDelegate.h; sourceTree = "<group>"; };
 		BB174D4015BA404200DB50CA /* DWAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWAppDelegate.m; sourceTree = "<group>"; };
 		BB174D4315BA405900DB50CA /* DWConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWConstants.h; sourceTree = "<group>"; };
@@ -239,6 +246,23 @@
 				262376B115BF6C0A00B3A037 /* FBRequest.m */,
 			);
 			name = Facebook;
+			sourceTree = "<group>";
+		};
+		BB06360315BF7258001F26E1 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				BB06360415BF7258001F26E1 /* post_retry.png */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+		BB06360515BF7258001F26E1 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				BB06360615BF7258001F26E1 /* DWErrorViewProtocol.h */,
+				BB06360715BF7258001F26E1 /* DWModelPresenterProtocol.h */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		BB174D3E15BA404200DB50CA /* AppDelegate */ = {
@@ -471,11 +495,13 @@
 				262376A115BF6B8100B3A037 /* Connect */,
 				BB174D4D15BB425900DB50CA /* Cryptography */,
 				BB174D4615BA43C700DB50CA /* DataControllers */,
+				BB06360315BF7258001F26E1 /* Images */,
 				BB26987115BB6E0600037453 /* Managers */,
 				BB9F710A15BA02B90099C80A /* MemoryPool */,
 				BB9F710615B9EBDE0099C80A /* Models */,
 				BBE42F4415BCB838000F6AE1 /* ModelPresenters */,
 				BB9F711E15BA1A580099C80A /* Networking */,
+				BB06360515BF7258001F26E1 /* Protocols */,
 				BB9F710215B9EBA50099C80A /* Session */,
 				BBC8A09B15B9D26D00DF58F6 /* Supporting Files */,
 				BBE42F4615BCC95A000F6AE1 /* TableViewCells */,
@@ -557,6 +583,8 @@
 		BBE42F5315BE0F58000F6AE1 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				BB06360A15BF726D001F26E1 /* DWErrorView.h */,
+				BB06360B15BF726D001F26E1 /* DWErrorView.m */,
 				BBE42F5415BE0F58000F6AE1 /* DWLoadingView.h */,
 				BBE42F5515BE0F58000F6AE1 /* DWLoadingView.m */,
 			);
@@ -628,6 +656,7 @@
 				BBC8A09F15B9D26D00DF58F6 /* InfoPlist.strings in Resources */,
 				BB26987015BB653900037453 /* DWTestViewController.xib in Resources */,
 				262376B315BF6C0A00B3A037 /* FBDialog.bundle in Resources */,
+				BB06360815BF7258001F26E1 /* post_retry.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -688,6 +717,7 @@
 				262376B515BF6C0A00B3A037 /* FBFrictionlessRequestSettings.m in Sources */,
 				262376B615BF6C0A00B3A037 /* FBLoginDialog.m in Sources */,
 				262376B715BF6C0A00B3A037 /* FBRequest.m in Sources */,
+				BB06360C15BF726D001F26E1 /* DWErrorView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
