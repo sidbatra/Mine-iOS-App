@@ -123,11 +123,10 @@ static NSInteger const kCreateTabIndex              = 1;
 
 //----------------------------------------------------------------------------------------------------
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     [self setupTabBarController];
-    
-    [self.window addSubview:self.tabBarController.view];    
+
+    [self.window addSubview:self.tabBarController.view];
     [self.window makeKeyAndVisible]; 
     
     return YES;

@@ -28,6 +28,7 @@
 		BB06362515C06F0E001F26E1 /* tab_teams_off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB06361B15C06F0E001F26E1 /* tab_teams_off@2x.png */; };
 		BB06362615C06F0E001F26E1 /* tab_teams_on.png in Resources */ = {isa = PBXBuildFile; fileRef = BB06361C15C06F0E001F26E1 /* tab_teams_on.png */; };
 		BB06362715C06F0E001F26E1 /* tab_teams_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB06361D15C06F0E001F26E1 /* tab_teams_on@2x.png */; };
+		BB06365515C08D2E001F26E1 /* Window.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB06365415C08D2E001F26E1 /* Window.xib */; };
 		BB174D4115BA404200DB50CA /* DWAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BB174D4015BA404200DB50CA /* DWAppDelegate.m */; };
 		BB174D4515BA405900DB50CA /* DWConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = BB174D4415BA405900DB50CA /* DWConstants.m */; };
 		BB174D4915BA43DC00DB50CA /* DWUsersController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB174D4815BA43DC00DB50CA /* DWUsersController.m */; };
@@ -118,6 +119,7 @@
 		BB06361B15C06F0E001F26E1 /* tab_teams_off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab_teams_off@2x.png"; sourceTree = "<group>"; };
 		BB06361C15C06F0E001F26E1 /* tab_teams_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tab_teams_on.png; sourceTree = "<group>"; };
 		BB06361D15C06F0E001F26E1 /* tab_teams_on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab_teams_on@2x.png"; sourceTree = "<group>"; };
+		BB06365415C08D2E001F26E1 /* Window.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Window.xib; sourceTree = "<group>"; };
 		BB174D3F15BA404200DB50CA /* DWAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWAppDelegate.h; sourceTree = "<group>"; };
 		BB174D4015BA404200DB50CA /* DWAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWAppDelegate.m; sourceTree = "<group>"; };
 		BB174D4315BA405900DB50CA /* DWConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWConstants.h; sourceTree = "<group>"; };
@@ -211,7 +213,6 @@
 		BBE42F3D15BCAD9E000F6AE1 /* DWTableViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWTableViewDataSource.m; sourceTree = "<group>"; };
 		BBE42F4115BCB734000F6AE1 /* DWTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWTableViewController.h; sourceTree = "<group>"; };
 		BBE42F4215BCB734000F6AE1 /* DWTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWTableViewController.m; sourceTree = "<group>"; };
-		BBE42F4515BCB838000F6AE1 /* DWModelPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWModelPresenter.h; sourceTree = "<group>"; };
 		BBE42F4715BCCA52000F6AE1 /* DWPurchaseFeedCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWPurchaseFeedCell.h; sourceTree = "<group>"; };
 		BBE42F4815BCCA52000F6AE1 /* DWPurchaseFeedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWPurchaseFeedCell.m; sourceTree = "<group>"; };
 		BBE42F4A15BCCB7A000F6AE1 /* DWPurchaseFeedPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWPurchaseFeedPresenter.h; sourceTree = "<group>"; };
@@ -317,6 +318,7 @@
 			children = (
 				BB174D3F15BA404200DB50CA /* DWAppDelegate.h */,
 				BB174D4015BA404200DB50CA /* DWAppDelegate.m */,
+				BB06365415C08D2E001F26E1 /* Window.xib */,
 			);
 			path = AppDelegate;
 			sourceTree = "<group>";
@@ -612,7 +614,6 @@
 		BBE42F4415BCB838000F6AE1 /* ModelPresenters */ = {
 			isa = PBXGroup;
 			children = (
-				BBE42F4515BCB838000F6AE1 /* DWModelPresenter.h */,
 				BBE42F4A15BCCB7A000F6AE1 /* DWPurchaseFeedPresenter.h */,
 				BBE42F4B15BCCB7A000F6AE1 /* DWPurchaseFeedPresenter.m */,
 			);
@@ -715,6 +716,7 @@
 				BB06362515C06F0E001F26E1 /* tab_teams_off@2x.png in Resources */,
 				BB06362615C06F0E001F26E1 /* tab_teams_on.png in Resources */,
 				BB06362715C06F0E001F26E1 /* tab_teams_on@2x.png in Resources */,
+				BB06365515C08D2E001F26E1 /* Window.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
