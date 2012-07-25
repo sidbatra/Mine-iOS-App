@@ -11,7 +11,7 @@
 
 
 static NSString* const kFacebookURLPrefix			= @"fb";
-
+static NSInteger const kCreateTabIndex              = 1;
 
 
 /**
@@ -63,6 +63,8 @@ static NSString* const kFacebookURLPrefix			= @"fb";
     
     
     self.tabBarController = [[DWTabBarController alloc] init];
+    self.tabBarController.delegate = self;
+    
     [self.tabBarController addSubController:_a];
     [self.tabBarController addSubController:_b];
     [self.tabBarController addSubController:_c];
@@ -98,6 +100,19 @@ static NSString* const kFacebookURLPrefix			= @"fb";
        [[NSNotificationCenter defaultCenter] postNotificationName:kNFacebookURLOpened 
                                                            object:url];
     }
+}
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWTabBarControllerDelegate
+
+- (void)selectedTabModifiedFrom:(NSInteger)oldSelectedIndex 
+                             to:(NSInteger)newSelectedIndex {
+    
+    if(newSelectedIndex == kCreateTabIndex) {
+        
+    }        
 }
 
 

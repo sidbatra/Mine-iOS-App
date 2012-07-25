@@ -16,13 +16,13 @@
 @interface DWTabBarController : UIViewController<DWTabBarDelegate> {
 	DWTabBar    *_tabBar;
     	
-	__weak id<DWTabBarControllerDelegate> _delegate;
+	__weak id<DWTabBarControllerDelegate,NSObject> _delegate;
 }
 
 /**
  * Delegate receives updates about tab bar selection changes
  */
-@property (nonatomic,weak) id<DWTabBarControllerDelegate> delegate;
+@property (nonatomic,weak) id<DWTabBarControllerDelegate,NSObject> delegate;
 
 /**
  * Tab bar object for managing for the buttons and their states

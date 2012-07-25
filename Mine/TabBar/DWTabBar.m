@@ -6,8 +6,8 @@
 #import "DWTabBar.h"
 #import "DWConstants.h"
 
-static NSString* const kImgHighlight        = @"new_item_triangle.png";
-static NSInteger const kHighlightViewTag    = 3;
+//static NSString* const kImgHighlight        = @"new_item_triangle.png";
+//static NSInteger const kHighlightViewTag    = 3;
 
 
 typedef enum {

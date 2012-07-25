@@ -13,7 +13,7 @@
 /**
  * Custom app delegate
  */
-@interface DWAppDelegate : UIResponder<UIApplicationDelegate> {    
+@interface DWAppDelegate : UIResponder<UIApplicationDelegate,DWTabBarControllerDelegate> {    
 }
 
 /**

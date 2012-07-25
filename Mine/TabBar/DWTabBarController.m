@@ -223,10 +223,14 @@ static CGRect const kFullScreenFrame    = { {0,0}, {320, kScreenHeight} };
         if([[selectedController topViewController] respondsToSelector:@selector(scrollToTop)])
             [[selectedController topViewController] performSelector:@selector(scrollToTop)];
     }
-	
-	[_delegate selectedTabModifiedFrom:oldSelectedIndex
-									to:newSelectedIndex];
+     
      */
+	
+    SEL tabModified = @selector(selectedTabModifiedFrom:to:);
+    
+    if([self.delegate respondsToSelector:tabModified])
+        [self.delegate selectedTabModifiedFrom:oldSelectedIndex
+                                        to:newSelectedIndex];
 }
 
 
