@@ -73,20 +73,20 @@ extern NSString* const kNImgUserLargeLoadError;
 
 
 /**
+ * Returns the square UIImage if it has been downloaded or nil.
+ */
+@property (nonatomic,readonly) UIImage *squareImage;
+
+/**
+ * Returns the large UIImage if it has been downloaded or nil
+ */
+@property (nonatomic,readonly) UIImage *largeImage;
+
+/**
  * Total purchases added.
  */
 @property (nonatomic,assign) NSInteger purchasesCount;
 
-
-/**
- * Returns the square UIImage if it has been downloaded or nil
- */
-- (id)squareImage;
-
-/*
- * Returns the large UIImage if it has been downloaded or nil
- */
-- (id)largeImage;
 
 /**
  * Start downloading the square image

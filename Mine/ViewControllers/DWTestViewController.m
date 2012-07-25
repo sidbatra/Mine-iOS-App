@@ -59,9 +59,10 @@
     
     //[self.facebookConnect authorize];
 
-    self.feedViewController.view.frame = self.view.frame;// CGRectMake(0, 50, self.view.frame.size.width, 100);
-    [self.view addSubview:self.feedViewController.tableView];
-    //[self.usersController getUserWithID:1];
+    //self.feedViewController.view.frame = self.view.frame;// CGRectMake(0, 50, self.view.frame.size.width, 100);
+    //[self.view addSubview:self.feedViewController.tableView];
+    
+    [self.usersController getUserWithID:1];
     //[self.feedController getPurchasesBefore:0];
     //[self.feedController getPurchasesBefore:1339021725];
 }
@@ -73,7 +74,7 @@
 
 - (void)userLoaded:(DWUser*)user {
     [user debug];
-    //[user downloadSquareImage];
+    [user downloadSquareImage];
 }
 
 - (void)userLoadError:(NSString*)error {
@@ -91,12 +92,12 @@
 
 
 - (void)squareImageLoaded:(NSNotification*)notification {
-    NSDictionary *info = [notification userInfo];
+    //NSDictionary *info = [notification userInfo];
     //NSString *url = [info objectForKey:kKeyURL];
-    UIImage *image = [info objectForKey:kKeyImage];
+    //UIImage *image = [info objectForKey:kKeyImage];
     
-    //DWUser *user = [DWUser fetch:1];
-    //UIImage *image = [user squareImage];
+    DWUser *user = [DWUser fetch:1];
+    UIImage *image = user.squareImage;
     
     NSLog(@"SIZE - %f %f",image.size.width,image.size.height);
 }

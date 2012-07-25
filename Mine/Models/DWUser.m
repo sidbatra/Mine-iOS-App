@@ -163,12 +163,12 @@ static NSString* const kKeyPurchasesCount   = @"purchases_count";
 
 
 //----------------------------------------------------------------------------------------------------
-- (id)squareImage {
+- (UIImage*)squareImage {
     return [[DWImageManager sharedDWImageManager] fetch:self.squareImageURL];
 }
 
 //----------------------------------------------------------------------------------------------------
-- (id)largeImage {
+- (UIImage*)largeImage {
     return [[DWImageManager sharedDWImageManager] fetch:self.largeImageURL];
 }
 
