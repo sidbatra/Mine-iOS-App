@@ -8,13 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-#import "DWTestViewController.h"
+#import "DWTabBarController.h"
 
-@interface DWAppDelegate : UIResponder <UIApplicationDelegate> {
-    DWTestViewController *_testViewController;
+@interface DWAppDelegate : UIResponder <UIApplicationDelegate> {    
+    DWTabBarController	*_tabBarController;
 }
 
 @property (strong, nonatomic) UIWindow *window;
-@property (strong, nonatomic) DWTestViewController *testViewController;
+@property (strong, nonatomic) DWTabBarController *tabBarController;
 
 @end

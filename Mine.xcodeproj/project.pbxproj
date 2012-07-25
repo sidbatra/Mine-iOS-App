@@ -16,6 +16,18 @@
 		262376B715BF6C0A00B3A037 /* FBRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 262376B115BF6C0A00B3A037 /* FBRequest.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		BB06360815BF7258001F26E1 /* post_retry.png in Resources */ = {isa = PBXBuildFile; fileRef = BB06360415BF7258001F26E1 /* post_retry.png */; };
 		BB06360C15BF726D001F26E1 /* DWErrorView.m in Sources */ = {isa = PBXBuildFile; fileRef = BB06360B15BF726D001F26E1 /* DWErrorView.m */; };
+		BB06361215BF7DB2001F26E1 /* DWTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BB06360F15BF7DB2001F26E1 /* DWTabBar.m */; };
+		BB06361315BF7DB2001F26E1 /* DWTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB06361115BF7DB2001F26E1 /* DWTabBarController.m */; };
+		BB06361E15C06F0E001F26E1 /* tab_create_off.png in Resources */ = {isa = PBXBuildFile; fileRef = BB06361415C06F0E001F26E1 /* tab_create_off.png */; };
+		BB06361F15C06F0E001F26E1 /* tab_create_off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB06361515C06F0E001F26E1 /* tab_create_off@2x.png */; };
+		BB06362015C06F0E001F26E1 /* tab_feed_off.png in Resources */ = {isa = PBXBuildFile; fileRef = BB06361615C06F0E001F26E1 /* tab_feed_off.png */; };
+		BB06362115C06F0E001F26E1 /* tab_feed_off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB06361715C06F0E001F26E1 /* tab_feed_off@2x.png */; };
+		BB06362215C06F0E001F26E1 /* tab_feed_on.png in Resources */ = {isa = PBXBuildFile; fileRef = BB06361815C06F0E001F26E1 /* tab_feed_on.png */; };
+		BB06362315C06F0E001F26E1 /* tab_feed_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB06361915C06F0E001F26E1 /* tab_feed_on@2x.png */; };
+		BB06362415C06F0E001F26E1 /* tab_teams_off.png in Resources */ = {isa = PBXBuildFile; fileRef = BB06361A15C06F0E001F26E1 /* tab_teams_off.png */; };
+		BB06362515C06F0E001F26E1 /* tab_teams_off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB06361B15C06F0E001F26E1 /* tab_teams_off@2x.png */; };
+		BB06362615C06F0E001F26E1 /* tab_teams_on.png in Resources */ = {isa = PBXBuildFile; fileRef = BB06361C15C06F0E001F26E1 /* tab_teams_on.png */; };
+		BB06362715C06F0E001F26E1 /* tab_teams_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB06361D15C06F0E001F26E1 /* tab_teams_on@2x.png */; };
 		BB174D4115BA404200DB50CA /* DWAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BB174D4015BA404200DB50CA /* DWAppDelegate.m */; };
 		BB174D4515BA405900DB50CA /* DWConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = BB174D4415BA405900DB50CA /* DWConstants.m */; };
 		BB174D4915BA43DC00DB50CA /* DWUsersController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB174D4815BA43DC00DB50CA /* DWUsersController.m */; };
@@ -92,6 +104,20 @@
 		BB06360715BF7258001F26E1 /* DWModelPresenterProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWModelPresenterProtocol.h; sourceTree = "<group>"; };
 		BB06360A15BF726D001F26E1 /* DWErrorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWErrorView.h; sourceTree = "<group>"; };
 		BB06360B15BF726D001F26E1 /* DWErrorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWErrorView.m; sourceTree = "<group>"; };
+		BB06360E15BF7DB2001F26E1 /* DWTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWTabBar.h; sourceTree = "<group>"; };
+		BB06360F15BF7DB2001F26E1 /* DWTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWTabBar.m; sourceTree = "<group>"; };
+		BB06361015BF7DB2001F26E1 /* DWTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWTabBarController.h; sourceTree = "<group>"; };
+		BB06361115BF7DB2001F26E1 /* DWTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWTabBarController.m; sourceTree = "<group>"; };
+		BB06361415C06F0E001F26E1 /* tab_create_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tab_create_off.png; sourceTree = "<group>"; };
+		BB06361515C06F0E001F26E1 /* tab_create_off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab_create_off@2x.png"; sourceTree = "<group>"; };
+		BB06361615C06F0E001F26E1 /* tab_feed_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tab_feed_off.png; sourceTree = "<group>"; };
+		BB06361715C06F0E001F26E1 /* tab_feed_off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab_feed_off@2x.png"; sourceTree = "<group>"; };
+		BB06361815C06F0E001F26E1 /* tab_feed_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tab_feed_on.png; sourceTree = "<group>"; };
+		BB06361915C06F0E001F26E1 /* tab_feed_on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab_feed_on@2x.png"; sourceTree = "<group>"; };
+		BB06361A15C06F0E001F26E1 /* tab_teams_off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tab_teams_off.png; sourceTree = "<group>"; };
+		BB06361B15C06F0E001F26E1 /* tab_teams_off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab_teams_off@2x.png"; sourceTree = "<group>"; };
+		BB06361C15C06F0E001F26E1 /* tab_teams_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tab_teams_on.png; sourceTree = "<group>"; };
+		BB06361D15C06F0E001F26E1 /* tab_teams_on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab_teams_on@2x.png"; sourceTree = "<group>"; };
 		BB174D3F15BA404200DB50CA /* DWAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWAppDelegate.h; sourceTree = "<group>"; };
 		BB174D4015BA404200DB50CA /* DWAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWAppDelegate.m; sourceTree = "<group>"; };
 		BB174D4315BA405900DB50CA /* DWConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWConstants.h; sourceTree = "<group>"; };
@@ -251,6 +277,16 @@
 		BB06360315BF7258001F26E1 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				BB06361415C06F0E001F26E1 /* tab_create_off.png */,
+				BB06361515C06F0E001F26E1 /* tab_create_off@2x.png */,
+				BB06361615C06F0E001F26E1 /* tab_feed_off.png */,
+				BB06361715C06F0E001F26E1 /* tab_feed_off@2x.png */,
+				BB06361815C06F0E001F26E1 /* tab_feed_on.png */,
+				BB06361915C06F0E001F26E1 /* tab_feed_on@2x.png */,
+				BB06361A15C06F0E001F26E1 /* tab_teams_off.png */,
+				BB06361B15C06F0E001F26E1 /* tab_teams_off@2x.png */,
+				BB06361C15C06F0E001F26E1 /* tab_teams_on.png */,
+				BB06361D15C06F0E001F26E1 /* tab_teams_on@2x.png */,
 				BB06360415BF7258001F26E1 /* post_retry.png */,
 			);
 			path = Images;
@@ -263,6 +299,17 @@
 				BB06360715BF7258001F26E1 /* DWModelPresenterProtocol.h */,
 			);
 			path = Protocols;
+			sourceTree = "<group>";
+		};
+		BB06360D15BF7DB2001F26E1 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				BB06360E15BF7DB2001F26E1 /* DWTabBar.h */,
+				BB06360F15BF7DB2001F26E1 /* DWTabBar.m */,
+				BB06361015BF7DB2001F26E1 /* DWTabBarController.h */,
+				BB06361115BF7DB2001F26E1 /* DWTabBarController.m */,
+			);
+			path = TabBar;
 			sourceTree = "<group>";
 		};
 		BB174D3E15BA404200DB50CA /* AppDelegate */ = {
@@ -504,6 +551,7 @@
 				BB06360515BF7258001F26E1 /* Protocols */,
 				BB9F710215B9EBA50099C80A /* Session */,
 				BBC8A09B15B9D26D00DF58F6 /* Supporting Files */,
+				BB06360D15BF7DB2001F26E1 /* TabBar */,
 				BBE42F4615BCC95A000F6AE1 /* TableViewCells */,
 				BBE42F3615BCAD9D000F6AE1 /* TableViewControllers */,
 				BBE42F3A15BCAD9D000F6AE1 /* TableViewDataSources */,
@@ -657,6 +705,16 @@
 				BB26987015BB653900037453 /* DWTestViewController.xib in Resources */,
 				262376B315BF6C0A00B3A037 /* FBDialog.bundle in Resources */,
 				BB06360815BF7258001F26E1 /* post_retry.png in Resources */,
+				BB06361E15C06F0E001F26E1 /* tab_create_off.png in Resources */,
+				BB06361F15C06F0E001F26E1 /* tab_create_off@2x.png in Resources */,
+				BB06362015C06F0E001F26E1 /* tab_feed_off.png in Resources */,
+				BB06362115C06F0E001F26E1 /* tab_feed_off@2x.png in Resources */,
+				BB06362215C06F0E001F26E1 /* tab_feed_on.png in Resources */,
+				BB06362315C06F0E001F26E1 /* tab_feed_on@2x.png in Resources */,
+				BB06362415C06F0E001F26E1 /* tab_teams_off.png in Resources */,
+				BB06362515C06F0E001F26E1 /* tab_teams_off@2x.png in Resources */,
+				BB06362615C06F0E001F26E1 /* tab_teams_on.png in Resources */,
+				BB06362715C06F0E001F26E1 /* tab_teams_on@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -718,6 +776,8 @@
 				262376B615BF6C0A00B3A037 /* FBLoginDialog.m in Sources */,
 				262376B715BF6C0A00B3A037 /* FBRequest.m in Sources */,
 				BB06360C15BF726D001F26E1 /* DWErrorView.m in Sources */,
+				BB06361215BF7DB2001F26E1 /* DWTabBar.m in Sources */,
+				BB06361315BF7DB2001F26E1 /* DWTabBarController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

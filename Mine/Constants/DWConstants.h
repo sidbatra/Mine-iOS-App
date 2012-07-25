@@ -57,6 +57,19 @@ extern NSString* const kKeyError;
  */
 extern NSString* const kRailsDateTimeFormat;
 
+
+
+
+/**
+ * Reset options for the Tab Bar 
+ */
+typedef enum {
+    kTabBarResetTypeNone    = -1,
+    kTabBarResetTypeHard    = 0,
+    kTabBarResetTypeSoft    = 1
+} kTabBarResetType;
+
+
 /**
  * Model presenters
  */
