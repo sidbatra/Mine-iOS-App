@@ -8,7 +8,7 @@
 /**
  * Required protocol for all model presenters
  */
-@protocol DWModelPresenter
+@protocol DWModelPresenterProtocol
 
 @required
 

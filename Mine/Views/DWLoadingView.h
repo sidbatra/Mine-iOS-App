@@ -6,7 +6,7 @@
 #import <UIKit/UIKit.h>
 
 /**
- * Plain view that displays a loading message along with 
+ * Generic view that displays a loading message along with 
  * a spinner
  */
 @interface DWLoadingView : UIView {

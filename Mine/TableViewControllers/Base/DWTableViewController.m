@@ -4,9 +4,8 @@
 //
 
 #import "DWTableViewController.h"
-#import "DWModelPresenter.h"
+#import "DWModelPresenterProtocol.h"
 #import "DWLoadingView.h"
-//#import "DWErrorView.h"
 #import "NSObject+Helpers.h"
 
 
@@ -80,11 +79,9 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
 @synthesize tableViewDataSource     = _tableViewDataSource;
 @synthesize modelPresenters         = _modelPresenters;
 @synthesize loadingView             = _loadingView;
+@synthesize errorView               = _errorView;
 @synthesize refreshHeaderView       = _refreshHeaderView;
 
-/*
-@synthesize errorView               = _errorView;
-*/
  
 //----------------------------------------------------------------------------------------------------
 - (id)init {
@@ -135,14 +132,10 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
     [self.view addSubview:self.loadingView];
     
     
-    /*
-    if(!self.errorView) {
-        self.errorView          = [self getTableErrorView];
-        self.errorView.hidden   = YES;
-    }
+    if(!self.errorView)
+        self.errorView = [self tableErrorView];
     
     [self.view addSubview:self.errorView];
-     */
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -179,7 +172,7 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
         
         NSDictionary *presenter = [self presenterForModel:object];
         
-        Class<DWModelPresenter> modelPresenter = [presenter objectForKey:kModelKeyPresenter];
+        Class<DWModelPresenterProtocol> modelPresenter = [presenter objectForKey:kModelKeyPresenter];
         NSInteger modelPresenterStyle = [(NSNumber*)[presenter objectForKey:kModelKeyPresenterStyle] integerValue];
         
         id cell = [self.tableView cellForRowAtIndexPath:indexPath];
@@ -222,15 +215,13 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
     return [[DWLoadingView alloc] initWithFrame:self.view.frame];
 }
 
-/*
- //----------------------------------------------------------------------------------------------------
- - (UIView*)getTableErrorView {
- DWErrorView *errorView  = [[DWErrorView alloc] initWithFrame:self.tableView.frame];
- errorView.delegate      = self;
+//----------------------------------------------------------------------------------------------------
+ - (UIView<DWErrorViewProtocol>*)tableErrorView {
+     DWErrorView *errorView  = [[DWErrorView alloc] initWithFrame:self.view.frame];
+     errorView.delegate      = self;
  
- return errorView;
- }
- */
+     return errorView;
+}
 
 //----------------------------------------------------------------------------------------------------
 - (void)scrollToTop {
@@ -287,7 +278,7 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
     
     NSDictionary *presenter = [self presenterForModel:object];
 
-    Class<DWModelPresenter> modelPresenter = [presenter objectForKey:kModelKeyPresenter];
+    Class<DWModelPresenterProtocol> modelPresenter = [presenter objectForKey:kModelKeyPresenter];
     NSInteger modelPresenterStyle = [(NSNumber*)[presenter objectForKey:kModelKeyPresenterStyle] integerValue];
     
     
@@ -303,7 +294,7 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
     
     NSDictionary *presenter = [self presenterForModel:object];
     
-    Class<DWModelPresenter> modelPresenter = [presenter objectForKey:kModelKeyPresenter];
+    Class<DWModelPresenterProtocol> modelPresenter = [presenter objectForKey:kModelKeyPresenter];
     NSInteger modelPresenterStyle = [(NSNumber*)[presenter objectForKey:kModelKeyPresenterStyle] integerValue];
     NSString* modelIdentifier = [presenter objectForKey:kModelKeyIdentifier];
     
@@ -324,7 +315,7 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
     
     NSDictionary *presenter = [self presenterForModel:object];
 
-    Class<DWModelPresenter> modelPresenter = [presenter objectForKey:kModelKeyPresenter];
+    Class<DWModelPresenterProtocol> modelPresenter = [presenter objectForKey:kModelKeyPresenter];
     NSInteger modelPresenterStyle = [(NSNumber*)[presenter objectForKey:kModelKeyPresenterStyle] integerValue];
     
     id cell = [self.tableView cellForRowAtIndexPath:indexPath];
@@ -367,7 +358,7 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
 - (void)reloadTableView {
     [self enableScrolling];
     self.loadingView.hidden  = YES;
-    //self.errorView.hidden           = YES;
+    [self.errorView hide];
     
     [self.tableView reloadData];
 
@@ -375,51 +366,26 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
     _isPullToRefreshActive          = NO;    
 }
 
-/*
 //----------------------------------------------------------------------------------------------------
 - (void)displayError:(NSString *)message 
        withRefreshUI:(BOOL)showRefreshUI {
     
-    SEL sel = @selector(setErrorMessage:);
-    
-    if(![self.errorView respondsToSelector:sel])
-        return;
-    
-    [self.errorView performSelector:sel
-                         withObject:message];
-    
-    
-    sel = showRefreshUI ? @selector(showRefreshUI) : @selector(hideRefreshUI);
-    
-    if(![self.errorView respondsToSelector:sel])
-        return;
-    
-    [self.errorView performSelector:sel];
-    
-
+    [self.errorView setErrorMessage:message];
+    [self.errorView showWithRefreshUI:showRefreshUI];
     
     [self scrollToTop];
     
-    self.loadingView.hidden         = YES;
-    self.errorView.hidden           = NO;
+    self.loadingView.hidden = YES;
     
     [self disableScrolling];
     
     
     [self.tableView reloadData];
     
-    _isPullToRefreshActive          = NO;
+    _isPullToRefreshActive = NO;
     [self.refreshHeaderView egoRefreshScrollViewDataSourceDidFinishedLoading:self.tableView];
 }
-
-//----------------------------------------------------------------------------------------------------
-- (void)displayError:(NSString *)message {
-    
-    [self displayError:message
-         withRefreshUI:YES];
-}
- */
-
+ 
 //----------------------------------------------------------------------------------------------------
 - (void)insertRowAtIndex:(NSInteger)index
            withAnimation:(UITableViewRowAnimation)animation {
@@ -478,17 +444,17 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
 	return nil;
 }
 
-/*
+
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
-#pragma mark Error view delegate
+#pragma mark DWErrorViewDelegate
 
 //----------------------------------------------------------------------------------------------------
 - (void)errorViewTouched {
     self.loadingView.hidden = NO;
-    self.errorView.hidden   = YES;
+    [self.errorView hide];
     [self.tableViewDataSource refreshInitiated];
 }
-*/
+
 @end

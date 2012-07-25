@@ -86,6 +86,8 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)feedLoadError:(NSString *)error {
+    [self.delegate displayError:error
+                  withRefreshUI:YES];
 }
 
 

@@ -33,8 +33,8 @@
         self.usersController = [[DWUsersController alloc] init];
         self.usersController.delegate = self;
         
-        self.feedController = [[DWFeedController alloc] init];
-        self.feedController.delegate = self;
+        //self.feedController = [[DWFeedController alloc] init];
+        //self.feedController.delegate = self;
         
         self.facebookConnect = [[DWFacebookConnect alloc] init];
         self.facebookConnect.delegate = self;

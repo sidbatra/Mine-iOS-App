@@ -7,22 +7,22 @@
 
 #import "DWTableViewDataSource.h"
 
+#import "DWErrorView.h"
+#import "DWErrorViewProtocol.h"
+
 #import "EGORefreshTableHeaderView.h"
+
 
 /**
  * Customized version of UITableViewController which forms the base 
  * for every table view controller in the app
  */
-@interface DWTableViewController : UITableViewController<DWTableViewDataSourceDelegate,EGORefreshTableHeaderDelegate> {
+@interface DWTableViewController : UITableViewController<DWTableViewDataSourceDelegate,EGORefreshTableHeaderDelegate,DWErrorViewDelegate> {
     
     DWTableViewDataSource       *_tableViewDataSource;
     
     UIView                      *_loadingView;
-    
-    
-    /*
-    UIView                      *_errorView;
-     */
+    UIView<DWErrorViewProtocol> *_errorView;
 }
 
 /**
@@ -38,7 +38,7 @@
 /**
  * View displayed when an error occurs
  */
-//@property (nonatomic) UIView *errorView;
+@property (nonatomic,strong) UIView<DWErrorViewProtocol> *errorView;
 
 
 /**
@@ -46,12 +46,10 @@
  */
 - (void)scrollToTop;
 
-
 /**
  * Method to disable pull to refresh for certain table views
  */
 - (void)disablePullToRefresh;
-
 
 /**
  * Add a model presenter mapping.
@@ -60,13 +58,17 @@
                         withStyle:(NSInteger)style
                     withPresenter:(Class)presenter;
 
-
-
 /**
  * Template method which can be overriden for custom laoding views which is a UIView 
  * displayed while the data is being loaded
  */
 - (UIView*)tableLoadingView;
+
+/**
+ * Template method which can be overriden for custom error views which is a UIView 
+ * displayed on error and follows the DWErrorViewProtocol.
+ */
+- (UIView<DWErrorViewProtocol>*)tableErrorView;
 
 @end
 

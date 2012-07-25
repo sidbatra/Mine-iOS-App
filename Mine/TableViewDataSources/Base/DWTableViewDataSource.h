@@ -86,6 +86,13 @@
  */
 - (void)reloadRowAtIndex:(NSInteger)index;
 
+/**
+ * Display an error message with an option for display a retry 
+ * / refresh UI.
+ */
+- (void)displayError:(NSString *)message 
+       withRefreshUI:(BOOL)showRefreshUI;
+
 @end
 
 

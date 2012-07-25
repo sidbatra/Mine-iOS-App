@@ -8,11 +8,11 @@
 
 #import <Foundation/Foundation.h>
 
-#import "DWModelPresenter.h"
+#import "DWModelPresenterProtocol.h"
 
 /**
  * Presenter for the Purchase model when being displayed in the feed.
  */
-@interface DWPurchaseFeedPresenter : NSObject<DWModelPresenter>
+@interface DWPurchaseFeedPresenter : NSObject<DWModelPresenterProtocol>
 
 @end
