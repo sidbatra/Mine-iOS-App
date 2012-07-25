@@ -10,6 +10,10 @@
 #import "DWConstants.h"
 
 
+static NSString* const kFacebookURLPrefix			= @"fb";
+
+
+
 /**
  * Private declarations
  */
@@ -21,6 +25,17 @@
  * Custom tab bar controller which is the base view added to window.
  */
 @property (strong, nonatomic) DWTabBarController *tabBarController;
+
+
+/**
+ * Creates the tab bar controller and its sub controllers.
+ */
+- (void)setupTabBarController;
+
+/**
+ * Uniform interface for handling requests from external URLs.
+ */
+- (void)handleExternalURL:(NSURL*)url;
 
 @end
 
@@ -77,6 +92,14 @@
                                        isSelected:NO];
 }
 
+//----------------------------------------------------------------------------------------------------
+- (void)handleExternalURL:(NSURL*)url {
+    if([[url absoluteString] hasPrefix:kFacebookURLPrefix]) {
+       [[NSNotificationCenter defaultCenter] postNotificationName:kNFacebookURLOpened 
+                                                           object:url];
+    }
+}
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
@@ -84,8 +107,7 @@
 #pragma mark Application notifications
 
 //----------------------------------------------------------------------------------------------------
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
-{
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     
     [self setupTabBarController];
@@ -121,19 +143,19 @@
 }
 
 //----------------------------------------------------------------------------------------------------
-- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {    
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:kNFacebookURLOpened 
-                                                        object:url];
+    [self handleExternalURL:url];
     return YES;
 }
 
 //----------------------------------------------------------------------------------------------------
-- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url 
-  sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+- (BOOL)application:(UIApplication*)application 
+            openURL:(NSURL*)url 
+  sourceApplication:(NSString*)sourceApplication 
+         annotation:(id)annotation {
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:kNFacebookURLOpened 
-                                                        object:url];
+    [self handleExternalURL:url];
     return YES;
 }
 
