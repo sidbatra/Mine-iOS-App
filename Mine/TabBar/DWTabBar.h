@@ -5,6 +5,8 @@
 
 #import <UIKit/UIKit.h>
 
+#import "DWConstants.h"
+
 @protocol DWTabBarDelegate;
 
 /**
@@ -62,5 +64,5 @@
 - (void)selectedTabWithSpecialTab:(BOOL)isSpecial
 					 modifiedFrom:(NSInteger)oldSelectedIndex 
 							   to:(NSInteger)newSelectedIndex
-                    withResetType:(NSInteger)resetType;
+                    withResetType:(DWTabBarResetType)resetType;
 @end

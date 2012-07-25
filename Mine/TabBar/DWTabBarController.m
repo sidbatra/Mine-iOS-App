@@ -205,26 +205,30 @@ static CGRect const kFullScreenFrame    = { {0,0}, {320, kScreenHeight} };
 - (void)selectedTabWithSpecialTab:(BOOL)isSpecial
 					 modifiedFrom:(NSInteger)oldSelectedIndex 
 							   to:(NSInteger)newSelectedIndex 
-                    withResetType:(NSInteger)resetType {
+                    withResetType:(DWTabBarResetType)resetType {
     
 	if(!isSpecial) {
 		[self removeViewAtIndex:oldSelectedIndex];
 		[self addViewAtIndex:newSelectedIndex];
 	}
     
-    /*
-    if(resetType == kResetSoft) {
-        [(UINavigationController*)[self getSelectedController] popToRootViewControllerAnimated:YES];
-    }
-    else if(resetType == kResetHard) {
-        UINavigationController *selectedController = (UINavigationController*)[self getSelectedController];
-        [selectedController popToRootViewControllerAnimated:NO]; 
+    if([self.selectedController isKindOfClass:[UINavigationController class]]) {
+        UINavigationController *navController = (UINavigationController*)self.selectedController;
+ 
+        if(resetType == DWTabBarResetTypeSoft) {
+            [navController popToRootViewControllerAnimated:YES];
+        }
+        else if(resetType == DWTabBarResetTypeHard) {
+            [navController popToRootViewControllerAnimated:NO]; 
        
-        if([[selectedController topViewController] respondsToSelector:@selector(scrollToTop)])
-            [[selectedController topViewController] performSelector:@selector(scrollToTop)];
+        
+            SEL scrollToTop = @selector(scrollToTop);
+            
+            if([[navController topViewController] respondsToSelector:scrollToTop])
+                [[navController topViewController] performSelector:scrollToTop];
+        }
     }
-     
-     */
+    
 	
     SEL tabModified = @selector(selectedTabModifiedFrom:to:);
     

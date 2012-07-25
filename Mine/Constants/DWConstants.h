@@ -64,10 +64,10 @@ extern NSString* const kRailsDateTimeFormat;
  * Reset options for the Tab Bar 
  */
 typedef enum {
-    kTabBarResetTypeNone    = -1,
-    kTabBarResetTypeHard    = 0,
-    kTabBarResetTypeSoft    = 1
-} kTabBarResetType;
+    DWTabBarResetTypeNone    = -1,
+    DWTabBarResetTypeHard    = 0,
+    DWTabBarResetTypeSoft    = 1
+} DWTabBarResetType;
 
 
 /**

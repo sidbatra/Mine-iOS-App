@@ -11,9 +11,9 @@
 
 
 typedef enum {
-    kTabBarButtonTagNormal  = 0,
-    kTabBarButtonTagSpecial = -1
-}kTabBarButtonTag;
+    DWTabBarButtonTagNormal  = 0,
+    DWTabBarButtonTagSpecial = -1
+}DWTabBarButtonTag;
 
 
 /**
@@ -38,7 +38,7 @@ typedef enum {
  * Fire delegate event when a button is pressed.
  */
 - (void)buttonPressed:(UIButton*)button 
-        withResetType:(NSInteger)resetType
+        withResetType:(DWTabBarResetType)resetType
            isExternal:(BOOL)isExternal;
 
 @end
@@ -84,7 +84,7 @@ typedef enum {
 	NSInteger index = 0;
 	NSInteger i		= 0;
 	
-	if(selectedButton.tag != kTabBarButtonTagSpecial) {
+	if(selectedButton.tag != DWTabBarButtonTagSpecial) {
 		
 		for (UIButton* button in self.buttons) {
 			
@@ -110,21 +110,21 @@ typedef enum {
 
 //----------------------------------------------------------------------------------------------------
 - (void)buttonPressed:(UIButton*)button 
-        withResetType:(NSInteger)resetType
+        withResetType:(DWTabBarResetType)resetType
            isExternal:(BOOL)isExternal {
     
 	NSInteger oldIndex	= _selectedIndex;
 	_selectedIndex		= [self selectButton:button];
 	
-	[_delegate selectedTabWithSpecialTab:button.tag == kTabBarButtonTagSpecial
+	[_delegate selectedTabWithSpecialTab:button.tag == DWTabBarButtonTagSpecial
 							modifiedFrom:oldIndex
 									  to:_selectedIndex
                            withResetType:isExternal ? resetType : (_selectedIndex == oldIndex ? 
-                                                                    kTabBarResetTypeSoft : 
-                                                                    kTabBarResetTypeNone)];
+                                                                    DWTabBarResetTypeSoft : 
+                                                                    DWTabBarResetTypeNone)];
 
 	
-	if(button.tag == kTabBarButtonTagSpecial)
+	if(button.tag == DWTabBarButtonTagSpecial)
 		_selectedIndex = oldIndex;
 }
 
@@ -152,7 +152,7 @@ typedef enum {
     
     UIButton *button		= [UIButton buttonWithType:UIButtonTypeCustom];
     button.frame			= CGRectMake(buttonX,0,width,self.frame.size.height);
-    button.tag				= controllerMapping ? kTabBarButtonTagNormal : kTabBarButtonTagSpecial;
+    button.tag				= controllerMapping ? DWTabBarButtonTagNormal : DWTabBarButtonTagSpecial;
     
     
     [button setBackgroundImage:[UIImage imageNamed:normalImageName]
@@ -234,7 +234,7 @@ typedef enum {
 //----------------------------------------------------------------------------------------------------
 - (void)didTouchDownOnButton:(UIButton*)button {
     [self buttonPressed:button 
-          withResetType:kTabBarResetTypeNone
+          withResetType:DWTabBarResetTypeNone
              isExternal:NO];
 }
 
