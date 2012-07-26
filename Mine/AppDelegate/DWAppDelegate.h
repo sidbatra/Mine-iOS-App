@@ -16,6 +16,7 @@
 @interface DWAppDelegate : UIResponder<UIApplicationDelegate,DWTabBarControllerDelegate> {
     UINavigationController	*_welcomeNavController;
     UINavigationController  *_feedNavController;
+    UINavigationController  *_profileNavController;
 }
 
 /**
@@ -28,5 +29,6 @@
  */
 @property (nonatomic) IBOutlet UINavigationController *welcomeNavController;
 @property (nonatomic) IBOutlet UINavigationController *feedNavController;
+@property (nonatomic) IBOutlet UINavigationController *profileNavController;
 
 @end

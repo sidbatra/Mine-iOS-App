@@ -34,6 +34,10 @@
 		BB06366115C0A147001F26E1 /* DWLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB06365F15C0A147001F26E1 /* DWLoginViewController.m */; };
 		BB06366215C0A147001F26E1 /* DWLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB06366015C0A147001F26E1 /* DWLoginViewController.xib */; };
 		BB06366515C0E295001F26E1 /* DWFeedNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB06366415C0E295001F26E1 /* DWFeedNavigationViewController.m */; };
+		BB06366C15C1E04B001F26E1 /* DWPurchasesController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB06366B15C1E04B001F26E1 /* DWPurchasesController.m */; };
+		BB06367015C1F529001F26E1 /* DWProfileNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB06366F15C1F529001F26E1 /* DWProfileNavigationViewController.m */; };
+		BB06367315C1F593001F26E1 /* DWProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB06367215C1F593001F26E1 /* DWProfileViewController.m */; };
+		BB06367615C1F733001F26E1 /* DWProfileViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = BB06367515C1F733001F26E1 /* DWProfileViewDataSource.m */; };
 		BB174D4115BA404200DB50CA /* DWAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BB174D4015BA404200DB50CA /* DWAppDelegate.m */; };
 		BB174D4515BA405900DB50CA /* DWConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = BB174D4415BA405900DB50CA /* DWConstants.m */; };
 		BB174D4915BA43DC00DB50CA /* DWUsersController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB174D4815BA43DC00DB50CA /* DWUsersController.m */; };
@@ -134,6 +138,14 @@
 		BB06366015C0A147001F26E1 /* DWLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DWLoginViewController.xib; sourceTree = "<group>"; };
 		BB06366315C0E295001F26E1 /* DWFeedNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWFeedNavigationViewController.h; sourceTree = "<group>"; };
 		BB06366415C0E295001F26E1 /* DWFeedNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWFeedNavigationViewController.m; sourceTree = "<group>"; };
+		BB06366A15C1E04B001F26E1 /* DWPurchasesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWPurchasesController.h; sourceTree = "<group>"; };
+		BB06366B15C1E04B001F26E1 /* DWPurchasesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWPurchasesController.m; sourceTree = "<group>"; };
+		BB06366E15C1F529001F26E1 /* DWProfileNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWProfileNavigationViewController.h; sourceTree = "<group>"; };
+		BB06366F15C1F529001F26E1 /* DWProfileNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWProfileNavigationViewController.m; sourceTree = "<group>"; };
+		BB06367115C1F593001F26E1 /* DWProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWProfileViewController.h; sourceTree = "<group>"; };
+		BB06367215C1F593001F26E1 /* DWProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWProfileViewController.m; sourceTree = "<group>"; };
+		BB06367415C1F733001F26E1 /* DWProfileViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWProfileViewDataSource.h; sourceTree = "<group>"; };
+		BB06367515C1F733001F26E1 /* DWProfileViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWProfileViewDataSource.m; sourceTree = "<group>"; };
 		BB174D3F15BA404200DB50CA /* DWAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWAppDelegate.h; sourceTree = "<group>"; };
 		BB174D4015BA404200DB50CA /* DWAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWAppDelegate.m; sourceTree = "<group>"; };
 		BB174D4315BA405900DB50CA /* DWConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWConstants.h; sourceTree = "<group>"; };
@@ -334,6 +346,8 @@
 				BB06365815C09EF7001F26E1 /* DWNavigationRootViewController.m */,
 				BB06366315C0E295001F26E1 /* DWFeedNavigationViewController.h */,
 				BB06366415C0E295001F26E1 /* DWFeedNavigationViewController.m */,
+				BB06366E15C1F529001F26E1 /* DWProfileNavigationViewController.h */,
+				BB06366F15C1F529001F26E1 /* DWProfileNavigationViewController.m */,
 				BB06365A15C09FF7001F26E1 /* DWWelcomeNavigationRootViewController.h */,
 				BB06365B15C09FF7001F26E1 /* DWWelcomeNavigationRootViewController.m */,
 			);
@@ -374,6 +388,8 @@
 			children = (
 				BB26988115BBA75B00037453 /* DWFeedController.h */,
 				BB26988215BBA75B00037453 /* DWFeedController.m */,
+				BB06366A15C1E04B001F26E1 /* DWPurchasesController.h */,
+				BB06366B15C1E04B001F26E1 /* DWPurchasesController.m */,
 				BB174D4715BA43DC00DB50CA /* DWUsersController.h */,
 				BB174D4815BA43DC00DB50CA /* DWUsersController.m */,
 			);
@@ -618,6 +634,8 @@
 				BBE42F3715BCAD9D000F6AE1 /* Base */,
 				BBE42F4D15BDBB78000F6AE1 /* DWFeedViewController.h */,
 				BBE42F4E15BDBB79000F6AE1 /* DWFeedViewController.m */,
+				BB06367115C1F593001F26E1 /* DWProfileViewController.h */,
+				BB06367215C1F593001F26E1 /* DWProfileViewController.m */,
 			);
 			path = TableViewControllers;
 			sourceTree = "<group>";
@@ -637,6 +655,8 @@
 				BBE42F3B15BCAD9E000F6AE1 /* Base */,
 				BBE42F5015BDBBFC000F6AE1 /* DWFeedViewDataSource.h */,
 				BBE42F5115BDBBFC000F6AE1 /* DWFeedViewDataSource.m */,
+				BB06367415C1F733001F26E1 /* DWProfileViewDataSource.h */,
+				BB06367515C1F733001F26E1 /* DWProfileViewDataSource.m */,
 			);
 			path = TableViewDataSources;
 			sourceTree = "<group>";
@@ -824,6 +844,10 @@
 				BB06365C15C09FF7001F26E1 /* DWWelcomeNavigationRootViewController.m in Sources */,
 				BB06366115C0A147001F26E1 /* DWLoginViewController.m in Sources */,
 				BB06366515C0E295001F26E1 /* DWFeedNavigationViewController.m in Sources */,
+				BB06366C15C1E04B001F26E1 /* DWPurchasesController.m in Sources */,
+				BB06367015C1F529001F26E1 /* DWProfileNavigationViewController.m in Sources */,
+				BB06367315C1F593001F26E1 /* DWProfileViewController.m in Sources */,
+				BB06367615C1F733001F26E1 /* DWProfileViewDataSource.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

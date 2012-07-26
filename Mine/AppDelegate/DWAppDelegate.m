@@ -56,6 +56,7 @@ static NSInteger const kCreateTabIndex              = 1;
 @synthesize tabBarController        = _tabBarController;
 @synthesize welcomeNavController    = _welcomeNavController;
 @synthesize feedNavController       = _feedNavController;
+@synthesize profileNavController    = _profileNavController;
 
 //----------------------------------------------------------------------------------------------------
 - (void)setupApplication {
@@ -80,9 +81,7 @@ static NSInteger const kCreateTabIndex              = 1;
     
     UIViewController *_b = [[UIViewController alloc] init];
     _b.view.backgroundColor = [UIColor greenColor];
-    
-    UIViewController *_c = [[UIViewController alloc] init];
-    _c.view.backgroundColor = [UIColor blueColor];
+
     
     
     self.tabBarController = [[DWTabBarController alloc] init];
@@ -90,7 +89,7 @@ static NSInteger const kCreateTabIndex              = 1;
     
     [self.tabBarController addSubController:self.feedNavController];
     [self.tabBarController addSubController:_b];
-    [self.tabBarController addSubController:_c];
+    [self.tabBarController addSubController:self.profileNavController];
     
     
     self.tabBarController.tabBar.frame = CGRectMake(0, 411, 320, 49);

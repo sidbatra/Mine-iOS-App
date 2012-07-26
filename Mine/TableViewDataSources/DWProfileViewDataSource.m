@@ -1,26 +1,23 @@
 //
-//  DWFeedViewDataSource.m
+//  DWProfileViewDataSource.m
 //  Mine
 //
-//  Created by Siddharth Batra on 7/23/12.
+//  Created by Siddharth Batra on 7/26/12.
 //  Copyright (c) 2012 Denwen, Inc. All rights reserved.
 //
 
-#import "DWFeedViewDataSource.h"
-
-/**
- * Private declarations.
- */
-@interface DWFeedViewDataSource() {
-    DWFeedController *_feedController;
+#import "DWProfileViewDataSource.h"
+ 
+@interface DWProfileViewDataSource() {
+    DWPurchasesController *_purchasesController;
     
     NSInteger _oldestTimestamp;
 }
 
 /**
- * Data controller for fetching the feed.
+ * Data controller for fetching purchases.
  */
-@property (nonatomic,strong) DWFeedController* feedController;
+@property (nonatomic,strong) DWPurchasesController* purchasesController;
 
 /**
  * Timestamp of the last item in the feed. Used to fetch more items.
@@ -34,58 +31,61 @@
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
-@implementation DWFeedViewDataSource
+@implementation DWProfileViewDataSource
 
-@synthesize feedController  = _feedController;
-@synthesize oldestTimestamp = _oldestTimestamp;
+@synthesize userID                  = _userID;
+@synthesize purchasesController     = _purchasesController;
+@synthesize oldestTimestamp         = _oldestTimestamp;
 
 //----------------------------------------------------------------------------------------------------
 - (id)init {
     self = [super init];
     
     if(self) {
-        self.feedController = [[DWFeedController alloc] init];
-        self.feedController.delegate = self;
+        self.purchasesController            = [[DWPurchasesController alloc] init];
+        self.purchasesController.delegate   = self;
     }
     
     return self;
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)loadFeed {
-    [self.feedController getPurchasesBefore:self.oldestTimestamp];
+- (void)loadPurchases {
+    [self.purchasesController getPurchasesForUser:self.userID 
+                                           before:self.oldestTimestamp];
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)refreshInitiated {
-    [self.feedController getPurchasesBefore:0];
+    [self.purchasesController getPurchasesForUser:self.userID 
+                                           before:0];
 }
 
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
-#pragma mark DWFeedControllerDelegate
+#pragma mark DWPurchasesControllerDelegate
 
 //----------------------------------------------------------------------------------------------------
-- (void)feedLoaded:(NSMutableArray *)purchases {
+- (void)purchasesLoaded:(NSMutableArray *)purchases 
+                forUser:(NSNumber*)userID {
+    
+    if(self.userID != [userID integerValue])
+        return;
+    
     self.objects = purchases;
     
     [self.delegate reloadTableView];
-    
-    //for(DWPurchase *purchase in purchases) {
-    //    [purchase debug];
-    //}
-    
-    //DWPurchase *first = [purchases objectAtIndex:0];
-    //[first debug];
-    
-    //NSLog(@"TIME - %d",(NSInteger)[first.createdAt timeIntervalSince1970]);
-    //NSLog(@"TIME - %ld",);
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)feedLoadError:(NSString *)error {
+- (void)purchasesLoadError:(NSString *)error 
+                   forUser:(NSNumber*)userID {
+
+    if(self.userID != [userID integerValue])
+        return;
+    
     [self.delegate displayError:error
                   withRefreshUI:YES];
 }

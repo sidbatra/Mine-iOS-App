@@ -8,9 +8,6 @@
 
 #import "DWNavigationRootViewController.h"
 
-#import "DWFeedViewController.h"
-
-
 @interface DWFeedNavigationViewController : DWNavigationRootViewController
 
 @end
