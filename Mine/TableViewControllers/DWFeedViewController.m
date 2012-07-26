@@ -35,6 +35,11 @@
                                                  selector:@selector(purchaseGiantImageLoaded:) 
                                                      name:kNImgPurchaseGiantLoaded
                                                    object:nil];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self 
+                                                 selector:@selector(userSquareImageLoaded:) 
+                                                     name:kNImgUserSquareLoaded
+                                                   object:nil];
     }
     
     return self;
@@ -66,6 +71,16 @@
                                objectID:[[userInfo objectForKey:kKeyResourceID] integerValue]
                               objectKey:kKeyGiantImageURL];
 }
+
+//----------------------------------------------------------------------------------------------------
+- (void)userSquareImageLoaded:(NSNotification*)notification {
+    NSDictionary *userInfo = [notification userInfo];
+    
+    [self provideResourceToVisibleCells:[DWUser class] 
+                               objectID:[[userInfo objectForKey:kKeyResourceID] integerValue]
+                              objectKey:kKeySquareImageURL];
+}
+
 
 
 @end

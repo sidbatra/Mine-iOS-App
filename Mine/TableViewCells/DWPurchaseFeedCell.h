@@ -14,10 +14,16 @@ extern NSInteger const kPurchaseFeedCellHeight;
 
 
 @interface DWPurchaseFeedCell : UITableViewCell {
-    UIImageView *purchaseImageView;
-	UILabel     *messageLabel;
+    UIImageView     *userImageView;
+    UIImageView     *purchaseImageView;
+    
+	UILabel         *messageLabel;
 }
 
+/**
+ * Apply a user image.
+ */
+- (void)setUserImage:(UIImage*)image;
 
 /**
  * Apply a purchaese image

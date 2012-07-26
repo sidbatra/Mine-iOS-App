@@ -24,6 +24,7 @@ NSInteger const kPurchaseFeedCellHeight = 400;
 				reuseIdentifier:reuseIdentifier];
 	
     if (self) {
+        [self createUserImageView];
         [self createPurchaseImageView];
 		[self createMessageLabel];
 		
@@ -34,8 +35,17 @@ NSInteger const kPurchaseFeedCellHeight = 400;
 }
 
 //----------------------------------------------------------------------------------------------------
+- (void)createUserImageView {
+    userImageView                   = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,50,50)];
+    purchaseImageView.contentMode   = UIViewContentModeScaleAspectFit;
+    userImageView.backgroundColor   = [UIColor yellowColor];
+    
+    [self.contentView addSubview:userImageView];
+}
+
+//----------------------------------------------------------------------------------------------------
 - (void)createPurchaseImageView {
-    purchaseImageView                   = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,320,320)];
+    purchaseImageView                   = [[UIImageView alloc] initWithFrame:CGRectMake(0,50,320,320)];
     purchaseImageView.contentMode       = UIViewContentModeScaleAspectFit;
     purchaseImageView.backgroundColor   = [UIColor yellowColor];
     
@@ -45,7 +55,7 @@ NSInteger const kPurchaseFeedCellHeight = 400;
 //----------------------------------------------------------------------------------------------------
 - (void)createMessageLabel {
     messageLabel					= [[UILabel alloc] initWithFrame:CGRectMake(20,
-                                                                                320,
+                                                                                370,
                                                                                 self.contentView.frame.size.width-40,
                                                                                 30)];
     messageLabel.font				= [UIFont fontWithName:@"HelveticaNeue" size:13];	
@@ -54,6 +64,12 @@ NSInteger const kPurchaseFeedCellHeight = 400;
     messageLabel.textAlignment		= UITextAlignmentCenter;
     
     [self.contentView addSubview:messageLabel];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+- (void)setUserImage:(UIImage *)image {
+    userImageView.image = image;
 }
 
 //----------------------------------------------------------------------------------------------------

@@ -9,7 +9,7 @@
 #import "DWUser.h"
 #import "DWImageManager.h"
 
-
+NSString* const kKeySquareImageURL          = @"square_image_url";
 NSString* const kNImgUserSquareLoaded       = @"NImgUserSquareLoaded";
 NSString* const kNImgUserSquareLoadError    = @"NImgUserSquareLoadError";
 NSString* const kNImgUserLargeLoaded        = @"NImgUserLargeLoaded";
@@ -32,7 +32,6 @@ static NSString* const kKeyLastName         = @"last_name";
 static NSString* const kKeyGender           = @"gender";
 static NSString* const kKeyHandle           = @"handle";
 static NSString* const kKeyByline           = @"byline";
-static NSString* const kKeySquareImageURL   = @"square_image_url";
 static NSString* const kKeyLargeImageURL    = @"large_image_url";
 static NSString* const kKeyPurchasesCount   = @"purchases_count";
 

@@ -28,8 +28,11 @@
         cell = [[DWPurchaseFeedCell alloc] initWithStyle:UITableViewStylePlain 
                                          reuseIdentifier:identifier];
     [purchase downloadGiantImage];
+    [purchase.user downloadSquareImage];
     
     [cell setPurchaseImage:purchase.giantImage];
+    [cell setUserImage:purchase.user.squareImage];
+    
     [cell setMessage:purchase.title];
     
     return cell;
@@ -53,15 +56,15 @@
     DWPurchase *purchase        = object;
     DWPurchaseFeedCell *cell    = base;
     
-    if([purchase class] == objectClass && purchase.databaseID != objectID)
-        return;
-    
-    if([purchase.user class] == objectClass && purchase.user.databaseID != objectID)
-        return;
-    
-    
-    if([purchase class] == objectClass && objectKey == kKeyGiantImageURL) {
-        [cell setPurchaseImage:purchase.giantImage];
+    if([purchase class] == objectClass && purchase.databaseID == objectID) {
+        
+        if(objectKey == kKeyGiantImageURL)
+            [cell setPurchaseImage:purchase.giantImage];        
+    }
+    else if([purchase.user class] == objectClass && purchase.user.databaseID == objectID) {
+            
+        if(objectKey == kKeySquareImageURL)
+            [cell setUserImage:purchase.user.squareImage];
     }
 }
 
