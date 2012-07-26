@@ -11,7 +11,21 @@
 /**
  * Private declarations
  */
-@interface DWLoginViewController ()
+@interface DWLoginViewController () {
+    DWUsersController *_usersController;
+    DWFacebookConnect *_facebookConnect;
+}
+
+/**
+ * Users data controller for logging in the user.
+ */
+@property (nonatomic,strong) DWUsersController *usersController;
+
+/**
+ * Interface for implementing an FB connect.
+ */
+@property (nonatomic,strong) DWFacebookConnect *facebookConnect;
+
 @end
 
 
@@ -21,7 +35,10 @@
 //----------------------------------------------------------------------------------------------------
 @implementation DWLoginViewController
 
-@synthesize loginWithFBButton = _loginWithFBButton;
+@synthesize loginWithFBButton   = _loginWithFBButton;
+@synthesize delegate            = _delegate;
+@synthesize usersController     = _usersController;
+@synthesize facebookConnect     = _facebookConnect;
 
 //----------------------------------------------------------------------------------------------------
 - (id)init
@@ -29,6 +46,12 @@
     self = [super init];
     
     if (self) {
+        
+        self.usersController = [[DWUsersController alloc] init];
+        self.usersController.delegate = self;
+        
+        self.facebookConnect = [[DWFacebookConnect alloc] init];
+        self.facebookConnect.delegate = self;
     }
     
     return self;
@@ -52,9 +75,38 @@
 
 //----------------------------------------------------------------------------------------------------
 - (IBAction)loginWithFBButtonClicked:(id)sender {
-    NSLog(@"login with FB button clicked");
+    [self.facebookConnect authorize];
 }
 
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWUsersControllerDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)userCreated:(DWUser*)user {
+    [self.delegate userLoggedIn:user];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)userCreationError:(NSString*)error {
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWFacebookConnectDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)fbAuthenticatedWithToken:(NSString *)accessToken {
+    [self.usersController createUserFromFacebookWithAccessToken:accessToken];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)fbAuthenticationFailed {
+}
 
 
 @end

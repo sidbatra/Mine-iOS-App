@@ -42,8 +42,8 @@
     self.navigationController.navigationBar.clipsToBounds   = NO;
     
     if(!self.loginViewController) {
-        self.loginViewController                = [[DWLoginViewController alloc] init];
-        //self.loginViewController.delegate     = self;
+        self.loginViewController              = [[DWLoginViewController alloc] init];
+        self.loginViewController.delegate     = self;
     }
     
     [self.view addSubview:self.loginViewController.view];
@@ -52,6 +52,17 @@
 //----------------------------------------------------------------------------------------------------
 - (void)viewDidUnload {
     [super viewDidUnload];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWLoginViewControllerDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)userLoggedIn:(DWUser*)user {
+    [user debug];
 }
 
 

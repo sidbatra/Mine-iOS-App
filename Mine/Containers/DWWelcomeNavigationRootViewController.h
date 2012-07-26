@@ -13,7 +13,7 @@
 /**
  * Root view controller for the welcome navigation controller.
  */
-@interface DWWelcomeNavigationRootViewController : DWNavigationRootViewController {
+@interface DWWelcomeNavigationRootViewController : DWNavigationRootViewController<DWLoginViewControllerDelegate> {
     DWLoginViewController   *_loginViewController;
 }
 
