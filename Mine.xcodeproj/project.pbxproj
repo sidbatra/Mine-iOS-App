@@ -33,6 +33,7 @@
 		BB06365C15C09FF7001F26E1 /* DWWelcomeNavigationRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB06365B15C09FF7001F26E1 /* DWWelcomeNavigationRootViewController.m */; };
 		BB06366115C0A147001F26E1 /* DWLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB06365F15C0A147001F26E1 /* DWLoginViewController.m */; };
 		BB06366215C0A147001F26E1 /* DWLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB06366015C0A147001F26E1 /* DWLoginViewController.xib */; };
+		BB06366515C0E295001F26E1 /* DWFeedNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB06366415C0E295001F26E1 /* DWFeedNavigationViewController.m */; };
 		BB174D4115BA404200DB50CA /* DWAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BB174D4015BA404200DB50CA /* DWAppDelegate.m */; };
 		BB174D4515BA405900DB50CA /* DWConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = BB174D4415BA405900DB50CA /* DWConstants.m */; };
 		BB174D4915BA43DC00DB50CA /* DWUsersController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB174D4815BA43DC00DB50CA /* DWUsersController.m */; };
@@ -131,6 +132,8 @@
 		BB06365E15C0A147001F26E1 /* DWLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWLoginViewController.h; sourceTree = "<group>"; };
 		BB06365F15C0A147001F26E1 /* DWLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWLoginViewController.m; sourceTree = "<group>"; };
 		BB06366015C0A147001F26E1 /* DWLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DWLoginViewController.xib; sourceTree = "<group>"; };
+		BB06366315C0E295001F26E1 /* DWFeedNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWFeedNavigationViewController.h; sourceTree = "<group>"; };
+		BB06366415C0E295001F26E1 /* DWFeedNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWFeedNavigationViewController.m; sourceTree = "<group>"; };
 		BB174D3F15BA404200DB50CA /* DWAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWAppDelegate.h; sourceTree = "<group>"; };
 		BB174D4015BA404200DB50CA /* DWAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWAppDelegate.m; sourceTree = "<group>"; };
 		BB174D4315BA405900DB50CA /* DWConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWConstants.h; sourceTree = "<group>"; };
@@ -329,6 +332,8 @@
 			children = (
 				BB06365715C09EF7001F26E1 /* DWNavigationRootViewController.h */,
 				BB06365815C09EF7001F26E1 /* DWNavigationRootViewController.m */,
+				BB06366315C0E295001F26E1 /* DWFeedNavigationViewController.h */,
+				BB06366415C0E295001F26E1 /* DWFeedNavigationViewController.m */,
 				BB06365A15C09FF7001F26E1 /* DWWelcomeNavigationRootViewController.h */,
 				BB06365B15C09FF7001F26E1 /* DWWelcomeNavigationRootViewController.m */,
 			);
@@ -818,6 +823,7 @@
 				BB06365915C09EF7001F26E1 /* DWNavigationRootViewController.m in Sources */,
 				BB06365C15C09FF7001F26E1 /* DWWelcomeNavigationRootViewController.m in Sources */,
 				BB06366115C0A147001F26E1 /* DWLoginViewController.m in Sources */,
+				BB06366515C0E295001F26E1 /* DWFeedNavigationViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

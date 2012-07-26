@@ -55,6 +55,7 @@ static NSInteger const kCreateTabIndex              = 1;
 @synthesize window                  = _window;
 @synthesize tabBarController        = _tabBarController;
 @synthesize welcomeNavController    = _welcomeNavController;
+@synthesize feedNavController       = _feedNavController;
 
 //----------------------------------------------------------------------------------------------------
 - (void)setupApplication {
@@ -77,9 +78,6 @@ static NSInteger const kCreateTabIndex              = 1;
 //----------------------------------------------------------------------------------------------------
 - (void)setupTabBarController {
     
-    UIViewController *_a = [[UIViewController alloc] init];
-    _a.view.backgroundColor = [UIColor redColor];
-    
     UIViewController *_b = [[UIViewController alloc] init];
     _b.view.backgroundColor = [UIColor greenColor];
     
@@ -90,7 +88,7 @@ static NSInteger const kCreateTabIndex              = 1;
     self.tabBarController = [[DWTabBarController alloc] init];
     self.tabBarController.delegate = self;
     
-    [self.tabBarController addSubController:_a];
+    [self.tabBarController addSubController:self.feedNavController];
     [self.tabBarController addSubController:_b];
     [self.tabBarController addSubController:_c];
     
