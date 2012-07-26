@@ -29,6 +29,10 @@
 		BB06362615C06F0E001F26E1 /* tab_teams_on.png in Resources */ = {isa = PBXBuildFile; fileRef = BB06361C15C06F0E001F26E1 /* tab_teams_on.png */; };
 		BB06362715C06F0E001F26E1 /* tab_teams_on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB06361D15C06F0E001F26E1 /* tab_teams_on@2x.png */; };
 		BB06365515C08D2E001F26E1 /* Window.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB06365415C08D2E001F26E1 /* Window.xib */; };
+		BB06365915C09EF7001F26E1 /* DWNavigationRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB06365815C09EF7001F26E1 /* DWNavigationRootViewController.m */; };
+		BB06365C15C09FF7001F26E1 /* DWWelcomeNavigationRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB06365B15C09FF7001F26E1 /* DWWelcomeNavigationRootViewController.m */; };
+		BB06366115C0A147001F26E1 /* DWLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB06365F15C0A147001F26E1 /* DWLoginViewController.m */; };
+		BB06366215C0A147001F26E1 /* DWLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB06366015C0A147001F26E1 /* DWLoginViewController.xib */; };
 		BB174D4115BA404200DB50CA /* DWAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BB174D4015BA404200DB50CA /* DWAppDelegate.m */; };
 		BB174D4515BA405900DB50CA /* DWConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = BB174D4415BA405900DB50CA /* DWConstants.m */; };
 		BB174D4915BA43DC00DB50CA /* DWUsersController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB174D4815BA43DC00DB50CA /* DWUsersController.m */; };
@@ -120,6 +124,13 @@
 		BB06361C15C06F0E001F26E1 /* tab_teams_on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = tab_teams_on.png; sourceTree = "<group>"; };
 		BB06361D15C06F0E001F26E1 /* tab_teams_on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab_teams_on@2x.png"; sourceTree = "<group>"; };
 		BB06365415C08D2E001F26E1 /* Window.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Window.xib; sourceTree = "<group>"; };
+		BB06365715C09EF7001F26E1 /* DWNavigationRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWNavigationRootViewController.h; sourceTree = "<group>"; };
+		BB06365815C09EF7001F26E1 /* DWNavigationRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWNavigationRootViewController.m; sourceTree = "<group>"; };
+		BB06365A15C09FF7001F26E1 /* DWWelcomeNavigationRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWWelcomeNavigationRootViewController.h; sourceTree = "<group>"; };
+		BB06365B15C09FF7001F26E1 /* DWWelcomeNavigationRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWWelcomeNavigationRootViewController.m; sourceTree = "<group>"; };
+		BB06365E15C0A147001F26E1 /* DWLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWLoginViewController.h; sourceTree = "<group>"; };
+		BB06365F15C0A147001F26E1 /* DWLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWLoginViewController.m; sourceTree = "<group>"; };
+		BB06366015C0A147001F26E1 /* DWLoginViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DWLoginViewController.xib; sourceTree = "<group>"; };
 		BB174D3F15BA404200DB50CA /* DWAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWAppDelegate.h; sourceTree = "<group>"; };
 		BB174D4015BA404200DB50CA /* DWAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWAppDelegate.m; sourceTree = "<group>"; };
 		BB174D4315BA405900DB50CA /* DWConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWConstants.h; sourceTree = "<group>"; };
@@ -311,6 +322,27 @@
 				BB06361115BF7DB2001F26E1 /* DWTabBarController.m */,
 			);
 			path = TabBar;
+			sourceTree = "<group>";
+		};
+		BB06365615C09CD3001F26E1 /* Containers */ = {
+			isa = PBXGroup;
+			children = (
+				BB06365715C09EF7001F26E1 /* DWNavigationRootViewController.h */,
+				BB06365815C09EF7001F26E1 /* DWNavigationRootViewController.m */,
+				BB06365A15C09FF7001F26E1 /* DWWelcomeNavigationRootViewController.h */,
+				BB06365B15C09FF7001F26E1 /* DWWelcomeNavigationRootViewController.m */,
+			);
+			path = Containers;
+			sourceTree = "<group>";
+		};
+		BB06365D15C0A127001F26E1 /* WelcomeControllers */ = {
+			isa = PBXGroup;
+			children = (
+				BB06365E15C0A147001F26E1 /* DWLoginViewController.h */,
+				BB06365F15C0A147001F26E1 /* DWLoginViewController.m */,
+				BB06366015C0A147001F26E1 /* DWLoginViewController.xib */,
+			);
+			path = WelcomeControllers;
 			sourceTree = "<group>";
 		};
 		BB174D3E15BA404200DB50CA /* AppDelegate */ = {
@@ -542,6 +574,7 @@
 				BB9F711115BA033D0099C80A /* Categories */,
 				BB174D4215BA405900DB50CA /* Constants */,
 				262376A115BF6B8100B3A037 /* Connect */,
+				BB06365615C09CD3001F26E1 /* Containers */,
 				BB174D4D15BB425900DB50CA /* Cryptography */,
 				BB174D4615BA43C700DB50CA /* DataControllers */,
 				BB06360315BF7258001F26E1 /* Images */,
@@ -558,6 +591,7 @@
 				BBE42F3615BCAD9D000F6AE1 /* TableViewControllers */,
 				BBE42F3A15BCAD9D000F6AE1 /* TableViewDataSources */,
 				BB26986B15BB653900037453 /* ViewControllers */,
+				BB06365D15C0A127001F26E1 /* WelcomeControllers */,
 			);
 			path = Mine;
 			sourceTree = "<group>";
@@ -717,6 +751,7 @@
 				BB06362615C06F0E001F26E1 /* tab_teams_on.png in Resources */,
 				BB06362715C06F0E001F26E1 /* tab_teams_on@2x.png in Resources */,
 				BB06365515C08D2E001F26E1 /* Window.xib in Resources */,
+				BB06366215C0A147001F26E1 /* DWLoginViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -780,6 +815,9 @@
 				BB06360C15BF726D001F26E1 /* DWErrorView.m in Sources */,
 				BB06361215BF7DB2001F26E1 /* DWTabBar.m in Sources */,
 				BB06361315BF7DB2001F26E1 /* DWTabBarController.m in Sources */,
+				BB06365915C09EF7001F26E1 /* DWNavigationRootViewController.m in Sources */,
+				BB06365C15C09FF7001F26E1 /* DWWelcomeNavigationRootViewController.m in Sources */,
+				BB06366115C0A147001F26E1 /* DWLoginViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

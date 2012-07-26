@@ -13,12 +13,18 @@
 /**
  * Custom app delegate
  */
-@interface DWAppDelegate : UIResponder<UIApplicationDelegate,DWTabBarControllerDelegate> {    
+@interface DWAppDelegate : UIResponder<UIApplicationDelegate,DWTabBarControllerDelegate> {
+    UINavigationController	*_welcomeNavController;
 }
 
 /**
  * Window for the application
  */
-@property (strong, nonatomic) IBOutlet UIWindow *window;
+@property (nonatomic) IBOutlet UIWindow *window;
+
+/**
+ * IBOutlets
+ */
+@property (nonatomic) IBOutlet UINavigationController *welcomeNavController;
 
 @end

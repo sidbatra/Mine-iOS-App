@@ -7,6 +7,8 @@
 //
 
 #import "DWAppDelegate.h"
+
+#import "DWSession.h"
 #import "DWConstants.h"
 
 
@@ -18,7 +20,7 @@ static NSInteger const kCreateTabIndex              = 1;
  * Private declarations
  */
 @interface DWAppDelegate() {
-    DWTabBarController	*_tabBarController;
+    DWTabBarController      *_tabBarController;
 }
 
 /**
@@ -46,8 +48,9 @@ static NSInteger const kCreateTabIndex              = 1;
 //----------------------------------------------------------------------------------------------------
 @implementation DWAppDelegate
 
-@synthesize window              = _window;
-@synthesize tabBarController    = _tabBarController;
+@synthesize window                  = _window;
+@synthesize tabBarController        = _tabBarController;
+@synthesize welcomeNavController    = _welcomeNavController;
 
 //----------------------------------------------------------------------------------------------------
 - (void)setupTabBarController {
@@ -128,6 +131,11 @@ static NSInteger const kCreateTabIndex              = 1;
 
     [self.window addSubview:self.tabBarController.view];
     [self.window makeKeyAndVisible]; 
+    
+
+    if(![[DWSession sharedDWSession] isAuthenticated])
+        [self.tabBarController presentModalViewController:self.welcomeNavController
+                                                 animated:NO];
     
     return YES;
 }
