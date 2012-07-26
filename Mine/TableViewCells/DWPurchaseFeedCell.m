@@ -26,7 +26,8 @@ NSInteger const kPurchaseFeedCellHeight = 400;
     if (self) {
         [self createUserImageView];
         [self createPurchaseImageView];
-		[self createMessageLabel];
+        [self createUserNameLabel];
+		[self createTitleLabel];
 		
 		self.selectionStyle = UITableViewCellSelectionStyleNone;	
 	}
@@ -53,17 +54,31 @@ NSInteger const kPurchaseFeedCellHeight = 400;
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)createMessageLabel {
-    messageLabel					= [[UILabel alloc] initWithFrame:CGRectMake(20,
+- (void)createUserNameLabel {
+    userNameLabel					= [[UILabel alloc] initWithFrame:CGRectMake(55,
+                                                                                5,
+                                                                                250,
+                                                                                30)];
+    userNameLabel.font				= [UIFont fontWithName:@"HelveticaNeue" size:13];	
+    userNameLabel.textColor			= [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0];
+    userNameLabel.backgroundColor	= [UIColor redColor];
+    userNameLabel.textAlignment		= UITextAlignmentLeft;
+    
+    [self.contentView addSubview:userNameLabel];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)createTitleLabel {
+    titleLabel					= [[UILabel alloc] initWithFrame:CGRectMake(20,
                                                                                 370,
                                                                                 self.contentView.frame.size.width-40,
                                                                                 30)];
-    messageLabel.font				= [UIFont fontWithName:@"HelveticaNeue" size:13];	
-    messageLabel.textColor			= [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0];
-    messageLabel.backgroundColor	= [UIColor redColor];
-    messageLabel.textAlignment		= UITextAlignmentCenter;
+    titleLabel.font				= [UIFont fontWithName:@"HelveticaNeue" size:13];	
+    titleLabel.textColor		= [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0];
+    titleLabel.backgroundColor	= [UIColor redColor];
+    titleLabel.textAlignment	= UITextAlignmentLeft;
     
-    [self.contentView addSubview:messageLabel];
+    [self.contentView addSubview:titleLabel];
 }
 
 
@@ -78,8 +93,13 @@ NSInteger const kPurchaseFeedCellHeight = 400;
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)setMessage:(NSString*)message {
-    messageLabel.text = message;
+- (void)setUserName:(NSString *)userName {
+    userNameLabel.text = userName;
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)setTitle:(NSString*)title {
+    titleLabel.text = title;
 }
 
 @end

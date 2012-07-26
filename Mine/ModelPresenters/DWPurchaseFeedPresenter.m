@@ -33,7 +33,8 @@
     [cell setPurchaseImage:purchase.giantImage];
     [cell setUserImage:purchase.user.squareImage];
     
-    [cell setMessage:purchase.title];
+    [cell setUserName:purchase.user.fullName];
+    [cell setTitle:purchase.title];
     
     return cell;
 }

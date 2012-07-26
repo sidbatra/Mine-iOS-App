@@ -17,7 +17,8 @@ extern NSInteger const kPurchaseFeedCellHeight;
     UIImageView     *userImageView;
     UIImageView     *purchaseImageView;
     
-	UILabel         *messageLabel;
+    UILabel         *userNameLabel;
+	UILabel         *titleLabel;
 }
 
 /**
@@ -31,8 +32,13 @@ extern NSInteger const kPurchaseFeedCellHeight;
 - (void)setPurchaseImage:(UIImage*)image;
 
 /**
- * Set a new message on to the message label
+ * Set user name for the purchase.
  */
-- (void)setMessage:(NSString*)message;
+- (void)setUserName:(NSString*)userName;
+
+/**
+ * Set purchase title.
+ */
+- (void)setTitle:(NSString*)title;
 
 @end

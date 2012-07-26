@@ -47,6 +47,11 @@ extern NSString* const kNImgUserLargeLoadError;
 @property (nonatomic,copy) NSString *lastName;
 
 /**
+ * Full name of the user.
+ */
+@property (nonatomic,readonly) NSString *fullName;
+
+/**
  * Gender - male, female or nil
  */
 @property (nonatomic,copy) NSString *gender;
@@ -61,7 +66,6 @@ extern NSString* const kNImgUserLargeLoadError;
  */
 @property (nonatomic,copy) NSString *byline;
 
-
 /**
  * Image URL for a square user image.
  */
@@ -71,7 +75,6 @@ extern NSString* const kNImgUserLargeLoadError;
  * Image URL for a large rectangle user image.
  */
 @property (nonatomic,copy) NSString *largeImageURL;
-
 
 /**
  * Returns the square UIImage if it has been downloaded or nil.

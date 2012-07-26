@@ -160,6 +160,10 @@ static NSString* const kKeyPurchasesCount   = @"purchases_count";
         self.purchasesCount = [purchasesCount integerValue];
 }
 
+//----------------------------------------------------------------------------------------------------
+- (NSString*)fullName {
+    return [NSString stringWithFormat:@"%@ %@",self.firstName,self.lastName];
+}
 
 //----------------------------------------------------------------------------------------------------
 - (UIImage*)squareImage {
