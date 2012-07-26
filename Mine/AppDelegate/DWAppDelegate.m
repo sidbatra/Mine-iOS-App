@@ -118,6 +118,19 @@ static NSInteger const kCreateTabIndex              = 1;
     }        
 }
 
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark Notifications
+
+//----------------------------------------------------------------------------------------------------
+- (void)welcomeNavigationFinished:(NSNotification*)notification {
+    DWUser *user = [[notification userInfo] objectForKey:kKeyUser];
+    [user debug];
+        
+    [self.tabBarController dismissModalViewControllerAnimated:YES];
+}
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
@@ -126,6 +139,11 @@ static NSInteger const kCreateTabIndex              = 1;
 
 //----------------------------------------------------------------------------------------------------
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self 
+                                             selector:@selector(welcomeNavigationFinished:) 
+                                                 name:kNWelcomeNavigationFinished
+                                               object:nil];
     
     [self setupTabBarController];
 
@@ -166,7 +184,7 @@ static NSInteger const kCreateTabIndex              = 1;
 
 //----------------------------------------------------------------------------------------------------
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {    
-    
+
     [self handleExternalURL:url];
     return YES;
 }

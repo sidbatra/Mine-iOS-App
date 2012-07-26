@@ -7,11 +7,20 @@
 //
 
 #import "DWWelcomeNavigationRootViewController.h"
+#import "DWConstants.h"
 
 /**
  * Private declarations
  */
 @interface DWWelcomeNavigationRootViewController ()
+
+/**
+ * End the welcome navigation by firing a notification.
+ * It's supposed to be used when a user has successfully finished
+ * either a log in or sign up and is now ready to enter the app.
+ */
+- (void)endWelcomeNavigationWithUser:(DWUser*)user;
+
 @end
 
 
@@ -26,6 +35,13 @@
 //----------------------------------------------------------------------------------------------------
 - (void)awakeFromNib {
 	[super awakeFromNib];	
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)endWelcomeNavigationWithUser:(DWUser*)user {
+    [[NSNotificationCenter defaultCenter] postNotificationName:kNWelcomeNavigationFinished
+                                                        object:nil
+                                                      userInfo:[NSDictionary dictionaryWithObjectsAndKeys:user,kKeyUser,nil]];
 }
 
 
@@ -62,7 +78,7 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)userLoggedIn:(DWUser*)user {
-    [user debug];
+    [self endWelcomeNavigationWithUser:user];
 }
 
 

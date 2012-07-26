@@ -21,7 +21,6 @@ static NSString* const kKeySourceURL        = @"source_url";
 static NSString* const kKeyGiantImageURL    = @"giant_url";
 static NSString* const kKeyFbObjectID       = @"fb_object_id";
 static NSString* const kKeyCreatedAt        = @"created_at";
-static NSString* const kKeyUser             = @"user";
 static NSString* const kKeyStore            = @"store";
 
 

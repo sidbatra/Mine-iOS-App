@@ -44,6 +44,7 @@ NSString* const kNEnteringLowMemoryState    = @"NEnteringLowMemoryState";
 NSString* const kNImageDownloaded           = @"NImageDownloaded";
 NSString* const kNImageDownloadError        = @"NImageDownloadError";
 NSString* const kNFacebookURLOpened         = @"NFacebookURLOpened";
+NSString* const kNWelcomeNavigationFinished = @"kNWelcomeNavigationFinished";
 
 
 //----------------------------------------------------------------------------------------------------
@@ -59,6 +60,7 @@ NSString* const kKeyResponse    = @"response";
 NSString* const kKeyURL         = @"url";
 NSString* const kKeyImage       = @"image";
 NSString* const kKeyError       = @"error";
+NSString* const kKeyUser        = @"user";
 
 //----------------------------------------------------------------------------------------------------
 NSString* const kRailsDateTimeFormat = @"yyyy-MM-dd'T'HH:mm:ss'-07:00'";

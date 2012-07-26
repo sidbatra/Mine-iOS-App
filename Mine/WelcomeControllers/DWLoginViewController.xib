@@ -35,7 +35,7 @@
 				<reference key="NSNextResponder"/>
 				<int key="NSvFlags">274</int>
 				<array class="NSMutableArray" key="NSSubviews">
-					<object class="IBUIButton" id="708868407">
+					<object class="IBUIButton" id="876385234">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{100, 189}, {121, 37}}</string>
@@ -74,6 +74,10 @@
 				<string key="NSFrame">{{0, 20}, {320, 460}}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
+				<object class="NSColor" key="IBUIBackgroundColor">
+					<int key="NSColorSpace">1</int>
+					<bytes key="NSRGB">MC4yIDAuNCAwLjIAA</bytes>
+				</object>
 				<object class="IBUISimulatedStatusBarMetrics" key="IBUISimulatedStatusBarMetrics"/>
 				<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 			</object>
@@ -92,14 +96,14 @@
 					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">loginWithFBButton</string>
 						<reference key="source" ref="372490531"/>
-						<reference key="destination" ref="708868407"/>
+						<reference key="destination" ref="876385234"/>
 					</object>
 					<int key="connectionID">5</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
 						<string key="label">loginWithFBButtonClicked:</string>
-						<reference key="source" ref="708868407"/>
+						<reference key="source" ref="876385234"/>
 						<reference key="destination" ref="975951072"/>
 						<int key="IBEventType">7</int>
 					</object>
@@ -118,7 +122,7 @@
 						<int key="objectID">1</int>
 						<reference key="object" ref="191373211"/>
 						<array class="NSMutableArray" key="children">
-							<reference ref="708868407"/>
+							<reference ref="876385234"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -135,7 +139,7 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">4</int>
-						<reference key="object" ref="708868407"/>
+						<reference key="object" ref="876385234"/>
 						<reference key="parent" ref="191373211"/>
 					</object>
 				</array>

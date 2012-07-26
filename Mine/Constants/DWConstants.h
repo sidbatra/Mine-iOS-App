@@ -33,6 +33,7 @@ extern NSString* const kNEnteringLowMemoryState;
 extern NSString* const kNImageDownloaded;
 extern NSString* const kNImageDownloadError;
 extern NSString* const kNFacebookURLOpened;
+extern NSString* const kNWelcomeNavigationFinished;
 
 
 /**
@@ -51,6 +52,7 @@ extern NSString* const kKeyResponse;
 extern NSString* const kKeyURL;
 extern NSString* const kKeyImage;
 extern NSString* const kKeyError;
+extern NSString* const kKeyUser;
 
 /**
  * Misc
