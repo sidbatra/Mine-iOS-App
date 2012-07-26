@@ -34,9 +34,9 @@
 + (void)updatePresentationForCell:(id)base
                          ofObject:(id)object
             withPresentationStyle:(NSInteger)style
-                  withNewResource:(id)resource
-                 havingResourceID:(NSInteger)resourceID
-                           ofType:(NSInteger)resourceType;
+                  withObjectClass:(Class)objectClass
+                     withObjectID:(NSInteger)objectID
+                     andObjectKey:(NSString*)objectKey;
 
 /**
  * Send messages to the delegate when the cell is clicked for the

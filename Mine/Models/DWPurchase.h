@@ -14,8 +14,9 @@
 
 
 /**
- * Notifications
+ * 
  */
+extern NSString* const kKeyGiantImageURL;
 extern NSString* const kNImgPurchaseGiantLoaded;
 extern NSString* const kNImgPurchaseGiantLoadError;
 

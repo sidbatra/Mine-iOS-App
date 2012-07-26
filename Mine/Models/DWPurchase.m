@@ -11,6 +11,7 @@
 #import "DWImageManager.h"
 #import "DWConstants.h"
 
+NSString* const kKeyGiantImageURL           = @"giant_url";
 NSString* const kNImgPurchaseGiantLoaded    = @"NImgPurchaseGiantLoaded";
 NSString* const kNImgPurchaseGiantLoadError = @"NImgPurchaseGiantLoadError";
 
@@ -18,7 +19,6 @@ NSString* const kNImgPurchaseGiantLoadError = @"NImgPurchaseGiantLoadError";
 static NSString* const kKeyTitle            = @"title";
 static NSString* const kKeyEndorsement      = @"endorsement";
 static NSString* const kKeySourceURL        = @"source_url";
-static NSString* const kKeyGiantImageURL    = @"giant_url";
 static NSString* const kKeyFbObjectID       = @"fb_object_id";
 static NSString* const kKeyCreatedAt        = @"created_at";
 static NSString* const kKeyStore            = @"store";

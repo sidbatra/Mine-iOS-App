@@ -30,6 +30,11 @@
         [self addModelPresenterForClass:[DWPurchase class]
                               withStyle:kDefaultModelPresenter 
                           withPresenter:[DWPurchaseFeedPresenter class]];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self 
+                                                 selector:@selector(purchaseGiantImageLoaded:) 
+                                                     name:kNImgPurchaseGiantLoaded
+                                                   object:nil];
     }
     
     return self;
@@ -46,5 +51,21 @@
     
     [(DWFeedViewDataSource*)self.tableViewDataSource loadFeed];
 }
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark Notifications
+
+//----------------------------------------------------------------------------------------------------
+- (void)purchaseGiantImageLoaded:(NSNotification*)notification {
+    NSDictionary *userInfo = [notification userInfo];
+    
+    [self provideResourceToVisibleCells:[DWPurchase class] 
+                               objectID:[[userInfo objectForKey:kKeyResourceID] integerValue]
+                              objectKey:kKeyGiantImageURL];
+}
+
 
 @end

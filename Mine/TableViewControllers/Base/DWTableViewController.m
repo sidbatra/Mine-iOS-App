@@ -44,14 +44,6 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
 
 
 /**
- * Pass the newly available resource to all visible cells to check
- * for possible UI updates
- */
-- (void)provideResourceToVisibleCells:(NSInteger)resourceType
-                             resource:(id)resource
-                           resourceID:(NSInteger)resourceID;
-
-/**
  * Enable scrolling & bouncing for the table view
  */
 - (void)enableScrolling;
@@ -156,9 +148,9 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
 
 
 //----------------------------------------------------------------------------------------------------
-- (void)provideResourceToVisibleCells:(NSInteger)resourceType
-                             resource:(id)resource
-                           resourceID:(NSInteger)resourceID {
+- (void)provideResourceToVisibleCells:(Class)objectClass
+                             objectID:(NSInteger)objectID
+                            objectKey:(NSString*)objectKey {
     
     if(![self isViewLoaded])
         return;
@@ -176,13 +168,13 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
         NSInteger modelPresenterStyle = [(NSNumber*)[presenter objectForKey:kModelKeyPresenterStyle] integerValue];
         
         id cell = [self.tableView cellForRowAtIndexPath:indexPath];
-        
+           
         [modelPresenter updatePresentationForCell:cell
                                          ofObject:object
                             withPresentationStyle:modelPresenterStyle
-                                  withNewResource:resource
-                                 havingResourceID:resourceID
-                                           ofType:resourceType];
+                                  withObjectClass:objectClass
+                                     withObjectID:objectID
+                                     andObjectKey:objectKey];
     }
 }
 

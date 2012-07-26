@@ -46,9 +46,23 @@
 + (void)updatePresentationForCell:(id)base
                          ofObject:(id)object
             withPresentationStyle:(NSInteger)style
-                  withNewResource:(id)resource
-                 havingResourceID:(NSInteger)resourceID
-                           ofType:(NSInteger)resourceType {    
+                  withObjectClass:(Class)objectClass
+                     withObjectID:(NSInteger)objectID
+                     andObjectKey:(NSString*)objectKey {
+    
+    DWPurchase *purchase        = object;
+    DWPurchaseFeedCell *cell    = base;
+    
+    if([purchase class] == objectClass && purchase.databaseID != objectID)
+        return;
+    
+    if([purchase.user class] == objectClass && purchase.user.databaseID != objectID)
+        return;
+    
+    
+    if([purchase class] == objectClass && objectKey == kKeyGiantImageURL) {
+        [cell setPurchaseImage:purchase.giantImage];
+    }
 }
 
 //----------------------------------------------------------------------------------------------------

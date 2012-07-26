@@ -59,6 +59,14 @@
                     withPresenter:(Class)presenter;
 
 /**
+ * Pass the newly available resource to all visible cells to check
+ * for possible UI updates
+ */
+- (void)provideResourceToVisibleCells:(Class)objectClass
+                             objectID:(NSInteger)objectID
+                            objectKey:(NSString*)objectKey;
+
+/**
  * Template method which can be overriden for custom laoding views which is a UIView 
  * displayed while the data is being loaded
  */
