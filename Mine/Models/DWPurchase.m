@@ -65,6 +65,12 @@ static NSString* const kKeyStore            = @"store";
     [[DWImageManager sharedDWImageManager] remove:self.giantImageURL];
 }
 
+
+//----------------------------------------------------------------------------------------------------
+- (UIImage*)giantImage {
+    return [[DWImageManager sharedDWImageManager] fetch:self.giantImageURL];
+}
+
 //----------------------------------------------------------------------------------------------------
 - (void)update:(NSDictionary*)purchase {
     [super update:purchase];
@@ -119,11 +125,6 @@ static NSString* const kKeyStore            = @"store";
     }
 }
 
-
-//----------------------------------------------------------------------------------------------------
-- (id)giantImage {
-    return [[DWImageManager sharedDWImageManager] fetch:self.giantImageURL];
-}
 
 //----------------------------------------------------------------------------------------------------
 - (void)downloadGiantImage {

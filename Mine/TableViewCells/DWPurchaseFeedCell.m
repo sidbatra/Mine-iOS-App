@@ -8,7 +8,7 @@
 
 #import "DWPurchaseFeedCell.h"
 
-NSInteger const kPurchaseFeedCellHeight = 30;
+NSInteger const kPurchaseFeedCellHeight = 400;
 
 
 //----------------------------------------------------------------------------------------------------
@@ -24,6 +24,7 @@ NSInteger const kPurchaseFeedCellHeight = 30;
 				reuseIdentifier:reuseIdentifier];
 	
     if (self) {
+        [self createPurchaseImageView];
 		[self createMessageLabel];
 		
 		self.selectionStyle = UITableViewCellSelectionStyleNone;	
@@ -33,16 +34,31 @@ NSInteger const kPurchaseFeedCellHeight = 30;
 }
 
 //----------------------------------------------------------------------------------------------------
+- (void)createPurchaseImageView {
+    purchaseImageView                   = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,320,320)];
+    purchaseImageView.contentMode       = UIViewContentModeScaleAspectFit;
+    purchaseImageView.backgroundColor   = [UIColor yellowColor];
+    
+    [self.contentView addSubview:purchaseImageView];
+}
+
+//----------------------------------------------------------------------------------------------------
 - (void)createMessageLabel {
-    messageLabel					= [[UILabel alloc] initWithFrame:CGRectMake(20,-1,
+    messageLabel					= [[UILabel alloc] initWithFrame:CGRectMake(20,
+                                                                                320,
                                                                                 self.contentView.frame.size.width-40,
-                                                                                kPurchaseFeedCellHeight)];
+                                                                                30)];
     messageLabel.font				= [UIFont fontWithName:@"HelveticaNeue" size:13];	
     messageLabel.textColor			= [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0];
-    messageLabel.backgroundColor	= [UIColor clearColor];
+    messageLabel.backgroundColor	= [UIColor redColor];
     messageLabel.textAlignment		= UITextAlignmentCenter;
     
     [self.contentView addSubview:messageLabel];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)setPurchaseImage:(UIImage*)image {
+    purchaseImageView.image = image;
 }
 
 //----------------------------------------------------------------------------------------------------

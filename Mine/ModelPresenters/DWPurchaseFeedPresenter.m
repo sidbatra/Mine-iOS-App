@@ -26,8 +26,10 @@
     
     if(!cell)
         cell = [[DWPurchaseFeedCell alloc] initWithStyle:UITableViewStylePlain 
-                                    reuseIdentifier:identifier];
+                                         reuseIdentifier:identifier];
+    [purchase downloadGiantImage];
     
+    [cell setPurchaseImage:purchase.giantImage];
     [cell setMessage:purchase.title];
     
     return cell;

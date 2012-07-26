@@ -79,9 +79,10 @@ extern NSString* const kNImgPurchaseGiantLoadError;
 
 
 /**
- * Returns the giant UIImage if it has been downloaded or nil
+ * Retrieve the giant purchase image.
  */
-- (id)giantImage;
+@property (nonatomic,readonly) UIImage* giantImage; 
+
 
 /**
  * Start downloading the giant image
