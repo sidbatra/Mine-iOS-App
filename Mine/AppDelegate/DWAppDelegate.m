@@ -28,6 +28,10 @@ static NSInteger const kCreateTabIndex              = 1;
  */
 @property (strong, nonatomic) DWTabBarController *tabBarController;
 
+/**
+ * Entry point for the app which sets up the basic structure.
+ */
+- (void)setupApplication;
 
 /**
  * Creates the tab bar controller and its sub controllers.
@@ -51,6 +55,24 @@ static NSInteger const kCreateTabIndex              = 1;
 @synthesize window                  = _window;
 @synthesize tabBarController        = _tabBarController;
 @synthesize welcomeNavController    = _welcomeNavController;
+
+//----------------------------------------------------------------------------------------------------
+- (void)setupApplication {
+    [[NSNotificationCenter defaultCenter] addObserver:self 
+                                             selector:@selector(welcomeNavigationFinished:) 
+                                                 name:kNWelcomeNavigationFinished
+                                               object:nil];
+    
+    [self setupTabBarController];
+    
+    [self.window addSubview:self.tabBarController.view];
+    [self.window makeKeyAndVisible]; 
+    
+    
+    if(![[DWSession sharedDWSession] isAuthenticated])
+        [self.tabBarController presentModalViewController:self.welcomeNavController
+                                                 animated:NO];
+}
 
 //----------------------------------------------------------------------------------------------------
 - (void)setupTabBarController {
@@ -126,7 +148,7 @@ static NSInteger const kCreateTabIndex              = 1;
 //----------------------------------------------------------------------------------------------------
 - (void)welcomeNavigationFinished:(NSNotification*)notification {
     DWUser *user = [[notification userInfo] objectForKey:kKeyUser];
-    [user debug];
+    [[DWSession sharedDWSession] create:user];
         
     [self.tabBarController dismissModalViewControllerAnimated:YES];
 }
@@ -140,21 +162,7 @@ static NSInteger const kCreateTabIndex              = 1;
 //----------------------------------------------------------------------------------------------------
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    [[NSNotificationCenter defaultCenter] addObserver:self 
-                                             selector:@selector(welcomeNavigationFinished:) 
-                                                 name:kNWelcomeNavigationFinished
-                                               object:nil];
-    
-    [self setupTabBarController];
-
-    [self.window addSubview:self.tabBarController.view];
-    [self.window makeKeyAndVisible]; 
-    
-
-    if(![[DWSession sharedDWSession] isAuthenticated])
-        [self.tabBarController presentModalViewController:self.welcomeNavController
-                                                 animated:NO];
-    
+    [self setupApplication];
     return YES;
 }
 
