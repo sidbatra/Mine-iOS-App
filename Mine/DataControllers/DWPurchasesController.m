@@ -84,7 +84,6 @@ static NSString* const kNUserPurchasesLoadError  = @"NUserPurchasesLoadError";
     if(![self.delegate respondsToSelector:sel])
         return;
     
-    
     NSDictionary *info          = [notification userInfo];
     NSArray *response           = [info objectForKey:kKeyResponse];
     

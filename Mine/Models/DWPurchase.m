@@ -90,7 +90,7 @@ static NSString* const kKeyStore            = @"store";
     if(title && ![self.title isEqualToString:title])
         self.title = title;
     
-    if(endorsement && ![self.endorsement isEqualToString:endorsement])
+    if(endorsement  && ![endorsement isKindOfClass:[NSNull class]] && ![self.endorsement isEqualToString:endorsement])
         self.endorsement = endorsement;
     
     if(sourceURL && ![self.sourceURL isEqualToString:sourceURL])
