@@ -38,6 +38,9 @@
 		BB06367015C1F529001F26E1 /* DWProfileNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB06366F15C1F529001F26E1 /* DWProfileNavigationViewController.m */; };
 		BB06367315C1F593001F26E1 /* DWProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB06367215C1F593001F26E1 /* DWProfileViewController.m */; };
 		BB06367615C1F733001F26E1 /* DWProfileViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = BB06367515C1F733001F26E1 /* DWProfileViewDataSource.m */; };
+		BB06367C15C3195B001F26E1 /* DWPagination.m in Sources */ = {isa = PBXBuildFile; fileRef = BB06367B15C3195B001F26E1 /* DWPagination.m */; };
+		BB06367F15C31968001F26E1 /* DWPaginationPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = BB06367E15C31968001F26E1 /* DWPaginationPresenter.m */; };
+		BB06368215C31974001F26E1 /* DWPaginationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BB06368115C31973001F26E1 /* DWPaginationCell.m */; };
 		BB174D4115BA404200DB50CA /* DWAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BB174D4015BA404200DB50CA /* DWAppDelegate.m */; };
 		BB174D4515BA405900DB50CA /* DWConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = BB174D4415BA405900DB50CA /* DWConstants.m */; };
 		BB174D4915BA43DC00DB50CA /* DWUsersController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB174D4815BA43DC00DB50CA /* DWUsersController.m */; };
@@ -146,6 +149,12 @@
 		BB06367215C1F593001F26E1 /* DWProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWProfileViewController.m; sourceTree = "<group>"; };
 		BB06367415C1F733001F26E1 /* DWProfileViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWProfileViewDataSource.h; sourceTree = "<group>"; };
 		BB06367515C1F733001F26E1 /* DWProfileViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWProfileViewDataSource.m; sourceTree = "<group>"; };
+		BB06367A15C3195B001F26E1 /* DWPagination.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWPagination.h; sourceTree = "<group>"; };
+		BB06367B15C3195B001F26E1 /* DWPagination.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWPagination.m; sourceTree = "<group>"; };
+		BB06367D15C31968001F26E1 /* DWPaginationPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWPaginationPresenter.h; sourceTree = "<group>"; };
+		BB06367E15C31968001F26E1 /* DWPaginationPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWPaginationPresenter.m; sourceTree = "<group>"; };
+		BB06368015C31973001F26E1 /* DWPaginationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWPaginationCell.h; sourceTree = "<group>"; };
+		BB06368115C31973001F26E1 /* DWPaginationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWPaginationCell.m; sourceTree = "<group>"; };
 		BB174D3F15BA404200DB50CA /* DWAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWAppDelegate.h; sourceTree = "<group>"; };
 		BB174D4015BA404200DB50CA /* DWAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWAppDelegate.m; sourceTree = "<group>"; };
 		BB174D4315BA405900DB50CA /* DWConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWConstants.h; sourceTree = "<group>"; };
@@ -505,6 +514,8 @@
 		BB9F710615B9EBDE0099C80A /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				BB06367A15C3195B001F26E1 /* DWPagination.h */,
+				BB06367B15C3195B001F26E1 /* DWPagination.m */,
 				BB26987B15BB956700037453 /* DWPurchase.h */,
 				BB26987C15BB956700037453 /* DWPurchase.m */,
 				BB26987E15BBA2E300037453 /* DWStore.h */,
@@ -673,6 +684,8 @@
 		BBE42F4415BCB838000F6AE1 /* ModelPresenters */ = {
 			isa = PBXGroup;
 			children = (
+				BB06367D15C31968001F26E1 /* DWPaginationPresenter.h */,
+				BB06367E15C31968001F26E1 /* DWPaginationPresenter.m */,
 				BBE42F4A15BCCB7A000F6AE1 /* DWPurchaseFeedPresenter.h */,
 				BBE42F4B15BCCB7A000F6AE1 /* DWPurchaseFeedPresenter.m */,
 			);
@@ -682,6 +695,8 @@
 		BBE42F4615BCC95A000F6AE1 /* TableViewCells */ = {
 			isa = PBXGroup;
 			children = (
+				BB06368015C31973001F26E1 /* DWPaginationCell.h */,
+				BB06368115C31973001F26E1 /* DWPaginationCell.m */,
 				BBE42F4715BCCA52000F6AE1 /* DWPurchaseFeedCell.h */,
 				BBE42F4815BCCA52000F6AE1 /* DWPurchaseFeedCell.m */,
 			);
@@ -848,6 +863,9 @@
 				BB06367015C1F529001F26E1 /* DWProfileNavigationViewController.m in Sources */,
 				BB06367315C1F593001F26E1 /* DWProfileViewController.m in Sources */,
 				BB06367615C1F733001F26E1 /* DWProfileViewDataSource.m in Sources */,
+				BB06367C15C3195B001F26E1 /* DWPagination.m in Sources */,
+				BB06367F15C31968001F26E1 /* DWPaginationPresenter.m in Sources */,
+				BB06368215C31974001F26E1 /* DWPaginationCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

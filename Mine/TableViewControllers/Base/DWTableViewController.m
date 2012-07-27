@@ -237,7 +237,7 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
     [self.modelPresenters setObject:[NSDictionary dictionaryWithObjectsAndKeys:
                                      presenter,kModelKeyPresenter,
                                      [NSNumber numberWithInteger:style],kModelKeyPresenterStyle,
-                                     @"DWPurchaseFeedCell_0", kModelKeyIdentifier, nil] forKey:[class className]];
+                                     [NSString stringWithFormat:@"%@_%d",[presenter class],style], kModelKeyIdentifier, nil] forKey:[class className]];
 }
 
 

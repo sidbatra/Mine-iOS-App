@@ -8,6 +8,8 @@
 
 #import "DWFeedViewDataSource.h"
 
+#import "DWPagination.h"
+
 /**
  * Private declarations.
  */
@@ -70,6 +72,15 @@
 //----------------------------------------------------------------------------------------------------
 - (void)feedLoaded:(NSMutableArray *)purchases {
     self.objects = purchases;
+    
+    if([purchases count]) {
+        
+        //_oldestTimestamp            = ((DWItem*)[items lastObject]).createdAtTimestamp;
+        
+        DWPagination *pagination    = [[DWPagination alloc] init];
+        pagination.owner            = self;
+        [self.objects addObject:pagination];
+    }
     
     [self.delegate reloadTableView];
     

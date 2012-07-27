@@ -10,7 +10,9 @@
 
 #import "DWFeedViewDataSource.h"
 #import "DWPurchaseFeedPresenter.h"
+#import "DWPaginationPresenter.h"
 #import "DWPurchase.h"
+#import "DWPagination.h"
 #import "DWConstants.h"
 
 
@@ -32,6 +34,10 @@
         [self addModelPresenterForClass:[DWPurchase class]
                               withStyle:kDefaultModelPresenter 
                           withPresenter:[DWPurchaseFeedPresenter class]];
+        
+        [self addModelPresenterForClass:[DWPagination class]
+                              withStyle:kDefaultModelPresenter 
+                          withPresenter:[DWPaginationPresenter class]];
         
         [[NSNotificationCenter defaultCenter] addObserver:self 
                                                  selector:@selector(purchaseGiantImageLoaded:) 
