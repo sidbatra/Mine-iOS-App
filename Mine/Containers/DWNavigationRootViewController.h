@@ -8,10 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
+@class DWUser;
+
 /**
  * Base class for navigation root view controllers which are used as
  * sub controllers of the custom tab bar controller.
  */
 @interface DWNavigationRootViewController : UIViewController<UINavigationControllerDelegate>
+
+- (void)displayUserProfile:(DWUser*)user;
 
 @end

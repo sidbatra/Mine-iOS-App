@@ -70,7 +70,7 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)feedViewUserClicked:(DWUser *)user {
-    NSLog(@"user clicked - %d",user.databaseID);
+    [self displayUserProfile:user];
 }
 
 

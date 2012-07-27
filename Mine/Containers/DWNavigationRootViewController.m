@@ -7,6 +7,7 @@
 //
 
 #import "DWNavigationRootViewController.h"
+#import "DWProfileViewController.h"
 
 /**
  * Private declarations
@@ -41,6 +42,20 @@
 //----------------------------------------------------------------------------------------------------
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark Nav stack helpers
+
+//----------------------------------------------------------------------------------------------------
+- (void)displayUserProfile:(DWUser*)user {
+    DWProfileViewController *profileViewController = [[DWProfileViewController alloc] initWithUser:user];
+    
+    [self.navigationController pushViewController:profileViewController
+                                         animated:YES];
 }
 
 
