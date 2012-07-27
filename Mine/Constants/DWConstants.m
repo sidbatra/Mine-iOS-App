@@ -44,8 +44,8 @@ NSString* const kNEnteringLowMemoryState    = @"NEnteringLowMemoryState";
 NSString* const kNImageDownloaded           = @"NImageDownloaded";
 NSString* const kNImageDownloadError        = @"NImageDownloadError";
 NSString* const kNFacebookURLOpened         = @"NFacebookURLOpened";
-NSString* const kNWelcomeNavigationFinished = @"kNWelcomeNavigationFinished";
-
+NSString* const kNWelcomeNavigationFinished = @"NWelcomeNavigationFinished";
+NSString* const kNPaginationCellReached     = @"NPaginationCellReached";
 
 //----------------------------------------------------------------------------------------------------
 NSString* const kFacebookAppID  = @"245230762190915";

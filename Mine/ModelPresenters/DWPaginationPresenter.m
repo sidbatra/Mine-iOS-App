@@ -32,9 +32,9 @@
     
     if(!pagination.isTriggered && !pagination.isDisabled) {
         
-        //[[NSNotificationCenter defaultCenter] postNotificationName:kNPaginationCellReached
-        //                                                    object:pagination.owner
-        //                                                  userInfo:nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:kNPaginationCellReached
+                                                            object:pagination.owner
+                                                          userInfo:nil];
         
         pagination.isTriggered  = YES;
     }

@@ -116,10 +116,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWImageManager);
     
     NSDictionary *info = [notification userInfo];
     NSString *url = [info objectForKey:kKeyURL];
-    
-    //UIImage *image = [info objectForKey:kKeyImage];
-    NSLog(@"DOWNLOADED - %@",url);
-    
+        
     [self.imagePool setObject:[info objectForKey:kKeyImage] 
                        forKey:url];
 }
@@ -129,8 +126,6 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWImageManager);
     
     NSDictionary *info = [notification userInfo];
     NSString *url = [info objectForKey:kKeyURL];
-    
-    NSLog(@"ERROR - %@",url);
     
     [self remove:url];
 }

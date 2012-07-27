@@ -34,7 +34,7 @@ extern NSString* const kNImageDownloaded;
 extern NSString* const kNImageDownloadError;
 extern NSString* const kNFacebookURLOpened;
 extern NSString* const kNWelcomeNavigationFinished;
-
+extern NSString* const kNPaginationCellReached;
 
 /**
  * Third Party Aps
