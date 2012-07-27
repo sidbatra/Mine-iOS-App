@@ -8,6 +8,8 @@
 
 #import "DWTableViewController.h"
 
-@interface DWFeedViewController : DWTableViewController
+#import "DWPurchaseFeedCell.h"
+
+@interface DWFeedViewController : DWTableViewController<DWPurchaseFeedCellDelegate>
 
 @end

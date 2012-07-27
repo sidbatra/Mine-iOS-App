@@ -27,6 +27,10 @@
     if(!cell)
         cell = [[DWPurchaseFeedCell alloc] initWithStyle:UITableViewStylePlain 
                                          reuseIdentifier:identifier];
+
+    cell.delegate   = delegate;
+    cell.purchaseID = purchase.databaseID;
+    
     [purchase downloadGiantImage];
     [purchase.user downloadSquareImage];
     

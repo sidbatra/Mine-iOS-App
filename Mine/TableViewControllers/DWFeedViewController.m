@@ -82,5 +82,16 @@
 }
 
 
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWPurchaseFeedCellDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)userClickedForPurchaseID:(NSNumber*)purchaseID {
+    DWPurchase *purchase = [DWPurchase fetch:[purchaseID integerValue]];
+    NSLog(@"purchase user clicked - %@",purchase.title);
+}
+
 
 @end

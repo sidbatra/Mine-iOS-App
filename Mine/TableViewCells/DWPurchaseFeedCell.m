@@ -11,10 +11,26 @@
 NSInteger const kPurchaseFeedCellHeight = 400;
 
 
+@interface DWPurchaseFeedCell() {
+    
+}
+
+/**
+ * Fires the delegate event after a user element is clicked.
+ */
+- (void)userClicked;
+
+@end
+
+
+
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 @implementation DWPurchaseFeedCell
+
+@synthesize purchaseID  = _purchaseID;
+@synthesize delegate    = _delegate;
 
 //----------------------------------------------------------------------------------------------------
 - (id)initWithStyle:(UITableViewCellStyle)style 
@@ -26,7 +42,7 @@ NSInteger const kPurchaseFeedCellHeight = 400;
     if (self) {
         [self createUserImageView];
         [self createPurchaseImageView];
-        [self createUserNameLabel];
+        [self createUserNameButton];
 		[self createTitleLabel];
 		
 		self.selectionStyle = UITableViewCellSelectionStyleNone;	
@@ -34,6 +50,24 @@ NSInteger const kPurchaseFeedCellHeight = 400;
 	
     return self;
 }
+
+//----------------------------------------------------------------------------------------------------
+- (void)userClicked {  
+    
+    SEL sel = @selector(userClickedForPurchaseID:);
+    
+    if(![self.delegate respondsToSelector:sel])
+        return;
+    
+    [self.delegate performSelector:sel
+                        withObject:[NSNumber numberWithInteger:self.purchaseID]];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark Sub view creation
 
 //----------------------------------------------------------------------------------------------------
 - (void)createUserImageView {
@@ -54,21 +88,28 @@ NSInteger const kPurchaseFeedCellHeight = 400;
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)createUserNameLabel {
-    userNameLabel					= [[UILabel alloc] initWithFrame:CGRectMake(55,
+- (void)createUserNameButton {
+    
+    userNameButton                 = [[UIButton alloc] initWithFrame:CGRectMake(55,
                                                                                 5,
                                                                                 250,
                                                                                 30)];
-    userNameLabel.font				= [UIFont fontWithName:@"HelveticaNeue" size:13];	
-    userNameLabel.textColor			= [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0];
-    userNameLabel.backgroundColor	= [UIColor redColor];
-    userNameLabel.textAlignment		= UITextAlignmentLeft;
+    userNameButton.titleLabel.font              = [UIFont fontWithName:@"HelveticaNeue" size:13];
+    userNameButton.titleLabel.textColor         = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0];
+    userNameButton.titleLabel.backgroundColor	= [UIColor redColor];
+    userNameButton.titleLabel.textAlignment     = UITextAlignmentLeft;
     
-    [self.contentView addSubview:userNameLabel];
+    [userNameButton addTarget:self
+                    action:@selector(didTapUserNameButton:)
+          forControlEvents:UIControlEventTouchDown];
+    
+    
+    [self.contentView addSubview:userNameButton];
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)createTitleLabel {
+    
     titleLabel					= [[UILabel alloc] initWithFrame:CGRectMake(20,
                                                                                 370,
                                                                                 self.contentView.frame.size.width-40,
@@ -83,6 +124,11 @@ NSInteger const kPurchaseFeedCellHeight = 400;
 
 
 //----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark Accessor methods to populate cell UI
+
+//----------------------------------------------------------------------------------------------------
 - (void)setUserImage:(UIImage *)image {
     userImageView.image = image;
 }
@@ -94,12 +140,24 @@ NSInteger const kPurchaseFeedCellHeight = 400;
 
 //----------------------------------------------------------------------------------------------------
 - (void)setUserName:(NSString *)userName {
-    userNameLabel.text = userName;
+    [userNameButton setTitle:userName forState:UIControlStateNormal];
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)setTitle:(NSString*)title {
     titleLabel.text = title;
+}
+
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark UI Events
+
+//----------------------------------------------------------------------------------------------------
+- (void)didTapUserNameButton:(UIButton*)button {
+    [self userClicked];
 }
 
 @end

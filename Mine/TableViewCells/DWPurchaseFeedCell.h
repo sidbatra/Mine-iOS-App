@@ -12,14 +12,33 @@
 extern NSInteger const kPurchaseFeedCellHeight;
 
 
+@protocol DWPurchaseFeedCellDelegate;
+
 
 @interface DWPurchaseFeedCell : UITableViewCell {
+    NSInteger       _purchaseID;
+    
     UIImageView     *userImageView;
     UIImageView     *purchaseImageView;
     
-    UILabel         *userNameLabel;
+    UIButton        *userNameButton;
+    
 	UILabel         *titleLabel;
+    
+    __weak id<DWPurchaseFeedCellDelegate,NSObject> _delegate;
 }
+
+
+/**
+ * ID of the puchase.
+ */
+@property (nonatomic,assign) NSInteger purchaseID;
+
+/**
+ * Delegate
+ */
+@property (nonatomic,weak) id<DWPurchaseFeedCellDelegate,NSObject> delegate;
+
 
 /**
  * Apply a user image.
@@ -40,5 +59,20 @@ extern NSInteger const kPurchaseFeedCellHeight;
  * Set purchase title.
  */
 - (void)setTitle:(NSString*)title;
+
+@end
+
+
+/**
+ * Protocol for delgates of DWPurchaseFeedCell
+ */
+@protocol DWPurchaseFeedCellDelegate
+
+@optional
+
+/**
+ * A link to a user profile is clicked.
+ */
+- (void)userClickedForPurchaseID:(NSNumber*)purchaseID;
 
 @end
