@@ -570,7 +570,6 @@
 			children = (
 				BB9F70B315B9E6A60099C80A /* External */,
 				BBC8A09A15B9D26D00DF58F6 /* Mine */,
-				BBE42F5315BE0F58000F6AE1 /* Views */,
 				BBC8A09315B9D26D00DF58F6 /* Frameworks */,
 				BBC8A09115B9D26D00DF58F6 /* Products */,
 			);
@@ -623,6 +622,7 @@
 				BBE42F3615BCAD9D000F6AE1 /* TableViewControllers */,
 				BBE42F3A15BCAD9D000F6AE1 /* TableViewDataSources */,
 				BB26986B15BB653900037453 /* ViewControllers */,
+				BBE42F5315BE0F58000F6AE1 /* Views */,
 				BB06365D15C0A127001F26E1 /* WelcomeControllers */,
 			);
 			path = Mine;
@@ -711,8 +711,7 @@
 				BBE42F5415BE0F58000F6AE1 /* DWLoadingView.h */,
 				BBE42F5515BE0F58000F6AE1 /* DWLoadingView.m */,
 			);
-			name = Views;
-			path = Mine/Views;
+			path = Views;
 			sourceTree = "<group>";
 		};
 		BBE42F5715BE188C000F6AE1 /* EGOTableViewPullRefresh */ = {
