@@ -10,6 +10,32 @@
 
 #import "DWPurchaseFeedCell.h"
 
-@interface DWFeedViewController : DWTableViewController<DWPurchaseFeedCellDelegate>
+@class DWUser;
+@protocol DWFeedViewControllerDelegate;
+
+
+@interface DWFeedViewController : DWTableViewController<DWPurchaseFeedCellDelegate> {
+    __weak id<DWFeedViewControllerDelegate,NSObject> _delegate;
+}
+
+/**
+ * Delegate
+ */
+@property (nonatomic,weak) id<DWFeedViewControllerDelegate,NSObject> delegate;
+
+@end
+
+
+/**
+ * Protocol for delegates of DWFeedViewController
+ */
+@protocol DWFeedViewControllerDelegate
+
+@optional
+
+/**
+ * A user UI element is clicked from one of the feed cells.
+ */
+- (void)feedViewUserClicked:(DWUser*)user;
 
 @end

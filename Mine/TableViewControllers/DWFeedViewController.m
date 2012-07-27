@@ -19,6 +19,8 @@
 //----------------------------------------------------------------------------------------------------
 @implementation DWFeedViewController
 
+@synthesize delegate = _delegate;
+
 //----------------------------------------------------------------------------------------------------
 - (id)init {
     self = [super init];
@@ -89,8 +91,16 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)userClickedForPurchaseID:(NSNumber*)purchaseID {
+    
+    SEL sel = @selector(feedViewUserClicked:);
+    
+    if(![self.delegate respondsToSelector:sel])
+        return;
+    
     DWPurchase *purchase = [DWPurchase fetch:[purchaseID integerValue]];
-    NSLog(@"purchase user clicked - %@",purchase.title);
+    
+    [self.delegate performSelector:sel 
+                        withObject:purchase.user];
 }
 
 

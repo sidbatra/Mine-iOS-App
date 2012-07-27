@@ -8,6 +8,7 @@
 
 #import "DWFeedNavigationViewController.h"
 #import "DWFeedViewController.h"
+#import "DWUser.h"
 
 
 @interface DWFeedNavigationViewController () {
@@ -49,6 +50,7 @@
     
     if(!self.feedViewController) {
         self.feedViewController = [[DWFeedViewController alloc] init];
+        self.feedViewController.delegate = self;
     }
     
     [self.view addSubview:self.feedViewController.view];
@@ -57,6 +59,18 @@
 //----------------------------------------------------------------------------------------------------
 - (void)viewDidUnload {
     [super viewDidUnload];
+}
+
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWFeedViewControllerDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)feedViewUserClicked:(DWUser *)user {
+    NSLog(@"user clicked - %d",user.databaseID);
 }
 
 
