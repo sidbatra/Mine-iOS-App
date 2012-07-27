@@ -18,9 +18,9 @@ extern NSInteger const kPurchaseFeedCellHeight;
 @interface DWPurchaseFeedCell : UITableViewCell {
     NSInteger       _purchaseID;
     
-    UIImageView     *userImageView;
     UIImageView     *purchaseImageView;
     
+    UIButton        *userImageButton;
     UIButton        *userNameButton;
     
 	UILabel         *titleLabel;

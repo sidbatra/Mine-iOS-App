@@ -40,7 +40,7 @@ NSInteger const kPurchaseFeedCellHeight = 400;
 				reuseIdentifier:reuseIdentifier];
 	
     if (self) {
-        [self createUserImageView];
+        [self createUserImageButton];
         [self createPurchaseImageView];
         [self createUserNameButton];
 		[self createTitleLabel];
@@ -70,12 +70,15 @@ NSInteger const kPurchaseFeedCellHeight = 400;
 #pragma mark Sub view creation
 
 //----------------------------------------------------------------------------------------------------
-- (void)createUserImageView {
-    userImageView                   = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,50,50)];
-    purchaseImageView.contentMode   = UIViewContentModeScaleAspectFit;
-    userImageView.backgroundColor   = [UIColor yellowColor];
+- (void)createUserImageButton {
+    userImageButton  = [[UIButton alloc] initWithFrame:CGRectMake(0,0,50,50)];
     
-    [self.contentView addSubview:userImageView];
+    
+    [userImageButton addTarget:self
+                       action:@selector(didTapUserImageButton:)
+             forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.contentView addSubview:userImageButton];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -90,10 +93,8 @@ NSInteger const kPurchaseFeedCellHeight = 400;
 //----------------------------------------------------------------------------------------------------
 - (void)createUserNameButton {
     
-    userNameButton                 = [[UIButton alloc] initWithFrame:CGRectMake(55,
-                                                                                5,
-                                                                                250,
-                                                                                30)];
+    userNameButton = [[UIButton alloc] initWithFrame:CGRectMake(55,5,250,30)];
+    
     userNameButton.titleLabel.font              = [UIFont fontWithName:@"HelveticaNeue" size:13];
     userNameButton.titleLabel.textColor         = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0];
     userNameButton.titleLabel.backgroundColor	= [UIColor redColor];
@@ -101,7 +102,7 @@ NSInteger const kPurchaseFeedCellHeight = 400;
     
     [userNameButton addTarget:self
                     action:@selector(didTapUserNameButton:)
-          forControlEvents:UIControlEventTouchDown];
+          forControlEvents:UIControlEventTouchUpInside];
     
     
     [self.contentView addSubview:userNameButton];
@@ -130,7 +131,7 @@ NSInteger const kPurchaseFeedCellHeight = 400;
 
 //----------------------------------------------------------------------------------------------------
 - (void)setUserImage:(UIImage *)image {
-    userImageView.image = image;
+    [userImageButton setImage:image forState:UIControlStateNormal];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -154,6 +155,11 @@ NSInteger const kPurchaseFeedCellHeight = 400;
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
 #pragma mark UI Events
+
+//----------------------------------------------------------------------------------------------------
+- (void)didTapUserImageButton:(UIButton*)button {
+    [self userClicked];
+}
 
 //----------------------------------------------------------------------------------------------------
 - (void)didTapUserNameButton:(UIButton*)button {
