@@ -31,6 +31,12 @@
 @property (nonatomic,weak) id<DWTableViewDataSourceDelegate,NSObject> delegate;
 
 
+
+/**
+ * Destroy and release all objects
+ */
+- (void)clean;
+
 /**
  * Get the total number of sections 
  */

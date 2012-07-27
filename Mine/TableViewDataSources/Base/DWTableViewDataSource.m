@@ -15,11 +15,6 @@ static NSInteger const kDefaultSections = 1;
 @interface DWTableViewDataSource()
 
 /**
- * Destroy and release all objects
- */
-- (void)clean;
-
-/**
  * Load the next page of objects
  */
 - (void)paginate;
@@ -71,12 +66,11 @@ static NSInteger const kDefaultSections = 1;
     if(self) {
         self.objects = [NSMutableArray array];
         
-        /*
+        
         [[NSNotificationCenter defaultCenter] addObserver:self 
 												 selector:@selector(paginationCellReached:) 
 													 name:kNPaginationCellReached
 												   object:nil];
-         */
     }
     
     return self;
@@ -197,12 +191,11 @@ static NSInteger const kDefaultSections = 1;
 #pragma mark -
 #pragma mark Notifications
 
-/*
 //----------------------------------------------------------------------------------------------------
 - (void)paginationCellReached:(NSNotification*)notification {
     if([notification object] == self) {
         [self paginate];
     }
-}*/
+}
 
 @end

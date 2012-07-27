@@ -8,6 +8,7 @@
 
 #import "DWFeedViewDataSource.h"
 
+#import "DWPurchase.h"
 #import "DWPagination.h"
 
 /**
@@ -60,7 +61,20 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)refreshInitiated {
-    [self.feedController getPurchasesBefore:0];
+    _oldestTimestamp = 0;
+    
+    id lastObject   = [self.objects lastObject];
+    
+    if([lastObject isKindOfClass:[DWPagination class]]) {
+        ((DWPagination*)lastObject).isDisabled = YES;
+    }
+    
+    [self loadFeed];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)paginate {
+    [self loadFeed];
 }
 
 
@@ -71,28 +85,34 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)feedLoaded:(NSMutableArray *)purchases {
-    self.objects = purchases;
+    
+    id lastObject   = [self.objects lastObject];
+    BOOL paginate   = NO;
+    
+    if([lastObject isKindOfClass:[DWPagination class]]) {
+        paginate = !((DWPagination*)lastObject).isDisabled;
+    }
+    
+    if(!paginate) {
+        [self clean];
+        self.objects = purchases;
+    }
+    else {
+        [self.objects removeLastObject];
+        [self.objects addObjectsFromArray:purchases];
+    }
     
     if([purchases count]) {
         
-        //_oldestTimestamp            = ((DWItem*)[items lastObject]).createdAtTimestamp;
+        _oldestTimestamp            = [((DWPurchase*)[purchases lastObject]).createdAt timeIntervalSince1970];
         
         DWPagination *pagination    = [[DWPagination alloc] init];
         pagination.owner            = self;
         [self.objects addObject:pagination];
     }
     
+    
     [self.delegate reloadTableView];
-    
-    //for(DWPurchase *purchase in purchases) {
-    //    [purchase debug];
-    //}
-    
-    //DWPurchase *first = [purchases objectAtIndex:0];
-    //[first debug];
-    
-    //NSLog(@"TIME - %d",(NSInteger)[first.createdAt timeIntervalSince1970]);
-    //NSLog(@"TIME - %ld",);
 }
 
 //----------------------------------------------------------------------------------------------------
