@@ -207,7 +207,7 @@ static CGRect const kFullScreenFrame    = { {0,0}, {320, kScreenHeight} };
 							   to:(NSInteger)newSelectedIndex 
                     withResetType:(DWTabBarResetType)resetType {
     
-	if(!isSpecial) {
+	if(!isSpecial && oldSelectedIndex != newSelectedIndex) {
 		[self removeViewAtIndex:oldSelectedIndex];
 		[self addViewAtIndex:newSelectedIndex];
 	}
@@ -234,7 +234,7 @@ static CGRect const kFullScreenFrame    = { {0,0}, {320, kScreenHeight} };
     
     if([self.delegate respondsToSelector:tabModified])
         [self.delegate selectedTabModifiedFrom:oldSelectedIndex
-                                        to:newSelectedIndex];
+                                            to:newSelectedIndex];
 }
 
 
