@@ -9,6 +9,7 @@
 #import "DWPurchaseFeedPresenter.h"
 
 #import "DWPurchaseFeedCell.h"
+#import "DWUser.h"
 #import "DWPurchase.h"
 
 @implementation DWPurchaseFeedPresenter

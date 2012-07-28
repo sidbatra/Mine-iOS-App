@@ -10,7 +10,9 @@
 #import "DWProfileViewDataSource.h"
 #import "DWPurchaseFeedPresenter.h"
 #import "DWPurchase.h"
+#import "DWUser.h"
 #import "DWConstants.h"
+
 
 
 //----------------------------------------------------------------------------------------------------

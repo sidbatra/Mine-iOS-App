@@ -9,6 +9,8 @@
 #import "DWPurchase.h"
 
 #import "DWImageManager.h"
+#import "DWUser.h"
+#import "DWStore.h"
 #import "DWConstants.h"
 
 NSString* const kKeyGiantImageURL           = @"giant_url";

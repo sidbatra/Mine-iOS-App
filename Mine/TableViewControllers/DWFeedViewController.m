@@ -12,6 +12,7 @@
 #import "DWPurchaseFeedPresenter.h"
 #import "DWPaginationPresenter.h"
 #import "DWPurchase.h"
+#import "DWUser.h"
 #import "DWPagination.h"
 #import "DWConstants.h"
 

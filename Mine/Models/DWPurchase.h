@@ -9,8 +9,9 @@
 #import <Foundation/Foundation.h>
 
 #import "DWPoolObject.h"
-#import "DWUser.h"
-#import "DWStore.h"
+
+@class DWUser;
+@class DWStore;
 
 
 /**
