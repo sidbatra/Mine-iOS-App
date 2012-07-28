@@ -26,4 +26,10 @@
  */
 @property (nonatomic,strong) DWUser *user;
 
+
+/**
+ * Prints out key fields for debugging.
+ */
+- (void)debug;
+
 @end

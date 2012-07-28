@@ -11,6 +11,8 @@
 #import "DWImageManager.h"
 #import "DWUser.h"
 #import "DWStore.h"
+#import "DWLike.h"
+#import "DWComment.h"
 #import "DWConstants.h"
 
 NSString* const kKeyGiantImageURL           = @"giant_url";
@@ -24,6 +26,8 @@ static NSString* const kKeySourceURL        = @"source_url";
 static NSString* const kKeyFbObjectID       = @"fb_object_id";
 static NSString* const kKeyCreatedAt        = @"created_at";
 static NSString* const kKeyStore            = @"store";
+static NSString* const kKeyLikes            = @"likes";
+static NSString* const kKeyComments         = @"comments";
 
 
 
@@ -40,6 +44,7 @@ static NSString* const kKeyStore            = @"store";
 @synthesize createdAt       = _createdAt;
 @synthesize user            = _user;
 @synthesize store           = _store;
+@synthesize likes           = _likes;
 
 
 //----------------------------------------------------------------------------------------------------
@@ -47,6 +52,7 @@ static NSString* const kKeyStore            = @"store";
 	self = [super init];
 	
 	if(self) {  
+        self.likes = [NSMutableArray array];
     }
 	
 	return self;  
@@ -59,6 +65,9 @@ static NSString* const kKeyStore            = @"store";
     [self.user destroy];
     [self.store destroy];
     
+    for(DWLike* like in self.likes)
+        [like destroy];
+        
 	NSLog(@"Purchase released %d",self.databaseID);
 }
 
@@ -87,6 +96,8 @@ static NSString* const kKeyStore            = @"store";
     
     NSDictionary *user      = [purchase objectForKey:kKeyUser];
     NSDictionary *store     = [purchase objectForKey:kKeyStore];
+    
+    NSMutableArray *likes   = [purchase objectForKey:kKeyLikes];
     
     
     if(title && ![self.title isEqualToString:title])
@@ -124,6 +135,19 @@ static NSString* const kKeyStore            = @"store";
             [self.store update:store];
         else
             self.store = [DWStore create:store];
+    }
+    
+    if(likes && [likes count]) {
+        for(NSDictionary *response in likes) {
+            DWLike *like = [DWLike fetch:[[response objectForKey:kKeyID] integerValue]];
+            
+            if(like)
+                [like update:response];
+            else {
+                like = [DWLike create:response];
+                [self.likes addObject:like];
+            }
+        }
     }
 }
 

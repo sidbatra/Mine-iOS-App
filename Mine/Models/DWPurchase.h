@@ -36,6 +36,8 @@ extern NSString* const kNImgPurchaseGiantLoadError;
     
     DWUser          *_user;
     DWStore         *_store;
+    
+    NSMutableArray  *_likes;
 }
 
 /**
@@ -78,6 +80,11 @@ extern NSString* const kNImgPurchaseGiantLoadError;
  * The Store where the purchase was made
  */
 @property (nonatomic,strong) DWStore *store;
+
+/**
+ * Likes made on the purchase.
+ */
+@property (nonatomic,strong) NSMutableArray *likes;
 
 
 /**
