@@ -45,6 +45,7 @@ static NSString* const kKeyComments         = @"comments";
 @synthesize user            = _user;
 @synthesize store           = _store;
 @synthesize likes           = _likes;
+@synthesize comments        = _comments;
 
 
 //----------------------------------------------------------------------------------------------------
@@ -52,7 +53,8 @@ static NSString* const kKeyComments         = @"comments";
 	self = [super init];
 	
 	if(self) {  
-        self.likes = [NSMutableArray array];
+        self.likes      = [NSMutableArray array];
+        self.comments   = [NSMutableArray array];
     }
 	
 	return self;  
@@ -67,6 +69,9 @@ static NSString* const kKeyComments         = @"comments";
     
     for(DWLike* like in self.likes)
         [like destroy];
+    
+    for(DWComment* comment in self.comments)
+        [comment destroy];
         
 	NSLog(@"Purchase released %d",self.databaseID);
 }
@@ -97,7 +102,8 @@ static NSString* const kKeyComments         = @"comments";
     NSDictionary *user      = [purchase objectForKey:kKeyUser];
     NSDictionary *store     = [purchase objectForKey:kKeyStore];
     
-    NSMutableArray *likes   = [purchase objectForKey:kKeyLikes];
+    NSMutableArray *likes       = [purchase objectForKey:kKeyLikes];
+    NSMutableArray *comments    = [purchase objectForKey:kKeyComments];
     
     
     if(title && ![self.title isEqualToString:title])
@@ -146,6 +152,19 @@ static NSString* const kKeyComments         = @"comments";
             else {
                 like = [DWLike create:response];
                 [self.likes addObject:like];
+            }
+        }
+    }
+    
+    if(comments && [comments count]) {
+        for(NSDictionary *response in comments) {
+            DWComment *comment = [DWComment fetch:[[response objectForKey:kKeyID] integerValue]];
+            
+            if(comment)
+                [comment update:response];
+            else {
+                comment = [DWComment create:response];
+                [self.comments addObject:comment];
             }
         }
     }
