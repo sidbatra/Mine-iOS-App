@@ -82,6 +82,7 @@
 		BB9F712A15BA1A580099C80A /* DWImageRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9F712215BA1A580099C80A /* DWImageRequest.m */; };
 		BB9F712B15BA1A580099C80A /* DWRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9F712415BA1A580099C80A /* DWRequest.m */; };
 		BBC0607615C493A9000D3480 /* DWLike.m in Sources */ = {isa = PBXBuildFile; fileRef = BBC0607515C493A9000D3480 /* DWLike.m */; };
+		BBC0607A15C49671000D3480 /* DWComment.m in Sources */ = {isa = PBXBuildFile; fileRef = BBC0607915C49671000D3480 /* DWComment.m */; };
 		BBC8A09515B9D26D00DF58F6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBC8A09415B9D26D00DF58F6 /* UIKit.framework */; };
 		BBC8A09715B9D26D00DF58F6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBC8A09615B9D26D00DF58F6 /* Foundation.framework */; };
 		BBC8A09915B9D26D00DF58F6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBC8A09815B9D26D00DF58F6 /* CoreGraphics.framework */; };
@@ -239,6 +240,8 @@
 		BB9F712415BA1A580099C80A /* DWRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWRequest.m; sourceTree = "<group>"; };
 		BBC0607415C493A9000D3480 /* DWLike.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWLike.h; sourceTree = "<group>"; };
 		BBC0607515C493A9000D3480 /* DWLike.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWLike.m; sourceTree = "<group>"; };
+		BBC0607815C49671000D3480 /* DWComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWComment.h; sourceTree = "<group>"; };
+		BBC0607915C49671000D3480 /* DWComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWComment.m; sourceTree = "<group>"; };
 		BBC8A09015B9D26D00DF58F6 /* Mine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBC8A09415B9D26D00DF58F6 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		BBC8A09615B9D26D00DF58F6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -517,6 +520,8 @@
 		BB9F710615B9EBDE0099C80A /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				BBC0607815C49671000D3480 /* DWComment.h */,
+				BBC0607915C49671000D3480 /* DWComment.m */,
 				BBC0607415C493A9000D3480 /* DWLike.h */,
 				BBC0607515C493A9000D3480 /* DWLike.m */,
 				BB06367A15C3195B001F26E1 /* DWPagination.h */,
@@ -871,6 +876,7 @@
 				BB06367F15C31968001F26E1 /* DWPaginationPresenter.m in Sources */,
 				BB06368215C31974001F26E1 /* DWPaginationCell.m in Sources */,
 				BBC0607615C493A9000D3480 /* DWLike.m in Sources */,
+				BBC0607A15C49671000D3480 /* DWComment.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
