@@ -95,7 +95,7 @@ extern NSInteger const kTotalLikeUserButtons;
 /**
  * Compute the height of the cell based on the content.
  */
-+ (NSInteger)heightForCellWithLikes:(NSArray*)likes;
++ (NSInteger)heightForCellWithLikesCount:(NSInteger)likesCount;
 
 @end
 

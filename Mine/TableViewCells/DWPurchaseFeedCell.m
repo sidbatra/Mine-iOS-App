@@ -240,8 +240,8 @@ NSInteger const kTotalLikeUserButtons = 5;
 #pragma mark Static methods
 
 //----------------------------------------------------------------------------------------------------
-+ (NSInteger)heightForCellWithLikes:(NSArray*)likes {
-    return kPurchaseFeedCellHeight + ([likes count] ? 40 : 0);
++ (NSInteger)heightForCellWithLikesCount:(NSInteger)likesCount {
+    return kPurchaseFeedCellHeight + (likesCount > 0 ? 40 : 0);
 }
 
 

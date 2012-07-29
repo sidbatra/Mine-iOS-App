@@ -67,7 +67,7 @@
     
      DWPurchase *purchase = object;
     
-    return [DWPurchaseFeedCell heightForCellWithLikes:purchase.likes];
+    return [DWPurchaseFeedCell heightForCellWithLikesCount:[purchase.likes count]];
 }
 
 //----------------------------------------------------------------------------------------------------
