@@ -7,8 +7,11 @@
 //
 
 #import "DWPurchaseFeedCell.h"
+#import "DWUser.h"
+#import "DWLike.h"
 
 NSInteger const kPurchaseFeedCellHeight = 400;
+NSInteger const kTotalLikeUserButtons = 5;
 
 
 @interface DWPurchaseFeedCell() {
@@ -29,8 +32,9 @@ NSInteger const kPurchaseFeedCellHeight = 400;
 //----------------------------------------------------------------------------------------------------
 @implementation DWPurchaseFeedCell
 
-@synthesize purchaseID  = _purchaseID;
-@synthesize delegate    = _delegate;
+@synthesize purchaseID      = _purchaseID;
+@synthesize likeUserButtons = _likeUserButtons;
+@synthesize delegate        = _delegate;
 
 //----------------------------------------------------------------------------------------------------
 - (id)initWithStyle:(UITableViewCellStyle)style 
@@ -42,11 +46,14 @@ NSInteger const kPurchaseFeedCellHeight = 400;
     if (self) {
         self.contentView.clipsToBounds = YES;
         
+        self.likeUserButtons = [NSMutableArray arrayWithCapacity:kTotalLikeUserButtons];
+        
         [self createUserImageButton];
         [self createPurchaseImageView];
         [self createUserNameButton];
 		[self createTitleLabel];
         [self createLikesCountLabel];
+        [self createLikeUserButtons];
 		
 		self.selectionStyle = UITableViewCellSelectionStyleNone;	
 	}
@@ -114,7 +121,7 @@ NSInteger const kPurchaseFeedCellHeight = 400;
 //----------------------------------------------------------------------------------------------------
 - (void)createTitleLabel {
     
-    titleLabel					= [[UILabel alloc] initWithFrame:CGRectMake(20,
+    titleLabel					= [[UILabel alloc] initWithFrame:CGRectMake(0,
                                                                                 370,
                                                                                 self.contentView.frame.size.width-40,
                                                                                 30)];
@@ -128,9 +135,9 @@ NSInteger const kPurchaseFeedCellHeight = 400;
 
 //----------------------------------------------------------------------------------------------------
 - (void)createLikesCountLabel {
-    likesCountLabel					= [[UILabel alloc] initWithFrame:CGRectMake(20,
+    likesCountLabel					= [[UILabel alloc] initWithFrame:CGRectMake(0,
                                                                             400,
-                                                                            self.contentView.frame.size.width-40,
+                                                                            40,
                                                                             30)];
     likesCountLabel.font            = [UIFont fontWithName:@"HelveticaNeue" size:13];	
     likesCountLabel.textColor		= [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0];
@@ -140,11 +147,33 @@ NSInteger const kPurchaseFeedCellHeight = 400;
     [self.contentView addSubview:likesCountLabel]; 
 }
 
+//----------------------------------------------------------------------------------------------------
+- (void)createLikeUserButtons {
+    
+    for(NSInteger i=0 ; i<kTotalLikeUserButtons ; i++) {
+        UIButton *likeUserButton = [[UIButton alloc] initWithFrame:CGRectMake(45 + i*35, 400, 30,30)];
+        likeUserButton.backgroundColor = [UIColor redColor];
+        
+        [self.likeUserButtons addObject:likeUserButton];
+        
+        [self.contentView addSubview:likeUserButton];
+    }
+}
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
 #pragma mark Accessor methods to populate cell UI
+
+//----------------------------------------------------------------------------------------------------
+- (void)resetLikeUI {
+    
+    for(UIButton *likeUserButton in self.likeUserButtons) 
+        likeUserButton.hidden = YES;
+    
+    likesCountLabel.hidden = YES;
+}
 
 //----------------------------------------------------------------------------------------------------
 - (void)setUserImage:(UIImage *)image {
@@ -167,19 +196,35 @@ NSInteger const kPurchaseFeedCellHeight = 400;
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)setLikes:(NSArray*)likes {
-    if(![likes count]) {
-        likesCountLabel.hidden = YES;
+- (void)setLikeCount:(NSInteger)count {
+
+    if(!count)
         return;
-    }
     
     likesCountLabel.hidden = NO;
     
-    if([likes count] == 1)
+    if(count == 1)
         likesCountLabel.text = @"1 like";
     else
-        likesCountLabel.text = [NSString stringWithFormat:@"%d likes",[likes count]];
+        likesCountLabel.text = [NSString stringWithFormat:@"%d likes",count];
 }
+
+//----------------------------------------------------------------------------------------------------
+- (void)setLikeImage:(UIImage*)image 
+    forButtonAtIndex:(NSInteger)index
+           forUserID:(NSInteger)userID {
+    
+    if(index >= [self.likeUserButtons count])
+        return;
+    
+    UIButton *likeUserButton = [self.likeUserButtons objectAtIndex:index];
+    
+    [likeUserButton setImage:image
+                    forState:UIControlStateNormal];
+    
+    likeUserButton.hidden = NO;
+}
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------

@@ -10,6 +10,7 @@
 
 #import "DWPurchaseFeedCell.h"
 #import "DWUser.h"
+#import "DWLike.h"
 #import "DWPurchase.h"
 
 @implementation DWPurchaseFeedPresenter
@@ -32,6 +33,8 @@
     cell.delegate   = delegate;
     cell.purchaseID = purchase.databaseID;
     
+    [cell resetLikeUI];
+    
     [purchase downloadGiantImage];
     [purchase.user downloadSquareImage];
     
@@ -41,7 +44,16 @@
     [cell setUserName:purchase.user.fullName];
     [cell setTitle:purchase.title];
     
-    [cell setLikes:purchase.likes];
+    [cell setLikeCount:[purchase.likes count]];
+    
+    for(NSInteger i=0 ; i<MIN(kTotalLikeUserButtons,[purchase.likes count]) ; i++) {
+        DWLike *like = [purchase.likes objectAtIndex:i];
+        
+        [cell setLikeImage:like.user.squareImage
+          forButtonAtIndex:i
+                 forUserID:like.user.databaseID];
+    }
+    
     
     return cell;
 }

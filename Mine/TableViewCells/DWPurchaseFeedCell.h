@@ -10,7 +10,7 @@
 
 
 extern NSInteger const kPurchaseFeedCellHeight;
-
+extern NSInteger const kTotalLikeUserButtons;
 
 @protocol DWPurchaseFeedCellDelegate;
 
@@ -26,6 +26,8 @@ extern NSInteger const kPurchaseFeedCellHeight;
 	UILabel         *titleLabel;
     UILabel         *likesCountLabel;
     
+    NSMutableArray  *_likeUserButtons;
+    
     __weak id<DWPurchaseFeedCellDelegate,NSObject> _delegate;
 }
 
@@ -36,10 +38,20 @@ extern NSInteger const kPurchaseFeedCellHeight;
 @property (nonatomic,assign) NSInteger purchaseID;
 
 /**
+ * User buttons for the likers of this purchase.
+ */
+@property (nonatomic,strong) NSMutableArray *likeUserButtons;
+
+/**
  * Delegate
  */
 @property (nonatomic,weak) id<DWPurchaseFeedCellDelegate,NSObject> delegate;
 
+
+/**
+ * Reset UI for displaying likes
+ */
+- (void)resetLikeUI;
 
 /**
  * Apply a user image.
@@ -62,9 +74,16 @@ extern NSInteger const kPurchaseFeedCellHeight;
 - (void)setTitle:(NSString*)title;
 
 /**
- * Set likes for the purchase.
+ * Set like count for the purchase.
  */
-- (void)setLikes:(NSArray*)likes;
+- (void)setLikeCount:(NSInteger)count;
+
+/**
+ * Set like user image for the given index.
+ */
+- (void)setLikeImage:(UIImage*)image 
+    forButtonAtIndex:(NSInteger)index
+           forUserID:(NSInteger)userID;
 
 
 /**
