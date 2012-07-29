@@ -49,6 +49,8 @@
     for(NSInteger i=0 ; i<MIN(kTotalLikeUserButtons,[purchase.likes count]) ; i++) {
         DWLike *like = [purchase.likes objectAtIndex:i];
         
+        [like.user downloadSquareImage];
+        
         [cell setLikeImage:like.user.squareImage
           forButtonAtIndex:i
                  forUserID:like.user.databaseID];
@@ -83,11 +85,26 @@
         if(objectKey == kKeyGiantImageURL)
             [cell setPurchaseImage:purchase.giantImage];        
     }
-    else if([purchase.user class] == objectClass && purchase.user.databaseID == objectID) {
+    else if([purchase.user class] == objectClass) {
             
-        if(objectKey == kKeySquareImageURL)
-            [cell setUserImage:purchase.user.squareImage];
-    }
+        if(objectKey == kKeySquareImageURL) {
+            
+            if(purchase.user.databaseID == objectID)
+                [cell setUserImage:purchase.user.squareImage];
+            else {
+                
+                for(NSInteger i=0 ; i<MIN(kTotalLikeUserButtons,[purchase.likes count]) ; i++) {
+                    DWLike *like = [purchase.likes objectAtIndex:i];
+                        
+                    if(like.user.databaseID == objectID) {
+                        [cell setLikeImage:like.user.squareImage
+                          forButtonAtIndex:i
+                                 forUserID:like.user.databaseID];
+                    }
+                }
+            }
+        } // if square image
+    } //if user
 }
 
 //----------------------------------------------------------------------------------------------------
