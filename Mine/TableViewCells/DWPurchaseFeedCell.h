@@ -17,6 +17,7 @@ extern NSInteger const kTotalLikeUserButtons;
 
 @interface DWPurchaseFeedCell : UITableViewCell {
     NSInteger       _purchaseID;
+    NSInteger       _userID;
     
     UIImageView     *purchaseImageView;
     
@@ -36,6 +37,11 @@ extern NSInteger const kTotalLikeUserButtons;
  * ID of the puchase.
  */
 @property (nonatomic,assign) NSInteger purchaseID;
+
+/**
+ * ID of the user who created the purchase.
+ */
+@property (nonatomic,assign) NSInteger userID;
 
 /**
  * User buttons for the likers of this purchase.
@@ -104,6 +110,6 @@ extern NSInteger const kTotalLikeUserButtons;
 /**
  * A link to a user profile is clicked.
  */
-- (void)userClickedForPurchaseID:(NSNumber*)purchaseID;
+- (void)userClicked:(NSNumber*)userID;
 
 @end

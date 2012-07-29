@@ -32,6 +32,7 @@
 
     cell.delegate   = delegate;
     cell.purchaseID = purchase.databaseID;
+    cell.userID     = purchase.user.databaseID;
     
     [cell resetLikeUI];
     
@@ -91,16 +92,15 @@
             
             if(purchase.user.databaseID == objectID)
                 [cell setUserImage:purchase.user.squareImage];
-            else {
                 
-                for(NSInteger i=0 ; i<MIN(kTotalLikeUserButtons,[purchase.likes count]) ; i++) {
-                    DWLike *like = [purchase.likes objectAtIndex:i];
-                        
-                    if(like.user.databaseID == objectID) {
-                        [cell setLikeImage:like.user.squareImage
-                          forButtonAtIndex:i
-                                 forUserID:like.user.databaseID];
-                    }
+            for(NSInteger i=0 ; i<MIN(kTotalLikeUserButtons,[purchase.likes count]) ; i++) {
+                DWLike *like = [purchase.likes objectAtIndex:i];
+                    
+                if(like.user.databaseID == objectID) {
+                    [cell setLikeImage:like.user.squareImage
+                      forButtonAtIndex:i
+                             forUserID:like.user.databaseID];
+                    break;
                 }
             }
         } // if square image

@@ -21,7 +21,7 @@ NSInteger const kTotalLikeUserButtons = 5;
 /**
  * Fires the delegate event after a user element is clicked.
  */
-- (void)userClicked;
+- (void)userClicked:(NSInteger)userID;
 
 @end
 
@@ -33,6 +33,7 @@ NSInteger const kTotalLikeUserButtons = 5;
 @implementation DWPurchaseFeedCell
 
 @synthesize purchaseID      = _purchaseID;
+@synthesize userID          = _userID;
 @synthesize likeUserButtons = _likeUserButtons;
 @synthesize delegate        = _delegate;
 
@@ -62,15 +63,15 @@ NSInteger const kTotalLikeUserButtons = 5;
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)userClicked {  
+- (void)userClicked:(NSInteger)userID {  
     
-    SEL sel = @selector(userClickedForPurchaseID:);
+    SEL sel = @selector(userClicked:);
     
     if(![self.delegate respondsToSelector:sel])
         return;
     
     [self.delegate performSelector:sel
-                        withObject:[NSNumber numberWithInteger:self.purchaseID]];
+                        withObject:[NSNumber numberWithInteger:userID]];
 }
 
 
@@ -245,12 +246,12 @@ NSInteger const kTotalLikeUserButtons = 5;
 
 //----------------------------------------------------------------------------------------------------
 - (void)didTapUserImageButton:(UIButton*)button {
-    [self userClicked];
+    [self userClicked:self.userID];
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)didTapUserNameButton:(UIButton*)button {
-    [self userClicked];
+    [self userClicked:self.userID];
 }
 
 @end

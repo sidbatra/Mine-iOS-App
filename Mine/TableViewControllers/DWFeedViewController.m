@@ -97,17 +97,18 @@
 #pragma mark DWPurchaseFeedCellDelegate
 
 //----------------------------------------------------------------------------------------------------
-- (void)userClickedForPurchaseID:(NSNumber*)purchaseID {
+- (void)userClicked:(NSNumber *)userID {
     
     SEL sel = @selector(feedViewUserClicked:);
     
     if(![self.delegate respondsToSelector:sel])
         return;
     
-    DWPurchase *purchase = [DWPurchase fetch:[purchaseID integerValue]];
+    DWUser *user = [DWUser fetch:[userID integerValue]];
     
-    [self.delegate performSelector:sel 
-                        withObject:purchase.user];
+    if(user)
+        [self.delegate performSelector:sel 
+                            withObject:user];
 }
 
 
