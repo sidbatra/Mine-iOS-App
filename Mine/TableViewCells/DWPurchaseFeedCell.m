@@ -153,7 +153,12 @@ NSInteger const kTotalLikeUserButtons = 5;
     
     for(NSInteger i=0 ; i<kTotalLikeUserButtons ; i++) {
         UIButton *likeUserButton = [[UIButton alloc] initWithFrame:CGRectMake(45 + i*35, 400, 30,30)];
+        
         likeUserButton.backgroundColor = [UIColor redColor];
+        
+        [likeUserButton addTarget:self
+                           action:@selector(didTapLikeUserButton:)
+                 forControlEvents:UIControlEventTouchUpInside];
         
         [self.likeUserButtons addObject:likeUserButton];
         
@@ -220,6 +225,8 @@ NSInteger const kTotalLikeUserButtons = 5;
     
     UIButton *likeUserButton = [self.likeUserButtons objectAtIndex:index];
     
+    likeUserButton.tag = userID;
+    
     [likeUserButton setImage:image
                     forState:UIControlStateNormal];
     
@@ -252,6 +259,11 @@ NSInteger const kTotalLikeUserButtons = 5;
 //----------------------------------------------------------------------------------------------------
 - (void)didTapUserNameButton:(UIButton*)button {
     [self userClicked:self.userID];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)didTapLikeUserButton:(UIButton*)button {
+    [self userClicked:button.tag];
 }
 
 @end
