@@ -40,10 +40,13 @@ NSInteger const kPurchaseFeedCellHeight = 400;
 				reuseIdentifier:reuseIdentifier];
 	
     if (self) {
+        self.contentView.clipsToBounds = YES;
+        
         [self createUserImageButton];
         [self createPurchaseImageView];
         [self createUserNameButton];
 		[self createTitleLabel];
+        [self createLikesCountLabel];
 		
 		self.selectionStyle = UITableViewCellSelectionStyleNone;	
 	}
@@ -123,6 +126,20 @@ NSInteger const kPurchaseFeedCellHeight = 400;
     [self.contentView addSubview:titleLabel];
 }
 
+//----------------------------------------------------------------------------------------------------
+- (void)createLikesCountLabel {
+    likesCountLabel					= [[UILabel alloc] initWithFrame:CGRectMake(20,
+                                                                            400,
+                                                                            self.contentView.frame.size.width-40,
+                                                                            30)];
+    likesCountLabel.font            = [UIFont fontWithName:@"HelveticaNeue" size:13];	
+    likesCountLabel.textColor		= [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0];
+    likesCountLabel.backgroundColor	= [UIColor blueColor];
+    likesCountLabel.textAlignment	= UITextAlignmentLeft;
+    
+    [self.contentView addSubview:likesCountLabel]; 
+}
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
@@ -147,6 +164,31 @@ NSInteger const kPurchaseFeedCellHeight = 400;
 //----------------------------------------------------------------------------------------------------
 - (void)setTitle:(NSString*)title {
     titleLabel.text = title;
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)setLikes:(NSArray*)likes {
+    if(![likes count]) {
+        likesCountLabel.hidden = YES;
+        return;
+    }
+    
+    likesCountLabel.hidden = NO;
+    
+    if([likes count] == 1)
+        likesCountLabel.text = @"1 like";
+    else
+        likesCountLabel.text = [NSString stringWithFormat:@"%d likes",[likes count]];
+}
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark Static methods
+
+//----------------------------------------------------------------------------------------------------
++ (NSInteger)heightForCellWithLikes:(NSArray*)likes {
+    return kPurchaseFeedCellHeight + ([likes count] ? 40 : 0);
 }
 
 

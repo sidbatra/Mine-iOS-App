@@ -24,6 +24,7 @@ extern NSInteger const kPurchaseFeedCellHeight;
     UIButton        *userNameButton;
     
 	UILabel         *titleLabel;
+    UILabel         *likesCountLabel;
     
     __weak id<DWPurchaseFeedCellDelegate,NSObject> _delegate;
 }
@@ -59,6 +60,17 @@ extern NSInteger const kPurchaseFeedCellHeight;
  * Set purchase title.
  */
 - (void)setTitle:(NSString*)title;
+
+/**
+ * Set likes for the purchase.
+ */
+- (void)setLikes:(NSArray*)likes;
+
+
+/**
+ * Compute the height of the cell based on the content.
+ */
++ (NSInteger)heightForCellWithLikes:(NSArray*)likes;
 
 @end
 

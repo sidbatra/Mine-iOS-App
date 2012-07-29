@@ -41,6 +41,8 @@
     [cell setUserName:purchase.user.fullName];
     [cell setTitle:purchase.title];
     
+    [cell setLikes:purchase.likes];
+    
     return cell;
 }
 
@@ -48,7 +50,9 @@
 + (CGFloat)heightForObject:(id)object 
      withPresentationStyle:(NSInteger)style {
     
-    return kPurchaseFeedCellHeight;
+     DWPurchase *purchase = object;
+    
+    return [DWPurchaseFeedCell heightForCellWithLikes:purchase.likes];
 }
 
 //----------------------------------------------------------------------------------------------------
