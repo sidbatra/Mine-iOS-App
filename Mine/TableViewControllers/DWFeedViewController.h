@@ -8,15 +8,23 @@
 
 #import "DWTableViewController.h"
 
+#import "DWLikesController.h"
 #import "DWPurchaseFeedCell.h"
 
 @class DWUser;
 @protocol DWFeedViewControllerDelegate;
 
 
-@interface DWFeedViewController : DWTableViewController<DWPurchaseFeedCellDelegate> {
+@interface DWFeedViewController : DWTableViewController<DWPurchaseFeedCellDelegate,DWLikesControllerDelegate> {
+    DWLikesController *_likesController;
+    
     __weak id<DWFeedViewControllerDelegate,NSObject> _delegate;
 }
+
+/**
+ * Data controller for the likes model.
+ */
+@property (nonatomic,strong) DWLikesController *likesController;
 
 /**
  * Delegate

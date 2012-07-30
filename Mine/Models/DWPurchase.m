@@ -183,7 +183,7 @@ static NSString* const kKeyComments         = @"comments";
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)addLikeByUser:(DWUser*)user {
+- (void)addTempLikeByUser:(DWUser*)user {
     
     DWLike *like = [[DWLike alloc] init];
     
@@ -193,6 +193,21 @@ static NSString* const kKeyComments         = @"comments";
     [self.likes addObject:like];
 }
 
+//----------------------------------------------------------------------------------------------------
+- (void)removeTempLike {
+    for(DWLike *like in [self.likes reverseObjectEnumerator]) {
+        if([like isUnmounted]) {
+            [self.likes removeObject:like];
+            break;
+        }
+    }    
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)replaceTempLikeWithMountedLike:(DWLike*)newLike {
+    [self removeTempLike];
+    [self.likes addObject:newLike];
+}
 
 //----------------------------------------------------------------------------------------------------
 - (void)debug {

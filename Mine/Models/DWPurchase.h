@@ -12,6 +12,7 @@
 
 @class DWUser;
 @class DWStore;
+@class DWLike;
 
 
 /**
@@ -106,10 +107,19 @@ extern NSString* const kNImgPurchaseGiantLoadError;
 - (void)downloadGiantImage;
 
 /**
- * Create new like on the purchase by the given user.
+ * Create a new unmounted like on the purchase by the given user.
  */
-- (void)addLikeByUser:(DWUser*)user;
+- (void)addTempLikeByUser:(DWUser*)user;
 
+/**
+ * Remove the temp like added by addTempLikeByUser
+ */
+- (void)removeTempLike;
+
+/**
+ * Replace temp like with a proper mounted one.
+ */
+- (void)replaceTempLikeWithMountedLike:(DWLike*)newLike;
 
 /**
  * Prints out key fields for debugging.

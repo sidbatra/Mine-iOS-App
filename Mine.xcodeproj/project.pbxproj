@@ -102,6 +102,7 @@
 		BB9F712B15BA1A580099C80A /* DWRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9F712415BA1A580099C80A /* DWRequest.m */; };
 		BBC0607615C493A9000D3480 /* DWLike.m in Sources */ = {isa = PBXBuildFile; fileRef = BBC0607515C493A9000D3480 /* DWLike.m */; };
 		BBC0607A15C49671000D3480 /* DWComment.m in Sources */ = {isa = PBXBuildFile; fileRef = BBC0607915C49671000D3480 /* DWComment.m */; };
+		BBC0607D15C712D7000D3480 /* DWLikesController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBC0607C15C712D7000D3480 /* DWLikesController.m */; };
 		BBC8A09515B9D26D00DF58F6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBC8A09415B9D26D00DF58F6 /* UIKit.framework */; };
 		BBC8A09715B9D26D00DF58F6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBC8A09615B9D26D00DF58F6 /* Foundation.framework */; };
 		BBC8A09915B9D26D00DF58F6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBC8A09815B9D26D00DF58F6 /* CoreGraphics.framework */; };
@@ -291,6 +292,8 @@
 		BBC0607515C493A9000D3480 /* DWLike.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWLike.m; sourceTree = "<group>"; };
 		BBC0607815C49671000D3480 /* DWComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWComment.h; sourceTree = "<group>"; };
 		BBC0607915C49671000D3480 /* DWComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWComment.m; sourceTree = "<group>"; };
+		BBC0607B15C712D7000D3480 /* DWLikesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWLikesController.h; sourceTree = "<group>"; };
+		BBC0607C15C712D7000D3480 /* DWLikesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWLikesController.m; sourceTree = "<group>"; };
 		BBC8A09015B9D26D00DF58F6 /* Mine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBC8A09415B9D26D00DF58F6 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		BBC8A09615B9D26D00DF58F6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -476,6 +479,8 @@
 				2622006515C71421003DC1DF /* DWInvitesController.m */,
 				BB26988115BBA75B00037453 /* DWFeedController.h */,
 				BB26988215BBA75B00037453 /* DWFeedController.m */,
+				BBC0607B15C712D7000D3480 /* DWLikesController.h */,
+				BBC0607C15C712D7000D3480 /* DWLikesController.m */,
 				BB06366A15C1E04B001F26E1 /* DWPurchasesController.h */,
 				BB06366B15C1E04B001F26E1 /* DWPurchasesController.m */,
 				BB174D4715BA43DC00DB50CA /* DWUsersController.h */,
@@ -972,6 +977,7 @@
 				BB06368215C31974001F26E1 /* DWPaginationCell.m in Sources */,
 				BBC0607615C493A9000D3480 /* DWLike.m in Sources */,
 				BBC0607A15C49671000D3480 /* DWComment.m in Sources */,
+<<<<<<< HEAD
 				2622005215C71393003DC1DF /* DWContactsDataSource.m in Sources */,
 				2622005715C713A7003DC1DF /* DWInviteViewController.m in Sources */,
 				2622005B15C713B4003DC1DF /* DWContactsViewController.m in Sources */,
@@ -983,6 +989,9 @@
 				2622007E15C714D7003DC1DF /* ABContact.m in Sources */,
 				2622007F15C714D7003DC1DF /* ABContactsHelper.m in Sources */,
 				2622008015C714D7003DC1DF /* ABGroup.m in Sources */,
+=======
+				BBC0607D15C712D7000D3480 /* DWLikesController.m in Sources */,
+>>>>>>> Creating likes flow hooked up.
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

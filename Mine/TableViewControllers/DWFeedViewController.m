@@ -28,13 +28,17 @@
 //----------------------------------------------------------------------------------------------------
 @implementation DWFeedViewController
 
-@synthesize delegate = _delegate;
+@synthesize likesController = _likesController;
+@synthesize delegate        = _delegate;
 
 //----------------------------------------------------------------------------------------------------
 - (id)init {
     self = [super init];
     
     if(self) {        
+        
+        self.likesController = [[DWLikesController alloc] init];
+        self.likesController.delegate = self;
         
         self.tableViewDataSource = [[DWFeedViewDataSource alloc] init];
         
@@ -100,6 +104,41 @@
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
+#pragma mark DWLikesControllerDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)likeCreated:(DWLike *)like 
+      forPurchaseID:(NSNumber *)purchaseID {
+    
+    DWPurchase *purchase = [DWPurchase fetch:[purchaseID integerValue]];
+    
+    if(!purchase)
+        return;
+    
+    [purchase replaceTempLikeWithMountedLike:like];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)likeCreateError:(NSString *)error 
+          forPurchaseID:(NSNumber *)purchaseID {
+    
+    DWPurchase *purchase = [DWPurchase fetch:[purchaseID integerValue]];
+    
+    if(!purchase)
+        return;
+        
+    [purchase removeTempLike];
+    
+    
+    NSInteger index = [self.tableViewDataSource indexForObject:purchase];
+    
+    [self reloadRowAtIndex:index];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
 #pragma mark DWPurchaseFeedCellDelegate
 
 //----------------------------------------------------------------------------------------------------
@@ -124,11 +163,13 @@
     if(!purchase)
         return;
     
-    [purchase addLikeByUser:[DWSession sharedDWSession].currentUser];
+    [purchase addTempLikeByUser:[DWSession sharedDWSession].currentUser];
     
     NSInteger index = [self.tableViewDataSource indexForObject:purchase];
     
     [self reloadRowAtIndex:index];
+    
+    [self.likesController createLikeForPurchaseID:purchase.databaseID];
 }
 
 

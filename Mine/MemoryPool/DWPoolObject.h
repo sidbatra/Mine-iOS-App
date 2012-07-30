@@ -31,6 +31,10 @@
  */
 @property (nonatomic,assign) NSInteger databaseID;
 
+/**
+ * Test if the object has been mounted on to the memory pool.
+ */
+- (BOOL)isUnmounted;
 
 /**
  * Mount a pool object onto to the memory pool if the memory allocation
