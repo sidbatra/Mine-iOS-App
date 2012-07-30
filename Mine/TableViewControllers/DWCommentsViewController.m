@@ -11,6 +11,7 @@
 #import "DWCommentsViewDataSource.h"
 #import "DWCommentPresenter.h"
 #import "DWPurchase.h"
+#import "DWUser.h"
 #import "DWComment.h"
 #import "DWConstants.h"
 
@@ -49,6 +50,12 @@
         [self addModelPresenterForClass:[DWComment class]
                               withStyle:kDefaultModelPresenter 
                           withPresenter:[DWCommentPresenter class]];
+        
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self 
+                                                 selector:@selector(userSquareImageLoaded:) 
+                                                     name:kNImgUserSquareLoaded
+                                                   object:nil];
     }
     
     return self;
@@ -67,5 +74,22 @@
     
     [self reloadTableView];
 }
+
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark Notifications
+
+//----------------------------------------------------------------------------------------------------
+- (void)userSquareImageLoaded:(NSNotification*)notification {
+    NSDictionary *userInfo = [notification userInfo];
+    
+    [self provideResourceToVisibleCells:[DWUser class] 
+                               objectID:[[userInfo objectForKey:kKeyResourceID] integerValue]
+                              objectKey:kKeySquareImageURL];
+}
+
 
 @end
