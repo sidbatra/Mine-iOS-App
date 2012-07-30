@@ -111,5 +111,15 @@
                             withObject:user];
 }
 
+//----------------------------------------------------------------------------------------------------
+- (void)likeClickedForPurchaseID:(NSNumber *)purchaseID {
+    DWPurchase *purchase = [DWPurchase fetch:[purchaseID integerValue]];
+    
+    if(!purchase)
+        return;
+    
+    NSLog(@"like purchase %@",purchase.title);
+}
+
 
 @end

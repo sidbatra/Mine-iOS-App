@@ -419,7 +419,6 @@ NSInteger const kTotalLikeUserButtons   = 5;
 }
 
 
-
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
@@ -453,12 +452,26 @@ NSInteger const kTotalLikeUserButtons   = 5;
 
 //----------------------------------------------------------------------------------------------------
 - (void)didTapLikeButton:(UIButton*)button {
-    NSLog(@"Like clicked");
+    
+    SEL sel = @selector(likeClickedForPurchaseID:);
+    
+    if(![self.delegate respondsToSelector:sel])
+        return;
+    
+    [self.delegate performSelector:sel
+                        withObject:[NSNumber numberWithInteger:self.purchaseID]];
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)didTapCommentButton:(UIButton*)button {
-    NSLog(@"Comment clicked");
+    
+    SEL sel = @selector(commentClickedForPurchaseID:);
+    
+    if(![self.delegate respondsToSelector:sel])
+        return;
+    
+    [self.delegate performSelector:sel
+                        withObject:[NSNumber numberWithInteger:self.purchaseID]];
 }
 
 @end

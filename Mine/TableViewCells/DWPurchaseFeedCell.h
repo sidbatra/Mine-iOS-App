@@ -128,4 +128,14 @@ extern NSInteger const kTotalLikeUserButtons;
  */
 - (void)userClicked:(NSNumber*)userID;
 
+/**
+ * User clicks like button.
+ */
+- (void)likeClickedForPurchaseID:(NSNumber*)purchaseID;
+
+/**
+ * User clicks comment button.
+ */
+- (void)commentClickedForPurchaseID:(NSNumber*)purchaseID;
+
 @end
