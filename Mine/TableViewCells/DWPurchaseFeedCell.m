@@ -10,7 +10,7 @@
 #import "DWUser.h"
 #import "DWLike.h"
 
-NSInteger const kPurchaseFeedCellHeight = 400;
+NSInteger const kPurchaseFeedCellHeight = 430;
 NSInteger const kTotalLikeUserButtons   = 5;
 
 
@@ -80,7 +80,11 @@ NSInteger const kTotalLikeUserButtons   = 5;
         [self createUserImageButton];
         [self createPurchaseImageView];
         [self createUserNameButton];
-		[self createTitleLabel];
+        [self createTitleLabel];
+        
+        [self createLikeButton];
+        [self createCommentButton];
+        
         [self createLikesCountLabel];
         [self createLikeUserButtons];
 		
@@ -163,9 +167,49 @@ NSInteger const kTotalLikeUserButtons   = 5;
 }
 
 //----------------------------------------------------------------------------------------------------
+- (void)createLikeButton {
+    
+    likeButton = [[UIButton alloc] initWithFrame:CGRectMake(5,400,50,30)];
+    
+    likeButton.titleLabel.font              = [UIFont fontWithName:@"HelveticaNeue" size:13];
+    likeButton.titleLabel.textColor         = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0];
+    likeButton.titleLabel.backgroundColor	= [UIColor blueColor];
+    likeButton.titleLabel.textAlignment     = UITextAlignmentLeft;
+    
+    [likeButton setTitle:@"Like"
+                forState:UIControlStateNormal];
+    
+    [likeButton addTarget:self
+                       action:@selector(didTapLikeButton:)
+             forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.contentView addSubview:likeButton];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)createCommentButton {
+    
+    commentButton = [[UIButton alloc] initWithFrame:CGRectMake(60,400,75,30)];
+    
+    commentButton.titleLabel.font               = [UIFont fontWithName:@"HelveticaNeue" size:13];
+    commentButton.titleLabel.textColor          = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0];
+    commentButton.titleLabel.backgroundColor    = [UIColor blueColor];
+    commentButton.titleLabel.textAlignment      = UITextAlignmentLeft;
+    
+    [commentButton setTitle:@"Comment"
+                forState:UIControlStateNormal];
+    
+    [commentButton addTarget:self
+                   action:@selector(didTapCommentButton:)
+         forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.contentView addSubview:commentButton];
+}
+
+//----------------------------------------------------------------------------------------------------
 - (void)createLikesCountLabel {
     likesCountLabel					= [[UILabel alloc] initWithFrame:CGRectMake(0,
-                                                                            400,
+                                                                            430,
                                                                             40,
                                                                             30)];
     likesCountLabel.font            = [UIFont fontWithName:@"HelveticaNeue" size:13];	
@@ -180,7 +224,7 @@ NSInteger const kTotalLikeUserButtons   = 5;
 - (void)createLikeUserButtons {
     
     for(NSInteger i=0 ; i<kTotalLikeUserButtons ; i++) {
-        UIButton *likeUserButton = [[UIButton alloc] initWithFrame:CGRectMake(45 + i*35, 400, 30,30)];
+        UIButton *likeUserButton = [[UIButton alloc] initWithFrame:CGRectMake(45 + i*35, 430, 30,30)];
         
         likeUserButton.backgroundColor = [UIColor redColor];
         
@@ -283,9 +327,8 @@ NSInteger const kTotalLikeUserButtons   = 5;
                       withUserName:(NSString*)userName
                         withUserID:(NSInteger)userID
                         andMessage:(NSString*)message {
-    
     UIButton *commentUserButton = [[UIButton alloc] initWithFrame:CGRectMake(0,
-                                                                            450 + [self.commentUserButtons count] * 110,
+                                                                            480 + [self.commentUserButtons count] * 110,
                                                                              30,
                                                                              30)];
     commentUserButton.backgroundColor = [UIColor redColor];
@@ -304,7 +347,7 @@ NSInteger const kTotalLikeUserButtons   = 5;
     
     
     UIButton *commentUserNameButton = [[UIButton alloc] initWithFrame:CGRectMake(50,
-                                                                             450 + [self.commentUserNameButtons count] * 110,
+                                                                             480 + [self.commentUserNameButtons count] * 110,
                                                                              150,
                                                                              30)];
     commentUserNameButton.backgroundColor   = [UIColor redColor];
@@ -328,7 +371,7 @@ NSInteger const kTotalLikeUserButtons   = 5;
     
     
     UILabel *commentMessageLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 
-                                                                             450 + [self.commentMessageLabels count] * 110 + 35 ,
+                                                                             480 + [self.commentMessageLabels count] * 110 + 35 ,
                                                                              self.contentView.frame.size.width - 10,
                                                                              60)];
     commentMessageLabel.numberOfLines       = 0;
@@ -406,6 +449,16 @@ NSInteger const kTotalLikeUserButtons   = 5;
 //----------------------------------------------------------------------------------------------------
 - (void)didTapCommentUserNameButton:(UIButton*)button {
     [self userClicked:button.tag];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)didTapLikeButton:(UIButton*)button {
+    NSLog(@"Like clicked");
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)didTapCommentButton:(UIButton*)button {
+    NSLog(@"Comment clicked");
 }
 
 @end

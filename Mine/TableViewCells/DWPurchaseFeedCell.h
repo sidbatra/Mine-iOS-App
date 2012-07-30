@@ -23,6 +23,8 @@ extern NSInteger const kTotalLikeUserButtons;
     
     UIButton        *userImageButton;
     UIButton        *userNameButton;
+    UIButton        *likeButton;
+    UIButton        *commentButton;
     
 	UILabel         *titleLabel;
     UILabel         *likesCountLabel;
