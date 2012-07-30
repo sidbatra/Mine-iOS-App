@@ -18,6 +18,12 @@ static NSInteger const kCommentCellHeight = 150;
     UILabel     *messageLabel;
 }
 
+
+/**
+ * Fires the delegate event after a user element is clicked.
+ */
+- (void)userClicked;
+
 @end
 
 
@@ -26,6 +32,9 @@ static NSInteger const kCommentCellHeight = 150;
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 @implementation DWCommentCell
+
+@synthesize commentID   = _commentID;
+@synthesize delegate    = _delegate;
 
 //----------------------------------------------------------------------------------------------------
 - (id)initWithStyle:(UITableViewCellStyle)style 
@@ -45,6 +54,15 @@ static NSInteger const kCommentCellHeight = 150;
 	}
 	
     return self;
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)userClicked {  
+    
+    SEL sel = @selector(userClickedForCommentID:);
+    
+    [self.delegate performSelector:sel
+                        withObject:[NSNumber numberWithInteger:self.commentID]];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -121,12 +139,12 @@ static NSInteger const kCommentCellHeight = 150;
 
 //----------------------------------------------------------------------------------------------------
 - (void)didTapUserImageButton:(UIButton*)button {
-    //[self userClicked:self.userID];
+    [self userClicked];
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)didTapUserNameButton:(UIButton*)button {
-    //[self userClicked:self.userID];
+    [self userClicked];
 }
 
 

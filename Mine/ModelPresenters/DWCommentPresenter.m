@@ -33,17 +33,14 @@
         cell = [[DWCommentCell alloc] initWithStyle:UITableViewStylePlain 
                                     reuseIdentifier:identifier];
     
-    //cell.delegate   = delegate;
-    //cell.purchaseID = purchase.databaseID;
-    //cell.userID     = purchase.user.databaseID;
-    
+    cell.delegate   = delegate;
+    cell.commentID  = comment.databaseID;
     
     [comment.user downloadSquareImage];
     
     [cell setUserImage:comment.user.squareImage];
     [cell setUserName:comment.user.fullName];
     [cell setMessage:comment.message];
-    
     
     return cell;
 }

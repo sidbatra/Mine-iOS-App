@@ -9,8 +9,24 @@
 #import <UIKit/UIKit.h>
 
 
-@interface DWCommentCell : UITableViewCell
+@protocol DWCommentCellDelegate;
 
+
+@interface DWCommentCell : UITableViewCell {
+    NSInteger   _commentID;
+    
+    __weak id<DWCommentCellDelegate,NSObject> _delegate;
+}
+
+/**
+ * ID of the comment being displayed.
+ */
+@property (nonatomic,assign) NSInteger commentID;
+
+/**
+ * Delegate following the DWCommentCellDelegate protocol.
+ */
+@property (nonatomic,weak) id<DWCommentCellDelegate,NSObject> delegate;
 
 /**
  * Apply commentor's image.
@@ -32,5 +48,21 @@
  * Compute height of cell with the given message.
  */
 + (NSInteger)heightForCellWithMessage:(NSString*)message;
+
+@end
+
+
+
+/**
+ * Protocol for delgates of DWCommentCell
+ */
+@protocol DWCommentCellDelegate
+
+@required
+
+/**
+ * A link to a user profile is clicked.
+ */
+- (void)userClickedForCommentID:(NSNumber*)commentID;
 
 @end
