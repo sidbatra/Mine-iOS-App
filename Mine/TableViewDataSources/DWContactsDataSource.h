@@ -30,7 +30,7 @@
 /**
  * Redefined delegate object
  */
-@property (nonatomic,weak) id<DWContactsDataSourceDelegate,NSObject> delegate;
+@property (nonatomic,weak) id<DWContactsDataSourceDelegate,DWTableViewDataSourceDelegate,NSObject> delegate;
 
 
 /**
