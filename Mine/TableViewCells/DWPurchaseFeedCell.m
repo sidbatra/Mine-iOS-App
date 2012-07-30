@@ -11,12 +11,32 @@
 #import "DWLike.h"
 
 NSInteger const kPurchaseFeedCellHeight = 400;
-NSInteger const kTotalLikeUserButtons = 5;
+NSInteger const kTotalLikeUserButtons   = 5;
 
 
 @interface DWPurchaseFeedCell() {
+    NSMutableArray  *_likeUserButtons;
     
+    NSMutableArray  *_commentUserButtons;
+    NSMutableArray  *_commentUserNameButtons;
 }
+
+
+/**
+ * User image buttons for the likers of this purchase.
+ */
+@property (nonatomic,strong) NSMutableArray *likeUserButtons;
+
+/**
+ * Image buttons for the comments.
+ */
+@property (nonatomic,strong) NSMutableArray *commentUserButtons;
+
+/**
+ * User name buttons for the comments.
+ */
+@property (nonatomic,strong) NSMutableArray *commentUserNameButtons;
+
 
 /**
  * Fires the delegate event after a user element is clicked.
@@ -32,11 +52,12 @@ NSInteger const kTotalLikeUserButtons = 5;
 //----------------------------------------------------------------------------------------------------
 @implementation DWPurchaseFeedCell
 
-@synthesize purchaseID          = _purchaseID;
-@synthesize userID              = _userID;
-@synthesize likeUserButtons     = _likeUserButtons;
-@synthesize commentUserButtons  = _commentUserButtons;
-@synthesize delegate            = _delegate;
+@synthesize purchaseID              = _purchaseID;
+@synthesize userID                  = _userID;
+@synthesize likeUserButtons         = _likeUserButtons;
+@synthesize commentUserButtons      = _commentUserButtons;
+@synthesize commentUserNameButtons  = _commentUserNameButtons;
+@synthesize delegate                = _delegate;
 
 //----------------------------------------------------------------------------------------------------
 - (id)initWithStyle:(UITableViewCellStyle)style 
@@ -254,6 +275,7 @@ NSInteger const kTotalLikeUserButtons = 5;
                                                                              30,
                                                                              30)];
     commentUserButton.backgroundColor = [UIColor redColor];
+    commentUserButton.tag = userID;
     
     [commentUserButton setImage:image
                        forState:UIControlStateNormal];
@@ -265,6 +287,19 @@ NSInteger const kTotalLikeUserButtons = 5;
     [self.commentUserButtons addObject:commentUserButton];
     
     [self.contentView addSubview:commentUserButton];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)setCommentUserImage:(UIImage*)image
+           forButtonAtIndex:(NSInteger)index {
+    
+    if(index >= [self.commentUserButtons count])
+        return;
+    
+    UIButton *commentUserButton = [self.commentUserButtons objectAtIndex:index];
+    
+    [commentUserButton setImage:image
+                       forState:UIControlStateNormal];
 }
 
 

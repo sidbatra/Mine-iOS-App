@@ -27,10 +27,6 @@ extern NSInteger const kTotalLikeUserButtons;
 	UILabel         *titleLabel;
     UILabel         *likesCountLabel;
     
-    NSMutableArray  *_likeUserButtons;
-    
-    NSMutableArray  *_commentUserButtons;
-    
     __weak id<DWPurchaseFeedCellDelegate,NSObject> _delegate;
 }
 
@@ -45,15 +41,6 @@ extern NSInteger const kTotalLikeUserButtons;
  */
 @property (nonatomic,assign) NSInteger userID;
 
-/**
- * User image buttons for the likers of this purchase.
- */
-@property (nonatomic,strong) NSMutableArray *likeUserButtons;
-
-/**
- * User image buttons for comments on this purchase.
- */
-@property (nonatomic,strong) NSMutableArray *commentUserButtons;
 
 /**
  * Delegate
@@ -110,6 +97,12 @@ extern NSInteger const kTotalLikeUserButtons;
                       withUserName:(NSString*)userName
                         withUserID:(NSInteger)userID
                         andMessage:(NSString*)message;
+
+/**
+ * Set comment user image button image;
+ */
+- (void)setCommentUserImage:(UIImage*)image
+           forButtonAtIndex:(NSInteger)index;
 
 
 /**

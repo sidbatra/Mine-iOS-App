@@ -114,7 +114,19 @@
                              forUserID:like.user.databaseID];
                     break;
                 }
-            }
+            } //likes
+            
+            
+            for(NSInteger i=0 ; i< [purchase.comments count] ; i++) {
+                DWComment *comment = [purchase.comments objectAtIndex:i];
+                
+                if(comment.user.databaseID == objectID)
+                    [cell setCommentUserImage:comment.user.squareImage
+                             forButtonAtIndex:i];
+            } //comments
+            
+            
+            
         } // if square image
     } //if user
 }
