@@ -209,7 +209,11 @@ NSInteger const kTotalLikeUserButtons   = 5;
     for(UIButton *commentUserButton in self.commentUserButtons)
         [commentUserButton removeFromSuperview];
     
-    self.commentUserButtons = [NSMutableArray array];
+    for(UIButton *commentUserNameButton in self.commentUserNameButtons)
+        [commentUserNameButton removeFromSuperview];
+    
+    self.commentUserButtons     = [NSMutableArray array];
+    self.commentUserNameButtons = [NSMutableArray array];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -287,6 +291,30 @@ NSInteger const kTotalLikeUserButtons   = 5;
     [self.commentUserButtons addObject:commentUserButton];
     
     [self.contentView addSubview:commentUserButton];
+    
+    
+    UIButton *commentUserNameButton = [[UIButton alloc] initWithFrame:CGRectMake(50,
+                                                                             450 + [self.commentUserNameButtons count] * 110,
+                                                                             150,
+                                                                             30)];
+    commentUserNameButton.backgroundColor   = [UIColor redColor];
+    commentUserNameButton.tag               = userID;
+    
+     commentUserNameButton.titleLabel.font             = [UIFont fontWithName:@"HelveticaNeue" size:13];
+    commentUserNameButton.titleLabel.textColor         = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0];
+    commentUserNameButton.titleLabel.textAlignment     = UITextAlignmentLeft;
+   
+    [commentUserNameButton setTitle:userName
+                           forState:UIControlStateNormal];
+    
+    [commentUserNameButton addTarget:self
+                          action:@selector(didTapCommentUserNameButton:)
+                forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.commentUserNameButtons addObject:commentUserNameButton];
+    
+    [self.contentView addSubview:commentUserNameButton];
+    
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -315,7 +343,7 @@ NSInteger const kTotalLikeUserButtons   = 5;
     NSInteger height = kPurchaseFeedCellHeight;
     
     height +=likesCount > 0 ? 40 : 0;
-    height += commentsCount > 0 ? 150 * commentsCount : 0;
+    height += commentsCount > 0 ? 125 * commentsCount : 0;
     
     return  height;
 }
@@ -345,6 +373,11 @@ NSInteger const kTotalLikeUserButtons   = 5;
 
 //----------------------------------------------------------------------------------------------------
 - (void)didTapCommentUserImageButton:(UIButton*)button {
+    [self userClicked:button.tag];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)didTapCommentUserNameButton:(UIButton*)button {
     [self userClicked:button.tag];
 }
 
