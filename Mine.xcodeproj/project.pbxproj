@@ -7,6 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2622005215C71393003DC1DF /* DWContactsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 2622005115C71393003DC1DF /* DWContactsDataSource.m */; };
+		2622005715C713A7003DC1DF /* DWInviteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2622005515C713A7003DC1DF /* DWInviteViewController.m */; };
+		2622005815C713A7003DC1DF /* DWInviteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2622005615C713A7003DC1DF /* DWInviteViewController.xib */; };
+		2622005B15C713B4003DC1DF /* DWContactsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2622005A15C713B4003DC1DF /* DWContactsViewController.m */; };
+		2622005E15C713DE003DC1DF /* DWContactPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 2622005D15C713DE003DC1DF /* DWContactPresenter.m */; };
+		2622006115C713EE003DC1DF /* DWDoubleLineCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2622006015C713EE003DC1DF /* DWDoubleLineCell.m */; };
+		2622006615C71421003DC1DF /* DWContactsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2622006315C71421003DC1DF /* DWContactsController.m */; };
+		2622006715C71421003DC1DF /* DWInvitesController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2622006515C71421003DC1DF /* DWInvitesController.m */; };
+		2622006A15C7143A003DC1DF /* DWContact.m in Sources */ = {isa = PBXBuildFile; fileRef = 2622006915C7143A003DC1DF /* DWContact.m */; };
+		2622007115C71453003DC1DF /* check_mark_white.png in Resources */ = {isa = PBXBuildFile; fileRef = 2622006B15C71453003DC1DF /* check_mark_white.png */; };
+		2622007215C71453003DC1DF /* check_mark_white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2622006C15C71453003DC1DF /* check_mark_white@2x.png */; };
+		2622007315C71453003DC1DF /* hr_dark.png in Resources */ = {isa = PBXBuildFile; fileRef = 2622006D15C71453003DC1DF /* hr_dark.png */; };
+		2622007415C71453003DC1DF /* hr_dark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2622006E15C71453003DC1DF /* hr_dark@2x.png */; };
+		2622007515C71453003DC1DF /* hr_gray_create.png in Resources */ = {isa = PBXBuildFile; fileRef = 2622006F15C71453003DC1DF /* hr_gray_create.png */; };
+		2622007615C71453003DC1DF /* hr_gray_create@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2622007015C71453003DC1DF /* hr_gray_create@2x.png */; };
+		2622007E15C714D7003DC1DF /* ABContact.m in Sources */ = {isa = PBXBuildFile; fileRef = 2622007915C714D7003DC1DF /* ABContact.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		2622007F15C714D7003DC1DF /* ABContactsHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2622007B15C714D7003DC1DF /* ABContactsHelper.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		2622008015C714D7003DC1DF /* ABGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 2622007D15C714D7003DC1DF /* ABGroup.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		2622008615C715B6003DC1DF /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2622008515C715B6003DC1DF /* AddressBook.framework */; };
 		262376A515BF6B9600B3A037 /* DWFacebookConnect.m in Sources */ = {isa = PBXBuildFile; fileRef = 262376A315BF6B9600B3A037 /* DWFacebookConnect.m */; };
 		262376B215BF6C0A00B3A037 /* Facebook.m in Sources */ = {isa = PBXBuildFile; fileRef = 262376A715BF6C0A00B3A037 /* Facebook.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		262376B315BF6C0A00B3A037 /* FBDialog.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 262376A915BF6C0A00B3A037 /* FBDialog.bundle */; };
@@ -100,6 +119,36 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2622005015C71393003DC1DF /* DWContactsDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWContactsDataSource.h; sourceTree = "<group>"; };
+		2622005115C71393003DC1DF /* DWContactsDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWContactsDataSource.m; sourceTree = "<group>"; };
+		2622005415C713A7003DC1DF /* DWInviteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWInviteViewController.h; sourceTree = "<group>"; };
+		2622005515C713A7003DC1DF /* DWInviteViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWInviteViewController.m; sourceTree = "<group>"; };
+		2622005615C713A7003DC1DF /* DWInviteViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DWInviteViewController.xib; sourceTree = "<group>"; };
+		2622005915C713B4003DC1DF /* DWContactsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWContactsViewController.h; sourceTree = "<group>"; };
+		2622005A15C713B4003DC1DF /* DWContactsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWContactsViewController.m; sourceTree = "<group>"; };
+		2622005C15C713DE003DC1DF /* DWContactPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWContactPresenter.h; sourceTree = "<group>"; };
+		2622005D15C713DE003DC1DF /* DWContactPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWContactPresenter.m; sourceTree = "<group>"; };
+		2622005F15C713EE003DC1DF /* DWDoubleLineCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWDoubleLineCell.h; sourceTree = "<group>"; };
+		2622006015C713EE003DC1DF /* DWDoubleLineCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWDoubleLineCell.m; sourceTree = "<group>"; };
+		2622006215C71421003DC1DF /* DWContactsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWContactsController.h; sourceTree = "<group>"; };
+		2622006315C71421003DC1DF /* DWContactsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWContactsController.m; sourceTree = "<group>"; };
+		2622006415C71421003DC1DF /* DWInvitesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWInvitesController.h; sourceTree = "<group>"; };
+		2622006515C71421003DC1DF /* DWInvitesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWInvitesController.m; sourceTree = "<group>"; };
+		2622006815C7143A003DC1DF /* DWContact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWContact.h; sourceTree = "<group>"; };
+		2622006915C7143A003DC1DF /* DWContact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWContact.m; sourceTree = "<group>"; };
+		2622006B15C71453003DC1DF /* check_mark_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check_mark_white.png; sourceTree = "<group>"; };
+		2622006C15C71453003DC1DF /* check_mark_white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "check_mark_white@2x.png"; sourceTree = "<group>"; };
+		2622006D15C71453003DC1DF /* hr_dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hr_dark.png; sourceTree = "<group>"; };
+		2622006E15C71453003DC1DF /* hr_dark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hr_dark@2x.png"; sourceTree = "<group>"; };
+		2622006F15C71453003DC1DF /* hr_gray_create.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hr_gray_create.png; sourceTree = "<group>"; };
+		2622007015C71453003DC1DF /* hr_gray_create@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hr_gray_create@2x.png"; sourceTree = "<group>"; };
+		2622007815C714D7003DC1DF /* ABContact.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABContact.h; sourceTree = "<group>"; };
+		2622007915C714D7003DC1DF /* ABContact.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABContact.m; sourceTree = "<group>"; };
+		2622007A15C714D7003DC1DF /* ABContactsHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABContactsHelper.h; sourceTree = "<group>"; };
+		2622007B15C714D7003DC1DF /* ABContactsHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABContactsHelper.m; sourceTree = "<group>"; };
+		2622007C15C714D7003DC1DF /* ABGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABGroup.h; sourceTree = "<group>"; };
+		2622007D15C714D7003DC1DF /* ABGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABGroup.m; sourceTree = "<group>"; };
+		2622008515C715B6003DC1DF /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		262376A315BF6B9600B3A037 /* DWFacebookConnect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWFacebookConnect.m; path = Connect/DWFacebookConnect.m; sourceTree = "<group>"; };
 		262376A415BF6B9600B3A037 /* DWFacebookConnect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWFacebookConnect.h; path = Connect/DWFacebookConnect.h; sourceTree = "<group>"; };
 		262376A715BF6C0A00B3A037 /* Facebook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Facebook.m; path = Facebook/Facebook.m; sourceTree = "<group>"; };
@@ -274,6 +323,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2622008615C715B6003DC1DF /* AddressBook.framework in Frameworks */,
 				BBE42F5C15BE18DF000F6AE1 /* QuartzCore.framework in Frameworks */,
 				BB9F70B215B9E6630099C80A /* libz.dylib in Frameworks */,
 				BB9F70B015B9E6450099C80A /* MobileCoreServices.framework in Frameworks */,
@@ -288,6 +338,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2622007715C714D7003DC1DF /* ABContactsHelper */ = {
+			isa = PBXGroup;
+			children = (
+				2622007815C714D7003DC1DF /* ABContact.h */,
+				2622007915C714D7003DC1DF /* ABContact.m */,
+				2622007A15C714D7003DC1DF /* ABContactsHelper.h */,
+				2622007B15C714D7003DC1DF /* ABContactsHelper.m */,
+				2622007C15C714D7003DC1DF /* ABGroup.h */,
+				2622007D15C714D7003DC1DF /* ABGroup.m */,
+			);
+			path = ABContactsHelper;
+			sourceTree = "<group>";
+		};
 		262376A115BF6B8100B3A037 /* Connect */ = {
 			isa = PBXGroup;
 			children = (
@@ -319,6 +382,12 @@
 		BB06360315BF7258001F26E1 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				2622006B15C71453003DC1DF /* check_mark_white.png */,
+				2622006C15C71453003DC1DF /* check_mark_white@2x.png */,
+				2622006D15C71453003DC1DF /* hr_dark.png */,
+				2622006E15C71453003DC1DF /* hr_dark@2x.png */,
+				2622006F15C71453003DC1DF /* hr_gray_create.png */,
+				2622007015C71453003DC1DF /* hr_gray_create@2x.png */,
 				BB06361415C06F0E001F26E1 /* tab_create_off.png */,
 				BB06361515C06F0E001F26E1 /* tab_create_off@2x.png */,
 				BB06361615C06F0E001F26E1 /* tab_feed_off.png */,
@@ -401,6 +470,10 @@
 		BB174D4615BA43C700DB50CA /* DataControllers */ = {
 			isa = PBXGroup;
 			children = (
+				2622006215C71421003DC1DF /* DWContactsController.h */,
+				2622006315C71421003DC1DF /* DWContactsController.m */,
+				2622006415C71421003DC1DF /* DWInvitesController.h */,
+				2622006515C71421003DC1DF /* DWInvitesController.m */,
 				BB26988115BBA75B00037453 /* DWFeedController.h */,
 				BB26988215BBA75B00037453 /* DWFeedController.m */,
 				BB06366A15C1E04B001F26E1 /* DWPurchasesController.h */,
@@ -423,6 +496,9 @@
 		BB26986B15BB653900037453 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				2622005415C713A7003DC1DF /* DWInviteViewController.h */,
+				2622005515C713A7003DC1DF /* DWInviteViewController.m */,
+				2622005615C713A7003DC1DF /* DWInviteViewController.xib */,
 				BB26986C15BB653900037453 /* DWTestViewController.h */,
 				BB26986D15BB653900037453 /* DWTestViewController.m */,
 				BB26986E15BB653900037453 /* DWTestViewController.xib */,
@@ -443,6 +519,7 @@
 			isa = PBXGroup;
 			children = (
 				BB9F710115B9EB850099C80A /* SynthesizeSingleton.h */,
+				2622007715C714D7003DC1DF /* ABContactsHelper */,
 				BB9F70B415B9E6A60099C80A /* ASI */,
 				BBE42F5715BE188C000F6AE1 /* EGOTableViewPullRefresh */,
 				BB9F70ED15B9E7C90099C80A /* JSON */,
@@ -520,6 +597,8 @@
 		BB9F710615B9EBDE0099C80A /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				2622006815C7143A003DC1DF /* DWContact.h */,
+				2622006915C7143A003DC1DF /* DWContact.m */,
 				BBC0607815C49671000D3480 /* DWComment.h */,
 				BBC0607915C49671000D3480 /* DWComment.m */,
 				BBC0607415C493A9000D3480 /* DWLike.h */,
@@ -578,6 +657,7 @@
 		BBC8A08515B9D26C00DF58F6 = {
 			isa = PBXGroup;
 			children = (
+				2622008515C715B6003DC1DF /* AddressBook.framework */,
 				BB9F70B315B9E6A60099C80A /* External */,
 				BBC8A09A15B9D26D00DF58F6 /* Mine */,
 				BBC8A09315B9D26D00DF58F6 /* Frameworks */,
@@ -596,8 +676,8 @@
 		BBC8A09315B9D26D00DF58F6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				BBE42F5B15BE18DF000F6AE1 /* QuartzCore.framework */,
 				BB9F70B115B9E6630099C80A /* libz.dylib */,
+				BBE42F5B15BE18DF000F6AE1 /* QuartzCore.framework */,
 				BB9F70AF15B9E6450099C80A /* MobileCoreServices.framework */,
 				BB9F70AD15B9E6400099C80A /* SystemConfiguration.framework */,
 				BB9F70AA15B9E62F0099C80A /* CFNetwork.framework */,
@@ -652,6 +732,8 @@
 		BBE42F3615BCAD9D000F6AE1 /* TableViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				2622005915C713B4003DC1DF /* DWContactsViewController.h */,
+				2622005A15C713B4003DC1DF /* DWContactsViewController.m */,
 				BBE42F3715BCAD9D000F6AE1 /* Base */,
 				BBE42F4D15BDBB78000F6AE1 /* DWFeedViewController.h */,
 				BBE42F4E15BDBB79000F6AE1 /* DWFeedViewController.m */,
@@ -674,6 +756,8 @@
 			isa = PBXGroup;
 			children = (
 				BBE42F3B15BCAD9E000F6AE1 /* Base */,
+				2622005015C71393003DC1DF /* DWContactsDataSource.h */,
+				2622005115C71393003DC1DF /* DWContactsDataSource.m */,
 				BBE42F5015BDBBFC000F6AE1 /* DWFeedViewDataSource.h */,
 				BBE42F5115BDBBFC000F6AE1 /* DWFeedViewDataSource.m */,
 				BB06367415C1F733001F26E1 /* DWProfileViewDataSource.h */,
@@ -694,6 +778,8 @@
 		BBE42F4415BCB838000F6AE1 /* ModelPresenters */ = {
 			isa = PBXGroup;
 			children = (
+				2622005C15C713DE003DC1DF /* DWContactPresenter.h */,
+				2622005D15C713DE003DC1DF /* DWContactPresenter.m */,
 				BB06367D15C31968001F26E1 /* DWPaginationPresenter.h */,
 				BB06367E15C31968001F26E1 /* DWPaginationPresenter.m */,
 				BBE42F4A15BCCB7A000F6AE1 /* DWPurchaseFeedPresenter.h */,
@@ -705,6 +791,8 @@
 		BBE42F4615BCC95A000F6AE1 /* TableViewCells */ = {
 			isa = PBXGroup;
 			children = (
+				2622005F15C713EE003DC1DF /* DWDoubleLineCell.h */,
+				2622006015C713EE003DC1DF /* DWDoubleLineCell.m */,
 				BB06368015C31973001F26E1 /* DWPaginationCell.h */,
 				BB06368115C31973001F26E1 /* DWPaginationCell.m */,
 				BBE42F4715BCCA52000F6AE1 /* DWPurchaseFeedCell.h */,
@@ -801,6 +889,13 @@
 				BB06362715C06F0E001F26E1 /* tab_teams_on@2x.png in Resources */,
 				BB06365515C08D2E001F26E1 /* Window.xib in Resources */,
 				BB06366215C0A147001F26E1 /* DWLoginViewController.xib in Resources */,
+				2622005815C713A7003DC1DF /* DWInviteViewController.xib in Resources */,
+				2622007115C71453003DC1DF /* check_mark_white.png in Resources */,
+				2622007215C71453003DC1DF /* check_mark_white@2x.png in Resources */,
+				2622007315C71453003DC1DF /* hr_dark.png in Resources */,
+				2622007415C71453003DC1DF /* hr_dark@2x.png in Resources */,
+				2622007515C71453003DC1DF /* hr_gray_create.png in Resources */,
+				2622007615C71453003DC1DF /* hr_gray_create@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -877,6 +972,17 @@
 				BB06368215C31974001F26E1 /* DWPaginationCell.m in Sources */,
 				BBC0607615C493A9000D3480 /* DWLike.m in Sources */,
 				BBC0607A15C49671000D3480 /* DWComment.m in Sources */,
+				2622005215C71393003DC1DF /* DWContactsDataSource.m in Sources */,
+				2622005715C713A7003DC1DF /* DWInviteViewController.m in Sources */,
+				2622005B15C713B4003DC1DF /* DWContactsViewController.m in Sources */,
+				2622005E15C713DE003DC1DF /* DWContactPresenter.m in Sources */,
+				2622006115C713EE003DC1DF /* DWDoubleLineCell.m in Sources */,
+				2622006615C71421003DC1DF /* DWContactsController.m in Sources */,
+				2622006715C71421003DC1DF /* DWInvitesController.m in Sources */,
+				2622006A15C7143A003DC1DF /* DWContact.m in Sources */,
+				2622007E15C714D7003DC1DF /* ABContact.m in Sources */,
+				2622007F15C714D7003DC1DF /* ABContactsHelper.m in Sources */,
+				2622008015C714D7003DC1DF /* ABGroup.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
