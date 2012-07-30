@@ -56,4 +56,10 @@
  */
 - (void)destroy;
 
+/**
+ * Increment point count by one - imply an extra reference which wasn't done
+ * via the convential create or mount methods.
+ */
+- (void)incrementPointerCount;
+
 @end

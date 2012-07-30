@@ -112,4 +112,9 @@ static NSInteger const kDefaultDatabaseID   = -1;
         self.databaseID = [[objectJSON objectForKey:kKeyID] integerValue];
 }
 
+//----------------------------------------------------------------------------------------------------
+- (void)incrementPointerCount {
+    self.pointerCount++;
+}
+
 @end

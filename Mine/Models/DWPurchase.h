@@ -105,6 +105,11 @@ extern NSString* const kNImgPurchaseGiantLoadError;
  */
 - (void)downloadGiantImage;
 
+/**
+ * Create new like on the purchase by the given user.
+ */
+- (void)addLikeByUser:(DWUser*)user;
+
 
 /**
  * Prints out key fields for debugging.

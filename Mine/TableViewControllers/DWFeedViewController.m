@@ -9,12 +9,18 @@
 #import "DWFeedViewController.h"
 
 #import "DWFeedViewDataSource.h"
+
 #import "DWPurchaseFeedPresenter.h"
 #import "DWPaginationPresenter.h"
+
 #import "DWPurchase.h"
 #import "DWUser.h"
+#import "DWLike.h"
 #import "DWPagination.h"
+
+#import "DWSession.h"
 #import "DWConstants.h"
+
 
 
 //----------------------------------------------------------------------------------------------------
@@ -118,7 +124,11 @@
     if(!purchase)
         return;
     
-    NSLog(@"like purchase %@",purchase.title);
+    [purchase addLikeByUser:[DWSession sharedDWSession].currentUser];
+    
+    NSInteger index = [self.tableViewDataSource indexForObject:purchase];
+    
+    [self reloadRowAtIndex:index];
 }
 
 

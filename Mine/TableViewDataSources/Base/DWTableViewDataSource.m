@@ -20,11 +20,6 @@ static NSInteger const kDefaultSections = 1;
 - (void)paginate;
 
 /**
- * Returns the index in the objects array for the given object. NSNotFound if not found.
- */
-- (NSInteger)indexForObject:(id)object;
-
-/**
  * Add the given object into the given index
  * and instruct table view to display it with animation
  */

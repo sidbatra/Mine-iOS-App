@@ -183,6 +183,18 @@ static NSString* const kKeyComments         = @"comments";
 }
 
 //----------------------------------------------------------------------------------------------------
+- (void)addLikeByUser:(DWUser*)user {
+    
+    DWLike *like = [[DWLike alloc] init];
+    
+    like.user = user;
+    [like.user incrementPointerCount];
+    
+    [self.likes addObject:like];
+}
+
+
+//----------------------------------------------------------------------------------------------------
 - (void)debug {
     NSLog(@"%@ %@ %@ %@ %@ %@",self.title,self.endorsement,self.sourceURL,self.giantImageURL,self.fbObjectID,self.createdAt);
     [self.user debug];
