@@ -11,6 +11,7 @@
 #import "DWPurchaseFeedCell.h"
 #import "DWUser.h"
 #import "DWLike.h"
+#import "DWComment.h"
 #import "DWPurchase.h"
 
 @implementation DWPurchaseFeedPresenter
@@ -34,7 +35,8 @@
     cell.purchaseID = purchase.databaseID;
     cell.userID     = purchase.user.databaseID;
     
-    [cell resetLikeUI];
+    [cell resetLikesUI];
+    [cell resetCommentsUI];
     
     [purchase downloadGiantImage];
     [purchase.user downloadSquareImage];
@@ -57,6 +59,15 @@
                  forUserID:like.user.databaseID];
     }
     
+    for(DWComment *comment in purchase.comments) {
+        [comment.user downloadSquareImage];
+        
+        [cell createCommentWithUserImage:comment.user.squareImage
+                            withUserName:comment.user.fullName
+                              withUserID:comment.user.databaseID
+                              andMessage:comment.message];
+    }
+    
     
     return cell;
 }
@@ -67,7 +78,8 @@
     
      DWPurchase *purchase = object;
     
-    return [DWPurchaseFeedCell heightForCellWithLikesCount:[purchase.likes count]];
+    return [DWPurchaseFeedCell heightForCellWithLikesCount:[purchase.likes count] 
+                                          andCommentsCount:[purchase.comments count]];
 }
 
 //----------------------------------------------------------------------------------------------------

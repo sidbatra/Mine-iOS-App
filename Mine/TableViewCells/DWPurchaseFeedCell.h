@@ -29,6 +29,8 @@ extern NSInteger const kTotalLikeUserButtons;
     
     NSMutableArray  *_likeUserButtons;
     
+    NSMutableArray  *_commentUserButtons;
+    
     __weak id<DWPurchaseFeedCellDelegate,NSObject> _delegate;
 }
 
@@ -44,9 +46,14 @@ extern NSInteger const kTotalLikeUserButtons;
 @property (nonatomic,assign) NSInteger userID;
 
 /**
- * User buttons for the likers of this purchase.
+ * User image buttons for the likers of this purchase.
  */
 @property (nonatomic,strong) NSMutableArray *likeUserButtons;
+
+/**
+ * User image buttons for comments on this purchase.
+ */
+@property (nonatomic,strong) NSMutableArray *commentUserButtons;
 
 /**
  * Delegate
@@ -57,7 +64,12 @@ extern NSInteger const kTotalLikeUserButtons;
 /**
  * Reset UI for displaying likes
  */
-- (void)resetLikeUI;
+- (void)resetLikesUI;
+
+/**
+ * Reset UI for displaying comments.
+ */
+- (void)resetCommentsUI;
 
 /**
  * Apply a user image.
@@ -91,11 +103,20 @@ extern NSInteger const kTotalLikeUserButtons;
     forButtonAtIndex:(NSInteger)index
            forUserID:(NSInteger)userID;
 
+/**
+ * Add a comment onto the cell.
+ */
+- (void)createCommentWithUserImage:(UIImage*)image
+                      withUserName:(NSString*)userName
+                        withUserID:(NSInteger)userID
+                        andMessage:(NSString*)message;
+
 
 /**
  * Compute the height of the cell based on the content.
  */
-+ (NSInteger)heightForCellWithLikesCount:(NSInteger)likesCount;
++ (NSInteger)heightForCellWithLikesCount:(NSInteger)likesCount 
+                        andCommentsCount:(NSInteger)commentsCount;
 
 @end
 

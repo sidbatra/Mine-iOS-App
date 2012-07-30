@@ -32,10 +32,11 @@ NSInteger const kTotalLikeUserButtons = 5;
 //----------------------------------------------------------------------------------------------------
 @implementation DWPurchaseFeedCell
 
-@synthesize purchaseID      = _purchaseID;
-@synthesize userID          = _userID;
-@synthesize likeUserButtons = _likeUserButtons;
-@synthesize delegate        = _delegate;
+@synthesize purchaseID          = _purchaseID;
+@synthesize userID              = _userID;
+@synthesize likeUserButtons     = _likeUserButtons;
+@synthesize commentUserButtons  = _commentUserButtons;
+@synthesize delegate            = _delegate;
 
 //----------------------------------------------------------------------------------------------------
 - (id)initWithStyle:(UITableViewCellStyle)style 
@@ -47,7 +48,7 @@ NSInteger const kTotalLikeUserButtons = 5;
     if (self) {
         self.contentView.clipsToBounds = YES;
         
-        self.likeUserButtons = [NSMutableArray arrayWithCapacity:kTotalLikeUserButtons];
+        self.likeUserButtons    = [NSMutableArray arrayWithCapacity:kTotalLikeUserButtons];
         
         [self createUserImageButton];
         [self createPurchaseImageView];
@@ -173,12 +174,21 @@ NSInteger const kTotalLikeUserButtons = 5;
 #pragma mark Accessor methods to populate cell UI
 
 //----------------------------------------------------------------------------------------------------
-- (void)resetLikeUI {
+- (void)resetLikesUI {
     
     for(UIButton *likeUserButton in self.likeUserButtons) 
         likeUserButton.hidden = YES;
     
     likesCountLabel.hidden = YES;
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)resetCommentsUI {
+    
+    for(UIButton *commentUserButton in self.commentUserButtons)
+        [commentUserButton removeFromSuperview];
+    
+    self.commentUserButtons = [NSMutableArray array];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -233,6 +243,30 @@ NSInteger const kTotalLikeUserButtons = 5;
     likeUserButton.hidden = NO;
 }
 
+//----------------------------------------------------------------------------------------------------
+- (void)createCommentWithUserImage:(UIImage*)image
+                      withUserName:(NSString*)userName
+                        withUserID:(NSInteger)userID
+                        andMessage:(NSString*)message {
+    
+    UIButton *commentUserButton = [[UIButton alloc] initWithFrame:CGRectMake(0,
+                                                                            450 + [self.commentUserButtons count] * 110,
+                                                                             30,
+                                                                             30)];
+    commentUserButton.backgroundColor = [UIColor redColor];
+    
+    [commentUserButton setImage:image
+                       forState:UIControlStateNormal];
+    
+    [commentUserButton addTarget:self
+                       action:@selector(didTapCommentUserButton:)
+             forControlEvents:UIControlEventTouchUpInside];
+     
+    [self.commentUserButtons addObject:commentUserButton];
+    
+    [self.contentView addSubview:commentUserButton];
+}
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
@@ -240,8 +274,15 @@ NSInteger const kTotalLikeUserButtons = 5;
 #pragma mark Static methods
 
 //----------------------------------------------------------------------------------------------------
-+ (NSInteger)heightForCellWithLikesCount:(NSInteger)likesCount {
-    return kPurchaseFeedCellHeight + (likesCount > 0 ? 40 : 0);
++ (NSInteger)heightForCellWithLikesCount:(NSInteger)likesCount 
+                        andCommentsCount:(NSInteger)commentsCount {
+    
+    NSInteger height = kPurchaseFeedCellHeight;
+    
+    height +=likesCount > 0 ? 40 : 0;
+    height += commentsCount > 0 ? 150 * commentsCount : 0;
+    
+    return  height;
 }
 
 
