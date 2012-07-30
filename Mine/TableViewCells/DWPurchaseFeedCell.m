@@ -310,9 +310,9 @@ NSInteger const kTotalLikeUserButtons   = 5;
     commentUserNameButton.backgroundColor   = [UIColor redColor];
     commentUserNameButton.tag               = userID;
     
-     commentUserNameButton.titleLabel.font             = [UIFont fontWithName:@"HelveticaNeue" size:13];
-    commentUserNameButton.titleLabel.textColor         = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0];
-    commentUserNameButton.titleLabel.textAlignment     = UITextAlignmentLeft;
+    commentUserNameButton.titleLabel.font               = [UIFont fontWithName:@"HelveticaNeue" size:13];
+    commentUserNameButton.titleLabel.textColor          = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0];
+    commentUserNameButton.titleLabel.textAlignment      = UITextAlignmentLeft;
    
     [commentUserNameButton setTitle:userName
                            forState:UIControlStateNormal];
