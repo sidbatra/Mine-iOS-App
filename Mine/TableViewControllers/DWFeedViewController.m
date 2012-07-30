@@ -8,6 +8,8 @@
 
 #import "DWFeedViewController.h"
 
+#import "DWCommentsViewController.h"
+
 #import "DWFeedViewDataSource.h"
 
 #import "DWPurchaseFeedPresenter.h"
@@ -170,6 +172,23 @@
     [self reloadRowAtIndex:index];
     
     [self.likesController createLikeForPurchaseID:purchase.databaseID];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)commentClickedForPurchaseID:(NSNumber *)purchaseID {
+    
+    SEL sel = @selector(feedViewCommentClickedForPurchase:);
+    
+    if(![self.delegate respondsToSelector:sel])
+        return;
+    
+    DWPurchase *purchase = [DWPurchase fetch:[purchaseID integerValue]];
+    
+    if(!purchase)
+        return;
+
+    [self.delegate performSelector:sel
+                        withObject:purchase];
 }
 
 

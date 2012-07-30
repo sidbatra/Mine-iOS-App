@@ -73,5 +73,10 @@
     [self displayUserProfile:user];
 }
 
+//----------------------------------------------------------------------------------------------------
+- (void)feedViewCommentClickedForPurchase:(id)purchase {
+    [self displayCommentsViewForPurchase:purchase];
+}
+
 
 @end

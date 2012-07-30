@@ -103,6 +103,10 @@
 		BBC0607615C493A9000D3480 /* DWLike.m in Sources */ = {isa = PBXBuildFile; fileRef = BBC0607515C493A9000D3480 /* DWLike.m */; };
 		BBC0607A15C49671000D3480 /* DWComment.m in Sources */ = {isa = PBXBuildFile; fileRef = BBC0607915C49671000D3480 /* DWComment.m */; };
 		BBC0608515C727F5000D3480 /* DWLikesController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBC0608415C727F5000D3480 /* DWLikesController.m */; };
+		BBC0608815C741FC000D3480 /* DWCommentsViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = BBC0608715C741FC000D3480 /* DWCommentsViewDataSource.m */; };
+		BBC0608B15C74243000D3480 /* DWCommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBC0608A15C74243000D3480 /* DWCommentsViewController.m */; };
+		BBC0608E15C7436E000D3480 /* DWCommentPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = BBC0608D15C7436E000D3480 /* DWCommentPresenter.m */; };
+		BBC0609115C74483000D3480 /* DWCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BBC0609015C74483000D3480 /* DWCommentCell.m */; };
 		BBC8A09515B9D26D00DF58F6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBC8A09415B9D26D00DF58F6 /* UIKit.framework */; };
 		BBC8A09715B9D26D00DF58F6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBC8A09615B9D26D00DF58F6 /* Foundation.framework */; };
 		BBC8A09915B9D26D00DF58F6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBC8A09815B9D26D00DF58F6 /* CoreGraphics.framework */; };
@@ -294,6 +298,14 @@
 		BBC0607915C49671000D3480 /* DWComment.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWComment.m; sourceTree = "<group>"; };
 		BBC0608315C727F5000D3480 /* DWLikesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWLikesController.h; sourceTree = "<group>"; };
 		BBC0608415C727F5000D3480 /* DWLikesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWLikesController.m; sourceTree = "<group>"; };
+		BBC0608615C741FC000D3480 /* DWCommentsViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWCommentsViewDataSource.h; sourceTree = "<group>"; };
+		BBC0608715C741FC000D3480 /* DWCommentsViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWCommentsViewDataSource.m; sourceTree = "<group>"; };
+		BBC0608915C74243000D3480 /* DWCommentsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWCommentsViewController.h; sourceTree = "<group>"; };
+		BBC0608A15C74243000D3480 /* DWCommentsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWCommentsViewController.m; sourceTree = "<group>"; };
+		BBC0608C15C7436E000D3480 /* DWCommentPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWCommentPresenter.h; sourceTree = "<group>"; };
+		BBC0608D15C7436E000D3480 /* DWCommentPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWCommentPresenter.m; sourceTree = "<group>"; };
+		BBC0608F15C74483000D3480 /* DWCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWCommentCell.h; sourceTree = "<group>"; };
+		BBC0609015C74483000D3480 /* DWCommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWCommentCell.m; sourceTree = "<group>"; };
 		BBC8A09015B9D26D00DF58F6 /* Mine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBC8A09415B9D26D00DF58F6 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		BBC8A09615B9D26D00DF58F6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -737,9 +749,11 @@
 		BBE42F3615BCAD9D000F6AE1 /* TableViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				BBE42F3715BCAD9D000F6AE1 /* Base */,
+				BBC0608915C74243000D3480 /* DWCommentsViewController.h */,
+				BBC0608A15C74243000D3480 /* DWCommentsViewController.m */,
 				2622005915C713B4003DC1DF /* DWContactsViewController.h */,
 				2622005A15C713B4003DC1DF /* DWContactsViewController.m */,
-				BBE42F3715BCAD9D000F6AE1 /* Base */,
 				BBE42F4D15BDBB78000F6AE1 /* DWFeedViewController.h */,
 				BBE42F4E15BDBB79000F6AE1 /* DWFeedViewController.m */,
 				BB06367115C1F593001F26E1 /* DWProfileViewController.h */,
@@ -761,6 +775,8 @@
 			isa = PBXGroup;
 			children = (
 				BBE42F3B15BCAD9E000F6AE1 /* Base */,
+				BBC0608615C741FC000D3480 /* DWCommentsViewDataSource.h */,
+				BBC0608715C741FC000D3480 /* DWCommentsViewDataSource.m */,
 				2622005015C71393003DC1DF /* DWContactsDataSource.h */,
 				2622005115C71393003DC1DF /* DWContactsDataSource.m */,
 				BBE42F5015BDBBFC000F6AE1 /* DWFeedViewDataSource.h */,
@@ -783,6 +799,8 @@
 		BBE42F4415BCB838000F6AE1 /* ModelPresenters */ = {
 			isa = PBXGroup;
 			children = (
+				BBC0608C15C7436E000D3480 /* DWCommentPresenter.h */,
+				BBC0608D15C7436E000D3480 /* DWCommentPresenter.m */,
 				2622005C15C713DE003DC1DF /* DWContactPresenter.h */,
 				2622005D15C713DE003DC1DF /* DWContactPresenter.m */,
 				BB06367D15C31968001F26E1 /* DWPaginationPresenter.h */,
@@ -796,6 +814,8 @@
 		BBE42F4615BCC95A000F6AE1 /* TableViewCells */ = {
 			isa = PBXGroup;
 			children = (
+				BBC0608F15C74483000D3480 /* DWCommentCell.h */,
+				BBC0609015C74483000D3480 /* DWCommentCell.m */,
 				2622005F15C713EE003DC1DF /* DWDoubleLineCell.h */,
 				2622006015C713EE003DC1DF /* DWDoubleLineCell.m */,
 				BB06368015C31973001F26E1 /* DWPaginationCell.h */,
@@ -989,6 +1009,10 @@
 				2622007F15C714D7003DC1DF /* ABContactsHelper.m in Sources */,
 				2622008015C714D7003DC1DF /* ABGroup.m in Sources */,
 				BBC0608515C727F5000D3480 /* DWLikesController.m in Sources */,
+				BBC0608815C741FC000D3480 /* DWCommentsViewDataSource.m in Sources */,
+				BBC0608B15C74243000D3480 /* DWCommentsViewController.m in Sources */,
+				BBC0608E15C7436E000D3480 /* DWCommentPresenter.m in Sources */,
+				BBC0609115C74483000D3480 /* DWCommentCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

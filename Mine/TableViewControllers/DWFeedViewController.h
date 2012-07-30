@@ -12,6 +12,7 @@
 #import "DWPurchaseFeedCell.h"
 
 @class DWUser;
+@class DWPurchase;
 @protocol DWFeedViewControllerDelegate;
 
 
@@ -45,5 +46,10 @@
  * A user UI element is clicked from one of the feed cells.
  */
 - (void)feedViewUserClicked:(DWUser*)user;
+
+/**
+ * A comment button is clicked to display comments fiew for a purchase.
+ */
+- (void)feedViewCommentClickedForPurchase:(DWPurchase*)purchase;
 
 @end

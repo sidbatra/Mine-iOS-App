@@ -8,6 +8,9 @@
 
 #import "DWNavigationRootViewController.h"
 #import "DWProfileViewController.h"
+#import "DWCommentsViewController.h"
+
+#import "DWPurchase.h"
 
 /**
  * Private declarations
@@ -55,6 +58,14 @@
     DWProfileViewController *profileViewController = [[DWProfileViewController alloc] initWithUser:user];
     
     [self.navigationController pushViewController:profileViewController
+                                         animated:YES];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)displayCommentsViewForPurchase:(DWPurchase*)purchase {
+    DWCommentsViewController *commentsViewController = [[DWCommentsViewController alloc] initWithPurchase:purchase];
+    
+    [self.navigationController pushViewController:commentsViewController 
                                          animated:YES];
 }
 

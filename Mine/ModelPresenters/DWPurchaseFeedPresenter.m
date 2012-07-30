@@ -144,7 +144,8 @@
        withPresentationStyle:(NSInteger)style
                 withDelegate:(id)delegate {
     
-    SEL sel             = @selector(messageClicked:);
+    /*
+    SEL sel             = @selector(:);
     //DWPurchase *purchase  = object;
     
     if(![delegate respondsToSelector:sel])
@@ -153,7 +154,7 @@
     
     [delegate performSelector:sel 
                    withObject:object];
-    
+    */
 }
 
 @end
