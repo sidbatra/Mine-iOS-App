@@ -179,7 +179,7 @@ NSInteger const kTotalLikeUserButtons   = 5;
         likeUserButton.backgroundColor = [UIColor redColor];
         
         [likeUserButton addTarget:self
-                           action:@selector(didTapLikeUserButton:)
+                           action:@selector(didTapLikeUserImageButton:)
                  forControlEvents:UIControlEventTouchUpInside];
         
         [self.likeUserButtons addObject:likeUserButton];
@@ -281,7 +281,7 @@ NSInteger const kTotalLikeUserButtons   = 5;
                        forState:UIControlStateNormal];
     
     [commentUserButton addTarget:self
-                       action:@selector(didTapCommentUserButton:)
+                       action:@selector(didTapCommentUserImageButton:)
              forControlEvents:UIControlEventTouchUpInside];
      
     [self.commentUserButtons addObject:commentUserButton];
@@ -338,7 +338,13 @@ NSInteger const kTotalLikeUserButtons   = 5;
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)didTapLikeUserButton:(UIButton*)button {
+- (void)didTapLikeUserImageButton:(UIButton*)button {
+    [self userClicked:button.tag];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+- (void)didTapCommentUserImageButton:(UIButton*)button {
     [self userClicked:button.tag];
 }
 
