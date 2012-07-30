@@ -38,6 +38,11 @@
 - (void)clean;
 
 /**
+ * Destroy and release all objects
+ */
+- (void)clean;
+
+/**
  * Get the total number of sections 
  */
 - (NSInteger)totalSections;
@@ -57,6 +62,14 @@
  * Fired when a user generated or automated refresh is initiated
  */
 - (void)refreshInitiated;
+
+/**
+ * Remove the given object from the array with specified 
+ * animation
+ */
+- (void)removeObject:(id)object 
+       withAnimation:(UITableViewRowAnimation)animation;
+
 
 @end
 

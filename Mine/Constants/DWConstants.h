@@ -36,6 +36,14 @@ extern NSString* const kNFacebookURLOpened;
 extern NSString* const kNWelcomeNavigationFinished;
 extern NSString* const kNPaginationCellReached;
 
+
+/**
+ * Action sheet button text
+ */
+extern NSString* const kMsgActionSheetCancel;
+extern NSString* const kMsgActionSheetDelete;
+
+
 /**
  * Third Party Aps
  */
@@ -73,9 +81,34 @@ typedef enum {
 
 
 /**
+ * Invite Platforms
+ */
+typedef enum {
+    DWInvitePlatformFacebook    = 0,
+    DWInvitePlatformEmail       = 1
+} DWInvitePlatform;
+
+
+/**
  * Model presenters
  */
 extern NSInteger const kDefaultModelPresenter;
+
+/**
+ * Presentation styles for different models
+ * Default presentation style for all model presenters
+ */
+enum {
+    kPresentationStyleDefault   = 0,
+};
+
+/**
+ * Presentation styles for the contacts presenter
+ */
+typedef enum {
+    kContactPresenterStyleSelected = 1,
+} DWContactPresenterStyle;
+
 
 @interface DWConstants : NSObject
 @end

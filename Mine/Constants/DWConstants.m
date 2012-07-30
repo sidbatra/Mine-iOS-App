@@ -26,7 +26,7 @@ NSString* const kAppProtocol        = @"http://";
 NSString* const kClientName         = @"iphone";
 
 #if ENVIRONMENT == DEVELOPMENT
-NSString* const kAppServer      = @"sbat.getmine.com";
+NSString* const kAppServer      = @"drao.getmine.com";
 #elif ENVIRONMENT == STAGING
 NSString* const kAppServer	= @"staging.getmine.com";
 #elif ENVIRONMENT == PRODUCTION
@@ -46,6 +46,12 @@ NSString* const kNImageDownloadError        = @"NImageDownloadError";
 NSString* const kNFacebookURLOpened         = @"NFacebookURLOpened";
 NSString* const kNWelcomeNavigationFinished = @"NWelcomeNavigationFinished";
 NSString* const kNPaginationCellReached     = @"NPaginationCellReached";
+
+
+//----------------------------------------------------------------------------------------------------
+NSString* const kMsgActionSheetCancel           = @"Cancel";
+NSString* const kMsgActionSheetDelete           = @"Delete";
+
 
 //----------------------------------------------------------------------------------------------------
 NSString* const kFacebookAppID  = @"245230762190915";

@@ -38,14 +38,6 @@ static NSInteger const kDefaultSections = 1;
 - (void)addObjectAtEnd:(id)object
          withAnimation:(UITableViewRowAnimation)animation;
 
-/**
- * Remove the given object from the array with specified 
- * animation
- */
-- (void)removeObject:(id)object 
-       withAnimation:(UITableViewRowAnimation)animation;
-
-
 @end
 
 
