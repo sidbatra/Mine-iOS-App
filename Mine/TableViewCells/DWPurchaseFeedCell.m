@@ -247,6 +247,9 @@ NSInteger const kTotalLikeUserButtons   = 5;
 //----------------------------------------------------------------------------------------------------
 - (void)resetLikesUI {
     
+    [likeButton setTitle:@"Like" forState:UIControlStateNormal];
+    likeButton.enabled = YES;
+    
     for(UIButton *likeUserButton in self.likeUserButtons) 
         likeUserButton.hidden = YES;
     
@@ -288,6 +291,12 @@ NSInteger const kTotalLikeUserButtons   = 5;
 //----------------------------------------------------------------------------------------------------
 - (void)setTitle:(NSString*)title {
     titleLabel.text = title;
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)disableLikeButton {
+    [likeButton setTitle:@"LIKED" forState:UIControlStateNormal];
+    likeButton.enabled = NO;
 }
 
 //----------------------------------------------------------------------------------------------------

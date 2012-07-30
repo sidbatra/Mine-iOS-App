@@ -183,6 +183,20 @@ static NSString* const kKeyComments         = @"comments";
 }
 
 //----------------------------------------------------------------------------------------------------
+- (BOOL)isLikedByUserID:(NSInteger)userID {
+    BOOL liked = NO;
+    
+    for(DWLike *like in self.likes) {
+        if(like.user.databaseID == userID) {
+            liked = YES;
+            break;
+        }
+    }
+    
+    return liked;
+}
+
+//----------------------------------------------------------------------------------------------------
 - (void)addTempLikeByUser:(DWUser*)user {
     
     DWLike *like = [[DWLike alloc] init];

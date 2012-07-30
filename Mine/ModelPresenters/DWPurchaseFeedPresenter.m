@@ -9,6 +9,8 @@
 #import "DWPurchaseFeedPresenter.h"
 
 #import "DWPurchaseFeedCell.h"
+#import "DWSession.h"
+
 #import "DWUser.h"
 #import "DWLike.h"
 #import "DWComment.h"
@@ -47,6 +49,10 @@
     [cell setUserName:purchase.user.fullName];
     [cell setTitle:purchase.title];
     
+    
+    if([purchase isLikedByUserID:[DWSession sharedDWSession].currentUser.databaseID])
+        [cell disableLikeButton];
+    
     [cell setLikeCount:[purchase.likes count]];
     
     for(NSInteger i=0 ; i<MIN(kTotalLikeUserButtons,[purchase.likes count]) ; i++) {
@@ -58,6 +64,7 @@
           forButtonAtIndex:i
                  forUserID:like.user.databaseID];
     }
+    
     
     for(DWComment *comment in purchase.comments) {
         [comment.user downloadSquareImage];

@@ -81,6 +81,11 @@ extern NSInteger const kTotalLikeUserButtons;
 - (void)setTitle:(NSString*)title;
 
 /**
+ * Disable like button interaction.
+ */
+- (void)disableLikeButton;
+
+/**
  * Set like count for the purchase.
  */
 - (void)setLikeCount:(NSInteger)count;

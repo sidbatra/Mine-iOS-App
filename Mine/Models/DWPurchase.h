@@ -106,6 +106,12 @@ extern NSString* const kNImgPurchaseGiantLoadError;
  */
 - (void)downloadGiantImage;
 
+
+/**
+ * Test if the purchase has been liked by the given user id.
+ */
+- (BOOL)isLikedByUserID:(NSInteger)userID;
+
 /**
  * Create a new unmounted like on the purchase by the given user.
  */
