@@ -19,6 +19,7 @@ NSInteger const kTotalLikeUserButtons   = 5;
     
     NSMutableArray  *_commentUserButtons;
     NSMutableArray  *_commentUserNameButtons;
+    NSMutableArray  *_commentMessageLabels;
 }
 
 
@@ -37,6 +38,10 @@ NSInteger const kTotalLikeUserButtons   = 5;
  */
 @property (nonatomic,strong) NSMutableArray *commentUserNameButtons;
 
+/**
+ * Comment message labels.
+ */
+@property (nonatomic,strong) NSMutableArray *commentMessageLabels;
 
 /**
  * Fires the delegate event after a user element is clicked.
@@ -57,6 +62,7 @@ NSInteger const kTotalLikeUserButtons   = 5;
 @synthesize likeUserButtons         = _likeUserButtons;
 @synthesize commentUserButtons      = _commentUserButtons;
 @synthesize commentUserNameButtons  = _commentUserNameButtons;
+@synthesize commentMessageLabels    = _commentMessageLabels;
 @synthesize delegate                = _delegate;
 
 //----------------------------------------------------------------------------------------------------
@@ -212,8 +218,12 @@ NSInteger const kTotalLikeUserButtons   = 5;
     for(UIButton *commentUserNameButton in self.commentUserNameButtons)
         [commentUserNameButton removeFromSuperview];
     
+    for(UILabel *commentMessageLabel in self.commentMessageLabels)
+        [commentMessageLabel removeFromSuperview];
+    
     self.commentUserButtons     = [NSMutableArray array];
     self.commentUserNameButtons = [NSMutableArray array];
+    self.commentMessageLabels   = [NSMutableArray array];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -315,6 +325,23 @@ NSInteger const kTotalLikeUserButtons   = 5;
     
     [self.contentView addSubview:commentUserNameButton];
     
+    
+    
+    UILabel *commentMessageLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 
+                                                                             450 + [self.commentMessageLabels count] * 110 + 35 ,
+                                                                             self.contentView.frame.size.width - 10,
+                                                                             60)];
+    commentMessageLabel.numberOfLines       = 0;
+    commentMessageLabel.text                = message;
+    commentMessageLabel.backgroundColor     = [UIColor greenColor];
+    commentMessageLabel.font                = [UIFont fontWithName:@"HelveticaNeue" size:13];
+    commentMessageLabel.textColor           = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0];
+    commentMessageLabel.textAlignment       = UITextAlignmentLeft;
+    [commentMessageLabel sizeToFit];
+    
+    [self.commentMessageLabels addObject:commentMessageLabel];
+    
+    [self.contentView addSubview:commentMessageLabel];
 }
 
 //----------------------------------------------------------------------------------------------------
