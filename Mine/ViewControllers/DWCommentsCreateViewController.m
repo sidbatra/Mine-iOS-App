@@ -22,6 +22,7 @@ static NSInteger const kBottomBarMargin = 49;
     DWPurchase              *_purchase;
     DWCommentsController    *_commentsController;
     
+    BOOL                    _creationIntent;
     NSString                *_lastCommentMessage;
     
     DWCommentsViewController *_commentsViewController;
@@ -39,6 +40,10 @@ static NSInteger const kBottomBarMargin = 49;
  */
 @property (nonatomic,strong) DWCommentsController *commentsController;
 
+/**
+ * Whether the view was opened with creation intent
+ */
+@property (nonatomic,assign) BOOL creationIntent;
 /**
  * Text of the last comment created.
  */
@@ -71,17 +76,21 @@ static NSInteger const kBottomBarMargin = 49;
 
 @synthesize purchase                = _purchase;
 @synthesize commentsController      = _commentsController;
+@synthesize creationIntent          = _creationIntent;
 @synthesize lastCommentMessage      = _lastCommentMessage;
 @synthesize commentsViewController  = _commentsViewController;
 @synthesize isKeyboardShown         = _isKeyboardShown;
 @synthesize commentTextField        = _commentTextField;
 
 //----------------------------------------------------------------------------------------------------
-- (id)initWithPurchase:(DWPurchase*)purchase {
+- (id)initWithPurchase:(DWPurchase*)purchase 
+    withCreationIntent:(BOOL)creationIntent {
+    
     self = [super init];
     
     if (self) {
-        self.purchase = purchase;
+        self.purchase       = purchase;
+        self.creationIntent = creationIntent;
         
         self.commentsController = [[DWCommentsController alloc] init];
         self.commentsController.delegate = self;
@@ -136,6 +145,12 @@ static NSInteger const kBottomBarMargin = 49;
     
     [self.view insertSubview:self.commentsViewController.view
                 belowSubview:self.commentTextField];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)viewDidAppear:(BOOL)animated {
+    if(self.creationIntent)
+        [self.commentTextField becomeFirstResponder];
 }
 
 //----------------------------------------------------------------------------------------------------

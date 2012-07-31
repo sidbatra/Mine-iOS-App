@@ -474,13 +474,14 @@ NSInteger const kTotalLikeUserButtons   = 5;
 //----------------------------------------------------------------------------------------------------
 - (void)didTapCommentButton:(UIButton*)button {
     
-    SEL sel = @selector(commentClickedForPurchaseID:);
+    SEL sel = @selector(commentClickedForPurchaseID:withCreationIntent:);
     
     if(![self.delegate respondsToSelector:sel])
         return;
     
     [self.delegate performSelector:sel
-                        withObject:[NSNumber numberWithInteger:self.purchaseID]];
+                        withObject:[NSNumber numberWithInteger:self.purchaseID]
+                        withObject:[NSNumber numberWithBool:YES]];
 }
 
 @end

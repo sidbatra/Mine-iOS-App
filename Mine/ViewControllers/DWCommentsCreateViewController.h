@@ -25,6 +25,7 @@
 /**
  * Init with purchase whose comments are being displayed & created.
  */
-- (id)initWithPurchase:(DWPurchase*)purchase;
+- (id)initWithPurchase:(DWPurchase*)purchase 
+    withCreationIntent:(BOOL)creationIntent;
 
 @end

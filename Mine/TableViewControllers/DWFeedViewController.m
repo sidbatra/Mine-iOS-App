@@ -206,9 +206,10 @@
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)commentClickedForPurchaseID:(NSNumber *)purchaseID {
+- (void)commentClickedForPurchaseID:(NSNumber *)purchaseID 
+                 withCreationIntent:(NSNumber *)creationIntent {
     
-    SEL sel = @selector(feedViewCommentClickedForPurchase:);
+    SEL sel = @selector(feedViewCommentClickedForPurchase:withCreationIntent:);
     
     if(![self.delegate respondsToSelector:sel])
         return;
@@ -219,7 +220,8 @@
         return;
 
     [self.delegate performSelector:sel
-                        withObject:purchase];
+                        withObject:purchase
+                        withObject:creationIntent];
 }
 
 
