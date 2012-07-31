@@ -12,6 +12,7 @@
 #import "DWSession.h"
 
 #import "DWPurchase.h"
+#import "DWConstants.h"
 
 
 static NSInteger const kBottomBarMargin = 49;
@@ -175,6 +176,11 @@ static NSInteger const kBottomBarMargin = 49;
         return;
     
     [purchase replaceTempCommentWithMountedComment:comment];
+    
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:kNCommentAddedForPurchase
+                                                        object:nil
+                                                      userInfo:[NSDictionary dictionaryWithObjectsAndKeys:purchase,kKeyPurchase,nil]];
 }
 
 //----------------------------------------------------------------------------------------------------

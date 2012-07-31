@@ -74,6 +74,11 @@
                                                  selector:@selector(userSquareImageLoaded:) 
                                                      name:kNImgUserSquareLoaded
                                                    object:nil];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self 
+                                                 selector:@selector(commentAddedForPurchase:) 
+                                                     name:kNCommentAddedForPurchase
+                                                   object:nil];
     }
     
     return self;
@@ -123,6 +128,13 @@
     [self provideResourceToVisibleCells:[DWUser class] 
                                objectID:[[userInfo objectForKey:kKeyResourceID] integerValue]
                               objectKey:kKeySquareImageURL];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)commentAddedForPurchase:(NSNotification*)notification {
+    NSDictionary *userInfo = [notification userInfo];
+    
+    [self reloadRowForPurchase:(DWPurchase*)[userInfo objectForKey:kKeyPurchase]];
 }
 
 

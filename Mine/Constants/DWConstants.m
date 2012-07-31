@@ -46,7 +46,7 @@ NSString* const kNImageDownloadError        = @"NImageDownloadError";
 NSString* const kNFacebookURLOpened         = @"NFacebookURLOpened";
 NSString* const kNWelcomeNavigationFinished = @"NWelcomeNavigationFinished";
 NSString* const kNPaginationCellReached     = @"NPaginationCellReached";
-
+NSString* const kNCommentAddedForPurchase   = @"NCommentAddedForPurchase";
 
 //----------------------------------------------------------------------------------------------------
 NSString* const kMsgActionSheetCancel           = @"Cancel";
@@ -67,6 +67,7 @@ NSString* const kKeyURL         = @"url";
 NSString* const kKeyImage       = @"image";
 NSString* const kKeyError       = @"error";
 NSString* const kKeyUser        = @"user";
+NSString* const kKeyPurchase    = @"purchase";
 
 //----------------------------------------------------------------------------------------------------
 NSString* const kRailsDateTimeFormat = @"yyyy-MM-dd'T'HH:mm:ss'-07:00'";
