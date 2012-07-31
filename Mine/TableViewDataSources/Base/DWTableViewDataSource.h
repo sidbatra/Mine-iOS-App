@@ -75,7 +75,6 @@
 - (void)removeObject:(id)object 
        withAnimation:(UITableViewRowAnimation)animation;
 
-
 @end
 
 

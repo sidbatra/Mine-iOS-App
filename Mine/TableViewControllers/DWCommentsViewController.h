@@ -16,4 +16,9 @@
  */ 
 - (id)initWithComments:(NSMutableArray*)comments;
 
+/**
+ * Update UI after a new comment has been added.
+ */
+- (void)newCommentAdded;
+
 @end

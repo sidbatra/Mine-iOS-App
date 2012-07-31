@@ -9,6 +9,8 @@
 #import "DWCommentsCreateViewController.h"
 
 #import "DWCommentsViewController.h"
+#import "DWSession.h"
+
 #import "DWPurchase.h"
 
 
@@ -37,6 +39,12 @@ static NSInteger const kBottomBarMargin = 49;
  * Marks presence of the keyboard on the screen.
  */
 @property (nonatomic,assign) BOOL isKeyboardShown;
+
+
+/**
+ * Create am optimistic comment with the given message.
+ */
+- (void)createCommentWithMessage:(NSString*)message;
 
 @end
 
@@ -86,6 +94,11 @@ static NSInteger const kBottomBarMargin = 49;
 
 
 //----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark View lifecycle
+
+//----------------------------------------------------------------------------------------------------
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -111,11 +124,32 @@ static NSInteger const kBottomBarMargin = 49;
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
+#pragma mark Comment creation
+
+//----------------------------------------------------------------------------------------------------
+- (void)createCommentWithMessage:(NSString*)message {
+    self.commentTextField.text = @"";
+    
+    [self.purchase addTempCommentByUser:[DWSession sharedDWSession].currentUser
+                            withMessage:message];
+    
+    [self.commentsViewController newCommentAdded];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
 #pragma mark UI events
 
 //----------------------------------------------------------------------------------------------------
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
-    [textField resignFirstResponder];
+    
+    if(textField.text.length) {
+        [self createCommentWithMessage:textField.text];
+        [textField resignFirstResponder];
+    }
+    
     return NO;
 }
 
