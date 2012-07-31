@@ -8,7 +8,7 @@
 
 #import "DWNavigationRootViewController.h"
 #import "DWProfileViewController.h"
-#import "DWCommentsViewController.h"
+#import "DWCommentsCreateViewController.h"
 
 #import "DWPurchase.h"
 
@@ -62,8 +62,8 @@
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)displayCommentsViewForPurchase:(DWPurchase*)purchase {
-    DWCommentsViewController *commentsViewController = [[DWCommentsViewController alloc] initWithPurchase:purchase];
+- (void)displayCommentsCreateViewForPurchase:(DWPurchase*)purchase {
+    DWCommentsCreateViewController *commentsViewController = [[DWCommentsCreateViewController alloc] initWithPurchase:purchase];
     
     [self.navigationController pushViewController:commentsViewController 
                                          animated:YES];

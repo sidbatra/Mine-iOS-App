@@ -16,13 +16,8 @@
 #import "DWConstants.h"
 
 @interface DWCommentsViewController () {
-    DWPurchase  *_purchase;
 }
 
-/**
- * The purchaes whose comments are being displayed.
- */
-@property (nonatomic,strong) DWPurchase *purchase;
 
 @end
 
@@ -33,19 +28,15 @@
 //----------------------------------------------------------------------------------------------------
 @implementation DWCommentsViewController
 
-@synthesize purchase = _purchase;
-
 
 //----------------------------------------------------------------------------------------------------
-- (id)initWithPurchase:(DWPurchase*)purchase {
+- (id)initWithComments:(NSMutableArray*)comments {
     self = [super init];
     
     if(self) {        
-        
-        self.purchase = purchase;
-        
+                
         self.tableViewDataSource = [[DWCommentsViewDataSource alloc] init];
-        self.tableViewDataSource.objects = self.purchase.comments;
+        self.tableViewDataSource.objects = comments;
         
         [self addModelPresenterForClass:[DWComment class]
                               withStyle:kDefaultModelPresenter 
@@ -70,6 +61,7 @@
 - (void)viewDidLoad {
 	[super viewDidLoad];
     
+    
     [self disablePullToRefresh];
     
     [self reloadTableView];
@@ -87,8 +79,6 @@
     
     if(!comment)
         return;
-    
-    NSLog(@"user clicked %d",comment.user.databaseID);
 }
 
 

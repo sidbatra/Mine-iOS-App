@@ -8,14 +8,12 @@
 
 #import "DWTableViewController.h"
 
-@class DWPurchase;
-
 @interface DWCommentsViewController : DWTableViewController
 
 
 /**
- * Init with purchase whose comments are being displayed.
+ * Init with comments to be displayed.
  */ 
-- (id)initWithPurchase:(DWPurchase*)purchase;
+- (id)initWithComments:(NSMutableArray*)comments;
 
 @end

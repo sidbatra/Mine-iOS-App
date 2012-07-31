@@ -75,7 +75,7 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)feedViewCommentClickedForPurchase:(id)purchase {
-    [self displayCommentsViewForPurchase:purchase];
+    [self displayCommentsCreateViewForPurchase:purchase];
 }
 
 

@@ -25,6 +25,6 @@
 /**
  * Push a comments view onto the nav stack.
  */
-- (void)displayCommentsViewForPurchase:(DWPurchase*)purchase;
+- (void)displayCommentsCreateViewForPurchase:(DWPurchase*)purchase;
 
 @end
