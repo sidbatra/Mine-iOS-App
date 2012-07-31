@@ -115,6 +115,16 @@ extern NSString* const kNImgPurchaseGiantLoadError;
 - (void)addTempCommentByUser:(DWUser*)user 
                  withMessage:(NSString*)message;
 
+/**
+ * Remove unmounted message with the given message.
+ */
+- (void)removeTempCommentWithMessage:(NSString*)message;
+
+/**
+ * Replace unmounted comment with the mounted one.
+ */
+- (void)replaceTempCommentWithMountedComment:(DWComment*)newComment;
+
 
 /**
  * Test if the purchase has been liked by the given user id.

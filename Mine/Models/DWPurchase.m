@@ -209,6 +209,22 @@ static NSString* const kKeyComments         = @"comments";
     [self.comments addObject:comment];
 }
 
+//----------------------------------------------------------------------------------------------------
+- (void)removeTempCommentWithMessage:(NSString*)message {
+    for(DWComment *comment in [self.comments reverseObjectEnumerator]) {
+        if([comment isUnmounted] && [comment.message isEqualToString:message]) {
+            [self.comments removeObject:comment];
+            break;
+        }
+    }    
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)replaceTempCommentWithMountedComment:(DWComment*)newComment {
+    [self removeTempCommentWithMessage:newComment.message];
+    [self.comments addObject:newComment];
+}
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------

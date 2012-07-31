@@ -144,6 +144,9 @@ static NSInteger const kBottomBarMargin = 49;
                             withMessage:message];
     
     [self.commentsViewController newCommentAdded];
+    
+    [self.commentsController createCommentForPurchaseID:self.purchase.databaseID
+                                            withMessage:message];
 }
 
 
