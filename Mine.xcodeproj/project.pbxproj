@@ -510,8 +510,6 @@
 		BB174D4615BA43C700DB50CA /* DataControllers */ = {
 			isa = PBXGroup;
 			children = (
-				262200A815C76A18003DC1DF /* DWProductsController.h */,
-				262200A915C76A18003DC1DF /* DWProductsController.m */,
 				BBC0608315C727F5000D3480 /* DWLikesController.h */,
 				BBC0608415C727F5000D3480 /* DWLikesController.m */,
 				2622006215C71421003DC1DF /* DWContactsController.h */,
@@ -520,6 +518,8 @@
 				2622006515C71421003DC1DF /* DWInvitesController.m */,
 				BB26988115BBA75B00037453 /* DWFeedController.h */,
 				BB26988215BBA75B00037453 /* DWFeedController.m */,
+				262200A815C76A18003DC1DF /* DWProductsController.h */,
+				262200A915C76A18003DC1DF /* DWProductsController.m */,
 				BB06366A15C1E04B001F26E1 /* DWPurchasesController.h */,
 				BB06366B15C1E04B001F26E1 /* DWPurchasesController.m */,
 				BB174D4715BA43DC00DB50CA /* DWUsersController.h */,
@@ -644,8 +644,6 @@
 		BB9F710615B9EBDE0099C80A /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				262200A115C769EF003DC1DF /* DWProduct.h */,
-				262200A215C769EF003DC1DF /* DWProduct.m */,
 				2622006815C7143A003DC1DF /* DWContact.h */,
 				2622006915C7143A003DC1DF /* DWContact.m */,
 				BBC0607815C49671000D3480 /* DWComment.h */,
@@ -654,6 +652,8 @@
 				BBC0607515C493A9000D3480 /* DWLike.m */,
 				BB06367A15C3195B001F26E1 /* DWPagination.h */,
 				BB06367B15C3195B001F26E1 /* DWPagination.m */,
+				262200A115C769EF003DC1DF /* DWProduct.h */,
+				262200A215C769EF003DC1DF /* DWProduct.m */,
 				BB26987B15BB956700037453 /* DWPurchase.h */,
 				BB26987C15BB956700037453 /* DWPurchase.m */,
 				BB26987E15BBA2E300037453 /* DWStore.h */,
@@ -788,10 +788,10 @@
 				2622005A15C713B4003DC1DF /* DWContactsViewController.m */,
 				BBE42F4D15BDBB78000F6AE1 /* DWFeedViewController.h */,
 				BBE42F4E15BDBB79000F6AE1 /* DWFeedViewController.m */,
-				BB06367115C1F593001F26E1 /* DWProfileViewController.h */,
-				BB06367215C1F593001F26E1 /* DWProfileViewController.m */,
 				262200AE15C76A4E003DC1DF /* DWProductsViewController.h */,
 				262200AF15C76A4E003DC1DF /* DWProductsViewController.m */,
+				BB06367115C1F593001F26E1 /* DWProfileViewController.h */,
+				BB06367215C1F593001F26E1 /* DWProfileViewController.m */,
 			);
 			path = TableViewControllers;
 			sourceTree = "<group>";
@@ -815,10 +815,10 @@
 				2622005115C71393003DC1DF /* DWContactsDataSource.m */,
 				BBE42F5015BDBBFC000F6AE1 /* DWFeedViewDataSource.h */,
 				BBE42F5115BDBBFC000F6AE1 /* DWFeedViewDataSource.m */,
-				BB06367415C1F733001F26E1 /* DWProfileViewDataSource.h */,
-				BB06367515C1F733001F26E1 /* DWProfileViewDataSource.m */,
 				262200B115C76A61003DC1DF /* DWProductsViewDataSource.h */,
 				262200B215C76A61003DC1DF /* DWProductsViewDataSource.m */,
+				BB06367415C1F733001F26E1 /* DWProfileViewDataSource.h */,
+				BB06367515C1F733001F26E1 /* DWProfileViewDataSource.m */,
 			);
 			path = TableViewDataSources;
 			sourceTree = "<group>";
