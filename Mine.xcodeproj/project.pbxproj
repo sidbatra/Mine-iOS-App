@@ -115,6 +115,7 @@
 		BBC0609115C74483000D3480 /* DWCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BBC0609015C74483000D3480 /* DWCommentCell.m */; };
 		BBC060A215C76D57000D3480 /* DWCommentsCreateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBC060A015C76D57000D3480 /* DWCommentsCreateViewController.m */; };
 		BBC060A315C76D57000D3480 /* DWCommentsCreateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBC060A115C76D57000D3480 /* DWCommentsCreateViewController.xib */; };
+		BBC060A715C85F28000D3480 /* DWCommentsController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBC060A615C85F28000D3480 /* DWCommentsController.m */; };
 		BBC8A09515B9D26D00DF58F6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBC8A09415B9D26D00DF58F6 /* UIKit.framework */; };
 		BBC8A09715B9D26D00DF58F6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBC8A09615B9D26D00DF58F6 /* Foundation.framework */; };
 		BBC8A09915B9D26D00DF58F6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBC8A09815B9D26D00DF58F6 /* CoreGraphics.framework */; };
@@ -329,6 +330,8 @@
 		BBC0609F15C76D57000D3480 /* DWCommentsCreateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWCommentsCreateViewController.h; sourceTree = "<group>"; };
 		BBC060A015C76D57000D3480 /* DWCommentsCreateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWCommentsCreateViewController.m; sourceTree = "<group>"; };
 		BBC060A115C76D57000D3480 /* DWCommentsCreateViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DWCommentsCreateViewController.xib; sourceTree = "<group>"; };
+		BBC060A515C85F28000D3480 /* DWCommentsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWCommentsController.h; sourceTree = "<group>"; };
+		BBC060A615C85F28000D3480 /* DWCommentsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWCommentsController.m; sourceTree = "<group>"; };
 		BBC8A09015B9D26D00DF58F6 /* Mine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBC8A09415B9D26D00DF58F6 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		BBC8A09615B9D26D00DF58F6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -512,6 +515,8 @@
 			children = (
 				BBC0608315C727F5000D3480 /* DWLikesController.h */,
 				BBC0608415C727F5000D3480 /* DWLikesController.m */,
+				BBC060A515C85F28000D3480 /* DWCommentsController.h */,
+				BBC060A615C85F28000D3480 /* DWCommentsController.m */,
 				2622006215C71421003DC1DF /* DWContactsController.h */,
 				2622006315C71421003DC1DF /* DWContactsController.m */,
 				2622006415C71421003DC1DF /* DWInvitesController.h */,
@@ -1059,6 +1064,7 @@
 				262200B315C76A61003DC1DF /* DWProductsViewDataSource.m in Sources */,
 				262200B615C76AC7003DC1DF /* DWCreationNavigationViewController.m in Sources */,
 				BBC060A215C76D57000D3480 /* DWCommentsCreateViewController.m in Sources */,
+				BBC060A715C85F28000D3480 /* DWCommentsController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
