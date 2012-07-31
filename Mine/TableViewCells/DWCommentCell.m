@@ -121,6 +121,10 @@ static NSInteger const kCommentCellHeight = 150;
 
 //----------------------------------------------------------------------------------------------------
 - (void)setMessage:(NSString*)message {
+    messageLabel.frame = CGRectMake(10,
+                                    55,
+                                    self.contentView.frame.size.width - 10,
+                                    60);
     messageLabel.text = message;
     [messageLabel sizeToFit];
 }
