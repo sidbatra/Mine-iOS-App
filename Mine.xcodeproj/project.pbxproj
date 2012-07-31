@@ -26,6 +26,12 @@
 		2622007F15C714D7003DC1DF /* ABContactsHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 2622007B15C714D7003DC1DF /* ABContactsHelper.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		2622008015C714D7003DC1DF /* ABGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = 2622007D15C714D7003DC1DF /* ABGroup.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		2622008615C715B6003DC1DF /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2622008515C715B6003DC1DF /* AddressBook.framework */; };
+		262200A315C769EF003DC1DF /* DWProduct.m in Sources */ = {isa = PBXBuildFile; fileRef = 262200A215C769EF003DC1DF /* DWProduct.m */; };
+		262200AA15C76A18003DC1DF /* DWProductsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 262200A915C76A18003DC1DF /* DWProductsController.m */; };
+		262200AD15C76A39003DC1DF /* DWProductPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 262200AC15C76A39003DC1DF /* DWProductPresenter.m */; };
+		262200B015C76A4E003DC1DF /* DWProductsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 262200AF15C76A4E003DC1DF /* DWProductsViewController.m */; };
+		262200B315C76A61003DC1DF /* DWProductsViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 262200B215C76A61003DC1DF /* DWProductsViewDataSource.m */; };
+		262200B615C76AC7003DC1DF /* DWCreationNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 262200B515C76AC7003DC1DF /* DWCreationNavigationViewController.m */; };
 		262376A515BF6B9600B3A037 /* DWFacebookConnect.m in Sources */ = {isa = PBXBuildFile; fileRef = 262376A315BF6B9600B3A037 /* DWFacebookConnect.m */; };
 		262376B215BF6C0A00B3A037 /* Facebook.m in Sources */ = {isa = PBXBuildFile; fileRef = 262376A715BF6C0A00B3A037 /* Facebook.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		262376B315BF6C0A00B3A037 /* FBDialog.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 262376A915BF6C0A00B3A037 /* FBDialog.bundle */; };
@@ -154,6 +160,18 @@
 		2622007C15C714D7003DC1DF /* ABGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ABGroup.h; sourceTree = "<group>"; };
 		2622007D15C714D7003DC1DF /* ABGroup.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ABGroup.m; sourceTree = "<group>"; };
 		2622008515C715B6003DC1DF /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
+		262200A115C769EF003DC1DF /* DWProduct.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWProduct.h; sourceTree = "<group>"; };
+		262200A215C769EF003DC1DF /* DWProduct.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWProduct.m; sourceTree = "<group>"; };
+		262200A815C76A18003DC1DF /* DWProductsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWProductsController.h; sourceTree = "<group>"; };
+		262200A915C76A18003DC1DF /* DWProductsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWProductsController.m; sourceTree = "<group>"; };
+		262200AB15C76A39003DC1DF /* DWProductPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWProductPresenter.h; sourceTree = "<group>"; };
+		262200AC15C76A39003DC1DF /* DWProductPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWProductPresenter.m; sourceTree = "<group>"; };
+		262200AE15C76A4E003DC1DF /* DWProductsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWProductsViewController.h; sourceTree = "<group>"; };
+		262200AF15C76A4E003DC1DF /* DWProductsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWProductsViewController.m; sourceTree = "<group>"; };
+		262200B115C76A61003DC1DF /* DWProductsViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWProductsViewDataSource.h; sourceTree = "<group>"; };
+		262200B215C76A61003DC1DF /* DWProductsViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWProductsViewDataSource.m; sourceTree = "<group>"; };
+		262200B415C76AC7003DC1DF /* DWCreationNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWCreationNavigationViewController.h; sourceTree = "<group>"; };
+		262200B515C76AC7003DC1DF /* DWCreationNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWCreationNavigationViewController.m; sourceTree = "<group>"; };
 		262376A315BF6B9600B3A037 /* DWFacebookConnect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWFacebookConnect.m; path = Connect/DWFacebookConnect.m; sourceTree = "<group>"; };
 		262376A415BF6B9600B3A037 /* DWFacebookConnect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWFacebookConnect.h; path = Connect/DWFacebookConnect.h; sourceTree = "<group>"; };
 		262376A715BF6C0A00B3A037 /* Facebook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Facebook.m; path = Facebook/Facebook.m; sourceTree = "<group>"; };
@@ -449,6 +467,8 @@
 				BB06366F15C1F529001F26E1 /* DWProfileNavigationViewController.m */,
 				BB06365A15C09FF7001F26E1 /* DWWelcomeNavigationRootViewController.h */,
 				BB06365B15C09FF7001F26E1 /* DWWelcomeNavigationRootViewController.m */,
+				262200B415C76AC7003DC1DF /* DWCreationNavigationViewController.h */,
+				262200B515C76AC7003DC1DF /* DWCreationNavigationViewController.m */,
 			);
 			path = Containers;
 			sourceTree = "<group>";
@@ -485,6 +505,8 @@
 		BB174D4615BA43C700DB50CA /* DataControllers */ = {
 			isa = PBXGroup;
 			children = (
+				262200A815C76A18003DC1DF /* DWProductsController.h */,
+				262200A915C76A18003DC1DF /* DWProductsController.m */,
 				BBC0608315C727F5000D3480 /* DWLikesController.h */,
 				BBC0608415C727F5000D3480 /* DWLikesController.m */,
 				2622006215C71421003DC1DF /* DWContactsController.h */,
@@ -614,6 +636,8 @@
 		BB9F710615B9EBDE0099C80A /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				262200A115C769EF003DC1DF /* DWProduct.h */,
+				262200A215C769EF003DC1DF /* DWProduct.m */,
 				2622006815C7143A003DC1DF /* DWContact.h */,
 				2622006915C7143A003DC1DF /* DWContact.m */,
 				BBC0607815C49671000D3480 /* DWComment.h */,
@@ -758,6 +782,8 @@
 				BBE42F4E15BDBB79000F6AE1 /* DWFeedViewController.m */,
 				BB06367115C1F593001F26E1 /* DWProfileViewController.h */,
 				BB06367215C1F593001F26E1 /* DWProfileViewController.m */,
+				262200AE15C76A4E003DC1DF /* DWProductsViewController.h */,
+				262200AF15C76A4E003DC1DF /* DWProductsViewController.m */,
 			);
 			path = TableViewControllers;
 			sourceTree = "<group>";
@@ -783,6 +809,8 @@
 				BBE42F5115BDBBFC000F6AE1 /* DWFeedViewDataSource.m */,
 				BB06367415C1F733001F26E1 /* DWProfileViewDataSource.h */,
 				BB06367515C1F733001F26E1 /* DWProfileViewDataSource.m */,
+				262200B115C76A61003DC1DF /* DWProductsViewDataSource.h */,
+				262200B215C76A61003DC1DF /* DWProductsViewDataSource.m */,
 			);
 			path = TableViewDataSources;
 			sourceTree = "<group>";
@@ -799,6 +827,8 @@
 		BBE42F4415BCB838000F6AE1 /* ModelPresenters */ = {
 			isa = PBXGroup;
 			children = (
+				262200AB15C76A39003DC1DF /* DWProductPresenter.h */,
+				262200AC15C76A39003DC1DF /* DWProductPresenter.m */,
 				BBC0608C15C7436E000D3480 /* DWCommentPresenter.h */,
 				BBC0608D15C7436E000D3480 /* DWCommentPresenter.m */,
 				2622005C15C713DE003DC1DF /* DWContactPresenter.h */,
@@ -1013,6 +1043,12 @@
 				BBC0608B15C74243000D3480 /* DWCommentsViewController.m in Sources */,
 				BBC0608E15C7436E000D3480 /* DWCommentPresenter.m in Sources */,
 				BBC0609115C74483000D3480 /* DWCommentCell.m in Sources */,
+				262200A315C769EF003DC1DF /* DWProduct.m in Sources */,
+				262200AA15C76A18003DC1DF /* DWProductsController.m in Sources */,
+				262200AD15C76A39003DC1DF /* DWProductPresenter.m in Sources */,
+				262200B015C76A4E003DC1DF /* DWProductsViewController.m in Sources */,
+				262200B315C76A61003DC1DF /* DWProductsViewDataSource.m in Sources */,
+				262200B615C76AC7003DC1DF /* DWCreationNavigationViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
