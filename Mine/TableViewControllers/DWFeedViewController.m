@@ -24,6 +24,19 @@
 #import "DWConstants.h"
 
 
+@interface DWFeedViewController() {
+    
+}
+
+/**
+ * Reload row that belongs to the given purchase.
+ */
+- (void)reloadRowForPurchase:(DWPurchase*)purchase;
+
+@end
+
+
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
@@ -76,6 +89,16 @@
 	[super viewDidLoad];
     
     [(DWFeedViewDataSource*)self.tableViewDataSource loadFeed];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)reloadRowForPurchase:(DWPurchase*)purchase {
+    NSInteger index = [self.tableViewDataSource indexForObject:purchase];
+    
+    if(index == NSNotFound)
+        return;
+    
+    [self reloadRowAtIndex:index];
 }
 
 
@@ -132,9 +155,7 @@
     [purchase removeTempLike];
     
     
-    NSInteger index = [self.tableViewDataSource indexForObject:purchase];
-    
-    [self reloadRowAtIndex:index];
+    [self reloadRowForPurchase:purchase];
 }
 
 
@@ -167,9 +188,7 @@
     
     [purchase addTempLikeByUser:[DWSession sharedDWSession].currentUser];
     
-    NSInteger index = [self.tableViewDataSource indexForObject:purchase];
-    
-    [self reloadRowAtIndex:index];
+    [self reloadRowForPurchase:purchase];
     
     [self.likesController createLikeForPurchaseID:purchase.databaseID];
 }
