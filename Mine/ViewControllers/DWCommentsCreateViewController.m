@@ -18,7 +18,8 @@ static NSInteger const kBottomBarMargin = 49;
 
 
 @interface DWCommentsCreateViewController () {
-    DWPurchase *_purchase;
+    DWPurchase              *_purchase;
+    DWCommentsController    *_commentsController;
     
     DWCommentsViewController *_commentsViewController;
     
@@ -29,6 +30,11 @@ static NSInteger const kBottomBarMargin = 49;
  * The purchase who comments are to be displayed and created.
  */
 @property (nonatomic,strong) DWPurchase *purchase;
+
+/**
+ * Comments data controller.
+ */
+@property (nonatomic,strong) DWCommentsController *commentsController;
 
 /**
  * Table view controller for displaying comments.
@@ -56,6 +62,7 @@ static NSInteger const kBottomBarMargin = 49;
 @implementation DWCommentsCreateViewController
 
 @synthesize purchase                = _purchase;
+@synthesize commentsController      = _commentsController;
 @synthesize commentsViewController  = _commentsViewController;
 @synthesize isKeyboardShown         = _isKeyboardShown;
 @synthesize commentTextField        = _commentTextField;
@@ -66,6 +73,9 @@ static NSInteger const kBottomBarMargin = 49;
     
     if (self) {
         self.purchase = purchase;
+        
+        self.commentsController = [[DWCommentsController alloc] init];
+        self.commentsController.delegate = self;
     }
     
     
@@ -134,6 +144,41 @@ static NSInteger const kBottomBarMargin = 49;
                             withMessage:message];
     
     [self.commentsViewController newCommentAdded];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWCommentsControllerDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)commentCreated:(DWComment *)comment 
+         forPurchaseID:(NSNumber *)purchaseID {
+    
+    DWPurchase *purchase = [DWPurchase fetch:[purchaseID integerValue]];
+    
+    if(!purchase)
+        return;
+    
+    //[purchase replaceTempLikeWithMountedLike:like];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)commentCreateError:(NSString *)error 
+             forPurchaseID:(NSNumber *)purchaseID {
+    
+    DWPurchase *purchase = [DWPurchase fetch:[purchaseID integerValue]];
+    
+    if(!purchase)
+        return;
+    
+    //[purchase removeTempLike];
+    
+    
+    //NSInteger index = [self.tableViewDataSource indexForObject:purchase];
+    
+    //[self reloadRowAtIndex:index];
 }
 
 

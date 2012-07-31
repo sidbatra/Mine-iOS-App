@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+#import "DWCommentsController.h"
+
 @class DWPurchase;
 
-@interface DWCommentsCreateViewController : UIViewController<UITextFieldDelegate> {
+@interface DWCommentsCreateViewController : UIViewController<UITextFieldDelegate,DWCommentsControllerDelegate> {
     UITextField     *_commentTextField;
 }
 
