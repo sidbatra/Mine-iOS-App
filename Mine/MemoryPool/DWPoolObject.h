@@ -21,6 +21,11 @@
 + (id)create:(NSDictionary *)objectJSON;
 
 /**
+ * Creating DWPoolObjects with the given objectID
+ */
++ (id)create:(NSDictionary *)objectJSON withObjectID:(NSString*)objectID;
+
+/**
  * Fetch the object of the current class with the given objectID
  */
 + (id)fetch:(NSInteger)objectID;

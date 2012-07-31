@@ -42,10 +42,15 @@ static NSInteger const kDefaultDatabaseID   = -1;
 
 //----------------------------------------------------------------------------------------------------
 + (id)create:(NSDictionary *)objectJSON {
+    NSString* objectID = [NSString stringWithFormat:@"%@",[objectJSON objectForKey:kKeyID]];
     
-    NSString* objectID      = [NSString stringWithFormat:@"%@",[objectJSON objectForKey:kKeyID]];
-    DWPoolObject *object    = [[DWMemoryPool sharedDWMemoryPool] getObjectWithID:objectID
-                                                                        forClass:[self className]];
+    return [self create:objectJSON withObjectID:objectID];
+}
+
+//----------------------------------------------------------------------------------------------------
++ (id)create:(NSDictionary *)objectJSON withObjectID:(NSString*)objectID {
+    DWPoolObject *object = [[DWMemoryPool sharedDWMemoryPool] getObjectWithID:objectID
+                                                                     forClass:[self className]];
     
     if(!object) {
         object = [[self alloc] init];

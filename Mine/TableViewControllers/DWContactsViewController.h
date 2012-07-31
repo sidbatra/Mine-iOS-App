@@ -15,9 +15,6 @@
 @protocol DWContactsViewControllerDelegate;
 
 
-/**
- * Table view displaying search results
- */
 @interface DWContactsViewController : DWTableViewController<UIActionSheetDelegate,DWContactsDataSourceDelegate> {
     DWContact *_contactToRemove;
     
