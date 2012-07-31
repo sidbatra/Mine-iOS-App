@@ -140,7 +140,7 @@ static NSInteger const kBottomBarMargin = 49;
         UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self
                                                                                             action:@selector(commentsViewControllerTapped)];
         gestureRecognizer.cancelsTouchesInView = NO;
-        [self.commentsViewController.view addGestureRecognizer:gestureRecognizer];
+        [self.commentsViewController.view addGestureRecognizer:gestureRecognizer];        
     }
     
     [self.view insertSubview:self.commentsViewController.view
@@ -148,9 +148,16 @@ static NSInteger const kBottomBarMargin = 49;
 }
 
 //----------------------------------------------------------------------------------------------------
+- (void)viewWillAppear:(BOOL)animated {
+    [self.commentsViewController scrollToBottomWithAnimation:NO];
+}
+
+//----------------------------------------------------------------------------------------------------
 - (void)viewDidAppear:(BOOL)animated {
-    if(self.creationIntent)
-        [self.commentTextField becomeFirstResponder];
+    if(self.creationIntent) {
+        [self.commentTextField becomeFirstResponder];    
+        [self.commentsViewController scrollToBottomWithAnimation:NO];
+    }
 }
 
 //----------------------------------------------------------------------------------------------------
