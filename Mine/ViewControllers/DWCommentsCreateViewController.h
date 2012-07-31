@@ -10,7 +10,7 @@
 
 @class DWPurchase;
 
-@interface DWCommentsCreateViewController : UIViewController {
+@interface DWCommentsCreateViewController : UIViewController<UITextFieldDelegate> {
     UITextField     *_commentTextField;
 }
 
