@@ -186,6 +186,7 @@ static NSInteger const kBottomBarMargin = 49;
     if(!purchase)
         return;
     
+    
     [purchase removeTempCommentWithMessage:self.lastCommentMessage];
     
     [self.commentsViewController newCommentFailed];

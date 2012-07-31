@@ -12,6 +12,8 @@
 #import "DWRequestManager.h"
 #import "DWConstants.h"
 
+#import "NSString+Helpers.h"
+
 
 static NSString* const kCreateURI = @"/comments.json?purchase_id=%d&message=%@";
 
@@ -59,7 +61,7 @@ static NSString* const kNCommentCreateError    = @"NCommentCreateError";
 - (void)createCommentForPurchaseID:(NSInteger)purchaseID 
                        withMessage:(NSString*)message {
     
-    NSMutableString *localURL = [NSMutableString stringWithFormat:kCreateURI,purchaseID,message];
+    NSMutableString *localURL = [NSMutableString stringWithFormat:kCreateURI,purchaseID,[message stringByEncodingHTMLCharacters]];
     
     [[DWRequestManager sharedDWRequestManager] createAppRequest:localURL
                                             successNotification:kNCommentCreated
