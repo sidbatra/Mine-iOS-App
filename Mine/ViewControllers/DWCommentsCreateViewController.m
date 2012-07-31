@@ -21,6 +21,8 @@ static NSInteger const kBottomBarMargin = 49;
     DWPurchase              *_purchase;
     DWCommentsController    *_commentsController;
     
+    NSString                *_lastCommentMessage;
+    
     DWCommentsViewController *_commentsViewController;
     
     BOOL    _isKeyboardShown;
@@ -35,6 +37,11 @@ static NSInteger const kBottomBarMargin = 49;
  * Comments data controller.
  */
 @property (nonatomic,strong) DWCommentsController *commentsController;
+
+/**
+ * Text of the last comment created.
+ */
+@property (nonatomic,copy) NSString *lastCommentMessage;
 
 /**
  * Table view controller for displaying comments.
@@ -63,6 +70,7 @@ static NSInteger const kBottomBarMargin = 49;
 
 @synthesize purchase                = _purchase;
 @synthesize commentsController      = _commentsController;
+@synthesize lastCommentMessage      = _lastCommentMessage;
 @synthesize commentsViewController  = _commentsViewController;
 @synthesize isKeyboardShown         = _isKeyboardShown;
 @synthesize commentTextField        = _commentTextField;
@@ -139,6 +147,8 @@ static NSInteger const kBottomBarMargin = 49;
 //----------------------------------------------------------------------------------------------------
 - (void)createCommentWithMessage:(NSString*)message {
     self.commentTextField.text = @"";
+
+    self.lastCommentMessage = message;
     
     [self.purchase addTempCommentByUser:[DWSession sharedDWSession].currentUser
                             withMessage:message];
@@ -164,7 +174,7 @@ static NSInteger const kBottomBarMargin = 49;
     if(!purchase)
         return;
     
-    //[purchase replaceTempLikeWithMountedLike:like];
+    [purchase replaceTempCommentWithMountedComment:comment];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -176,12 +186,9 @@ static NSInteger const kBottomBarMargin = 49;
     if(!purchase)
         return;
     
-    //[purchase removeTempLike];
+    [purchase removeTempCommentWithMessage:self.lastCommentMessage];
     
-    
-    //NSInteger index = [self.tableViewDataSource indexForObject:purchase];
-    
-    //[self reloadRowAtIndex:index];
+    [self.commentsViewController newCommentFailed];
 }
 
 

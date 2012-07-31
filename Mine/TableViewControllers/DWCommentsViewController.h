@@ -21,4 +21,9 @@
  */
 - (void)newCommentAdded;
 
+/**
+ * Update UI after a new comment failed to be created.
+ */
+- (void)newCommentFailed;
+
 @end
