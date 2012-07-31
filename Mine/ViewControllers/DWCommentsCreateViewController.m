@@ -127,6 +127,11 @@ static NSInteger const kBottomBarMargin = 49;
                                                             0, 
                                                             self.view.frame.size.width, 
                                                             self.view.frame.size.height - self.commentTextField.frame.size.height);
+        
+        UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                                            action:@selector(commentsViewControllerTapped)];
+        gestureRecognizer.cancelsTouchesInView = NO;
+        [self.commentsViewController.view addGestureRecognizer:gestureRecognizer];
     }
     
     [self.view insertSubview:self.commentsViewController.view
@@ -213,6 +218,16 @@ static NSInteger const kBottomBarMargin = 49;
     }
     
     return NO;
+}
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark UITapGestureRecognizer
+
+//----------------------------------------------------------------------------------------------------
+- (void)commentsViewControllerTapped {
+    [self.commentTextField resignFirstResponder];
 }
 
 
