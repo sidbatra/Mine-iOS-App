@@ -113,6 +113,8 @@
 		BBC0608B15C74243000D3480 /* DWCommentsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBC0608A15C74243000D3480 /* DWCommentsViewController.m */; };
 		BBC0608E15C7436E000D3480 /* DWCommentPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = BBC0608D15C7436E000D3480 /* DWCommentPresenter.m */; };
 		BBC0609115C74483000D3480 /* DWCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BBC0609015C74483000D3480 /* DWCommentCell.m */; };
+		BBC060A215C76D57000D3480 /* DWCommentsCreateViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBC060A015C76D57000D3480 /* DWCommentsCreateViewController.m */; };
+		BBC060A315C76D57000D3480 /* DWCommentsCreateViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBC060A115C76D57000D3480 /* DWCommentsCreateViewController.xib */; };
 		BBC8A09515B9D26D00DF58F6 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBC8A09415B9D26D00DF58F6 /* UIKit.framework */; };
 		BBC8A09715B9D26D00DF58F6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBC8A09615B9D26D00DF58F6 /* Foundation.framework */; };
 		BBC8A09915B9D26D00DF58F6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBC8A09815B9D26D00DF58F6 /* CoreGraphics.framework */; };
@@ -324,6 +326,9 @@
 		BBC0608D15C7436E000D3480 /* DWCommentPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWCommentPresenter.m; sourceTree = "<group>"; };
 		BBC0608F15C74483000D3480 /* DWCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWCommentCell.h; sourceTree = "<group>"; };
 		BBC0609015C74483000D3480 /* DWCommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWCommentCell.m; sourceTree = "<group>"; };
+		BBC0609F15C76D57000D3480 /* DWCommentsCreateViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWCommentsCreateViewController.h; sourceTree = "<group>"; };
+		BBC060A015C76D57000D3480 /* DWCommentsCreateViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWCommentsCreateViewController.m; sourceTree = "<group>"; };
+		BBC060A115C76D57000D3480 /* DWCommentsCreateViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DWCommentsCreateViewController.xib; sourceTree = "<group>"; };
 		BBC8A09015B9D26D00DF58F6 /* Mine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Mine.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBC8A09415B9D26D00DF58F6 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		BBC8A09615B9D26D00DF58F6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -535,6 +540,9 @@
 		BB26986B15BB653900037453 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				BBC0609F15C76D57000D3480 /* DWCommentsCreateViewController.h */,
+				BBC060A015C76D57000D3480 /* DWCommentsCreateViewController.m */,
+				BBC060A115C76D57000D3480 /* DWCommentsCreateViewController.xib */,
 				2622005415C713A7003DC1DF /* DWInviteViewController.h */,
 				2622005515C713A7003DC1DF /* DWInviteViewController.m */,
 				2622005615C713A7003DC1DF /* DWInviteViewController.xib */,
@@ -951,6 +959,7 @@
 				2622007415C71453003DC1DF /* hr_dark@2x.png in Resources */,
 				2622007515C71453003DC1DF /* hr_gray_create.png in Resources */,
 				2622007615C71453003DC1DF /* hr_gray_create@2x.png in Resources */,
+				BBC060A315C76D57000D3480 /* DWCommentsCreateViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1049,6 +1058,7 @@
 				262200B015C76A4E003DC1DF /* DWProductsViewController.m in Sources */,
 				262200B315C76A61003DC1DF /* DWProductsViewDataSource.m in Sources */,
 				262200B615C76AC7003DC1DF /* DWCreationNavigationViewController.m in Sources */,
+				BBC060A215C76D57000D3480 /* DWCommentsCreateViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
