@@ -54,7 +54,7 @@ static NSString* const kKeyDomain   = @"domain";
     if(name && ![self.name isEqualToString:name])
         self.name = name;
         
-    if(domain && ![self.domain isEqualToString:domain])
+    if(domain && ![domain isKindOfClass:[NSNull class]] && ![self.domain isEqualToString:domain])
         self.domain = domain;
 }
 
