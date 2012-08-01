@@ -24,6 +24,19 @@
 #import "DWConstants.h"
 
 
+@interface DWFeedViewController() {
+    
+}
+
+/**
+ * Reload row that belongs to the given purchase.
+ */
+- (void)reloadRowForPurchase:(DWPurchase*)purchase;
+
+@end
+
+
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
@@ -61,6 +74,11 @@
                                                  selector:@selector(userSquareImageLoaded:) 
                                                      name:kNImgUserSquareLoaded
                                                    object:nil];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self 
+                                                 selector:@selector(commentAddedForPurchase:) 
+                                                     name:kNCommentAddedForPurchase
+                                                   object:nil];
     }
     
     return self;
@@ -76,6 +94,16 @@
 	[super viewDidLoad];
     
     [(DWFeedViewDataSource*)self.tableViewDataSource loadFeed];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)reloadRowForPurchase:(DWPurchase*)purchase {
+    NSInteger index = [self.tableViewDataSource indexForObject:purchase];
+    
+    if(index == NSNotFound)
+        return;
+    
+    [self reloadRowAtIndex:index];
 }
 
 
@@ -100,6 +128,13 @@
     [self provideResourceToVisibleCells:[DWUser class] 
                                objectID:[[userInfo objectForKey:kKeyResourceID] integerValue]
                               objectKey:kKeySquareImageURL];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)commentAddedForPurchase:(NSNotification*)notification {
+    NSDictionary *userInfo = [notification userInfo];
+    
+    [self reloadRowForPurchase:(DWPurchase*)[userInfo objectForKey:kKeyPurchase]];
 }
 
 
@@ -132,9 +167,7 @@
     [purchase removeTempLike];
     
     
-    NSInteger index = [self.tableViewDataSource indexForObject:purchase];
-    
-    [self reloadRowAtIndex:index];
+    [self reloadRowForPurchase:purchase];
 }
 
 
@@ -167,17 +200,16 @@
     
     [purchase addTempLikeByUser:[DWSession sharedDWSession].currentUser];
     
-    NSInteger index = [self.tableViewDataSource indexForObject:purchase];
-    
-    [self reloadRowAtIndex:index];
+    [self reloadRowForPurchase:purchase];
     
     [self.likesController createLikeForPurchaseID:purchase.databaseID];
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)commentClickedForPurchaseID:(NSNumber *)purchaseID {
+- (void)commentClickedForPurchaseID:(NSNumber *)purchaseID 
+                 withCreationIntent:(NSNumber *)creationIntent {
     
-    SEL sel = @selector(feedViewCommentClickedForPurchase:);
+    SEL sel = @selector(feedViewCommentClickedForPurchase:withCreationIntent:);
     
     if(![self.delegate respondsToSelector:sel])
         return;
@@ -188,7 +220,8 @@
         return;
 
     [self.delegate performSelector:sel
-                        withObject:purchase];
+                        withObject:purchase
+                        withObject:creationIntent];
 }
 
 

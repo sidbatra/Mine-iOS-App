@@ -62,8 +62,11 @@
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)displayCommentsCreateViewForPurchase:(DWPurchase*)purchase {
-    DWCommentsCreateViewController *commentsViewController = [[DWCommentsCreateViewController alloc] initWithPurchase:purchase];
+- (void)displayCommentsCreateViewForPurchase:(DWPurchase*)purchase 
+                          withCreationIntent:(BOOL)creationIntent {
+    
+    DWCommentsCreateViewController *commentsViewController = [[DWCommentsCreateViewController alloc] initWithPurchase:purchase
+                                                                                                   withCreationIntent:creationIntent];
     
     [self.navigationController pushViewController:commentsViewController 
                                          animated:YES];

@@ -47,6 +47,11 @@
 - (void)scrollToTop;
 
 /**
+ * Scroll the table view to the bottom.
+ */
+- (void)scrollToBottomWithAnimation:(BOOL)animated;
+
+/**
  * Method to disable pull to refresh for certain table views
  */
 - (void)disablePullToRefresh;

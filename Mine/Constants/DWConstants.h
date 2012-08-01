@@ -35,6 +35,8 @@ extern NSString* const kNImageDownloadError;
 extern NSString* const kNFacebookURLOpened;
 extern NSString* const kNWelcomeNavigationFinished;
 extern NSString* const kNPaginationCellReached;
+extern NSString* const kNCommentAddedForPurchase;
+
 
 
 /**
@@ -65,6 +67,7 @@ extern NSString* const kKeyURL;
 extern NSString* const kKeyImage;
 extern NSString* const kKeyError;
 extern NSString* const kKeyUser;
+extern NSString* const kKeyPurchase;
 
 /**
  * Misc

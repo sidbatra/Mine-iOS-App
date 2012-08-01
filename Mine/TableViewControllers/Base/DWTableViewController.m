@@ -222,6 +222,18 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
 }
 
 //----------------------------------------------------------------------------------------------------
+- (void)scrollToBottomWithAnimation:(BOOL)animated {
+    NSInteger section = [self.tableViewDataSource totalSections]-1;
+    
+    NSIndexPath* indexPath = [NSIndexPath indexPathForRow:[self.tableViewDataSource totalObjectsForSection:section]-1
+                                                inSection:section];
+    
+    [self.tableView scrollToRowAtIndexPath:indexPath
+                          atScrollPosition:UITableViewScrollPositionTop 
+                                  animated:animated];
+}
+
+//----------------------------------------------------------------------------------------------------
 - (void)disablePullToRefresh {
     _disablePullToRefresh = YES;
     

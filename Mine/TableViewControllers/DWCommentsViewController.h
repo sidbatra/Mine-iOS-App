@@ -16,4 +16,14 @@
  */ 
 - (id)initWithComments:(NSMutableArray*)comments;
 
+/**
+ * Update UI after a new comment has been added.
+ */
+- (void)newCommentAdded;
+
+/**
+ * Update UI after a new comment failed to be created.
+ */
+- (void)newCommentFailed;
+
 @end

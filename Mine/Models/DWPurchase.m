@@ -183,6 +183,55 @@ static NSString* const kKeyComments         = @"comments";
 }
 
 //----------------------------------------------------------------------------------------------------
+- (void)debug {
+    NSLog(@"%@ %@ %@ %@ %@ %@",self.title,self.endorsement,self.sourceURL,self.giantImageURL,self.fbObjectID,self.createdAt);
+    [self.user debug];
+    [self.store debug];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark Comment helpers
+
+//----------------------------------------------------------------------------------------------------
+- (void)addTempCommentByUser:(DWUser*)user
+                 withMessage:(NSString*)message{
+    
+    DWComment *comment = [[DWComment alloc] init];
+    
+    comment.message = message;
+    comment.user    = user;
+    
+    [comment.user incrementPointerCount];
+    
+    [self.comments addObject:comment];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)removeTempCommentWithMessage:(NSString*)message {
+    for(DWComment *comment in [self.comments reverseObjectEnumerator]) {
+        if([comment isUnmounted] && [comment.message isEqualToString:message]) {
+            [self.comments removeObject:comment];
+            break;
+        }
+    }    
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)replaceTempCommentWithMountedComment:(DWComment*)newComment {
+    [self removeTempCommentWithMessage:newComment.message];
+    [self.comments addObject:newComment];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark Like helpers
+
+//----------------------------------------------------------------------------------------------------
 - (BOOL)isLikedByUserID:(NSInteger)userID {
     BOOL liked = NO;
     
@@ -198,7 +247,6 @@ static NSString* const kKeyComments         = @"comments";
 
 //----------------------------------------------------------------------------------------------------
 - (void)addTempLikeByUser:(DWUser*)user {
-    
     DWLike *like = [[DWLike alloc] init];
     
     like.user = user;
@@ -221,13 +269,6 @@ static NSString* const kKeyComments         = @"comments";
 - (void)replaceTempLikeWithMountedLike:(DWLike*)newLike {
     [self removeTempLike];
     [self.likes addObject:newLike];
-}
-
-//----------------------------------------------------------------------------------------------------
-- (void)debug {
-    NSLog(@"%@ %@ %@ %@ %@ %@",self.title,self.endorsement,self.sourceURL,self.giantImageURL,self.fbObjectID,self.createdAt);
-    [self.user debug];
-    [self.store debug];
 }
 
 @end

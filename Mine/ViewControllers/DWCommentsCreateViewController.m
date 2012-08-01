@@ -9,14 +9,21 @@
 #import "DWCommentsCreateViewController.h"
 
 #import "DWCommentsViewController.h"
+#import "DWSession.h"
+
 #import "DWPurchase.h"
+#import "DWConstants.h"
 
 
 static NSInteger const kBottomBarMargin = 49;
 
 
 @interface DWCommentsCreateViewController () {
-    DWPurchase *_purchase;
+    DWPurchase              *_purchase;
+    DWCommentsController    *_commentsController;
+    
+    BOOL                    _creationIntent;
+    NSString                *_lastCommentMessage;
     
     DWCommentsViewController *_commentsViewController;
     
@@ -29,6 +36,20 @@ static NSInteger const kBottomBarMargin = 49;
 @property (nonatomic,strong) DWPurchase *purchase;
 
 /**
+ * Comments data controller.
+ */
+@property (nonatomic,strong) DWCommentsController *commentsController;
+
+/**
+ * Whether the view was opened with creation intent
+ */
+@property (nonatomic,assign) BOOL creationIntent;
+/**
+ * Text of the last comment created.
+ */
+@property (nonatomic,copy) NSString *lastCommentMessage;
+
+/**
  * Table view controller for displaying comments.
  */
 @property (nonatomic,strong) DWCommentsViewController *commentsViewController;
@@ -37,6 +58,12 @@ static NSInteger const kBottomBarMargin = 49;
  * Marks presence of the keyboard on the screen.
  */
 @property (nonatomic,assign) BOOL isKeyboardShown;
+
+
+/**
+ * Create am optimistic comment with the given message.
+ */
+- (void)createCommentWithMessage:(NSString*)message;
 
 @end
 
@@ -48,16 +75,25 @@ static NSInteger const kBottomBarMargin = 49;
 @implementation DWCommentsCreateViewController
 
 @synthesize purchase                = _purchase;
+@synthesize commentsController      = _commentsController;
+@synthesize creationIntent          = _creationIntent;
+@synthesize lastCommentMessage      = _lastCommentMessage;
 @synthesize commentsViewController  = _commentsViewController;
 @synthesize isKeyboardShown         = _isKeyboardShown;
 @synthesize commentTextField        = _commentTextField;
 
 //----------------------------------------------------------------------------------------------------
-- (id)initWithPurchase:(DWPurchase*)purchase {
+- (id)initWithPurchase:(DWPurchase*)purchase 
+    withCreationIntent:(BOOL)creationIntent {
+    
     self = [super init];
     
     if (self) {
-        self.purchase = purchase;
+        self.purchase       = purchase;
+        self.creationIntent = creationIntent;
+        
+        self.commentsController = [[DWCommentsController alloc] init];
+        self.commentsController.delegate = self;
     }
     
     
@@ -86,6 +122,11 @@ static NSInteger const kBottomBarMargin = 49;
 
 
 //----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark View lifecycle
+
+//----------------------------------------------------------------------------------------------------
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -95,10 +136,28 @@ static NSInteger const kBottomBarMargin = 49;
                                                             0, 
                                                             self.view.frame.size.width, 
                                                             self.view.frame.size.height - self.commentTextField.frame.size.height);
+        
+        UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                                            action:@selector(commentsViewControllerTapped)];
+        gestureRecognizer.cancelsTouchesInView = NO;
+        [self.commentsViewController.view addGestureRecognizer:gestureRecognizer];        
     }
     
     [self.view insertSubview:self.commentsViewController.view
                 belowSubview:self.commentTextField];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)viewWillAppear:(BOOL)animated {
+    [self.commentsViewController scrollToBottomWithAnimation:NO];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)viewDidAppear:(BOOL)animated {
+    if(self.creationIntent) {
+        [self.commentTextField becomeFirstResponder];    
+        [self.commentsViewController scrollToBottomWithAnimation:NO];
+    }
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -111,12 +170,86 @@ static NSInteger const kBottomBarMargin = 49;
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
+#pragma mark Comment creation
+
+//----------------------------------------------------------------------------------------------------
+- (void)createCommentWithMessage:(NSString*)message {
+    self.commentTextField.text = @"";
+
+    self.lastCommentMessage = message;
+    
+    [self.purchase addTempCommentByUser:[DWSession sharedDWSession].currentUser
+                            withMessage:message];
+    
+    [self.commentsViewController newCommentAdded];
+    
+    [self.commentsController createCommentForPurchaseID:self.purchase.databaseID
+                                            withMessage:message];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWCommentsControllerDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)commentCreated:(DWComment *)comment 
+         forPurchaseID:(NSNumber *)purchaseID {
+    
+    DWPurchase *purchase = [DWPurchase fetch:[purchaseID integerValue]];
+    
+    if(!purchase)
+        return;
+    
+    [purchase replaceTempCommentWithMountedComment:comment];
+    
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:kNCommentAddedForPurchase
+                                                        object:nil
+                                                      userInfo:[NSDictionary dictionaryWithObjectsAndKeys:purchase,kKeyPurchase,nil]];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)commentCreateError:(NSString *)error 
+             forPurchaseID:(NSNumber *)purchaseID {
+    
+    DWPurchase *purchase = [DWPurchase fetch:[purchaseID integerValue]];
+    
+    if(!purchase)
+        return;
+    
+    
+    [purchase removeTempCommentWithMessage:self.lastCommentMessage];
+    
+    [self.commentsViewController newCommentFailed];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
 #pragma mark UI events
 
 //----------------------------------------------------------------------------------------------------
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
-    [textField resignFirstResponder];
+    
+    if(textField.text.length) {
+        [self createCommentWithMessage:textField.text];
+        [textField resignFirstResponder];
+    }
+    
     return NO;
+}
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark UITapGestureRecognizer
+
+//----------------------------------------------------------------------------------------------------
+- (void)commentsViewControllerTapped {
+    [self.commentTextField resignFirstResponder];
 }
 
 

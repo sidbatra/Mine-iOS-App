@@ -8,9 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
+#import "DWCommentsController.h"
+
 @class DWPurchase;
 
-@interface DWCommentsCreateViewController : UIViewController<UITextFieldDelegate> {
+@interface DWCommentsCreateViewController : UIViewController<UITextFieldDelegate,DWCommentsControllerDelegate> {
     UITextField     *_commentTextField;
 }
 
@@ -23,6 +25,7 @@
 /**
  * Init with purchase whose comments are being displayed & created.
  */
-- (id)initWithPurchase:(DWPurchase*)purchase;
+- (id)initWithPurchase:(DWPurchase*)purchase 
+    withCreationIntent:(BOOL)creationIntent;
 
 @end

@@ -74,8 +74,11 @@
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)feedViewCommentClickedForPurchase:(id)purchase {
-    [self displayCommentsCreateViewForPurchase:purchase];
+- (void)feedViewCommentClickedForPurchase:(DWPurchase *)purchase 
+                       withCreationIntent:(NSNumber *)creationIntent {
+    
+    [self displayCommentsCreateViewForPurchase:purchase
+                            withCreationIntent:[creationIntent boolValue]];
 }
 
 

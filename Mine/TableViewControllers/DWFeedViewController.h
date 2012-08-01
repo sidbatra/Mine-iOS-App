@@ -50,6 +50,7 @@
 /**
  * A comment button is clicked to display comments fiew for a purchase.
  */
-- (void)feedViewCommentClickedForPurchase:(DWPurchase*)purchase;
+- (void)feedViewCommentClickedForPurchase:(DWPurchase*)purchase
+                       withCreationIntent:(NSNumber*)creationIntent;
 
 @end

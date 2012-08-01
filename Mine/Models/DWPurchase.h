@@ -13,6 +13,7 @@
 @class DWUser;
 @class DWStore;
 @class DWLike;
+@class DWComment;
 
 
 /**
@@ -105,6 +106,24 @@ extern NSString* const kNImgPurchaseGiantLoadError;
  * Start downloading the giant image
  */
 - (void)downloadGiantImage;
+
+
+/**
+ * Create a new unmounted comment on the purchase by the given user
+ * with the given message;
+ */
+- (void)addTempCommentByUser:(DWUser*)user 
+                 withMessage:(NSString*)message;
+
+/**
+ * Remove unmounted message with the given message.
+ */
+- (void)removeTempCommentWithMessage:(NSString*)message;
+
+/**
+ * Replace unmounted comment with the mounted one.
+ */
+- (void)replaceTempCommentWithMountedComment:(DWComment*)newComment;
 
 
 /**
