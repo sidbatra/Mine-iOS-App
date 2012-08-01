@@ -41,6 +41,9 @@
 		262376B715BF6C0A00B3A037 /* FBRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 262376B115BF6C0A00B3A037 /* FBRequest.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		26C4467715C8BA4400E9A50B /* DWProductCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C4467615C8BA4400E9A50B /* DWProductCell.m */; };
 		26C4467B15C8BA6B00E9A50B /* DWProductSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C4467A15C8BA6B00E9A50B /* DWProductSet.m */; };
+		26C446A615C9D02700E9A50B /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C446A315C9D02700E9A50B /* NSData+Base64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		26C446A715C9D02700E9A50B /* TumblrXAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C446A515C9D02700E9A50B /* TumblrXAuth.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		26C446AB15C9D05400E9A50B /* DWTumblrConnect.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C446A915C9D05400E9A50B /* DWTumblrConnect.m */; };
 		BB06360815BF7258001F26E1 /* post_retry.png in Resources */ = {isa = PBXBuildFile; fileRef = BB06360415BF7258001F26E1 /* post_retry.png */; };
 		BB06360C15BF726D001F26E1 /* DWErrorView.m in Sources */ = {isa = PBXBuildFile; fileRef = BB06360B15BF726D001F26E1 /* DWErrorView.m */; };
 		BB06361215BF7DB2001F26E1 /* DWTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BB06360F15BF7DB2001F26E1 /* DWTabBar.m */; };
@@ -195,6 +198,12 @@
 		26C4467615C8BA4400E9A50B /* DWProductCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWProductCell.m; sourceTree = "<group>"; };
 		26C4467915C8BA6B00E9A50B /* DWProductSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWProductSet.h; sourceTree = "<group>"; };
 		26C4467A15C8BA6B00E9A50B /* DWProductSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWProductSet.m; sourceTree = "<group>"; };
+		26C446A215C9D02700E9A50B /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
+		26C446A315C9D02700E9A50B /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64.m"; sourceTree = "<group>"; };
+		26C446A415C9D02700E9A50B /* TumblrXAuth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TumblrXAuth.h; sourceTree = "<group>"; };
+		26C446A515C9D02700E9A50B /* TumblrXAuth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TumblrXAuth.m; sourceTree = "<group>"; };
+		26C446A915C9D05400E9A50B /* DWTumblrConnect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWTumblrConnect.m; path = Connect/DWTumblrConnect.m; sourceTree = "<group>"; };
+		26C446AA15C9D05400E9A50B /* DWTumblrConnect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWTumblrConnect.h; path = Connect/DWTumblrConnect.h; sourceTree = "<group>"; };
 		BB06360415BF7258001F26E1 /* post_retry.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = post_retry.png; sourceTree = "<group>"; };
 		BB06360615BF7258001F26E1 /* DWErrorViewProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWErrorViewProtocol.h; sourceTree = "<group>"; };
 		BB06360715BF7258001F26E1 /* DWModelPresenterProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWModelPresenterProtocol.h; sourceTree = "<group>"; };
@@ -403,6 +412,8 @@
 			children = (
 				262376A315BF6B9600B3A037 /* DWFacebookConnect.m */,
 				262376A415BF6B9600B3A037 /* DWFacebookConnect.h */,
+				26C446A915C9D05400E9A50B /* DWTumblrConnect.m */,
+				26C446AA15C9D05400E9A50B /* DWTumblrConnect.h */,
 			);
 			name = Connect;
 			sourceTree = "<group>";
@@ -424,6 +435,17 @@
 				262376B115BF6C0A00B3A037 /* FBRequest.m */,
 			);
 			name = Facebook;
+			sourceTree = "<group>";
+		};
+		26C446A115C9D02700E9A50B /* Tumblr */ = {
+			isa = PBXGroup;
+			children = (
+				26C446A215C9D02700E9A50B /* NSData+Base64.h */,
+				26C446A315C9D02700E9A50B /* NSData+Base64.m */,
+				26C446A415C9D02700E9A50B /* TumblrXAuth.h */,
+				26C446A515C9D02700E9A50B /* TumblrXAuth.m */,
+			);
+			path = Tumblr;
 			sourceTree = "<group>";
 		};
 		BB06360315BF7258001F26E1 /* Images */ = {
@@ -583,6 +605,7 @@
 				BB9F70ED15B9E7C90099C80A /* JSON */,
 				BB9F70DA15B9E6A60099C80A /* Reachability */,
 				262376A615BF6BE700B3A037 /* Facebook */,
+				26C446A115C9D02700E9A50B /* Tumblr */,
 			);
 			path = External;
 			sourceTree = "<group>";
@@ -1077,6 +1100,9 @@
 				BBC060A715C85F28000D3480 /* DWCommentsController.m in Sources */,
 				26C4467715C8BA4400E9A50B /* DWProductCell.m in Sources */,
 				26C4467B15C8BA6B00E9A50B /* DWProductSet.m in Sources */,
+				26C446A615C9D02700E9A50B /* NSData+Base64.m in Sources */,
+				26C446A715C9D02700E9A50B /* TumblrXAuth.m in Sources */,
+				26C446AB15C9D05400E9A50B /* DWTumblrConnect.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
