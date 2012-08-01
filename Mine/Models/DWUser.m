@@ -17,23 +17,27 @@ NSString* const kNImgUserLargeLoadError     = @"NImgUserLargeLoadError";
 
 
 
-static NSString* const kEncodeKeyID             = @"DWUser_id";
-static NSString* const kEncodeKeyFirstName      = @"DWUser_firstName";
-static NSString* const kEncodeKeyLastName       = @"DWUser_lastName";
-static NSString* const kEncodeKeyGender         = @"DWUser_gender";
-static NSString* const kEncodeKeyHandle         = @"DWUser_handle";
-static NSString* const kEncodeKeyByline         = @"DWUser_byline";
-static NSString* const kEncodeKeySquareImageURL = @"DWUser_squareImageURL";
-static NSString* const kEncodeKeyLargeImageURL  = @"DWUser_largeImageURL";
-static NSString* const kEncodeKeyPurchasesCount = @"DWUser_purchasesCount";
+static NSString* const kEncodeKeyID                         = @"DWUser_id";
+static NSString* const kEncodeKeyFirstName                  = @"DWUser_firstName";
+static NSString* const kEncodeKeyLastName                   = @"DWUser_lastName";
+static NSString* const kEncodeKeyGender                     = @"DWUser_gender";
+static NSString* const kEncodeKeyHandle                     = @"DWUser_handle";
+static NSString* const kEncodeKeyByline                     = @"DWUser_byline";
+static NSString* const kEncodeKeyTumblrAccessToken          = @"DWUser_tumblrAccessToken";
+static NSString* const kEncodeKeyTumblrAccessTokenSecret    = @"DWUser_tumblrAccessTokenSecret";
+static NSString* const kEncodeKeySquareImageURL             = @"DWUser_squareImageURL";
+static NSString* const kEncodeKeyLargeImageURL              = @"DWUser_largeImageURL";
+static NSString* const kEncodeKeyPurchasesCount             = @"DWUser_purchasesCount";
 
-static NSString* const kKeyFirstName        = @"first_name";
-static NSString* const kKeyLastName         = @"last_name";
-static NSString* const kKeyGender           = @"gender";
-static NSString* const kKeyHandle           = @"handle";
-static NSString* const kKeyByline           = @"byline";
-static NSString* const kKeyLargeImageURL    = @"large_image_url";
-static NSString* const kKeyPurchasesCount   = @"purchases_count";
+static NSString* const kKeyFirstName                    = @"first_name";
+static NSString* const kKeyLastName                     = @"last_name";
+static NSString* const kKeyGender                       = @"gender";
+static NSString* const kKeyHandle                       = @"handle";
+static NSString* const kKeyByline                       = @"byline";
+static NSString* const kKeyTumblrAccessToken            = @"tumblr_access_token";
+static NSString* const kKeyTumblrAccessTokenSecret      = @"tumblr_access_token_secret";
+static NSString* const kKeyLargeImageURL                = @"large_image_url";
+static NSString* const kKeyPurchasesCount               = @"purchases_count";
 
 
 
@@ -41,32 +45,37 @@ static NSString* const kKeyPurchasesCount   = @"purchases_count";
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 @implementation DWUser
-
-@synthesize firstName       = _firstName;
-@synthesize lastName        = _lastName;
-@synthesize gender          = _gender;
-@synthesize handle          = _handle;
-@synthesize byline          = _byline;
-@synthesize squareImageURL  = _squareImageURL;
-@synthesize largeImageURL   = _largeImageURL;
-@synthesize purchasesCount  = _purchasesCount;
+    
+@synthesize firstName                   = _firstName;
+@synthesize lastName                    = _lastName;
+@synthesize gender                      = _gender;
+@synthesize handle                      = _handle;
+@synthesize byline                      = _byline;
+@synthesize tumblrAccessToken           = _tumblrAccessToken;
+@synthesize tumblrAccessTokenSecret     = _tumblrAccessTokenSecret;
+@synthesize squareImageURL          	= _squareImageURL;
+@synthesize largeImageURL               = _largeImageURL;
+@synthesize purchasesCount              = _purchasesCount;
 
 //----------------------------------------------------------------------------------------------------
 - (id)initWithCoder:(NSCoder*)coder {
     self = [super init];
     
     if(self) {
-        self.databaseID     = [[coder decodeObjectForKey:kEncodeKeyID] integerValue];
-        self.firstName      = [coder decodeObjectForKey:kEncodeKeyFirstName];
-        self.lastName       = [coder decodeObjectForKey:kEncodeKeyLastName];
-        self.gender         = [coder decodeObjectForKey:kEncodeKeyGender];
-        self.handle         = [coder decodeObjectForKey:kEncodeKeyHandle];
-        self.byline         = [coder decodeObjectForKey:kEncodeKeyByline];
+        self.databaseID                 = [[coder decodeObjectForKey:kEncodeKeyID] integerValue];
+        self.firstName                  = [coder decodeObjectForKey:kEncodeKeyFirstName];
+        self.lastName                   = [coder decodeObjectForKey:kEncodeKeyLastName];
+        self.gender                     = [coder decodeObjectForKey:kEncodeKeyGender];
+        self.handle                     = [coder decodeObjectForKey:kEncodeKeyHandle];
+        self.byline                     = [coder decodeObjectForKey:kEncodeKeyByline];
+
+        self.tumblrAccessToken          = [coder decodeObjectForKey:kEncodeKeyTumblrAccessToken];
+        self.tumblrAccessTokenSecret    = [coder decodeObjectForKey:kEncodeKeyTumblrAccessTokenSecret];        
         
-        self.squareImageURL = [coder decodeObjectForKey:kEncodeKeySquareImageURL];
-        self.largeImageURL  = [coder decodeObjectForKey:kEncodeKeyLargeImageURL];
+        self.squareImageURL             = [coder decodeObjectForKey:kEncodeKeySquareImageURL];
+        self.largeImageURL              = [coder decodeObjectForKey:kEncodeKeyLargeImageURL];
         
-        self.purchasesCount = [[coder decodeObjectForKey:kEncodeKeyPurchasesCount] integerValue];
+        self.purchasesCount             = [[coder decodeObjectForKey:kEncodeKeyPurchasesCount] integerValue];
     }
     
     
@@ -87,6 +96,9 @@ static NSString* const kKeyPurchasesCount   = @"purchases_count";
     [coder encodeObject:self.gender                                     forKey:kEncodeKeyGender];
     [coder encodeObject:self.handle                                     forKey:kEncodeKeyHandle];
     [coder encodeObject:self.byline                                     forKey:kEncodeKeyByline];
+    
+    [coder encodeObject:self.tumblrAccessToken                          forKey:kEncodeKeyTumblrAccessToken];
+    [coder encodeObject:self.tumblrAccessTokenSecret                    forKey:kEncodeKeyTumblrAccessTokenSecret];    
     
     [coder encodeObject:self.squareImageURL                             forKey:kEncodeKeySquareImageURL];
     [coder encodeObject:self.largeImageURL                              forKey:kEncodeKeyLargeImageURL];
@@ -121,16 +133,19 @@ static NSString* const kKeyPurchasesCount   = @"purchases_count";
 - (void)update:(NSDictionary*)user {
     [super update:user];
 	
-    NSString *firstName         = [user objectForKey:kKeyFirstName];
-    NSString *lastName          = [user objectForKey:kKeyLastName];
-    NSString *gender            = [user objectForKey:kKeyGender];
-    NSString *handle            = [user objectForKey:kKeyHandle];
-    NSString *byline            = [user objectForKey:kKeyByline];
+    NSString *firstName                 = [user objectForKey:kKeyFirstName];
+    NSString *lastName                  = [user objectForKey:kKeyLastName];
+    NSString *gender                    = [user objectForKey:kKeyGender];
+    NSString *handle                    = [user objectForKey:kKeyHandle];
+    NSString *byline                    = [user objectForKey:kKeyByline];
     
-    NSString *squareImageURL    = [user objectForKey:kKeySquareImageURL];
-    NSString *largeImageURL     = [user objectForKey:kKeyLargeImageURL];
+    NSString *tumblrAccessToken         = [user objectForKey:kKeyTumblrAccessToken];
+    NSString *tumblrAccessTokenSecret   = [user objectForKey:kKeyTumblrAccessTokenSecret];    
     
-    NSString *purchasesCount    = [user objectForKey:kKeyPurchasesCount];
+    NSString *squareImageURL            = [user objectForKey:kKeySquareImageURL];
+    NSString *largeImageURL             = [user objectForKey:kKeyLargeImageURL];
+    
+    NSString *purchasesCount            = [user objectForKey:kKeyPurchasesCount];
     
     
     if(firstName && ![firstName isKindOfClass:[NSNull class]] && ![self.firstName isEqualToString:firstName])
@@ -147,6 +162,13 @@ static NSString* const kKeyPurchasesCount   = @"purchases_count";
     
     if(byline && ![self.byline isEqualToString:byline])
         self.byline = byline;
+    
+    
+    if(tumblrAccessToken && ![self.tumblrAccessToken isEqualToString:tumblrAccessToken])
+        self.tumblrAccessToken = tumblrAccessToken;
+    
+    if(tumblrAccessTokenSecret && ![self.tumblrAccessTokenSecret isEqualToString:tumblrAccessTokenSecret])
+        self.tumblrAccessTokenSecret = tumblrAccessTokenSecret;    
     
     
     if(squareImageURL && ![self.squareImageURL isEqualToString:squareImageURL])
@@ -199,7 +221,11 @@ static NSString* const kKeyPurchasesCount   = @"purchases_count";
 
 //----------------------------------------------------------------------------------------------------
 - (void)debug {
-    NSLog(@"%@ %@ %@ %@ %@  %@ %@  %d",self.firstName,self.lastName,self.gender,self.handle,self.byline,self.squareImageURL,self.largeImageURL,self.purchasesCount);
+    NSLog(@"%@ %@ %@ %@ %@  %@ %@ %@ %@  %d",
+          self.firstName,self.lastName,self.gender,self.handle,self.byline,
+          self.tumblrAccessToken,self.tumblrAccessTokenSecret,
+          self.squareImageURL,self.largeImageURL,
+          self.purchasesCount);
 }
 
 

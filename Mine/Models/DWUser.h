@@ -30,6 +30,9 @@ extern NSString* const kNImgUserLargeLoadError;
     NSString        *_handle;
     NSString        *_byline;
     
+    NSString        *_tumblrAccessToken;
+    NSString        *_tumblrAccessTokenSecret;
+    
     NSString        *_squareImageURL;
     NSString        *_largeImageURL;
     
@@ -65,6 +68,16 @@ extern NSString* const kNImgUserLargeLoadError;
  * Byline
  */
 @property (nonatomic,copy) NSString *byline;
+
+/**
+ * Tumblr Access Token
+ */
+@property (nonatomic,copy) NSString *tumblrAccessToken;
+
+/**
+ * Tumblr Access Token Secret
+ */
+@property (nonatomic,copy) NSString *tumblrAccessTokenSecret;
 
 /**
  * Image URL for a square user image.

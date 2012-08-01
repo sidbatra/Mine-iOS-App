@@ -35,6 +35,13 @@
  */
 - (void)createUserFromFacebookWithAccessToken:(NSString*)accessToken;
 
+/**
+ * Update the tumblr token and secret of the given user ID
+ */
+- (void)updateUserHavingID:(NSInteger)userID 
+          withTumblrToken:(NSString*)tumblrToken
+          andTumblrSecret:(NSString*)tumblrSecret;
+
 @end
 
 
@@ -71,5 +78,15 @@
  * Error loading user information
  */
 - (void)userLoadError:(NSString*)error;
+
+/**
+ * Fired when a user is updated
+ */
+- (void)userUpdated:(DWUser*)user;
+
+/**
+ * Error message while updating a user
+ */
+- (void)userUpdateError:(NSString*)error;
 
 @end

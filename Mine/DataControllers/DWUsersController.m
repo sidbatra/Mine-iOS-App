@@ -16,14 +16,17 @@
 #import "DWSession.h"
 
 
-static NSString* const kNewUserURI      = @"/users.json?using=facebook&access_token=%@&src=iphone";
-static NSString* const kGetUserURI      = @"/users/%@.json?";
+static NSString* const kNewUserURI                      = @"/users.json?using=facebook&access_token=%@&src=iphone";
+static NSString* const kGetUserURI                      = @"/users/%@.json?";
+static NSString* const kUpdateUserTumblrTokenURI        = @"/users/%d.json?tumblr_access_token=%@&tumblr_access_token_secret=%@";
 
 
 static NSString* const kNNewUserCreated         = @"NUserCreated";
 static NSString* const kNNewUserCreateError     = @"NUserCreateError";
 static NSString* const kNUserLoaded             = @"NUserLoad";
 static NSString* const kNUserLoadError          = @"NUserLoadError";
+static NSString* const kNUserUpdated            = @"NUserUpdated";
+static NSString* const kNUserUpdateError        = @"NUserUpdateError";
 
 
 /**
@@ -67,6 +70,16 @@ static NSString* const kNUserLoadError          = @"NUserLoadError";
 		[[NSNotificationCenter defaultCenter] addObserver:self 
 												 selector:@selector(userLoadError:) 
 													 name:kNUserLoadError
+												   object:nil];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self 
+												 selector:@selector(userUpdated:) 
+													 name:kNUserUpdated
+												   object:nil];
+		
+		[[NSNotificationCenter defaultCenter] addObserver:self 
+												 selector:@selector(userUpdateError:) 
+													 name:kNUserUpdateError
 												   object:nil];
     }
     
@@ -121,6 +134,30 @@ static NSString* const kNUserLoadError          = @"NUserLoadError";
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
+#pragma mark Update
+
+//----------------------------------------------------------------------------------------------------
+- (void)updateUserHavingID:(NSInteger)userID 
+           withTumblrToken:(NSString *)tumblrToken 
+           andTumblrSecret:(NSString *)tumblrSecret {
+    
+    NSString *localURL = [NSString stringWithFormat:kUpdateUserTumblrTokenURI,
+                          userID,
+                          [tumblrToken stringByEncodingHTMLCharacters],
+                          [tumblrSecret stringByEncodingHTMLCharacters]];
+    
+    [[DWRequestManager sharedDWRequestManager] createAppRequest:localURL
+                                            successNotification:kNUserUpdated
+                                              errorNotification:kNUserUpdateError
+                                                  requestMethod:kPut
+                                                   authenticate:YES];
+}
+
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
 #pragma mark Notifications
 
 //----------------------------------------------------------------------------------------------------
@@ -143,6 +180,36 @@ static NSString* const kNUserLoadError          = @"NUserLoadError";
 - (void)userCreationError:(NSNotification*)notification {
     
     SEL sel = @selector(userCreationError:);
+    
+    if(![self.delegate respondsToSelector:sel])
+        return;
+    
+    NSError *error = [[notification userInfo] objectForKey:kKeyError];
+    
+    [self.delegate performSelector:sel 
+                        withObject:[error localizedDescription]];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)userUpdated:(NSNotification*)notification {
+    
+    SEL sel = @selector(userUpdated:);
+    
+    if(![self.delegate respondsToSelector:sel])
+        return;
+    
+    NSDictionary *info      = [notification userInfo];
+    NSDictionary *response  = [info objectForKey:kKeyResponse];
+    DWUser *user            = [DWUser create:response];   
+    
+    [self.delegate performSelector:sel
+                        withObject:user];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)userUpdateError:(NSNotification*)notification {
+    
+    SEL sel = @selector(userUpdateError:);
     
     if(![self.delegate respondsToSelector:sel])
         return;
