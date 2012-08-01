@@ -54,6 +54,8 @@ extern NSInteger const kColumnsInProductsSearch;
  * Third Party Aps
  */
 extern NSString* const kFacebookAppID;
+extern NSString* const kTumblrConsumerKey;
+extern NSString* const kTumblrConsumerSecret;
 
 /**
  * JSON key names
