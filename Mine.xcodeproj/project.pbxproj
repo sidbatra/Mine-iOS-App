@@ -39,6 +39,8 @@
 		262376B515BF6C0A00B3A037 /* FBFrictionlessRequestSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 262376AD15BF6C0A00B3A037 /* FBFrictionlessRequestSettings.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		262376B615BF6C0A00B3A037 /* FBLoginDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 262376AF15BF6C0A00B3A037 /* FBLoginDialog.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		262376B715BF6C0A00B3A037 /* FBRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 262376B115BF6C0A00B3A037 /* FBRequest.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		26C4467715C8BA4400E9A50B /* DWProductCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C4467615C8BA4400E9A50B /* DWProductCell.m */; };
+		26C4467B15C8BA6B00E9A50B /* DWProductSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C4467A15C8BA6B00E9A50B /* DWProductSet.m */; };
 		BB06360815BF7258001F26E1 /* post_retry.png in Resources */ = {isa = PBXBuildFile; fileRef = BB06360415BF7258001F26E1 /* post_retry.png */; };
 		BB06360C15BF726D001F26E1 /* DWErrorView.m in Sources */ = {isa = PBXBuildFile; fileRef = BB06360B15BF726D001F26E1 /* DWErrorView.m */; };
 		BB06361215BF7DB2001F26E1 /* DWTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BB06360F15BF7DB2001F26E1 /* DWTabBar.m */; };
@@ -189,6 +191,10 @@
 		262376B015BF6C0A00B3A037 /* FBRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FBRequest.h; path = Facebook/FBRequest.h; sourceTree = "<group>"; };
 		262376B115BF6C0A00B3A037 /* FBRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FBRequest.m; path = Facebook/FBRequest.m; sourceTree = "<group>"; };
 		262376B815BF6CBA00B3A037 /* Facebook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Facebook.h; path = Facebook/Facebook.h; sourceTree = "<group>"; };
+		26C4467515C8BA4400E9A50B /* DWProductCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWProductCell.h; sourceTree = "<group>"; };
+		26C4467615C8BA4400E9A50B /* DWProductCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWProductCell.m; sourceTree = "<group>"; };
+		26C4467915C8BA6B00E9A50B /* DWProductSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWProductSet.h; sourceTree = "<group>"; };
+		26C4467A15C8BA6B00E9A50B /* DWProductSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWProductSet.m; sourceTree = "<group>"; };
 		BB06360415BF7258001F26E1 /* post_retry.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = post_retry.png; sourceTree = "<group>"; };
 		BB06360615BF7258001F26E1 /* DWErrorViewProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWErrorViewProtocol.h; sourceTree = "<group>"; };
 		BB06360715BF7258001F26E1 /* DWModelPresenterProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWModelPresenterProtocol.h; sourceTree = "<group>"; };
@@ -665,6 +671,8 @@
 				BB26987F15BBA2E300037453 /* DWStore.m */,
 				BB9F710715B9EBED0099C80A /* DWUser.h */,
 				BB9F710815B9EBED0099C80A /* DWUser.m */,
+				26C4467915C8BA6B00E9A50B /* DWProductSet.h */,
+				26C4467A15C8BA6B00E9A50B /* DWProductSet.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -865,6 +873,8 @@
 				BB06368115C31973001F26E1 /* DWPaginationCell.m */,
 				BBE42F4715BCCA52000F6AE1 /* DWPurchaseFeedCell.h */,
 				BBE42F4815BCCA52000F6AE1 /* DWPurchaseFeedCell.m */,
+				26C4467515C8BA4400E9A50B /* DWProductCell.h */,
+				26C4467615C8BA4400E9A50B /* DWProductCell.m */,
 			);
 			path = TableViewCells;
 			sourceTree = "<group>";
@@ -1065,6 +1075,8 @@
 				262200B615C76AC7003DC1DF /* DWCreationNavigationViewController.m in Sources */,
 				BBC060A215C76D57000D3480 /* DWCommentsCreateViewController.m in Sources */,
 				BBC060A715C85F28000D3480 /* DWCommentsController.m in Sources */,
+				26C4467715C8BA4400E9A50B /* DWProductCell.m in Sources */,
+				26C4467B15C8BA6B00E9A50B /* DWProductSet.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
