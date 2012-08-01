@@ -43,6 +43,10 @@ extern NSString* const kNPaginationCellReached;
 extern NSString* const kMsgActionSheetCancel;
 extern NSString* const kMsgActionSheetDelete;
 
+/**
+ * Grid view related constants
+ */
+extern NSInteger const kColumnsInProductsSearch;
 
 /**
  * Third Party Aps

@@ -9,7 +9,9 @@
 #import "DWProductsViewController.h"
 #import "DWProductsViewDataSource.h"
 #import "DWProductPresenter.h"
-#import "DWProduct.h"
+#import "DWPagination.h"
+#import "DWPaginationPresenter.h"
+#import "DWProductSet.h"
 #import "DWConstants.h"
 
 
@@ -28,10 +30,13 @@
 
         self.tableViewDataSource = [[DWProductsViewDataSource alloc] init];
         
-        [self addModelPresenterForClass:[DWProduct class]
+        [self addModelPresenterForClass:[DWProductSet class]
                               withStyle:kDefaultModelPresenter 
                           withPresenter:[DWProductPresenter class]];
         
+        [self addModelPresenterForClass:[DWPagination class]
+                              withStyle:kDefaultModelPresenter 
+                          withPresenter:[DWPaginationPresenter class]];
         
         [[NSNotificationCenter defaultCenter] addObserver:self 
                                                  selector:@selector(productMediumImageLoaded:) 
@@ -64,7 +69,7 @@
 - (void)productMediumImageLoaded:(NSNotification*)notification {
     NSDictionary *userInfo = [notification userInfo];
     
-    [self provideResourceToVisibleCells:[DWProduct class] 
+    [self provideResourceToVisibleCells:[DWProductSet class] 
                                objectID:[[userInfo objectForKey:kKeyResourceID] integerValue]
                               objectKey:kKeyMediumImageURL];
 }

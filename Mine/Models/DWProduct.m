@@ -53,6 +53,8 @@ static NSString* const kKeySourceURL            = @"source_url";
 
 //----------------------------------------------------------------------------------------------------
 - (void)freeMemory {
+    [[DWImageManager sharedDWImageManager] remove:self.mediumImageURL];
+    [[DWImageManager sharedDWImageManager] remove:self.largeImageURL];    
 }
 
 //----------------------------------------------------------------------------------------------------

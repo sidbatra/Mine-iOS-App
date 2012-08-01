@@ -8,8 +8,8 @@
 
 #import "DWProductPresenter.h"
 
-#import "DWPurchaseFeedCell.h"
-#import "DWProduct.h"
+#import "DWProductCell.h"
+#import "DWProductSet.h"
 
 @implementation DWProductPresenter
 
@@ -20,22 +20,25 @@
                withCellIdentifier:(NSString*)identifier
                      withDelegate:(id)delegate
              andPresentationStyle:(NSInteger)style {
-    
-    DWProduct *product          = object;
-    DWPurchaseFeedCell *cell    = base;
+
+    DWProductSet *productSet    = object;
+    DWProductCell *cell         = base;
     
     if(!cell)
-        cell = [[DWPurchaseFeedCell alloc] initWithStyle:UITableViewStylePlain 
+        cell = [[DWProductCell alloc] initWithStyle:UITableViewStylePlain 
                                          reuseIdentifier:identifier];
     
-    cell.delegate   = delegate;
-    cell.purchaseID = product.databaseID;
-        
-    [product downloadMediumImage];
-
-    [cell setPurchaseImage:product.mediumImage];
-    [cell setTitle:product.title];
+    [cell resetUI];
     
+    for(NSInteger i=0 ; i< [productSet length] ; i++) {
+        DWProduct *product = [productSet.products objectAtIndex:i];
+        [product downloadMediumImage];
+        
+        [cell setProductImage:product.mediumImage
+             forButtonAtIndex:i 
+                 andProductID:product.databaseID];
+    }
+
     return cell;
 }
 
@@ -43,8 +46,7 @@
 + (CGFloat)heightForObject:(id)object 
      withPresentationStyle:(NSInteger)style {
     
-    return [DWPurchaseFeedCell heightForCellWithLikesCount:0 
-                                          andCommentsCount:0];
+    return kProductCellHeight;
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -55,13 +57,21 @@
                      withObjectID:(NSInteger)objectID
                      andObjectKey:(NSString*)objectKey {
     
-    DWProduct *product          = object;
-    DWPurchaseFeedCell *cell    = base;
     
-    if([product class] == objectClass && product.databaseID == objectID) {
-
-        if(objectKey == kKeyMediumImageURL)
-            [cell setPurchaseImage:product.mediumImage];        
+    DWProductSet *productSet    = object;
+    DWProductCell *cell         = base;
+            
+    if([productSet class] == objectClass) {
+        
+        for(NSInteger i=0 ; i< [productSet length] ; i++) {
+            DWProduct *product = [productSet.products objectAtIndex:i];
+        
+            if(product.databaseID == objectID) {
+                [cell setProductImage:product.mediumImage 
+                     forButtonAtIndex:i 
+                         andProductID:product.databaseID];
+            }
+        }
     }
 }
 

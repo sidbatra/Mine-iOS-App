@@ -7,7 +7,9 @@
 //
 
 #import "DWProductsViewDataSource.h"
-#import "DWProduct.h"
+#import "DWProductSet.h"
+#import "DWConstants.h"
+#import "DWPagination.h"
 
 /**
  * Private declarations.
@@ -76,7 +78,41 @@
 //----------------------------------------------------------------------------------------------------
 - (void)refreshInitiated {
     self.page = 0;
+    
+    id lastObject   = [self.objects lastObject];
+    
+    if([lastObject isKindOfClass:[DWPagination class]]) {
+        ((DWPagination*)lastObject).isDisabled = YES;
+    }
+    
     [self loadProducts];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)paginate {
+    [self loadProducts];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)addObjectsFromProducts:(NSMutableArray*)products 
+             withStartingIndex:(NSInteger)startingIndex {
+    
+    
+    NSInteger count = [products count];
+    
+    for(NSInteger i=startingIndex ; i < count ; i+=kColumnsInProductsSearch) {        
+        DWProductSet *productSet = [[DWProductSet alloc] init];
+        
+        for (NSInteger j=0; j<kColumnsInProductsSearch; j++) {
+            NSInteger index = i+j;
+            
+            if(index < count)
+                [productSet addProduct:[products objectAtIndex:index]];
+        }
+        
+        [self.objects addObject:productSet];
+    }
+    
 }
 
 
@@ -89,7 +125,45 @@
 - (void)productsLoaded:(NSMutableArray *)products 
            withQueries:(NSArray *)queries {
     
-    self.objects = products;
+    id lastObject               = [self.objects lastObject];
+    BOOL paginate               = NO;
+    NSInteger startingIndex     = 0;
+    
+    
+    if([lastObject isKindOfClass:[DWPagination class]]) {
+        paginate = !((DWPagination*)lastObject).isDisabled;
+    }
+    
+    if(!paginate) {
+        [self clean];
+        self.objects = [NSMutableArray array];
+    }
+    else {
+        [self.objects removeLastObject];
+
+        DWProductSet *lastSet = [self.objects lastObject];
+        startingIndex = kColumnsInProductsSearch - [lastSet length];
+        
+        if(startingIndex != 0) {
+            for(NSInteger i=0 ; i < startingIndex ; i++) {
+                [lastSet addProduct:[products objectAtIndex:i]];
+            }
+        }
+    }
+    
+    [self addObjectsFromProducts:products 
+               withStartingIndex:startingIndex];
+    
+    
+    if([products count]) {        
+        self.page++;
+        
+        DWPagination *pagination    = [[DWPagination alloc] init];
+        pagination.owner            = self;
+        [self.objects addObject:pagination];
+    }
+    
+    
     [self.delegate reloadTableView];
 }
 
