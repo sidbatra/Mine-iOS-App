@@ -29,9 +29,12 @@ extern NSString* const kNImgUserLargeLoadError;
     NSString        *_gender;
     NSString        *_handle;
     NSString        *_byline;
-    
+
+    NSString        *_facebookAccessToken;
+    NSString        *_twitterAccessToken;
+    NSString        *_twitterAccessTokenSecret;
     NSString        *_tumblrAccessToken;
-    NSString        *_tumblrAccessTokenSecret;
+    NSString        *_tumblrAccessTokenSecret;    
     
     NSString        *_squareImageURL;
     NSString        *_largeImageURL;
@@ -68,6 +71,21 @@ extern NSString* const kNImgUserLargeLoadError;
  * Byline
  */
 @property (nonatomic,copy) NSString *byline;
+
+/**
+ * Facebook Access Token
+ */
+@property (nonatomic,copy) NSString *facebookAccessToken;
+
+/**
+ * Twitter Access Token
+ */
+@property (nonatomic,copy) NSString *twitterAccessToken;
+
+/**
+ * Twitter Access Token Secret
+ */
+@property (nonatomic,copy) NSString *twitterAccessTokenSecret;
 
 /**
  * Tumblr Access Token

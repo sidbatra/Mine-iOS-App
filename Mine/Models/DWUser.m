@@ -23,6 +23,9 @@ static NSString* const kEncodeKeyLastName                   = @"DWUser_lastName"
 static NSString* const kEncodeKeyGender                     = @"DWUser_gender";
 static NSString* const kEncodeKeyHandle                     = @"DWUser_handle";
 static NSString* const kEncodeKeyByline                     = @"DWUser_byline";
+static NSString* const kEncodeKeyFacebookAccessToken        = @"DWUser_facebookAccessToken";
+static NSString* const kEncodeKeyTwitterAccessToken         = @"DWUser_twitterAccessToken";
+static NSString* const kEncodeKeyTwitterAccessTokenSecret   = @"DWUser_twitterAccessTokenSecret";
 static NSString* const kEncodeKeyTumblrAccessToken          = @"DWUser_tumblrAccessToken";
 static NSString* const kEncodeKeyTumblrAccessTokenSecret    = @"DWUser_tumblrAccessTokenSecret";
 static NSString* const kEncodeKeySquareImageURL             = @"DWUser_squareImageURL";
@@ -34,6 +37,9 @@ static NSString* const kKeyLastName                     = @"last_name";
 static NSString* const kKeyGender                       = @"gender";
 static NSString* const kKeyHandle                       = @"handle";
 static NSString* const kKeyByline                       = @"byline";
+static NSString* const kKeyFacebookAccessToken          = @"access_token";
+static NSString* const kKeyTwitterAccessToken           = @"tw_access_token";
+static NSString* const kKeyTwitterAccessTokenSecret     = @"tw_access_token_secret";
 static NSString* const kKeyTumblrAccessToken            = @"tumblr_access_token";
 static NSString* const kKeyTumblrAccessTokenSecret      = @"tumblr_access_token_secret";
 static NSString* const kKeyLargeImageURL                = @"large_image_url";
@@ -51,6 +57,9 @@ static NSString* const kKeyPurchasesCount               = @"purchases_count";
 @synthesize gender                      = _gender;
 @synthesize handle                      = _handle;
 @synthesize byline                      = _byline;
+@synthesize facebookAccessToken         = _facebookAccessToken;
+@synthesize twitterAccessToken          = _twitterAccessToken;
+@synthesize twitterAccessTokenSecret    = _twitterAccessTokenSecret;
 @synthesize tumblrAccessToken           = _tumblrAccessToken;
 @synthesize tumblrAccessTokenSecret     = _tumblrAccessTokenSecret;
 @synthesize squareImageURL          	= _squareImageURL;
@@ -69,6 +78,9 @@ static NSString* const kKeyPurchasesCount               = @"purchases_count";
         self.handle                     = [coder decodeObjectForKey:kEncodeKeyHandle];
         self.byline                     = [coder decodeObjectForKey:kEncodeKeyByline];
 
+        self.facebookAccessToken        = [coder decodeObjectForKey:kEncodeKeyFacebookAccessToken];
+        self.twitterAccessToken         = [coder decodeObjectForKey:kEncodeKeyTwitterAccessToken];
+        self.twitterAccessTokenSecret   = [coder decodeObjectForKey:kEncodeKeyTwitterAccessTokenSecret];        
         self.tumblrAccessToken          = [coder decodeObjectForKey:kEncodeKeyTumblrAccessToken];
         self.tumblrAccessTokenSecret    = [coder decodeObjectForKey:kEncodeKeyTumblrAccessTokenSecret];        
         
@@ -96,7 +108,10 @@ static NSString* const kKeyPurchasesCount               = @"purchases_count";
     [coder encodeObject:self.gender                                     forKey:kEncodeKeyGender];
     [coder encodeObject:self.handle                                     forKey:kEncodeKeyHandle];
     [coder encodeObject:self.byline                                     forKey:kEncodeKeyByline];
-    
+
+    [coder encodeObject:self.facebookAccessToken                        forKey:kEncodeKeyFacebookAccessToken];
+    [coder encodeObject:self.twitterAccessToken                         forKey:kEncodeKeyTwitterAccessToken];
+    [coder encodeObject:self.twitterAccessTokenSecret                   forKey:kEncodeKeyTwitterAccessTokenSecret];    
     [coder encodeObject:self.tumblrAccessToken                          forKey:kEncodeKeyTumblrAccessToken];
     [coder encodeObject:self.tumblrAccessTokenSecret                    forKey:kEncodeKeyTumblrAccessTokenSecret];    
     
@@ -138,7 +153,10 @@ static NSString* const kKeyPurchasesCount               = @"purchases_count";
     NSString *gender                    = [user objectForKey:kKeyGender];
     NSString *handle                    = [user objectForKey:kKeyHandle];
     NSString *byline                    = [user objectForKey:kKeyByline];
-    
+
+    NSString *facebookAccessToken       = [user objectForKey:kKeyFacebookAccessToken];
+    NSString *twitterAccessToken        = [user objectForKey:kKeyTwitterAccessToken];
+    NSString *twitterAccessTokenSecret  = [user objectForKey:kKeyTwitterAccessTokenSecret];   
     NSString *tumblrAccessToken         = [user objectForKey:kKeyTumblrAccessToken];
     NSString *tumblrAccessTokenSecret   = [user objectForKey:kKeyTumblrAccessTokenSecret];    
     
@@ -162,7 +180,16 @@ static NSString* const kKeyPurchasesCount               = @"purchases_count";
     
     if(byline && ![self.byline isEqualToString:byline])
         self.byline = byline;
+
+
+    if(facebookAccessToken && ![self.facebookAccessToken isEqualToString:facebookAccessToken])
+        self.facebookAccessToken = facebookAccessToken;
     
+    if(twitterAccessToken && ![self.twitterAccessToken isEqualToString:twitterAccessToken])
+        self.twitterAccessToken = twitterAccessToken;
+    
+    if(twitterAccessTokenSecret && ![self.twitterAccessTokenSecret isEqualToString:twitterAccessTokenSecret])
+        self.twitterAccessTokenSecret = twitterAccessTokenSecret;    
     
     if(tumblrAccessToken && ![self.tumblrAccessToken isEqualToString:tumblrAccessToken])
         self.tumblrAccessToken = tumblrAccessToken;
@@ -221,8 +248,10 @@ static NSString* const kKeyPurchasesCount               = @"purchases_count";
 
 //----------------------------------------------------------------------------------------------------
 - (void)debug {
-    NSLog(@"%@ %@ %@ %@ %@  %@ %@ %@ %@  %d",
+    NSLog(@"%@ %@ %@ %@ %@  %@  %@ %@  %@ %@  %@ %@  %d",
           self.firstName,self.lastName,self.gender,self.handle,self.byline,
+          self.facebookAccessToken,
+          self.twitterAccessToken,self.twitterAccessTokenSecret,          
           self.tumblrAccessToken,self.tumblrAccessTokenSecret,
           self.squareImageURL,self.largeImageURL,
           self.purchasesCount);
