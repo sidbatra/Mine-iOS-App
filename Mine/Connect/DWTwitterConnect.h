@@ -51,7 +51,6 @@
  * and lifecycle
  */
 @protocol DWTwitterConnectDelegate
-- (void)twAuthenticating;
 - (void)twAuthenticationFailed;
 - (void)twAuthenticatedWithToken:(NSString*)token 
                        andSecret:(NSString*)secret;

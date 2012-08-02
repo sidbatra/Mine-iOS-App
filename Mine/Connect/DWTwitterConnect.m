@@ -45,12 +45,7 @@
     self.authenticator.password     = password;
     self.authenticator.delegate     = self;
     
-    [_authenticator authenticate];
-    
-    SEL sel = @selector(twAuthenticating);
-    
-    if([_delegate respondsToSelector:sel])
-        [_delegate performSelector:sel];
+    [self.authenticator authenticate];
 }
 
 
