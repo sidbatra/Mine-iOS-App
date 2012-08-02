@@ -37,9 +37,15 @@
 - (void)getUserWithID:(NSInteger)userID;
 
 /**
- * Fetchers users who've liked the given purchase id.
+ * Fetch users who've liked the given purchase id.
  */ 
 - (void)getLikersForPurchaseID:(NSInteger)purchaseID;
+
+/**
+ * Fetch followers of the given user
+ */ 
+- (void)getFollowersForUserID:(NSInteger)userID;
+
 
 /**
  * Update the tumblr token and secret of the given user ID
@@ -95,6 +101,7 @@
  */
 - (void)userUpdateError:(NSString*)error;
 
+
 /**
  * Likers of a purchase loaded.
  */
@@ -102,9 +109,22 @@
        forPurchaseID:(NSNumber*)purchaseID;
 
 /**
- * Error likers of a purchase.
+ * Error loading likers of a purchase.
  */
 - (void)likersLoadError:(NSString*)error 
           forPurchaseID:(NSNumber*)purchaseID;
+
+
+/**
+ * Followers of a user loaded.
+ */
+- (void)followersLoaded:(NSMutableArray*)users 
+              forUserID:(NSNumber*)userID;
+
+/**
+ * Error loading followers of a user.
+ */
+- (void)followersLoadError:(NSString*)error 
+                 forUserID:(NSNumber*)userID;
 
 @end
