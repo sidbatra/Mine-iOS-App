@@ -96,6 +96,10 @@
 		BB46140C15CB3A9E00B38D71 /* DWUsersViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = BB46140B15CB3A9E00B38D71 /* DWUsersViewDataSource.m */; };
 		BB46140F15CB3BB100B38D71 /* DWLikersViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = BB46140E15CB3BB100B38D71 /* DWLikersViewDataSource.m */; };
 		BB46141215CB3D4F00B38D71 /* DWLikersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB46141115CB3D4F00B38D71 /* DWLikersViewController.m */; };
+		BB46141915CB419900B38D71 /* DWFollowersViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = BB46141815CB419900B38D71 /* DWFollowersViewDataSource.m */; };
+		BB46141D15CB42BF00B38D71 /* DWFollowersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB46141C15CB42BF00B38D71 /* DWFollowersViewController.m */; };
+		BB46142015CB469F00B38D71 /* DWIFollowersViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = BB46141F15CB469F00B38D71 /* DWIFollowersViewDataSource.m */; };
+		BB46142315CB474C00B38D71 /* DWIFollowersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB46142215CB474C00B38D71 /* DWIFollowersViewController.m */; };
 		BB9F70AB15B9E62F0099C80A /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB9F70AA15B9E62F0099C80A /* CFNetwork.framework */; };
 		BB9F70AE15B9E6400099C80A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB9F70AD15B9E6400099C80A /* SystemConfiguration.framework */; };
 		BB9F70B015B9E6450099C80A /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB9F70AF15B9E6450099C80A /* MobileCoreServices.framework */; };
@@ -310,6 +314,14 @@
 		BB46140E15CB3BB100B38D71 /* DWLikersViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWLikersViewDataSource.m; sourceTree = "<group>"; };
 		BB46141015CB3D4F00B38D71 /* DWLikersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWLikersViewController.h; sourceTree = "<group>"; };
 		BB46141115CB3D4F00B38D71 /* DWLikersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWLikersViewController.m; sourceTree = "<group>"; };
+		BB46141715CB419900B38D71 /* DWFollowersViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWFollowersViewDataSource.h; sourceTree = "<group>"; };
+		BB46141815CB419900B38D71 /* DWFollowersViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWFollowersViewDataSource.m; sourceTree = "<group>"; };
+		BB46141B15CB42BF00B38D71 /* DWFollowersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWFollowersViewController.h; sourceTree = "<group>"; };
+		BB46141C15CB42BF00B38D71 /* DWFollowersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWFollowersViewController.m; sourceTree = "<group>"; };
+		BB46141E15CB469F00B38D71 /* DWIFollowersViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWIFollowersViewDataSource.h; sourceTree = "<group>"; };
+		BB46141F15CB469F00B38D71 /* DWIFollowersViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWIFollowersViewDataSource.m; sourceTree = "<group>"; };
+		BB46142115CB474C00B38D71 /* DWIFollowersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWIFollowersViewController.h; sourceTree = "<group>"; };
+		BB46142215CB474C00B38D71 /* DWIFollowersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWIFollowersViewController.m; sourceTree = "<group>"; };
 		BB9F70AA15B9E62F0099C80A /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		BB9F70AD15B9E6400099C80A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		BB9F70AF15B9E6450099C80A /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
@@ -888,8 +900,12 @@
 				BBC0608A15C74243000D3480 /* DWCommentsViewController.m */,
 				2622005915C713B4003DC1DF /* DWContactsViewController.h */,
 				2622005A15C713B4003DC1DF /* DWContactsViewController.m */,
+				BB46142115CB474C00B38D71 /* DWIFollowersViewController.h */,
+				BB46142215CB474C00B38D71 /* DWIFollowersViewController.m */,
 				BBE42F4D15BDBB78000F6AE1 /* DWFeedViewController.h */,
 				BBE42F4E15BDBB79000F6AE1 /* DWFeedViewController.m */,
+				BB46141B15CB42BF00B38D71 /* DWFollowersViewController.h */,
+				BB46141C15CB42BF00B38D71 /* DWFollowersViewController.m */,
 				BB46141015CB3D4F00B38D71 /* DWLikersViewController.h */,
 				BB46141115CB3D4F00B38D71 /* DWLikersViewController.m */,
 				262200AE15C76A4E003DC1DF /* DWProductsViewController.h */,
@@ -919,8 +935,12 @@
 				BBC0608715C741FC000D3480 /* DWCommentsViewDataSource.m */,
 				2622005015C71393003DC1DF /* DWContactsDataSource.h */,
 				2622005115C71393003DC1DF /* DWContactsDataSource.m */,
+				BB46141E15CB469F00B38D71 /* DWIFollowersViewDataSource.h */,
+				BB46141F15CB469F00B38D71 /* DWIFollowersViewDataSource.m */,
 				BBE42F5015BDBBFC000F6AE1 /* DWFeedViewDataSource.h */,
 				BBE42F5115BDBBFC000F6AE1 /* DWFeedViewDataSource.m */,
+				BB46141715CB419900B38D71 /* DWFollowersViewDataSource.h */,
+				BB46141815CB419900B38D71 /* DWFollowersViewDataSource.m */,
 				BB46140D15CB3BB100B38D71 /* DWLikersViewDataSource.h */,
 				BB46140E15CB3BB100B38D71 /* DWLikersViewDataSource.m */,
 				262200B115C76A61003DC1DF /* DWProductsViewDataSource.h */,
@@ -1195,6 +1215,10 @@
 				26C4470515CB3E0900E9A50B /* DWTwitterConnect.m in Sources */,
 				BB46140F15CB3BB100B38D71 /* DWLikersViewDataSource.m in Sources */,
 				BB46141215CB3D4F00B38D71 /* DWLikersViewController.m in Sources */,
+				BB46141915CB419900B38D71 /* DWFollowersViewDataSource.m in Sources */,
+				BB46141D15CB42BF00B38D71 /* DWFollowersViewController.m in Sources */,
+				BB46142015CB469F00B38D71 /* DWIFollowersViewDataSource.m in Sources */,
+				BB46142315CB474C00B38D71 /* DWIFollowersViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
