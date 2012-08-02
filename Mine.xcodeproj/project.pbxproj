@@ -44,6 +44,13 @@
 		26C446A615C9D02700E9A50B /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C446A315C9D02700E9A50B /* NSData+Base64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		26C446A715C9D02700E9A50B /* TumblrXAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C446A515C9D02700E9A50B /* TumblrXAuth.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		26C446AB15C9D05400E9A50B /* DWTumblrConnect.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C446A915C9D05400E9A50B /* DWTumblrConnect.m */; };
+		26C446E115CB311B00E9A50B /* TwitterAuthenticator.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C446D615CB311B00E9A50B /* TwitterAuthenticator.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		26C446E215CB311B00E9A50B /* TwitterConsumer.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C446D815CB311B00E9A50B /* TwitterConsumer.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		26C446E315CB311B00E9A50B /* TwitterRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C446DA15CB311B00E9A50B /* TwitterRequest.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		26C446E415CB311B00E9A50B /* TwitterToken.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C446DC15CB311B00E9A50B /* TwitterToken.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		26C446E515CB311B00E9A50B /* TwitterTweetPoster.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C446DE15CB311B00E9A50B /* TwitterTweetPoster.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		26C446E615CB311B00E9A50B /* TwitterUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C446E015CB311B00E9A50B /* TwitterUtils.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		26C446EA15CB314C00E9A50B /* DWTwitterConnect.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C446E915CB314C00E9A50B /* DWTwitterConnect.m */; };
 		BB06360815BF7258001F26E1 /* post_retry.png in Resources */ = {isa = PBXBuildFile; fileRef = BB06360415BF7258001F26E1 /* post_retry.png */; };
 		BB06360C15BF726D001F26E1 /* DWErrorView.m in Sources */ = {isa = PBXBuildFile; fileRef = BB06360B15BF726D001F26E1 /* DWErrorView.m */; };
 		BB06361215BF7DB2001F26E1 /* DWTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BB06360F15BF7DB2001F26E1 /* DWTabBar.m */; };
@@ -205,6 +212,20 @@
 		26C446A515C9D02700E9A50B /* TumblrXAuth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TumblrXAuth.m; sourceTree = "<group>"; };
 		26C446A915C9D05400E9A50B /* DWTumblrConnect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWTumblrConnect.m; path = Connect/DWTumblrConnect.m; sourceTree = "<group>"; };
 		26C446AA15C9D05400E9A50B /* DWTumblrConnect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWTumblrConnect.h; path = Connect/DWTumblrConnect.h; sourceTree = "<group>"; };
+		26C446D515CB311B00E9A50B /* TwitterAuthenticator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterAuthenticator.h; sourceTree = "<group>"; };
+		26C446D615CB311B00E9A50B /* TwitterAuthenticator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterAuthenticator.m; sourceTree = "<group>"; };
+		26C446D715CB311B00E9A50B /* TwitterConsumer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterConsumer.h; sourceTree = "<group>"; };
+		26C446D815CB311B00E9A50B /* TwitterConsumer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterConsumer.m; sourceTree = "<group>"; };
+		26C446D915CB311B00E9A50B /* TwitterRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterRequest.h; sourceTree = "<group>"; };
+		26C446DA15CB311B00E9A50B /* TwitterRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterRequest.m; sourceTree = "<group>"; };
+		26C446DB15CB311B00E9A50B /* TwitterToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterToken.h; sourceTree = "<group>"; };
+		26C446DC15CB311B00E9A50B /* TwitterToken.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterToken.m; sourceTree = "<group>"; };
+		26C446DD15CB311B00E9A50B /* TwitterTweetPoster.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterTweetPoster.h; sourceTree = "<group>"; };
+		26C446DE15CB311B00E9A50B /* TwitterTweetPoster.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterTweetPoster.m; sourceTree = "<group>"; };
+		26C446DF15CB311B00E9A50B /* TwitterUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TwitterUtils.h; sourceTree = "<group>"; };
+		26C446E015CB311B00E9A50B /* TwitterUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterUtils.m; sourceTree = "<group>"; };
+		26C446E815CB314C00E9A50B /* DWTwitterConnect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWTwitterConnect.h; path = Connect/DWTwitterConnect.h; sourceTree = "<group>"; };
+		26C446E915CB314C00E9A50B /* DWTwitterConnect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWTwitterConnect.m; path = Connect/DWTwitterConnect.m; sourceTree = "<group>"; };
 		BB06360415BF7258001F26E1 /* post_retry.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = post_retry.png; sourceTree = "<group>"; };
 		BB06360615BF7258001F26E1 /* DWErrorViewProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWErrorViewProtocol.h; sourceTree = "<group>"; };
 		BB06360715BF7258001F26E1 /* DWModelPresenterProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWModelPresenterProtocol.h; sourceTree = "<group>"; };
@@ -417,6 +438,8 @@
 				262376A315BF6B9600B3A037 /* DWFacebookConnect.m */,
 				26C446AA15C9D05400E9A50B /* DWTumblrConnect.h */,
 				26C446A915C9D05400E9A50B /* DWTumblrConnect.m */,
+				26C446E815CB314C00E9A50B /* DWTwitterConnect.h */,
+				26C446E915CB314C00E9A50B /* DWTwitterConnect.m */,
 			);
 			name = Connect;
 			sourceTree = "<group>";
@@ -449,6 +472,25 @@
 				26C446A515C9D02700E9A50B /* TumblrXAuth.m */,
 			);
 			path = Tumblr;
+			sourceTree = "<group>";
+		};
+		26C446D415CB311B00E9A50B /* Twitter */ = {
+			isa = PBXGroup;
+			children = (
+				26C446D515CB311B00E9A50B /* TwitterAuthenticator.h */,
+				26C446D615CB311B00E9A50B /* TwitterAuthenticator.m */,
+				26C446D715CB311B00E9A50B /* TwitterConsumer.h */,
+				26C446D815CB311B00E9A50B /* TwitterConsumer.m */,
+				26C446D915CB311B00E9A50B /* TwitterRequest.h */,
+				26C446DA15CB311B00E9A50B /* TwitterRequest.m */,
+				26C446DB15CB311B00E9A50B /* TwitterToken.h */,
+				26C446DC15CB311B00E9A50B /* TwitterToken.m */,
+				26C446DD15CB311B00E9A50B /* TwitterTweetPoster.h */,
+				26C446DE15CB311B00E9A50B /* TwitterTweetPoster.m */,
+				26C446DF15CB311B00E9A50B /* TwitterUtils.h */,
+				26C446E015CB311B00E9A50B /* TwitterUtils.m */,
+			);
+			path = Twitter;
 			sourceTree = "<group>";
 		};
 		BB06360315BF7258001F26E1 /* Images */ = {
@@ -611,6 +653,7 @@
 				BB9F70DA15B9E6A60099C80A /* Reachability */,
 				262376A615BF6BE700B3A037 /* Facebook */,
 				26C446A115C9D02700E9A50B /* Tumblr */,
+				26C446D415CB311B00E9A50B /* Twitter */,
 			);
 			path = External;
 			sourceTree = "<group>";
@@ -1109,6 +1152,13 @@
 				26C446A715C9D02700E9A50B /* TumblrXAuth.m in Sources */,
 				26C446AB15C9D05400E9A50B /* DWTumblrConnect.m in Sources */,
 				BBC060BB15C9FF66000D3480 /* DWStoresController.m in Sources */,
+				26C446E115CB311B00E9A50B /* TwitterAuthenticator.m in Sources */,
+				26C446E215CB311B00E9A50B /* TwitterConsumer.m in Sources */,
+				26C446E315CB311B00E9A50B /* TwitterRequest.m in Sources */,
+				26C446E415CB311B00E9A50B /* TwitterToken.m in Sources */,
+				26C446E515CB311B00E9A50B /* TwitterTweetPoster.m in Sources */,
+				26C446E615CB311B00E9A50B /* TwitterUtils.m in Sources */,
+				26C446EA15CB314C00E9A50B /* DWTwitterConnect.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
