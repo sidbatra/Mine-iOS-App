@@ -410,10 +410,10 @@
 		262376A115BF6B8100B3A037 /* Connect */ = {
 			isa = PBXGroup;
 			children = (
-				262376A315BF6B9600B3A037 /* DWFacebookConnect.m */,
 				262376A415BF6B9600B3A037 /* DWFacebookConnect.h */,
-				26C446A915C9D05400E9A50B /* DWTumblrConnect.m */,
+				262376A315BF6B9600B3A037 /* DWFacebookConnect.m */,
 				26C446AA15C9D05400E9A50B /* DWTumblrConnect.h */,
+				26C446A915C9D05400E9A50B /* DWTumblrConnect.m */,
 			);
 			name = Connect;
 			sourceTree = "<group>";
