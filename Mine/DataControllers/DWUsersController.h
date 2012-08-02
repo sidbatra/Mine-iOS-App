@@ -10,8 +10,8 @@
 
 #import "DWUser.h"
 
-@protocol DWUsersControllerDelegate;
 
+@protocol DWUsersControllerDelegate;
 
 
 @interface DWUsersController : NSObject {
@@ -25,15 +25,21 @@
 @property (nonatomic,weak) id<DWUsersControllerDelegate,NSObject> delegate;
 
 
+
+/**
+ * Create user from facebook authentication
+ */
+- (void)createUserFromFacebookWithAccessToken:(NSString*)accessToken;
+
 /**
  * Fetch information about the user with the given id.
  */
 - (void)getUserWithID:(NSInteger)userID;
 
 /**
- * Create user from facebook authentication
- */
-- (void)createUserFromFacebookWithAccessToken:(NSString*)accessToken;
+ * Fetchers users who've liked the given purchase id.
+ */ 
+- (void)getLikersForPurchaseID:(NSInteger)purchaseID;
 
 /**
  * Update the tumblr token and secret of the given user ID
@@ -88,5 +94,17 @@
  * Error message while updating a user
  */
 - (void)userUpdateError:(NSString*)error;
+
+/**
+ * Likers of a purchase loaded.
+ */
+- (void)likersLoaded:(NSMutableArray*)users 
+       forPurchaseID:(NSNumber*)purchaseID;
+
+/**
+ * Error likers of a purchase.
+ */
+- (void)likersLoadError:(NSString*)error 
+          forPurchaseID:(NSNumber*)purchaseID;
 
 @end
