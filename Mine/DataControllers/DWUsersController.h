@@ -59,6 +59,13 @@
           withTumblrToken:(NSString*)tumblrToken
           andTumblrSecret:(NSString*)tumblrSecret;
 
+/**
+ * Update the twitter token and secret of the given user ID
+ */
+- (void)updateUserHavingID:(NSInteger)userID 
+           withTwitterToken:(NSString*)twitterToken
+           andTwitterSecret:(NSString*)twitterSecret;
+
 @end
 
 

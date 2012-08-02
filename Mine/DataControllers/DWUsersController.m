@@ -25,6 +25,7 @@ static NSString* const kGetIFollowersURI                = @"/users.json?aspect=i
 
 
 static NSString* const kUpdateUserTumblrTokenURI        = @"/users/%d.json?tumblr_access_token=%@&tumblr_access_token_secret=%@";
+static NSString* const kUpdateUserTwitterTokenURI       = @"/users/%d.json?tw_access_token=%@&tw_access_token_secret=%@";
 
 
 static NSString* const kNNewUserCreated         = @"NUserCreated";
@@ -234,6 +235,23 @@ static NSString* const kNUserUpdateError        = @"NUserUpdateError";
                           userID,
                           [tumblrToken stringByEncodingHTMLCharacters],
                           [tumblrSecret stringByEncodingHTMLCharacters]];
+    
+    [[DWRequestManager sharedDWRequestManager] createAppRequest:localURL
+                                            successNotification:kNUserUpdated
+                                              errorNotification:kNUserUpdateError
+                                                  requestMethod:kPut
+                                                   authenticate:YES];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)updateUserHavingID:(NSInteger)userID 
+          withTwitterToken:(NSString *)twitterToken 
+          andTwitterSecret:(NSString *)twitterSecret {
+    
+    NSString *localURL = [NSString stringWithFormat:kUpdateUserTwitterTokenURI,
+                          userID,
+                          [twitterToken stringByEncodingHTMLCharacters],
+                          [twitterSecret stringByEncodingHTMLCharacters]];
     
     [[DWRequestManager sharedDWRequestManager] createAppRequest:localURL
                                             successNotification:kNUserUpdated
