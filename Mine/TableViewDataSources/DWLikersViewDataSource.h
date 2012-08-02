@@ -6,10 +6,7 @@
 //  Copyright (c) 2012 Denwen, Inc. All rights reserved.
 //
 
-#import "DWTableViewDataSource.h"
-
 #import "DWUsersViewDataSource.h"
-
 
 @interface DWLikersViewDataSource : DWUsersViewDataSource {
     NSInteger _purchaseID;
