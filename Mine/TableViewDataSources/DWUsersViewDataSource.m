@@ -8,6 +8,9 @@
 
 #import "DWUsersViewDataSource.h"
 
+#import "DWPurchase.h"
+#import "DWLike.h"
+
 @interface DWUsersViewDataSource() {
     DWUsersController   *_usersController;
 }
@@ -44,6 +47,19 @@
 //----------------------------------------------------------------------------------------------------
 - (void)loadUsers {
     [self.usersController getLikersForPurchaseID:self.purchaseID];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)loadUsersFromLikesOnPurchase:(DWPurchase*)purchase {
+    NSMutableArray *users = [NSMutableArray arrayWithCapacity:[purchase.likes count]];
+    
+    for(DWLike *like in purchase.likes) {
+        [users addObject:like.user];
+    }
+    
+    self.objects = users;
+    
+    [self.delegate reloadTableView];
 }
 
 //----------------------------------------------------------------------------------------------------

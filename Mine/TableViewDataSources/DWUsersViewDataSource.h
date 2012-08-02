@@ -11,6 +11,8 @@
 #import "DWUsersController.h"
 
 
+@class DWPurchase;
+
 @interface DWUsersViewDataSource : DWTableViewDataSource<DWUsersControllerDelegate> {
     NSInteger _purchaseID;
 }
@@ -25,5 +27,10 @@
  * Fetch the designated set of users.
  */
 - (void)loadUsers;
+
+/**
+ * Load users from the likes on a purchase.
+ */
+- (void)loadUsersFromLikesOnPurchase:(DWPurchase*)purchase;
 
 @end

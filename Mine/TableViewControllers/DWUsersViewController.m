@@ -72,7 +72,8 @@
 - (void)viewDidLoad {
 	[super viewDidLoad];
     
-    [(DWUsersViewDataSource*)self.tableViewDataSource loadUsers];
+
+    [(DWUsersViewDataSource*)self.tableViewDataSource loadUsersFromLikesOnPurchase:self.purchase];
 }
 
 
