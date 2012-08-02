@@ -9,7 +9,7 @@
 #import "DWNavigationRootViewController.h"
 #import "DWProfileViewController.h"
 #import "DWCommentsCreateViewController.h"
-#import "DWUsersViewController.h"
+#import "DWLikersViewController.h"
 
 #import "DWPurchase.h"
 
@@ -64,7 +64,7 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)displayAllLikesForPurchase:(DWPurchase*)purchase {
-    DWUsersViewController *likersViewController = [[DWUsersViewController alloc] initWithPurhcase:purchase];
+    DWLikersViewController *likersViewController = [[DWLikersViewController alloc] initWithPurhcase:purchase];
     
     [self.navigationController pushViewController:likersViewController
                                          animated:YES];

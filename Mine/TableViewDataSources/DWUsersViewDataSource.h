@@ -11,26 +11,19 @@
 #import "DWUsersController.h"
 
 
-@class DWPurchase;
-
 @interface DWUsersViewDataSource : DWTableViewDataSource<DWUsersControllerDelegate> {
-    NSInteger _purchaseID;
+    DWUsersController   *_usersController;
 }
 
 /**
- * Purchase id for which the likers are being displayed.
+ * Data controller for fetching a list of users.
  */
-@property (nonatomic,assign) NSInteger purchaseID;
+@property (nonatomic,strong) DWUsersController *usersController;
 
 
 /**
  * Fetch the designated set of users.
  */
 - (void)loadUsers;
-
-/**
- * Load users from the likes on a purchase.
- */
-- (void)loadUsersFromLikesOnPurchase:(DWPurchase*)purchase;
 
 @end

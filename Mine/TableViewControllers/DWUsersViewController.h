@@ -8,13 +8,6 @@
 
 #import "DWTableViewController.h"
 
-@class DWPurchase;
-
 @interface DWUsersViewController : DWTableViewController
-
-/**
- * Init with purchase whose likers are to be displayed.
- */
-- (id)initWithPurhcase:(DWPurchase*)purchase;
 
 @end
