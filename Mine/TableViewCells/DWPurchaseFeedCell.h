@@ -24,6 +24,7 @@ extern NSInteger const kTotalLikeUserButtons;
     UIButton        *userImageButton;
     UIButton        *userNameButton;
     UIButton        *likeButton;
+    UIButton        *allLikesButton;
     UIButton        *commentButton;
     
 	UILabel         *titleLabel;
@@ -137,6 +138,11 @@ extern NSInteger const kTotalLikeUserButtons;
  * User clicks like button.
  */
 - (void)likeClickedForPurchaseID:(NSNumber*)purchaseID;
+
+/**
+ * Users clicks the via all likes button.
+ */
+- (void)allLikesClickedForPurchaseID:(NSNumber*)purchaseID;
 
 /**
  * User clicks comment button.

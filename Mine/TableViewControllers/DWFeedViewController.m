@@ -206,6 +206,16 @@
 }
 
 //----------------------------------------------------------------------------------------------------
+- (void)allLikesClickedForPurchaseID:(NSNumber *)purchaseID {
+    DWPurchase *purchase = [DWPurchase fetch:[purchaseID integerValue]];
+    
+    if(!purchase)
+        return;
+    
+    NSLog(@"all like button clicked for - %@",purchase.title);
+}
+
+//----------------------------------------------------------------------------------------------------
 - (void)commentClickedForPurchaseID:(NSNumber *)purchaseID 
                  withCreationIntent:(NSNumber *)creationIntent {
     

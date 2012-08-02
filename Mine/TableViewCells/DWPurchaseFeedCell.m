@@ -87,6 +87,7 @@ NSInteger const kTotalLikeUserButtons   = 5;
         
         [self createLikesCountLabel];
         [self createLikeUserButtons];
+        [self createAllLikesButton];
 		
 		self.selectionStyle = UITableViewCellSelectionStyleNone;	
 	}
@@ -238,6 +239,26 @@ NSInteger const kTotalLikeUserButtons   = 5;
     }
 }
 
+//----------------------------------------------------------------------------------------------------
+- (void)createAllLikesButton {
+    allLikesButton = [[UIButton alloc] initWithFrame:CGRectMake(220,430,50,30)];
+    
+    allLikesButton.titleLabel.font              = [UIFont fontWithName:@"HelveticaNeue" size:13];
+    allLikesButton.titleLabel.textColor         = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0];
+    allLikesButton.titleLabel.backgroundColor	= [UIColor blueColor];
+    allLikesButton.titleLabel.textAlignment     = UITextAlignmentLeft;
+    
+    [allLikesButton setTitle:@"All"
+                    forState:UIControlStateNormal];
+
+    [allLikesButton addTarget:self
+                       action:@selector(didTapAllLikeButton:)
+             forControlEvents:UIControlEventTouchUpInside];
+
+    
+    [self.contentView addSubview:allLikesButton];
+}
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
@@ -254,6 +275,7 @@ NSInteger const kTotalLikeUserButtons   = 5;
         likeUserButton.hidden = YES;
     
     likesCountLabel.hidden = YES;
+    allLikesButton.hidden = YES;
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -306,6 +328,7 @@ NSInteger const kTotalLikeUserButtons   = 5;
         return;
     
     likesCountLabel.hidden = NO;
+    allLikesButton.hidden = count <= 5;
     
     if(count == 1)
         likesCountLabel.text = @"1 like";
@@ -463,6 +486,18 @@ NSInteger const kTotalLikeUserButtons   = 5;
 - (void)didTapLikeButton:(UIButton*)button {
     
     SEL sel = @selector(likeClickedForPurchaseID:);
+    
+    if(![self.delegate respondsToSelector:sel])
+        return;
+    
+    [self.delegate performSelector:sel
+                        withObject:[NSNumber numberWithInteger:self.purchaseID]];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)didTapAllLikeButton:(UIButton*)button {
+    
+    SEL sel = @selector(allLikesClickedForPurchaseID:);
     
     if(![self.delegate respondsToSelector:sel])
         return;
