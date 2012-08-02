@@ -21,6 +21,8 @@ static NSString* const kGetUserURI                      = @"/users/%@.json?";
 
 static NSString* const kGetLikersURI                    = @"/users.json?aspect=likers&purchase_id=%d";
 static NSString* const kGetFollowersURI                 = @"/users.json?aspect=followers&user_id=%d";
+static NSString* const kGetIFollowersURI                = @"/users.json?aspect=ifollowers&user_id=%d";
+
 
 static NSString* const kUpdateUserTumblrTokenURI        = @"/users/%d.json?tumblr_access_token=%@&tumblr_access_token_secret=%@";
 
@@ -34,6 +36,8 @@ static NSString* const kNLikersLoaded           = @"NLikersLoaded";
 static NSString* const kNLikersLoadError        = @"NLikersLoadError";
 static NSString* const kNFollowersLoaded        = @"NFollowersLoaded";
 static NSString* const kNFollowersLoadError     = @"NFollowersLoadError";
+static NSString* const kNIFollowersLoaded       = @"NIFollowersLoaded";
+static NSString* const kNIFollowersLoadError    = @"NIFollowersLoadError";
 
 static NSString* const kNUserUpdated            = @"NUserUpdated";
 static NSString* const kNUserUpdateError        = @"NUserUpdateError";
@@ -102,6 +106,16 @@ static NSString* const kNUserUpdateError        = @"NUserUpdateError";
 		[[NSNotificationCenter defaultCenter] addObserver:self 
 												 selector:@selector(usersLoadError:) 
 													 name:kNFollowersLoadError
+												   object:nil];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self 
+												 selector:@selector(usersLoaded:) 
+													 name:kNIFollowersLoaded
+												   object:nil];
+		
+		[[NSNotificationCenter defaultCenter] addObserver:self 
+												 selector:@selector(usersLoadError:) 
+													 name:kNIFollowersLoadError
 												   object:nil];
         
         
@@ -181,7 +195,6 @@ static NSString* const kNUserUpdateError        = @"NUserUpdateError";
                                                      resourceID:purchaseID];
 }
 
-
 //----------------------------------------------------------------------------------------------------
 - (void)getFollowersForUserID:(NSInteger)userID {
     NSString *localURL = [NSString stringWithFormat:kGetFollowersURI,userID];
@@ -189,6 +202,18 @@ static NSString* const kNUserUpdateError        = @"NUserUpdateError";
     [[DWRequestManager sharedDWRequestManager] createAppRequest:localURL
                                             successNotification:kNFollowersLoaded
                                               errorNotification:kNFollowersLoadError
+                                                  requestMethod:kGet
+                                                   authenticate:YES
+                                                     resourceID:userID];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)getIFollowersForUserID:(NSInteger)userID {
+    NSString *localURL = [NSString stringWithFormat:kGetIFollowersURI,userID];
+    
+    [[DWRequestManager sharedDWRequestManager] createAppRequest:localURL
+                                            successNotification:kNIFollowersLoaded
+                                              errorNotification:kNIFollowersLoadError
                                                   requestMethod:kGet
                                                    authenticate:YES
                                                      resourceID:userID];
@@ -360,6 +385,9 @@ static NSString* const kNUserUpdateError        = @"NUserUpdateError";
     else if([notification.name isEqualToString:kNFollowersLoaded]) {
         sel = @selector(followersLoaded:forUserID:);
     }
+    else if([notification.name isEqualToString:kNIFollowersLoaded]) {
+        sel = @selector(ifollowersLoaded:forUserID:);
+    }
     
     if(![self.delegate respondsToSelector:sel])
         return;
@@ -390,6 +418,9 @@ static NSString* const kNUserUpdateError        = @"NUserUpdateError";
     }
     else if([notification.name isEqualToString:kNFollowersLoadError]) {
         sel = @selector(followersLoadError:forUserID:);
+    }
+    else if([notification.name isEqualToString:kNIFollowersLoadError]) {
+        sel = @selector(ifollowersLoadError:forUserID:);
     }
     
     if(![self.delegate respondsToSelector:sel])

@@ -46,6 +46,11 @@
  */ 
 - (void)getFollowersForUserID:(NSInteger)userID;
 
+/**
+ * Fetch ifollowers of the given user
+ */ 
+- (void)getIFollowersForUserID:(NSInteger)userID;
+
 
 /**
  * Update the tumblr token and secret of the given user ID
@@ -126,5 +131,18 @@
  */
 - (void)followersLoadError:(NSString*)error 
                  forUserID:(NSNumber*)userID;
+
+
+/**
+ * IFollowers of a user loaded.
+ */
+- (void)ifollowersLoaded:(NSMutableArray*)users 
+               forUserID:(NSNumber*)userID;
+
+/**
+ * Error loading ifollowers of a user.
+ */
+- (void)ifollowersLoadError:(NSString*)error 
+                  forUserID:(NSNumber*)userID;
 
 @end
