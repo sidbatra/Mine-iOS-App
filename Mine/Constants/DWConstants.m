@@ -26,7 +26,7 @@ NSString* const kAppProtocol        = @"http://";
 NSString* const kClientName         = @"iphone";
 
 #if ENVIRONMENT == DEVELOPMENT
-NSString* const kAppServer      = @"sbat.getmine.com";
+NSString* const kAppServer      = @"drao.getmine.com";
 #elif ENVIRONMENT == STAGING
 NSString* const kAppServer	= @"staging.getmine.com";
 #elif ENVIRONMENT == PRODUCTION
@@ -58,9 +58,11 @@ NSInteger const kColumnsInProductsSearch        = 3;
 
 
 //----------------------------------------------------------------------------------------------------
-NSString* const kFacebookAppID  = @"245230762190915";
-NSString* const kTumblrConsumerKey = @"89jCI6WNG1Ym9wYLkJ1FfDVTZCsMbdtJoSwPbBzSb6ueJMbo0G";
-NSString* const kTumblrConsumerSecret = @"L7BbVCPlAYq0ewzxEEEiJyIzgY8Ihj9YxALq9Ol0ueLnStNBwM";
+NSString* const kFacebookAppID                  = @"245230762190915";
+NSString* const kTumblrConsumerKey              = @"89jCI6WNG1Ym9wYLkJ1FfDVTZCsMbdtJoSwPbBzSb6ueJMbo0G";
+NSString* const kTumblrConsumerSecret           = @"L7BbVCPlAYq0ewzxEEEiJyIzgY8Ihj9YxALq9Ol0ueLnStNBwM";
+NSString* const kTwitterOAuthConsumerKey        = @"Y8wcijb0orzZSbkd3fQ4g";
+NSString* const kTwitterOAuthConsumerSecret     = @"i7Oqqpy1I1ZycqRpJOSsBMylURsFlC2Qo7pQc0YbUzk";
 
 
 //----------------------------------------------------------------------------------------------------
