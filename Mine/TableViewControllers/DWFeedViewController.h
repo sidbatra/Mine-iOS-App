@@ -48,6 +48,11 @@
 - (void)feedViewUserClicked:(DWUser*)user;
 
 /**
+ * An all likes button is clicked on a purchase.
+ */
+- (void)feedViewAllLikesClickedForPurchase:(DWPurchase*)purchase;
+
+/**
  * A comment button is clicked to display comments fiew for a purchase.
  */
 - (void)feedViewCommentClickedForPurchase:(DWPurchase*)purchase

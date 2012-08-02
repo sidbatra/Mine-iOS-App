@@ -74,6 +74,11 @@
 }
 
 //----------------------------------------------------------------------------------------------------
+- (void)feedViewAllLikesClickedForPurchase:(DWPurchase *)purchase {
+    [self displayAllLikesForPurchase:purchase];
+}
+
+//----------------------------------------------------------------------------------------------------
 - (void)feedViewCommentClickedForPurchase:(DWPurchase *)purchase 
                        withCreationIntent:(NSNumber *)creationIntent {
     

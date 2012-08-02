@@ -23,6 +23,11 @@
 - (void)displayUserProfile:(DWUser*)user;
 
 /**
+ * Display a list of users who've liked the given purchase.
+ */
+- (void)displayAllLikesForPurchase:(DWPurchase*)purchase;
+
+/**
  * Push a comments view onto the nav stack.
  */
 - (void)displayCommentsCreateViewForPurchase:(DWPurchase*)purchase

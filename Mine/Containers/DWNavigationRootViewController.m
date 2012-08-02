@@ -62,6 +62,11 @@
 }
 
 //----------------------------------------------------------------------------------------------------
+- (void)displayAllLikesForPurchase:(DWPurchase*)purchase {
+    NSLog(@"Dsiplay all likes");
+}
+
+//----------------------------------------------------------------------------------------------------
 - (void)displayCommentsCreateViewForPurchase:(DWPurchase*)purchase 
                           withCreationIntent:(BOOL)creationIntent {
     

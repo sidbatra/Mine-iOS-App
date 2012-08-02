@@ -207,12 +207,19 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)allLikesClickedForPurchaseID:(NSNumber *)purchaseID {
+    
+    SEL sel = @selector(feedViewAllLikesClickedForPurchase:);
+    
+    if(![self.delegate respondsToSelector:sel])
+        return;
+    
     DWPurchase *purchase = [DWPurchase fetch:[purchaseID integerValue]];
     
     if(!purchase)
         return;
     
-    NSLog(@"all like button clicked for - %@",purchase.title);
+    [self.delegate performSelector:sel
+                        withObject:purchase];
 }
 
 //----------------------------------------------------------------------------------------------------
