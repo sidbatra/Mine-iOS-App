@@ -64,8 +64,7 @@ static NSString* const kNStoresLoadError        = @"NStoresLoadError";
                                             successNotification:kNStoresLoaded
                                               errorNotification:kNStoresLoadError
                                                   requestMethod:kGet
-                                                   authenticate:YES
-                                                     resourceID:DWStoresAspectAll];
+                                                   authenticate:YES];
 }
 
 
@@ -77,7 +76,7 @@ static NSString* const kNStoresLoadError        = @"NStoresLoadError";
 //----------------------------------------------------------------------------------------------------
 - (void)storesLoaded:(NSNotification*)notification {
     
-    SEL sel = @selector(storesLoaded:withAspect:);
+    SEL sel = @selector(storesLoaded:);
     
     if(![self.delegate respondsToSelector:sel])
         return;
@@ -93,8 +92,7 @@ static NSString* const kNStoresLoadError        = @"NStoresLoadError";
     }
     
     [self.delegate performSelector:sel
-                        withObject:stores
-                        withObject:[info objectForKey:kKeyResourceID]];
+                        withObject:stores];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -110,8 +108,7 @@ static NSString* const kNStoresLoadError        = @"NStoresLoadError";
     NSError *error          = [info objectForKey:kKeyError];
     
     [self.delegate performSelector:sel
-                        withObject:[error localizedDescription]
-                        withObject:[info objectForKey:kKeyResourceID]];
+                        withObject:[error localizedDescription]];
 }
 
 @end

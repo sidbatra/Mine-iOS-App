@@ -9,11 +9,6 @@
 #import <Foundation/Foundation.h>
 
 
-enum {
-    DWStoresAspectAll = 1
-}DWStoresAspect;
-
-
 @protocol DWStoresControllerDelegate;
 
 
@@ -43,18 +38,14 @@ enum {
 @optional
 
 /**
- * Stores loaded successfully along with the aspect
- * of stores loaded - See DWStoresAspect.
+ * Stores loaded successfully.
  */
-- (void)storesLoaded:(NSMutableArray*)stores 
-          withAspect:(NSNumber*)aspect;
+- (void)storesLoaded:(NSMutableArray*)stores;
 
 /**
- * Error loading stores along with the aspect that failed.
- * See DWStoresAspect.
+ * Error loading stores.
  */
-- (void)storesLoadError:(NSString*)error
-             withAspect:(NSNumber*)aspect;
+- (void)storesLoadError:(NSString*)error;
 
 
 @end
