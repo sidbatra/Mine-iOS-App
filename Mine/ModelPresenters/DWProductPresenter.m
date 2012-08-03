@@ -9,7 +9,8 @@
 #import "DWProductPresenter.h"
 
 #import "DWProductCell.h"
-#import "DWProductSet.h"
+#import "DWModelSet.h"
+#import "DWProduct.h"
 
 @implementation DWProductPresenter
 
@@ -21,7 +22,7 @@
                      withDelegate:(id)delegate
              andPresentationStyle:(NSInteger)style {
 
-    DWProductSet *productSet    = object;
+    DWModelSet *productSet    = object;
     DWProductCell *cell         = base;
     
     if(!cell)
@@ -30,8 +31,8 @@
     
     [cell resetUI];
     
-    for(NSInteger i=0 ; i< [productSet length] ; i++) {
-        DWProduct *product = [productSet.products objectAtIndex:i];
+    for(NSInteger i=0 ; i< productSet.length ; i++) {
+        DWProduct *product = [productSet.models objectAtIndex:i];
         [product downloadMediumImage];
         
         [cell setProductImage:product.mediumImage
@@ -58,13 +59,13 @@
                      andObjectKey:(NSString*)objectKey {
     
     
-    DWProductSet *productSet    = object;
+    DWModelSet *productSet      = object;
     DWProductCell *cell         = base;
             
     if([productSet class] == objectClass) {
         
-        for(NSInteger i=0 ; i< [productSet length] ; i++) {
-            DWProduct *product = [productSet.products objectAtIndex:i];
+        for(NSInteger i=0 ; i< productSet.length ; i++) {
+            DWProduct *product = [productSet.models objectAtIndex:i];
         
             if(product.databaseID == objectID) {
                 [cell setProductImage:product.mediumImage 

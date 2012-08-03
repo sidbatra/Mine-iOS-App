@@ -7,7 +7,8 @@
 //
 
 #import "DWProductsViewDataSource.h"
-#import "DWProductSet.h"
+#import "DWModelSet.h"
+#import "DWProduct.h"
 #import "DWConstants.h"
 #import "DWPagination.h"
 
@@ -101,13 +102,13 @@
     NSInteger count = [products count];
     
     for(NSInteger i=startingIndex ; i < count ; i+=kColumnsInProductsSearch) {        
-        DWProductSet *productSet = [[DWProductSet alloc] init];
+        DWModelSet *productSet = [[DWModelSet alloc] init];
         
         for (NSInteger j=0; j<kColumnsInProductsSearch; j++) {
             NSInteger index = i+j;
             
             if(index < count)
-                [productSet addProduct:[products objectAtIndex:index]];
+                [productSet addModel:[products objectAtIndex:index]];
         }
         
         [self.objects addObject:productSet];
@@ -141,12 +142,12 @@
     else {
         [self.objects removeLastObject];
 
-        DWProductSet *lastSet = [self.objects lastObject];
-        startingIndex = kColumnsInProductsSearch - [lastSet length];
+        DWModelSet *lastSet = [self.objects lastObject];
+        startingIndex = kColumnsInProductsSearch - lastSet.length;
         
         if(startingIndex != 0) {
             for(NSInteger i=0 ; i < startingIndex ; i++) {
-                [lastSet addProduct:[products objectAtIndex:i]];
+                [lastSet addModel:[products objectAtIndex:i]];
             }
         }
     }

@@ -40,7 +40,6 @@
 		262376B615BF6C0A00B3A037 /* FBLoginDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 262376AF15BF6C0A00B3A037 /* FBLoginDialog.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		262376B715BF6C0A00B3A037 /* FBRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 262376B115BF6C0A00B3A037 /* FBRequest.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		26C4467715C8BA4400E9A50B /* DWProductCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C4467615C8BA4400E9A50B /* DWProductCell.m */; };
-		26C4467B15C8BA6B00E9A50B /* DWProductSet.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C4467A15C8BA6B00E9A50B /* DWProductSet.m */; };
 		26C446A615C9D02700E9A50B /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C446A315C9D02700E9A50B /* NSData+Base64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		26C446A715C9D02700E9A50B /* TumblrXAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C446A515C9D02700E9A50B /* TumblrXAuth.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		26C446AB15C9D05400E9A50B /* DWTumblrConnect.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C446A915C9D05400E9A50B /* DWTumblrConnect.m */; };
@@ -100,6 +99,7 @@
 		BB46141D15CB42BF00B38D71 /* DWFollowersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB46141C15CB42BF00B38D71 /* DWFollowersViewController.m */; };
 		BB46142015CB469F00B38D71 /* DWIFollowersViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = BB46141F15CB469F00B38D71 /* DWIFollowersViewDataSource.m */; };
 		BB46142315CB474C00B38D71 /* DWIFollowersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB46142215CB474C00B38D71 /* DWIFollowersViewController.m */; };
+		BB46142615CC6ABD00B38D71 /* DWModelSet.m in Sources */ = {isa = PBXBuildFile; fileRef = BB46142515CC6ABD00B38D71 /* DWModelSet.m */; };
 		BB9F70AB15B9E62F0099C80A /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB9F70AA15B9E62F0099C80A /* CFNetwork.framework */; };
 		BB9F70AE15B9E6400099C80A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB9F70AD15B9E6400099C80A /* SystemConfiguration.framework */; };
 		BB9F70B015B9E6450099C80A /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB9F70AF15B9E6450099C80A /* MobileCoreServices.framework */; };
@@ -214,8 +214,6 @@
 		262376B815BF6CBA00B3A037 /* Facebook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Facebook.h; path = Facebook/Facebook.h; sourceTree = "<group>"; };
 		26C4467515C8BA4400E9A50B /* DWProductCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWProductCell.h; sourceTree = "<group>"; };
 		26C4467615C8BA4400E9A50B /* DWProductCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWProductCell.m; sourceTree = "<group>"; };
-		26C4467915C8BA6B00E9A50B /* DWProductSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWProductSet.h; sourceTree = "<group>"; };
-		26C4467A15C8BA6B00E9A50B /* DWProductSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWProductSet.m; sourceTree = "<group>"; };
 		26C446A215C9D02700E9A50B /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
 		26C446A315C9D02700E9A50B /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64.m"; sourceTree = "<group>"; };
 		26C446A415C9D02700E9A50B /* TumblrXAuth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TumblrXAuth.h; sourceTree = "<group>"; };
@@ -322,6 +320,8 @@
 		BB46141F15CB469F00B38D71 /* DWIFollowersViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWIFollowersViewDataSource.m; sourceTree = "<group>"; };
 		BB46142115CB474C00B38D71 /* DWIFollowersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWIFollowersViewController.h; sourceTree = "<group>"; };
 		BB46142215CB474C00B38D71 /* DWIFollowersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWIFollowersViewController.m; sourceTree = "<group>"; };
+		BB46142415CC6ABD00B38D71 /* DWModelSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWModelSet.h; sourceTree = "<group>"; };
+		BB46142515CC6ABD00B38D71 /* DWModelSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWModelSet.m; sourceTree = "<group>"; };
 		BB9F70AA15B9E62F0099C80A /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		BB9F70AD15B9E6400099C80A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		BB9F70AF15B9E6450099C80A /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
@@ -762,6 +762,8 @@
 				BBC0607915C49671000D3480 /* DWComment.m */,
 				BBC0607415C493A9000D3480 /* DWLike.h */,
 				BBC0607515C493A9000D3480 /* DWLike.m */,
+				BB46142415CC6ABD00B38D71 /* DWModelSet.h */,
+				BB46142515CC6ABD00B38D71 /* DWModelSet.m */,
 				BB06367A15C3195B001F26E1 /* DWPagination.h */,
 				BB06367B15C3195B001F26E1 /* DWPagination.m */,
 				262200A115C769EF003DC1DF /* DWProduct.h */,
@@ -772,8 +774,6 @@
 				BB26987F15BBA2E300037453 /* DWStore.m */,
 				BB9F710715B9EBED0099C80A /* DWUser.h */,
 				BB9F710815B9EBED0099C80A /* DWUser.m */,
-				26C4467915C8BA6B00E9A50B /* DWProductSet.h */,
-				26C4467A15C8BA6B00E9A50B /* DWProductSet.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1197,7 +1197,6 @@
 				BBC060A215C76D57000D3480 /* DWCommentsCreateViewController.m in Sources */,
 				BBC060A715C85F28000D3480 /* DWCommentsController.m in Sources */,
 				26C4467715C8BA4400E9A50B /* DWProductCell.m in Sources */,
-				26C4467B15C8BA6B00E9A50B /* DWProductSet.m in Sources */,
 				26C446A615C9D02700E9A50B /* NSData+Base64.m in Sources */,
 				26C446A715C9D02700E9A50B /* TumblrXAuth.m in Sources */,
 				26C446AB15C9D05400E9A50B /* DWTumblrConnect.m in Sources */,
@@ -1219,6 +1218,7 @@
 				BB46141D15CB42BF00B38D71 /* DWFollowersViewController.m in Sources */,
 				BB46142015CB469F00B38D71 /* DWIFollowersViewDataSource.m in Sources */,
 				BB46142315CB474C00B38D71 /* DWIFollowersViewController.m in Sources */,
+				BB46142615CC6ABD00B38D71 /* DWModelSet.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

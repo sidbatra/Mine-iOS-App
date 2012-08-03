@@ -6,31 +6,31 @@
 //  Copyright (c) 2012 Denwen, Inc. All rights reserved.
 //
 
-#import "DWProductSet.h"
+#import "DWModelSet.h"
 
-@implementation DWProductSet
+@implementation DWModelSet
 
-@synthesize products = _products;
+@synthesize models = _models;
 
 //----------------------------------------------------------------------------------------------------
 - (id)init {
 	self = [super init];
 	
 	if(self) {  
-        self.products = [NSMutableArray array];
+        self.models = [NSMutableArray array];
     }
 	
 	return self;  
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)addProduct:(DWProduct*)product {
-    [self.products addObject:product];
+- (void)addModel:(id)model {
+    [self.models addObject:model];
 }
 
 //----------------------------------------------------------------------------------------------------
 - (NSInteger)length {
-    return [self.products count];
+    return [self.models count];
 }
 
 @end
