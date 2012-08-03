@@ -78,7 +78,7 @@ NSString* const kKeyUser        = @"user";
 NSString* const kKeyPurchase    = @"purchase";
 
 //----------------------------------------------------------------------------------------------------
-NSString* const kRailsDateTimeFormat = @"yyyy-MM-dd'T'HH:mm:ss'-07:00'";
+NSString* const kRailsDateTimeFormat = @"yyyy-MM-dd HH:mm:ss ZZZ";
 
 //----------------------------------------------------------------------------------------------------
 NSInteger const kDefaultModelPresenter = 0;
