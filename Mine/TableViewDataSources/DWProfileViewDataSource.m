@@ -7,6 +7,11 @@
 //
 
 #import "DWProfileViewDataSource.h"
+#import "DWPagination.h"
+#import "DWModelSet.h"
+#import "DWPurchase.h"
+#import "DWConstants.h"
+
  
 @interface DWProfileViewDataSource() {
     DWPurchasesController *_purchasesController;
@@ -57,8 +62,41 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)refreshInitiated {
-    [self.purchasesController getPurchasesForUser:self.userID 
-                                           before:0];
+    self.oldestTimestamp = 0;
+    
+    id lastObject   = [self.objects lastObject];
+    
+    if([lastObject isKindOfClass:[DWPagination class]]) {
+        ((DWPagination*)lastObject).isDisabled = YES;
+    }
+    
+    [self loadPurchases];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)paginate {
+    [self loadPurchases];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)addObjectsFromPurchases:(NSMutableArray*)purchases
+              withStartingIndex:(NSInteger)startingIndex {
+    
+    NSInteger count = [purchases count];
+    
+    for(NSInteger i=startingIndex ; i < count ; i+=kColumnsInPurchaseSearch) {        
+        DWModelSet *purchaseSet = [[DWModelSet alloc] init];
+        
+        for (NSInteger j=0; j<kColumnsInPurchaseSearch; j++) {
+            NSInteger index = i+j;
+            
+            if(index < count)
+                [purchaseSet addModel:[purchases objectAtIndex:index]];
+        }
+        
+        [self.objects addObject:purchaseSet];
+    }
+    
 }
 
 
@@ -69,15 +107,53 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)purchasesLoaded:(NSMutableArray *)purchases 
-                forUser:(NSNumber*)userID {
+                forUser:(NSNumber *)userID {
     
     if(self.userID != [userID integerValue])
         return;
     
-    self.objects = purchases;
+    
+    id lastObject               = [self.objects lastObject];
+    BOOL paginate               = NO;
+    NSInteger startingIndex     = 0;
+    
+    
+    if([lastObject isKindOfClass:[DWPagination class]]) {
+        paginate = !((DWPagination*)lastObject).isDisabled;
+    }
+    
+    if(!paginate) {
+        [self clean];
+        self.objects = [NSMutableArray array];
+    }
+    else {
+        [self.objects removeLastObject];
+        
+        DWModelSet *lastSet = [self.objects lastObject];
+        startingIndex = kColumnsInPurchaseSearch - lastSet.length;
+        
+        if(startingIndex != 0) {
+            for(NSInteger i=0 ; i < startingIndex ; i++) {
+                [lastSet addModel:[purchases objectAtIndex:i]];
+            }
+        }
+    }
+    
+    [self addObjectsFromPurchases:purchases
+               withStartingIndex:startingIndex];
+    
+    
+    if([purchases count]) {        
+        self.oldestTimestamp        = [((DWPurchase*)[purchases lastObject]).createdAt timeIntervalSince1970];
+        
+        DWPagination *pagination    = [[DWPagination alloc] init];
+        pagination.owner            = self;
+        [self.objects addObject:pagination];
+    }
     
     [self.delegate reloadTableView];
 }
+
 
 //----------------------------------------------------------------------------------------------------
 - (void)purchasesLoadError:(NSString *)error 

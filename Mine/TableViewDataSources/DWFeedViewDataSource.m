@@ -61,7 +61,7 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)refreshInitiated {
-    _oldestTimestamp = 0;
+    self.oldestTimestamp = 0;
     
     id lastObject   = [self.objects lastObject];
     
@@ -104,7 +104,7 @@
     
     if([purchases count]) {
         
-        _oldestTimestamp            = [((DWPurchase*)[purchases lastObject]).createdAt timeIntervalSince1970];
+        self.oldestTimestamp        = [((DWPurchase*)[purchases lastObject]).createdAt timeIntervalSince1970];
         
         DWPagination *pagination    = [[DWPagination alloc] init];
         pagination.owner            = self;

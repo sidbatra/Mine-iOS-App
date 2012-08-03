@@ -49,6 +49,8 @@ extern NSString* const kMsgActionSheetDelete;
  * Grid view related constants
  */
 extern NSInteger const kColumnsInProductsSearch;
+extern NSInteger const kColumnsInPurchaseSearch;
+
 
 /**
  * Third Party Aps

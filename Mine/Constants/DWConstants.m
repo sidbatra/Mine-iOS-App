@@ -55,7 +55,7 @@ NSString* const kMsgActionSheetDelete           = @"Delete";
 
 //----------------------------------------------------------------------------------------------------
 NSInteger const kColumnsInProductsSearch        = 3;
-
+NSInteger const kColumnsInPurchaseSearch        = 2;
 
 //----------------------------------------------------------------------------------------------------
 NSString* const kFacebookAppID                  = @"245230762190915";

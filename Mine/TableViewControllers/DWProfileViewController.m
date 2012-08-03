@@ -9,7 +9,10 @@
 #import "DWProfileViewController.h"
 #import "DWProfileViewDataSource.h"
 #import "DWPurchaseFeedPresenter.h"
+#import "DWPaginationPresenter.h"
 #import "DWPurchase.h"
+#import "DWPagination.h"
+#import "DWModelSet.h"
 #import "DWUser.h"
 #import "DWConstants.h"
 
@@ -34,9 +37,13 @@
         ((DWProfileViewDataSource*)self.tableViewDataSource).userID = self.user.databaseID;
         
         
-        [self addModelPresenterForClass:[DWPurchase class]
+        [self addModelPresenterForClass:[DWModelSet class]
                               withStyle:kDefaultModelPresenter 
                           withPresenter:[DWPurchaseFeedPresenter class]];
+        
+        [self addModelPresenterForClass:[DWPagination class]
+                              withStyle:kDefaultModelPresenter 
+                          withPresenter:[DWPaginationPresenter class]];
         
         
         [[NSNotificationCenter defaultCenter] addObserver:self 
