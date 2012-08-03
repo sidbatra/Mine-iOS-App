@@ -39,6 +39,8 @@
 		262376B515BF6C0A00B3A037 /* FBFrictionlessRequestSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 262376AD15BF6C0A00B3A037 /* FBFrictionlessRequestSettings.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		262376B615BF6C0A00B3A037 /* FBLoginDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 262376AF15BF6C0A00B3A037 /* FBLoginDialog.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		262376B715BF6C0A00B3A037 /* FBRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 262376B115BF6C0A00B3A037 /* FBRequest.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		267D570915CC76CB00DD4AB1 /* DWCreationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 267D570715CC76CB00DD4AB1 /* DWCreationViewController.m */; };
+		267D570A15CC76CB00DD4AB1 /* DWCreationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 267D570815CC76CB00DD4AB1 /* DWCreationViewController.xib */; };
 		26C4467715C8BA4400E9A50B /* DWProductCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C4467615C8BA4400E9A50B /* DWProductCell.m */; };
 		26C446A615C9D02700E9A50B /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C446A315C9D02700E9A50B /* NSData+Base64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		26C446A715C9D02700E9A50B /* TumblrXAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C446A515C9D02700E9A50B /* TumblrXAuth.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -214,6 +216,9 @@
 		262376B015BF6C0A00B3A037 /* FBRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FBRequest.h; path = Facebook/FBRequest.h; sourceTree = "<group>"; };
 		262376B115BF6C0A00B3A037 /* FBRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FBRequest.m; path = Facebook/FBRequest.m; sourceTree = "<group>"; };
 		262376B815BF6CBA00B3A037 /* Facebook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Facebook.h; path = Facebook/Facebook.h; sourceTree = "<group>"; };
+		267D570615CC76CB00DD4AB1 /* DWCreationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWCreationViewController.h; path = Mine/Creation/DWCreationViewController.h; sourceTree = "<group>"; };
+		267D570715CC76CB00DD4AB1 /* DWCreationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWCreationViewController.m; path = Mine/Creation/DWCreationViewController.m; sourceTree = "<group>"; };
+		267D570815CC76CB00DD4AB1 /* DWCreationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DWCreationViewController.xib; path = Mine/Creation/DWCreationViewController.xib; sourceTree = "<group>"; };
 		26C4467515C8BA4400E9A50B /* DWProductCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWProductCell.h; sourceTree = "<group>"; };
 		26C4467615C8BA4400E9A50B /* DWProductCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWProductCell.m; sourceTree = "<group>"; };
 		26C446A215C9D02700E9A50B /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
@@ -497,6 +502,17 @@
 				262376B115BF6C0A00B3A037 /* FBRequest.m */,
 			);
 			name = Facebook;
+			sourceTree = "<group>";
+		};
+		267D570415CC75E800DD4AB1 /* Creation */ = {
+			isa = PBXGroup;
+			children = (
+				267D570615CC76CB00DD4AB1 /* DWCreationViewController.h */,
+				267D570715CC76CB00DD4AB1 /* DWCreationViewController.m */,
+				267D570815CC76CB00DD4AB1 /* DWCreationViewController.xib */,
+			);
+			name = Creation;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		26C446A115C9D02700E9A50B /* Tumblr */ = {
@@ -866,6 +882,7 @@
 				262376A115BF6B8100B3A037 /* Connect */,
 				BB06365615C09CD3001F26E1 /* Containers */,
 				BB174D4D15BB425900DB50CA /* Cryptography */,
+				267D570415CC75E800DD4AB1 /* Creation */,
 				BB174D4615BA43C700DB50CA /* DataControllers */,
 				BB06360315BF7258001F26E1 /* Images */,
 				BB26987115BB6E0600037453 /* Managers */,
@@ -1106,6 +1123,7 @@
 				2622007515C71453003DC1DF /* hr_gray_create.png in Resources */,
 				2622007615C71453003DC1DF /* hr_gray_create@2x.png in Resources */,
 				BBC060A315C76D57000D3480 /* DWCommentsCreateViewController.xib in Resources */,
+				267D570A15CC76CB00DD4AB1 /* DWCreationViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1231,6 +1249,7 @@
 				BB46142615CC6ABD00B38D71 /* DWModelSet.m in Sources */,
 				BB2D167615CC7C2E005F571F /* DWPurchaseProfileCell.m in Sources */,
 				BB2BC01B15CC83B200CCC4BB /* DWPurchaseProfilePresenter.m in Sources */,
+				267D570915CC76CB00DD4AB1 /* DWCreationViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

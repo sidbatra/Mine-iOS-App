@@ -22,6 +22,7 @@
 //----------------------------------------------------------------------------------------------------
 @implementation DWProductsViewController
 
+@synthesize delegate = _delegate;
 
 //----------------------------------------------------------------------------------------------------
 - (id)init {
@@ -56,8 +57,29 @@
 //----------------------------------------------------------------------------------------------------
 - (void)viewDidLoad {
 	[super viewDidLoad];
-    
-    [(DWProductsViewDataSource*)self.tableViewDataSource loadProductsForQuery:@"girl with dragon tattoo"];
+    [self disablePullToRefresh];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DataSource Methods
+
+//----------------------------------------------------------------------------------------------------
+- (void)searchProductsForQuery:(NSString *)query {
+    [(DWProductsViewDataSource*)self.tableViewDataSource loadProductsForQuery:query];    
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWProductsViewDataSourceDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)productsLoaded {
+    [self.delegate productsLoaded];
 }
 
 

@@ -115,10 +115,13 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWImageManager);
 - (void)imageDownloaded:(NSNotification*)notification {
     
     NSDictionary *info = [notification userInfo];
-    NSString *url = [info objectForKey:kKeyURL];
+    
+    NSString *url   = [info objectForKey:kKeyURL];
+    UIImage *image  = [info objectForKey:kKeyImage];
         
-    [self.imagePool setObject:[info objectForKey:kKeyImage] 
-                       forKey:url];
+    if(image)
+        [self.imagePool setObject:image
+                           forKey:url];
 }
 
 //----------------------------------------------------------------------------------------------------

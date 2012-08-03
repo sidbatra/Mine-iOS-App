@@ -84,7 +84,7 @@ static NSInteger const kCreateTabIndex              = 1;
     self.tabBarController.delegate = self;
     
     [self.tabBarController addSubController:self.feedNavController];
-    [self.tabBarController addSubController:self.creationNavController];
+    [self.tabBarController addSubController:[[UIViewController alloc] init]];
     [self.tabBarController addSubController:self.profileNavController];
     
     
@@ -129,7 +129,8 @@ static NSInteger const kCreateTabIndex              = 1;
                              to:(NSInteger)newSelectedIndex {
     
     if(newSelectedIndex == kCreateTabIndex) {
-        
+        [self.tabBarController presentModalViewController:self.creationNavController
+                                                 animated:NO];
     }        
 }
 

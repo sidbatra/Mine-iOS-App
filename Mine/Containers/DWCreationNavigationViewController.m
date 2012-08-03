@@ -7,16 +7,16 @@
 //
 
 #import "DWCreationNavigationViewController.h"
-#import "DWProductsViewController.h"
+#import "DWCreationViewController.h"
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 @interface DWCreationNavigationViewController() {
-    DWProductsViewController *_productsViewController;
+    DWCreationViewController *_creationViewController;
 }
 
-@property (nonatomic,strong) DWProductsViewController *productsViewController;
+@property (nonatomic,strong) DWCreationViewController *creationViewController;
 
 @end
 
@@ -27,7 +27,7 @@
 //----------------------------------------------------------------------------------------------------
 @implementation DWCreationNavigationViewController
 
-@synthesize productsViewController = _productsViewController;
+@synthesize creationViewController = _creationViewController;
 
 //----------------------------------------------------------------------------------------------------
 - (void)awakeFromNib {
@@ -46,11 +46,11 @@
     
     self.navigationItem.title = @"Create";
 
-    if(!self.productsViewController) {
-        self.productsViewController = [[DWProductsViewController alloc] init];
+    if(!self.creationViewController) {
+        self.creationViewController = [[DWCreationViewController alloc] init];
     }
     
-    [self.view addSubview:self.productsViewController.view];
+    [self.view addSubview:self.creationViewController.view];
 }
 
 //----------------------------------------------------------------------------------------------------
