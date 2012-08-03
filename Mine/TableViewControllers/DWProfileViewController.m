@@ -8,7 +8,7 @@
 
 #import "DWProfileViewController.h"
 #import "DWProfileViewDataSource.h"
-#import "DWPurchaseFeedPresenter.h"
+#import "DWPurchaseProfilePresenter.h"
 #import "DWPaginationPresenter.h"
 #import "DWPurchase.h"
 #import "DWPagination.h"
@@ -39,7 +39,7 @@
         
         [self addModelPresenterForClass:[DWModelSet class]
                               withStyle:kDefaultModelPresenter 
-                          withPresenter:[DWPurchaseFeedPresenter class]];
+                          withPresenter:[DWPurchaseProfilePresenter class]];
         
         [self addModelPresenterForClass:[DWPagination class]
                               withStyle:kDefaultModelPresenter 
