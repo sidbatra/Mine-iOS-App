@@ -6,31 +6,19 @@
 //  Copyright (c) 2012 Denwen, Inc. All rights reserved.
 //
 
-#import "DWTableViewController.h"
+#import "DWPurchasesViewController.h"
 
-#import "DWLikesController.h"
-#import "DWPurchaseFeedCell.h"
 
-@class DWUser;
-@class DWPurchase;
 @protocol DWFeedViewControllerDelegate;
 
 
-@interface DWFeedViewController : DWTableViewController<DWPurchaseFeedCellDelegate,DWLikesControllerDelegate> {
-    DWLikesController *_likesController;
-    
-    __weak id<DWFeedViewControllerDelegate,NSObject> _delegate;
+@interface DWFeedViewController : DWPurchasesViewController {
 }
 
 /**
- * Data controller for the likes model.
+ * Redefine the delegate
  */
-@property (nonatomic,strong) DWLikesController *likesController;
-
-/**
- * Delegate
- */
-@property (nonatomic,weak) id<DWFeedViewControllerDelegate,NSObject> delegate;
+@property (nonatomic,weak) id<DWPurchasesViewControllerDelegate,DWFeedViewControllerDelegate,NSObject> delegate;
 
 @end
 
@@ -42,20 +30,5 @@
 
 @optional
 
-/**
- * A user UI element is clicked from one of the feed cells.
- */
-- (void)feedViewUserClicked:(DWUser*)user;
-
-/**
- * An all likes button is clicked on a purchase.
- */
-- (void)feedViewAllLikesClickedForPurchase:(DWPurchase*)purchase;
-
-/**
- * A comment button is clicked to display comments fiew for a purchase.
- */
-- (void)feedViewCommentClickedForPurchase:(DWPurchase*)purchase
-                       withCreationIntent:(NSNumber*)creationIntent;
 
 @end

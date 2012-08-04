@@ -10,6 +10,7 @@
 
 #import "DWProfileViewController.h"
 #import "DWUsersViewController.h"
+#import "DWPurchasesViewController.h"
 
 
 @class DWUser;
@@ -19,7 +20,7 @@
  * Base class for navigation root view controllers which are used as
  * sub controllers of the custom tab bar controller.
  */
-@interface DWNavigationRootViewController : UIViewController<UINavigationControllerDelegate,DWProfileViewControllerDelegate,DWUsersViewControllerDelegate>
+@interface DWNavigationRootViewController : UIViewController<UINavigationControllerDelegate,DWProfileViewControllerDelegate,DWUsersViewControllerDelegate,DWPurchasesViewControllerDelegate>
 
 /**
  * Push a user profile onto the nav stack.

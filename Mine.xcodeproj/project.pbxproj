@@ -102,6 +102,7 @@
 		BB2BC03E15CDD5A700CCC4BB /* DWIFollowersViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = BB2BC03815CDD5A700CCC4BB /* DWIFollowersViewDataSource.m */; };
 		BB2BC03F15CDD5A700CCC4BB /* DWLikersViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = BB2BC03A15CDD5A700CCC4BB /* DWLikersViewDataSource.m */; };
 		BB2BC04015CDD5A700CCC4BB /* DWUsersViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = BB2BC03C15CDD5A700CCC4BB /* DWUsersViewDataSource.m */; };
+		BB2BC04315CDD80100CCC4BB /* DWPurchasesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB2BC04215CDD80100CCC4BB /* DWPurchasesViewController.m */; };
 		BB2D167615CC7C2E005F571F /* DWPurchaseProfileCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BB2D167515CC7C2E005F571F /* DWPurchaseProfileCell.m */; };
 		BB46140215CB3A5A00B38D71 /* DWUserPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = BB46140115CB3A5A00B38D71 /* DWUserPresenter.m */; };
 		BB46140615CB3A7500B38D71 /* DWUserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BB46140515CB3A7500B38D71 /* DWUserCell.m */; };
@@ -331,6 +332,8 @@
 		BB2BC03A15CDD5A700CCC4BB /* DWLikersViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWLikersViewDataSource.m; sourceTree = "<group>"; };
 		BB2BC03B15CDD5A700CCC4BB /* DWUsersViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWUsersViewDataSource.h; sourceTree = "<group>"; };
 		BB2BC03C15CDD5A700CCC4BB /* DWUsersViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWUsersViewDataSource.m; sourceTree = "<group>"; };
+		BB2BC04115CDD80100CCC4BB /* DWPurchasesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWPurchasesViewController.h; sourceTree = "<group>"; };
+		BB2BC04215CDD80100CCC4BB /* DWPurchasesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWPurchasesViewController.m; sourceTree = "<group>"; };
 		BB2D167415CC7C2E005F571F /* DWPurchaseProfileCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWPurchaseProfileCell.h; sourceTree = "<group>"; };
 		BB2D167515CC7C2E005F571F /* DWPurchaseProfileCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWPurchaseProfileCell.m; sourceTree = "<group>"; };
 		BB46140015CB3A5A00B38D71 /* DWUserPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWUserPresenter.h; sourceTree = "<group>"; };
@@ -966,6 +969,8 @@
 				262200AF15C76A4E003DC1DF /* DWProductsViewController.m */,
 				BB06367115C1F593001F26E1 /* DWProfileViewController.h */,
 				BB06367215C1F593001F26E1 /* DWProfileViewController.m */,
+				BB2BC04115CDD80100CCC4BB /* DWPurchasesViewController.h */,
+				BB2BC04215CDD80100CCC4BB /* DWPurchasesViewController.m */,
 				BB2BC02415CDC5F500CCC4BB /* DWPurchaseViewController.h */,
 				BB2BC02515CDC5F500CCC4BB /* DWPurchaseViewController.m */,
 			);
@@ -1278,6 +1283,7 @@
 				BB2BC03E15CDD5A700CCC4BB /* DWIFollowersViewDataSource.m in Sources */,
 				BB2BC03F15CDD5A700CCC4BB /* DWLikersViewDataSource.m in Sources */,
 				BB2BC04015CDD5A700CCC4BB /* DWUsersViewDataSource.m in Sources */,
+				BB2BC04315CDD80100CCC4BB /* DWPurchasesViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
