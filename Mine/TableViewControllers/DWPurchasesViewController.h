@@ -45,17 +45,17 @@
 /**
  * A user UI element is clicked from one of the feed cells.
  */
-- (void)feedViewUserClicked:(DWUser*)user;
+- (void)purchasesViewUserClicked:(DWUser*)user;
 
 /**
  * An all likes button is clicked on a purchase.
  */
-- (void)feedViewAllLikesClickedForPurchase:(DWPurchase*)purchase;
+- (void)purchasesViewAllLikesClickedForPurchase:(DWPurchase*)purchase;
 
 /**
  * A comment button is clicked to display comments fiew for a purchase.
  */
-- (void)feedViewCommentClickedForPurchase:(DWPurchase*)purchase
+- (void)purchasesViewCommentClickedForPurchase:(DWPurchase*)purchase
                        withCreationIntent:(NSNumber*)creationIntent;
 
 @end

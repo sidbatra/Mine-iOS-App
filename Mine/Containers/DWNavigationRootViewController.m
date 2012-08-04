@@ -118,6 +118,32 @@
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
+#pragma mark DWPurchasesViewControllerDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)purchasesViewUserClicked:(DWUser *)user {
+    [self displayUserProfile:user];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)purchasesViewAllLikesClickedForPurchase:(DWPurchase *)purchase {
+    [self displayAllLikesForPurchase:purchase];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)purchasesViewCommentClickedForPurchase:(DWPurchase *)purchase 
+                            withCreationIntent:(NSNumber *)creationIntent {
+    
+    [self displayCommentsCreateViewForPurchase:purchase
+                            withCreationIntent:[creationIntent boolValue]];
+}
+
+
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
 #pragma mark UINavigationControllerDelegate
 
 //----------------------------------------------------------------------------------------------------

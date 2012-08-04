@@ -62,29 +62,10 @@
 }
 
 
-
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
 #pragma mark DWFeedViewControllerDelegate
-
-//----------------------------------------------------------------------------------------------------
-- (void)feedViewUserClicked:(DWUser *)user {
-    [self displayUserProfile:user];
-}
-
-//----------------------------------------------------------------------------------------------------
-- (void)feedViewAllLikesClickedForPurchase:(DWPurchase *)purchase {
-    [self displayAllLikesForPurchase:purchase];
-}
-
-//----------------------------------------------------------------------------------------------------
-- (void)feedViewCommentClickedForPurchase:(DWPurchase *)purchase 
-                       withCreationIntent:(NSNumber *)creationIntent {
-    
-    [self displayCommentsCreateViewForPurchase:purchase
-                            withCreationIntent:[creationIntent boolValue]];
-}
 
 
 @end

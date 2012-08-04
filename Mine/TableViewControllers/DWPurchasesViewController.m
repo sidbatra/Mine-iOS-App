@@ -163,7 +163,7 @@
 //----------------------------------------------------------------------------------------------------
 - (void)userClicked:(NSNumber *)userID {
     
-    SEL sel = @selector(feedViewUserClicked:);
+    SEL sel = @selector(purchasesViewUserClicked:);
     
     if(![self.delegate respondsToSelector:sel])
         return;
@@ -192,7 +192,7 @@
 //----------------------------------------------------------------------------------------------------
 - (void)allLikesClickedForPurchaseID:(NSNumber *)purchaseID {
     
-    SEL sel = @selector(feedViewAllLikesClickedForPurchase:);
+    SEL sel = @selector(purchasesViewAllLikesClickedForPurchase:);
     
     if(![self.delegate respondsToSelector:sel])
         return;
@@ -210,7 +210,7 @@
 - (void)commentClickedForPurchaseID:(NSNumber *)purchaseID 
                  withCreationIntent:(NSNumber *)creationIntent {
     
-    SEL sel = @selector(feedViewCommentClickedForPurchase:withCreationIntent:);
+    SEL sel = @selector(purchasesViewCommentClickedForPurchase:withCreationIntent:);
     
     if(![self.delegate respondsToSelector:sel])
         return;
