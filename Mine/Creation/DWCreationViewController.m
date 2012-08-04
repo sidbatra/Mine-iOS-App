@@ -62,6 +62,11 @@
 }
 
 //----------------------------------------------------------------------------------------------------
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+//----------------------------------------------------------------------------------------------------
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -138,7 +143,7 @@
 - (void)productLargeImageLoaded:(NSNotification*)notification {
     NSDictionary *userInfo = [notification userInfo];
 
-    self.productImageView.image = [userInfo objectForKey:@"image"];
+    self.productImageView.image = [userInfo objectForKey:kKeyImage];
 }
 
 @end
