@@ -9,6 +9,7 @@
 #import "DWNavigationRootViewController.h"
 #import "DWCommentsCreateViewController.h"
 #import "DWLikersViewController.h"
+#import "DWPurchaseViewController.h"
 
 #import "DWPurchase.h"
 
@@ -82,6 +83,15 @@
                                          animated:YES];
 }
 
+//----------------------------------------------------------------------------------------------------
+- (void)displayPurchaseViewForPurchase:(DWPurchase*)purchase {
+    
+    DWPurchaseViewController *purchaseViewController = [[DWPurchaseViewController alloc] initWithPurhcase:purchase];
+    
+    [self.navigationController pushViewController:purchaseViewController 
+                                         animated:YES];
+}
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
@@ -90,7 +100,7 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)profileViewPurchaseClicked:(DWPurchase *)purchase {
-    NSLog(@"Purchase clicked - %d",purchase.databaseID);
+    [self displayPurchaseViewForPurchase:purchase];
 }
 
 
