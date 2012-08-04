@@ -68,7 +68,7 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)userPresenterUserSelected:(DWUser*)user {
-    [self.delegate userViewUserClicked:user];
+    [self.delegate usersViewUserClicked:user];
 }
 
 

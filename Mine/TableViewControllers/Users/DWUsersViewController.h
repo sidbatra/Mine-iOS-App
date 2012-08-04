@@ -34,6 +34,6 @@
 /**
  * A user element is clicked. 
  */
-- (void)userViewUserClicked:(DWUser*)user;
+- (void)usersViewUserClicked:(DWUser*)user;
 
 @end

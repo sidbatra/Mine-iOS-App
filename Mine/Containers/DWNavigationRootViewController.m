@@ -110,7 +110,7 @@
 #pragma mark DWUsersViewControllerDelegate
 
 //----------------------------------------------------------------------------------------------------
-- (void)userViewUserClicked:(DWUser *)user {
+- (void)usersViewUserClicked:(DWUser *)user {
     [self displayUserProfile:user];
 }
 
