@@ -7,7 +7,6 @@
 //
 
 #import "DWNavigationRootViewController.h"
-#import "DWProfileViewController.h"
 #import "DWCommentsCreateViewController.h"
 #import "DWLikersViewController.h"
 
@@ -57,6 +56,7 @@
 //----------------------------------------------------------------------------------------------------
 - (void)displayUserProfile:(DWUser*)user {
     DWProfileViewController *profileViewController = [[DWProfileViewController alloc] initWithUser:user];
+    profileViewController.delegate = self;
     
     [self.navigationController pushViewController:profileViewController
                                          animated:YES];
@@ -79,6 +79,17 @@
     
     [self.navigationController pushViewController:commentsViewController 
                                          animated:YES];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWProfileViewControllerDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)profileViewPurchaseClicked:(DWPurchase *)purchase {
+    NSLog(@"Purchase clicked - %d",purchase.databaseID);
 }
 
 

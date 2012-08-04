@@ -23,7 +23,8 @@
 //----------------------------------------------------------------------------------------------------
 @implementation DWProfileViewController
 
-@synthesize user = _user;
+@synthesize user        = _user;
+@synthesize delegate    = _delegate;
 
 //----------------------------------------------------------------------------------------------------
 - (id)initWithUser:(DWUser*)user {
@@ -80,12 +81,21 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)purchaseClicked:(NSInteger)purchaseID {
+    
+    SEL sel = @selector(profileViewPurchaseClicked:);
+    
+    if(![self.delegate respondsToSelector:sel])
+        return;
+
+    
     DWPurchase *purchase = [DWPurchase fetch:purchaseID];
     
     if(!purchaseID)
         return;
     
-    NSLog(@"purchase clicked - %@",purchase.title);
+
+    [self.delegate performSelector:sel
+                        withObject:purchase];
 }
 
 
