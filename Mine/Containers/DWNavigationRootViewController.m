@@ -65,6 +65,7 @@
 //----------------------------------------------------------------------------------------------------
 - (void)displayAllLikesForPurchase:(DWPurchase*)purchase {
     DWLikersViewController *likersViewController = [[DWLikersViewController alloc] initWithPurhcase:purchase];
+    likersViewController.delegate = self;
     
     [self.navigationController pushViewController:likersViewController
                                          animated:YES];
@@ -90,6 +91,17 @@
 //----------------------------------------------------------------------------------------------------
 - (void)profileViewPurchaseClicked:(DWPurchase *)purchase {
     NSLog(@"Purchase clicked - %d",purchase.databaseID);
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWUsersViewControllerDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)userViewUserClicked:(DWUser *)user {
+    [self displayUserProfile:user];
 }
 
 

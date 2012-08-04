@@ -75,6 +75,17 @@
                 withDelegate:(id)delegate {
     
     
+    SEL sel = @selector(userPresenterUserSelected:);
+    
+    if(![delegate respondsToSelector:sel])
+        return;
+    
+    
+    DWUser *user = object;
+    
+    [delegate performSelector:sel
+                   withObject:user];
+    
 }
 
 @end

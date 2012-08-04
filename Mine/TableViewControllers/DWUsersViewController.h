@@ -8,6 +8,32 @@
 
 #import "DWTableViewController.h"
 
-@interface DWUsersViewController : DWTableViewController
+@class DWUser;
+@protocol DWUsersViewControllerDelegate;
+
+@interface DWUsersViewController : DWTableViewController {
+    __weak id<DWUsersViewControllerDelegate,NSObject> _delegate;
+}
+
+/**
+ * Delegate following the DWUsersViewControllerDelegate protocol.
+ */
+@property (nonatomic,weak) id<DWUsersViewControllerDelegate,NSObject> delegate;
+
+@end
+
+
+
+/**
+ * Protocol for delegates of DWUsersViewController
+ */
+@protocol DWUsersViewControllerDelegate
+
+@required
+
+/**
+ * A user element is clicked. 
+ */
+- (void)userViewUserClicked:(DWUser*)user;
 
 @end
