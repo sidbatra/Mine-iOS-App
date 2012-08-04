@@ -9,9 +9,7 @@
 #import "DWPurchaseViewController.h"
 
 #import "DWPurchaseViewDataSource.h"
-#import "DWPurchaseFeedPresenter.h"
 #import "DWPurchase.h"
-#import "DWUser.h"
 #import "DWConstants.h"
 
 
@@ -43,32 +41,11 @@
         
         self.purchase = purchase;
         
-        [self addModelPresenterForClass:[DWPurchase class]
-                              withStyle:kDefaultModelPresenter 
-                          withPresenter:[DWPurchaseFeedPresenter class]];
-        
         self.tableViewDataSource = [[DWPurchaseViewDataSource alloc] init];
         ((DWPurchaseViewDataSource*)self.tableViewDataSource).purchaseID = self.purchase.databaseID;
-        
-        
-        
-        [[NSNotificationCenter defaultCenter] addObserver:self 
-                                                 selector:@selector(purchaseGiantImageLoaded:) 
-                                                     name:kNImgPurchaseGiantLoaded
-                                                   object:nil];
-        
-        [[NSNotificationCenter defaultCenter] addObserver:self 
-                                                 selector:@selector(userSquareImageLoaded:) 
-                                                     name:kNImgUserSquareLoaded
-                                                   object:nil];
     }
     
     return self;
-}
-
-//----------------------------------------------------------------------------------------------------
-- (void)dealloc {    
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -77,30 +54,5 @@
     
     [(DWPurchaseViewDataSource*)self.tableViewDataSource loadPurchase];
 }
-
-
-//----------------------------------------------------------------------------------------------------
-//----------------------------------------------------------------------------------------------------
-#pragma mark -
-#pragma mark Notifications
-
-//----------------------------------------------------------------------------------------------------
-- (void)purchaseGiantImageLoaded:(NSNotification*)notification {
-    NSDictionary *userInfo = [notification userInfo];
-    
-    [self provideResourceToVisibleCells:[DWPurchase class] 
-                               objectID:[[userInfo objectForKey:kKeyResourceID] integerValue]
-                              objectKey:kKeyGiantImageURL];
-}
-
-//----------------------------------------------------------------------------------------------------
-- (void)userSquareImageLoaded:(NSNotification*)notification {
-    NSDictionary *userInfo = [notification userInfo];
-    
-    [self provideResourceToVisibleCells:[DWUser class] 
-                               objectID:[[userInfo objectForKey:kKeyResourceID] integerValue]
-                              objectKey:kKeySquareImageURL];
-}
-
 
 @end

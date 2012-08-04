@@ -87,6 +87,7 @@
 - (void)displayPurchaseViewForPurchase:(DWPurchase*)purchase {
     
     DWPurchaseViewController *purchaseViewController = [[DWPurchaseViewController alloc] initWithPurhcase:purchase];
+    purchaseViewController.delegate = self;
     
     [self.navigationController pushViewController:purchaseViewController 
                                          animated:YES];

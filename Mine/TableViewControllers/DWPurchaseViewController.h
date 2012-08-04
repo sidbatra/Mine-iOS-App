@@ -6,11 +6,11 @@
 //  Copyright (c) 2012 Denwen, Inc. All rights reserved.
 //
 
-#import "DWTableViewController.h"
+#import "DWPurchasesViewController.h"
 
 @class DWPurchase;
 
-@interface DWPurchaseViewController : DWTableViewController
+@interface DWPurchaseViewController : DWPurchasesViewController
 
 
 /**
