@@ -112,7 +112,7 @@
 - (void)productMediumImageLoaded:(NSNotification*)notification {
     NSDictionary *userInfo = [notification userInfo];
     
-    [self provideResourceToVisibleCells:[DWModelSet class] 
+    [self provideResourceToVisibleCells:[DWProduct class] 
                                objectID:[[userInfo objectForKey:kKeyResourceID] integerValue]
                               objectKey:kKeyMediumImageURL];
 }

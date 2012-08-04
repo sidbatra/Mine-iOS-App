@@ -132,7 +132,7 @@
         DWModelSet *lastSet = [self.objects lastObject];
         startingIndex = kColumnsInPurchaseSearch - lastSet.length;
         
-        if(startingIndex != 0) {
+        if(startingIndex != 0 && [purchases count]) {
             for(NSInteger i=0 ; i < startingIndex ; i++) {
                 [lastSet addModel:[purchases objectAtIndex:i]];
             }

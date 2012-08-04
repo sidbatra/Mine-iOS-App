@@ -63,7 +63,7 @@
     DWModelSet *productSet      = object;
     DWProductCell *cell         = base;
             
-    if([productSet class] == objectClass) {
+    if([DWProduct class] == objectClass) {
         
         for(NSInteger i=0 ; i< productSet.length ; i++) {
             DWProduct *product = [productSet.models objectAtIndex:i];
