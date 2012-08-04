@@ -8,7 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DWPurchaseProfileCell : UITableViewCell
+
+@protocol DWPurchaseProfileCellDelegate;
+
+@interface DWPurchaseProfileCell : UITableViewCell {
+    __weak id<DWPurchaseProfileCellDelegate,NSObject> _delegate;
+}
+
+@property (nonatomic,weak) id<DWPurchaseProfileCellDelegate,NSObject> delegate;
 
 
 /**
@@ -34,5 +41,20 @@
  * Compute the height for the cell.
  */
 + (NSInteger)heightForCell;
+
+@end
+
+
+/**
+ * Protocl for delegates of DWPurchaseProfileCell
+ */
+@protocol DWPurchaseProfileCellDelegate
+
+@required
+
+/**
+ * An element pointing to a purhcase is clicked
+ */
+- (void)purchaseClicked:(NSInteger)purchaseID;
 
 @end

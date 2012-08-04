@@ -32,6 +32,8 @@
         cell = [[DWPurchaseProfileCell alloc] initWithStyle:UITableViewStylePlain 
                                             reuseIdentifier:identifier];
     
+    cell.delegate = delegate;
+    
     [cell resetUI];
     
     for(NSInteger i=0 ; i<purchaseSet.length ; i++) {

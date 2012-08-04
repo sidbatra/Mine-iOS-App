@@ -25,6 +25,7 @@ static NSInteger const kPurchaseProfileCellHeight = 150;
  */
 @property (nonatomic,strong) NSMutableArray *imageButtons;
 
+
 @end
 
 
@@ -35,7 +36,8 @@ static NSInteger const kPurchaseProfileCellHeight = 150;
 //----------------------------------------------------------------------------------------------------
 @implementation DWPurchaseProfileCell
 
-@synthesize imageButtons = _imageButtons;
+@synthesize imageButtons    = _imageButtons;
+@synthesize delegate        = _delegate;
 
 
 //----------------------------------------------------------------------------------------------------
@@ -77,10 +79,9 @@ static NSInteger const kPurchaseProfileCellHeight = 150;
         imageButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
         imageButton.backgroundColor = [UIColor yellowColor];
         
-        /*
          [imageButton addTarget:self
          action:@selector(didTapImageButton:)
-         forControlEvents:UIControlEventTouchUpInside];*/
+         forControlEvents:UIControlEventTouchUpInside];
         
         [self.imageButtons addObject:imageButton];
         
@@ -116,8 +117,21 @@ static NSInteger const kPurchaseProfileCellHeight = 150;
     [imageButton setImage:image
                  forState:UIControlStateNormal];
     
+    [imageButton setImage:image
+                 forState:UIControlStateHighlighted];
+    
     imageButton.hidden = NO;
 }
 
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark UI Events
+
+//----------------------------------------------------------------------------------------------------
+- (void)didTapImageButton:(UIButton*)button {
+    [self.delegate purchaseClicked:button.tag];
+}
 
 @end
