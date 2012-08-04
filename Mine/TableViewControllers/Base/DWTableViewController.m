@@ -225,6 +225,10 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
 - (void)scrollToBottomWithAnimation:(BOOL)animated {
     NSInteger section = [self.tableViewDataSource totalSections]-1;
     
+    
+    if(![self.tableViewDataSource totalObjectsForSection:section])
+        return;
+    
     NSIndexPath* indexPath = [NSIndexPath indexPathForRow:[self.tableViewDataSource totalObjectsForSection:section]-1
                                                 inSection:section];
     

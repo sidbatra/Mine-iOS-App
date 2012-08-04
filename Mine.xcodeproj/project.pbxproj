@@ -93,7 +93,6 @@
 		BB2B93C915BA3F78002C3DA0 /* DWAppRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = BB2B93C815BA3F78002C3DA0 /* DWAppRequest.m */; };
 		BB2BC01B15CC83B200CCC4BB /* DWPurchaseProfilePresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = BB2BC01A15CC83B200CCC4BB /* DWPurchaseProfilePresenter.m */; };
 		BB2BC02215CDC4B800CCC4BB /* DWPurchaseViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = BB2BC02115CDC4B800CCC4BB /* DWPurchaseViewDataSource.m */; };
-		BB2BC02615CDC5F600CCC4BB /* DWPurchaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB2BC02515CDC5F500CCC4BB /* DWPurchaseViewController.m */; };
 		BB2BC02E15CDD54400CCC4BB /* DWFollowersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB2BC02915CDD54400CCC4BB /* DWFollowersViewController.m */; };
 		BB2BC02F15CDD54400CCC4BB /* DWIFollowersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB2BC02B15CDD54400CCC4BB /* DWIFollowersViewController.m */; };
 		BB2BC03015CDD54400CCC4BB /* DWLikersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB2BC02D15CDD54400CCC4BB /* DWLikersViewController.m */; };
@@ -102,7 +101,9 @@
 		BB2BC03E15CDD5A700CCC4BB /* DWIFollowersViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = BB2BC03815CDD5A700CCC4BB /* DWIFollowersViewDataSource.m */; };
 		BB2BC03F15CDD5A700CCC4BB /* DWLikersViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = BB2BC03A15CDD5A700CCC4BB /* DWLikersViewDataSource.m */; };
 		BB2BC04015CDD5A700CCC4BB /* DWUsersViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = BB2BC03C15CDD5A700CCC4BB /* DWUsersViewDataSource.m */; };
-		BB2BC04315CDD80100CCC4BB /* DWPurchasesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB2BC04215CDD80100CCC4BB /* DWPurchasesViewController.m */; };
+		BB2BC04B15CDE13900CCC4BB /* DWFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB2BC04615CDE13900CCC4BB /* DWFeedViewController.m */; };
+		BB2BC04C15CDE13900CCC4BB /* DWPurchasesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB2BC04815CDE13900CCC4BB /* DWPurchasesViewController.m */; };
+		BB2BC04D15CDE13900CCC4BB /* DWPurchaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB2BC04A15CDE13900CCC4BB /* DWPurchaseViewController.m */; };
 		BB2D167615CC7C2E005F571F /* DWPurchaseProfileCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BB2D167515CC7C2E005F571F /* DWPurchaseProfileCell.m */; };
 		BB46140215CB3A5A00B38D71 /* DWUserPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = BB46140115CB3A5A00B38D71 /* DWUserPresenter.m */; };
 		BB46140615CB3A7500B38D71 /* DWUserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BB46140515CB3A7500B38D71 /* DWUserCell.m */; };
@@ -155,7 +156,6 @@
 		BBE42F4315BCB734000F6AE1 /* DWTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBE42F4215BCB734000F6AE1 /* DWTableViewController.m */; };
 		BBE42F4915BCCA52000F6AE1 /* DWPurchaseFeedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BBE42F4815BCCA52000F6AE1 /* DWPurchaseFeedCell.m */; };
 		BBE42F4C15BCCB7A000F6AE1 /* DWPurchaseFeedPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = BBE42F4B15BCCB7A000F6AE1 /* DWPurchaseFeedPresenter.m */; };
-		BBE42F4F15BDBB79000F6AE1 /* DWFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBE42F4E15BDBB79000F6AE1 /* DWFeedViewController.m */; };
 		BBE42F5215BDBBFC000F6AE1 /* DWFeedViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = BBE42F5115BDBBFC000F6AE1 /* DWFeedViewDataSource.m */; };
 		BBE42F5615BE0F58000F6AE1 /* DWLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = BBE42F5515BE0F58000F6AE1 /* DWLoadingView.m */; };
 		BBE42F5A15BE188C000F6AE1 /* EGORefreshTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = BBE42F5915BE188C000F6AE1 /* EGORefreshTableHeaderView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -314,8 +314,6 @@
 		BB2BC01A15CC83B200CCC4BB /* DWPurchaseProfilePresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWPurchaseProfilePresenter.m; sourceTree = "<group>"; };
 		BB2BC02015CDC4B800CCC4BB /* DWPurchaseViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWPurchaseViewDataSource.h; sourceTree = "<group>"; };
 		BB2BC02115CDC4B800CCC4BB /* DWPurchaseViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWPurchaseViewDataSource.m; sourceTree = "<group>"; };
-		BB2BC02415CDC5F500CCC4BB /* DWPurchaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWPurchaseViewController.h; sourceTree = "<group>"; };
-		BB2BC02515CDC5F500CCC4BB /* DWPurchaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWPurchaseViewController.m; sourceTree = "<group>"; };
 		BB2BC02815CDD54400CCC4BB /* DWFollowersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWFollowersViewController.h; sourceTree = "<group>"; };
 		BB2BC02915CDD54400CCC4BB /* DWFollowersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWFollowersViewController.m; sourceTree = "<group>"; };
 		BB2BC02A15CDD54400CCC4BB /* DWIFollowersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWIFollowersViewController.h; sourceTree = "<group>"; };
@@ -332,8 +330,12 @@
 		BB2BC03A15CDD5A700CCC4BB /* DWLikersViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWLikersViewDataSource.m; sourceTree = "<group>"; };
 		BB2BC03B15CDD5A700CCC4BB /* DWUsersViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWUsersViewDataSource.h; sourceTree = "<group>"; };
 		BB2BC03C15CDD5A700CCC4BB /* DWUsersViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWUsersViewDataSource.m; sourceTree = "<group>"; };
-		BB2BC04115CDD80100CCC4BB /* DWPurchasesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWPurchasesViewController.h; sourceTree = "<group>"; };
-		BB2BC04215CDD80100CCC4BB /* DWPurchasesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWPurchasesViewController.m; sourceTree = "<group>"; };
+		BB2BC04515CDE13900CCC4BB /* DWFeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWFeedViewController.h; sourceTree = "<group>"; };
+		BB2BC04615CDE13900CCC4BB /* DWFeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWFeedViewController.m; sourceTree = "<group>"; };
+		BB2BC04715CDE13900CCC4BB /* DWPurchasesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWPurchasesViewController.h; sourceTree = "<group>"; };
+		BB2BC04815CDE13900CCC4BB /* DWPurchasesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWPurchasesViewController.m; sourceTree = "<group>"; };
+		BB2BC04915CDE13900CCC4BB /* DWPurchaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWPurchaseViewController.h; sourceTree = "<group>"; };
+		BB2BC04A15CDE13900CCC4BB /* DWPurchaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWPurchaseViewController.m; sourceTree = "<group>"; };
 		BB2D167415CC7C2E005F571F /* DWPurchaseProfileCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWPurchaseProfileCell.h; sourceTree = "<group>"; };
 		BB2D167515CC7C2E005F571F /* DWPurchaseProfileCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWPurchaseProfileCell.m; sourceTree = "<group>"; };
 		BB46140015CB3A5A00B38D71 /* DWUserPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWUserPresenter.h; sourceTree = "<group>"; };
@@ -437,8 +439,6 @@
 		BBE42F4815BCCA52000F6AE1 /* DWPurchaseFeedCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWPurchaseFeedCell.m; sourceTree = "<group>"; };
 		BBE42F4A15BCCB7A000F6AE1 /* DWPurchaseFeedPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWPurchaseFeedPresenter.h; sourceTree = "<group>"; };
 		BBE42F4B15BCCB7A000F6AE1 /* DWPurchaseFeedPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWPurchaseFeedPresenter.m; sourceTree = "<group>"; };
-		BBE42F4D15BDBB78000F6AE1 /* DWFeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWFeedViewController.h; sourceTree = "<group>"; };
-		BBE42F4E15BDBB79000F6AE1 /* DWFeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWFeedViewController.m; sourceTree = "<group>"; };
 		BBE42F5015BDBBFC000F6AE1 /* DWFeedViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWFeedViewDataSource.h; sourceTree = "<group>"; };
 		BBE42F5115BDBBFC000F6AE1 /* DWFeedViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWFeedViewDataSource.m; sourceTree = "<group>"; };
 		BBE42F5415BE0F58000F6AE1 /* DWLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWLoadingView.h; sourceTree = "<group>"; };
@@ -733,6 +733,19 @@
 			path = Users;
 			sourceTree = "<group>";
 		};
+		BB2BC04415CDE13800CCC4BB /* Purchases */ = {
+			isa = PBXGroup;
+			children = (
+				BB2BC04515CDE13900CCC4BB /* DWFeedViewController.h */,
+				BB2BC04615CDE13900CCC4BB /* DWFeedViewController.m */,
+				BB2BC04715CDE13900CCC4BB /* DWPurchasesViewController.h */,
+				BB2BC04815CDE13900CCC4BB /* DWPurchasesViewController.m */,
+				BB2BC04915CDE13900CCC4BB /* DWPurchaseViewController.h */,
+				BB2BC04A15CDE13900CCC4BB /* DWPurchaseViewController.m */,
+			);
+			path = Purchases;
+			sourceTree = "<group>";
+		};
 		BB9F70B315B9E6A60099C80A /* External */ = {
 			isa = PBXGroup;
 			children = (
@@ -958,21 +971,16 @@
 			isa = PBXGroup;
 			children = (
 				BBE42F3715BCAD9D000F6AE1 /* Base */,
+				BB2BC04415CDE13800CCC4BB /* Purchases */,
 				BB2BC02715CDD54400CCC4BB /* Users */,
 				BBC0608915C74243000D3480 /* DWCommentsViewController.h */,
 				BBC0608A15C74243000D3480 /* DWCommentsViewController.m */,
 				2622005915C713B4003DC1DF /* DWContactsViewController.h */,
 				2622005A15C713B4003DC1DF /* DWContactsViewController.m */,
-				BBE42F4D15BDBB78000F6AE1 /* DWFeedViewController.h */,
-				BBE42F4E15BDBB79000F6AE1 /* DWFeedViewController.m */,
 				262200AE15C76A4E003DC1DF /* DWProductsViewController.h */,
 				262200AF15C76A4E003DC1DF /* DWProductsViewController.m */,
 				BB06367115C1F593001F26E1 /* DWProfileViewController.h */,
 				BB06367215C1F593001F26E1 /* DWProfileViewController.m */,
-				BB2BC04115CDD80100CCC4BB /* DWPurchasesViewController.h */,
-				BB2BC04215CDD80100CCC4BB /* DWPurchasesViewController.m */,
-				BB2BC02415CDC5F500CCC4BB /* DWPurchaseViewController.h */,
-				BB2BC02515CDC5F500CCC4BB /* DWPurchaseViewController.m */,
 			);
 			path = TableViewControllers;
 			sourceTree = "<group>";
@@ -1205,7 +1213,6 @@
 				BBE42F4315BCB734000F6AE1 /* DWTableViewController.m in Sources */,
 				BBE42F4915BCCA52000F6AE1 /* DWPurchaseFeedCell.m in Sources */,
 				BBE42F4C15BCCB7A000F6AE1 /* DWPurchaseFeedPresenter.m in Sources */,
-				BBE42F4F15BDBB79000F6AE1 /* DWFeedViewController.m in Sources */,
 				BBE42F5215BDBBFC000F6AE1 /* DWFeedViewDataSource.m in Sources */,
 				BBE42F5615BE0F58000F6AE1 /* DWLoadingView.m in Sources */,
 				BBE42F5A15BE188C000F6AE1 /* EGORefreshTableHeaderView.m in Sources */,
@@ -1274,7 +1281,6 @@
 				BB2BC01B15CC83B200CCC4BB /* DWPurchaseProfilePresenter.m in Sources */,
 				267D570915CC76CB00DD4AB1 /* DWCreationViewController.m in Sources */,
 				BB2BC02215CDC4B800CCC4BB /* DWPurchaseViewDataSource.m in Sources */,
-				BB2BC02615CDC5F600CCC4BB /* DWPurchaseViewController.m in Sources */,
 				BB2BC02E15CDD54400CCC4BB /* DWFollowersViewController.m in Sources */,
 				BB2BC02F15CDD54400CCC4BB /* DWIFollowersViewController.m in Sources */,
 				BB2BC03015CDD54400CCC4BB /* DWLikersViewController.m in Sources */,
@@ -1283,7 +1289,9 @@
 				BB2BC03E15CDD5A700CCC4BB /* DWIFollowersViewDataSource.m in Sources */,
 				BB2BC03F15CDD5A700CCC4BB /* DWLikersViewDataSource.m in Sources */,
 				BB2BC04015CDD5A700CCC4BB /* DWUsersViewDataSource.m in Sources */,
-				BB2BC04315CDD80100CCC4BB /* DWPurchasesViewController.m in Sources */,
+				BB2BC04B15CDE13900CCC4BB /* DWFeedViewController.m in Sources */,
+				BB2BC04C15CDE13900CCC4BB /* DWPurchasesViewController.m in Sources */,
+				BB2BC04D15CDE13900CCC4BB /* DWPurchaseViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
