@@ -70,7 +70,7 @@ static NSInteger const kMaxProductsPerPage  = 100;
                                               errorNotification:kNProductsLoadError
                                                   requestMethod:kGet
                                                    authenticate:YES 
-                                                     resourceID:page];
+                                                     resourceID:page+1];
 }
 
 

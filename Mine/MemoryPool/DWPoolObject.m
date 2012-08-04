@@ -54,6 +54,7 @@ static NSInteger const kDefaultDatabaseID   = -1;
     
     if(!object) {
         object = [[self alloc] init];
+        object.databaseID = [objectID integerValue];
         [[DWMemoryPool sharedDWMemoryPool] setObject:object
                                               withID:objectID 
                                             forClass:[self className]];

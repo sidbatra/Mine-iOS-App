@@ -82,6 +82,26 @@
     [self.delegate productsLoaded];
 }
 
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWProductCellDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)productClicked:(NSNumber *)productID {
+
+    SEL sel = @selector(productClicked:);
+    
+    if(![self.delegate respondsToSelector:sel])
+        return;
+    
+    DWProduct *product = [DWProduct fetch:[productID integerValue]];
+    
+    if(product)
+        [self.delegate performSelector:sel 
+                            withObject:product];
+}
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------

@@ -22,13 +22,14 @@
                      withDelegate:(id)delegate
              andPresentationStyle:(NSInteger)style {
 
-    DWModelSet *productSet    = object;
+    DWModelSet *productSet      = object;
     DWProductCell *cell         = base;
     
     if(!cell)
         cell = [[DWProductCell alloc] initWithStyle:UITableViewStylePlain 
                                          reuseIdentifier:identifier];
-    
+
+    cell.delegate = delegate;
     [cell resetUI];
     
     for(NSInteger i=0 ; i< productSet.length ; i++) {

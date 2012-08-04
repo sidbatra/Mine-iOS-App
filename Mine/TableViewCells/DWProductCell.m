@@ -19,7 +19,6 @@ NSInteger const kProductCellHeight = 100;
     NSMutableArray  *_productButtons;
 }
 
-
 /**
  * Product image buttons for displaying multiple products in a row
  */
@@ -35,6 +34,7 @@ NSInteger const kProductCellHeight = 100;
 @implementation DWProductCell
 
 @synthesize productButtons  = _productButtons;
+@synthesize delegate        = _delegate;
 
 
 //----------------------------------------------------------------------------------------------------
@@ -69,15 +69,31 @@ NSInteger const kProductCellHeight = 100;
         
         productButton.backgroundColor = [UIColor redColor];
         
-        /*
         [productButton addTarget:self
                            action:@selector(didTapProductButton:)
-                 forControlEvents:UIControlEventTouchUpInside];*/
+                 forControlEvents:UIControlEventTouchUpInside];
         
         [self.productButtons addObject:productButton];
         
         [self.contentView addSubview:productButton];
     }
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark UI Events
+
+//----------------------------------------------------------------------------------------------------
+- (void)didTapProductButton:(UIButton*)button {
+    SEL sel = @selector(productClicked:);
+    
+    if(![self.delegate respondsToSelector:sel])
+        return;
+
+    [self.delegate performSelector:sel
+                        withObject:[NSNumber numberWithInteger:button.tag]];
 }
 
 
@@ -98,7 +114,7 @@ NSInteger const kProductCellHeight = 100;
 - (void)setProductImage:(UIImage*)image
        forButtonAtIndex:(NSInteger)index 
            andProductID:(NSInteger)productID {
-    
+
     if(index >= [self.productButtons count])
         return;
     

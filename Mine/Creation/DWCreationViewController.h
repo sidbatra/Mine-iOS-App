@@ -11,12 +11,14 @@
 #import "DWProductsViewController.h"
 
 @interface DWCreationViewController : UIViewController<UITextFieldDelegate,DWProductsViewControllerDelegate> {
-    UITextField *_searchTextField;
+    UITextField     *_searchTextField;
+    UIImageView     *_productImageView;
 }
 
 /**
  * IBOutlet properties
  */
 @property (nonatomic) IBOutlet UITextField *searchTextField;
+@property (nonatomic) IBOutlet UIImageView *productImageView;
 
 @end

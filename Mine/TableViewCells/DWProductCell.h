@@ -10,10 +10,18 @@
 
 extern NSInteger const kProductCellHeight;
 
+@protocol DWProductCellDelegate;
+
 
 @interface DWProductCell : UITableViewCell {
-    
+    __weak id<DWProductCellDelegate,NSObject> _delegate;    
 }
+
+/**
+ * Delegate
+ */
+@property (nonatomic,weak) id<DWProductCellDelegate,NSObject> delegate;
+
 
 /**
  * Reset UI
@@ -26,5 +34,20 @@ extern NSInteger const kProductCellHeight;
 - (void)setProductImage:(UIImage*)image 
        forButtonAtIndex:(NSInteger)index 
            andProductID:(NSInteger)productID;
+
+@end
+
+
+/**
+ * Protocol for delgates of DWProductCell
+ */
+@protocol DWProductCellDelegate
+
+@optional
+
+/**
+ * Fired when a product is clicked.
+ */
+- (void)productClicked:(NSNumber*)productID;
 
 @end

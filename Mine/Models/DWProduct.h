@@ -14,6 +14,7 @@
  * 
  */
 extern NSString* const kKeyMediumImageURL;
+extern NSString* const kKeyLargeImageURL;
 extern NSString* const kNImgProductMediumLoaded;
 extern NSString* const kNImgProductMediumLoadError;
 extern NSString* const kNImgProductLargeLoaded;

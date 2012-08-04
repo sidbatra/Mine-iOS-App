@@ -7,12 +7,15 @@
 //
 
 #import "DWTableViewController.h"
-#import "DWProductsViewDataSource.h"
 
+#import "DWProductsViewDataSource.h"
+#import "DWProductCell.h"
+
+@class DWProduct;
 @protocol DWProductsViewControllerDelegate;
 
 
-@interface DWProductsViewController : DWTableViewController<DWProductsViewDataSourceDelegate> {
+@interface DWProductsViewController : DWTableViewController<DWProductsViewDataSourceDelegate,DWProductCellDelegate> {
     __weak id<DWProductsViewControllerDelegate,NSObject> _delegate;
 }
 
@@ -35,9 +38,16 @@
  */
 @protocol DWProductsViewControllerDelegate
 
+@optional
+
 /**
  * Fired the products are loaded
  */
 - (void)productsLoaded;
+
+/**
+ * Fired when a product is Clicked by the user
+ */
+- (void)productClicked:(DWProduct*)product;
 
 @end

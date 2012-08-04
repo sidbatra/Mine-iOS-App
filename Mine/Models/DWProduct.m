@@ -10,6 +10,7 @@
 #import "DWImageManager.h"
 
 NSString* const kKeyMediumImageURL              = @"medium_url";
+NSString* const kKeyLargeImageURL               = @"large_url";
 NSString* const kNImgProductMediumLoaded        = @"NImgProductMediumLoaded";
 NSString* const kNImgProductMediumLoadError     = @"NImgProductMediumLoadError";
 NSString* const kNImgProductLargeLoaded         = @"NImgProductLargeLoaded";
@@ -18,7 +19,6 @@ NSString* const kNImgProductLargeLoadError      = @"NImgProductLargeLoadError";
 
 static NSString* const kKeyUniqueID             = @"uniq_id";
 static NSString* const kKeyTitle                = @"title";
-static NSString* const kKeyLargeImageURL        = @"large_url";
 static NSString* const kKeySourceURL            = @"source_url";
 
 
@@ -58,13 +58,13 @@ static NSString* const kKeySourceURL            = @"source_url";
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)update:(NSDictionary*)store {
+- (void)update:(NSDictionary*)product {
 	
-    NSString *uniqueID          = [store objectForKey:kKeyUniqueID];
-    NSString *title             = [store objectForKey:kKeyTitle];
-    NSString *mediumImageURL    = [store objectForKey:kKeyMediumImageURL];
-    NSString *largeImageURL     = [store objectForKey:kKeyLargeImageURL];
-    NSString *sourceURL         = [store objectForKey:kKeySourceURL];    
+    NSString *uniqueID          = [product objectForKey:kKeyUniqueID];
+    NSString *title             = [product objectForKey:kKeyTitle];
+    NSString *mediumImageURL    = [product objectForKey:kKeyMediumImageURL];
+    NSString *largeImageURL     = [product objectForKey:kKeyLargeImageURL];
+    NSString *sourceURL         = [product objectForKey:kKeySourceURL];    
     
     if(uniqueID && ![self.uniqueID isEqualToString:uniqueID])
         self.uniqueID = uniqueID;

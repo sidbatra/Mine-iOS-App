@@ -7,6 +7,8 @@
 //
 
 #import "DWCreationViewController.h"
+#import "DWProduct.h"
+#import "DWConstants.h"
 
 /**
  * Private declarations
@@ -40,6 +42,7 @@
 @implementation DWCreationViewController
 
 @synthesize searchTextField             = _searchTextField;
+@synthesize productImageView            = _productImageView;
 @synthesize productsViewController      = _productsViewController;
 
 //----------------------------------------------------------------------------------------------------
@@ -48,7 +51,11 @@
     self = [super init];
     
     if (self) {
-
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self 
+                                                 selector:@selector(productLargeImageLoaded:) 
+                                                     name:kNImgProductLargeLoaded
+                                                   object:nil];
     }
     
     return self;
@@ -113,6 +120,25 @@
 //----------------------------------------------------------------------------------------------------
 - (void)productsLoaded {
     [self hideKeyboard];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)productClicked:(DWProduct *)product {
+    [product downloadLargeImage];
+    self.productsViewController.view.hidden = true;
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark Notifications
+
+//----------------------------------------------------------------------------------------------------
+- (void)productLargeImageLoaded:(NSNotification*)notification {
+    NSDictionary *userInfo = [notification userInfo];
+
+    self.productImageView.image = [userInfo objectForKey:@"image"];
 }
 
 @end
