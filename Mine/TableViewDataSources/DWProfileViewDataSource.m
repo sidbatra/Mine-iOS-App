@@ -14,7 +14,8 @@
 
  
 @interface DWProfileViewDataSource() {
-    DWPurchasesController *_purchasesController;
+    DWPurchasesController   *_purchasesController;
+    DWFollowingsController  *_followingsController;
     
     NSInteger _oldestTimestamp;
 }
@@ -22,7 +23,12 @@
 /**
  * Data controller for fetching purchases.
  */
-@property (nonatomic,strong) DWPurchasesController* purchasesController;
+@property (nonatomic,strong) DWPurchasesController *purchasesController;
+
+/**
+ * Data controller for the followings model.
+ */
+@property (nonatomic,strong) DWFollowingsController *followingsController;
 
 /**
  * Timestamp of the last item in the feed. Used to fetch more items.
@@ -40,6 +46,7 @@
 
 @synthesize userID                  = _userID;
 @synthesize purchasesController     = _purchasesController;
+@synthesize followingsController    = _followingsController;
 @synthesize oldestTimestamp         = _oldestTimestamp;
 
 //----------------------------------------------------------------------------------------------------
@@ -49,6 +56,9 @@
     if(self) {
         self.purchasesController            = [[DWPurchasesController alloc] init];
         self.purchasesController.delegate   = self;
+        
+        self.followingsController           = [[DWFollowingsController alloc] init];
+        self.followingsController.delegate  = self;
     }
     
     return self;
@@ -58,6 +68,10 @@
 - (void)loadPurchases {
     [self.purchasesController getPurchasesForUser:self.userID 
                                            before:self.oldestTimestamp];
+    
+    if(!self.oldestTimestamp) {
+        [self.followingsController getFollowingForUserID:self.userID];
+    }
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -164,6 +178,33 @@
     
     [self.delegate displayError:error
                   withRefreshUI:YES];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWFollowingsControllerDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)followingLoaded:(DWFollowing *)following 
+              forUserID:(NSNumber *)userID {
+    
+    if(self.userID != [userID integerValue])
+        return;
+    
+    if(following)
+        NSLog(@"Following active");
+    else
+        NSLog(@"Following inactive");
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)followingLoadError:(NSString *)message 
+                 forUserID:(NSNumber *)userID {
+    
+    if(self.userID != [userID integerValue])
+        return;
 }
 
 
