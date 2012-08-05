@@ -50,4 +50,9 @@
  */
 - (void)profileViewPurchaseClicked:(DWPurchase*)purchase;
 
+/**
+ * A purchase URL element is clicked.
+ */
+- (void)profileViewPurchaseURLClicked:(DWPurchase*)purchase;
+
 @end

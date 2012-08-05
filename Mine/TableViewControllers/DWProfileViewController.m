@@ -101,7 +101,7 @@
 //----------------------------------------------------------------------------------------------------
 - (void)purchaseURLClicked:(NSInteger)purchaseID {
     
-    SEL sel = @selector(profileViewPurchaseClicked:);
+    SEL sel = @selector(profileViewPurchaseURLClicked:);
     
     if(![self.delegate respondsToSelector:sel])
         return;
