@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DWWebViewController : UIViewController {
+@interface DWWebViewController : UIViewController<UIWebViewDelegate> {
     UIWebView   *_webView;
 }
 

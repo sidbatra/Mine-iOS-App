@@ -45,11 +45,34 @@
     [super viewDidLoad];
     
     [self.webView loadRequest:[NSURLRequest requestWithURL:self.url]];
+    
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)viewDidUnload {
     [super viewDidUnload];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark UIWebViewDelegate
+
+
+//----------------------------------------------------------------------------------------------------
+- (void)webViewDidStartLoad:(UIWebView *)webView {
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
+	[UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+}
+
+//----------------------------------------------------------------------------------------------------
+-(void)webViewDidFinishLoad:(UIWebView *)webView{
+	[UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 }
 
 
