@@ -31,6 +31,12 @@
  */
 - (void)createFollowingForUserID:(NSInteger)userID;
 
+/**
+ * Destroy following between the current user and the given user.
+ */
+- (void)destroyFollowing:(NSInteger)followingID
+               ForUserID:(NSInteger)userID;
+
 @end
 
 
@@ -66,5 +72,19 @@
  */
 - (void)followingCreateError:(NSString*)message
                    forUserID:(NSNumber*)userID;
+
+
+/**
+ * Following destroyed.
+ */
+- (void)followingDestroyed:(DWFollowing*)following 
+                 forUserID:(NSNumber*)userID;
+
+/**
+ * Error destroying following.
+ */
+- (void)followingDestroyError:(NSString*)message
+                    forUserID:(NSNumber*)userID;
+
 
 @end
