@@ -59,4 +59,9 @@
  */
 - (void)purchaseClicked:(NSInteger)purchaseID;
 
+/**
+ * An element pointing to the purchase source url is clicked.
+ */
+- (void)purchaseURLClicked:(NSInteger)purchaseID;
+
 @end

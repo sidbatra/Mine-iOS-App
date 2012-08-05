@@ -184,7 +184,7 @@ static NSInteger const kPurchaseProfileCellHeight = 175;
 
 //----------------------------------------------------------------------------------------------------
 - (void)didTapTitleButton:(UIButton*)button {
-    NSLog(@"title clicked %d",button.tag);
+    [self.delegate purchaseURLClicked:button.tag];
 }
 
 @end

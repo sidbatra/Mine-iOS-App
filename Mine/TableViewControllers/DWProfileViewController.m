@@ -98,6 +98,25 @@
                         withObject:purchase];
 }
 
+//----------------------------------------------------------------------------------------------------
+- (void)purchaseURLClicked:(NSInteger)purchaseID {
+    
+    SEL sel = @selector(profileViewPurchaseClicked:);
+    
+    if(![self.delegate respondsToSelector:sel])
+        return;
+    
+    
+    DWPurchase *purchase = [DWPurchase fetch:purchaseID];
+    
+    if(!purchaseID)
+        return;
+    
+    
+    [self.delegate performSelector:sel
+                        withObject:purchase]; 
+}
+
 
 
 //----------------------------------------------------------------------------------------------------
