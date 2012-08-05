@@ -43,6 +43,10 @@
         [cell setPurchaseImage:purchase.giantImage
                       forIndex:i 
                 withPurchaseID:purchase.databaseID];
+        
+        [cell setPurchaseTitle:purchase.title
+                      forIndex:i
+                withPurchaseID:purchase.databaseID];
     }
     
     return cell;

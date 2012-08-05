@@ -23,16 +23,18 @@
  */
 - (void)resetUI;
 
-/**
- * Apply a purchase title
- */
-//- (void)setPurchaseTitle:(NSString*)title
-//                forIndex:(NSInteger)index;
 
 /**
  * Apply a purchase image.
  */
 - (void)setPurchaseImage:(UIImage*)image 
+                forIndex:(NSInteger)index 
+          withPurchaseID:(NSInteger)purchaseID;
+
+/**
+ * Apply a purchase title.
+ */
+- (void)setPurchaseTitle:(NSString*)title
                 forIndex:(NSInteger)index 
           withPurchaseID:(NSInteger)purchaseID;
 
