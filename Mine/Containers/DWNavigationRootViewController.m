@@ -10,6 +10,7 @@
 #import "DWCommentsCreateViewController.h"
 #import "DWLikersViewController.h"
 #import "DWPurchaseViewController.h"
+#import "DWWebViewController.h"
 
 #import "DWPurchase.h"
 
@@ -93,6 +94,15 @@
                                          animated:YES];
 }
 
+//----------------------------------------------------------------------------------------------------
+- (void)displayExternalURL:(NSString*)url {
+
+    DWWebViewController *webViewController = [[DWWebViewController alloc] initWithURL:url];
+    
+    [self.navigationController pushViewController:webViewController
+                                         animated:YES];
+}
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
@@ -106,7 +116,7 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)profileViewPurchaseURLClicked:(DWPurchase *)purchase {
-    NSLog(@"profile url clicked - %@",purchase.sourceURL);
+    [self displayExternalURL:purchase.sourceURL];
 }
 
 
@@ -143,8 +153,6 @@
     [self displayCommentsCreateViewForPurchase:purchase
                             withCreationIntent:[creationIntent boolValue]];
 }
-
-
 
 
 //----------------------------------------------------------------------------------------------------

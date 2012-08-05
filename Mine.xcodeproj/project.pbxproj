@@ -106,6 +106,8 @@
 		BB2BC04D15CDE13900CCC4BB /* DWPurchaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB2BC04A15CDE13900CCC4BB /* DWPurchaseViewController.m */; };
 		BB2BC05015CDECC900CCC4BB /* DWFollowingsController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB2BC04F15CDECC900CCC4BB /* DWFollowingsController.m */; };
 		BB2BC05315CDF74300CCC4BB /* DWFollowing.m in Sources */ = {isa = PBXBuildFile; fileRef = BB2BC05215CDF74300CCC4BB /* DWFollowing.m */; };
+		BB2BC05C15CF32A200CCC4BB /* DWWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB2BC05A15CF32A200CCC4BB /* DWWebViewController.m */; };
+		BB2BC05D15CF32A200CCC4BB /* DWWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB2BC05B15CF32A200CCC4BB /* DWWebViewController.xib */; };
 		BB2D167615CC7C2E005F571F /* DWPurchaseProfileCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BB2D167515CC7C2E005F571F /* DWPurchaseProfileCell.m */; };
 		BB46140215CB3A5A00B38D71 /* DWUserPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = BB46140115CB3A5A00B38D71 /* DWUserPresenter.m */; };
 		BB46140615CB3A7500B38D71 /* DWUserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BB46140515CB3A7500B38D71 /* DWUserCell.m */; };
@@ -342,6 +344,9 @@
 		BB2BC04F15CDECC900CCC4BB /* DWFollowingsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWFollowingsController.m; sourceTree = "<group>"; };
 		BB2BC05115CDF74300CCC4BB /* DWFollowing.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWFollowing.h; sourceTree = "<group>"; };
 		BB2BC05215CDF74300CCC4BB /* DWFollowing.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWFollowing.m; sourceTree = "<group>"; };
+		BB2BC05915CF32A200CCC4BB /* DWWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWWebViewController.h; sourceTree = "<group>"; };
+		BB2BC05A15CF32A200CCC4BB /* DWWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWWebViewController.m; sourceTree = "<group>"; };
+		BB2BC05B15CF32A200CCC4BB /* DWWebViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DWWebViewController.xib; sourceTree = "<group>"; };
 		BB2D167415CC7C2E005F571F /* DWPurchaseProfileCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWPurchaseProfileCell.h; sourceTree = "<group>"; };
 		BB2D167515CC7C2E005F571F /* DWPurchaseProfileCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWPurchaseProfileCell.m; sourceTree = "<group>"; };
 		BB46140015CB3A5A00B38D71 /* DWUserPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWUserPresenter.h; sourceTree = "<group>"; };
@@ -698,6 +703,9 @@
 				BB26986C15BB653900037453 /* DWTestViewController.h */,
 				BB26986D15BB653900037453 /* DWTestViewController.m */,
 				BB26986E15BB653900037453 /* DWTestViewController.xib */,
+				BB2BC05915CF32A200CCC4BB /* DWWebViewController.h */,
+				BB2BC05A15CF32A200CCC4BB /* DWWebViewController.m */,
+				BB2BC05B15CF32A200CCC4BB /* DWWebViewController.xib */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -1173,6 +1181,7 @@
 				2622007615C71453003DC1DF /* hr_gray_create@2x.png in Resources */,
 				BBC060A315C76D57000D3480 /* DWCommentsCreateViewController.xib in Resources */,
 				267D570A15CC76CB00DD4AB1 /* DWCreationViewController.xib in Resources */,
+				BB2BC05D15CF32A200CCC4BB /* DWWebViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1304,6 +1313,7 @@
 				BB2BC04D15CDE13900CCC4BB /* DWPurchaseViewController.m in Sources */,
 				BB2BC05015CDECC900CCC4BB /* DWFollowingsController.m in Sources */,
 				BB2BC05315CDF74300CCC4BB /* DWFollowing.m in Sources */,
+				BB2BC05C15CF32A200CCC4BB /* DWWebViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
