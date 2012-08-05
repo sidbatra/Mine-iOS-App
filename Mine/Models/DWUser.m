@@ -180,23 +180,23 @@ static NSString* const kKeyPurchasesCount               = @"purchases_count";
     
     if(byline && ![self.byline isEqualToString:byline])
         self.byline = byline;
-
-
-    if(facebookAccessToken && ![self.facebookAccessToken isEqualToString:facebookAccessToken])
+    
+    
+    if(facebookAccessToken  && ![facebookAccessToken isKindOfClass:[NSNull class]]  && ![self.facebookAccessToken isEqualToString:facebookAccessToken])
         self.facebookAccessToken = facebookAccessToken;
     
-    if(twitterAccessToken && ![self.twitterAccessToken isEqualToString:twitterAccessToken])
+    if(twitterAccessToken  && ![twitterAccessToken isKindOfClass:[NSNull class]] && ![self.twitterAccessToken isEqualToString:twitterAccessToken])
         self.twitterAccessToken = twitterAccessToken;
     
-    if(twitterAccessTokenSecret && ![self.twitterAccessTokenSecret isEqualToString:twitterAccessTokenSecret])
+    if(twitterAccessTokenSecret  && ![twitterAccessTokenSecret isKindOfClass:[NSNull class]] && ![self.twitterAccessTokenSecret isEqualToString:twitterAccessTokenSecret])
         self.twitterAccessTokenSecret = twitterAccessTokenSecret;    
     
-    if(tumblrAccessToken && ![self.tumblrAccessToken isEqualToString:tumblrAccessToken])
+    if(tumblrAccessToken  && ![tumblrAccessToken isKindOfClass:[NSNull class]] && ![self.tumblrAccessToken isEqualToString:tumblrAccessToken])
         self.tumblrAccessToken = tumblrAccessToken;
     
-    if(tumblrAccessTokenSecret && ![self.tumblrAccessTokenSecret isEqualToString:tumblrAccessTokenSecret])
+    if(tumblrAccessTokenSecret  && ![tumblrAccessTokenSecret isKindOfClass:[NSNull class]] && ![self.tumblrAccessTokenSecret isEqualToString:tumblrAccessTokenSecret])
         self.tumblrAccessTokenSecret = tumblrAccessTokenSecret;    
-    
+
     
     if(squareImageURL && ![self.squareImageURL isEqualToString:squareImageURL])
         self.squareImageURL = squareImageURL;
