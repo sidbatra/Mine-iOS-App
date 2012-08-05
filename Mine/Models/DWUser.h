@@ -40,6 +40,8 @@ extern NSString* const kNImgUserLargeLoadError;
     NSString        *_largeImageURL;
     
     NSInteger       _purchasesCount;
+    NSInteger       _followingsCount;
+    NSInteger       _inverseFollowingsCount;
 }
 
 /**
@@ -121,6 +123,16 @@ extern NSString* const kNImgUserLargeLoadError;
  * Total purchases added.
  */
 @property (nonatomic,assign) NSInteger purchasesCount;
+
+/**
+ * Total users following.
+ */
+@property (nonatomic,assign) NSInteger followingsCount;
+
+/**
+ * Total users followed.
+ */
+@property (nonatomic,assign) NSInteger inverseFollowingsCount;
 
 
 /**
