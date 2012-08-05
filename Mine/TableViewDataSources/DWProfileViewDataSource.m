@@ -10,12 +10,16 @@
 #import "DWPagination.h"
 #import "DWModelSet.h"
 #import "DWPurchase.h"
+#import "DWuser.h"
 #import "DWConstants.h"
 
  
 @interface DWProfileViewDataSource() {
     DWPurchasesController   *_purchasesController;
     DWFollowingsController  *_followingsController;
+    DWUsersController       *_usersController;
+    
+    DWUser                  *_user;
     
     NSInteger _oldestTimestamp;
 }
@@ -29,6 +33,16 @@
  * Data controller for the followings model.
  */
 @property (nonatomic,strong) DWFollowingsController *followingsController;
+
+/**
+ * Data controller for the users model.
+ */
+@property (nonatomic,strong) DWUsersController *usersController;
+
+/**
+ * The user whose profile is being displayed.
+ */
+@property (nonatomic,strong) DWUser *user;
 
 /**
  * Timestamp of the last item in the feed. Used to fetch more items.
@@ -47,6 +61,8 @@
 @synthesize userID                  = _userID;
 @synthesize purchasesController     = _purchasesController;
 @synthesize followingsController    = _followingsController;
+@synthesize usersController         = _usersController;
+@synthesize user                    = _user;
 @synthesize oldestTimestamp         = _oldestTimestamp;
 
 //----------------------------------------------------------------------------------------------------
@@ -59,6 +75,9 @@
         
         self.followingsController           = [[DWFollowingsController alloc] init];
         self.followingsController.delegate  = self;
+        
+        self.usersController                = [[DWUsersController alloc] init];
+        self.usersController.delegate       = self;
     }
     
     return self;
@@ -70,6 +89,7 @@
                                            before:self.oldestTimestamp];
     
     if(!self.oldestTimestamp) {
+        [self.usersController getUserWithID:self.userID];
         [self.followingsController getFollowingForUserID:self.userID];
     }
 }
@@ -205,6 +225,34 @@
     
     if(self.userID != [userID integerValue])
         return;
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWUsersControllerDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)userLoaded:(DWUser *)user 
+        withUserID:(NSNumber *)userID {
+    
+    if(self.userID != [userID integerValue])
+        return;
+    
+    self.user = user;
+    
+    [self.user debug];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)userLoadError:(NSString *)error 
+           withUserID:(NSNumber *)userID {
+
+    if(self.userID != [userID integerValue])
+        return;
+    
+    NSLog(@"user load error");
 }
 
 
