@@ -26,6 +26,11 @@
  */
 - (void)getFollowingForUserID:(NSInteger)userID;
 
+/**
+ * Create a new following between the current user and the given user.
+ */
+- (void)createFollowingForUserID:(NSInteger)userID;
+
 @end
 
 
@@ -38,7 +43,7 @@
 @optional
 
 /**
- * Status of following loaded from server.
+ * Status of following loaded.
  */
 - (void)followingLoaded:(DWFollowing*)following 
               forUserID:(NSNumber*)userID;
@@ -48,5 +53,18 @@
  */
 - (void)followingLoadError:(NSString*)message
                  forUserID:(NSNumber*)userID;
+
+
+/**
+ * Following created.
+ */
+- (void)followingCreated:(DWFollowing*)following 
+               forUserID:(NSNumber*)userID;
+
+/**
+ * Error creating following.
+ */
+- (void)followingCreateError:(NSString*)message
+                   forUserID:(NSNumber*)userID;
 
 @end

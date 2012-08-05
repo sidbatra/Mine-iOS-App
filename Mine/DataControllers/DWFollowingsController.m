@@ -14,9 +14,12 @@
 
 
 static NSString* const kGetURI                  = @"/followings/%d.json?";
+static NSString* const kCreateURI               = @"/followings.json?user_id=%d";
 
 static NSString* const kNFollowingLoaded        = @"NFollowingLoaded";
 static NSString* const kNFollowingLoadError     = @"NFollowingLoadError";
+static NSString* const kNFollowingCreated       = @"NFollowingCreated";
+static NSString* const kNFollowingCreateError   = @"NFollowingCreateError";
 
 
 
@@ -42,6 +45,16 @@ static NSString* const kNFollowingLoadError     = @"NFollowingLoadError";
 												 selector:@selector(followingLoadError:) 
 													 name:kNFollowingLoadError
 												   object:nil];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self 
+												 selector:@selector(followingCreated:) 
+													 name:kNFollowingCreated
+												   object:nil];
+		
+		[[NSNotificationCenter defaultCenter] addObserver:self 
+												 selector:@selector(followingCreateError:) 
+													 name:kNFollowingCreateError
+												   object:nil];
     }
     
     return self;
@@ -65,6 +78,19 @@ static NSString* const kNFollowingLoadError     = @"NFollowingLoadError";
                                                   requestMethod:kGet
                                                    authenticate:YES
                                                      resourceID:userID];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)createFollowingForUserID:(NSInteger)userID {
+    
+    NSString *localURL = [NSString stringWithFormat:kCreateURI,userID];
+    
+    [[DWRequestManager sharedDWRequestManager] createAppRequest:localURL
+                                            successNotification:kNFollowingCreated
+                                              errorNotification:kNFollowingCreateError
+                                                  requestMethod:kPost
+                                                   authenticate:YES
+                                                     resourceID:userID];    
 }
 
 
@@ -99,6 +125,46 @@ static NSString* const kNFollowingLoadError     = @"NFollowingLoadError";
 - (void)followingLoadError:(NSNotification*)notification {
     
     SEL sel = @selector(followingLoadError:forUserID:);
+    
+    if(![self.delegate respondsToSelector:sel])
+        return;
+    
+    
+    NSDictionary *info  = [notification userInfo];
+    NSError *error      = [info objectForKey:kKeyError];
+    
+    [self.delegate performSelector:sel 
+                        withObject:[error localizedDescription]
+                        withObject:[info objectForKey:kKeyResourceID]];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+- (void)followingCreated:(NSNotification*)notification {
+    
+    SEL sel = @selector(followingCreated:forUserID:);
+    
+    if(![self.delegate respondsToSelector:sel])
+        return;
+    
+    
+    NSDictionary *info          = [notification userInfo];
+    NSDictionary *response      = [info objectForKey:kKeyResponse];
+    DWFollowing *following      = nil;
+    
+    if(response && [response count])
+        following = [DWFollowing create:response];
+    
+    
+    [self.delegate performSelector:sel
+                        withObject:following
+                        withObject:[info objectForKey:kKeyResourceID]];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)followingCreateError:(NSNotification*)notification {
+    
+    SEL sel = @selector(followingCreateError:forUserID:);
     
     if(![self.delegate respondsToSelector:sel])
         return;
