@@ -103,6 +103,16 @@ typedef enum {
 
 
 /**
+ * States for an item in the background queue
+ */
+typedef enum  {
+    DWBackgroundQueueItemStateWaiting       = 0,
+    DWBackgroundQueueItemStateInProgress    = 1,
+    DWBackgroundQueueItemStateDone          = 2,
+    DWBackgroundQueueItemStateFailed        = -1
+}DWBackgroundQueueItemState;
+
+/**
  * Model presenters
  */
 extern NSInteger const kDefaultModelPresenter;
