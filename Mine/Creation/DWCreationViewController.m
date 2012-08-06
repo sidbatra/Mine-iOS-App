@@ -183,10 +183,8 @@
 - (void)productClicked:(DWProduct *)product {
     self.product = product;
     
-    if(self.product.largeImage) 
-        self.productImageView.image = self.product.largeImage;
-    else 
-        [self.product downloadLargeImage];    
+    [self.product downloadLargeImage];    
+    self.productImageView.image = self.product.largeImage;
     
     [self showProductPreview];
 }
