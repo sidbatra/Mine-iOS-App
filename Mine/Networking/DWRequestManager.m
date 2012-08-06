@@ -107,7 +107,8 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWRequestManager);
                 requestMethod:(NSString*)requestMethod
                  authenticate:(NSInteger)authenticate
                    resourceID:(NSInteger)resourceID
-                     callerID:(NSUInteger)callerID {
+                     callerID:(NSUInteger)callerID
+               uploadDelegate:(id)uploadDelegate {
 	
 	
 	NSString *requestURL = [self createAppRequestURL:localRequestURL
@@ -121,6 +122,11 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWRequestManager);
     
 	[request setDelegate:self];
 	[request setRequestMethod:requestMethod];
+    
+    if(uploadDelegate) {
+        [request setUploadProgressDelegate:uploadDelegate];
+        request.showAccurateProgress = YES;
+    }
     
     if(requestMethod == kPost)
         [request setShouldContinueWhenAppEntersBackground:YES];
@@ -143,7 +149,27 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWRequestManager);
                     requestMethod:requestMethod
                      authenticate:authenticate
                        resourceID:0
-                         callerID:0];
+                         callerID:0
+                   uploadDelegate:nil];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+- (NSInteger)createAppRequest:(NSString*)localRequestURL 
+          successNotification:(NSString*)successNotification
+            errorNotification:(NSString*)errorNotification
+                requestMethod:(NSString*)requestMethod
+                 authenticate:(BOOL)authenticate
+               uploadDelegate:(id)uploadDelegate {
+    
+    return [self createAppRequest:localRequestURL
+              successNotification:successNotification
+                errorNotification:errorNotification
+                    requestMethod:requestMethod
+                     authenticate:authenticate
+                       resourceID:0
+                         callerID:0
+                   uploadDelegate:uploadDelegate];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -160,7 +186,8 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWRequestManager);
                     requestMethod:requestMethod
                      authenticate:authenticate
                        resourceID:0
-                         callerID:callerID];
+                         callerID:callerID
+                   uploadDelegate:nil];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -177,7 +204,8 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWRequestManager);
                     requestMethod:requestMethod
                      authenticate:authenticate
                        resourceID:resourceID
-                         callerID:0];
+                         callerID:0
+                   uploadDelegate:nil];
 }	
 
 

@@ -41,7 +41,8 @@
                 requestMethod:(NSString*)requestMethod
                  authenticate:(NSInteger)authenticate
                    resourceID:(NSInteger)resourceID
-                     callerID:(NSUInteger)callerID;
+                     callerID:(NSUInteger)callerID
+               uploadDelegate:(id)uploadDelegate;
 
 /**
  * Overloaded method for createAppRequest. 
@@ -51,6 +52,16 @@
             errorNotification:(NSString*)errorNotification
                 requestMethod:(NSString*)requestMethod
                  authenticate:(BOOL)authenticate;
+
+/**
+ * Overloaded method for createAppRequest. 
+ */
+- (NSInteger)createAppRequest:(NSString*)localRequestURL 
+          successNotification:(NSString*)successNotification
+            errorNotification:(NSString*)errorNotification
+                requestMethod:(NSString*)requestMethod
+                 authenticate:(BOOL)authenticate
+               uploadDelegate:(id)uploadDelegate;
 
 /**
  * Overloaded method for createAppRequest. 
