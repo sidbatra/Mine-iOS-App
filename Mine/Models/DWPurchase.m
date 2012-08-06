@@ -30,6 +30,8 @@ static NSString* const kKeyLikes            = @"likes";
 static NSString* const kKeyComments         = @"comments";
 static NSString* const kKeyOrigThumbURL     = @"orig_thumb_url";
 static NSString* const kKeyOrigImageURL     = @"orig_image_url";
+static NSString* const kKeyQuery            = @"query";
+static NSString* const kKeySuggestionID     = @"suggestion_id";
 
 
 
@@ -45,7 +47,9 @@ static NSString* const kKeyOrigImageURL     = @"orig_image_url";
 @synthesize fbObjectID      = _fbObjectID;
 @synthesize origThumbURL    = _origThumbURL;
 @synthesize origImageURL    = _origImageURL;
+@synthesize query           = _query;
 @synthesize createdAt       = _createdAt;
+@synthesize suggestionID    = _suggestionID;
 @synthesize user            = _user;
 @synthesize store           = _store;
 @synthesize likes           = _likes;
@@ -102,8 +106,10 @@ static NSString* const kKeyOrigImageURL     = @"orig_image_url";
     NSString *fbObjectID    = [purchase objectForKey:kKeyFbObjectID];
     NSString *origThumbURL  = [purchase objectForKey:kKeyOrigThumbURL];
     NSString *origImageURL  = [purchase objectForKey:kKeyOrigImageURL];
+    NSString *query         = [purchase objectForKey:kKeyQuery];
     
     NSString *createdAt     = [purchase objectForKey:kKeyCreatedAt];
+    NSString *suggestionID  = [purchase objectForKey:kKeySuggestionID];
     
     NSDictionary *user      = [purchase objectForKey:kKeyUser];
     NSDictionary *store     = [purchase objectForKey:kKeyStore];
@@ -130,6 +136,9 @@ static NSString* const kKeyOrigImageURL     = @"orig_image_url";
     if(origImageURL && ![origImageURL isKindOfClass:[NSNull class]] && ![self.origImageURL isEqualToString:origImageURL])
         self.origImageURL = origImageURL;
     
+    if(query && ![self.query isEqualToString:query])
+        self.query = query;
+    
     
     if(giantImageURL && ![self.giantImageURL isEqualToString:giantImageURL])
         self.giantImageURL = giantImageURL;
@@ -140,6 +149,9 @@ static NSString* const kKeyOrigImageURL     = @"orig_image_url";
 
         self.createdAt = [format dateFromString:createdAt];
     }
+    
+    if(suggestionID)
+        self.suggestionID = [suggestionID integerValue];
     
     if(user) {
         if(self.user)

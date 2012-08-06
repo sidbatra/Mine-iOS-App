@@ -35,8 +35,10 @@ extern NSString* const kNImgPurchaseGiantLoadError;
     NSString        *_fbObjectID;
     NSString        *_origThumbURL;
     NSString        *_origImageURL;
+    NSString        *_query;
     
     NSDate          *_createdAt;
+    NSInteger       _suggestionID;
     
     DWUser          *_user;
     DWStore         *_store;
@@ -81,9 +83,19 @@ extern NSString* const kNImgPurchaseGiantLoadError;
 @property (nonatomic,copy) NSString *origImageURL;
 
 /**
+ * The query used to create the purchase.
+ */
+@property (nonatomic,copy) NSString *query;
+
+/**
  * Date the purchase was created.
  */
 @property (nonatomic,strong) NSDate *createdAt;
+
+/**
+ * The suggestion id used to create the purchase.
+ */
+@property (nonatomic,assign) NSInteger suggestionID;
 
 
 /**
