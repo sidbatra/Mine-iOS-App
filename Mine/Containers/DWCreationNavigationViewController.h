@@ -8,6 +8,9 @@
 
 #import "DWNavigationRootViewController.h"
 
-@interface DWCreationNavigationViewController : DWNavigationRootViewController
+#import "DWCreationViewController.h"
+
+
+@interface DWCreationNavigationViewController : DWNavigationRootViewController<DWCreationViewControllerDelegate>
 
 @end

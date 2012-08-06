@@ -33,6 +33,16 @@
  */
 - (void)hideKeyboard;
 
+/** 
+ * Show the preview for the selected product
+ */
+- (void)showProductPreview;
+
+/** 
+ * Hide the product preview
+ */
+- (void)hideProductPreview;
+
 @end
 
 
@@ -42,8 +52,14 @@
 @implementation DWCreationViewController
 
 @synthesize searchTextField             = _searchTextField;
+@synthesize productPreview              = _productPreview;
 @synthesize productImageView            = _productImageView;
+@synthesize productSelectButton         = _productSelectButton;
+@synthesize productRejectButton         = _productRejectButton;
+
+@synthesize product                     = _product;
 @synthesize productsViewController      = _productsViewController;
+@synthesize delegate                    = _delegate;
 
 //----------------------------------------------------------------------------------------------------
 - (id)init
@@ -97,6 +113,42 @@
     [self.searchTextField resignFirstResponder];
 }
 
+//----------------------------------------------------------------------------------------------------
+- (void)showProductPreview {
+    self.productPreview.hidden = false;
+    [self.view bringSubviewToFront:self.productPreview];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)hideProductPreview {
+    self.productPreview.hidden = true;
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark IBAction
+
+//----------------------------------------------------------------------------------------------------
+- (void)productSelectButtonClicked:(id)sender {
+    SEL sel = @selector(productSelected:);
+    
+    if(![self.delegate respondsToSelector:sel])
+        return;
+    
+    [self.delegate performSelector:sel
+                        withObject:self.product];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)productRejectButtonClicked:(id)sender {
+    self.product                = nil;
+    self.productImageView.image = nil;
+    
+    [self hideProductPreview];
+}
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
@@ -124,8 +176,14 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)productClicked:(DWProduct *)product {
-    [product downloadLargeImage];
-    self.productsViewController.view.hidden = true;
+    self.product = product;
+    
+    if(self.product.largeImage) 
+        self.productImageView.image = self.product.largeImage;
+    else 
+        [self.product downloadLargeImage];    
+    
+    [self showProductPreview];
 }
 
 
@@ -136,9 +194,7 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)productLargeImageLoaded:(NSNotification*)notification {
-    NSDictionary *userInfo = [notification userInfo];
-
-    self.productImageView.image = [userInfo objectForKey:@"image"];
+    self.productImageView.image = self.product.largeImage;
 }
 
 @end

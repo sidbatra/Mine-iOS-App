@@ -9,13 +9,17 @@
 #import "DWCreationNavigationViewController.h"
 #import "DWCreationViewController.h"
 
-//----------------------------------------------------------------------------------------------------
-//----------------------------------------------------------------------------------------------------
-//----------------------------------------------------------------------------------------------------
+
+/**
+ * Private declarations
+ */
 @interface DWCreationNavigationViewController() {
     DWCreationViewController *_creationViewController;
 }
 
+/**
+ * UIViewControllers for different creation screens
+ */
 @property (nonatomic,strong) DWCreationViewController *creationViewController;
 
 @end
@@ -48,6 +52,7 @@
 
     if(!self.creationViewController) {
         self.creationViewController = [[DWCreationViewController alloc] init];
+        self.creationViewController.delegate = self;
     }
     
     [self.view addSubview:self.creationViewController.view];
@@ -56,6 +61,18 @@
 //----------------------------------------------------------------------------------------------------
 - (void)viewDidUnload {
     [super viewDidUnload];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWCreationViewControllerDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)productSelected:(DWProduct *)product {
+    UIViewController *b = [[UIViewController alloc] init];
+    [self.navigationController pushViewController:b animated:YES];
 }
 
 @end
