@@ -19,6 +19,25 @@
 /**
  * 
  */
+extern NSString* const kKeyTitle;
+extern NSString* const kKeyEndorsement;
+extern NSString* const kKeySourceURL;
+extern NSString* const kKeyFbObjectID;
+extern NSString* const kKeyCreatedAt;
+extern NSString* const kKeyStore;
+extern NSString* const kKeyLikes;
+extern NSString* const kKeyComments;
+extern NSString* const kKeyOrigThumbURL;
+extern NSString* const kKeyOrigImageURL;
+extern NSString* const kKeyQuery;
+extern NSString* const kKeySuggestionID;
+extern NSString* const kKeyStoreName;
+extern NSString* const kKeyIsStoreUnknown;
+extern NSString* const kKeyShareToFB;
+extern NSString* const kKeyShareToTW;
+extern NSString* const kKeyShareToTB;
+extern NSString* const kKeyProduct;
+
 extern NSString* const kKeyGiantImageURL;
 extern NSString* const kNImgPurchaseGiantLoaded;
 extern NSString* const kNImgPurchaseGiantLoadError;

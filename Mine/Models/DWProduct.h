@@ -19,7 +19,7 @@ extern NSString* const kNImgProductMediumLoaded;
 extern NSString* const kNImgProductMediumLoadError;
 extern NSString* const kNImgProductLargeLoaded;
 extern NSString* const kNImgProductLargeLoadError;
-
+extern NSString* const kKeyExternalID;
 
 
 /**

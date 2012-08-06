@@ -20,18 +20,24 @@ NSString* const kNImgPurchaseGiantLoaded    = @"NImgPurchaseGiantLoaded";
 NSString* const kNImgPurchaseGiantLoadError = @"NImgPurchaseGiantLoadError";
 
 
-static NSString* const kKeyTitle            = @"title";
-static NSString* const kKeyEndorsement      = @"endorsement";
-static NSString* const kKeySourceURL        = @"source_url";
-static NSString* const kKeyFbObjectID       = @"fb_object_id";
-static NSString* const kKeyCreatedAt        = @"created_at";
-static NSString* const kKeyStore            = @"store";
-static NSString* const kKeyLikes            = @"likes";
-static NSString* const kKeyComments         = @"comments";
-static NSString* const kKeyOrigThumbURL     = @"orig_thumb_url";
-static NSString* const kKeyOrigImageURL     = @"orig_image_url";
-static NSString* const kKeyQuery            = @"query";
-static NSString* const kKeySuggestionID     = @"suggestion_id";
+NSString* const kKeyTitle            	= @"title";
+NSString* const kKeyEndorsement         = @"endorsement";
+NSString* const kKeySourceURL           = @"source_url";
+NSString* const kKeyFbObjectID          = @"fb_object_id";
+NSString* const kKeyCreatedAt           = @"created_at";
+NSString* const kKeyStore               = @"store";
+NSString* const kKeyLikes               = @"likes";
+NSString* const kKeyComments            = @"comments";
+NSString* const kKeyOrigThumbURL        = @"orig_thumb_url";
+NSString* const kKeyOrigImageURL        = @"orig_image_url";
+NSString* const kKeyQuery               = @"query";
+NSString* const kKeySuggestionID        = @"suggestion_id";
+NSString* const kKeyStoreName           = @"store_name";
+NSString* const kKeyIsStoreUnknown      = @"is_store_unknown";
+NSString* const kKeyShareToFB           = @"post_to_timeline";
+NSString* const kKeyShareToTW           = @"share_to_twitter";
+NSString* const kKeyShareToTB           = @"share_to_tumblr";
+NSString* const kKeyProduct             = @"product";
 
 
 

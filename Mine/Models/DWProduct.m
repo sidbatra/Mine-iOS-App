@@ -16,6 +16,7 @@ NSString* const kNImgProductMediumLoadError     = @"NImgProductMediumLoadError";
 NSString* const kNImgProductLargeLoaded         = @"NImgProductLargeLoaded";
 NSString* const kNImgProductLargeLoadError      = @"NImgProductLargeLoadError";
 
+NSString* const kKeyExternalID                  = @"external_id";
 
 static NSString* const kKeyUniqueID             = @"uniq_id";
 static NSString* const kKeyTitle                = @"title";
