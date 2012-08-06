@@ -32,6 +32,8 @@
         cell = [[DWPurchaseProfileCell alloc] initWithStyle:UITableViewStylePlain 
                                             reuseIdentifier:identifier];
     
+    cell.delegate = delegate;
+    
     [cell resetUI];
     
     for(NSInteger i=0 ; i<purchaseSet.length ; i++) {
@@ -40,6 +42,10 @@
         
         [cell setPurchaseImage:purchase.giantImage
                       forIndex:i 
+                withPurchaseID:purchase.databaseID];
+        
+        [cell setPurchaseTitle:purchase.title
+                      forIndex:i
                 withPurchaseID:purchase.databaseID];
     }
     

@@ -342,48 +342,37 @@ static NSString* const kNUserUpdateError        = @"NUserUpdateError";
 //----------------------------------------------------------------------------------------------------
 - (void)userLoaded:(NSNotification*)notification {
     
-    SEL idSel    = @selector(userResourceID);
-    SEL usersSel = @selector(userLoaded:);
+    SEL sel = @selector(userLoaded:withUserID:);
     
-    if(![self.delegate respondsToSelector:usersSel] || ![self.delegate respondsToSelector:idSel])
+    if(![self.delegate respondsToSelector:sel])
         return;
     
     
     NSDictionary *info      = [notification userInfo];
-    NSInteger resourceID    = [[info objectForKey:kKeyResourceID] integerValue];
-    
-    if(resourceID != (NSInteger)[self.delegate performSelector:idSel])
-        return;
-    
     
     NSDictionary *response  = [info objectForKey:kKeyResponse];
     DWUser *user            = [DWUser create:response];    
     
-    [self.delegate performSelector:usersSel
-                        withObject:user];
+    [self.delegate performSelector:sel
+                        withObject:user
+                        withObject:[info objectForKey:kKeyResourceID]];
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)userLoadError:(NSNotification*)notification {
     
-    SEL idSel    = @selector(userResourceID);
-    SEL errorSel = @selector(userLoadError:);
+    SEL sel = @selector(userLoadError:withUserID:);
     
-    if(![self.delegate respondsToSelector:errorSel] || ![self.delegate respondsToSelector:idSel])
+    if(![self.delegate respondsToSelector:sel])
         return;
     
     
-    NSDictionary *userInfo  = [notification userInfo];
-    NSInteger resourceID    = [[userInfo objectForKey:kKeyResourceID] integerValue];
+    NSDictionary *info  = [notification userInfo];
+    NSError *error      = [[notification userInfo] objectForKey:kKeyError];
     
-    if(resourceID != (NSInteger)[self.delegate performSelector:idSel])
-        return;
-    
-    
-    NSError *error = [[notification userInfo] objectForKey:kKeyError];
-    
-    [self.delegate performSelector:errorSel 
-                        withObject:[error localizedDescription]];
+    [self.delegate performSelector:sel
+                        withObject:[error localizedDescription]
+                        withObject:[info objectForKey:kKeyResourceID]];
 }
 
 

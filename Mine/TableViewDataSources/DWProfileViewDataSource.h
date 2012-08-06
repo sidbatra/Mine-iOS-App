@@ -8,8 +8,11 @@
 
 #import "DWTableViewDataSource.h"
 #import "DWPurchasesController.h"
+#import "DWFollowingsController.h"
+#import "DWUsersController.h"
 
-@interface DWProfileViewDataSource : DWTableViewDataSource<DWPurchasesControllerDelegate> {
+
+@interface DWProfileViewDataSource : DWTableViewDataSource<DWPurchasesControllerDelegate,DWFollowingsControllerDelegate,DWUsersControllerDelegate> {
     NSInteger   _userID;
 }
 

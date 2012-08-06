@@ -1,16 +1,13 @@
 //
-//  DWFeedViewController.m
+//  DWPurchasesViewController.m
 //  Mine
 //
-//  Created by Siddharth Batra on 7/23/12.
+//  Created by Siddharth Batra on 8/4/12.
 //  Copyright (c) 2012 Denwen, Inc. All rights reserved.
 //
 
-#import "DWFeedViewController.h"
+#import "DWPurchasesViewController.h"
 
-#import "DWCommentsViewController.h"
-
-#import "DWFeedViewDataSource.h"
 
 #import "DWPurchaseFeedPresenter.h"
 #import "DWPaginationPresenter.h"
@@ -18,15 +15,13 @@
 #import "DWPurchase.h"
 #import "DWUser.h"
 #import "DWLike.h"
-#import "DWPagination.h"
 
 #import "DWSession.h"
 #import "DWConstants.h"
 
 
-@interface DWFeedViewController() {
-    
-}
+
+@interface DWPurchasesViewController ()
 
 /**
  * Reload row that belongs to the given purchase.
@@ -37,14 +32,14 @@
 
 
 
-
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
-@implementation DWFeedViewController
+@implementation DWPurchasesViewController
 
 @synthesize likesController = _likesController;
 @synthesize delegate        = _delegate;
+
 
 //----------------------------------------------------------------------------------------------------
 - (id)init {
@@ -54,16 +49,12 @@
         
         self.likesController = [[DWLikesController alloc] init];
         self.likesController.delegate = self;
-        
-        self.tableViewDataSource = [[DWFeedViewDataSource alloc] init];
+                
         
         [self addModelPresenterForClass:[DWPurchase class]
                               withStyle:kDefaultModelPresenter 
                           withPresenter:[DWPurchaseFeedPresenter class]];
         
-        [self addModelPresenterForClass:[DWPagination class]
-                              withStyle:kDefaultModelPresenter 
-                          withPresenter:[DWPaginationPresenter class]];
         
         [[NSNotificationCenter defaultCenter] addObserver:self 
                                                  selector:@selector(purchaseGiantImageLoaded:) 
@@ -87,13 +78,6 @@
 //----------------------------------------------------------------------------------------------------
 - (void)dealloc {    
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
-//----------------------------------------------------------------------------------------------------
-- (void)viewDidLoad {
-	[super viewDidLoad];
-    
-    [(DWFeedViewDataSource*)self.tableViewDataSource loadFeed];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -163,7 +147,7 @@
     
     if(!purchase)
         return;
-        
+    
     [purchase removeTempLike];
     
     
@@ -179,7 +163,7 @@
 //----------------------------------------------------------------------------------------------------
 - (void)userClicked:(NSNumber *)userID {
     
-    SEL sel = @selector(feedViewUserClicked:);
+    SEL sel = @selector(purchasesViewUserClicked:);
     
     if(![self.delegate respondsToSelector:sel])
         return;
@@ -208,7 +192,7 @@
 //----------------------------------------------------------------------------------------------------
 - (void)allLikesClickedForPurchaseID:(NSNumber *)purchaseID {
     
-    SEL sel = @selector(feedViewAllLikesClickedForPurchase:);
+    SEL sel = @selector(purchasesViewAllLikesClickedForPurchase:);
     
     if(![self.delegate respondsToSelector:sel])
         return;
@@ -226,7 +210,7 @@
 - (void)commentClickedForPurchaseID:(NSNumber *)purchaseID 
                  withCreationIntent:(NSNumber *)creationIntent {
     
-    SEL sel = @selector(feedViewCommentClickedForPurchase:withCreationIntent:);
+    SEL sel = @selector(purchasesViewCommentClickedForPurchase:withCreationIntent:);
     
     if(![self.delegate respondsToSelector:sel])
         return;
@@ -235,11 +219,10 @@
     
     if(!purchase)
         return;
-
+    
     [self.delegate performSelector:sel
                         withObject:purchase
                         withObject:creationIntent];
 }
-
 
 @end

@@ -31,6 +31,9 @@ static NSString* const kEncodeKeyTumblrAccessTokenSecret    = @"DWUser_tumblrAcc
 static NSString* const kEncodeKeySquareImageURL             = @"DWUser_squareImageURL";
 static NSString* const kEncodeKeyLargeImageURL              = @"DWUser_largeImageURL";
 static NSString* const kEncodeKeyPurchasesCount             = @"DWUser_purchasesCount";
+static NSString* const kEncodeKeyFollowingsCount            = @"DWUser_followingsCount";
+static NSString* const kEncodeKeyInverseFollowingsCount     = @"DWUser_inverseFollowingsCount";
+
 
 static NSString* const kKeyFirstName                    = @"first_name";
 static NSString* const kKeyLastName                     = @"last_name";
@@ -44,6 +47,8 @@ static NSString* const kKeyTumblrAccessToken            = @"tumblr_access_token"
 static NSString* const kKeyTumblrAccessTokenSecret      = @"tumblr_access_token_secret";
 static NSString* const kKeyLargeImageURL                = @"large_image_url";
 static NSString* const kKeyPurchasesCount               = @"purchases_count";
+static NSString* const kKeyFollowingsCount              = @"followings_count";
+static NSString* const kKeyInverseFollowingsCount       = @"inverse_followings_count";
 
 
 
@@ -65,6 +70,8 @@ static NSString* const kKeyPurchasesCount               = @"purchases_count";
 @synthesize squareImageURL          	= _squareImageURL;
 @synthesize largeImageURL               = _largeImageURL;
 @synthesize purchasesCount              = _purchasesCount;
+@synthesize followingsCount             = _followingsCount;
+@synthesize inverseFollowingsCount      = _inverseFollowingsCount;
 
 //----------------------------------------------------------------------------------------------------
 - (id)initWithCoder:(NSCoder*)coder {
@@ -88,6 +95,8 @@ static NSString* const kKeyPurchasesCount               = @"purchases_count";
         self.largeImageURL              = [coder decodeObjectForKey:kEncodeKeyLargeImageURL];
         
         self.purchasesCount             = [[coder decodeObjectForKey:kEncodeKeyPurchasesCount] integerValue];
+        self.followingsCount            = [[coder decodeObjectForKey:kEncodeKeyFollowingsCount] integerValue];
+        self.inverseFollowingsCount     = [[coder decodeObjectForKey:kEncodeKeyInverseFollowingsCount] integerValue];
     }
     
     
@@ -119,6 +128,8 @@ static NSString* const kKeyPurchasesCount               = @"purchases_count";
     [coder encodeObject:self.largeImageURL                              forKey:kEncodeKeyLargeImageURL];
     
     [coder encodeObject:[NSNumber numberWithInt:self.purchasesCount]    forKey:kEncodeKeyPurchasesCount];
+    [coder encodeObject:[NSNumber numberWithInt:self.followingsCount]    forKey:kEncodeKeyFollowingsCount];
+    [coder encodeObject:[NSNumber numberWithInt:self.inverseFollowingsCount]    forKey:kEncodeKeyInverseFollowingsCount];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -164,6 +175,8 @@ static NSString* const kKeyPurchasesCount               = @"purchases_count";
     NSString *largeImageURL             = [user objectForKey:kKeyLargeImageURL];
     
     NSString *purchasesCount            = [user objectForKey:kKeyPurchasesCount];
+    NSString *followingsCount           = [user objectForKey:kKeyFollowingsCount];
+    NSString *inverseFollowingsCount    = [user objectForKey:kKeyInverseFollowingsCount];
     
     
     if(firstName && ![firstName isKindOfClass:[NSNull class]] && ![self.firstName isEqualToString:firstName])
@@ -180,23 +193,23 @@ static NSString* const kKeyPurchasesCount               = @"purchases_count";
     
     if(byline && ![self.byline isEqualToString:byline])
         self.byline = byline;
-
-
-    if(facebookAccessToken && ![self.facebookAccessToken isEqualToString:facebookAccessToken])
+    
+    
+    if(facebookAccessToken  && ![facebookAccessToken isKindOfClass:[NSNull class]]  && ![self.facebookAccessToken isEqualToString:facebookAccessToken])
         self.facebookAccessToken = facebookAccessToken;
     
-    if(twitterAccessToken && ![self.twitterAccessToken isEqualToString:twitterAccessToken])
+    if(twitterAccessToken  && ![twitterAccessToken isKindOfClass:[NSNull class]] && ![self.twitterAccessToken isEqualToString:twitterAccessToken])
         self.twitterAccessToken = twitterAccessToken;
     
-    if(twitterAccessTokenSecret && ![self.twitterAccessTokenSecret isEqualToString:twitterAccessTokenSecret])
+    if(twitterAccessTokenSecret  && ![twitterAccessTokenSecret isKindOfClass:[NSNull class]] && ![self.twitterAccessTokenSecret isEqualToString:twitterAccessTokenSecret])
         self.twitterAccessTokenSecret = twitterAccessTokenSecret;    
     
-    if(tumblrAccessToken && ![self.tumblrAccessToken isEqualToString:tumblrAccessToken])
+    if(tumblrAccessToken  && ![tumblrAccessToken isKindOfClass:[NSNull class]] && ![self.tumblrAccessToken isEqualToString:tumblrAccessToken])
         self.tumblrAccessToken = tumblrAccessToken;
     
-    if(tumblrAccessTokenSecret && ![self.tumblrAccessTokenSecret isEqualToString:tumblrAccessTokenSecret])
+    if(tumblrAccessTokenSecret  && ![tumblrAccessTokenSecret isKindOfClass:[NSNull class]] && ![self.tumblrAccessTokenSecret isEqualToString:tumblrAccessTokenSecret])
         self.tumblrAccessTokenSecret = tumblrAccessTokenSecret;    
-    
+
     
     if(squareImageURL && ![self.squareImageURL isEqualToString:squareImageURL])
         self.squareImageURL = squareImageURL;
@@ -207,6 +220,12 @@ static NSString* const kKeyPurchasesCount               = @"purchases_count";
     
     if(purchasesCount)
         self.purchasesCount = [purchasesCount integerValue];
+    
+    if(followingsCount)
+        self.followingsCount = [followingsCount integerValue];
+    
+    if(inverseFollowingsCount)
+        self.inverseFollowingsCount = [inverseFollowingsCount integerValue];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -248,13 +267,15 @@ static NSString* const kKeyPurchasesCount               = @"purchases_count";
 
 //----------------------------------------------------------------------------------------------------
 - (void)debug {
-    NSLog(@"%@ %@ %@ %@ %@  %@  %@ %@  %@ %@  %@ %@  %d",
+    NSLog(@"%@ %@ %@ %@ %@  %@  %@ %@  %@ %@  %@ %@  %d %d %d",
           self.firstName,self.lastName,self.gender,self.handle,self.byline,
           self.facebookAccessToken,
           self.twitterAccessToken,self.twitterAccessTokenSecret,          
           self.tumblrAccessToken,self.tumblrAccessTokenSecret,
           self.squareImageURL,self.largeImageURL,
-          self.purchasesCount);
+          self.purchasesCount,
+          self.followingsCount,
+          self.inverseFollowingsCount);
 }
 
 

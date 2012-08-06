@@ -7,9 +7,10 @@
 //
 
 #import "DWNavigationRootViewController.h"
-#import "DWProfileViewController.h"
 #import "DWCommentsCreateViewController.h"
 #import "DWLikersViewController.h"
+#import "DWPurchaseViewController.h"
+#import "DWWebViewController.h"
 
 #import "DWPurchase.h"
 
@@ -57,6 +58,7 @@
 //----------------------------------------------------------------------------------------------------
 - (void)displayUserProfile:(DWUser*)user {
     DWProfileViewController *profileViewController = [[DWProfileViewController alloc] initWithUser:user];
+    profileViewController.delegate = self;
     
     [self.navigationController pushViewController:profileViewController
                                          animated:YES];
@@ -65,6 +67,7 @@
 //----------------------------------------------------------------------------------------------------
 - (void)displayAllLikesForPurchase:(DWPurchase*)purchase {
     DWLikersViewController *likersViewController = [[DWLikersViewController alloc] initWithPurhcase:purchase];
+    likersViewController.delegate = self;
     
     [self.navigationController pushViewController:likersViewController
                                          animated:YES];
@@ -79,6 +82,76 @@
     
     [self.navigationController pushViewController:commentsViewController 
                                          animated:YES];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)displayPurchaseViewForPurchase:(DWPurchase*)purchase {
+    
+    DWPurchaseViewController *purchaseViewController = [[DWPurchaseViewController alloc] initWithPurhcase:purchase];
+    purchaseViewController.delegate = self;
+    
+    [self.navigationController pushViewController:purchaseViewController 
+                                         animated:YES];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)displayExternalURL:(NSString*)url {
+
+    DWWebViewController *webViewController = [[DWWebViewController alloc] initWithURL:url];
+    
+    [self.navigationController pushViewController:webViewController
+                                         animated:YES];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWProfileViewControllerDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)profileViewPurchaseClicked:(DWPurchase *)purchase {
+    [self displayPurchaseViewForPurchase:purchase];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)profileViewPurchaseURLClicked:(DWPurchase *)purchase {
+    [self displayExternalURL:purchase.sourceURL];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWUsersViewControllerDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)usersViewUserClicked:(DWUser *)user {
+    [self displayUserProfile:user];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWPurchasesViewControllerDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)purchasesViewUserClicked:(DWUser *)user {
+    [self displayUserProfile:user];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)purchasesViewAllLikesClickedForPurchase:(DWPurchase *)purchase {
+    [self displayAllLikesForPurchase:purchase];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)purchasesViewCommentClickedForPurchase:(DWPurchase *)purchase 
+                            withCreationIntent:(NSNumber *)creationIntent {
+    
+    [self displayCommentsCreateViewForPurchase:purchase
+                            withCreationIntent:[creationIntent boolValue]];
 }
 
 

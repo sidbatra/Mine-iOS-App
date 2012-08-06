@@ -79,11 +79,6 @@
 @optional
 
 /**
- * Used for pinging the delegate for a resource id
- */
-- (NSInteger)userResourceID;
-
-/**
  * Fired when a user is created
  */
 - (void)userCreated:(DWUser*)user;
@@ -96,12 +91,14 @@
 /**
  * User information loaded from the app server
  */
-- (void)userLoaded:(DWUser*)user;
+- (void)userLoaded:(DWUser*)user 
+        withUserID:(NSNumber*)userID;
 
 /**
  * Error loading user information
  */
-- (void)userLoadError:(NSString*)error;
+- (void)userLoadError:(NSString*)error
+           withUserID:(NSNumber*)userID;
 
 /**
  * Fired when a user is updated

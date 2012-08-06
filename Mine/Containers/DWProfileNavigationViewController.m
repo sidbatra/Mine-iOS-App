@@ -55,6 +55,7 @@
     
     if(!self.profileViewController) {
         self.profileViewController = [[DWProfileViewController alloc] initWithUser:[DWSession sharedDWSession].currentUser];
+        self.profileViewController.delegate = self;
     }
     
     [self.view addSubview:self.profileViewController.view];

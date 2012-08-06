@@ -27,6 +27,8 @@
 //----------------------------------------------------------------------------------------------------
 @implementation DWUsersViewController
 
+@synthesize delegate = _delegate;
+
 //----------------------------------------------------------------------------------------------------
 - (id)init {
     self = [super init];
@@ -56,6 +58,17 @@
 	[super viewDidLoad];
     
     [(DWUsersViewDataSource*)self.tableViewDataSource loadUsers];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark User presenter events
+
+//----------------------------------------------------------------------------------------------------
+- (void)userPresenterUserSelected:(DWUser*)user {
+    [self.delegate usersViewUserClicked:user];
 }
 
 

@@ -23,7 +23,8 @@
 //----------------------------------------------------------------------------------------------------
 @implementation DWProfileViewController
 
-@synthesize user = _user;
+@synthesize user        = _user;
+@synthesize delegate    = _delegate;
 
 //----------------------------------------------------------------------------------------------------
 - (id)initWithUser:(DWUser*)user {
@@ -71,6 +72,51 @@
     
     [(DWProfileViewDataSource*)self.tableViewDataSource loadPurchases];
 }
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWPurchaseProfileCell
+
+//----------------------------------------------------------------------------------------------------
+- (void)purchaseClicked:(NSInteger)purchaseID {
+    
+    SEL sel = @selector(profileViewPurchaseClicked:);
+    
+    if(![self.delegate respondsToSelector:sel])
+        return;
+
+    
+    DWPurchase *purchase = [DWPurchase fetch:purchaseID];
+    
+    if(!purchaseID)
+        return;
+    
+
+    [self.delegate performSelector:sel
+                        withObject:purchase];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)purchaseURLClicked:(NSInteger)purchaseID {
+    
+    SEL sel = @selector(profileViewPurchaseURLClicked:);
+    
+    if(![self.delegate respondsToSelector:sel])
+        return;
+    
+    
+    DWPurchase *purchase = [DWPurchase fetch:purchaseID];
+    
+    if(!purchaseID)
+        return;
+    
+    
+    [self.delegate performSelector:sel
+                        withObject:purchase]; 
+}
+
 
 
 //----------------------------------------------------------------------------------------------------

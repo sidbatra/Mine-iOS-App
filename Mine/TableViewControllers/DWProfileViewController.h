@@ -9,9 +9,14 @@
 #import "DWTableViewController.h"
 
 @class DWUser;
+@class DWPurchase;
+@protocol DWProfileViewControllerDelegate;
+
 
 @interface DWProfileViewController : DWTableViewController {
     DWUser  *_user;
+    
+    __weak id<DWProfileViewControllerDelegate,NSObject> delegate;
 }
 
 /**
@@ -21,8 +26,33 @@
 
 
 /**
+ * Delegate following the DWProfileViewControllerDelegate protocol.
+ */
+@property (nonatomic,weak) id<DWProfileViewControllerDelegate,NSObject> delegate;
+
+
+/**
  * Init with the user whose profile is to be displayed.
  */ 
 - (id)initWithUser:(DWUser*)user;
+
+@end
+
+/**
+ * Delegate for DWProfileViewController
+ */ 
+@protocol DWProfileViewControllerDelegate
+
+@optional
+
+/**
+ * A purchase element is clicked.
+ */
+- (void)profileViewPurchaseClicked:(DWPurchase*)purchase;
+
+/**
+ * A purchase URL element is clicked.
+ */
+- (void)profileViewPurchaseURLClicked:(DWPurchase*)purchase;
 
 @end
