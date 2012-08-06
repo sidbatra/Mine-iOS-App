@@ -27,7 +27,8 @@
                                 withParams:(NSDictionary*)params
                        successNotification:(NSString*)successNotification
                          errorNotification:(NSString*)errorNotification
-                              authenticate:(NSInteger)authenticate;
+                              authenticate:(NSInteger)authenticate
+                            uploadDelegate:(id)uploadDelegate;
 
 /**
  * Create a request to be sent to the app server.

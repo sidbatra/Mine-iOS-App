@@ -72,7 +72,8 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWRequestManager);
                                 withParams:(NSDictionary*)params
                        successNotification:(NSString*)successNotification
                          errorNotification:(NSString*)errorNotification
-                              authenticate:(NSInteger)authenticate {
+                              authenticate:(NSInteger)authenticate
+                            uploadDelegate:(id)uploadDelegate {
     
     NSString *requestURL = [self createAppRequestURL:localRequestURL
                                         authenticate:authenticate];
@@ -89,6 +90,11 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWRequestManager);
     while ((key = [enumerator nextObject])) {
         [request addPostValue:[params objectForKey:key] 
                        forKey:key];
+    }
+    
+    if(uploadDelegate) {
+        [request setUploadProgressDelegate:uploadDelegate];
+        request.showAccurateProgress = YES;
     }
     
     [request setDelegate:self];

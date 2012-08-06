@@ -95,7 +95,8 @@ static NSString* const kNInvitesCreateError     = @"NInvitesCreateError";
                                                                   withParams:params 
                                                          successNotification:kNInvitesCreated 
                                                            errorNotification:kNInvitesCreateError
-                                                                authenticate:YES];
+                                                                authenticate:YES
+                                                              uploadDelegate:nil];
 }
 
 

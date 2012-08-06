@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+@class DWPurchase;
+@class DWProduct;
 @protocol DWPurchasesControllerDelegate;
 
 @interface DWPurchasesController : NSObject {
@@ -24,6 +26,16 @@
  */
 - (void)getPurchasesForUser:(NSInteger)userID 
                      before:(NSInteger)before;
+
+/**
+ * Create a new purchase.
+ */
+- (NSInteger)createPurchaseFromTemplate:(DWPurchase*)purchase
+                             andProduct:(DWProduct*)product
+                          withShareToFB:(BOOL)shareToFB
+                          withShareToTW:(BOOL)shareToTW
+                          withShareToTB:(BOOL)shareToTB 
+                         uploadDelegate:(id)uploadDelegate;
 @end
 
 
@@ -46,6 +58,18 @@
  */
 - (void)purchasesLoadError:(NSString*)error 
                    forUser:(NSNumber*)userID;
+
+/**
+ * Purchase successfully created.
+ */
+- (void)purchaseCreated:(DWPurchase*)purchase
+         fromResourceID:(NSNumber*)resourceID;
+
+/**
+ * Purchase creation error.
+ */
+- (void)purchaseCreateError:(NSString*)error
+             fromResourceID:(NSNumber*)resourceID;
 
 
 @end
