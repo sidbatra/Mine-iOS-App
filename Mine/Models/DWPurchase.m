@@ -28,6 +28,8 @@ static NSString* const kKeyCreatedAt        = @"created_at";
 static NSString* const kKeyStore            = @"store";
 static NSString* const kKeyLikes            = @"likes";
 static NSString* const kKeyComments         = @"comments";
+static NSString* const kKeyOrigThumbURL     = @"orig_thumb_url";
+static NSString* const kKeyOrigImageURL     = @"orig_image_url";
 
 
 
@@ -41,6 +43,8 @@ static NSString* const kKeyComments         = @"comments";
 @synthesize sourceURL       = _sourceURL;
 @synthesize giantImageURL   = _giantImageURL;
 @synthesize fbObjectID      = _fbObjectID;
+@synthesize origThumbURL    = _origThumbURL;
+@synthesize origImageURL    = _origImageURL;
 @synthesize createdAt       = _createdAt;
 @synthesize user            = _user;
 @synthesize store           = _store;
@@ -96,6 +100,8 @@ static NSString* const kKeyComments         = @"comments";
     NSString *sourceURL     = [purchase objectForKey:kKeySourceURL];
     NSString *giantImageURL = [purchase objectForKey:kKeyGiantImageURL];
     NSString *fbObjectID    = [purchase objectForKey:kKeyFbObjectID];
+    NSString *origThumbURL  = [purchase objectForKey:kKeyOrigThumbURL];
+    NSString *origImageURL  = [purchase objectForKey:kKeyOrigImageURL];
     
     NSString *createdAt     = [purchase objectForKey:kKeyCreatedAt];
     
@@ -117,6 +123,12 @@ static NSString* const kKeyComments         = @"comments";
     
     if(fbObjectID && ![fbObjectID isKindOfClass:[NSNull class]] && ![self.fbObjectID isEqualToString:fbObjectID])
         self.fbObjectID = fbObjectID;
+    
+    if(origThumbURL && ![origThumbURL isKindOfClass:[NSNull class]] && ![self.origThumbURL isEqualToString:origThumbURL])
+        self.origThumbURL = origThumbURL;
+    
+    if(origImageURL && ![origImageURL isKindOfClass:[NSNull class]] && ![self.origImageURL isEqualToString:origImageURL])
+        self.origImageURL = origImageURL;
     
     
     if(giantImageURL && ![self.giantImageURL isEqualToString:giantImageURL])

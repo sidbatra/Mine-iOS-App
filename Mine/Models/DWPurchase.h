@@ -33,6 +33,8 @@ extern NSString* const kNImgPurchaseGiantLoadError;
     NSString        *_sourceURL;
     NSString        *_giantImageURL;
     NSString        *_fbObjectID;
+    NSString        *_origThumbURL;
+    NSString        *_origImageURL;
     
     NSDate          *_createdAt;
     
@@ -67,6 +69,16 @@ extern NSString* const kNImgPurchaseGiantLoadError;
  * ID of the object on facebook's open graph.
  */
 @property (nonatomic,copy) NSString *fbObjectID;
+
+/**
+ * URL of the original thumbnail
+ */
+@property (nonatomic,copy) NSString *origThumbURL;
+
+/**
+ * URL of the original image
+ */
+@property (nonatomic,copy) NSString *origImageURL;
 
 /**
  * Date the purchase was created.
