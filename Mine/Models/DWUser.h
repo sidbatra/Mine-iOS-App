@@ -29,6 +29,7 @@ extern NSString* const kNImgUserLargeLoadError;
     NSString        *_gender;
     NSString        *_handle;
     NSString        *_byline;
+    NSString        *_email;
 
     NSString        *_facebookAccessToken;
     NSString        *_twitterAccessToken;
@@ -39,6 +40,7 @@ extern NSString* const kNImgUserLargeLoadError;
     NSString        *_squareImageURL;
     NSString        *_largeImageURL;
     
+    NSInteger       _age;
     NSInteger       _purchasesCount;
     NSInteger       _followingsCount;
     NSInteger       _inverseFollowingsCount;
@@ -73,6 +75,11 @@ extern NSString* const kNImgUserLargeLoadError;
  * Byline
  */
 @property (nonatomic,copy) NSString *byline;
+
+/**
+ * Email
+ */
+@property (nonatomic,copy) NSString *email;
 
 /**
  * Facebook Access Token
@@ -118,6 +125,12 @@ extern NSString* const kNImgUserLargeLoadError;
  * Returns the large UIImage if it has been downloaded or nil
  */
 @property (nonatomic,readonly) UIImage *largeImage;
+
+
+/**
+ * Age.
+ */
+@property (nonatomic,assign) NSInteger age;
 
 /**
  * Total purchases added.

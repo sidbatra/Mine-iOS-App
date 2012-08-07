@@ -23,6 +23,7 @@ static NSString* const kEncodeKeyLastName                   = @"DWUser_lastName"
 static NSString* const kEncodeKeyGender                     = @"DWUser_gender";
 static NSString* const kEncodeKeyHandle                     = @"DWUser_handle";
 static NSString* const kEncodeKeyByline                     = @"DWUser_byline";
+static NSString* const kEncodeKeyEmail                      = @"DWUser_email";
 static NSString* const kEncodeKeyFacebookAccessToken        = @"DWUser_facebookAccessToken";
 static NSString* const kEncodeKeyTwitterAccessToken         = @"DWUser_twitterAccessToken";
 static NSString* const kEncodeKeyTwitterAccessTokenSecret   = @"DWUser_twitterAccessTokenSecret";
@@ -30,6 +31,7 @@ static NSString* const kEncodeKeyTumblrAccessToken          = @"DWUser_tumblrAcc
 static NSString* const kEncodeKeyTumblrAccessTokenSecret    = @"DWUser_tumblrAccessTokenSecret";
 static NSString* const kEncodeKeySquareImageURL             = @"DWUser_squareImageURL";
 static NSString* const kEncodeKeyLargeImageURL              = @"DWUser_largeImageURL";
+static NSString* const kEncodeKeyAge                        = @"DWUser_age";
 static NSString* const kEncodeKeyPurchasesCount             = @"DWUser_purchasesCount";
 static NSString* const kEncodeKeyFollowingsCount            = @"DWUser_followingsCount";
 static NSString* const kEncodeKeyInverseFollowingsCount     = @"DWUser_inverseFollowingsCount";
@@ -40,12 +42,14 @@ static NSString* const kKeyLastName                     = @"last_name";
 static NSString* const kKeyGender                       = @"gender";
 static NSString* const kKeyHandle                       = @"handle";
 static NSString* const kKeyByline                       = @"byline";
+static NSString* const kKeyEmail                        = @"email";
 static NSString* const kKeyFacebookAccessToken          = @"access_token";
 static NSString* const kKeyTwitterAccessToken           = @"tw_access_token";
 static NSString* const kKeyTwitterAccessTokenSecret     = @"tw_access_token_secret";
 static NSString* const kKeyTumblrAccessToken            = @"tumblr_access_token";
 static NSString* const kKeyTumblrAccessTokenSecret      = @"tumblr_access_token_secret";
 static NSString* const kKeyLargeImageURL                = @"large_image_url";
+static NSString* const kKeyAge                          = @"age";
 static NSString* const kKeyPurchasesCount               = @"purchases_count";
 static NSString* const kKeyFollowingsCount              = @"followings_count";
 static NSString* const kKeyInverseFollowingsCount       = @"inverse_followings_count";
@@ -62,6 +66,7 @@ static NSString* const kKeyInverseFollowingsCount       = @"inverse_followings_c
 @synthesize gender                      = _gender;
 @synthesize handle                      = _handle;
 @synthesize byline                      = _byline;
+@synthesize email                       = _email;
 @synthesize facebookAccessToken         = _facebookAccessToken;
 @synthesize twitterAccessToken          = _twitterAccessToken;
 @synthesize twitterAccessTokenSecret    = _twitterAccessTokenSecret;
@@ -69,6 +74,7 @@ static NSString* const kKeyInverseFollowingsCount       = @"inverse_followings_c
 @synthesize tumblrAccessTokenSecret     = _tumblrAccessTokenSecret;
 @synthesize squareImageURL          	= _squareImageURL;
 @synthesize largeImageURL               = _largeImageURL;
+@synthesize age                         = _age;
 @synthesize purchasesCount              = _purchasesCount;
 @synthesize followingsCount             = _followingsCount;
 @synthesize inverseFollowingsCount      = _inverseFollowingsCount;
@@ -84,6 +90,7 @@ static NSString* const kKeyInverseFollowingsCount       = @"inverse_followings_c
         self.gender                     = [coder decodeObjectForKey:kEncodeKeyGender];
         self.handle                     = [coder decodeObjectForKey:kEncodeKeyHandle];
         self.byline                     = [coder decodeObjectForKey:kEncodeKeyByline];
+        self.email                      = [coder decodeObjectForKey:kEncodeKeyEmail];
 
         self.facebookAccessToken        = [coder decodeObjectForKey:kEncodeKeyFacebookAccessToken];
         self.twitterAccessToken         = [coder decodeObjectForKey:kEncodeKeyTwitterAccessToken];
@@ -94,6 +101,7 @@ static NSString* const kKeyInverseFollowingsCount       = @"inverse_followings_c
         self.squareImageURL             = [coder decodeObjectForKey:kEncodeKeySquareImageURL];
         self.largeImageURL              = [coder decodeObjectForKey:kEncodeKeyLargeImageURL];
         
+        self.age                        = [[coder decodeObjectForKey:kEncodeKeyAge] integerValue];
         self.purchasesCount             = [[coder decodeObjectForKey:kEncodeKeyPurchasesCount] integerValue];
         self.followingsCount            = [[coder decodeObjectForKey:kEncodeKeyFollowingsCount] integerValue];
         self.inverseFollowingsCount     = [[coder decodeObjectForKey:kEncodeKeyInverseFollowingsCount] integerValue];
@@ -117,6 +125,7 @@ static NSString* const kKeyInverseFollowingsCount       = @"inverse_followings_c
     [coder encodeObject:self.gender                                     forKey:kEncodeKeyGender];
     [coder encodeObject:self.handle                                     forKey:kEncodeKeyHandle];
     [coder encodeObject:self.byline                                     forKey:kEncodeKeyByline];
+    [coder encodeObject:self.email                                      forKey:kEncodeKeyEmail];
 
     [coder encodeObject:self.facebookAccessToken                        forKey:kEncodeKeyFacebookAccessToken];
     [coder encodeObject:self.twitterAccessToken                         forKey:kEncodeKeyTwitterAccessToken];
@@ -127,6 +136,7 @@ static NSString* const kKeyInverseFollowingsCount       = @"inverse_followings_c
     [coder encodeObject:self.squareImageURL                             forKey:kEncodeKeySquareImageURL];
     [coder encodeObject:self.largeImageURL                              forKey:kEncodeKeyLargeImageURL];
     
+    [coder encodeObject:[NSNumber numberWithInt:self.age]               forKey:kEncodeKeyAge];
     [coder encodeObject:[NSNumber numberWithInt:self.purchasesCount]    forKey:kEncodeKeyPurchasesCount];
     [coder encodeObject:[NSNumber numberWithInt:self.followingsCount]    forKey:kEncodeKeyFollowingsCount];
     [coder encodeObject:[NSNumber numberWithInt:self.inverseFollowingsCount]    forKey:kEncodeKeyInverseFollowingsCount];
@@ -164,6 +174,7 @@ static NSString* const kKeyInverseFollowingsCount       = @"inverse_followings_c
     NSString *gender                    = [user objectForKey:kKeyGender];
     NSString *handle                    = [user objectForKey:kKeyHandle];
     NSString *byline                    = [user objectForKey:kKeyByline];
+    NSString *email                     = [user objectForKey:kKeyEmail];
 
     NSString *facebookAccessToken       = [user objectForKey:kKeyFacebookAccessToken];
     NSString *twitterAccessToken        = [user objectForKey:kKeyTwitterAccessToken];
@@ -174,6 +185,7 @@ static NSString* const kKeyInverseFollowingsCount       = @"inverse_followings_c
     NSString *squareImageURL            = [user objectForKey:kKeySquareImageURL];
     NSString *largeImageURL             = [user objectForKey:kKeyLargeImageURL];
     
+    NSString *age                       = [user objectForKey:kKeyAge];
     NSString *purchasesCount            = [user objectForKey:kKeyPurchasesCount];
     NSString *followingsCount           = [user objectForKey:kKeyFollowingsCount];
     NSString *inverseFollowingsCount    = [user objectForKey:kKeyInverseFollowingsCount];
@@ -193,6 +205,9 @@ static NSString* const kKeyInverseFollowingsCount       = @"inverse_followings_c
     
     if(byline && ![self.byline isEqualToString:byline])
         self.byline = byline;
+    
+    if(email && ![email isKindOfClass:[NSNull class]] && ![self.email isEqualToString:email])
+        self.email = email;
     
     
     if(facebookAccessToken  && ![facebookAccessToken isKindOfClass:[NSNull class]]  && ![self.facebookAccessToken isEqualToString:facebookAccessToken])
@@ -217,6 +232,9 @@ static NSString* const kKeyInverseFollowingsCount       = @"inverse_followings_c
     if(largeImageURL && ![self.largeImageURL isEqualToString:largeImageURL])
         self.largeImageURL = largeImageURL;
     
+    
+    if(age)
+        self.age = [age integerValue];
     
     if(purchasesCount)
         self.purchasesCount = [purchasesCount integerValue];
@@ -277,8 +295,8 @@ static NSString* const kKeyInverseFollowingsCount       = @"inverse_followings_c
 
 //----------------------------------------------------------------------------------------------------
 - (void)debug {
-    NSLog(@"%@ %@ %@ %@ %@  %@  %@ %@  %@ %@  %@ %@  %d %d %d",
-          self.firstName,self.lastName,self.gender,self.handle,self.byline,
+    NSLog(@"%@ %@ %@ %@ %@ %@ %d %@  %@ %@  %@ %@  %@ %@  %d %d %d",
+          self.firstName,self.lastName,self.gender,self.handle,self.byline,self.email,self.age,
           self.facebookAccessToken,
           self.twitterAccessToken,self.twitterAccessTokenSecret,          
           self.tumblrAccessToken,self.tumblrAccessTokenSecret,
