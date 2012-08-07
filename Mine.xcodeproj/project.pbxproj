@@ -761,10 +761,10 @@
 		BB2BC04415CDE13800CCC4BB /* Purchases */ = {
 			isa = PBXGroup;
 			children = (
-				BB2BC04515CDE13900CCC4BB /* DWFeedViewController.h */,
-				BB2BC04615CDE13900CCC4BB /* DWFeedViewController.m */,
 				BB2BC04715CDE13900CCC4BB /* DWPurchasesViewController.h */,
 				BB2BC04815CDE13900CCC4BB /* DWPurchasesViewController.m */,
+				BB2BC04515CDE13900CCC4BB /* DWFeedViewController.h */,
+				BB2BC04615CDE13900CCC4BB /* DWFeedViewController.m */,
 				BB2BC04915CDE13900CCC4BB /* DWPurchaseViewController.h */,
 				BB2BC04A15CDE13900CCC4BB /* DWPurchaseViewController.m */,
 			);

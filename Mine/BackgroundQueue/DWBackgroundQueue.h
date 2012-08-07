@@ -8,6 +8,12 @@
 #import "DWBackgroundQueueItem.h"
 
 
+extern NSString* const kNBackgroundQueueUpdated;
+extern NSString* const kKeyTotalActive;
+extern NSString* const kKeyTotalFailed;
+extern NSString* const kKeyTotalProgress;
+
+
 /**
  * Queue for managing asynchronous simultaneous background requests.
  */

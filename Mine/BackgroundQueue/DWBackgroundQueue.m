@@ -7,6 +7,12 @@
 
 #import "SynthesizeSingleton.h"
 
+NSString* const kNBackgroundQueueUpdated    = @"BackgroundQueueUpdated";
+NSString* const kKeyTotalActive             = @"total_active";
+NSString* const kKeyTotalFailed             = @"total_failed";
+NSString* const kKeyTotalProgress           = @"total_progress";
+
+
 static float kFinalPostUpdateDelay	= 0.5;
 
 
@@ -72,15 +78,14 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWBackgroundQueue);
 	if(totalActive)
 		totalProgress /= totalActive;
 	
-    NSLog(@"Creation Queue - %d %d %f",totalActive,totalFailed,totalProgress);
-    /*
-	[[NSNotificationCenter defaultCenter] postNotificationName:kNCreationQueueUpdated 
+    
+	[[NSNotificationCenter defaultCenter] postNotificationName:kNBackgroundQueueUpdated 
 														object:nil
 													  userInfo:[NSDictionary dictionaryWithObjectsAndKeys:
 																[NSNumber numberWithInt:totalActive],kKeyTotalActive,
 																[NSNumber numberWithInt:totalFailed],kKeyTotalFailed,
 																[NSNumber numberWithFloat:totalProgress],kKeyTotalProgress,
-																 nil]];*/
+																 nil]];
 }
 
 //----------------------------------------------------------------------------------------------------

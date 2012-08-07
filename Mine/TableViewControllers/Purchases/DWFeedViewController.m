@@ -44,6 +44,11 @@
         [self addModelPresenterForClass:[DWPagination class]
                               withStyle:kDefaultModelPresenter 
                           withPresenter:[DWPaginationPresenter class]];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self 
+                                                 selector:@selector(backgroundQueueUpdated:) 
+                                                     name:kNBackgroundQueueUpdated
+                                                   object:nil];
     }
     
     return self;
@@ -89,5 +94,19 @@
                                                       afterDelay:3.5];*/
 }
 
+
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark Notifications
+
+//----------------------------------------------------------------------------------------------------
+- (void)backgroundQueueUpdated:(NSNotification*)notification {
+    NSDictionary *info = [notification userInfo];
+    
+    NSLog(@"Background queue - %d %d %f",[[info objectForKey:kKeyTotalActive] integerValue],[[info objectForKey:kKeyTotalFailed] integerValue],[[info objectForKey:kKeyTotalProgress] floatValue]);
+}
 
 @end
