@@ -18,13 +18,20 @@
 
 
 @interface DWFeedNavigationViewController () {
-    DWFeedViewController *_feedViewController;
+    DWFeedViewController    *_feedViewController;
+    
+    DWQueueProgressView     *_queueProgressView;
 }
 
 /**
  * Table view controller for displaying the feed.
  */
 @property (nonatomic,strong) DWFeedViewController *feedViewController;
+
+/**
+ * Nav bar queue progress view for displaying progress from the background queue.
+ */
+@property (nonatomic,strong) DWQueueProgressView *queueProgressView;
 
 @end
 
@@ -35,7 +42,8 @@
 //----------------------------------------------------------------------------------------------------
 @implementation DWFeedNavigationViewController
 
-@synthesize feedViewController = _feedViewController;
+@synthesize feedViewController  = _feedViewController;
+@synthesize queueProgressView   = _queueProgressView;
 
 //----------------------------------------------------------------------------------------------------
 - (void)awakeFromNib {
@@ -67,6 +75,11 @@
     [self.view addSubview:self.feedViewController.view];
     
     
+    
+    if(!self.queueProgressView) {    
+        self.queueProgressView			= [[DWQueueProgressView alloc] initWithFrame:CGRectMake(60,0,200,44)];
+        self.queueProgressView.delegate	= self;
+    }
     
     /*
      DWStore *store = [[DWStore alloc] init];
@@ -119,6 +132,24 @@
     
     NSLog(@"Background queue - %d %d %f",[[info objectForKey:kKeyTotalActive] integerValue],[[info objectForKey:kKeyTotalFailed] integerValue],[[info objectForKey:kKeyTotalProgress] floatValue]);
 }
+
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWPostProgressViewDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)deleteButtonPressed {
+    [[DWBackgroundQueue sharedDWBackgroundQueue] deleteRequests];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)retryButtonPressed {
+    [[DWBackgroundQueue sharedDWBackgroundQueue] retryRequests];
+}
+
 
 
 //----------------------------------------------------------------------------------------------------

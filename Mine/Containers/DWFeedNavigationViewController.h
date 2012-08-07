@@ -9,8 +9,10 @@
 #import "DWNavigationRootViewController.h"
 
 #import "DWFeedViewController.h"
+#import "DWQueueProgressView.h"
 
 
-@interface DWFeedNavigationViewController : DWNavigationRootViewController<DWFeedViewControllerDelegate>
+
+@interface DWFeedNavigationViewController : DWNavigationRootViewController<DWFeedViewControllerDelegate,DWQueueProgressViewDelegate>
 
 @end
