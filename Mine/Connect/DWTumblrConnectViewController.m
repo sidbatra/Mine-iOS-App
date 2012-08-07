@@ -1,26 +1,26 @@
 //
-//  DWTwitterConnectViewController.m
+//  DWTumblrConnectViewController.m
 //  Mine
 //
-//  Created by Deepak Rao on 8/6/12.
+//  Created by Deepak Rao on 8/7/12.
 //  Copyright (c) 2012 Denwen, Inc. All rights reserved.
 //
 
-#import "DWTwitterConnectViewController.h"
+#import "DWTumblrConnectViewController.h"
 #import "DWSession.h"
 
 /**
  * Private declarations
  */
-@interface DWTwitterConnectViewController () {
-    DWTwitterConnect    *_twitterConnect;
+@interface DWTumblrConnectViewController () {
+    DWTumblrConnect     *_tumblrConnect;
     DWUsersController   *_usersController;
 }
 
 /**
- * Wrapper for twitter xAuth
+ * Wrapper for tumblr xAuth
  */
-@property (nonatomic,strong) DWTwitterConnect *twitterConnect;
+@property (nonatomic,strong) DWTumblrConnect *tumblrConnect;
 
 /**
  * Data controller for the users model.
@@ -33,11 +33,11 @@
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
-@implementation DWTwitterConnectViewController
+@implementation DWTumblrConnectViewController
 
-@synthesize usernameTextField           = _usernameTextField;
+@synthesize emailTextField              = _emailTextField;
 @synthesize passwordTextField           = _passwordTextField;
-@synthesize twitterConnect              = _twitterConnect;
+@synthesize tumblrConnect               = _tumblrConnect;
 @synthesize usersController             = _usersController;
 
 //----------------------------------------------------------------------------------------------------
@@ -45,8 +45,8 @@
     self = [super init];
     
     if (self) {
-        self.twitterConnect             = [[DWTwitterConnect alloc] init];
-        self.twitterConnect.delegate 	= self;
+        self.tumblrConnect              = [[DWTumblrConnect alloc] init];
+        self.tumblrConnect.delegate 	= self;
         
         self.usersController            = [[DWUsersController alloc] init];
         self.usersController.delegate   = self;
@@ -75,8 +75,8 @@
 - (BOOL)textFieldShouldReturn:(UITextField*)textField {
     
 	if(textField == self.passwordTextField)
-        [self.twitterConnect authorizeWithUsername:self.usernameTextField.text 
-                                       andPassword:self.passwordTextField.text];
+        [self.tumblrConnect authorizeWithUsername:self.emailTextField.text 
+                                      andPassword:self.passwordTextField.text];    
     
 	return YES;
 }
@@ -85,20 +85,20 @@
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
-#pragma mark DWTwitterConnectDelegate
+#pragma mark DWTumblrConnectDelegate
 
 //----------------------------------------------------------------------------------------------------
-- (void)twAuthenticatedWithToken:(NSString *)token 
-                       andSecret:(NSString *)secret {
+- (void)tumblrAuthenticatedWithToken:(NSString *)accessToken 
+                           andSecret:(NSString *)secret {
     
     [self.usersController updateUserHavingID:[DWSession sharedDWSession].currentUser.databaseID 
-                            withTwitterToken:token 
-                            andTwitterSecret:secret];
+                             withTumblrToken:accessToken 
+                             andTumblrSecret:secret];
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)twAuthenticationFailed {
-    NSLog(@"Twitter Authentication Failed - Show an alert");
+- (void)tumblrAuthenticationFailed {
+    NSLog(@"Tumblr Authentication Failed - Show an alert");
 }
 
 

@@ -271,6 +271,11 @@ static NSString* const kKeyInverseFollowingsCount       = @"inverse_followings_c
 }
 
 //----------------------------------------------------------------------------------------------------
+- (BOOL)isTumblrAuthorized {
+    return self.tumblrAccessToken && self.tumblrAccessTokenSecret;
+}
+
+//----------------------------------------------------------------------------------------------------
 - (void)debug {
     NSLog(@"%@ %@ %@ %@ %@  %@  %@ %@  %@ %@  %@ %@  %d %d %d",
           self.firstName,self.lastName,self.gender,self.handle,self.byline,

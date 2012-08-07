@@ -8,6 +8,7 @@
 
 #import "DWPurchaseInputViewController.h"
 #import "DWTwitterConnectViewController.h"
+#import "DWTumblrConnectViewController.h"
 #import "DWProduct.h"
 #import "DWSession.h"
 
@@ -18,6 +19,7 @@
 @interface DWPurchaseInputViewController () {
     DWProduct                           *_product;
     DWTwitterConnectViewController      *_twitterConnectViewController;
+    DWTumblrConnectViewController       *_tumblrConnectViewController;
 }
 
 /**
@@ -29,6 +31,7 @@
  * UIViewControllers for connecting with third party apps
  */
 @property (nonatomic,strong) DWTwitterConnectViewController *twitterConnectViewController;
+@property (nonatomic,strong) DWTumblrConnectViewController *tumblrConnectViewController;
 
 @end
 
@@ -39,8 +42,10 @@
 @implementation DWPurchaseInputViewController
 
 @synthesize twitterSwitch                   = _twitterSwitch;
+@synthesize tumblrSwitch                    = _tumblrSwitch;
 @synthesize product                         = _product;
 @synthesize twitterConnectViewController    = _twitterConnectViewController;
+@synthesize tumblrConnectViewController     = _tumblrConnectViewController;
 
 //----------------------------------------------------------------------------------------------------
 - (id)initWithProduct:(DWProduct*)product {
@@ -48,7 +53,9 @@
     
     if(self) {        
         self.product = product;        
-        self.twitterConnectViewController = [[DWTwitterConnectViewController alloc] init];
+        
+        self.twitterConnectViewController   = [[DWTwitterConnectViewController alloc] init];
+        self.tumblrConnectViewController    = [[DWTumblrConnectViewController alloc] init];
     }
     
     return self;
@@ -78,6 +85,14 @@
                                              animated:YES];
 }
 
+//----------------------------------------------------------------------------------------------------
+- (IBAction)tumblrSwitchToggled:(id)sender {    
+    
+    if (self.tumblrSwitch.on && ![[DWSession sharedDWSession].currentUser isTumblrAuthorized])
+        [self.navigationController pushViewController:self.tumblrConnectViewController 
+                                             animated:YES];
+}
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
@@ -86,7 +101,9 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)willShowOnNav {
-    self.twitterSwitch.on = [[DWSession sharedDWSession].currentUser isTwitterAuthorized] ? YES : NO;
+    self.twitterSwitch.on   = [[DWSession sharedDWSession].currentUser isTwitterAuthorized] ? YES : NO;
+    self.tumblrSwitch.on    = [[DWSession sharedDWSession].currentUser isTumblrAuthorized]  ? YES : NO;
+    
     [[DWSession sharedDWSession].currentUser debug];
 }
 

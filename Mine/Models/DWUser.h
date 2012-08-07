@@ -151,6 +151,11 @@ extern NSString* const kNImgUserLargeLoadError;
 - (BOOL)isTwitterAuthorized;
 
 /**
+ * Returns if the user has authorized our tumblr application
+ */
+- (BOOL)isTumblrAuthorized;
+
+/**
  * Prints out key fields for debugging.
  */
 - (void)debug;
