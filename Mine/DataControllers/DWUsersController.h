@@ -53,6 +53,13 @@
 
 
 /**
+ * Update the facebook access token of the given user ID
+ */
+- (void)updateUserHavingID:(NSInteger)userID 
+   withFacebookAccessToken:(NSString*)facebookToken;
+
+
+/**
  * Update the tumblr token and secret of the given user ID
  */
 - (void)updateUserHavingID:(NSInteger)userID 

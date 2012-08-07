@@ -159,6 +159,12 @@ extern NSString* const kNImgUserLargeLoadError;
 - (void)downloadLargeImage;
 
 /**
+ * Returns if the user has authorized our facebook app and
+ * the access token is valid and not expired
+ */
+- (BOOL)isFacebookAuthorized;
+
+/**
  * Returns if the user has authorized our twitter application
  */
 - (BOOL)isTwitterAuthorized;

@@ -47,6 +47,8 @@
 		267D572D15D095DA00DD4AB1 /* DWTwitterConnectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 267D572B15D095DA00DD4AB1 /* DWTwitterConnectViewController.xib */; };
 		267E550C15D1B4E900A3A8C0 /* DWTumblrConnectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 267E550A15D1B4E800A3A8C0 /* DWTumblrConnectViewController.m */; };
 		267E550D15D1B4E900A3A8C0 /* DWTumblrConnectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 267E550B15D1B4E900A3A8C0 /* DWTumblrConnectViewController.xib */; };
+		267E551515D1CA4300A3A8C0 /* DWFacebookConnectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 267E551315D1CA4200A3A8C0 /* DWFacebookConnectViewController.m */; };
+		267E551615D1CA4300A3A8C0 /* DWFacebookConnectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 267E551415D1CA4300A3A8C0 /* DWFacebookConnectViewController.xib */; };
 		26C4467715C8BA4400E9A50B /* DWProductCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C4467615C8BA4400E9A50B /* DWProductCell.m */; };
 		26C446A615C9D02700E9A50B /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C446A315C9D02700E9A50B /* NSData+Base64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		26C446A715C9D02700E9A50B /* TumblrXAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C446A515C9D02700E9A50B /* TumblrXAuth.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -261,6 +263,9 @@
 		267E550915D1B4E800A3A8C0 /* DWTumblrConnectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWTumblrConnectViewController.h; path = Connect/DWTumblrConnectViewController.h; sourceTree = "<group>"; };
 		267E550A15D1B4E800A3A8C0 /* DWTumblrConnectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWTumblrConnectViewController.m; path = Connect/DWTumblrConnectViewController.m; sourceTree = "<group>"; };
 		267E550B15D1B4E900A3A8C0 /* DWTumblrConnectViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DWTumblrConnectViewController.xib; path = Connect/DWTumblrConnectViewController.xib; sourceTree = "<group>"; };
+		267E551215D1CA4200A3A8C0 /* DWFacebookConnectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWFacebookConnectViewController.h; path = Connect/DWFacebookConnectViewController.h; sourceTree = "<group>"; };
+		267E551315D1CA4200A3A8C0 /* DWFacebookConnectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWFacebookConnectViewController.m; path = Connect/DWFacebookConnectViewController.m; sourceTree = "<group>"; };
+		267E551415D1CA4300A3A8C0 /* DWFacebookConnectViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DWFacebookConnectViewController.xib; path = Connect/DWFacebookConnectViewController.xib; sourceTree = "<group>"; };
 		26C4467515C8BA4400E9A50B /* DWProductCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWProductCell.h; sourceTree = "<group>"; };
 		26C4467615C8BA4400E9A50B /* DWProductCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWProductCell.m; sourceTree = "<group>"; };
 		26C446A215C9D02700E9A50B /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
@@ -623,6 +628,9 @@
 				267E550915D1B4E800A3A8C0 /* DWTumblrConnectViewController.h */,
 				267E550A15D1B4E800A3A8C0 /* DWTumblrConnectViewController.m */,
 				267E550B15D1B4E900A3A8C0 /* DWTumblrConnectViewController.xib */,
+				267E551215D1CA4200A3A8C0 /* DWFacebookConnectViewController.h */,
+				267E551315D1CA4200A3A8C0 /* DWFacebookConnectViewController.m */,
+				267E551415D1CA4300A3A8C0 /* DWFacebookConnectViewController.xib */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -1366,6 +1374,7 @@
 				267D572715D07DD900DD4AB1 /* DWPurchaseInputViewController.xib in Resources */,
 				267D572D15D095DA00DD4AB1 /* DWTwitterConnectViewController.xib in Resources */,
 				267E550D15D1B4E900A3A8C0 /* DWTumblrConnectViewController.xib in Resources */,
+				267E551615D1CA4300A3A8C0 /* DWFacebookConnectViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1512,6 +1521,7 @@
 				BB2BC0A215D198B200CCC4BB /* NSData+MPBase64.m in Sources */,
 				BB2BC0A315D198B200CCC4BB /* MixpanelAPI.m in Sources */,
 				BB2BC0A415D198B200CCC4BB /* MixpanelEvent.m in Sources */,
+				267E551515D1CA4300A3A8C0 /* DWFacebookConnectViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

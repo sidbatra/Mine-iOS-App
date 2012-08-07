@@ -24,6 +24,7 @@ static NSString* const kGetFollowersURI                 = @"/users.json?aspect=f
 static NSString* const kGetIFollowersURI                = @"/users.json?aspect=ifollowers&user_id=%d";
 
 
+static NSString* const kUpdateUserFacebookTokenURI      = @"/users/%d.json?access_token=%@";
 static NSString* const kUpdateUserTumblrTokenURI        = @"/users/%d.json?tumblr_access_token=%@&tumblr_access_token_secret=%@";
 static NSString* const kUpdateUserTwitterTokenURI       = @"/users/%d.json?tw_access_token=%@&tw_access_token_secret=%@";
 
@@ -225,6 +226,21 @@ static NSString* const kNUserUpdateError        = @"NUserUpdateError";
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
 #pragma mark Update
+
+//----------------------------------------------------------------------------------------------------
+- (void)updateUserHavingID:(NSInteger)userID 
+   withFacebookAccessToken:(NSString *)facebookToken {
+    
+    NSString *localURL = [NSString stringWithFormat:kUpdateUserFacebookTokenURI,
+                          userID,
+                          [facebookToken stringByEncodingHTMLCharacters]];
+    
+    [[DWRequestManager sharedDWRequestManager] createAppRequest:localURL
+                                            successNotification:kNUserUpdated
+                                              errorNotification:kNUserUpdateError
+                                                  requestMethod:kPut
+                                                   authenticate:YES];
+}
 
 //----------------------------------------------------------------------------------------------------
 - (void)updateUserHavingID:(NSInteger)userID 

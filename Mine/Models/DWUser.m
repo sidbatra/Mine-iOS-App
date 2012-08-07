@@ -284,6 +284,11 @@ static NSString* const kKeyInverseFollowingsCount       = @"inverse_followings_c
 }
 
 //----------------------------------------------------------------------------------------------------
+- (BOOL)isFacebookAuthorized {
+    return self.facebookAccessToken != (id)[NSNull null];
+}
+
+//----------------------------------------------------------------------------------------------------
 - (BOOL)isTwitterAuthorized {
     return self.twitterAccessToken && self.twitterAccessTokenSecret;
 }

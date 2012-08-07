@@ -190,6 +190,23 @@
 					<int key="connectionID">12</int>
 				</object>
 				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">facebookSwitch</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="1024489588"/>
+					</object>
+					<int key="connectionID">14</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">facebookSwitchToggled:</string>
+						<reference key="source" ref="1024489588"/>
+						<reference key="destination" ref="372490531"/>
+						<int key="IBEventType">13</int>
+					</object>
+					<int key="connectionID">15</int>
+				</object>
+				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
 						<string key="label">twitterSwitchToggled:</string>
 						<reference key="source" ref="876314519"/>
@@ -289,7 +306,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">13</int>
+			<int key="maxID">15</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -297,10 +314,15 @@
 					<string key="className">DWPurchaseInputViewController</string>
 					<string key="superclassName">UIViewController</string>
 					<dictionary class="NSMutableDictionary" key="actions">
+						<string key="facebookSwitchToggled:">id</string>
 						<string key="tumblrSwitchToggled:">id</string>
 						<string key="twitterSwitchToggled:">id</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="actionInfosByName">
+						<object class="IBActionInfo" key="facebookSwitchToggled:">
+							<string key="name">facebookSwitchToggled:</string>
+							<string key="candidateClassName">id</string>
+						</object>
 						<object class="IBActionInfo" key="tumblrSwitchToggled:">
 							<string key="name">tumblrSwitchToggled:</string>
 							<string key="candidateClassName">id</string>
@@ -311,10 +333,15 @@
 						</object>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
+						<string key="facebookSwitch">UISwitch</string>
 						<string key="tumblrSwitch">UISwitch</string>
 						<string key="twitterSwitch">UISwitch</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
+						<object class="IBToOneOutletInfo" key="facebookSwitch">
+							<string key="name">facebookSwitch</string>
+							<string key="candidateClassName">UISwitch</string>
+						</object>
 						<object class="IBToOneOutletInfo" key="tumblrSwitch">
 							<string key="name">tumblrSwitch</string>
 							<string key="candidateClassName">UISwitch</string>

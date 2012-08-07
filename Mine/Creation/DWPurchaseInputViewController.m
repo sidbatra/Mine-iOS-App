@@ -7,6 +7,7 @@
 //
 
 #import "DWPurchaseInputViewController.h"
+#import "DWFacebookConnectViewController.h"
 #import "DWTwitterConnectViewController.h"
 #import "DWTumblrConnectViewController.h"
 #import "DWProduct.h"
@@ -18,6 +19,8 @@
  */
 @interface DWPurchaseInputViewController () {
     DWProduct                           *_product;
+    
+    DWFacebookConnectViewController     *_facebookConnectViewController;
     DWTwitterConnectViewController      *_twitterConnectViewController;
     DWTumblrConnectViewController       *_tumblrConnectViewController;
 }
@@ -30,6 +33,7 @@
 /** 
  * UIViewControllers for connecting with third party apps
  */
+@property (nonatomic,strong) DWFacebookConnectViewController *facebookConnectViewController;
 @property (nonatomic,strong) DWTwitterConnectViewController *twitterConnectViewController;
 @property (nonatomic,strong) DWTumblrConnectViewController *tumblrConnectViewController;
 
@@ -41,9 +45,11 @@
 //----------------------------------------------------------------------------------------------------
 @implementation DWPurchaseInputViewController
 
+@synthesize facebookSwitch                  = _facebookSwitch;
 @synthesize twitterSwitch                   = _twitterSwitch;
 @synthesize tumblrSwitch                    = _tumblrSwitch;
 @synthesize product                         = _product;
+@synthesize facebookConnectViewController   = _facebookConnectViewController;
 @synthesize twitterConnectViewController    = _twitterConnectViewController;
 @synthesize tumblrConnectViewController     = _tumblrConnectViewController;
 
@@ -56,6 +62,7 @@
         
         self.twitterConnectViewController   = [[DWTwitterConnectViewController alloc] init];
         self.tumblrConnectViewController    = [[DWTumblrConnectViewController alloc] init];
+        self.facebookConnectViewController  = [[DWFacebookConnectViewController alloc] init];
     }
     
     return self;
@@ -78,6 +85,14 @@
 #pragma mark IBActions
 
 //----------------------------------------------------------------------------------------------------
+- (IBAction)facebookSwitchToggled:(id)sender {    
+    
+    if (self.facebookSwitch.on && ![[DWSession sharedDWSession].currentUser isFacebookAuthorized])
+        [self.navigationController pushViewController:self.facebookConnectViewController 
+                                             animated:YES];
+}
+
+//----------------------------------------------------------------------------------------------------
 - (IBAction)twitterSwitchToggled:(id)sender {    
     
     if (self.twitterSwitch.on && ![[DWSession sharedDWSession].currentUser isTwitterAuthorized])
@@ -88,7 +103,7 @@
 //----------------------------------------------------------------------------------------------------
 - (IBAction)tumblrSwitchToggled:(id)sender {    
     
-    if (self.tumblrSwitch.on && ![[DWSession sharedDWSession].currentUser isTumblrAuthorized])
+    if (self.tumblrSwitch.on && [[DWSession sharedDWSession].currentUser isTumblrAuthorized])
         [self.navigationController pushViewController:self.tumblrConnectViewController 
                                              animated:YES];
 }
@@ -101,8 +116,10 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)willShowOnNav {
-    self.twitterSwitch.on   = [[DWSession sharedDWSession].currentUser isTwitterAuthorized] ? YES : NO;
-    self.tumblrSwitch.on    = [[DWSession sharedDWSession].currentUser isTumblrAuthorized]  ? YES : NO;
+    
+    self.facebookSwitch.on  = [[DWSession sharedDWSession].currentUser isFacebookAuthorized]    ? YES : NO;    
+    self.twitterSwitch.on   = [[DWSession sharedDWSession].currentUser isTwitterAuthorized]     ? YES : NO;
+    self.tumblrSwitch.on    = [[DWSession sharedDWSession].currentUser isTumblrAuthorized]      ? YES : NO;
     
     [[DWSession sharedDWSession].currentUser debug];
 }

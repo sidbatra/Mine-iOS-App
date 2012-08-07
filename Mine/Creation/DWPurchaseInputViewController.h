@@ -11,6 +11,7 @@
 @class DWProduct;
 
 @interface DWPurchaseInputViewController : UIViewController {
+    UISwitch    *_facebookSwitch;    
     UISwitch    *_twitterSwitch;
     UISwitch    *_tumblrSwitch;    
 }
@@ -18,6 +19,7 @@
 /**
  * IBOutlet properties
  */
+@property (nonatomic) IBOutlet UISwitch *facebookSwitch;
 @property (nonatomic) IBOutlet UISwitch *twitterSwitch;
 @property (nonatomic) IBOutlet UISwitch *tumblrSwitch;
 
@@ -30,6 +32,7 @@
 /**
  * IBActions
  */
+- (IBAction)facebookSwitchToggled:(id)sender;
 - (IBAction)twitterSwitchToggled:(id)sender;
 - (IBAction)tumblrSwitchToggled:(id)sender;
 
