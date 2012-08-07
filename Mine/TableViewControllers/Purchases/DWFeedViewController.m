@@ -51,7 +51,7 @@
     
     [(DWFeedViewDataSource*)self.tableViewDataSource loadFeed];
     
-    //[[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Feed View"];
+    [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Feed View"];
 }
 
 @end

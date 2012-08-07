@@ -54,10 +54,10 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWSession);
 	if(self) {
 		[self read];
         
-        //if([self isAuthenticated])
-        //    [[DWAnalyticsManager sharedDWAnalyticsManager] trackUserWithEmail:self.currentUser.fullName
-        //                                                              withAge:20
-        //                                                           withGender:self.currentUser.gender];
+        if([self isAuthenticated])
+            [[DWAnalyticsManager sharedDWAnalyticsManager] trackUserWithEmail:self.currentUser.email
+                                                                      withAge:self.currentUser.age
+                                                                   withGender:self.currentUser.gender];
 	}
 	
 	return self;
