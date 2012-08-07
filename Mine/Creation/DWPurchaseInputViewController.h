@@ -8,11 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-#import "DWTwitterConnectViewController.h"
-
 @class DWProduct;
 
-@interface DWPurchaseInputViewController : UIViewController<DWTwitterConnectViewControllerDelegate> {
+@interface DWPurchaseInputViewController : UIViewController {
     UISwitch *_twitterSwitch;
 }
 

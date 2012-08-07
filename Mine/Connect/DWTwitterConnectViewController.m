@@ -39,7 +39,6 @@
 @synthesize passwordTextField           = _passwordTextField;
 @synthesize twitterConnect              = _twitterConnect;
 @synthesize usersController             = _usersController;
-@synthesize delegate                    = _delegate;
 
 //----------------------------------------------------------------------------------------------------
 - (id)init {
@@ -99,7 +98,7 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)twAuthenticationFailed {
-    NSLog(@"Twitter Authentication Failed - Show an alert and inform the delegate");
+    NSLog(@"Twitter Authentication Failed - Show an alert");
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -109,21 +108,15 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)userUpdated:(DWUser *)user {
-    
     [[DWSession sharedDWSession] update];
     [user destroy];
     
-    SEL sel = @selector(twitterAuthorized);
-    
-    if(![self.delegate respondsToSelector:sel])
-        return;
-    
-    [self.delegate performSelector:sel];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)userUpdateError:(NSString *)error {
-    NSLog(@"Error in User Update - Show an alert and inform the delegate");
+    NSLog(@"Error in User Update - Show an alert");
 }
 
 @end

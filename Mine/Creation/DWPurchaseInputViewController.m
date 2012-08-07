@@ -7,6 +7,7 @@
 //
 
 #import "DWPurchaseInputViewController.h"
+#import "DWTwitterConnectViewController.h"
 #import "DWProduct.h"
 #import "DWSession.h"
 
@@ -46,10 +47,8 @@
     self = [super init];
     
     if(self) {        
-        self.product = product;
-        
+        self.product = product;        
         self.twitterConnectViewController = [[DWTwitterConnectViewController alloc] init];
-        self.twitterConnectViewController.delegate = self;
     }
     
     return self;
@@ -79,19 +78,6 @@
                                              animated:YES];
 }
 
-
-//----------------------------------------------------------------------------------------------------
-//----------------------------------------------------------------------------------------------------
-#pragma mark -
-#pragma mark DWTwitterConnectViewController Delegate
-
-//----------------------------------------------------------------------------------------------------
-- (void)twitterAuthorized {
-}
-
-//----------------------------------------------------------------------------------------------------
-- (void)twitterAuthorizationFailed {
-}
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------

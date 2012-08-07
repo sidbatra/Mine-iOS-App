@@ -11,14 +11,10 @@
 #import "DWTwitterConnect.h"
 #import "DWUsersController.h"
 
-@protocol DWTwitterConnectViewControllerDelegate;
 
 @interface DWTwitterConnectViewController : UIViewController<UITextFieldDelegate,DWTwitterConnectDelegate,DWUsersControllerDelegate> {
     UITextField         *_usernameTextField;
     UITextField         *_passwordTextField;
-    
-    __weak id<DWTwitterConnectViewControllerDelegate,NSObject> _delegate;
-
 }
 
 /**
@@ -26,30 +22,5 @@
  */
 @property (nonatomic) IBOutlet UITextField *usernameTextField;
 @property (nonatomic) IBOutlet UITextField *passwordTextField;
-
-/**
- * Delegate
- */
-@property (nonatomic,weak) id<DWTwitterConnectViewControllerDelegate,NSObject> delegate;
-
-@end
-
-
-/**
- * Protocol for delegates of DWTwitterConnectViewController
- */
-@protocol DWTwitterConnectViewControllerDelegate
-
-@optional
-
-/**
- * Twitter authorized
- */
-- (void)twitterAuthorized;
-
-/**
- * Twitter authorization failed
- */
-- (void)twitterAuthorizationFailed;
 
 @end
