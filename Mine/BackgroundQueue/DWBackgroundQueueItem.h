@@ -80,14 +80,14 @@
 - (void)start;
 
 /**
- * Template method called when a request finishes.
+ * Template method called when item finishes.
  */
-- (void)requestFinished;
+- (void)processingFinished;
 
 /**
- * Template method called when a request fails.
+ * Template method called when an item fails.
  */
-- (void)requestError;
+- (void)processingError;
 
 @end
 

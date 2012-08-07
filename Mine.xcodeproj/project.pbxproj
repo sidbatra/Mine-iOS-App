@@ -110,6 +110,7 @@
 		BB2BC05D15CF32A200CCC4BB /* DWWebViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB2BC05B15CF32A200CCC4BB /* DWWebViewController.xib */; };
 		BB2BC06B15D081A300CCC4BB /* DWBackgroundQueue.m in Sources */ = {isa = PBXBuildFile; fileRef = BB2BC06815D081A300CCC4BB /* DWBackgroundQueue.m */; };
 		BB2BC06C15D081A300CCC4BB /* DWBackgroundQueueItem.m in Sources */ = {isa = PBXBuildFile; fileRef = BB2BC06A15D081A300CCC4BB /* DWBackgroundQueueItem.m */; };
+		BB2BC07315D09FA100CCC4BB /* DWCreatePurchaseBackgroundQueueItem.m in Sources */ = {isa = PBXBuildFile; fileRef = BB2BC07215D09FA100CCC4BB /* DWCreatePurchaseBackgroundQueueItem.m */; };
 		BB2D167615CC7C2E005F571F /* DWPurchaseProfileCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BB2D167515CC7C2E005F571F /* DWPurchaseProfileCell.m */; };
 		BB46140215CB3A5A00B38D71 /* DWUserPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = BB46140115CB3A5A00B38D71 /* DWUserPresenter.m */; };
 		BB46140615CB3A7500B38D71 /* DWUserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BB46140515CB3A7500B38D71 /* DWUserCell.m */; };
@@ -353,6 +354,8 @@
 		BB2BC06815D081A300CCC4BB /* DWBackgroundQueue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWBackgroundQueue.m; sourceTree = "<group>"; };
 		BB2BC06915D081A300CCC4BB /* DWBackgroundQueueItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWBackgroundQueueItem.h; sourceTree = "<group>"; };
 		BB2BC06A15D081A300CCC4BB /* DWBackgroundQueueItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWBackgroundQueueItem.m; sourceTree = "<group>"; };
+		BB2BC07115D09FA100CCC4BB /* DWCreatePurchaseBackgroundQueueItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWCreatePurchaseBackgroundQueueItem.h; sourceTree = "<group>"; };
+		BB2BC07215D09FA100CCC4BB /* DWCreatePurchaseBackgroundQueueItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWCreatePurchaseBackgroundQueueItem.m; sourceTree = "<group>"; };
 		BB2D167415CC7C2E005F571F /* DWPurchaseProfileCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWPurchaseProfileCell.h; sourceTree = "<group>"; };
 		BB2D167515CC7C2E005F571F /* DWPurchaseProfileCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWPurchaseProfileCell.m; sourceTree = "<group>"; };
 		BB46140015CB3A5A00B38D71 /* DWUserPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWUserPresenter.h; sourceTree = "<group>"; };
@@ -775,6 +778,8 @@
 				BB2BC06815D081A300CCC4BB /* DWBackgroundQueue.m */,
 				BB2BC06915D081A300CCC4BB /* DWBackgroundQueueItem.h */,
 				BB2BC06A15D081A300CCC4BB /* DWBackgroundQueueItem.m */,
+				BB2BC07115D09FA100CCC4BB /* DWCreatePurchaseBackgroundQueueItem.h */,
+				BB2BC07215D09FA100CCC4BB /* DWCreatePurchaseBackgroundQueueItem.m */,
 			);
 			path = BackgroundQueue;
 			sourceTree = "<group>";
@@ -1334,6 +1339,7 @@
 				BB2BC05C15CF32A200CCC4BB /* DWWebViewController.m in Sources */,
 				BB2BC06B15D081A300CCC4BB /* DWBackgroundQueue.m in Sources */,
 				BB2BC06C15D081A300CCC4BB /* DWBackgroundQueueItem.m in Sources */,
+				BB2BC07315D09FA100CCC4BB /* DWCreatePurchaseBackgroundQueueItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

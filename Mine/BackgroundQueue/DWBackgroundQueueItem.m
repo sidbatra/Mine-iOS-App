@@ -75,7 +75,7 @@ static float	 const kMaxProgress     = 1.0;
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)requestFinished {
+- (void)processingFinished {
     self.progress = kMaxProgress;
     
 	[self communicateProgress];
@@ -86,7 +86,7 @@ static float	 const kMaxProgress     = 1.0;
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)requestError {
+- (void)processingError {
 	if(self.retries++ < kTotalRetries)
 		[self start];
 	else {
