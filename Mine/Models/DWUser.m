@@ -266,6 +266,11 @@ static NSString* const kKeyInverseFollowingsCount       = @"inverse_followings_c
 }
 
 //----------------------------------------------------------------------------------------------------
+- (BOOL)isTwitterAuthorized {
+    return self.twitterAccessToken && self.twitterAccessTokenSecret;
+}
+
+//----------------------------------------------------------------------------------------------------
 - (void)debug {
     NSLog(@"%@ %@ %@ %@ %@  %@  %@ %@  %@ %@  %@ %@  %d %d %d",
           self.firstName,self.lastName,self.gender,self.handle,self.byline,

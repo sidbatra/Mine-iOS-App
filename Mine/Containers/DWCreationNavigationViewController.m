@@ -7,20 +7,20 @@
 //
 
 #import "DWCreationNavigationViewController.h"
-#import "DWCreationViewController.h"
-
 
 /**
  * Private declarations
  */
 @interface DWCreationNavigationViewController() {
-    DWCreationViewController *_creationViewController;
+    DWCreationViewController        *_creationViewController;
+    DWPurchaseInputViewController   *_purchaseInputViewController;
 }
 
 /**
  * UIViewControllers for different creation screens
  */
 @property (nonatomic,strong) DWCreationViewController *creationViewController;
+@property (nonatomic,strong) DWPurchaseInputViewController *purchaseInputViewController;
 
 @end
 
@@ -31,7 +31,8 @@
 //----------------------------------------------------------------------------------------------------
 @implementation DWCreationNavigationViewController
 
-@synthesize creationViewController = _creationViewController;
+@synthesize creationViewController          = _creationViewController;
+@synthesize purchaseInputViewController     = _purchaseInputViewController;
 
 //----------------------------------------------------------------------------------------------------
 - (void)awakeFromNib {
@@ -71,8 +72,11 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)productSelected:(DWProduct *)product {
-    UIViewController *b = [[UIViewController alloc] init];
-    [self.navigationController pushViewController:b animated:YES];
+    
+    self.purchaseInputViewController = [[DWPurchaseInputViewController alloc] initWithProduct:product];
+    
+    [self.navigationController pushViewController:self.purchaseInputViewController 
+                                         animated:YES];
 }
 
 @end

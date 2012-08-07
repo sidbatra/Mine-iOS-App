@@ -9,6 +9,7 @@
 #import "DWNavigationRootViewController.h"
 
 #import "DWCreationViewController.h"
+#import "DWPurchaseInputViewController.h"
 
 
 @interface DWCreationNavigationViewController : DWNavigationRootViewController<DWCreationViewControllerDelegate>

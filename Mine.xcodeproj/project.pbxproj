@@ -41,6 +41,10 @@
 		262376B715BF6C0A00B3A037 /* FBRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 262376B115BF6C0A00B3A037 /* FBRequest.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		267D570915CC76CB00DD4AB1 /* DWCreationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 267D570715CC76CB00DD4AB1 /* DWCreationViewController.m */; };
 		267D570A15CC76CB00DD4AB1 /* DWCreationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 267D570815CC76CB00DD4AB1 /* DWCreationViewController.xib */; };
+		267D572615D07DD900DD4AB1 /* DWPurchaseInputViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 267D572415D07DD900DD4AB1 /* DWPurchaseInputViewController.m */; };
+		267D572715D07DD900DD4AB1 /* DWPurchaseInputViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 267D572515D07DD900DD4AB1 /* DWPurchaseInputViewController.xib */; };
+		267D572C15D095DA00DD4AB1 /* DWTwitterConnectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 267D572A15D095DA00DD4AB1 /* DWTwitterConnectViewController.m */; };
+		267D572D15D095DA00DD4AB1 /* DWTwitterConnectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 267D572B15D095DA00DD4AB1 /* DWTwitterConnectViewController.xib */; };
 		26C4467715C8BA4400E9A50B /* DWProductCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C4467615C8BA4400E9A50B /* DWProductCell.m */; };
 		26C446A615C9D02700E9A50B /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C446A315C9D02700E9A50B /* NSData+Base64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		26C446A715C9D02700E9A50B /* TumblrXAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C446A515C9D02700E9A50B /* TumblrXAuth.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -239,6 +243,12 @@
 		267D570615CC76CB00DD4AB1 /* DWCreationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWCreationViewController.h; path = Mine/Creation/DWCreationViewController.h; sourceTree = "<group>"; };
 		267D570715CC76CB00DD4AB1 /* DWCreationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWCreationViewController.m; path = Mine/Creation/DWCreationViewController.m; sourceTree = "<group>"; };
 		267D570815CC76CB00DD4AB1 /* DWCreationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DWCreationViewController.xib; path = Mine/Creation/DWCreationViewController.xib; sourceTree = "<group>"; };
+		267D572315D07DD900DD4AB1 /* DWPurchaseInputViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWPurchaseInputViewController.h; path = Mine/Creation/DWPurchaseInputViewController.h; sourceTree = "<group>"; };
+		267D572415D07DD900DD4AB1 /* DWPurchaseInputViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWPurchaseInputViewController.m; path = Mine/Creation/DWPurchaseInputViewController.m; sourceTree = "<group>"; };
+		267D572515D07DD900DD4AB1 /* DWPurchaseInputViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DWPurchaseInputViewController.xib; path = Mine/Creation/DWPurchaseInputViewController.xib; sourceTree = "<group>"; };
+		267D572915D095D900DD4AB1 /* DWTwitterConnectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWTwitterConnectViewController.h; path = Connect/DWTwitterConnectViewController.h; sourceTree = "<group>"; };
+		267D572A15D095DA00DD4AB1 /* DWTwitterConnectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWTwitterConnectViewController.m; path = Connect/DWTwitterConnectViewController.m; sourceTree = "<group>"; };
+		267D572B15D095DA00DD4AB1 /* DWTwitterConnectViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DWTwitterConnectViewController.xib; path = Connect/DWTwitterConnectViewController.xib; sourceTree = "<group>"; };
 		26C4467515C8BA4400E9A50B /* DWProductCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWProductCell.h; sourceTree = "<group>"; };
 		26C4467615C8BA4400E9A50B /* DWProductCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWProductCell.m; sourceTree = "<group>"; };
 		26C446A215C9D02700E9A50B /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
@@ -525,12 +535,8 @@
 		262376A115BF6B8100B3A037 /* Connect */ = {
 			isa = PBXGroup;
 			children = (
-				262376A415BF6B9600B3A037 /* DWFacebookConnect.h */,
-				262376A315BF6B9600B3A037 /* DWFacebookConnect.m */,
-				26C446AA15C9D05400E9A50B /* DWTumblrConnect.h */,
-				26C446A915C9D05400E9A50B /* DWTumblrConnect.m */,
-				26C4470315CB3E0900E9A50B /* DWTwitterConnect.h */,
-				26C4470415CB3E0900E9A50B /* DWTwitterConnect.m */,
+				267D572F15D0999300DD4AB1 /* Controllers */,
+				267D572E15D0997D00DD4AB1 /* Wrappers */,
 			);
 			name = Connect;
 			sourceTree = "<group>";
@@ -560,9 +566,35 @@
 				267D570615CC76CB00DD4AB1 /* DWCreationViewController.h */,
 				267D570715CC76CB00DD4AB1 /* DWCreationViewController.m */,
 				267D570815CC76CB00DD4AB1 /* DWCreationViewController.xib */,
+				267D572315D07DD900DD4AB1 /* DWPurchaseInputViewController.h */,
+				267D572415D07DD900DD4AB1 /* DWPurchaseInputViewController.m */,
+				267D572515D07DD900DD4AB1 /* DWPurchaseInputViewController.xib */,
 			);
 			name = Creation;
 			path = ..;
+			sourceTree = "<group>";
+		};
+		267D572E15D0997D00DD4AB1 /* Wrappers */ = {
+			isa = PBXGroup;
+			children = (
+				262376A415BF6B9600B3A037 /* DWFacebookConnect.h */,
+				262376A315BF6B9600B3A037 /* DWFacebookConnect.m */,
+				26C446AA15C9D05400E9A50B /* DWTumblrConnect.h */,
+				26C446A915C9D05400E9A50B /* DWTumblrConnect.m */,
+				26C4470315CB3E0900E9A50B /* DWTwitterConnect.h */,
+				26C4470415CB3E0900E9A50B /* DWTwitterConnect.m */,
+			);
+			name = Wrappers;
+			sourceTree = "<group>";
+		};
+		267D572F15D0999300DD4AB1 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				267D572915D095D900DD4AB1 /* DWTwitterConnectViewController.h */,
+				267D572A15D095DA00DD4AB1 /* DWTwitterConnectViewController.m */,
+				267D572B15D095DA00DD4AB1 /* DWTwitterConnectViewController.xib */,
+			);
+			name = Controllers;
 			sourceTree = "<group>";
 		};
 		26C446A115C9D02700E9A50B /* Tumblr */ = {
@@ -1246,6 +1278,8 @@
 				BB2BC08715D0BA7C00CCC4BB /* post_cancel.png in Resources */,
 				BB2BC08815D0BA7C00CCC4BB /* post_cancel@2x.png in Resources */,
 				BB2BC08915D0BA7D00CCC4BB /* post_retry@2x.png in Resources */,
+				267D572715D07DD900DD4AB1 /* DWPurchaseInputViewController.xib in Resources */,
+				267D572D15D095DA00DD4AB1 /* DWTwitterConnectViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1378,10 +1412,15 @@
 				BB2BC05015CDECC900CCC4BB /* DWFollowingsController.m in Sources */,
 				BB2BC05315CDF74300CCC4BB /* DWFollowing.m in Sources */,
 				BB2BC05C15CF32A200CCC4BB /* DWWebViewController.m in Sources */,
+<<<<<<< HEAD
 				BB2BC06B15D081A300CCC4BB /* DWBackgroundQueue.m in Sources */,
 				BB2BC06C15D081A300CCC4BB /* DWBackgroundQueueItem.m in Sources */,
 				BB2BC07315D09FA100CCC4BB /* DWCreatePurchaseBackgroundQueueItem.m in Sources */,
 				BB2BC07715D0B95600CCC4BB /* DWQueueProgressView.m in Sources */,
+=======
+				267D572615D07DD900DD4AB1 /* DWPurchaseInputViewController.m in Sources */,
+				267D572C15D095DA00DD4AB1 /* DWTwitterConnectViewController.m in Sources */,
+>>>>>>> twitter connect implemented to purchase input view
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

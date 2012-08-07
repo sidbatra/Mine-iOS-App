@@ -146,6 +146,11 @@ extern NSString* const kNImgUserLargeLoadError;
 - (void)downloadLargeImage;
 
 /**
+ * Returns if the user has authorized our twitter application
+ */
+- (BOOL)isTwitterAuthorized;
+
+/**
  * Prints out key fields for debugging.
  */
 - (void)debug;
