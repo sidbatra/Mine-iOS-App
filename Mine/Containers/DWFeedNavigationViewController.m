@@ -21,6 +21,8 @@
     DWFeedViewController    *_feedViewController;
     
     DWQueueProgressView     *_queueProgressView;
+    
+    BOOL    _isProgressBarActive;
 }
 
 /**
@@ -33,6 +35,11 @@
  */
 @property (nonatomic,strong) DWQueueProgressView *queueProgressView;
 
+/**
+ * Status of the background progress queue.
+ */
+@property (nonatomic,assign) BOOL isProgressBarActive;
+
 @end
 
 
@@ -44,6 +51,7 @@
 
 @synthesize feedViewController  = _feedViewController;
 @synthesize queueProgressView   = _queueProgressView;
+@synthesize isProgressBarActive = _isProgressBarActive;
 
 //----------------------------------------------------------------------------------------------------
 - (void)awakeFromNib {
@@ -129,8 +137,28 @@
 //----------------------------------------------------------------------------------------------------
 - (void)backgroundQueueUpdated:(NSNotification*)notification {
     NSDictionary *info = [notification userInfo];
-    
-    NSLog(@"Background queue - %d %d %f",[[info objectForKey:kKeyTotalActive] integerValue],[[info objectForKey:kKeyTotalFailed] integerValue],[[info objectForKey:kKeyTotalProgress] floatValue]);
+	
+	NSInteger totalActive	= [[info objectForKey:kKeyTotalActive] integerValue];
+	NSInteger totalFailed	= [[info objectForKey:kKeyTotalFailed] integerValue];
+	float totalProgress		= [[info objectForKey:kKeyTotalProgress] floatValue];
+	
+	
+	if(totalActive || totalFailed) {
+		
+        if(!self.isProgressBarActive) {
+            self.isProgressBarActive = YES;
+            [self.navigationController.navigationBar addSubview:self.queueProgressView];
+        }
+		
+		[self.queueProgressView updateDisplayWithTotalActive:totalActive
+                                                totalFailed:totalFailed
+                                              totalProgress:totalProgress];
+	}
+	else if(self.isProgressBarActive) {
+        self.isProgressBarActive = NO;
+        
+        [self.queueProgressView removeFromSuperview];
+    }
 }
 
 

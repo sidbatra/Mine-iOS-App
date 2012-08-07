@@ -69,7 +69,9 @@ static float	 const kMaxProgress     = 1.0;
 
 //----------------------------------------------------------------------------------------------------
 - (void)start {
-    self.retries = 0;
+    if(self.retries > kTotalRetries)
+        self.retries = 0;
+    
     self.state = DWBackgroundQueueItemStateInProgress;
     [self communicateProgress];
 }
