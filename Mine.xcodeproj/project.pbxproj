@@ -1412,15 +1412,12 @@
 				BB2BC05015CDECC900CCC4BB /* DWFollowingsController.m in Sources */,
 				BB2BC05315CDF74300CCC4BB /* DWFollowing.m in Sources */,
 				BB2BC05C15CF32A200CCC4BB /* DWWebViewController.m in Sources */,
-<<<<<<< HEAD
 				BB2BC06B15D081A300CCC4BB /* DWBackgroundQueue.m in Sources */,
 				BB2BC06C15D081A300CCC4BB /* DWBackgroundQueueItem.m in Sources */,
 				BB2BC07315D09FA100CCC4BB /* DWCreatePurchaseBackgroundQueueItem.m in Sources */,
 				BB2BC07715D0B95600CCC4BB /* DWQueueProgressView.m in Sources */,
-=======
 				267D572615D07DD900DD4AB1 /* DWPurchaseInputViewController.m in Sources */,
 				267D572C15D095DA00DD4AB1 /* DWTwitterConnectViewController.m in Sources */,
->>>>>>> twitter connect implemented to purchase input view
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
