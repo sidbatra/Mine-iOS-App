@@ -69,6 +69,20 @@
 - (void)refreshInitiated;
 
 /**
+ * Add the given object into the given index
+ * and instruct table view to display it with animation
+ */
+- (void)addObject:(id)object
+          atIndex:(NSInteger)index
+    withAnimation:(UITableViewRowAnimation)animation;
+
+/**
+ * Add the given object at the end of the array
+ */
+- (void)addObjectAtEnd:(id)object
+         withAnimation:(UITableViewRowAnimation)animation;
+
+/**
  * Remove the given object from the array with specified 
  * animation
  */

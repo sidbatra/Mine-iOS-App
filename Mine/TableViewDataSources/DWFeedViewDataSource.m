@@ -15,7 +15,9 @@
  * Private declarations.
  */
 @interface DWFeedViewDataSource() {
+        
     DWFeedController *_feedController;
+    DWPurchasesController   *_purchasesController;
     
     NSInteger _oldestTimestamp;
 }
@@ -24,6 +26,11 @@
  * Data controller for fetching the feed.
  */
 @property (nonatomic,strong) DWFeedController* feedController;
+
+/**
+ * Data controller for the purchases model.
+ */
+@property (nonatomic,strong) DWPurchasesController *purchasesController;
 
 /**
  * Timestamp of the last item in the feed. Used to fetch more items.
@@ -39,8 +46,9 @@
 //----------------------------------------------------------------------------------------------------
 @implementation DWFeedViewDataSource
 
-@synthesize feedController  = _feedController;
-@synthesize oldestTimestamp = _oldestTimestamp;
+@synthesize feedController      = _feedController;
+@synthesize purchasesController = _purchasesController;
+@synthesize oldestTimestamp     = _oldestTimestamp;
 
 //----------------------------------------------------------------------------------------------------
 - (id)init {
@@ -49,6 +57,9 @@
     if(self) {
         self.feedController = [[DWFeedController alloc] init];
         self.feedController.delegate = self;
+        
+        self.purchasesController = [[DWPurchasesController alloc] init];
+        self.purchasesController.delegate = self;
     }
     
     return self;
@@ -119,6 +130,21 @@
 - (void)feedLoadError:(NSString *)error {
     [self.delegate displayError:error
                   withRefreshUI:YES];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWPurchasesControllerDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)purchaseCreated:(DWPurchase *)purchase 
+         fromResourceID:(NSNumber *)resourceID {
+    
+    [self addObject:purchase
+            atIndex:0
+      withAnimation:UITableViewRowAnimationTop];
 }
 
 

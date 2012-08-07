@@ -8,9 +8,10 @@
 
 #import "DWTableViewDataSource.h"
 #import "DWFeedController.h"
+#import "DWPurchasesController.h"
 
 
-@interface DWFeedViewDataSource : DWTableViewDataSource<DWFeedControllerDelegate>
+@interface DWFeedViewDataSource : DWTableViewDataSource<DWFeedControllerDelegate,DWPurchasesControllerDelegate>
 
 /**
  * Load the feed items and start the infinite pagination loop.
