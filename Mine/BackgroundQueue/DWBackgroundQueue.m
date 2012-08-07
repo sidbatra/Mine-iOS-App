@@ -72,6 +72,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWBackgroundQueue);
 	if(totalActive)
 		totalProgress /= totalActive;
 	
+    NSLog(@"Creation Queue - %d %d %f",totalActive,totalFailed,totalProgress);
     /*
 	[[NSNotificationCenter defaultCenter] postNotificationName:kNCreationQueueUpdated 
 														object:nil

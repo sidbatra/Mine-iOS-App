@@ -44,7 +44,7 @@
 /**
  * Request progress on a scale of 0-1
  */
-@property (nonatomic,assign) float progress;
+@property (nonatomic,readonly) float progress;
 
 /**
  * If the request is to be performed silently in the background.

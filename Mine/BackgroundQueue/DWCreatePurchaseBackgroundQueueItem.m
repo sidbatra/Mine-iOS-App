@@ -95,12 +95,12 @@
 - (void)start {
     [super start];
     
-    [self.purchasesController createPurchaseFromTemplate:self.purchase 
-                                              andProduct:self.product
-                                           withShareToFB:self.shareToFB
-                                           withShareToTW:self.shareToTW
-                                           withShareToTB:self.shareToTB 
-                                          uploadDelegate:self];
+    self.resourceID =  [self.purchasesController createPurchaseFromTemplate:self.purchase 
+                                                                 andProduct:self.product
+                                                              withShareToFB:self.shareToFB
+                                                              withShareToTW:self.shareToTW
+                                                              withShareToTB:self.shareToTB 
+                                                             uploadDelegate:self];
 }
 
 

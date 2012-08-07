@@ -103,7 +103,7 @@ static float	 const kMaxProgress     = 1.0;
 
 //----------------------------------------------------------------------------------------------------
 - (void)setProgress:(float)newProgress {
-	self.progress = newProgress;
+    _progress = newProgress;
 	[self communicateProgress];
 }
 

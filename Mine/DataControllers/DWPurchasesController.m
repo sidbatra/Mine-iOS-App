@@ -14,7 +14,7 @@
 #import "DWConstants.h"
 
 static NSString* const kGetUserPurchasesURI = @"/purchases.json?per_page=%d&user_id=%d";
-static NSString* const kCreateURI           = @"/purchases.json";
+static NSString* const kCreateURI           = @"/purchases.json?";
 
 static NSString* const kNUserPurchasesLoaded    = @"NUserPurchasesLoaded";
 static NSString* const kNUserPurchasesLoadError = @"NUserPurchasesLoadError";
