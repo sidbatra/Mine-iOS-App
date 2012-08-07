@@ -7,6 +7,7 @@
 //
 
 #import "DWUser.h"
+#import "DWSetting.h"
 #import "DWImageManager.h"
 
 NSString* const kKeySquareImageURL          = @"square_image_url";
@@ -35,6 +36,8 @@ static NSString* const kEncodeKeyAge                        = @"DWUser_age";
 static NSString* const kEncodeKeyPurchasesCount             = @"DWUser_purchasesCount";
 static NSString* const kEncodeKeyFollowingsCount            = @"DWUser_followingsCount";
 static NSString* const kEncodeKeyInverseFollowingsCount     = @"DWUser_inverseFollowingsCount";
+static NSString* const kEncodeKeySetting                    = @"DWUser_setting";
+
 
 
 static NSString* const kKeyFirstName                    = @"first_name";
@@ -53,6 +56,7 @@ static NSString* const kKeyAge                          = @"age";
 static NSString* const kKeyPurchasesCount               = @"purchases_count";
 static NSString* const kKeyFollowingsCount              = @"followings_count";
 static NSString* const kKeyInverseFollowingsCount       = @"inverse_followings_count";
+static NSString* const kKeySetting                      = @"setting";
 
 
 
@@ -78,6 +82,7 @@ static NSString* const kKeyInverseFollowingsCount       = @"inverse_followings_c
 @synthesize purchasesCount              = _purchasesCount;
 @synthesize followingsCount             = _followingsCount;
 @synthesize inverseFollowingsCount      = _inverseFollowingsCount;
+@synthesize setting                     = _setting;
 
 //----------------------------------------------------------------------------------------------------
 - (id)initWithCoder:(NSCoder*)coder {
@@ -105,6 +110,8 @@ static NSString* const kKeyInverseFollowingsCount       = @"inverse_followings_c
         self.purchasesCount             = [[coder decodeObjectForKey:kEncodeKeyPurchasesCount] integerValue];
         self.followingsCount            = [[coder decodeObjectForKey:kEncodeKeyFollowingsCount] integerValue];
         self.inverseFollowingsCount     = [[coder decodeObjectForKey:kEncodeKeyInverseFollowingsCount] integerValue];
+        
+        self.setting                    = [coder decodeObjectForKey:kEncodeKeySetting];
     }
     
     
@@ -140,6 +147,8 @@ static NSString* const kKeyInverseFollowingsCount       = @"inverse_followings_c
     [coder encodeObject:[NSNumber numberWithInt:self.purchasesCount]    forKey:kEncodeKeyPurchasesCount];
     [coder encodeObject:[NSNumber numberWithInt:self.followingsCount]    forKey:kEncodeKeyFollowingsCount];
     [coder encodeObject:[NSNumber numberWithInt:self.inverseFollowingsCount]    forKey:kEncodeKeyInverseFollowingsCount];
+    
+    [coder encodeObject:self.setting                                    forKey:kEncodeKeySetting];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -155,6 +164,8 @@ static NSString* const kKeyInverseFollowingsCount       = @"inverse_followings_c
 //----------------------------------------------------------------------------------------------------
 -(void)dealloc{
 	[self freeMemory];
+    
+    [self.setting destroy];
     
 	NSLog(@"User released %d",self.databaseID);
 }
@@ -189,6 +200,8 @@ static NSString* const kKeyInverseFollowingsCount       = @"inverse_followings_c
     NSString *purchasesCount            = [user objectForKey:kKeyPurchasesCount];
     NSString *followingsCount           = [user objectForKey:kKeyFollowingsCount];
     NSString *inverseFollowingsCount    = [user objectForKey:kKeyInverseFollowingsCount];
+    
+    NSDictionary *setting               = [user objectForKey:kKeySetting];
     
     
     if(firstName && ![firstName isKindOfClass:[NSNull class]] && ![self.firstName isEqualToString:firstName])
@@ -244,6 +257,14 @@ static NSString* const kKeyInverseFollowingsCount       = @"inverse_followings_c
     
     if(inverseFollowingsCount)
         self.inverseFollowingsCount = [inverseFollowingsCount integerValue];
+    
+    
+    if(setting) {
+        if(self.setting)
+            [self.setting update:setting];
+        else
+            self.setting = [DWSetting create:setting];;
+    }
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -309,6 +330,8 @@ static NSString* const kKeyInverseFollowingsCount       = @"inverse_followings_c
           self.purchasesCount,
           self.followingsCount,
           self.inverseFollowingsCount);
+    
+    [self.setting debug];
 }
 
 

@@ -136,6 +136,7 @@
 		BB2BC0A215D198B200CCC4BB /* NSData+MPBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = BB2BC09915D198B200CCC4BB /* NSData+MPBase64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		BB2BC0A315D198B200CCC4BB /* MixpanelAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = BB2BC09B15D198B200CCC4BB /* MixpanelAPI.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		BB2BC0A415D198B200CCC4BB /* MixpanelEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = BB2BC09E15D198B200CCC4BB /* MixpanelEvent.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		BB2BC0AF15D1DCA000CCC4BB /* DWSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = BB2BC0AE15D1DCA000CCC4BB /* DWSetting.m */; };
 		BB2D167615CC7C2E005F571F /* DWPurchaseProfileCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BB2D167515CC7C2E005F571F /* DWPurchaseProfileCell.m */; };
 		BB46140215CB3A5A00B38D71 /* DWUserPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = BB46140115CB3A5A00B38D71 /* DWUserPresenter.m */; };
 		BB46140615CB3A7500B38D71 /* DWUserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BB46140515CB3A7500B38D71 /* DWUserCell.m */; };
@@ -419,6 +420,8 @@
 		BB2BC09C15D198B200CCC4BB /* MixpanelAPI_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MixpanelAPI_Private.h; sourceTree = "<group>"; };
 		BB2BC09D15D198B200CCC4BB /* MixpanelEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MixpanelEvent.h; sourceTree = "<group>"; };
 		BB2BC09E15D198B200CCC4BB /* MixpanelEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MixpanelEvent.m; sourceTree = "<group>"; };
+		BB2BC0AD15D1DCA000CCC4BB /* DWSetting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWSetting.h; sourceTree = "<group>"; };
+		BB2BC0AE15D1DCA000CCC4BB /* DWSetting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWSetting.m; sourceTree = "<group>"; };
 		BB2D167415CC7C2E005F571F /* DWPurchaseProfileCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWPurchaseProfileCell.h; sourceTree = "<group>"; };
 		BB2D167515CC7C2E005F571F /* DWPurchaseProfileCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWPurchaseProfileCell.m; sourceTree = "<group>"; };
 		BB46140015CB3A5A00B38D71 /* DWUserPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWUserPresenter.h; sourceTree = "<group>"; };
@@ -1039,6 +1042,8 @@
 				262200A215C769EF003DC1DF /* DWProduct.m */,
 				BB26987B15BB956700037453 /* DWPurchase.h */,
 				BB26987C15BB956700037453 /* DWPurchase.m */,
+				BB2BC0AD15D1DCA000CCC4BB /* DWSetting.h */,
+				BB2BC0AE15D1DCA000CCC4BB /* DWSetting.m */,
 				BB26987E15BBA2E300037453 /* DWStore.h */,
 				BB26987F15BBA2E300037453 /* DWStore.m */,
 				BB9F710715B9EBED0099C80A /* DWUser.h */,
@@ -1522,6 +1527,7 @@
 				BB2BC0A315D198B200CCC4BB /* MixpanelAPI.m in Sources */,
 				BB2BC0A415D198B200CCC4BB /* MixpanelEvent.m in Sources */,
 				267E551515D1CA4300A3A8C0 /* DWFacebookConnectViewController.m in Sources */,
+				BB2BC0AF15D1DCA000CCC4BB /* DWSetting.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

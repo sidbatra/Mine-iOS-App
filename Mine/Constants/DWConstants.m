@@ -19,7 +19,7 @@ NSString* const kAppProtocol        = @"http://";
 NSString* const kClientName         = @"iphone";
 
 #if ENVIRONMENT == DEVELOPMENT
-NSString* const kAppServer      = @"drao.getmine.com";
+NSString* const kAppServer      = @"sbat.getmine.com";
 #elif ENVIRONMENT == STAGING
 NSString* const kAppServer	= @"staging.getmine.com";
 #elif ENVIRONMENT == PRODUCTION

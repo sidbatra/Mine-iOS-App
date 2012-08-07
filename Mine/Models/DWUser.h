@@ -10,6 +10,7 @@
 
 #import "DWPoolObject.h"
 
+@class DWSetting;
 
 /**
  * 
@@ -44,6 +45,8 @@ extern NSString* const kNImgUserLargeLoadError;
     NSInteger       _purchasesCount;
     NSInteger       _followingsCount;
     NSInteger       _inverseFollowingsCount;
+    
+    DWSetting       *_setting;
 }
 
 /**
@@ -146,6 +149,13 @@ extern NSString* const kNImgUserLargeLoadError;
  * Total users followed.
  */
 @property (nonatomic,assign) NSInteger inverseFollowingsCount;
+
+
+
+/**
+ * Setting object associated with the user.
+ */
+@property (nonatomic,strong) DWSetting *setting;
 
 
 /**
