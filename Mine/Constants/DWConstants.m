@@ -6,18 +6,11 @@
 //  Copyright (c) 2012 Denwen, Inc. All rights reserved.
 //
 
-#define DEVELOPMENT 0
-#define STAGING     1
-#define PRODUCTION  2
-
-#define ENVIRONMENT DEVELOPMENT
-
-
 #import "DWConstants.h"
 
 
 //----------------------------------------------------------------------------------------------------
-NSString* const kVersion            = @"1.0";
+NSString* const kVersion            = @"1.0.0";
 NSString* const kGet				= @"GET";
 NSString* const kPost               = @"POST";
 NSString* const kPut				= @"PUT";

@@ -8,6 +8,14 @@
 
 #import <Foundation/Foundation.h>
 
+
+#define DEVELOPMENT 0
+#define STAGING     1
+#define PRODUCTION  2
+
+#define ENVIRONMENT DEVELOPMENT
+
+
 /**
  * Request related
  */

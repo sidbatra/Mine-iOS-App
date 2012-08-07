@@ -14,6 +14,8 @@
 #import "DWPagination.h"
 #import "DWConstants.h"
 
+#import "DWAnalyticsManager.h"
+
 
 @interface DWFeedViewController()
 @end
@@ -48,6 +50,8 @@
 	[super viewDidLoad];
     
     [(DWFeedViewDataSource*)self.tableViewDataSource loadFeed];
+    
+    //[[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Feed View"];
 }
 
 @end
