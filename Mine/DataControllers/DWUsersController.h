@@ -73,6 +73,12 @@
            withTwitterToken:(NSString*)twitterToken
            andTwitterSecret:(NSString*)twitterSecret;
 
+/**
+ * Update iphone device id.
+ */
+- (void)updateUserHavingID:(NSInteger)userID
+        withiphoneDeviceToken:(NSString*)iphoneDeviceToken;
+
 @end
 
 

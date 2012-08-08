@@ -27,7 +27,7 @@ static NSString* const kGetIFollowersURI                = @"/users.json?aspect=i
 static NSString* const kUpdateUserFacebookTokenURI      = @"/users/%d.json?access_token=%@";
 static NSString* const kUpdateUserTumblrTokenURI        = @"/users/%d.json?tumblr_access_token=%@&tumblr_access_token_secret=%@";
 static NSString* const kUpdateUserTwitterTokenURI       = @"/users/%d.json?tw_access_token=%@&tw_access_token_secret=%@";
-
+static NSString* const kUpdateUseriPhoneDeviceURI       = @"/users/%d.json?iphone_device_token=%@";
 
 static NSString* const kNNewUserCreated         = @"NUserCreated";
 static NSString* const kNNewUserCreateError     = @"NUserCreateError";
@@ -268,6 +268,21 @@ static NSString* const kNUserUpdateError        = @"NUserUpdateError";
                           userID,
                           [twitterToken stringByEncodingHTMLCharacters],
                           [twitterSecret stringByEncodingHTMLCharacters]];
+    
+    [[DWRequestManager sharedDWRequestManager] createAppRequest:localURL
+                                            successNotification:kNUserUpdated
+                                              errorNotification:kNUserUpdateError
+                                                  requestMethod:kPut
+                                                   authenticate:YES];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)updateUserHavingID:(NSInteger)userID
+     withiphoneDeviceToken:(NSString*)iphoneDeviceToken {
+    
+    NSString *localURL = [NSString stringWithFormat:kUpdateUseriPhoneDeviceURI,
+                          userID,
+                          [iphoneDeviceToken stringByEncodingHTMLCharacters]];
     
     [[DWRequestManager sharedDWRequestManager] createAppRequest:localURL
                                             successNotification:kNUserUpdated
