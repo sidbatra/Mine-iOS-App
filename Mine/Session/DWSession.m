@@ -52,6 +52,13 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWSession);
 	self = [super init];
 	
 	if(self) {
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self 
+                                                 selector:@selector(applicationFinishedLaunching:) 
+                                                     name:UIApplicationDidFinishLaunchingNotification
+                                                   object:nil];
+        
+        
 		[self read];
         
         if([self isAuthenticated])
@@ -114,6 +121,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWSession);
     }
 }
 
+
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
@@ -145,6 +153,17 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWSession);
 //----------------------------------------------------------------------------------------------------
 - (BOOL)isAuthenticated {
 	return self.currentUser != nil;
+}
+
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark Notifications
+
+//----------------------------------------------------------------------------------------------------
+- (void)applicationFinishedLaunching:(NSNotification*)notification {
 }
 
 
