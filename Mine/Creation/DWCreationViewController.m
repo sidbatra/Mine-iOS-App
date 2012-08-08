@@ -8,15 +8,14 @@
 
 #import "DWCreationViewController.h"
 #import "DWProduct.h"
-#import "DWPurchase.h"
 #import "DWConstants.h"
 
 /**
  * Private declarations
  */
 @interface DWCreationViewController () {
-    DWProduct                   *_product;    
-    DWPurchase                  *_purchase;
+    NSString                    *_query;    
+    DWProduct                   *_product;        
     
     DWProductsViewController    *_productsViewController;
 }
