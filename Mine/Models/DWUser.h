@@ -32,7 +32,7 @@ extern NSString* const kNImgUserLargeLoadError;
     NSString        *_byline;
     NSString        *_email;
     
-    NSString        *_iphoneDeviceID;
+    NSString        *_iphoneDeviceToken;
     NSString        *_facebookAccessToken;
     NSString        *_twitterAccessToken;
     NSString        *_twitterAccessTokenSecret;
@@ -88,7 +88,7 @@ extern NSString* const kNImgUserLargeLoadError;
 /**
  * iPhone device ID for push notifications.
  */
-@property (nonatomic,copy) NSString *iphoneDeviceID;
+@property (nonatomic,copy) NSString *iphoneDeviceToken;
 
 /**
  * Facebook Access Token

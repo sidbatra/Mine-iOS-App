@@ -25,7 +25,7 @@ static NSString* const kEncodeKeyGender                     = @"DWUser_gender";
 static NSString* const kEncodeKeyHandle                     = @"DWUser_handle";
 static NSString* const kEncodeKeyByline                     = @"DWUser_byline";
 static NSString* const kEncodeKeyEmail                      = @"DWUser_email";
-static NSString* const kEncodeKeyiPhoneDeviceID             = @"DWUser_iPhoneDeviceID";
+static NSString* const kEncodeKeyiphoneDeviceToken          = @"DWUser_iphoneDeviceToken";
 static NSString* const kEncodeKeyFacebookAccessToken        = @"DWUser_facebookAccessToken";
 static NSString* const kEncodeKeyTwitterAccessToken         = @"DWUser_twitterAccessToken";
 static NSString* const kEncodeKeyTwitterAccessTokenSecret   = @"DWUser_twitterAccessTokenSecret";
@@ -47,7 +47,7 @@ static NSString* const kKeyGender                       = @"gender";
 static NSString* const kKeyHandle                       = @"handle";
 static NSString* const kKeyByline                       = @"byline";
 static NSString* const kKeyEmail                        = @"email";
-static NSString* const kKeyiPhoneDeviceID               = @"iphone_device_id";
+static NSString* const kKeyiphoneDeviceToken            = @"iphone_device_token";
 static NSString* const kKeyFacebookAccessToken          = @"access_token";
 static NSString* const kKeyTwitterAccessToken           = @"tw_access_token";
 static NSString* const kKeyTwitterAccessTokenSecret     = @"tw_access_token_secret";
@@ -73,7 +73,7 @@ static NSString* const kKeySetting                      = @"setting";
 @synthesize handle                      = _handle;
 @synthesize byline                      = _byline;
 @synthesize email                       = _email;
-@synthesize iphoneDeviceID              = _iphoneDeviceID;
+@synthesize iphoneDeviceToken           = _iphoneDeviceToken;
 @synthesize facebookAccessToken         = _facebookAccessToken;
 @synthesize twitterAccessToken          = _twitterAccessToken;
 @synthesize twitterAccessTokenSecret    = _twitterAccessTokenSecret;
@@ -99,7 +99,7 @@ static NSString* const kKeySetting                      = @"setting";
         self.handle                     = [coder decodeObjectForKey:kEncodeKeyHandle];
         self.byline                     = [coder decodeObjectForKey:kEncodeKeyByline];
         self.email                      = [coder decodeObjectForKey:kEncodeKeyEmail];
-        self.iphoneDeviceID             = [coder decodeObjectForKey:kEncodeKeyiPhoneDeviceID];
+        self.iphoneDeviceToken          = [coder decodeObjectForKey:kEncodeKeyiphoneDeviceToken];
 
         self.facebookAccessToken        = [coder decodeObjectForKey:kEncodeKeyFacebookAccessToken];
         self.twitterAccessToken         = [coder decodeObjectForKey:kEncodeKeyTwitterAccessToken];
@@ -137,7 +137,7 @@ static NSString* const kKeySetting                      = @"setting";
     [coder encodeObject:self.handle                                     forKey:kEncodeKeyHandle];
     [coder encodeObject:self.byline                                     forKey:kEncodeKeyByline];
     [coder encodeObject:self.email                                      forKey:kEncodeKeyEmail];
-    [coder encodeObject:self.iphoneDeviceID                             forKey:kEncodeKeyiPhoneDeviceID];
+    [coder encodeObject:self.iphoneDeviceToken                          forKey:kEncodeKeyiphoneDeviceToken];
 
     [coder encodeObject:self.facebookAccessToken                        forKey:kEncodeKeyFacebookAccessToken];
     [coder encodeObject:self.twitterAccessToken                         forKey:kEncodeKeyTwitterAccessToken];
@@ -191,7 +191,7 @@ static NSString* const kKeySetting                      = @"setting";
     NSString *handle                    = [user objectForKey:kKeyHandle];
     NSString *byline                    = [user objectForKey:kKeyByline];
     NSString *email                     = [user objectForKey:kKeyEmail];
-    NSString *iphoneDeviceID            = [user objectForKey:kKeyiPhoneDeviceID];
+    NSString *iphoneDeviceToken         = [user objectForKey:kKeyiphoneDeviceToken];
 
     NSString *facebookAccessToken       = [user objectForKey:kKeyFacebookAccessToken];
     NSString *twitterAccessToken        = [user objectForKey:kKeyTwitterAccessToken];
@@ -228,8 +228,8 @@ static NSString* const kKeySetting                      = @"setting";
     if(email && ![email isKindOfClass:[NSNull class]] && ![self.email isEqualToString:email])
         self.email = email;
     
-    if(iphoneDeviceID && ![iphoneDeviceID isKindOfClass:[NSNull class]] && ![self.iphoneDeviceID isEqualToString:iphoneDeviceID])
-        self.iphoneDeviceID = iphoneDeviceID;
+    if(iphoneDeviceToken && ![iphoneDeviceToken isKindOfClass:[NSNull class]] && ![self.iphoneDeviceToken isEqualToString:iphoneDeviceToken])
+        self.iphoneDeviceToken = iphoneDeviceToken;
     
     
     if(facebookAccessToken  && ![facebookAccessToken isKindOfClass:[NSNull class]]  && ![self.facebookAccessToken isEqualToString:facebookAccessToken])
@@ -339,7 +339,7 @@ static NSString* const kKeySetting                      = @"setting";
           self.purchasesCount,
           self.followingsCount,
           self.inverseFollowingsCount,
-          self.iphoneDeviceID);
+          self.iphoneDeviceToken);
     
     [self.setting debug];
 }
