@@ -71,7 +71,6 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWSession);
 	if(self) {
         
         [self read];
-
         
         [[NSNotificationCenter defaultCenter] addObserver:self 
                                                  selector:@selector(applicationFinishedLaunching:) 
