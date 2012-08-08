@@ -118,7 +118,7 @@
     
     [[DWBackgroundQueue sharedDWBackgroundQueue] performSelector:@selector(addQueueItem:)      
                                                       withObject:item
-                                                      afterDelay:3.5];
+                                                      afterDelay:1.5];
     
     [self.delegate dismissCreateView];
 }

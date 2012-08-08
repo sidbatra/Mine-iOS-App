@@ -57,7 +57,6 @@ static NSInteger const kCreateTabIndex              = 1;
 @synthesize welcomeNavController    = _welcomeNavController;
 @synthesize feedNavController       = _feedNavController;
 @synthesize profileNavController    = _profileNavController;
-@synthesize creationNavController   = _creationNavController;
 
 //----------------------------------------------------------------------------------------------------
 - (void)setupApplication {
@@ -131,12 +130,12 @@ static NSInteger const kCreateTabIndex              = 1;
     
     if(newSelectedIndex == kCreateTabIndex) {
         
-        DWCreationNavigationViewController *createNavController = [[DWCreationNavigationViewController alloc] init];        
-        createNavController.delegate = self;
+        DWCreationNavigationViewController *creationRootViewController = [[DWCreationNavigationViewController alloc] init];        
+        creationRootViewController.delegate = self;
         
-        UINavigationController *_b =  [[UINavigationController alloc] initWithRootViewController:createNavController];
+        UINavigationController *creationNavController =  [[UINavigationController alloc] initWithRootViewController:creationRootViewController];
 
-        [self.tabBarController presentModalViewController:_b
+        [self.tabBarController presentModalViewController:creationNavController
                                                  animated:NO];
     }        
 }
@@ -149,7 +148,6 @@ static NSInteger const kCreateTabIndex              = 1;
 
 //----------------------------------------------------------------------------------------------------
 - (void)dismissCreateView {
-    NSLog(@"in dismiss");
     [self.tabBarController dismissModalViewControllerAnimated:YES];
 }
 

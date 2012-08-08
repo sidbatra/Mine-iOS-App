@@ -18,7 +18,6 @@
     UINavigationController	*_welcomeNavController;
     UINavigationController  *_feedNavController;
     UINavigationController  *_profileNavController;
-    UINavigationController  *_creationNavController;
 }
 
 /**
@@ -32,6 +31,5 @@
 @property (nonatomic) IBOutlet UINavigationController *welcomeNavController;
 @property (nonatomic) IBOutlet UINavigationController *feedNavController;
 @property (nonatomic) IBOutlet UINavigationController *profileNavController;
-@property (nonatomic) IBOutlet UINavigationController *creationNavController;
 
 @end
