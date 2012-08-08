@@ -109,9 +109,7 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)userUpdated:(DWUser *)user {
-    [[DWSession sharedDWSession] update];
-    [user destroy];
-    
+    [user destroy];    
     [self.navigationController popViewControllerAnimated:YES];
 }
 

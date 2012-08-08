@@ -19,13 +19,19 @@ static NSString* const kDiskKeyCurrentUser = @"DWSession_currentUser";
  * Private declarations
  */
 @interface DWSession() {
-    DWStatusController *_statusController;
+    DWStatusController  *_statusController;
+    DWUsersController   *_usersController;
 }
 
 /**
  * Data controller for fetching status updates.
  */
 @property (nonatomic,strong) DWStatusController *statusController;
+
+/**
+ * Data controller for the users model.
+ */
+@property (nonatomic,strong) DWUsersController *usersController;
 
 
 /**
@@ -54,6 +60,7 @@ static NSString* const kDiskKeyCurrentUser = @"DWSession_currentUser";
 
 @synthesize currentUser         = _currentUser;
 @synthesize statusController    = _statusController;
+@synthesize usersController     = _usersController;
 
 SYNTHESIZE_SINGLETON_FOR_CLASS(DWSession);
 
@@ -76,6 +83,9 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWSession);
             [[DWAnalyticsManager sharedDWAnalyticsManager] trackUserWithEmail:self.currentUser.email
                                                                       withAge:self.currentUser.age
                                                                    withGender:self.currentUser.gender];
+        
+        self.usersController = [[DWUsersController alloc] init];
+        self.usersController.delegate = self;
 	}
 	
 	return self;
@@ -193,6 +203,18 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWSession);
 //----------------------------------------------------------------------------------------------------
 - (void)statusLoaded:(DWUser *)user {
     [user debug];
+    [user destroy];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWUsersControllerDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)userUpdated:(DWUser *)user {
+    [[DWSession sharedDWSession] update];
     [user destroy];
 }
 
