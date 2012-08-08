@@ -106,8 +106,7 @@
                                                                                                     shareToTB:shareToTB];
     
     [[DWBackgroundQueue sharedDWBackgroundQueue] performSelector:@selector(addQueueItem:)      
-                                                      withObject:item
-                                                      afterDelay:1.5];
+                                                      withObject:item];
     
     [self.delegate dismissCreateView];
 }
