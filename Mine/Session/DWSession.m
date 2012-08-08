@@ -8,8 +8,9 @@
 
 #import "DWSession.h"
 
-#import "SynthesizeSingleton.h"
 #import "DWAnalyticsManager.h"
+
+#import "SynthesizeSingleton.h"
 
 static NSString* const kDiskKeyCurrentUser = @"DWSession_currentUser";
 
@@ -17,7 +18,15 @@ static NSString* const kDiskKeyCurrentUser = @"DWSession_currentUser";
 /**
  * Private declarations
  */
-@interface DWSession()
+@interface DWSession() {
+    DWStatusController *_statusController;
+}
+
+/**
+ * Data controller for fetching status updates.
+ */
+@property (nonatomic,strong) DWStatusController *statusController;
+
 
 /**
  * Read the user session from disk using NSUserDefaults
@@ -43,7 +52,8 @@ static NSString* const kDiskKeyCurrentUser = @"DWSession_currentUser";
 //----------------------------------------------------------------------------------------------------
 @implementation DWSession
 
-@synthesize currentUser = _currentUser;
+@synthesize currentUser         = _currentUser;
+@synthesize statusController    = _statusController;
 
 SYNTHESIZE_SINGLETON_FOR_CLASS(DWSession);
 
@@ -74,7 +84,6 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWSession);
 //----------------------------------------------------------------------------------------------------
 - (void)dealloc {
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
-	
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -157,7 +166,6 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWSession);
 }
 
 
-
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
@@ -165,7 +173,27 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWSession);
 
 //----------------------------------------------------------------------------------------------------
 - (void)applicationFinishedLaunching:(NSNotification*)notification {
+    if(![self isAuthenticated])
+        return;
+    
+    if(!self.statusController) {
+        self.statusController = [[DWStatusController alloc] init];
+        self.statusController.delegate = self;
+    }
+    
+    [self.statusController getStatus];
 }
 
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWStatusControllerDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)statusLoaded:(DWUser *)user {
+    [user debug];
+    [user destroy];
+}
 
 @end

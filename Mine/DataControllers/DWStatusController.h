@@ -21,6 +21,12 @@
  */
 @property (nonatomic,weak) id<DWStatusControllerDelegate,NSObject> delegate;
 
+
+/**
+ * Retreive current status.
+ */
+- (void)getStatus;
+
 @end
 
 

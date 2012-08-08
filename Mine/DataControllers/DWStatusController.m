@@ -56,6 +56,16 @@ static NSString* const kNStatusLoadError    = @"NStatusLoadError";
 }
 
 
+//----------------------------------------------------------------------------------------------------
+- (void)getStatus {
+    
+    [[DWRequestManager sharedDWRequestManager] createAppRequest:kGetURI
+                                            successNotification:kNStatusLoaded
+                                              errorNotification:kNStatusLoadError
+                                                  requestMethod:kGet
+                                                   authenticate:YES];
+}
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
@@ -74,7 +84,7 @@ static NSString* const kNStatusLoadError    = @"NStatusLoadError";
     NSDictionary *info          = [notification userInfo];
     NSDictionary *response      = [info objectForKey:kKeyResponse];
 
-    DWUser  *user = [DWUser create:response];
+    DWUser  *user = [DWUser create:[response objectForKey:kKeyUser]];
     
     
     [self.delegate performSelector:sel
