@@ -11,7 +11,25 @@
 #import "DWCreationViewController.h"
 #import "DWPurchaseInputViewController.h"
 
+@protocol DWCreationNavigationViewControllerDelegate;
 
-@interface DWCreationNavigationViewController : DWNavigationRootViewController<DWCreationViewControllerDelegate>
+@interface DWCreationNavigationViewController : DWNavigationRootViewController<DWCreationViewControllerDelegate,DWPurchaseInputViewControllerDelegate> {
+    __weak id<DWCreationNavigationViewControllerDelegate,NSObject> _delegate;
+}
+
+/**
+ * Delegate
+ */
+@property (nonatomic,weak) id<DWCreationNavigationViewControllerDelegate,NSObject> delegate;
+
+@end
+
+
+/**
+ * Protocol for delegates of DWCreationNavigationViewController
+ */
+@protocol DWCreationNavigationViewControllerDelegate
+
+- (void)dismissCreateView;
 
 @end

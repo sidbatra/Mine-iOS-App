@@ -10,7 +10,9 @@
 #import "DWFacebookConnectViewController.h"
 #import "DWTwitterConnectViewController.h"
 #import "DWTumblrConnectViewController.h"
+#import "DWStore.h"
 #import "DWProduct.h"
+#import "DWPurchase.h"
 #import "DWSession.h"
 
 
@@ -19,6 +21,7 @@
  */
 @interface DWPurchaseInputViewController () {
     DWProduct                           *_product;
+    DWPurchase                          *_purchase;
     
     DWFacebookConnectViewController     *_facebookConnectViewController;
     DWTwitterConnectViewController      *_twitterConnectViewController;
@@ -29,6 +32,22 @@
  * The product selected for making a purchase
  */
 @property (nonatomic,strong) DWProduct *product;
+
+/**
+ * Purchase model
+ */
+@property (nonatomic,strong) DWPurchase *purchase;
+
+/**
+ * Create a purchase model from the user input
+ */
+- (void)createPurchase;
+
+/**
+ * Send the delegate a message to post the purchase with the selected
+ * sharing options
+ */
+- (void)post;
 
 /** 
  * UIViewControllers for connecting with third party apps
@@ -45,20 +64,28 @@
 //----------------------------------------------------------------------------------------------------
 @implementation DWPurchaseInputViewController
 
+@synthesize nameTextField                   = _nameTextField;
+@synthesize storeTextField                  = _storeTextField;
+@synthesize reviewTextField                 = _reviewTextField;
+
 @synthesize facebookSwitch                  = _facebookSwitch;
 @synthesize twitterSwitch                   = _twitterSwitch;
 @synthesize tumblrSwitch                    = _tumblrSwitch;
+
 @synthesize product                         = _product;
+@synthesize purchase                        = _purchase;
 @synthesize facebookConnectViewController   = _facebookConnectViewController;
 @synthesize twitterConnectViewController    = _twitterConnectViewController;
 @synthesize tumblrConnectViewController     = _tumblrConnectViewController;
+@synthesize delegate                        = _delegate;
 
 //----------------------------------------------------------------------------------------------------
 - (id)initWithProduct:(DWProduct*)product {
     self = [super init];
     
     if(self) {        
-        self.product = product;        
+        self.product    = product;   
+        self.purchase   = [[DWPurchase alloc] init];
         
         self.twitterConnectViewController   = [[DWTwitterConnectViewController alloc] init];
         self.tumblrConnectViewController    = [[DWTumblrConnectViewController alloc] init];
@@ -76,6 +103,57 @@
 //----------------------------------------------------------------------------------------------------
 - (void)viewDidUnload {
     [super viewDidUnload];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark Private Methods
+
+//----------------------------------------------------------------------------------------------------
+- (void)createPurchase {  
+    
+    DWStore *store  = [[DWStore alloc] init];
+    store.name      = self.storeTextField.text;
+        
+    self.purchase.store             = store;
+    self.purchase.origThumbURL      = self.product.mediumImageURL;
+    self.purchase.title             = self.nameTextField.text;
+    self.purchase.origImageURL      = self.product.largeImageURL;
+    self.purchase.sourceURL         = self.product.sourceURL;
+    self.purchase.endorsement       = self.reviewTextField.text;
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)post {
+    if (self.nameTextField.text.length == 0 || self.storeTextField.text.length == 0) {
+        NSLog(@"incomplete fields - display alert");
+    }
+    else {
+        [self createPurchase];
+        
+        [self.delegate postPurchase:self.purchase 
+                            product:self.product 
+                          shareToFB:self.facebookSwitch.on 
+                          shareToTW:self.twitterSwitch.on 
+                          shareToTB:self.tumblrSwitch.on];
+    }
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark UITextFieldDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (BOOL)textFieldShouldReturn:(UITextField*)textField {
+    
+	if(textField == self.storeTextField || textField == self.reviewTextField)
+        [self post];
+    
+	return YES;
 }
 
 
@@ -103,7 +181,7 @@
 //----------------------------------------------------------------------------------------------------
 - (IBAction)tumblrSwitchToggled:(id)sender {    
     
-    if (self.tumblrSwitch.on && [[DWSession sharedDWSession].currentUser isTumblrAuthorized])
+    if (self.tumblrSwitch.on && ![[DWSession sharedDWSession].currentUser isTumblrAuthorized])
         [self.navigationController pushViewController:self.tumblrConnectViewController 
                                              animated:YES];
 }

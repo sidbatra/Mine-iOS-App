@@ -101,7 +101,7 @@ static NSInteger const kCreateTabIndex              = 1;
                                   normalImageName:@"tab_create_off.png"
                                 selectedImageName:@"tab_create_off.png"
                              highlightedImageName:nil
-                             isMappedToController:YES
+                             isMappedToController:NO
                                        isSelected:NO];
     
     [self.tabBarController.tabBar addTabWithWidth:114
@@ -125,14 +125,34 @@ static NSInteger const kCreateTabIndex              = 1;
 #pragma mark -
 #pragma mark DWTabBarControllerDelegate
 
+//----------------------------------------------------------------------------------------------------
 - (void)selectedTabModifiedFrom:(NSInteger)oldSelectedIndex 
                              to:(NSInteger)newSelectedIndex {
     
     if(newSelectedIndex == kCreateTabIndex) {
-        [self.tabBarController presentModalViewController:self.creationNavController
+        
+        DWCreationNavigationViewController *createNavController = [[DWCreationNavigationViewController alloc] init];        
+        createNavController.delegate = self;
+        
+        UINavigationController *_b =  [[UINavigationController alloc] initWithRootViewController:createNavController];
+
+        [self.tabBarController presentModalViewController:_b
                                                  animated:NO];
     }        
 }
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWCreationNavigationViewControllerDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)dismissCreateView {
+    NSLog(@"in dismiss");
+    [self.tabBarController dismissModalViewControllerAnimated:YES];
+}
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------

@@ -8,14 +8,28 @@
 
 #import "DWCreationViewController.h"
 #import "DWProduct.h"
+#import "DWPurchase.h"
 #import "DWConstants.h"
 
 /**
  * Private declarations
  */
 @interface DWCreationViewController () {
-    DWProductsViewController  *_productsViewController;
+    DWProduct                   *_product;    
+    DWPurchase                  *_purchase;
+    
+    DWProductsViewController    *_productsViewController;
 }
+
+/**
+ * Query for which the selected product was retrieved
+ */
+@property (nonatomic,copy) NSString *query;
+
+/**
+ * Product selected by the user
+ */
+@property (nonatomic,strong) DWProduct *product;
 
 /**
  * Products View Controller for displaying product search results
@@ -57,6 +71,7 @@
 @synthesize productSelectButton         = _productSelectButton;
 @synthesize productRejectButton         = _productRejectButton;
 
+@synthesize query                       = _query;
 @synthesize product                     = _product;
 @synthesize productsViewController      = _productsViewController;
 @synthesize delegate                    = _delegate;
@@ -137,13 +152,14 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)productSelectButtonClicked:(id)sender {
-    SEL sel = @selector(productSelected:);
+    SEL sel = @selector(productSelected:fromQuery:);
     
     if(![self.delegate respondsToSelector:sel])
         return;
     
     [self.delegate performSelector:sel
-                        withObject:self.product];
+                        withObject:self.product 
+                        withObject:self.query];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -175,7 +191,10 @@
 #pragma mark DWProductsViewControllerDelegate
 
 //----------------------------------------------------------------------------------------------------
-- (void)productsLoaded {
+- (void)productsLoadedForQuery:(NSString *)query {
+    self.query                  = query;
+    self.searchTextField.text   = self.query;
+    
     [self hideKeyboard];
 }
 

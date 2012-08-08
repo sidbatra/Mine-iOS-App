@@ -38,7 +38,7 @@
 /**
  * Fired when the products are loaded
  */
-- (void)productsLoaded;
+- (void)productsLoadedForQuery:(NSString*)query;
 
 @end
 

@@ -20,8 +20,6 @@
     UIButton        *_productSelectButton;
     UIButton        *_productRejectButton;    
     
-    DWProduct       *_product;
-    
     __weak id<DWCreationViewControllerDelegate,NSObject> _delegate;
 }
 
@@ -33,11 +31,6 @@
 @property (nonatomic) IBOutlet UIImageView *productImageView;
 @property (nonatomic) IBOutlet UIButton *productSelectButton;
 @property (nonatomic) IBOutlet UIButton *productRejectButton;
-
-/**
- * Product selected by the user
- */
-@property (nonatomic,strong) DWProduct *product;
 
 /**
  * Delegate
@@ -64,6 +57,7 @@
 /**
  * A product is selected from the search results
  */
-- (void)productSelected:(DWProduct*)product;
+- (void)productSelected:(DWProduct*)product 
+              fromQuery:(NSString*)query;
 
 @end

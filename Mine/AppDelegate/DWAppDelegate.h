@@ -9,11 +9,12 @@
 #import <UIKit/UIKit.h>
 
 #import "DWTabBarController.h"
+#import "DWCreationNavigationViewController.h"
 
 /**
  * Custom app delegate
  */
-@interface DWAppDelegate : UIResponder<UIApplicationDelegate,DWTabBarControllerDelegate> {
+@interface DWAppDelegate : UIResponder<UIApplicationDelegate,DWTabBarControllerDelegate,DWCreationNavigationViewControllerDelegate> {
     UINavigationController	*_welcomeNavController;
     UINavigationController  *_feedNavController;
     UINavigationController  *_profileNavController;

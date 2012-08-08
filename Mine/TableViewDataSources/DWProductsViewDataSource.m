@@ -168,7 +168,7 @@
     
     
     [self.delegate reloadTableView];
-    [self.delegate productsLoaded];
+    [self.delegate productsLoadedForQuery:[queries objectAtIndex:1]];
 }
 
 //----------------------------------------------------------------------------------------------------

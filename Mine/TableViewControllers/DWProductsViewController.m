@@ -78,8 +78,13 @@
 #pragma mark DWProductsViewDataSourceDelegate
 
 //----------------------------------------------------------------------------------------------------
-- (void)productsLoaded {
-    [self.delegate productsLoaded];
+- (void)productsLoadedForQuery:(NSString *)query {
+    SEL sel = @selector(productsLoadedForQuery:);
+    
+    if(![self.delegate respondsToSelector:sel])
+        return;
+
+    [self.delegate productsLoadedForQuery:query];
 }
 
 //----------------------------------------------------------------------------------------------------

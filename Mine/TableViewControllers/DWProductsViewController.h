@@ -41,9 +41,9 @@
 @optional
 
 /**
- * Fired the products are loaded
+ * Fired when the products are loaded
  */
-- (void)productsLoaded;
+- (void)productsLoadedForQuery:(NSString*)query;
 
 /**
  * Fired when a product is Clicked by the user
