@@ -15,17 +15,10 @@
 /**
  * Private declarations
  */
-@interface DWCreationNavigationViewController() {
-    NSString                        *_query;
-    
+@interface DWCreationNavigationViewController() {    
     DWCreationViewController        *_creationViewController;
     DWPurchaseInputViewController   *_purchaseInputViewController;
 }
-
-/**
- * Query for which the purchase is being made
- */
-@property (nonatomic,copy) NSString *query;
 
 /**
  * UIViewControllers for different creation screens
@@ -42,7 +35,6 @@
 //----------------------------------------------------------------------------------------------------
 @implementation DWCreationNavigationViewController
 
-@synthesize query                           = _query;
 @synthesize creationViewController          = _creationViewController;
 @synthesize purchaseInputViewController     = _purchaseInputViewController;
 @synthesize delegate                        = _delegate;
@@ -86,11 +78,10 @@
 //----------------------------------------------------------------------------------------------------
 - (void)productSelected:(DWProduct *)product 
               fromQuery:(NSString *)query {
-    
-    self.query = query;
-    
-    self.purchaseInputViewController            = [[DWPurchaseInputViewController alloc] initWithProduct:product];
-    self.purchaseInputViewController.delegate   = self;
+
+    self.purchaseInputViewController = [[DWPurchaseInputViewController alloc] initWithProduct:product
+                                                                                     andQuery:query];
+    self.purchaseInputViewController.delegate = self;
     
     [self.navigationController pushViewController:self.purchaseInputViewController 
                                          animated:YES];
@@ -107,8 +98,6 @@
            shareToFB:(BOOL)shareToFB 
            shareToTW:(BOOL)shareToTW 
            shareToTB:(BOOL)shareToTB {
-    
-    purchase.query = self.query;
     
     DWCreatePurchaseBackgroundQueueItem *item = [[DWCreatePurchaseBackgroundQueueItem alloc] initWithPurchase:purchase 
                                                                                                       product:product

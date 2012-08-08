@@ -80,12 +80,16 @@
 @synthesize delegate                        = _delegate;
 
 //----------------------------------------------------------------------------------------------------
-- (id)initWithProduct:(DWProduct*)product {
+- (id)initWithProduct:(DWProduct*)product 
+             andQuery:(NSString*)query {
+    
     self = [super init];
     
     if(self) {        
-        self.product    = product;   
-        self.purchase   = [[DWPurchase alloc] init];
+        self.product        = product;   
+        
+        self.purchase       = [[DWPurchase alloc] init];
+        self.purchase.query = query;
         
         self.twitterConnectViewController   = [[DWTwitterConnectViewController alloc] init];
         self.tumblrConnectViewController    = [[DWTumblrConnectViewController alloc] init];
@@ -98,6 +102,9 @@
 //----------------------------------------------------------------------------------------------------
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.nameTextField.text = [self.purchase.query capitalizedString];
+    [self.nameTextField becomeFirstResponder];
 }
 
 //----------------------------------------------------------------------------------------------------
