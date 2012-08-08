@@ -8,6 +8,7 @@
 
 #import "DWAppDelegate.h"
 
+#import "DWNotificationManager.h"
 #import "DWSession.h"
 #import "DWConstants.h"
 
@@ -247,14 +248,11 @@ static NSInteger const kCreateTabIndex              = 1;
 
 //----------------------------------------------------------------------------------------------------
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
-    
-    NSLog(@"welcome my child %@",deviceToken);
+    [[DWNotificationManager sharedDWNotificationManager] updateDeviceToken:deviceToken];
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
-    
-    NSLog(@"you have failed me %@",[error localizedDescription]);
 }
 
 

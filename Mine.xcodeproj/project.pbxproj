@@ -194,6 +194,7 @@
 		BBE42F5615BE0F58000F6AE1 /* DWLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = BBE42F5515BE0F58000F6AE1 /* DWLoadingView.m */; };
 		BBE42F5A15BE188C000F6AE1 /* EGORefreshTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = BBE42F5915BE188C000F6AE1 /* EGORefreshTableHeaderView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		BBE42F5C15BE18DF000F6AE1 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBE42F5B15BE18DF000F6AE1 /* QuartzCore.framework */; };
+		BBEDD2FE15D30798007F862F /* DWNotificationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BBEDD2FD15D30798007F862F /* DWNotificationManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -535,6 +536,8 @@
 		BBE42F5815BE188C000F6AE1 /* EGORefreshTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGORefreshTableHeaderView.h; sourceTree = "<group>"; };
 		BBE42F5915BE188C000F6AE1 /* EGORefreshTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGORefreshTableHeaderView.m; sourceTree = "<group>"; };
 		BBE42F5B15BE18DF000F6AE1 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		BBEDD2FC15D30798007F862F /* DWNotificationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWNotificationManager.h; sourceTree = "<group>"; };
+		BBEDD2FD15D30798007F862F /* DWNotificationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWNotificationManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -834,6 +837,8 @@
 				BB26987615BB6F3E00037453 /* DWImageManager.m */,
 				BB2BC08A15D1909600CCC4BB /* DWAnalyticsManager.h */,
 				BB2BC08B15D1909600CCC4BB /* DWAnalyticsManager.m */,
+				BBEDD2FC15D30798007F862F /* DWNotificationManager.h */,
+				BBEDD2FD15D30798007F862F /* DWNotificationManager.m */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -1534,6 +1539,7 @@
 				267E551515D1CA4300A3A8C0 /* DWFacebookConnectViewController.m in Sources */,
 				BB2BC0AF15D1DCA000CCC4BB /* DWSetting.m in Sources */,
 				BB2BC0B315D1E74800CCC4BB /* DWStatusController.m in Sources */,
+				BBEDD2FE15D30798007F862F /* DWNotificationManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
