@@ -137,6 +137,7 @@
 		BB2BC0A315D198B200CCC4BB /* MixpanelAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = BB2BC09B15D198B200CCC4BB /* MixpanelAPI.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		BB2BC0A415D198B200CCC4BB /* MixpanelEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = BB2BC09E15D198B200CCC4BB /* MixpanelEvent.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		BB2BC0AF15D1DCA000CCC4BB /* DWSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = BB2BC0AE15D1DCA000CCC4BB /* DWSetting.m */; };
+		BB2BC0B315D1E74800CCC4BB /* DWStatusController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB2BC0B215D1E74800CCC4BB /* DWStatusController.m */; };
 		BB2D167615CC7C2E005F571F /* DWPurchaseProfileCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BB2D167515CC7C2E005F571F /* DWPurchaseProfileCell.m */; };
 		BB46140215CB3A5A00B38D71 /* DWUserPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = BB46140115CB3A5A00B38D71 /* DWUserPresenter.m */; };
 		BB46140615CB3A7500B38D71 /* DWUserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BB46140515CB3A7500B38D71 /* DWUserCell.m */; };
@@ -422,6 +423,8 @@
 		BB2BC09E15D198B200CCC4BB /* MixpanelEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MixpanelEvent.m; sourceTree = "<group>"; };
 		BB2BC0AD15D1DCA000CCC4BB /* DWSetting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWSetting.h; sourceTree = "<group>"; };
 		BB2BC0AE15D1DCA000CCC4BB /* DWSetting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWSetting.m; sourceTree = "<group>"; };
+		BB2BC0B115D1E74800CCC4BB /* DWStatusController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWStatusController.h; sourceTree = "<group>"; };
+		BB2BC0B215D1E74800CCC4BB /* DWStatusController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWStatusController.m; sourceTree = "<group>"; };
 		BB2D167415CC7C2E005F571F /* DWPurchaseProfileCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWPurchaseProfileCell.h; sourceTree = "<group>"; };
 		BB2D167515CC7C2E005F571F /* DWPurchaseProfileCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWPurchaseProfileCell.m; sourceTree = "<group>"; };
 		BB46140015CB3A5A00B38D71 /* DWUserPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWUserPresenter.h; sourceTree = "<group>"; };
@@ -786,6 +789,8 @@
 				262200A915C76A18003DC1DF /* DWProductsController.m */,
 				BB06366A15C1E04B001F26E1 /* DWPurchasesController.h */,
 				BB06366B15C1E04B001F26E1 /* DWPurchasesController.m */,
+				BB2BC0B115D1E74800CCC4BB /* DWStatusController.h */,
+				BB2BC0B215D1E74800CCC4BB /* DWStatusController.m */,
 				BBC060B915C9FF66000D3480 /* DWStoresController.h */,
 				BBC060BA15C9FF66000D3480 /* DWStoresController.m */,
 				BB174D4715BA43DC00DB50CA /* DWUsersController.h */,
@@ -1528,6 +1533,7 @@
 				BB2BC0A415D198B200CCC4BB /* MixpanelEvent.m in Sources */,
 				267E551515D1CA4300A3A8C0 /* DWFacebookConnectViewController.m in Sources */,
 				BB2BC0AF15D1DCA000CCC4BB /* DWSetting.m in Sources */,
+				BB2BC0B315D1E74800CCC4BB /* DWStatusController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
