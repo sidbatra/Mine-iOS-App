@@ -43,6 +43,11 @@ static NSInteger const kCreateTabIndex              = 1;
  */
 - (void)handleExternalURL:(NSURL*)url;
 
+/**
+ * Prompt for access to send push notifications.
+ */
+- (void)registerForPushNotifications;
+
 @end
 
 
@@ -112,12 +117,24 @@ static NSInteger const kCreateTabIndex              = 1;
 }
 
 //----------------------------------------------------------------------------------------------------
+- (void)registerForPushNotifications {
+    
+    if(![[DWSession sharedDWSession] isAuthenticated])
+        return;
+    
+    [[UIApplication sharedApplication] registerForRemoteNotificationTypes: UIRemoteNotificationTypeBadge | 
+                                                                            UIRemoteNotificationTypeSound | 
+                                                                            UIRemoteNotificationTypeAlert];
+}
+
+//----------------------------------------------------------------------------------------------------
 - (void)handleExternalURL:(NSURL*)url {
     if([[url absoluteString] hasPrefix:kFacebookURLPrefix]) {
        [[NSNotificationCenter defaultCenter] postNotificationName:kNFacebookURLOpened 
                                                            object:url];
     }
 }
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
@@ -163,6 +180,8 @@ static NSInteger const kCreateTabIndex              = 1;
     [[DWSession sharedDWSession] create:user];
         
     [self.tabBarController dismissModalViewControllerAnimated:YES];
+    
+    [self registerForPushNotifications];
 }
 
 
@@ -175,6 +194,7 @@ static NSInteger const kCreateTabIndex              = 1;
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     [self setupApplication];
+    [self registerForPushNotifications];
     return YES;
 }
 
@@ -218,5 +238,24 @@ static NSInteger const kCreateTabIndex              = 1;
     [self handleExternalURL:url];
     return YES;
 }
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark Push Notification Permission Responses
+
+//----------------------------------------------------------------------------------------------------
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    
+    NSLog(@"welcome my child %@",deviceToken);
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
+    
+    NSLog(@"you have failed me %@",[error localizedDescription]);
+}
+
 
 @end
