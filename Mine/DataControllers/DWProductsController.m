@@ -12,7 +12,7 @@
 #import "DWConstants.h"
 #import "NSString+Helpers.h"
 
-static NSString* const kGetProductsURI      = @"/products.json?q=%@&page=%d";
+static NSString* const kGetProductsURI      = @"/products.json?mobile=true&q=%@&page=%d";
 
 static NSString* const kNProductsLoaded     = @"NProductsLoaded";
 static NSString* const kNProductsLoadError  = @"NProductsLoadError";
