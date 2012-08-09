@@ -16,6 +16,8 @@
 
 static NSString* const kGetStoresURI            = @"/stores.json?aspect=%@";
 
+static NSString* const kStoresQuery             = @"name contains[cd] %@";
+
 static NSString* const kNStoresLoaded           = @"NStoresLoaded";
 static NSString* const kNStoresLoadError        = @"NStoresLoadError";
 
@@ -65,6 +67,30 @@ static NSString* const kNStoresLoadError        = @"NStoresLoadError";
                                               errorNotification:kNStoresLoadError
                                                   requestMethod:kGet
                                                    authenticate:YES];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)getStoresForQuery:(NSString *)query 
+                withCache:(NSArray *)stores {
+    
+    SEL sel = @selector(storesLoaded:fromQuery:);
+    
+    if(![self.delegate respondsToSelector:sel])
+        return;
+    
+    NSMutableArray *results;
+    
+    if ([query length]) {
+        NSPredicate *pred   = [NSPredicate predicateWithFormat:kStoresQuery,query];
+        results             = [NSMutableArray arrayWithArray:[stores filteredArrayUsingPredicate:pred]];
+    }
+    else {
+        results = [NSMutableArray arrayWithArray:stores];
+    }
+    
+    [self.delegate performSelector:sel
+                        withObject:results
+                        withObject:query];
 }
 
 

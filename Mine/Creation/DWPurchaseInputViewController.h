@@ -16,7 +16,8 @@
     
     UITextField     *_nameTextField;
     UITextField     *_storeTextField;
-    UITextField     *_reviewTextField;    
+    UITextField     *_reviewTextField; 
+    UIButton        *_storePickerButton;
   
     UISwitch        *_facebookSwitch;    
     UISwitch        *_twitterSwitch;
@@ -31,6 +32,7 @@
 @property (nonatomic) IBOutlet UITextField *nameTextField;
 @property (nonatomic) IBOutlet UITextField *storeTextField;
 @property (nonatomic) IBOutlet UITextField *reviewTextField;
+@property (nonatomic) IBOutlet UIButton *storePickerButton;
 
 @property (nonatomic) IBOutlet UISwitch *facebookSwitch;
 @property (nonatomic) IBOutlet UISwitch *twitterSwitch;
@@ -50,6 +52,7 @@
 /**
  * IBActions
  */
+- (IBAction)storePickerButtonClicked:(id)sender;
 - (IBAction)facebookSwitchToggled:(id)sender;
 - (IBAction)twitterSwitchToggled:(id)sender;
 - (IBAction)tumblrSwitchToggled:(id)sender;

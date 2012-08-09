@@ -33,7 +33,7 @@
  * given string
  */
 - (void)getContactsForQuery:(NSString*)query 
-                  withCache:(NSArray*)allContacts;
+                  withCache:(NSArray*)contacts;
 
 @end
 

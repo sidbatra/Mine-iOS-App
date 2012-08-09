@@ -103,7 +103,7 @@
 //----------------------------------------------------------------------------------------------------
 - (void)contactsLoaded:(NSMutableArray*)contacts fromQuery:(NSString*)query {    
 
-    if (query == self.latestQuery) {
+    if ([self.latestQuery isEqualToString:query]) {
         
         [self clean];
         self.objects = contacts;

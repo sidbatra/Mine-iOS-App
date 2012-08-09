@@ -7,6 +7,7 @@
 //
 
 #import "DWPurchaseInputViewController.h"
+#import "DWStorePickerViewController.h"
 #import "DWFacebookConnectViewController.h"
 #import "DWTwitterConnectViewController.h"
 #import "DWTumblrConnectViewController.h"
@@ -23,6 +24,7 @@
     DWProduct                           *_product;
     DWPurchase                          *_purchase;
     
+    DWStorePickerViewController         *_storePickerViewController;
     DWFacebookConnectViewController     *_facebookConnectViewController;
     DWTwitterConnectViewController      *_twitterConnectViewController;
     DWTumblrConnectViewController       *_tumblrConnectViewController;
@@ -50,6 +52,12 @@
 - (void)post;
 
 /** 
+ * Store picker controller
+ */
+@property (nonatomic,strong) DWStorePickerViewController *storePickerViewController;
+
+
+/** 
  * UIViewControllers for connecting with third party apps
  */
 @property (nonatomic,strong) DWFacebookConnectViewController *facebookConnectViewController;
@@ -67,6 +75,7 @@
 @synthesize nameTextField                   = _nameTextField;
 @synthesize storeTextField                  = _storeTextField;
 @synthesize reviewTextField                 = _reviewTextField;
+@synthesize storePickerButton               = _storePickerButton;
 
 @synthesize facebookSwitch                  = _facebookSwitch;
 @synthesize twitterSwitch                   = _twitterSwitch;
@@ -74,6 +83,7 @@
 
 @synthesize product                         = _product;
 @synthesize purchase                        = _purchase;
+@synthesize storePickerViewController       = _storePickerViewController;
 @synthesize facebookConnectViewController   = _facebookConnectViewController;
 @synthesize twitterConnectViewController    = _twitterConnectViewController;
 @synthesize tumblrConnectViewController     = _tumblrConnectViewController;
@@ -90,6 +100,8 @@
         
         self.purchase       = [[DWPurchase alloc] init];
         self.purchase.query = query;
+        
+        self.storePickerViewController      = [[DWStorePickerViewController alloc] init];
         
         self.twitterConnectViewController   = [[DWTwitterConnectViewController alloc] init];
         self.tumblrConnectViewController    = [[DWTumblrConnectViewController alloc] init];
@@ -168,6 +180,12 @@
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
 #pragma mark IBActions
+
+//----------------------------------------------------------------------------------------------------
+- (IBAction)storePickerButtonClicked:(id)sender {
+    [self.navigationController pushViewController:self.storePickerViewController
+                                         animated:YES];
+}
 
 //----------------------------------------------------------------------------------------------------
 - (IBAction)facebookSwitchToggled:(id)sender {    

@@ -39,6 +39,10 @@
 		262376B515BF6C0A00B3A037 /* FBFrictionlessRequestSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 262376AD15BF6C0A00B3A037 /* FBFrictionlessRequestSettings.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		262376B615BF6C0A00B3A037 /* FBLoginDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 262376AF15BF6C0A00B3A037 /* FBLoginDialog.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		262376B715BF6C0A00B3A037 /* FBRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 262376B115BF6C0A00B3A037 /* FBRequest.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		267B3FB915D42D0B0001AC64 /* DWStoresViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 267B3FB815D42D0B0001AC64 /* DWStoresViewController.m */; };
+		267B3FBD15D4322A0001AC64 /* DWStorePresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 267B3FBC15D4322A0001AC64 /* DWStorePresenter.m */; };
+		267B3FC115D43AE90001AC64 /* DWStorePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 267B3FBF15D43AE90001AC64 /* DWStorePickerViewController.m */; };
+		267B3FC215D43AE90001AC64 /* DWStorePickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 267B3FC015D43AE90001AC64 /* DWStorePickerViewController.xib */; };
 		267D570915CC76CB00DD4AB1 /* DWCreationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 267D570715CC76CB00DD4AB1 /* DWCreationViewController.m */; };
 		267D570A15CC76CB00DD4AB1 /* DWCreationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 267D570815CC76CB00DD4AB1 /* DWCreationViewController.xib */; };
 		267D572615D07DD900DD4AB1 /* DWPurchaseInputViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 267D572415D07DD900DD4AB1 /* DWPurchaseInputViewController.m */; };
@@ -49,6 +53,7 @@
 		267E550D15D1B4E900A3A8C0 /* DWTumblrConnectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 267E550B15D1B4E900A3A8C0 /* DWTumblrConnectViewController.xib */; };
 		267E551515D1CA4300A3A8C0 /* DWFacebookConnectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 267E551315D1CA4200A3A8C0 /* DWFacebookConnectViewController.m */; };
 		267E551615D1CA4300A3A8C0 /* DWFacebookConnectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 267E551415D1CA4300A3A8C0 /* DWFacebookConnectViewController.xib */; };
+		26B3237815D31C4A00F1E28F /* DWStoresViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B3237715D31C4A00F1E28F /* DWStoresViewDataSource.m */; };
 		26C4467715C8BA4400E9A50B /* DWProductCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C4467615C8BA4400E9A50B /* DWProductCell.m */; };
 		26C446A615C9D02700E9A50B /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C446A315C9D02700E9A50B /* NSData+Base64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		26C446A715C9D02700E9A50B /* TumblrXAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C446A515C9D02700E9A50B /* TumblrXAuth.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -254,6 +259,13 @@
 		262376B015BF6C0A00B3A037 /* FBRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FBRequest.h; path = Facebook/FBRequest.h; sourceTree = "<group>"; };
 		262376B115BF6C0A00B3A037 /* FBRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FBRequest.m; path = Facebook/FBRequest.m; sourceTree = "<group>"; };
 		262376B815BF6CBA00B3A037 /* Facebook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Facebook.h; path = Facebook/Facebook.h; sourceTree = "<group>"; };
+		267B3FB715D42D0B0001AC64 /* DWStoresViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWStoresViewController.h; sourceTree = "<group>"; };
+		267B3FB815D42D0B0001AC64 /* DWStoresViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWStoresViewController.m; sourceTree = "<group>"; };
+		267B3FBB15D4322A0001AC64 /* DWStorePresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWStorePresenter.h; sourceTree = "<group>"; };
+		267B3FBC15D4322A0001AC64 /* DWStorePresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWStorePresenter.m; sourceTree = "<group>"; };
+		267B3FBE15D43AE90001AC64 /* DWStorePickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWStorePickerViewController.h; path = Mine/Creation/DWStorePickerViewController.h; sourceTree = "<group>"; };
+		267B3FBF15D43AE90001AC64 /* DWStorePickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWStorePickerViewController.m; path = Mine/Creation/DWStorePickerViewController.m; sourceTree = "<group>"; };
+		267B3FC015D43AE90001AC64 /* DWStorePickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DWStorePickerViewController.xib; path = Mine/Creation/DWStorePickerViewController.xib; sourceTree = "<group>"; };
 		267D570615CC76CB00DD4AB1 /* DWCreationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWCreationViewController.h; path = Mine/Creation/DWCreationViewController.h; sourceTree = "<group>"; };
 		267D570715CC76CB00DD4AB1 /* DWCreationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWCreationViewController.m; path = Mine/Creation/DWCreationViewController.m; sourceTree = "<group>"; };
 		267D570815CC76CB00DD4AB1 /* DWCreationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DWCreationViewController.xib; path = Mine/Creation/DWCreationViewController.xib; sourceTree = "<group>"; };
@@ -269,6 +281,8 @@
 		267E551215D1CA4200A3A8C0 /* DWFacebookConnectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWFacebookConnectViewController.h; path = Connect/DWFacebookConnectViewController.h; sourceTree = "<group>"; };
 		267E551315D1CA4200A3A8C0 /* DWFacebookConnectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWFacebookConnectViewController.m; path = Connect/DWFacebookConnectViewController.m; sourceTree = "<group>"; };
 		267E551415D1CA4300A3A8C0 /* DWFacebookConnectViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DWFacebookConnectViewController.xib; path = Connect/DWFacebookConnectViewController.xib; sourceTree = "<group>"; };
+		26B3237615D31C4A00F1E28F /* DWStoresViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWStoresViewDataSource.h; sourceTree = "<group>"; };
+		26B3237715D31C4A00F1E28F /* DWStoresViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWStoresViewDataSource.m; sourceTree = "<group>"; };
 		26C4467515C8BA4400E9A50B /* DWProductCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWProductCell.h; sourceTree = "<group>"; };
 		26C4467615C8BA4400E9A50B /* DWProductCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWProductCell.m; sourceTree = "<group>"; };
 		26C446A215C9D02700E9A50B /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
@@ -610,6 +624,9 @@
 				267D572315D07DD900DD4AB1 /* DWPurchaseInputViewController.h */,
 				267D572415D07DD900DD4AB1 /* DWPurchaseInputViewController.m */,
 				267D572515D07DD900DD4AB1 /* DWPurchaseInputViewController.xib */,
+				267B3FBE15D43AE90001AC64 /* DWStorePickerViewController.h */,
+				267B3FBF15D43AE90001AC64 /* DWStorePickerViewController.m */,
+				267B3FC015D43AE90001AC64 /* DWStorePickerViewController.xib */,
 			);
 			name = Creation;
 			path = ..;
@@ -1192,6 +1209,8 @@
 				262200AF15C76A4E003DC1DF /* DWProductsViewController.m */,
 				BB06367115C1F593001F26E1 /* DWProfileViewController.h */,
 				BB06367215C1F593001F26E1 /* DWProfileViewController.m */,
+				267B3FB715D42D0B0001AC64 /* DWStoresViewController.h */,
+				267B3FB815D42D0B0001AC64 /* DWStoresViewController.m */,
 			);
 			path = TableViewControllers;
 			sourceTree = "<group>";
@@ -1222,6 +1241,8 @@
 				BB06367515C1F733001F26E1 /* DWProfileViewDataSource.m */,
 				BB2BC02015CDC4B800CCC4BB /* DWPurchaseViewDataSource.h */,
 				BB2BC02115CDC4B800CCC4BB /* DWPurchaseViewDataSource.m */,
+				26B3237615D31C4A00F1E28F /* DWStoresViewDataSource.h */,
+				26B3237715D31C4A00F1E28F /* DWStoresViewDataSource.m */,
 			);
 			path = TableViewDataSources;
 			sourceTree = "<group>";
@@ -1252,6 +1273,8 @@
 				BBE42F4B15BCCB7A000F6AE1 /* DWPurchaseFeedPresenter.m */,
 				BB46140015CB3A5A00B38D71 /* DWUserPresenter.h */,
 				BB46140115CB3A5A00B38D71 /* DWUserPresenter.m */,
+				267B3FBB15D4322A0001AC64 /* DWStorePresenter.h */,
+				267B3FBC15D4322A0001AC64 /* DWStorePresenter.m */,
 			);
 			path = ModelPresenters;
 			sourceTree = "<group>";
@@ -1390,6 +1413,7 @@
 				267D572D15D095DA00DD4AB1 /* DWTwitterConnectViewController.xib in Resources */,
 				267E550D15D1B4E900A3A8C0 /* DWTumblrConnectViewController.xib in Resources */,
 				267E551615D1CA4300A3A8C0 /* DWFacebookConnectViewController.xib in Resources */,
+				267B3FC215D43AE90001AC64 /* DWStorePickerViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1540,6 +1564,10 @@
 				BB2BC0AF15D1DCA000CCC4BB /* DWSetting.m in Sources */,
 				BB2BC0B315D1E74800CCC4BB /* DWStatusController.m in Sources */,
 				BBEDD2FE15D30798007F862F /* DWNotificationManager.m in Sources */,
+				26B3237815D31C4A00F1E28F /* DWStoresViewDataSource.m in Sources */,
+				267B3FB915D42D0B0001AC64 /* DWStoresViewController.m in Sources */,
+				267B3FBD15D4322A0001AC64 /* DWStorePresenter.m in Sources */,
+				267B3FC115D43AE90001AC64 /* DWStorePickerViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
