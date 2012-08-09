@@ -8,11 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+#import "DWStorePickerViewController.h"
+
 @protocol DWPurchaseInputViewControllerDelegate;
 @class DWProduct;
 @class DWPurchase;
 
-@interface DWPurchaseInputViewController : UIViewController<UITextFieldDelegate> {
+@interface DWPurchaseInputViewController : UIViewController<UITextFieldDelegate,DWStorePickerViewControllerDelegate> {
     
     UITextField     *_nameTextField;
     UITextField     *_storeTextField;

@@ -25,15 +25,15 @@
 @property (nonatomic) IBOutlet UITextField *searchTextField;
 
 /**
- * IBActions
- */
-- (IBAction)searchTextFieldEditingChanged:(id)sender;
-
-
-/**
  * Delegate
  */
 @property (nonatomic,weak) id<DWStorePickerViewControllerDelegate,NSObject> delegate;
+
+
+/**
+ * IBActions
+ */
+- (IBAction)searchTextFieldEditingChanged:(id)sender;
 
 @end
 
@@ -43,7 +43,9 @@
  */
 @protocol DWStorePickerViewControllerDelegate
 
-@optional
-
+/**
+ * Fired when a store is picked
+ */
+- (void)storePicked:(NSString*)storeName;
 
 @end

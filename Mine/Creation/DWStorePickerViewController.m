@@ -37,6 +37,12 @@
  */
 - (void)searchStores:(NSString*)query;
 
+/** 
+ * Fired when a store is picked from the table view or 
+ * added manually
+ */
+- (void)storePicked:(NSString*)storeName;
+
 
 @end
 
@@ -104,6 +110,13 @@
                                                      [NSCharacterSet whitespaceAndNewlineCharacterSet]]];
 }
 
+//----------------------------------------------------------------------------------------------------
+- (void)storePicked:(NSString *)storeName {
+    
+    [self.delegate storePicked:storeName];
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
@@ -121,6 +134,12 @@
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
 #pragma mark DWStoresViewControllerDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)storeSelected:(DWStore *)store {
+    [self storePicked:store.name];
+}
+
 
 
 @end

@@ -7,7 +7,6 @@
 //
 
 #import "DWPurchaseInputViewController.h"
-#import "DWStorePickerViewController.h"
 #import "DWFacebookConnectViewController.h"
 #import "DWTwitterConnectViewController.h"
 #import "DWTumblrConnectViewController.h"
@@ -101,7 +100,8 @@
         self.purchase       = [[DWPurchase alloc] init];
         self.purchase.query = query;
         
-        self.storePickerViewController      = [[DWStorePickerViewController alloc] init];
+        self.storePickerViewController          = [[DWStorePickerViewController alloc] init];
+        self.storePickerViewController.delegate = self;
         
         self.twitterConnectViewController   = [[DWTwitterConnectViewController alloc] init];
         self.tumblrConnectViewController    = [[DWTumblrConnectViewController alloc] init];
@@ -173,6 +173,16 @@
         [self post];
     
 	return YES;
+}
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWStorePickerViewControllerDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)storePicked:(NSString *)storeName {
+    self.storeTextField.text = storeName;
 }
 
 

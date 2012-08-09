@@ -42,7 +42,11 @@
  */
 @protocol DWStoresViewControllerDelegate
 
-@optional
+@required
 
+/**
+ * Fired when a store element is selected
+ */
+- (void)storeSelected:(DWStore*)store;
 
 @end
