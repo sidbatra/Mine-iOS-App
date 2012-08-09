@@ -27,6 +27,7 @@ extern NSString* const kDelete;
 extern NSString* const kAppProtocol;
 extern NSString* const kAppServer;
 extern NSString* const kClientName;
+extern NSString* const kUserAgent;
 
 /**
  * Encryption related

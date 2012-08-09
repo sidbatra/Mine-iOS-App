@@ -106,6 +106,7 @@ static NSInteger const kCacheTimeout = 15 * 24 * 60 * 60;
 	[imageRequest setDownloadCache:[ASIDownloadCache sharedCache]];
 	[imageRequest setCacheStoragePolicy:ASICachePermanentlyCacheStoragePolicy];
 	[imageRequest setSecondsToCache:kCacheTimeout];
+    [imageRequest setUserAgentString:kUserAgent];
 	
 	return imageRequest;
 }
