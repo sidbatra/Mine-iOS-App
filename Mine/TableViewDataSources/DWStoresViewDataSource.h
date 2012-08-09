@@ -50,4 +50,9 @@
  */
 - (void)storesLoadedFromQuery;
 
+/**
+ * Fired when no stores are retrieved from the query
+ */
+- (void)noStoresLoadedFromQuery;
+
 @end

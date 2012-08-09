@@ -28,11 +28,6 @@
 - (void)showKeyboard;
 
 /** 
- * Hide keyboard
- */
-- (void)hideKeyboard;
-
-/** 
  * Selector for searching stores as the user types
  */
 - (void)searchStores:(NSString*)query;
@@ -53,6 +48,7 @@
 @implementation DWStorePickerViewController
 
 @synthesize searchTextField             = _searchTextField;
+@synthesize doneButton                  = _doneButton;
 @synthesize storesViewController        = _storesViewController;
 
 @synthesize delegate                    = _delegate;
@@ -100,11 +96,6 @@
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)hideKeyboard {
-    [self.searchTextField resignFirstResponder];
-}
-
-//----------------------------------------------------------------------------------------------------
 - (void)searchStores:(NSString *)query {
     [self.storesViewController searchStoresForQuery:[query stringByTrimmingCharactersInSet:
                                                      [NSCharacterSet whitespaceAndNewlineCharacterSet]]];
@@ -131,6 +122,12 @@
 }
 
 //----------------------------------------------------------------------------------------------------
+- (IBAction)doneButtonClicked:(id)sender {
+    [self storePicked:self.searchTextField.text];
+}
+
+
+//----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
 #pragma mark DWStoresViewControllerDelegate
@@ -140,6 +137,15 @@
     [self storePicked:store.name];
 }
 
+//----------------------------------------------------------------------------------------------------
+- (void)storesFetched {
+    self.doneButton.hidden = true;
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)noStoresFetched {
+    self.doneButton.hidden = false;
+}
 
 
 @end

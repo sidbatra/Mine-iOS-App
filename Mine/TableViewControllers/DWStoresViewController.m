@@ -79,9 +79,12 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)storesLoadedFromQuery {
-    [self performSelectorOnMainThread:@selector(reloadTableView) 
-                           withObject:nil 
-                        waitUntilDone:NO];
+    [self.delegate storesFetched];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)noStoresLoadedFromQuery {
+    [self.delegate noStoresFetched];
 }
 
 

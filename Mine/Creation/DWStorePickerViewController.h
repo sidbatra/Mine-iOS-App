@@ -14,7 +14,8 @@
 @class DWStore;
 
 @interface DWStorePickerViewController : UIViewController<UITextFieldDelegate,DWStoresViewControllerDelegate> {
-    UITextField *_searchTextField;
+    UITextField     *_searchTextField;
+    UIButton        *_doneButton;
 
     __weak id<DWStorePickerViewControllerDelegate,NSObject> _delegate;
 }
@@ -23,6 +24,7 @@
  * IBOutlet properties
  */
 @property (nonatomic) IBOutlet UITextField *searchTextField;
+@property (nonatomic) IBOutlet UIButton *doneButton;
 
 /**
  * Delegate
@@ -34,6 +36,7 @@
  * IBActions
  */
 - (IBAction)searchTextFieldEditingChanged:(id)sender;
+- (IBAction)doneButtonClicked:(id)sender;
 
 @end
 

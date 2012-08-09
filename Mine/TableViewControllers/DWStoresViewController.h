@@ -45,6 +45,16 @@
 @required
 
 /**
+ * Fired when stores are fetched from the search
+ */
+- (void)storesFetched;
+
+/**
+ * Fired when no stores is found from the search
+ */
+- (void)noStoresFetched;
+
+/**
  * Fired when a store element is selected
  */
 - (void)storeSelected:(DWStore*)store;

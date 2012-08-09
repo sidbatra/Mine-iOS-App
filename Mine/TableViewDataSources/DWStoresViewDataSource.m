@@ -105,7 +105,12 @@
         [self clean];
         self.objects = stores;
         
-        [self.delegate storesLoadedFromQuery];
+        if ([self.objects count]) 
+            [self.delegate storesLoadedFromQuery];
+        else
+            [self.delegate noStoresLoadedFromQuery];
+        
+        [self.delegate reloadTableView];
     }
 }
 

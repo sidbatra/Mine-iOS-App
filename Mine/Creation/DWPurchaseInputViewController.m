@@ -39,6 +39,19 @@
  */
 @property (nonatomic,strong) DWPurchase *purchase;
 
+/** 
+ * Store picker controller
+ */
+@property (nonatomic,strong) DWStorePickerViewController *storePickerViewController;
+
+/** 
+ * UIViewControllers for connecting with third party apps
+ */
+@property (nonatomic,strong) DWFacebookConnectViewController *facebookConnectViewController;
+@property (nonatomic,strong) DWTwitterConnectViewController *twitterConnectViewController;
+@property (nonatomic,strong) DWTumblrConnectViewController *tumblrConnectViewController;
+
+
 /**
  * Create a purchase model from the user input
  */
@@ -49,19 +62,6 @@
  * sharing options
  */
 - (void)post;
-
-/** 
- * Store picker controller
- */
-@property (nonatomic,strong) DWStorePickerViewController *storePickerViewController;
-
-
-/** 
- * UIViewControllers for connecting with third party apps
- */
-@property (nonatomic,strong) DWFacebookConnectViewController *facebookConnectViewController;
-@property (nonatomic,strong) DWTwitterConnectViewController *twitterConnectViewController;
-@property (nonatomic,strong) DWTumblrConnectViewController *tumblrConnectViewController;
 
 @end
 
