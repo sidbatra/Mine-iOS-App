@@ -117,8 +117,6 @@
     [DWSession sharedDWSession].currentUser.setting.shareToTumblr   = shareToTB;    
     
     [[DWSession sharedDWSession] update];
-    
-    [[DWSession sharedDWSession].currentUser debug];
 }
 
 @end
