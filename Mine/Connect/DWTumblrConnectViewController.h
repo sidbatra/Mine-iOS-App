@@ -11,10 +11,13 @@
 #import "DWTumblrConnect.h"
 #import "DWUsersController.h"
 
+@protocol DWTumblrConnectViewControllerDelegate;
 
 @interface DWTumblrConnectViewController : UIViewController<UITextFieldDelegate,DWTumblrConnectDelegate,DWUsersControllerDelegate> {
     UITextField         *_emailTextField;
     UITextField         *_passwordTextField;
+    
+    __weak id<DWTumblrConnectViewControllerDelegate,NSObject> _delegate;  
 }
 
 /**
@@ -22,5 +25,20 @@
  */
 @property (nonatomic) IBOutlet UITextField *emailTextField;
 @property (nonatomic) IBOutlet UITextField *passwordTextField;
+
+/**
+ * Delegate
+ */
+@property (nonatomic,weak) id<DWTumblrConnectViewControllerDelegate,NSObject> delegate;
+
+@end
+
+
+/**
+ * Protocol for the delegates of DWTumblrConnectViewController
+ */
+@protocol DWTumblrConnectViewControllerDelegate 
+
+- (void)tumblrConfigured;
 
 @end

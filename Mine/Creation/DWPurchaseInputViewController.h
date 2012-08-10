@@ -9,18 +9,25 @@
 #import <UIKit/UIKit.h>
 
 #import "DWStorePickerViewController.h"
+#import "DWFacebookConnectViewController.h"
+#import "DWTwitterConnectViewController.h"
+#import "DWTumblrConnectViewController.h"
 
 @protocol DWPurchaseInputViewControllerDelegate;
 @class DWProduct;
 @class DWPurchase;
 
-@interface DWPurchaseInputViewController : UIViewController<UITextFieldDelegate,DWStorePickerViewControllerDelegate> {
+@interface DWPurchaseInputViewController : UIViewController<UITextFieldDelegate,DWStorePickerViewControllerDelegate,DWFacebookConnectViewControllerDelegate,DWTwitterConnectViewControllerDelegate,DWTumblrConnectViewControllerDelegate> {
     
     UITextField     *_nameTextField;
     UITextField     *_storeTextField;
     UITextField     *_reviewTextField; 
     UIButton        *_storePickerButton;
   
+    UIButton        *_facebookConfigureButton;
+    UIButton        *_twitterConfigureButton;
+    UIButton        *_tumblrConfigureButton;
+    
     UISwitch        *_facebookSwitch;    
     UISwitch        *_twitterSwitch;
     UISwitch        *_tumblrSwitch;    
@@ -35,6 +42,10 @@
 @property (nonatomic) IBOutlet UITextField *storeTextField;
 @property (nonatomic) IBOutlet UITextField *reviewTextField;
 @property (nonatomic) IBOutlet UIButton *storePickerButton;
+
+@property (nonatomic) IBOutlet UIButton *facebookConfigureButton;
+@property (nonatomic) IBOutlet UIButton *twitterConfigureButton;
+@property (nonatomic) IBOutlet UIButton *tumblrConfigureButton;
 
 @property (nonatomic) IBOutlet UISwitch *facebookSwitch;
 @property (nonatomic) IBOutlet UISwitch *twitterSwitch;
@@ -55,9 +66,9 @@
  * IBActions
  */
 - (IBAction)storePickerButtonClicked:(id)sender;
-- (IBAction)facebookSwitchToggled:(id)sender;
-- (IBAction)twitterSwitchToggled:(id)sender;
-- (IBAction)tumblrSwitchToggled:(id)sender;
+- (IBAction)facebookConfigureButtonClicked:(id)sender;
+- (IBAction)twitterConfigureButtonClicked:(id)sender;
+- (IBAction)tumblrConfigureButtonClicked:(id)sender;
 
 @end
 

@@ -11,6 +11,8 @@
 #import "DWBackgroundQueue.h"
 #import "DWPurchase.h"
 #import "DWProduct.h"
+#import "DWSession.h"
+#import "DWSetting.h"
 
 /**
  * Private declarations
@@ -109,6 +111,14 @@
                                                       withObject:item];
     
     [self.delegate dismissCreateView];
+    
+    [DWSession sharedDWSession].currentUser.setting.shareToFacebook = shareToFB;
+    [DWSession sharedDWSession].currentUser.setting.shareToTwitter  = shareToTW;
+    [DWSession sharedDWSession].currentUser.setting.shareToTumblr   = shareToTB;    
+    
+    [[DWSession sharedDWSession] update];
+    
+    [[DWSession sharedDWSession].currentUser debug];
 }
 
 @end

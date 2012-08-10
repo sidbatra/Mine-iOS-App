@@ -11,8 +11,25 @@
 #import "DWFacebookConnect.h"
 #import "DWUsersController.h"
 
+@protocol DWFacebookConnectViewControllerDelegate;
+
 @interface DWFacebookConnectViewController : UIViewController<DWFacebookConnectDelegate,DWUsersControllerDelegate> {
-    
+    __weak id<DWFacebookConnectViewControllerDelegate,NSObject> _delegate;    
 }
+
+/**
+ * Delegate
+ */
+@property (nonatomic,weak) id<DWFacebookConnectViewControllerDelegate,NSObject> delegate;
+
+@end
+
+
+/**
+ * Protocol for the delegates of DWFacebookConnectViewController
+ */
+@protocol DWFacebookConnectViewControllerDelegate 
+
+- (void)facebookConfigured;
 
 @end

@@ -15,6 +15,8 @@
 @interface DWTwitterConnectViewController () {
     DWTwitterConnect    *_twitterConnect;
     DWUsersController   *_usersController;
+    
+    BOOL                _isAwaitingResponse;
 }
 
 /**
@@ -39,6 +41,7 @@
 @synthesize passwordTextField           = _passwordTextField;
 @synthesize twitterConnect              = _twitterConnect;
 @synthesize usersController             = _usersController;
+@synthesize delegate                    = _delegate;
 
 //----------------------------------------------------------------------------------------------------
 - (id)init {
@@ -50,6 +53,8 @@
         
         self.usersController            = [[DWUsersController alloc] init];
         self.usersController.delegate   = self;
+        
+        _isAwaitingResponse             = NO;        
     }
     
     return self;
@@ -91,6 +96,8 @@
 - (void)twAuthenticatedWithToken:(NSString *)token 
                        andSecret:(NSString *)secret {
     
+    _isAwaitingResponse = YES;
+    
     [self.usersController updateUserHavingID:[DWSession sharedDWSession].currentUser.databaseID 
                             withTwitterToken:token 
                             andTwitterSecret:secret];
@@ -109,7 +116,13 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)userUpdated:(DWUser *)user {
-    [user destroy];    
+    
+    if(_isAwaitingResponse) {
+        [self.delegate twitterConfigured];            
+        _isAwaitingResponse = NO;
+    }
+    
+    [user destroy];   
     [self.navigationController popViewControllerAnimated:YES];
 }
 

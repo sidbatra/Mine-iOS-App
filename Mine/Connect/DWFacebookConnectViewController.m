@@ -15,6 +15,8 @@
 @interface DWFacebookConnectViewController () {
     DWFacebookConnect   *_tumblrConnect;
     DWUsersController   *_usersController;
+    
+    BOOL                _isAwaitingResponse;
 }
 
 /**
@@ -37,6 +39,7 @@
 
 @synthesize facebookConnect             = _facebookConnect;
 @synthesize usersController             = _usersController;
+@synthesize delegate                    = _delegate;
 
 //----------------------------------------------------------------------------------------------------
 - (id)init {
@@ -48,6 +51,8 @@
         
         self.usersController            = [[DWUsersController alloc] init];
         self.usersController.delegate   = self;
+        
+        _isAwaitingResponse             = NO;        
     }
     
     return self;
@@ -73,6 +78,8 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)fbAuthenticatedWithToken:(NSString *)accessToken {
+
+    _isAwaitingResponse = YES;
     
     [self.usersController updateUserHavingID:[DWSession sharedDWSession].currentUser.databaseID 
                      withFacebookAccessToken:accessToken];
@@ -91,6 +98,12 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)userUpdated:(DWUser *)user {    
+    
+    if(_isAwaitingResponse) {
+        [self.delegate facebookConfigured];        
+        _isAwaitingResponse = NO;
+    }
+
     [user destroy];    
     [self.navigationController popViewControllerAnimated:YES];
 }

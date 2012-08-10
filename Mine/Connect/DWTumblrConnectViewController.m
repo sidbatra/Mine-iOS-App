@@ -15,6 +15,8 @@
 @interface DWTumblrConnectViewController () {
     DWTumblrConnect     *_tumblrConnect;
     DWUsersController   *_usersController;
+    
+    BOOL                _isAwaitingResponse;
 }
 
 /**
@@ -39,6 +41,7 @@
 @synthesize passwordTextField           = _passwordTextField;
 @synthesize tumblrConnect               = _tumblrConnect;
 @synthesize usersController             = _usersController;
+@synthesize delegate                    = _delegate;
 
 //----------------------------------------------------------------------------------------------------
 - (id)init {
@@ -50,6 +53,8 @@
         
         self.usersController            = [[DWUsersController alloc] init];
         self.usersController.delegate   = self;
+        
+        _isAwaitingResponse             = NO;
     }
     
     return self;
@@ -91,6 +96,8 @@
 - (void)tumblrAuthenticatedWithToken:(NSString *)accessToken 
                            andSecret:(NSString *)secret {
     
+    _isAwaitingResponse = YES;
+    
     [self.usersController updateUserHavingID:[DWSession sharedDWSession].currentUser.databaseID 
                              withTumblrToken:accessToken 
                              andTumblrSecret:secret];
@@ -109,6 +116,12 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)userUpdated:(DWUser *)user {
+    
+    if(_isAwaitingResponse) {
+        [self.delegate tumblrConfigured];
+        _isAwaitingResponse = NO;
+    }
+
     [user destroy];    
     [self.navigationController popViewControllerAnimated:YES];
 }

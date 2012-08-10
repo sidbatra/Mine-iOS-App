@@ -7,12 +7,10 @@
 //
 
 #import "DWPurchaseInputViewController.h"
-#import "DWFacebookConnectViewController.h"
-#import "DWTwitterConnectViewController.h"
-#import "DWTumblrConnectViewController.h"
 #import "DWStore.h"
 #import "DWProduct.h"
 #import "DWPurchase.h"
+#import "DWSetting.h"
 #import "DWSession.h"
 
 
@@ -63,6 +61,11 @@
  */
 - (void)post;
 
+/**
+ * Setup the UI (switch vs button) for the fb,tw and tumblr switches
+ */
+- (void)setupSharingUI;
+
 @end
 
 
@@ -75,6 +78,10 @@
 @synthesize storeTextField                  = _storeTextField;
 @synthesize reviewTextField                 = _reviewTextField;
 @synthesize storePickerButton               = _storePickerButton;
+
+@synthesize facebookConfigureButton         = _facebookConfigureButton;
+@synthesize twitterConfigureButton          = _twitterConfigureButton;
+@synthesize tumblrConfigureButton           = _tumblrConfigureButton;
 
 @synthesize facebookSwitch                  = _facebookSwitch;
 @synthesize twitterSwitch                   = _twitterSwitch;
@@ -100,12 +107,17 @@
         self.purchase       = [[DWPurchase alloc] init];
         self.purchase.query = query;
         
-        self.storePickerViewController          = [[DWStorePickerViewController alloc] init];
-        self.storePickerViewController.delegate = self;
+        self.storePickerViewController              = [[DWStorePickerViewController alloc] init];
+        self.storePickerViewController.delegate     = self;
         
-        self.twitterConnectViewController   = [[DWTwitterConnectViewController alloc] init];
-        self.tumblrConnectViewController    = [[DWTumblrConnectViewController alloc] init];
-        self.facebookConnectViewController  = [[DWFacebookConnectViewController alloc] init];
+        self.facebookConnectViewController          = [[DWFacebookConnectViewController alloc] init];
+        self.facebookConnectViewController.delegate = self;
+        
+        self.twitterConnectViewController           = [[DWTwitterConnectViewController alloc] init];
+        self.twitterConnectViewController.delegate  = self;
+        
+        self.tumblrConnectViewController            = [[DWTumblrConnectViewController alloc] init];
+        self.tumblrConnectViewController.delegate   = self;
     }
     
     return self;
@@ -117,6 +129,8 @@
     
     self.nameTextField.text = [self.purchase.query capitalizedString];
     [self.nameTextField becomeFirstResponder];
+    
+    [self setupSharingUI];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -129,6 +143,31 @@
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
 #pragma mark Private Methods
+
+//----------------------------------------------------------------------------------------------------
+- (void)setupSharingUI {    
+    
+    if([[DWSession sharedDWSession].currentUser isFacebookAuthorized]) {
+        self.facebookConfigureButton.hidden = YES;
+        
+        self.facebookSwitch.hidden  = NO; 
+        self.facebookSwitch.on      = [DWSession sharedDWSession].currentUser.setting.shareToFacebook   ? YES : NO;            
+    }
+    
+    if([[DWSession sharedDWSession].currentUser isTwitterAuthorized]) {
+        self.twitterConfigureButton.hidden = YES;
+        
+        self.twitterSwitch.hidden   = NO; 
+        self.twitterSwitch.on       = [DWSession sharedDWSession].currentUser.setting.shareToTwitter    ? YES : NO;            
+    }
+    
+    if([[DWSession sharedDWSession].currentUser isTumblrAuthorized]) {
+        self.tumblrConfigureButton.hidden = YES;
+        
+        self.tumblrSwitch.hidden    = NO; 
+        self.tumblrSwitch.on        = [DWSession sharedDWSession].currentUser.setting.shareToTumblr     ? YES : NO;            
+    }
+}
 
 //----------------------------------------------------------------------------------------------------
 - (void)createPurchase {  
@@ -189,6 +228,48 @@
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
+#pragma mark DWFacebookConnectViewControllerDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)facebookConfigured {
+    self.facebookConfigureButton.hidden = YES;
+    
+    self.facebookSwitch.hidden          = NO;
+    self.facebookSwitch.on              = YES;
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWTwitterConnectViewControllerDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)twitterConfigured {
+    self.twitterConfigureButton.hidden  = YES;
+    
+    self.twitterSwitch.hidden           = NO;
+    self.twitterSwitch.on               = YES;
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWTumblrConnectViewControllerDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)tumblrConfigured {
+    self.tumblrConfigureButton.hidden   = YES;
+    
+    self.tumblrSwitch.hidden            = NO;
+    self.tumblrSwitch.on                = YES;
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
 #pragma mark IBActions
 
 //----------------------------------------------------------------------------------------------------
@@ -198,43 +279,21 @@
 }
 
 //----------------------------------------------------------------------------------------------------
-- (IBAction)facebookSwitchToggled:(id)sender {    
-    
-    if (self.facebookSwitch.on && ![[DWSession sharedDWSession].currentUser isFacebookAuthorized])
-        [self.navigationController pushViewController:self.facebookConnectViewController 
-                                             animated:YES];
+- (IBAction)facebookConfigureButtonClicked:(id)sender {
+    [self.navigationController pushViewController:self.facebookConnectViewController 
+                                         animated:YES];
 }
 
 //----------------------------------------------------------------------------------------------------
-- (IBAction)twitterSwitchToggled:(id)sender {    
-    
-    if (self.twitterSwitch.on && ![[DWSession sharedDWSession].currentUser isTwitterAuthorized])
-        [self.navigationController pushViewController:self.twitterConnectViewController 
-                                             animated:YES];
+- (IBAction)twitterConfigureButtonClicked:(id)sender {
+    [self.navigationController pushViewController:self.twitterConnectViewController 
+                                         animated:YES];    
 }
 
 //----------------------------------------------------------------------------------------------------
-- (IBAction)tumblrSwitchToggled:(id)sender {    
-    
-    if (self.tumblrSwitch.on && ![[DWSession sharedDWSession].currentUser isTumblrAuthorized])
-        [self.navigationController pushViewController:self.tumblrConnectViewController 
-                                             animated:YES];
-}
-
-
-//----------------------------------------------------------------------------------------------------
-//----------------------------------------------------------------------------------------------------
-#pragma mark -
-#pragma mark Nav Stack Selectors
-
-//----------------------------------------------------------------------------------------------------
-- (void)willShowOnNav {
-    
-    self.facebookSwitch.on  = [[DWSession sharedDWSession].currentUser isFacebookAuthorized]    ? YES : NO;    
-    self.twitterSwitch.on   = [[DWSession sharedDWSession].currentUser isTwitterAuthorized]     ? YES : NO;
-    self.tumblrSwitch.on    = [[DWSession sharedDWSession].currentUser isTumblrAuthorized]      ? YES : NO;
-    
-    [[DWSession sharedDWSession].currentUser debug];
+- (IBAction)tumblrConfigureButtonClicked:(id)sender {
+    [self.navigationController pushViewController:self.tumblrConnectViewController 
+                                         animated:YES];    
 }
 
 @end
