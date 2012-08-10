@@ -102,15 +102,12 @@
 
     if ([self.latestQuery isEqualToString:query]) {
         
-        [self clean];
         self.objects = stores;
         
         if ([self.objects count]) 
             [self.delegate storesLoadedFromQuery];
         else
             [self.delegate noStoresLoadedFromQuery];
-        
-        [self.delegate reloadTableView];
     }
 }
 
