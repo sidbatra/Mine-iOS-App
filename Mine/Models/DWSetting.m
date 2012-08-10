@@ -14,7 +14,7 @@ static NSString* const kEncodeKeyShareToTwitter         = @"DWSetting_shareToTwi
 static NSString* const kEncodeKeyShareToTumblr          = @"DWSetting_shareToTumblr";
 static NSString* const kEncodeKeyFBPublishActions       = @"DWSetting_fbPublishActions";
 
-static NSString* const kKeyShareToFacebook              = @"post_to_timeline";
+static NSString* const kKeyShareToFacebook              = @"share_to_facebook";
 static NSString* const kKeyShareToTwitter               = @"share_to_twitter";
 static NSString* const kKeyShareToTumblr                = @"share_to_tumblr";
 static NSString* const kKeyFBPublishActions             = @"fb_publish_actions";
