@@ -131,6 +131,8 @@
     [self.nameTextField becomeFirstResponder];
     
     [self setupSharingUI];
+    
+    [self.storePickerViewController preloadStores];
 }
 
 //----------------------------------------------------------------------------------------------------

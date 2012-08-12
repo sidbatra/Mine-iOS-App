@@ -58,7 +58,8 @@
     self = [super init];
     
     if (self) {
-        
+        self.storesViewController = [[DWStoresViewController alloc] init];
+        self.storesViewController.delegate    = self;
     }
     
     return self;
@@ -67,11 +68,7 @@
 //----------------------------------------------------------------------------------------------------
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    if(!self.storesViewController)
-        self.storesViewController = [[DWStoresViewController alloc] init];
-    
-    self.storesViewController.delegate    = self;
+        
     self.storesViewController.view.frame  = CGRectMake(0,50,320,400);
     
     [self.view addSubview:self.storesViewController.view];
@@ -82,6 +79,11 @@
 //----------------------------------------------------------------------------------------------------
 - (void)viewDidUnload {
     [super viewDidUnload];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)preloadStores {
+    [self.storesViewController loadAllStores];
 }
 
 

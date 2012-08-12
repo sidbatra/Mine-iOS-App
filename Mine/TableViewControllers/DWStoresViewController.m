@@ -47,7 +47,8 @@
 	[super viewDidLoad];
     [self disablePullToRefresh];
     
-    [self loadAllStores];
+    if([self.tableViewDataSource totalObjectsForSection:0])
+        [self reloadTableView];
 }
 
 
@@ -58,7 +59,8 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)loadAllStores {
-    [(DWStoresViewDataSource*)self.tableViewDataSource loadAllStores];        
+    if(![self.tableViewDataSource totalObjectsForSection:0])
+        [(DWStoresViewDataSource*)self.tableViewDataSource loadAllStores];        
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -74,7 +76,6 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)allStoresLoaded {
-    NSLog(@"all stores loaded");
 }
 
 //----------------------------------------------------------------------------------------------------

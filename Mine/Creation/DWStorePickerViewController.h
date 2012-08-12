@@ -38,6 +38,12 @@
 - (IBAction)searchTextFieldEditingChanged:(id)sender;
 - (IBAction)doneButtonClicked:(id)sender;
 
+
+/**
+ * Start loading stores before the picker opens.
+ */
+- (void)preloadStores;
+
 @end
 
 

@@ -87,6 +87,8 @@
     self.allStores 	= stores;
     self.objects    = stores;
     
+    NSLog(@"All stores loaded");
+    
     [self.delegate reloadTableView];
 }
 
