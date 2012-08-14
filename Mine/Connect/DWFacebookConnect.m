@@ -45,9 +45,9 @@
 //----------------------------------------------------------------------------------------------------
 - (void)authorize {
     NSArray *permissions = [[NSArray alloc] initWithObjects:
+                            @"email",
                             @"user_likes", 
                             @"user_birthday",
-                            @"user_photos",
                             @"publish_actions",
                             nil];
     
