@@ -13,8 +13,6 @@
     BOOL    _shareToFacebook;
     BOOL    _shareToTwitter;
     BOOL    _shareToTumblr;
-    
-    BOOL    _fbPublishActions;
 }
 
 /**
@@ -31,11 +29,6 @@
  * User preference for sharing to Tumblr.
  */
 @property (nonatomic,assign) BOOL shareToTumblr;
-
-/**
- * Facebook permission for publishing actions.
- */
-@property (nonatomic,assign) BOOL fbPublishActions;
 
 
 /**
