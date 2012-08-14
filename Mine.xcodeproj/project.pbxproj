@@ -53,6 +53,8 @@
 		267E550D15D1B4E900A3A8C0 /* DWTumblrConnectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 267E550B15D1B4E900A3A8C0 /* DWTumblrConnectViewController.xib */; };
 		267E551515D1CA4300A3A8C0 /* DWFacebookConnectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 267E551315D1CA4200A3A8C0 /* DWFacebookConnectViewController.m */; };
 		267E551615D1CA4300A3A8C0 /* DWFacebookConnectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 267E551415D1CA4300A3A8C0 /* DWFacebookConnectViewController.xib */; };
+		2681C4E615DAEE17003046F1 /* DWSuggestionsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2681C4E515DAEE17003046F1 /* DWSuggestionsController.m */; };
+		2681C4EA15DAF4E7003046F1 /* DWSuggestion.m in Sources */ = {isa = PBXBuildFile; fileRef = 2681C4E915DAF4E7003046F1 /* DWSuggestion.m */; };
 		26B3237815D31C4A00F1E28F /* DWStoresViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B3237715D31C4A00F1E28F /* DWStoresViewDataSource.m */; };
 		26C4467715C8BA4400E9A50B /* DWProductCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C4467615C8BA4400E9A50B /* DWProductCell.m */; };
 		26C446A615C9D02700E9A50B /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C446A315C9D02700E9A50B /* NSData+Base64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -281,6 +283,10 @@
 		267E551215D1CA4200A3A8C0 /* DWFacebookConnectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWFacebookConnectViewController.h; path = Connect/DWFacebookConnectViewController.h; sourceTree = "<group>"; };
 		267E551315D1CA4200A3A8C0 /* DWFacebookConnectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWFacebookConnectViewController.m; path = Connect/DWFacebookConnectViewController.m; sourceTree = "<group>"; };
 		267E551415D1CA4300A3A8C0 /* DWFacebookConnectViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DWFacebookConnectViewController.xib; path = Connect/DWFacebookConnectViewController.xib; sourceTree = "<group>"; };
+		2681C4E415DAEE17003046F1 /* DWSuggestionsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWSuggestionsController.h; sourceTree = "<group>"; };
+		2681C4E515DAEE17003046F1 /* DWSuggestionsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWSuggestionsController.m; sourceTree = "<group>"; };
+		2681C4E815DAF4E7003046F1 /* DWSuggestion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWSuggestion.h; sourceTree = "<group>"; };
+		2681C4E915DAF4E7003046F1 /* DWSuggestion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWSuggestion.m; sourceTree = "<group>"; };
 		26B3237615D31C4A00F1E28F /* DWStoresViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWStoresViewDataSource.h; sourceTree = "<group>"; };
 		26B3237715D31C4A00F1E28F /* DWStoresViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWStoresViewDataSource.m; sourceTree = "<group>"; };
 		26C4467515C8BA4400E9A50B /* DWProductCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWProductCell.h; sourceTree = "<group>"; };
@@ -815,6 +821,8 @@
 				BBC060BA15C9FF66000D3480 /* DWStoresController.m */,
 				BB174D4715BA43DC00DB50CA /* DWUsersController.h */,
 				BB174D4815BA43DC00DB50CA /* DWUsersController.m */,
+				2681C4E415DAEE17003046F1 /* DWSuggestionsController.h */,
+				2681C4E515DAEE17003046F1 /* DWSuggestionsController.m */,
 			);
 			path = DataControllers;
 			sourceTree = "<group>";
@@ -1075,6 +1083,8 @@
 				BB26987F15BBA2E300037453 /* DWStore.m */,
 				BB9F710715B9EBED0099C80A /* DWUser.h */,
 				BB9F710815B9EBED0099C80A /* DWUser.m */,
+				2681C4E815DAF4E7003046F1 /* DWSuggestion.h */,
+				2681C4E915DAF4E7003046F1 /* DWSuggestion.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1568,6 +1578,8 @@
 				267B3FB915D42D0B0001AC64 /* DWStoresViewController.m in Sources */,
 				267B3FBD15D4322A0001AC64 /* DWStorePresenter.m in Sources */,
 				267B3FC115D43AE90001AC64 /* DWStorePickerViewController.m in Sources */,
+				2681C4E615DAEE17003046F1 /* DWSuggestionsController.m in Sources */,
+				2681C4EA15DAF4E7003046F1 /* DWSuggestion.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
