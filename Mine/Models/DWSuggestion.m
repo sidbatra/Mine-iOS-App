@@ -30,7 +30,7 @@ static NSString* const kKeyThing                = @"thing";
 @implementation DWSuggestion
 
 @synthesize title               = _title;
-@synthesize short_title         = _short_title;
+@synthesize shortTitle          = _shortTitle;
 @synthesize example             = _example;
 @synthesize thing               = _thing;
 
@@ -65,7 +65,7 @@ static NSString* const kKeyThing                = @"thing";
 - (void)update:(NSDictionary*)product {
 	
     NSString *title             = [product objectForKey:kKeyTitle];
-    NSString *short_title       = [product objectForKey:kKeyShortTitle];    
+    NSString *shortTitle        = [product objectForKey:kKeyShortTitle];    
     NSString *example           = [product objectForKey:kKeyExample];        
     NSString *thing             = [product objectForKey:kKeyThing];    
     
@@ -76,8 +76,8 @@ static NSString* const kKeyThing                = @"thing";
     if(title && ![self.title isEqualToString:title])
         self.title = title;
     
-    if(short_title && ![self.short_title isEqualToString:short_title])
-        self.short_title = short_title;
+    if(shortTitle && ![self.shortTitle isEqualToString:shortTitle])
+        self.shortTitle = shortTitle;
     
     if(example && ![self.example isEqualToString:example])
         self.example = example;    
@@ -126,7 +126,7 @@ static NSString* const kKeyThing                = @"thing";
 
 //----------------------------------------------------------------------------------------------------
 - (void)debug {
-    NSLog(@"%@ %@ %@ %@ %@ %@",self.title,self.short_title,self.example,self.thing,self.imageURL,self.smallImageURL);
+    NSLog(@"%@ %@ %@ %@ %@ %@",self.title,self.shortTitle,self.example,self.thing,self.imageURL,self.smallImageURL);
 }
 
 @end

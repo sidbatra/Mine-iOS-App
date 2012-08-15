@@ -27,7 +27,7 @@ extern NSString* const kNImgSuggestionSmallLoadError;
  */
 @interface DWSuggestion : DWPoolObject {
     NSString    *_title;
-    NSString    *_short_title;
+    NSString    *_shortTitle;
     NSString    *_example;
     NSString    *_thing;
     
@@ -43,7 +43,7 @@ extern NSString* const kNImgSuggestionSmallLoadError;
 /**
  * Short title
  */
-@property (nonatomic,copy) NSString* short_title;
+@property (nonatomic,copy) NSString* shortTitle;
 
 /**
  * Example
