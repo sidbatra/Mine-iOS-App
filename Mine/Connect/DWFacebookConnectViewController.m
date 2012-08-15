@@ -102,10 +102,10 @@
     if(_isAwaitingResponse) {
         [self.delegate facebookConfigured];        
         _isAwaitingResponse = NO;
+        [self.navigationController popViewControllerAnimated:YES];
     }
 
     [user destroy];    
-    [self.navigationController popViewControllerAnimated:YES];
 }
 
 //----------------------------------------------------------------------------------------------------

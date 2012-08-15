@@ -120,10 +120,10 @@
     if(_isAwaitingResponse) {
         [self.delegate tumblrConfigured];
         _isAwaitingResponse = NO;
+        [self.navigationController popViewControllerAnimated:YES];
     }
 
     [user destroy];    
-    [self.navigationController popViewControllerAnimated:YES];
 }
 
 //----------------------------------------------------------------------------------------------------
