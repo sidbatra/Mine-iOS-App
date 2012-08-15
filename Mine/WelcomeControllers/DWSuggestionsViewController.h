@@ -32,7 +32,7 @@
  */
 @protocol DWSuggestionsViewControllerDelegate
 
-@optional
+@required
 
 /**
  * User picks a suggestion.
