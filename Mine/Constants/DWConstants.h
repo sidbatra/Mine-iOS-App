@@ -42,6 +42,7 @@ extern NSString* const kNEnteringLowMemoryState;
 extern NSString* const kNImageDownloaded;
 extern NSString* const kNImageDownloadError;
 extern NSString* const kNFacebookURLOpened;
+extern NSString* const kNUserLoggedIn;
 extern NSString* const kNWelcomeNavigationFinished;
 extern NSString* const kNPaginationCellReached;
 extern NSString* const kNCommentAddedForPurchase;

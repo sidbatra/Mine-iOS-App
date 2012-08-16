@@ -10,9 +10,14 @@
 #import "DWCommentsCreateViewController.h"
 #import "DWLikersViewController.h"
 #import "DWPurchaseViewController.h"
+#import "DWCreatePurchaseBackgroundQueueItem.h"
+#import "DWBackgroundQueue.h"
 #import "DWWebViewController.h"
 
 #import "DWPurchase.h"
+#import "DWProduct.h"
+#import "DWSetting.h"
+#import "DWSession.h"
 
 /**
  * Private declarations
@@ -152,6 +157,53 @@
     
     [self displayCommentsCreateViewForPurchase:purchase
                             withCreationIntent:[creationIntent boolValue]];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWCreationViewControllerDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)productSelected:(DWProduct *)product 
+              fromQuery:(NSString *)query {
+    
+    DWPurchaseInputViewController *purchaseInputViewController = [[DWPurchaseInputViewController alloc] initWithProduct:product
+                                                                                                               andQuery:query];
+    purchaseInputViewController.delegate = self;
+    
+    [self.navigationController pushViewController:purchaseInputViewController 
+                                         animated:YES];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWPurchaseInputViewControllerDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)postPurchase:(DWPurchase *)purchase 
+             product:(DWProduct *)product 
+           shareToFB:(BOOL)shareToFB 
+           shareToTW:(BOOL)shareToTW 
+           shareToTB:(BOOL)shareToTB {
+    
+    DWCreatePurchaseBackgroundQueueItem *item = [[DWCreatePurchaseBackgroundQueueItem alloc] initWithPurchase:purchase 
+                                                                                                      product:product
+                                                                                                    shareToFB:shareToFB
+                                                                                                    shareToTW:shareToTW
+                                                                                                    shareToTB:shareToTB];
+    
+    [[DWBackgroundQueue sharedDWBackgroundQueue] performSelector:@selector(addQueueItem:)      
+                                                      withObject:item];
+        
+    [DWSession sharedDWSession].currentUser.setting.shareToFacebook = shareToFB;
+    [DWSession sharedDWSession].currentUser.setting.shareToTwitter  = shareToTW;
+    [DWSession sharedDWSession].currentUser.setting.shareToTumblr   = shareToTB;    
+    
+    [[DWSession sharedDWSession] update];
 }
 
 

@@ -7,26 +7,18 @@
 //
 
 #import "DWCreationNavigationViewController.h"
-#import "DWCreatePurchaseBackgroundQueueItem.h"
-#import "DWBackgroundQueue.h"
-#import "DWPurchase.h"
-#import "DWProduct.h"
-#import "DWSession.h"
-#import "DWSetting.h"
 
 /**
  * Private declarations
  */
 @interface DWCreationNavigationViewController() {    
     DWCreationViewController        *_creationViewController;
-    DWPurchaseInputViewController   *_purchaseInputViewController;
 }
 
 /**
- * UIViewControllers for different creation screens
+ * UIViewController for the first creation screen
  */
 @property (nonatomic,strong) DWCreationViewController *creationViewController;
-@property (nonatomic,strong) DWPurchaseInputViewController *purchaseInputViewController;
 
 @end
 
@@ -38,7 +30,6 @@
 @implementation DWCreationNavigationViewController
 
 @synthesize creationViewController          = _creationViewController;
-@synthesize purchaseInputViewController     = _purchaseInputViewController;
 @synthesize delegate                        = _delegate;
 
 //----------------------------------------------------------------------------------------------------
@@ -75,23 +66,6 @@
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
-#pragma mark DWCreationViewControllerDelegate
-
-//----------------------------------------------------------------------------------------------------
-- (void)productSelected:(DWProduct *)product 
-              fromQuery:(NSString *)query {
-
-    self.purchaseInputViewController = [[DWPurchaseInputViewController alloc] initWithProduct:product
-                                                                                     andQuery:query];
-    self.purchaseInputViewController.delegate = self;
-    
-    [self.navigationController pushViewController:self.purchaseInputViewController 
-                                         animated:YES];
-}
-
-//----------------------------------------------------------------------------------------------------
-//----------------------------------------------------------------------------------------------------
-#pragma mark -
 #pragma mark DWPurchaseInputViewControllerDelegate
 
 //----------------------------------------------------------------------------------------------------
@@ -101,22 +75,13 @@
            shareToTW:(BOOL)shareToTW 
            shareToTB:(BOOL)shareToTB {
     
-    DWCreatePurchaseBackgroundQueueItem *item = [[DWCreatePurchaseBackgroundQueueItem alloc] initWithPurchase:purchase 
-                                                                                                      product:product
-                                                                                                    shareToFB:shareToFB
-                                                                                                    shareToTW:shareToTW
-                                                                                                    shareToTB:shareToTB];
-    
-    [[DWBackgroundQueue sharedDWBackgroundQueue] performSelector:@selector(addQueueItem:)      
-                                                      withObject:item];
+    [super postPurchase:purchase 
+                product:product 
+              shareToFB:shareToFB 
+              shareToTW:shareToTW 
+              shareToTB:shareToTB];
     
     [self.delegate dismissCreateView];
-    
-    [DWSession sharedDWSession].currentUser.setting.shareToFacebook = shareToFB;
-    [DWSession sharedDWSession].currentUser.setting.shareToTwitter  = shareToTW;
-    [DWSession sharedDWSession].currentUser.setting.shareToTumblr   = shareToTB;    
-    
-    [[DWSession sharedDWSession] update];
 }
 
 @end

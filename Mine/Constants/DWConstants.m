@@ -38,6 +38,7 @@ NSString* const kNEnteringLowMemoryState    = @"NEnteringLowMemoryState";
 NSString* const kNImageDownloaded           = @"NImageDownloaded";
 NSString* const kNImageDownloadError        = @"NImageDownloadError";
 NSString* const kNFacebookURLOpened         = @"NFacebookURLOpened";
+NSString* const kNUserLoggedIn              = @"NUserLoggedIn";
 NSString* const kNWelcomeNavigationFinished = @"NWelcomeNavigationFinished";
 NSString* const kNPaginationCellReached     = @"NPaginationCellReached";
 NSString* const kNCommentAddedForPurchase   = @"NCommentAddedForPurchase";

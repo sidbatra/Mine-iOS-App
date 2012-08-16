@@ -8,12 +8,9 @@
 
 #import "DWNavigationRootViewController.h"
 
-#import "DWCreationViewController.h"
-#import "DWPurchaseInputViewController.h"
-
 @protocol DWCreationNavigationViewControllerDelegate;
 
-@interface DWCreationNavigationViewController : DWNavigationRootViewController<DWCreationViewControllerDelegate,DWPurchaseInputViewControllerDelegate> {
+@interface DWCreationNavigationViewController : DWNavigationRootViewController {
     __weak id<DWCreationNavigationViewControllerDelegate,NSObject> _delegate;
 }
 

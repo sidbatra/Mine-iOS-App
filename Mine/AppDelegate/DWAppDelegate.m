@@ -66,6 +66,12 @@ static NSInteger const kCreateTabIndex              = 1;
 
 //----------------------------------------------------------------------------------------------------
 - (void)setupApplication {
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self 
+                                             selector:@selector(userLoggedIn:) 
+                                                 name:kNUserLoggedIn
+                                               object:nil];    
+    
     [[NSNotificationCenter defaultCenter] addObserver:self 
                                              selector:@selector(welcomeNavigationFinished:) 
                                                  name:kNWelcomeNavigationFinished
@@ -176,12 +182,15 @@ static NSInteger const kCreateTabIndex              = 1;
 #pragma mark Notifications
 
 //----------------------------------------------------------------------------------------------------
-- (void)welcomeNavigationFinished:(NSNotification*)notification {
+- (void)userLoggedIn:(NSNotification*)notification {
     DWUser *user = [[notification userInfo] objectForKey:kKeyUser];
     [[DWSession sharedDWSession] create:user];
-        
-    [self.tabBarController dismissModalViewControllerAnimated:YES];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)welcomeNavigationFinished:(NSNotification*)notification {  
     
+    [self.tabBarController dismissModalViewControllerAnimated:YES];
     [self registerForPushNotifications];
 }
 

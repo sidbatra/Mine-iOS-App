@@ -12,14 +12,26 @@
 /**
  * Private declarations
  */
-@interface DWWelcomeNavigationRootViewController ()
+@interface DWWelcomeNavigationRootViewController () {
+    DWLoginViewController   *_loginViewController;
+}
+
+/**
+ * Login view controller
+ */
+@property (nonatomic,strong) DWLoginViewController *loginViewController;
 
 /**
  * End the welcome navigation by firing a notification.
  * It's supposed to be used when a user has successfully finished
  * either a log in or sign up and is now ready to enter the app.
  */
-- (void)endWelcomeNavigationWithUser:(DWUser*)user;
+- (void)endWelcomeNavigation;
+
+/**
+ * Show onboarding for a new user
+ */
+- (void)showOnboarding;
 
 @end
 
@@ -38,10 +50,24 @@
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)endWelcomeNavigationWithUser:(DWUser*)user {
-    [[NSNotificationCenter defaultCenter] postNotificationName:kNWelcomeNavigationFinished
-                                                        object:nil
-                                                      userInfo:[NSDictionary dictionaryWithObjectsAndKeys:user,kKeyUser,nil]];
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark Private Methods
+
+//----------------------------------------------------------------------------------------------------
+- (void)endWelcomeNavigation {
+    [[NSNotificationCenter defaultCenter] postNotificationName:kNWelcomeNavigationFinished 
+                                                        object:nil];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)showOnboarding {
+    
+    DWSuggestionsViewController *suggestionsViewController = [[DWSuggestionsViewController alloc] init];
+    suggestionsViewController.delegate = self;
+    
+    [self.navigationController pushViewController:suggestionsViewController 
+                                         animated:YES];    
 }
 
 
@@ -78,7 +104,53 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)userLoggedIn:(DWUser*)user {
-    [self endWelcomeNavigationWithUser:user];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:kNUserLoggedIn
+                                                        object:nil
+                                                      userInfo:[NSDictionary dictionaryWithObjectsAndKeys:user,kKeyUser,nil]];
+    
+    if (user.purchasesCount) 
+        [self endWelcomeNavigation];
+    else 
+        [self showOnboarding];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWSuggestionsViewControllerDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)suggestionPicked:(NSInteger)suggestionID {
+    
+    DWCreationViewController *creationViewController = [[DWCreationViewController alloc] init];
+    creationViewController.delegate = self;
+    
+    [self.navigationController pushViewController:creationViewController 
+                                         animated:YES];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWPurchaseInputViewControllerDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)postPurchase:(DWPurchase *)purchase 
+             product:(DWProduct *)product 
+           shareToFB:(BOOL)shareToFB 
+           shareToTW:(BOOL)shareToTW 
+           shareToTB:(BOOL)shareToTB {
+    
+    [super postPurchase:purchase 
+                product:product 
+              shareToFB:shareToFB 
+              shareToTW:shareToTW 
+              shareToTB:shareToTB];
+    
+    [self endWelcomeNavigation];
 }
 
 
