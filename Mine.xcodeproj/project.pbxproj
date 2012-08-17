@@ -68,6 +68,8 @@
 		26C4470015CB3DEF00E9A50B /* TwitterTweetPoster.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C446F915CB3DEF00E9A50B /* TwitterTweetPoster.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		26C4470115CB3DEF00E9A50B /* TwitterUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C446FB15CB3DEF00E9A50B /* TwitterUtils.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		26C4470515CB3E0900E9A50B /* DWTwitterConnect.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C4470415CB3E0900E9A50B /* DWTwitterConnect.m */; };
+		26D699D915DDA4E5003AFAFA /* DWGlobalFeedViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 26D699D815DDA4E5003AFAFA /* DWGlobalFeedViewDataSource.m */; };
+		26D699DD15DDA7C7003AFAFA /* DWGlobalFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26D699DC15DDA7C7003AFAFA /* DWGlobalFeedViewController.m */; };
 		BB06360815BF7258001F26E1 /* post_retry.png in Resources */ = {isa = PBXBuildFile; fileRef = BB06360415BF7258001F26E1 /* post_retry.png */; };
 		BB06360C15BF726D001F26E1 /* DWErrorView.m in Sources */ = {isa = PBXBuildFile; fileRef = BB06360B15BF726D001F26E1 /* DWErrorView.m */; };
 		BB06361215BF7DB2001F26E1 /* DWTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BB06360F15BF7DB2001F26E1 /* DWTabBar.m */; };
@@ -314,6 +316,10 @@
 		26C446FB15CB3DEF00E9A50B /* TwitterUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TwitterUtils.m; sourceTree = "<group>"; };
 		26C4470315CB3E0900E9A50B /* DWTwitterConnect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWTwitterConnect.h; path = Connect/DWTwitterConnect.h; sourceTree = "<group>"; };
 		26C4470415CB3E0900E9A50B /* DWTwitterConnect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWTwitterConnect.m; path = Connect/DWTwitterConnect.m; sourceTree = "<group>"; };
+		26D699D715DDA4E5003AFAFA /* DWGlobalFeedViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWGlobalFeedViewDataSource.h; sourceTree = "<group>"; };
+		26D699D815DDA4E5003AFAFA /* DWGlobalFeedViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWGlobalFeedViewDataSource.m; sourceTree = "<group>"; };
+		26D699DB15DDA7C7003AFAFA /* DWGlobalFeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWGlobalFeedViewController.h; sourceTree = "<group>"; };
+		26D699DC15DDA7C7003AFAFA /* DWGlobalFeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWGlobalFeedViewController.m; sourceTree = "<group>"; };
 		BB06360415BF7258001F26E1 /* post_retry.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = post_retry.png; sourceTree = "<group>"; };
 		BB06360615BF7258001F26E1 /* DWErrorViewProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWErrorViewProtocol.h; sourceTree = "<group>"; };
 		BB06360715BF7258001F26E1 /* DWModelPresenterProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWModelPresenterProtocol.h; sourceTree = "<group>"; };
@@ -912,6 +918,8 @@
 				BB2BC04615CDE13900CCC4BB /* DWFeedViewController.m */,
 				BB2BC04915CDE13900CCC4BB /* DWPurchaseViewController.h */,
 				BB2BC04A15CDE13900CCC4BB /* DWPurchaseViewController.m */,
+				26D699DB15DDA7C7003AFAFA /* DWGlobalFeedViewController.h */,
+				26D699DC15DDA7C7003AFAFA /* DWGlobalFeedViewController.m */,
 			);
 			path = Purchases;
 			sourceTree = "<group>";
@@ -1258,6 +1266,8 @@
 				BB2BC02115CDC4B800CCC4BB /* DWPurchaseViewDataSource.m */,
 				26B3237615D31C4A00F1E28F /* DWStoresViewDataSource.h */,
 				26B3237715D31C4A00F1E28F /* DWStoresViewDataSource.m */,
+				26D699D715DDA4E5003AFAFA /* DWGlobalFeedViewDataSource.h */,
+				26D699D815DDA4E5003AFAFA /* DWGlobalFeedViewDataSource.m */,
 			);
 			path = TableViewDataSources;
 			sourceTree = "<group>";
@@ -1586,6 +1596,8 @@
 				2681C4E615DAEE17003046F1 /* DWSuggestionsController.m in Sources */,
 				2681C4EA15DAF4E7003046F1 /* DWSuggestion.m in Sources */,
 				2681C4F315DC323D003046F1 /* DWSuggestionsViewController.m in Sources */,
+				26D699D915DDA4E5003AFAFA /* DWGlobalFeedViewDataSource.m in Sources */,
+				26D699DD15DDA7C7003AFAFA /* DWGlobalFeedViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

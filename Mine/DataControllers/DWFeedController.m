@@ -15,9 +15,10 @@
 static NSString* const kGetURI = @"/feed.json?per_page=%d";
 
 
-static NSString* const kNFeedLoaded     = @"NFeedLoaded";
-static NSString* const kNFeedLoadError  = @"NFeedLoadError";
-
+static NSString* const kNFeedLoaded             = @"NFeedLoaded";
+static NSString* const kNFeedLoadError          = @"NFeedLoadError";
+static NSString* const kNGlobalFeedLoaded       = @"NGlobalFeedLoaded";
+static NSString* const kNGlobalFeedLoadError    = @"NGlobalFeedLoadError";
 
 
 //----------------------------------------------------------------------------------------------------
@@ -43,6 +44,16 @@ static NSString* const kNFeedLoadError  = @"NFeedLoadError";
 												 selector:@selector(feedLoadError:) 
 													 name:kNFeedLoadError
 												   object:nil];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self 
+												 selector:@selector(globalFeedLoaded:) 
+													 name:kNGlobalFeedLoaded
+												   object:nil];
+		
+		[[NSNotificationCenter defaultCenter] addObserver:self 
+												 selector:@selector(globalFeedLoadError:) 
+													 name:kNGlobalFeedLoadError
+												   object:nil];        
     }
     
     return self;
@@ -69,6 +80,22 @@ static NSString* const kNFeedLoadError  = @"NFeedLoadError";
                                                    authenticate:YES];
 }
 
+//----------------------------------------------------------------------------------------------------
+- (void)getGlobalPurchasesBefore:(NSInteger)before {
+    NSMutableString *localURL = [NSMutableString stringWithFormat:kGetURI,10];
+    
+    [localURL appendFormat:@"&aspect=special"];
+    
+    if(before != 0)
+        [localURL appendFormat:@"&before=%d",before];
+    
+    [[DWRequestManager sharedDWRequestManager] createAppRequest:localURL
+                                            successNotification:kNGlobalFeedLoaded
+                                              errorNotification:kNGlobalFeedLoadError
+                                                  requestMethod:kGet
+                                                   authenticate:YES];
+}
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
@@ -79,6 +106,9 @@ static NSString* const kNFeedLoadError  = @"NFeedLoadError";
 - (void)feedLoaded:(NSNotification*)notification {
     
     SEL sel = @selector(feedLoaded:);
+    
+    if(![self.delegate respondsToSelector:sel])
+        return;
     
     NSArray *response           = [[notification userInfo] objectForKey:kKeyResponse];
     NSMutableArray *purchases   = [NSMutableArray arrayWithCapacity:[response count]];
@@ -95,6 +125,42 @@ static NSString* const kNFeedLoadError  = @"NFeedLoadError";
 - (void)feedLoadError:(NSNotification*)notification {
     
     SEL sel = @selector(feedLoadError:);
+    
+    if(![self.delegate respondsToSelector:sel])
+        return;
+    
+    NSError *error = [[notification userInfo] objectForKey:kKeyError];
+    
+    [self.delegate performSelector:sel 
+                        withObject:[error localizedDescription]];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)globalFeedLoaded:(NSNotification*)notification {
+    
+    SEL sel = @selector(globalFeedLoaded:);
+    
+    if(![self.delegate respondsToSelector:sel])
+        return;
+    
+    NSArray *response           = [[notification userInfo] objectForKey:kKeyResponse];
+    NSMutableArray *purchases   = [NSMutableArray arrayWithCapacity:[response count]];
+    
+    for(NSDictionary *purchase in response) {
+        [purchases addObject:[DWPurchase create:purchase]];
+    }
+    
+    [self.delegate performSelector:sel
+                        withObject:purchases];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)globalFeedLoadError:(NSNotification*)notification {
+    
+    SEL sel = @selector(globalFeedLoadError:);
+    
+    if(![self.delegate respondsToSelector:sel])
+        return;
     
     NSError *error = [[notification userInfo] objectForKey:kKeyError];
     

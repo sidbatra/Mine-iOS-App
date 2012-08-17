@@ -28,6 +28,12 @@
  */
 - (void)getPurchasesBefore:(NSInteger)before;
 
+
+/**
+ * Fetch global purchases before the given time
+ */
+- (void)getGlobalPurchasesBefore:(NSInteger)before;
+
 @end
 
 
@@ -37,7 +43,7 @@
  */
 @protocol DWFeedControllerDelegate
 
-@required
+@optional
 
 /**
  * Feed items are loaded successfully.
@@ -48,6 +54,16 @@
  * Error loading feed items.
  */
 - (void)feedLoadError:(NSString*)error;
+
+/**
+ * Global feed items are loaded successfully.
+ */
+- (void)globalFeedLoaded:(NSMutableArray*)purchases;
+
+/**
+ * Error loading global feed items.
+ */
+- (void)globalFeedLoadError:(NSString*)error;
 
 
 @end

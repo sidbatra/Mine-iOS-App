@@ -63,11 +63,11 @@
 //----------------------------------------------------------------------------------------------------
 - (void)showOnboarding {
     
-    DWSuggestionsViewController *suggestionsViewController = [[DWSuggestionsViewController alloc] init];
-    suggestionsViewController.delegate = self;
+    DWGlobalFeedViewController *globalFeedViewController = [[DWGlobalFeedViewController alloc] init];
+    globalFeedViewController.delegate = self;
     
-    [self.navigationController pushViewController:suggestionsViewController 
-                                         animated:YES];    
+    [self.navigationController pushViewController:globalFeedViewController 
+                                         animated:YES];
 }
 
 
@@ -80,8 +80,7 @@
 - (void)viewDidLoad {
 	[super viewDidLoad];
     
-    self.navigationController.navigationBarHidden           = YES;
-    self.navigationController.navigationBar.clipsToBounds   = NO;
+    self.navigationItem.title = @"Onboarding";
     
     if(!self.loginViewController) {
         self.loginViewController              = [[DWLoginViewController alloc] init];
@@ -113,6 +112,22 @@
         [self endWelcomeNavigation];
     else 
         [self showOnboarding];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWGlobalFeedViewControllerDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)showScreenAfterGlobalFeed {
+    
+    DWSuggestionsViewController *suggestionsViewController = [[DWSuggestionsViewController alloc] init];
+    suggestionsViewController.delegate = self;
+
+    [self.navigationController pushViewController:suggestionsViewController
+                                         animated:YES];    
 }
 
 
@@ -151,18 +166,6 @@
               shareToTB:shareToTB];
     
     [self endWelcomeNavigation];
-}
-
-
-//----------------------------------------------------------------------------------------------------
-//----------------------------------------------------------------------------------------------------
-#pragma mark -
-#pragma mark Nav Stack Selectors
-
-//----------------------------------------------------------------------------------------------------
-- (void)willShowOnNav {
-    [self.navigationController setNavigationBarHidden:YES 
-                                             animated:NO];
 }
 
 @end
