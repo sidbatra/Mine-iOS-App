@@ -19,6 +19,7 @@
 static NSString* const kNewUserURI                      = @"/users.json?using=facebook&access_token=%@&src=iphone";
 static NSString* const kGetUserURI                      = @"/users/%@.json?";
 
+static NSString* const kSearchURI                       = @"/users.json?aspect=search&query=%@";
 static NSString* const kGetLikersURI                    = @"/users.json?aspect=likers&purchase_id=%d";
 static NSString* const kGetFollowersURI                 = @"/users.json?aspect=followers&user_id=%d";
 static NSString* const kGetIFollowersURI                = @"/users.json?aspect=ifollowers&user_id=%d";
@@ -40,6 +41,8 @@ static NSString* const kNFollowersLoaded        = @"NFollowersLoaded";
 static NSString* const kNFollowersLoadError     = @"NFollowersLoadError";
 static NSString* const kNIFollowersLoaded       = @"NIFollowersLoaded";
 static NSString* const kNIFollowersLoadError    = @"NIFollowersLoadError";
+static NSString* const kNUsersLoaded            = @"NUsersLoaded";
+static NSString* const kNUsersLoadError         = @"NUsersLoadError";
 
 static NSString* const kNUserUpdated            = @"NUserUpdated";
 static NSString* const kNUserUpdateError        = @"NUserUpdateError";
@@ -118,6 +121,16 @@ static NSString* const kNUserUpdateError        = @"NUserUpdateError";
 		[[NSNotificationCenter defaultCenter] addObserver:self 
 												 selector:@selector(usersLoadError:) 
 													 name:kNIFollowersLoadError
+												   object:nil];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self 
+												 selector:@selector(usersLoaded:) 
+													 name:kNUsersLoaded
+												   object:nil];
+		
+		[[NSNotificationCenter defaultCenter] addObserver:self 
+												 selector:@selector(usersLoadError:) 
+													 name:kNUsersLoadError
 												   object:nil];
         
         
@@ -219,6 +232,17 @@ static NSString* const kNUserUpdateError        = @"NUserUpdateError";
                                                   requestMethod:kGet
                                                    authenticate:YES
                                                      resourceID:userID];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)getUsersForQuery:(NSString*)query {
+    NSString *localURL = [NSString stringWithFormat:kSearchURI,[query stringByEncodingHTMLCharacters]];
+    
+    [[DWRequestManager sharedDWRequestManager] createAppRequest:localURL
+                                            successNotification:kNUsersLoaded
+                                              errorNotification:kNUsersLoadError
+                                                  requestMethod:kGet
+                                                   authenticate:YES];
 }
 
 
@@ -426,6 +450,9 @@ static NSString* const kNUserUpdateError        = @"NUserUpdateError";
     else if([notification.name isEqualToString:kNIFollowersLoaded]) {
         sel = @selector(ifollowersLoaded:forUserID:);
     }
+    else if([notification.name isEqualToString:kNUsersLoaded]) {
+        sel = @selector(usersLoaded:forResourceID:);
+    }
     
     if(![self.delegate respondsToSelector:sel])
         return;
@@ -459,6 +486,9 @@ static NSString* const kNUserUpdateError        = @"NUserUpdateError";
     }
     else if([notification.name isEqualToString:kNIFollowersLoadError]) {
         sel = @selector(ifollowersLoadError:forUserID:);
+    }
+    else if([notification.name isEqualToString:kNUsersLoadError]) {
+        sel = @selector(usersLoadError:forResourceID:);
     }
     
     if(![self.delegate respondsToSelector:sel])

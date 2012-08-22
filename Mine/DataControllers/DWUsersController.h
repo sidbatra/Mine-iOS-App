@@ -51,6 +51,11 @@
  */ 
 - (void)getIFollowersForUserID:(NSInteger)userID;
 
+/**
+ * Search for users matching the given query.
+ */
+- (void)getUsersForQuery:(NSString*)query;
+
 
 /**
  * Update the facebook access token of the given user ID
@@ -161,5 +166,17 @@
  */
 - (void)ifollowersLoadError:(NSString*)error 
                   forUserID:(NSNumber*)userID;
+
+/**
+ * Users loaded for the given query.
+ */
+- (void)usersLoaded:(NSMutableArray*)users
+      forResourceID:(NSNumber*)resourceID;
+
+/**
+ * User load error for query.
+ */
+- (void)usersLoadError:(NSString*)error
+         forResourceID:(NSNumber*)resourceID;
 
 @end
