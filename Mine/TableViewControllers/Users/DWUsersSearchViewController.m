@@ -22,7 +22,7 @@
     self = [super init];
     
     if(self) {        
-        self.tableViewDataSource = [[DWUsersViewDataSource alloc] init];
+        self.tableViewDataSource = [[DWUsersSearchViewDataSource alloc] init];
     }
     
     return self;
@@ -32,6 +32,7 @@
 - (void)loadUsersForQuery:(NSString*)query {
     [self.tableViewDataSource clean];
     [self reloadTableView];
+    self.loadingView.hidden = NO;
     [(DWUsersSearchViewDataSource*)self.tableViewDataSource loadUsersForQuery:query];
 }
 

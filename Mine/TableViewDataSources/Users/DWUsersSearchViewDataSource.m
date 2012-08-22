@@ -9,8 +9,14 @@
 #import "DWUsersSearchViewDataSource.h"
 
 @interface DWUsersSearchViewDataSource() {
-    NSInteger _resourceID;
+    NSString    *_query;
+    NSInteger   _resourceID;
 }
+
+/**
+ * Last query searched.
+ */
+@property (nonatomic,copy) NSString* query;
 
 /**
  * Resource id for the current search request.
@@ -26,10 +32,17 @@
 //----------------------------------------------------------------------------------------------------
 @implementation DWUsersSearchViewDataSource
 
-@synthesize resourceID = _resourceID;
+@synthesize query       = _query;
+@synthesize resourceID  = _resourceID;
+
+//----------------------------------------------------------------------------------------------------
+- (void)loadUsers {
+    [self loadUsersForQuery:self.query];
+}
 
 //----------------------------------------------------------------------------------------------------
 - (void)loadUsersForQuery:(NSString*)query {
+    self.query = query;
     self.resourceID = [self.usersController getUsersForQuery:query];
 }
 

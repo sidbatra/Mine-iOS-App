@@ -8,19 +8,21 @@
 
 #import "DWFeedNavigationViewController.h"
 #import "DWFeedViewController.h"
-#import "DWUser.h"
+#import "DWUsersSearchViewController.h"
 
 #import "DWBackgroundQueue.h"
 #import "DWCreatePurchaseBackgroundQueueItem.h"
 #import "DWPurchase.h"
 #import "DWProduct.h"
+#import "DWUser.h"
 #import "DWStore.h"
 
 
 @interface DWFeedNavigationViewController () {
-    DWFeedViewController    *_feedViewController;
+    DWFeedViewController        *_feedViewController;
+    DWUsersSearchViewController *_usersSearchViewController;
     
-    DWQueueProgressView     *_queueProgressView;
+    DWQueueProgressView         *_queueProgressView;
     
     BOOL    _isProgressBarActive;
 }
@@ -29,6 +31,11 @@
  * Table view controller for displaying the feed.
  */
 @property (nonatomic,strong) DWFeedViewController *feedViewController;
+
+/**
+ * Table view for displaying search results.
+ */
+@property (nonatomic,strong) DWUsersSearchViewController *usersSearchViewController;
 
 /**
  * Nav bar queue progress view for displaying progress from the background queue.
@@ -49,9 +56,10 @@
 //----------------------------------------------------------------------------------------------------
 @implementation DWFeedNavigationViewController
 
-@synthesize feedViewController  = _feedViewController;
-@synthesize queueProgressView   = _queueProgressView;
-@synthesize isProgressBarActive = _isProgressBarActive;
+@synthesize feedViewController          = _feedViewController;
+@synthesize usersSearchViewController   = _usersSearchViewController;
+@synthesize queueProgressView           = _queueProgressView;
+@synthesize isProgressBarActive         = _isProgressBarActive;
 
 //----------------------------------------------------------------------------------------------------
 - (void)awakeFromNib {
@@ -82,6 +90,14 @@
     
     [self.view addSubview:self.feedViewController.view];
     
+    
+    if(!self.usersSearchViewController) {
+        self.usersSearchViewController = [[DWUsersSearchViewController alloc] init];
+        self.usersSearchViewController.delegate = self;
+        self.usersSearchViewController.view.hidden = YES;
+    }
+    
+    [self.view addSubview:self.usersSearchViewController.view];
     
     
     if(!self.queueProgressView) {    

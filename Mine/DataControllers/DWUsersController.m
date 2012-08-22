@@ -19,7 +19,7 @@
 static NSString* const kNewUserURI                      = @"/users.json?using=facebook&access_token=%@&src=iphone";
 static NSString* const kGetUserURI                      = @"/users/%@.json?";
 
-static NSString* const kSearchURI                       = @"/users.json?aspect=search&query=%@";
+static NSString* const kSearchURI                       = @"/users.json?aspect=search&q=%@";
 static NSString* const kGetLikersURI                    = @"/users.json?aspect=likers&purchase_id=%d";
 static NSString* const kGetFollowersURI                 = @"/users.json?aspect=followers&user_id=%d";
 static NSString* const kGetIFollowersURI                = @"/users.json?aspect=ifollowers&user_id=%d";
