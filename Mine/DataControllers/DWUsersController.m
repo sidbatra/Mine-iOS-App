@@ -235,14 +235,14 @@ static NSString* const kNUserUpdateError        = @"NUserUpdateError";
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)getUsersForQuery:(NSString*)query {
+- (NSInteger)getUsersForQuery:(NSString*)query {
     NSString *localURL = [NSString stringWithFormat:kSearchURI,[query stringByEncodingHTMLCharacters]];
     
-    [[DWRequestManager sharedDWRequestManager] createAppRequest:localURL
-                                            successNotification:kNUsersLoaded
-                                              errorNotification:kNUsersLoadError
-                                                  requestMethod:kGet
-                                                   authenticate:YES];
+    return [[DWRequestManager sharedDWRequestManager] createAppRequest:localURL
+                                                   successNotification:kNUsersLoaded
+                                                     errorNotification:kNUsersLoadError
+                                                         requestMethod:kGet
+                                                          authenticate:YES];
 }
 
 

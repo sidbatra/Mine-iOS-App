@@ -205,6 +205,8 @@
 		BBE42F5A15BE188C000F6AE1 /* EGORefreshTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = BBE42F5915BE188C000F6AE1 /* EGORefreshTableHeaderView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		BBE42F5C15BE18DF000F6AE1 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBE42F5B15BE18DF000F6AE1 /* QuartzCore.framework */; };
 		BBEDD2FE15D30798007F862F /* DWNotificationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BBEDD2FD15D30798007F862F /* DWNotificationManager.m */; };
+		BBEDD31C15E4FFF1007F862F /* DWUsersSearchViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = BBEDD31B15E4FFF1007F862F /* DWUsersSearchViewDataSource.m */; };
+		BBEDD31F15E50191007F862F /* DWUsersSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBEDD31E15E50190007F862F /* DWUsersSearchViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -567,6 +569,10 @@
 		BBE42F5B15BE18DF000F6AE1 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		BBEDD2FC15D30798007F862F /* DWNotificationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWNotificationManager.h; sourceTree = "<group>"; };
 		BBEDD2FD15D30798007F862F /* DWNotificationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWNotificationManager.m; sourceTree = "<group>"; };
+		BBEDD31A15E4FFF1007F862F /* DWUsersSearchViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWUsersSearchViewDataSource.h; sourceTree = "<group>"; };
+		BBEDD31B15E4FFF1007F862F /* DWUsersSearchViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWUsersSearchViewDataSource.m; sourceTree = "<group>"; };
+		BBEDD31D15E50190007F862F /* DWUsersSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWUsersSearchViewController.h; sourceTree = "<group>"; };
+		BBEDD31E15E50190007F862F /* DWUsersSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWUsersSearchViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -882,14 +888,16 @@
 		BB2BC02715CDD54400CCC4BB /* Users */ = {
 			isa = PBXGroup;
 			children = (
+				BB2BC03115CDD57500CCC4BB /* DWUsersViewController.h */,
+				BB2BC03215CDD57500CCC4BB /* DWUsersViewController.m */,
 				BB2BC02815CDD54400CCC4BB /* DWFollowersViewController.h */,
 				BB2BC02915CDD54400CCC4BB /* DWFollowersViewController.m */,
 				BB2BC02A15CDD54400CCC4BB /* DWIFollowersViewController.h */,
 				BB2BC02B15CDD54400CCC4BB /* DWIFollowersViewController.m */,
 				BB2BC02C15CDD54400CCC4BB /* DWLikersViewController.h */,
 				BB2BC02D15CDD54400CCC4BB /* DWLikersViewController.m */,
-				BB2BC03115CDD57500CCC4BB /* DWUsersViewController.h */,
-				BB2BC03215CDD57500CCC4BB /* DWUsersViewController.m */,
+				BBEDD31D15E50190007F862F /* DWUsersSearchViewController.h */,
+				BBEDD31E15E50190007F862F /* DWUsersSearchViewController.m */,
 			);
 			path = Users;
 			sourceTree = "<group>";
@@ -897,14 +905,16 @@
 		BB2BC03415CDD5A700CCC4BB /* Users */ = {
 			isa = PBXGroup;
 			children = (
+				BB2BC03B15CDD5A700CCC4BB /* DWUsersViewDataSource.h */,
+				BB2BC03C15CDD5A700CCC4BB /* DWUsersViewDataSource.m */,
 				BB2BC03515CDD5A700CCC4BB /* DWFollowersViewDataSource.h */,
 				BB2BC03615CDD5A700CCC4BB /* DWFollowersViewDataSource.m */,
 				BB2BC03715CDD5A700CCC4BB /* DWIFollowersViewDataSource.h */,
 				BB2BC03815CDD5A700CCC4BB /* DWIFollowersViewDataSource.m */,
 				BB2BC03915CDD5A700CCC4BB /* DWLikersViewDataSource.h */,
 				BB2BC03A15CDD5A700CCC4BB /* DWLikersViewDataSource.m */,
-				BB2BC03B15CDD5A700CCC4BB /* DWUsersViewDataSource.h */,
-				BB2BC03C15CDD5A700CCC4BB /* DWUsersViewDataSource.m */,
+				BBEDD31A15E4FFF1007F862F /* DWUsersSearchViewDataSource.h */,
+				BBEDD31B15E4FFF1007F862F /* DWUsersSearchViewDataSource.m */,
 			);
 			path = Users;
 			sourceTree = "<group>";
@@ -1598,6 +1608,8 @@
 				2681C4F315DC323D003046F1 /* DWSuggestionsViewController.m in Sources */,
 				26D699D915DDA4E5003AFAFA /* DWGlobalFeedViewDataSource.m in Sources */,
 				26D699DD15DDA7C7003AFAFA /* DWGlobalFeedViewController.m in Sources */,
+				BBEDD31C15E4FFF1007F862F /* DWUsersSearchViewDataSource.m in Sources */,
+				BBEDD31F15E50191007F862F /* DWUsersSearchViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

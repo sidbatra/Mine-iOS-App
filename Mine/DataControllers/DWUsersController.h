@@ -54,7 +54,7 @@
 /**
  * Search for users matching the given query.
  */
-- (void)getUsersForQuery:(NSString*)query;
+- (NSInteger)getUsersForQuery:(NSString*)query;
 
 
 /**
