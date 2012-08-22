@@ -207,6 +207,13 @@
 		BBEDD2FE15D30798007F862F /* DWNotificationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BBEDD2FD15D30798007F862F /* DWNotificationManager.m */; };
 		BBEDD31C15E4FFF1007F862F /* DWUsersSearchViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = BBEDD31B15E4FFF1007F862F /* DWUsersSearchViewDataSource.m */; };
 		BBEDD31F15E50191007F862F /* DWUsersSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBEDD31E15E50190007F862F /* DWUsersSearchViewController.m */; };
+		BBEDD32215E5087B007F862F /* DWSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BBEDD32115E5087B007F862F /* DWSearchBar.m */; };
+		BBEDD32915E509BA007F862F /* button_cancel_left.png in Resources */ = {isa = PBXBuildFile; fileRef = BBEDD32315E509BA007F862F /* button_cancel_left.png */; };
+		BBEDD32A15E509BA007F862F /* button_cancel_left@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BBEDD32415E509BA007F862F /* button_cancel_left@2x.png */; };
+		BBEDD32B15E509BA007F862F /* button_cancel_white.png in Resources */ = {isa = PBXBuildFile; fileRef = BBEDD32515E509BA007F862F /* button_cancel_white.png */; };
+		BBEDD32C15E509BA007F862F /* button_cancel_white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BBEDD32615E509BA007F862F /* button_cancel_white@2x.png */; };
+		BBEDD32D15E509BA007F862F /* button_cancel.png in Resources */ = {isa = PBXBuildFile; fileRef = BBEDD32715E509BA007F862F /* button_cancel.png */; };
+		BBEDD32E15E509BA007F862F /* button_cancel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BBEDD32815E509BA007F862F /* button_cancel@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -573,6 +580,14 @@
 		BBEDD31B15E4FFF1007F862F /* DWUsersSearchViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWUsersSearchViewDataSource.m; sourceTree = "<group>"; };
 		BBEDD31D15E50190007F862F /* DWUsersSearchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWUsersSearchViewController.h; sourceTree = "<group>"; };
 		BBEDD31E15E50190007F862F /* DWUsersSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWUsersSearchViewController.m; sourceTree = "<group>"; };
+		BBEDD32015E5087B007F862F /* DWSearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWSearchBar.h; sourceTree = "<group>"; };
+		BBEDD32115E5087B007F862F /* DWSearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWSearchBar.m; sourceTree = "<group>"; };
+		BBEDD32315E509BA007F862F /* button_cancel_left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_cancel_left.png; sourceTree = "<group>"; };
+		BBEDD32415E509BA007F862F /* button_cancel_left@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_cancel_left@2x.png"; sourceTree = "<group>"; };
+		BBEDD32515E509BA007F862F /* button_cancel_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_cancel_white.png; sourceTree = "<group>"; };
+		BBEDD32615E509BA007F862F /* button_cancel_white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_cancel_white@2x.png"; sourceTree = "<group>"; };
+		BBEDD32715E509BA007F862F /* button_cancel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_cancel.png; sourceTree = "<group>"; };
+		BBEDD32815E509BA007F862F /* button_cancel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_cancel@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -715,6 +730,12 @@
 		BB06360315BF7258001F26E1 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				BBEDD32315E509BA007F862F /* button_cancel_left.png */,
+				BBEDD32415E509BA007F862F /* button_cancel_left@2x.png */,
+				BBEDD32515E509BA007F862F /* button_cancel_white.png */,
+				BBEDD32615E509BA007F862F /* button_cancel_white@2x.png */,
+				BBEDD32715E509BA007F862F /* button_cancel.png */,
+				BBEDD32815E509BA007F862F /* button_cancel@2x.png */,
 				BB2BC07815D0BA7C00CCC4BB /* button_loading.png */,
 				BB2BC07915D0BA7C00CCC4BB /* button_loading@2x.png */,
 				BB2BC07A15D0BA7C00CCC4BB /* loading_bar_fail.png */,
@@ -1344,6 +1365,8 @@
 				BBE42F5515BE0F58000F6AE1 /* DWLoadingView.m */,
 				BB2BC07515D0B95600CCC4BB /* DWQueueProgressView.h */,
 				BB2BC07615D0B95600CCC4BB /* DWQueueProgressView.m */,
+				BBEDD32015E5087B007F862F /* DWSearchBar.h */,
+				BBEDD32115E5087B007F862F /* DWSearchBar.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1449,6 +1472,12 @@
 				267E550D15D1B4E900A3A8C0 /* DWTumblrConnectViewController.xib in Resources */,
 				267E551615D1CA4300A3A8C0 /* DWFacebookConnectViewController.xib in Resources */,
 				267B3FC215D43AE90001AC64 /* DWStorePickerViewController.xib in Resources */,
+				BBEDD32915E509BA007F862F /* button_cancel_left.png in Resources */,
+				BBEDD32A15E509BA007F862F /* button_cancel_left@2x.png in Resources */,
+				BBEDD32B15E509BA007F862F /* button_cancel_white.png in Resources */,
+				BBEDD32C15E509BA007F862F /* button_cancel_white@2x.png in Resources */,
+				BBEDD32D15E509BA007F862F /* button_cancel.png in Resources */,
+				BBEDD32E15E509BA007F862F /* button_cancel@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1610,6 +1639,7 @@
 				26D699DD15DDA7C7003AFAFA /* DWGlobalFeedViewController.m in Sources */,
 				BBEDD31C15E4FFF1007F862F /* DWUsersSearchViewDataSource.m in Sources */,
 				BBEDD31F15E50191007F862F /* DWUsersSearchViewController.m in Sources */,
+				BBEDD32215E5087B007F862F /* DWSearchBar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -23,6 +23,7 @@
     DWUsersSearchViewController *_usersSearchViewController;
     
     DWQueueProgressView         *_queueProgressView;
+    DWSearchBar                 *_searchBar;
     
     BOOL    _isProgressBarActive;
 }
@@ -43,6 +44,11 @@
 @property (nonatomic,strong) DWQueueProgressView *queueProgressView;
 
 /**
+ * Nav bar search input field for searching users.
+ */
+@property (nonatomic,strong) DWSearchBar *searchBar;
+
+/**
  * Status of the background progress queue.
  */
 @property (nonatomic,assign) BOOL isProgressBarActive;
@@ -59,6 +65,7 @@
 @synthesize feedViewController          = _feedViewController;
 @synthesize usersSearchViewController   = _usersSearchViewController;
 @synthesize queueProgressView           = _queueProgressView;
+@synthesize searchBar                   = _searchBar;
 @synthesize isProgressBarActive         = _isProgressBarActive;
 
 //----------------------------------------------------------------------------------------------------
@@ -103,6 +110,13 @@
     if(!self.queueProgressView) {    
         self.queueProgressView			= [[DWQueueProgressView alloc] initWithFrame:CGRectMake(60,0,200,44)];
         self.queueProgressView.delegate	= self;
+    }
+    
+    if(!self.searchBar) {
+        self.searchBar                      = [[DWSearchBar alloc] initWithFrame:CGRectMake(0,0,320,44)];
+        self.searchBar.minimumQueryLength   = 1;
+        self.searchBar.delegate             = self;
+        self.searchBar.hidden               = YES;
     }
 }
 
@@ -163,11 +177,61 @@
 }
 
 
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWSearchBarDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)searchCancelled {
+    
+    self.usersSearchViewController.view.hidden      = YES;
+    self.searchBar.hidden                           = YES;
+    self.feedViewController.view.hidden             = NO;    
+    
+    //[self.customTabBarController disableFullScreen];
+    
+    [self.usersSearchViewController reset];
+    [self.searchBar resignActive];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)searchWithQuery:(NSString*)query {
+    [self.usersSearchViewController loadUsersForQuery:query];
+}
+
+
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
-#pragma mark DWFeedViewControllerDelegate
+#pragma mark UINavigationControllerDelegate
 
+//----------------------------------------------------------------------------------------------------
+- (void)navigationController:(UINavigationController *)navigationController 
+	  willShowViewController:(UIViewController *)viewController
+					animated:(BOOL)animated {
+    
+    self.searchBar.hidden = viewController != self || self.usersSearchViewController.view.hidden;
+    
+    [super navigationController:navigationController 
+         willShowViewController:viewController 
+                       animated:animated];
+    
+    //if (!self.searchViewController.view.hidden) 
+    //    [self.customTabBarController enableFullScreen];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark Nav Stack Selectors
+
+//----------------------------------------------------------------------------------------------------
+- (void)willShowOnNav {
+    [self.navigationController.navigationBar addSubview:self.searchBar];
+}
 
 @end

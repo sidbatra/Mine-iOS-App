@@ -27,12 +27,17 @@
     
     return self;
 }
+//----------------------------------------------------------------------------------------------------
+- (void)reset {
+    [self.tableViewDataSource clean];
+    self.tableViewDataSource.objects = nil;
+    [self reloadTableView];
+    self.loadingView.hidden = NO;
+}
 
 //----------------------------------------------------------------------------------------------------
 - (void)loadUsersForQuery:(NSString*)query {
-    [self.tableViewDataSource clean];
-    [self reloadTableView];
-    self.loadingView.hidden = NO;
+    [self reset];
     [(DWUsersSearchViewDataSource*)self.tableViewDataSource loadUsersForQuery:query];
 }
 

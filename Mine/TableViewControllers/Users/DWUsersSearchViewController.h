@@ -15,4 +15,9 @@
  */
 - (void)loadUsersForQuery:(NSString*)query;
 
+/**
+ * Reset the UI to the starting position.
+ */
+- (void)reset;
+
 @end
