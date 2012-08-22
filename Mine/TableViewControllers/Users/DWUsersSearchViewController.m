@@ -32,12 +32,12 @@
     [self.tableViewDataSource clean];
     self.tableViewDataSource.objects = nil;
     [self reloadTableView];
-    self.loadingView.hidden = NO;
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)loadUsersForQuery:(NSString*)query {
     [self reset];
+    self.loadingView.hidden = NO;
     [(DWUsersSearchViewDataSource*)self.tableViewDataSource loadUsersForQuery:query];
 }
 

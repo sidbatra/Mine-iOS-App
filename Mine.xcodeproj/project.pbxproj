@@ -214,6 +214,8 @@
 		BBEDD32C15E509BA007F862F /* button_cancel_white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BBEDD32615E509BA007F862F /* button_cancel_white@2x.png */; };
 		BBEDD32D15E509BA007F862F /* button_cancel.png in Resources */ = {isa = PBXBuildFile; fileRef = BBEDD32715E509BA007F862F /* button_cancel.png */; };
 		BBEDD32E15E509BA007F862F /* button_cancel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BBEDD32815E509BA007F862F /* button_cancel@2x.png */; };
+		BBEDD33115E50CC4007F862F /* button_search.png in Resources */ = {isa = PBXBuildFile; fileRef = BBEDD32F15E50CC4007F862F /* button_search.png */; };
+		BBEDD33215E50CC4007F862F /* button_search@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BBEDD33015E50CC4007F862F /* button_search@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -588,6 +590,8 @@
 		BBEDD32615E509BA007F862F /* button_cancel_white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_cancel_white@2x.png"; sourceTree = "<group>"; };
 		BBEDD32715E509BA007F862F /* button_cancel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_cancel.png; sourceTree = "<group>"; };
 		BBEDD32815E509BA007F862F /* button_cancel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_cancel@2x.png"; sourceTree = "<group>"; };
+		BBEDD32F15E50CC4007F862F /* button_search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_search.png; sourceTree = "<group>"; };
+		BBEDD33015E50CC4007F862F /* button_search@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_search@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -730,6 +734,8 @@
 		BB06360315BF7258001F26E1 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				BBEDD32F15E50CC4007F862F /* button_search.png */,
+				BBEDD33015E50CC4007F862F /* button_search@2x.png */,
 				BBEDD32315E509BA007F862F /* button_cancel_left.png */,
 				BBEDD32415E509BA007F862F /* button_cancel_left@2x.png */,
 				BBEDD32515E509BA007F862F /* button_cancel_white.png */,
@@ -1478,6 +1484,8 @@
 				BBEDD32C15E509BA007F862F /* button_cancel_white@2x.png in Resources */,
 				BBEDD32D15E509BA007F862F /* button_cancel.png in Resources */,
 				BBEDD32E15E509BA007F862F /* button_cancel@2x.png in Resources */,
+				BBEDD33115E50CC4007F862F /* button_search.png in Resources */,
+				BBEDD33215E50CC4007F862F /* button_search@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -85,6 +85,28 @@
 #pragma mark View Lifecycle
 
 //----------------------------------------------------------------------------------------------------
+- (void)loadSideButtons {
+    
+    UIButton *button =  [UIButton buttonWithType:UIButtonTypeCustom];    
+    
+    [button setBackgroundImage:[UIImage imageNamed:@"button_search"] 
+                      forState:UIControlStateNormal];
+    
+	[button addTarget:self
+               action:@selector(searchButtonClicked)
+     forControlEvents:UIControlEventTouchUpInside];
+    
+	[button setFrame:CGRectMake(0,0,55,44)];
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)removeSideButtons {
+    self.navigationItem.rightBarButtonItem = nil;
+}
+
+//----------------------------------------------------------------------------------------------------
 - (void)viewDidLoad {
 	[super viewDidLoad];
     
@@ -118,6 +140,8 @@
         self.searchBar.delegate             = self;
         self.searchBar.hidden               = YES;
     }
+    
+    [self loadSideButtons];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -177,6 +201,25 @@
 }
 
 
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark UI Events
+
+//----------------------------------------------------------------------------------------------------
+- (void)searchButtonClicked {
+    //[self.customTabBarController enableFullScreen];
+    self.feedViewController.view.hidden             = YES;    
+    self.usersSearchViewController.view.hidden      = NO;
+    self.searchBar.hidden                           = NO;
+    
+    [self.searchBar becomeActive];
+    
+    [self removeSideButtons];
+}
+
+
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
@@ -193,6 +236,8 @@
     
     [self.usersSearchViewController reset];
     [self.searchBar resignActive];
+    
+    [self loadSideButtons];
 }
 
 //----------------------------------------------------------------------------------------------------
