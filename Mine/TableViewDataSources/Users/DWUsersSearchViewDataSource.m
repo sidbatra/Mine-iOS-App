@@ -37,6 +37,9 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)loadUsers {
+}
+
+- (void)refreshInitiated {
     [self loadUsersForQuery:self.query];
 }
 
