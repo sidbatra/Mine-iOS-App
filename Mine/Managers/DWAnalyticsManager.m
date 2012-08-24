@@ -75,10 +75,11 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWAnalyticsManager);
     MixpanelAPI *mixpanel = [MixpanelAPI sharedAPI];
     
     mixpanel.nameTag = email;
-    [mixpanel registerSuperPropertiesOnce:[NSDictionary dictionaryWithObjectsAndKeys:[NSString stringWithFormat:@"%d",integer],@"Age",
-                                           gender,@"Gender", nil]];
     
-    [mixpanel registerSuperProperties:[NSDictionary dictionaryWithObjectsAndKeys:kVersion,@"Version", nil]];
+    [mixpanel registerSuperPropertiesOnce:[NSDictionary dictionaryWithObjectsAndKeys:gender,@"Gender", nil]];
+    
+    [mixpanel registerSuperProperties:[NSDictionary dictionaryWithObjectsAndKeys:kVersion,@"Version",
+                                       [NSString stringWithFormat:@"%d",integer],@"Age", nil]];
 }
 
 @end
