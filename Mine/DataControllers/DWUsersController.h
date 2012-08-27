@@ -27,9 +27,15 @@
 
 
 /**
- * Create user from facebook authentication
+ * Create user via facebook authentication.
  */
 - (void)createUserFromFacebookWithAccessToken:(NSString*)accessToken;
+
+/**
+ * Create users via twitter authentication.
+ */
+- (void)createUserFromTwitterWithAccessToken:(NSString*)accessToken
+                        andAccessTokenSecret:(NSString*)accessTokenSecret;
 
 /**
  * Fetch information about the user with the given id.

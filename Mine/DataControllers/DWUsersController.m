@@ -16,7 +16,8 @@
 #import "DWSession.h"
 
 
-static NSString* const kNewUserURI                      = @"/users.json?using=facebook&access_token=%@&src=iphone";
+static NSString* const kNewUserFBURI                    = @"/users.json?using=facebook&access_token=%@&src=iphone";
+static NSString* const kNewUserTWURI                    = @"/users.json?using=twitter&tw_access_token=%@&tw_access_token_secret=%@&src=iphone";
 static NSString* const kGetUserURI                      = @"/users/%@.json?";
 
 static NSString* const kSearchURI                       = @"/users.json?aspect=search&q=%@";
@@ -165,8 +166,24 @@ static NSString* const kNUserUpdateError        = @"NUserUpdateError";
 //----------------------------------------------------------------------------------------------------
 - (void)createUserFromFacebookWithAccessToken:(NSString*)accessToken {
     
-    NSString *localURL = [NSString stringWithFormat:kNewUserURI,
+    NSString *localURL = [NSString stringWithFormat:kNewUserFBURI,
                           [accessToken stringByEncodingHTMLCharacters]];
+    
+    [[DWRequestManager sharedDWRequestManager] createAppRequest:localURL
+                                            successNotification:kNNewUserCreated
+                                              errorNotification:kNNewUserCreateError
+                                                  requestMethod:kPost
+                                                   authenticate:NO];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+- (void)createUserFromTwitterWithAccessToken:(NSString*)accessToken
+                        andAccessTokenSecret:(NSString*)accessTokenSecret {
+    
+    NSString *localURL = [NSString stringWithFormat:kNewUserTWURI,
+                          [accessToken stringByEncodingHTMLCharacters],
+                          [accessTokenSecret stringByEncodingHTMLCharacters]];
     
     [[DWRequestManager sharedDWRequestManager] createAppRequest:localURL
                                             successNotification:kNNewUserCreated
