@@ -29,9 +29,14 @@
 - (void)endWelcomeNavigation;
 
 /**
- * Show onboarding for a new user
+ * Launch the onboarding flow.
  */
-- (void)showOnboarding;
+- (void)showOnboardingToUser:(DWUser*)user;
+
+/**
+ * Insert the global feed view onto the nav bar.
+ */
+- (void)showGlobalFeedView;
 
 @end
 
@@ -61,7 +66,15 @@
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)showOnboarding {
+- (void)showOnboardingToUser:(DWUser*)user {
+    if(!user.email || ![user.email length] || !user.gender || ![user.gender length])
+        ;
+    else
+        [self showGlobalFeedView];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)showGlobalFeedView {
     
     DWGlobalFeedViewController *globalFeedViewController = [[DWGlobalFeedViewController alloc] init];
     globalFeedViewController.delegate = self;
@@ -116,7 +129,7 @@
     if (user.purchasesCount) 
         [self endWelcomeNavigation];
     else 
-        [self showOnboarding];
+        [self showOnboardingToUser:user];
 }
 
 
