@@ -32,6 +32,7 @@
 @end
 
 
+
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
@@ -41,6 +42,7 @@
 @synthesize passwordTextField           = _passwordTextField;
 @synthesize twitterConnect              = _twitterConnect;
 @synthesize usersController             = _usersController;
+@synthesize updateCurrentUser           = _updateCurrentUser;
 @synthesize delegate                    = _delegate;
 
 //----------------------------------------------------------------------------------------------------
@@ -54,7 +56,8 @@
         self.usersController            = [[DWUsersController alloc] init];
         self.usersController.delegate   = self;
         
-        _isAwaitingResponse             = NO;        
+        _isAwaitingResponse             = NO;  
+        self.updateCurrentUser          = YES;
     }
     
     return self;
@@ -96,11 +99,21 @@
 - (void)twAuthenticatedWithToken:(NSString *)token 
                        andSecret:(NSString *)secret {
     
-    _isAwaitingResponse = YES;
+    SEL sel = @selector(twitterAuthorizedWithAccessToken:andAccessTokenSecret:);
     
-    [self.usersController updateUserHavingID:[DWSession sharedDWSession].currentUser.databaseID 
-                            withTwitterToken:token 
-                            andTwitterSecret:secret];
+    if([self.delegate respondsToSelector:sel])
+        [self.delegate performSelector:sel 
+                            withObject:token
+                            withObject:secret];
+    
+    
+    if(self.updateCurrentUser) {
+        _isAwaitingResponse = YES;
+        
+        [self.usersController updateUserHavingID:[DWSession sharedDWSession].currentUser.databaseID 
+                                withTwitterToken:token 
+                                andTwitterSecret:secret];
+    }
 }
 
 //----------------------------------------------------------------------------------------------------

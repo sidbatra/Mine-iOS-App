@@ -17,6 +17,8 @@
     UITextField         *_usernameTextField;
     UITextField         *_passwordTextField;
     
+    BOOL                _updateCurrentUser;
+    
     __weak id<DWTwitterConnectViewControllerDelegate,NSObject> _delegate;    
 }
 
@@ -25,6 +27,12 @@
  */
 @property (nonatomic) IBOutlet UITextField *usernameTextField;
 @property (nonatomic) IBOutlet UITextField *passwordTextField;
+
+
+/**
+ * Update the current user locally & remotely with the freshly obtained token & secret.
+ */
+@property (nonatomic,assign) BOOL updateCurrentUser;
 
 /**
  * Delegate
@@ -39,6 +47,12 @@
  */
 @protocol DWTwitterConnectViewControllerDelegate 
 
+@required
+
 - (void)twitterConfigured;
 
+@optional
+
+- (void)twitterAuthorizedWithAccessToken:(NSString*)accessToken 
+                    andAccessTokenSecret:(NSString*)accessTokenSecret;
 @end
