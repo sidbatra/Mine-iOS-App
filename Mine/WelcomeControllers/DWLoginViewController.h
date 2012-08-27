@@ -10,6 +10,7 @@
 
 #import "DWUsersController.h"
 #import "DWFacebookConnect.h"
+#import "DWTwitterConnectViewController.h"
 
 
 @protocol DWLoginViewControllerDelegate;
@@ -17,8 +18,10 @@
 /**
  * Displays view for logging in existing users.
  */
-@interface DWLoginViewController : UIViewController<DWUsersControllerDelegate,DWFacebookConnectDelegate> {
+@interface DWLoginViewController : UIViewController<DWUsersControllerDelegate,DWFacebookConnectDelegate,DWTwitterConnectViewControllerDelegate> {
+    
     UIButton *_loginWithFBButton;
+    UIButton *_loginWithTWButton;
     
     __weak id<DWLoginViewControllerDelegate> _delegate;
 }
@@ -32,12 +35,14 @@
  * IBOutlets
  */
 @property (nonatomic) IBOutlet UIButton *loginWithFBButton;
+@property (nonatomic) IBOutlet UIButton *loginWithTWButton;
 
 
 /**
  * IBActions
  */
  - (IBAction)loginWithFBButtonClicked:(id)sender;
+ - (IBAction)loginWithTWButtonClicked:(id)sender;
 
 @end
 
@@ -50,9 +55,13 @@
 @required
 
 /**
+ * Return a navigation controller for use inside the login view.
+ */
+- (UINavigationController*)loginViewNavigationController;
+
+/**
  * User successfully logs in.
  */
 - (void)userLoggedIn:(DWUser*)user;
-
 
 @end

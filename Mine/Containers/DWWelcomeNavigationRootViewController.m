@@ -102,6 +102,11 @@
 #pragma mark DWLoginViewControllerDelegate
 
 //----------------------------------------------------------------------------------------------------
+- (UINavigationController*)loginViewNavigationController {
+    return self.navigationController;
+}
+
+//----------------------------------------------------------------------------------------------------
 - (void)userLoggedIn:(DWUser*)user {
     
     [[NSNotificationCenter defaultCenter] postNotificationName:kNUserLoggedIn

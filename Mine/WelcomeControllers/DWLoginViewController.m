@@ -13,7 +13,9 @@
  */
 @interface DWLoginViewController () {
     DWUsersController *_usersController;
+    
     DWFacebookConnect *_facebookConnect;
+    DWTwitterConnectViewController  *_twitterConnectViewController;
 }
 
 /**
@@ -22,9 +24,14 @@
 @property (nonatomic,strong) DWUsersController *usersController;
 
 /**
- * Interface for implementing an FB connect.
+ * Interface for implementing a FB connect.
  */
 @property (nonatomic,strong) DWFacebookConnect *facebookConnect;
+
+/**
+ * Interface for implementing a TW connect.
+ */
+@property (nonatomic,strong) DWTwitterConnectViewController *twitterConnectViewController;
 
 @end
 
@@ -35,23 +42,27 @@
 //----------------------------------------------------------------------------------------------------
 @implementation DWLoginViewController
 
-@synthesize loginWithFBButton   = _loginWithFBButton;
-@synthesize delegate            = _delegate;
-@synthesize usersController     = _usersController;
-@synthesize facebookConnect     = _facebookConnect;
+@synthesize loginWithFBButton               = _loginWithFBButton;
+@synthesize loginWithTWButton               = _loginWithTWButton;
+@synthesize delegate                        = _delegate;
+@synthesize usersController                 = _usersController;
+@synthesize facebookConnect                 = _facebookConnect;
+@synthesize twitterConnectViewController    = _twitterConnectViewController;
 
 //----------------------------------------------------------------------------------------------------
-- (id)init
-{
+- (id)init {
     self = [super init];
     
     if (self) {
-        
         self.usersController = [[DWUsersController alloc] init];
         self.usersController.delegate = self;
         
         self.facebookConnect = [[DWFacebookConnect alloc] init];
         self.facebookConnect.delegate = self;
+        
+        self.twitterConnectViewController = [[DWTwitterConnectViewController alloc] init];
+        self.twitterConnectViewController.updateCurrentUser = NO;
+        self.twitterConnectViewController.delegate = self;
     }
     
     return self;
@@ -76,6 +87,12 @@
 //----------------------------------------------------------------------------------------------------
 - (IBAction)loginWithFBButtonClicked:(id)sender {
     [self.facebookConnect authorize];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (IBAction)loginWithTWButtonClicked:(id)sender {
+    [[self.delegate loginViewNavigationController] pushViewController:self.twitterConnectViewController
+                                         animated:YES];
 }
 
 
@@ -108,5 +125,24 @@
 - (void)fbAuthenticationFailed {
 }
 
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWTwitterConnectViewControllerDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)twitterAuthorizedWithAccessToken:(NSString *)accessToken 
+                    andAccessTokenSecret:(NSString *)accessTokenSecret {
+    
+    [[self.delegate loginViewNavigationController] popViewControllerAnimated:YES];
+    
+    [self.usersController createUserFromTwitterWithAccessToken:@"45032868-u6AmUUC3Lwb64TVQifzkEgey9r6zayISQXy0aJ2SF"
+                                          andAccessTokenSecret:@"4TJIHLVPDrA29dohWvdn6lxcferKWPFCEelZpHIVo"];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)twitterConfigured {
+}
 
 @end
