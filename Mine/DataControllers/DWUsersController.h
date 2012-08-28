@@ -90,6 +90,12 @@
 - (void)updateUserHavingID:(NSInteger)userID
         withiphoneDeviceToken:(NSString*)iphoneDeviceToken;
 
+/**
+ * Update user details.
+ */
+- (void)updateUserHavingID:(NSInteger)userID
+                 withEmail:(NSString*)email
+                withGender:(NSString*)gender;
 @end
 
 

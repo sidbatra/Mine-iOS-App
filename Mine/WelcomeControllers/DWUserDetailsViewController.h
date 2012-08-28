@@ -8,10 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
+#import "DWUsersController.h"
+
 @protocol DWUserDetailsViewControllerDelegate;
 
 
-@interface DWUserDetailsViewController : UIViewController {
+@interface DWUserDetailsViewController : UIViewController<DWUsersControllerDelegate> {
     UITextField             *_emailTextField;
     UISegmentedControl      *_genderSegmentedControl;
     

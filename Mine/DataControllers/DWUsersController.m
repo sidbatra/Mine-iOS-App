@@ -30,6 +30,7 @@ static NSString* const kUpdateUserFacebookTokenURI      = @"/users/%d.json?acces
 static NSString* const kUpdateUserTumblrTokenURI        = @"/users/%d.json?tumblr_access_token=%@&tumblr_access_token_secret=%@";
 static NSString* const kUpdateUserTwitterTokenURI       = @"/users/%d.json?tw_access_token=%@&tw_access_token_secret=%@";
 static NSString* const kUpdateUseriPhoneDeviceURI       = @"/users/%d.json?iphone_device_token=%@";
+static NSString* const kUpdateUserDetailsURI            = @"/users/%d.json?email=%@&gender=%@";
 
 static NSString* const kNNewUserCreated         = @"NUserCreated";
 static NSString* const kNNewUserCreateError     = @"NUserCreateError";
@@ -332,6 +333,22 @@ static NSString* const kNUserUpdateError        = @"NUserUpdateError";
                                                    authenticate:YES];
 }
 
+//----------------------------------------------------------------------------------------------------
+- (void)updateUserHavingID:(NSInteger)userID
+                 withEmail:(NSString*)email
+                withGender:(NSString*)gender {
+    
+    NSString *localURL = [NSString stringWithFormat:kUpdateUserDetailsURI,
+                          userID,
+                          [email stringByEncodingHTMLCharacters],
+                          [gender stringByEncodingHTMLCharacters]];
+    
+    [[DWRequestManager sharedDWRequestManager] createAppRequest:localURL
+                                            successNotification:kNUserUpdated
+                                              errorNotification:kNUserUpdateError
+                                                  requestMethod:kPut
+                                                   authenticate:YES];
+}
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------

@@ -7,10 +7,17 @@
 //
 
 #import "DWUserDetailsViewController.h"
+#import "DWSession.h"
 
 @interface DWUserDetailsViewController() {
+    DWUsersController   *_usersController;
     NSArray *_genderDataSource;
 }
+
+/**
+ * Users data controller.
+ */
+@property (nonatomic,strong) DWUsersController *usersController;
 
 /**
  * Available options for the gender ui element.
@@ -26,6 +33,7 @@
 //----------------------------------------------------------------------------------------------------
 @implementation DWUserDetailsViewController
 
+@synthesize usersController         = _usersController;
 @synthesize genderDataSource        = _genderDataSource;
 @synthesize emailTextField          = _emailTextField;
 @synthesize genderSegmentedControl  = _genderSegmentedControl;
@@ -36,6 +44,9 @@
     self = [super init];
     
     if (self) {
+        self.usersController = [[DWUsersController alloc] init];
+        self.usersController.delegate = self;
+        
         self.genderDataSource = [NSArray arrayWithObjects:@"male",@"female", nil];
     }
     
@@ -70,9 +81,25 @@
         return;
     }
     
+    [self.usersController updateUserHavingID:[DWSession sharedDWSession].currentUser.databaseID
+                                   withEmail:self.emailTextField.text
+                                  withGender:[self.genderDataSource objectAtIndex:self.genderSegmentedControl.selectedSegmentIndex]];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWUsersControllerDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)userUpdated:(DWUser *)user {
+    [user destroy];
     [self.delegate userDetailsUpdated];
-    
-    //NSLog(@"%@ %@",self.emailTextField.text,[self.genderDataSource objectAtIndex:self.genderSegmentedControl.selectedSegmentIndex]);
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)userUpdateError:(NSString *)error {
 }
 
 
