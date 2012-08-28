@@ -11,11 +11,12 @@
 #import "DWLoginViewController.h"
 #import "DWSuggestionsViewController.h"
 #import "DWGlobalFeedViewController.h"
+#import "DWUserDetailsViewController.h"
 
 /**
  * Root view controller for the welcome navigation controller.
  */
-@interface DWWelcomeNavigationRootViewController : DWNavigationRootViewController<DWLoginViewControllerDelegate,DWSuggestionsViewControllerDelegate,DWGlobalFeedViewControllerDelegate>
+@interface DWWelcomeNavigationRootViewController : DWNavigationRootViewController<DWLoginViewControllerDelegate,DWSuggestionsViewControllerDelegate,DWGlobalFeedViewControllerDelegate,DWUserDetailsViewControllerDelegate>
 
 
 @end

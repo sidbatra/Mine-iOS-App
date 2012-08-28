@@ -38,6 +38,11 @@
  */
 - (void)showGlobalFeedView;
 
+/**
+ * Insert view for inputting more user info on to the nav bar.
+ */
+- (void)showUserDetailsView;
+
 @end
 
 
@@ -68,7 +73,7 @@
 //----------------------------------------------------------------------------------------------------
 - (void)showOnboardingToUser:(DWUser*)user {
     if(!user.email || ![user.email length] || !user.gender || ![user.gender length])
-        ;
+        [self showUserDetailsView];
     else
         [self showGlobalFeedView];
 }
@@ -80,6 +85,15 @@
     globalFeedViewController.delegate = self;
     
     [self.navigationController pushViewController:globalFeedViewController 
+                                         animated:YES];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)showUserDetailsView {
+    DWUserDetailsViewController *userDetailsViewController = [[DWUserDetailsViewController alloc] init];
+    userDetailsViewController.delegate = self;
+    
+    [self.navigationController pushViewController:userDetailsViewController
                                          animated:YES];
 }
 
@@ -121,7 +135,6 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)userLoggedIn:(DWUser*)user {
-    
     [[NSNotificationCenter defaultCenter] postNotificationName:kNUserLoggedIn
                                                         object:nil
                                                       userInfo:[NSDictionary dictionaryWithObjectsAndKeys:user,kKeyUser,nil]];
@@ -130,6 +143,17 @@
         [self endWelcomeNavigation];
     else 
         [self showOnboardingToUser:user];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWUserDetailsViewControllerDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)userDetailsUpdated {
+    [self showGlobalFeedView];
 }
 
 

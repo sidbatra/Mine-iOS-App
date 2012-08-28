@@ -137,8 +137,8 @@
     
     [[self.delegate loginViewNavigationController] popViewControllerAnimated:YES];
     
-    [self.usersController createUserFromTwitterWithAccessToken:@"45032868-u6AmUUC3Lwb64TVQifzkEgey9r6zayISQXy0aJ2SF"
-                                          andAccessTokenSecret:@"4TJIHLVPDrA29dohWvdn6lxcferKWPFCEelZpHIVo"];
+    [self.usersController createUserFromTwitterWithAccessToken:@"229722601-JXIcNu2bfdFjRye6fYPxLi3Tcm2G5VPa7lqbKM9O"
+                                          andAccessTokenSecret:@"xzMyCZkWhnKM5T7qa3B7YgwNzkMAEGDGQb8QtXIVIo"];
 }
 
 //----------------------------------------------------------------------------------------------------
