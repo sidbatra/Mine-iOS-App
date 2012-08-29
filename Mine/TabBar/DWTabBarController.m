@@ -10,7 +10,7 @@
 static NSInteger const kScreenHeight    = 460;
 static CGRect const kFullScreenFrame    = { {0,0}, {320, kScreenHeight} };
 
-//static NSString* const kImgTopShadow        = @"shadow_top.png";
+static NSString* const kImgTopShadow        = @"nav-shadow.png";
 //static NSString* const kImgBottomShadow     = @"shadow_bottom.png";
 
 
@@ -20,7 +20,7 @@ static CGRect const kFullScreenFrame    = { {0,0}, {320, kScreenHeight} };
 @interface DWTabBarController() {
     NSMutableArray      *_subControllers;
 
-    //UIImageView         *_topShadowView;
+    UIImageView         *_topShadowView;
     //UIImageView         *_backgroundView;
 }
 
@@ -32,7 +32,7 @@ static CGRect const kFullScreenFrame    = { {0,0}, {320, kScreenHeight} };
 /**
  * Image view with a shadow just below the navigation bar
  */
-//@property (nonatomic) UIImageView *topShadowView;
+@property (nonatomic,strong) UIImageView *topShadowView;
 
 /**
  * Image view for background used throughout the logged in mode
@@ -67,7 +67,7 @@ static CGRect const kFullScreenFrame    = { {0,0}, {320, kScreenHeight} };
 @synthesize tabBar                  = _tabBar;
 @synthesize subControllers          = _subControllers;
 @synthesize delegate                = _delegate;
-//@synthesize topShadowView           = _topShadowView;
+@synthesize topShadowView           = _topShadowView;
 //@synthesize backgroundView          = _backgroundView;
 
 
@@ -82,11 +82,10 @@ static CGRect const kFullScreenFrame    = { {0,0}, {320, kScreenHeight} };
         
         self.subControllers             = [NSMutableArray array];
         
-        /*
-        self.topShadowView              = [[UIImageView alloc] initWithImage:
-                                            [UIImage imageNamed:kImgTopShadow]];
-        self.topShadowView.frame        = CGRectMake(0,44,320,5);
         
+        self.topShadowView              = [[UIImageView alloc] initWithImage:[UIImage imageNamed:kImgTopShadow]];
+        self.topShadowView.frame        = CGRectMake(0,44,320,3);
+        /*
         self.backgroundView             = [DWGUIManager backgroundImageViewWithFrame:kFullScreenFrame];
         */
 	}
@@ -104,7 +103,7 @@ static CGRect const kFullScreenFrame    = { {0,0}, {320, kScreenHeight} };
     [super viewDidLoad];
     
     //[self.view addSubview:self.backgroundView];
-	//[self.view addSubview:self.topShadowView];
+	[self.view addSubview:self.topShadowView];
     
 	[self.view addSubview:self.tabBar];
     
@@ -132,10 +131,8 @@ static CGRect const kFullScreenFrame    = { {0,0}, {320, kScreenHeight} };
 	UIViewController *controller = [self.subControllers objectAtIndex:index];
     controller.view.frame = [self subControllerFrame];
 	
-    [self.view addSubview:controller.view];
-
-	//[self.view insertSubview:controller.view 
-    //            belowSubview:self.topShadowView];
+	[self.view insertSubview:controller.view 
+                belowSubview:self.topShadowView];
 }
 
 //----------------------------------------------------------------------------------------------------
