@@ -99,25 +99,25 @@ static NSInteger const kCreateTabIndex              = 1;
     [self.tabBarController addSubController:self.profileNavController];
     
     
-    self.tabBarController.tabBar.frame = CGRectMake(0, 411, 320, 49);
+    self.tabBarController.tabBar.frame = CGRectMake(0, 406, 320, 44);
     
     [self.tabBarController.tabBar addTabWithWidth:114 
-                                  normalImageName:@"tab_feed_off.png"
-                                selectedImageName:@"tab_feed_on.png"
+                                  normalImageName:@"tab-left-feed-off.png"
+                                selectedImageName:@"tab-left-feed-on.png"
                              highlightedImageName:nil
                              isMappedToController:YES
                                        isSelected:YES];
     
     [self.tabBarController.tabBar addTabWithWidth:92
-                                  normalImageName:@"tab_create_off.png"
-                                selectedImageName:@"tab_create_off.png"
+                                  normalImageName:@"tab-center-add-off.png"
+                                selectedImageName:@"tab-center-add-off.png"
                              highlightedImageName:nil
                              isMappedToController:NO
                                        isSelected:NO];
     
     [self.tabBarController.tabBar addTabWithWidth:114
-                                  normalImageName:@"tab_teams_off.png"
-                                selectedImageName:@"tab_teams_on.png"
+                                  normalImageName:@"tab-right-profile-off.png"
+                                selectedImageName:@"tab-right-profile-on.png"
                              highlightedImageName:nil
                              isMappedToController:YES
                                        isSelected:NO];
