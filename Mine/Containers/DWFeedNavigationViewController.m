@@ -9,6 +9,7 @@
 #import "DWFeedNavigationViewController.h"
 #import "DWFeedViewController.h"
 #import "DWUsersSearchViewController.h"
+#import "DWNavigationBarTitleView.h"
 
 #import "DWBackgroundQueue.h"
 #import "DWCreatePurchaseBackgroundQueueItem.h"
@@ -22,6 +23,7 @@
     DWFeedViewController        *_feedViewController;
     DWUsersSearchViewController *_usersSearchViewController;
     
+    DWNavigationBarTitleView    *_navTitleView;
     DWQueueProgressView         *_queueProgressView;
     DWSearchBar                 *_searchBar;
     
@@ -37,6 +39,11 @@
  * Table view for displaying search results.
  */
 @property (nonatomic,strong) DWUsersSearchViewController *usersSearchViewController;
+
+/**
+ * Tile view inserted onto the navigation bar.
+ */
+@property (nonatomic,strong) DWNavigationBarTitleView *navTitleView;
 
 /**
  * Nav bar queue progress view for displaying progress from the background queue.
@@ -64,6 +71,7 @@
 
 @synthesize feedViewController          = _feedViewController;
 @synthesize usersSearchViewController   = _usersSearchViewController;
+@synthesize navTitleView                = _navTitleView;
 @synthesize queueProgressView           = _queueProgressView;
 @synthesize searchBar                   = _searchBar;
 @synthesize isProgressBarActive         = _isProgressBarActive;
@@ -110,7 +118,7 @@
 - (void)viewDidLoad {
 	[super viewDidLoad];
     
-    self.navigationItem.title = @"Feed";
+    self.navigationItem.title = @"";
     
     if(!self.feedViewController) {
         self.feedViewController = [[DWFeedViewController alloc] init];
@@ -127,7 +135,12 @@
     }
     
     [self.view addSubview:self.usersSearchViewController.view];
+
     
+    if(!self.navTitleView) {
+        self.navTitleView =  [[DWNavigationBarTitleView alloc] initWithFrame:CGRectMake(121,0,76,44)
+                                                                andImageName:@"nav-mine-logo.png"];
+    }
     
     if(!self.queueProgressView) {    
         self.queueProgressView			= [[DWQueueProgressView alloc] initWithFrame:CGRectMake(60,0,200,44)];
@@ -277,6 +290,7 @@
 //----------------------------------------------------------------------------------------------------
 - (void)willShowOnNav {
     [self.navigationController.navigationBar addSubview:self.searchBar];
+    [self.navigationController.navigationBar addSubview:self.navTitleView];
 }
 
 @end
