@@ -19,7 +19,7 @@ extern NSInteger const kTotalLikeUserButtons;
     NSInteger       _purchaseID;
     NSInteger       _userID;
     
-    UIImageView     *purchaseImageView;
+    UIButton        *purchaseImageButton;
     
     UIButton        *userImageButton;
     UIButton        *userNameButton;

@@ -78,7 +78,7 @@ NSInteger const kTotalLikeUserButtons   = 5;
         self.likeUserButtons    = [NSMutableArray arrayWithCapacity:kTotalLikeUserButtons];
         
         [self createUserImageButton];
-        [self createPurchaseImageView];
+        [self createPurchaseImageButton];
         [self createUserNameButton];
         [self createTitleLabel];
         
@@ -126,12 +126,17 @@ NSInteger const kTotalLikeUserButtons   = 5;
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)createPurchaseImageView {
-    purchaseImageView                   = [[UIImageView alloc] initWithFrame:CGRectMake(0,50,320,320)];
-    purchaseImageView.contentMode       = UIViewContentModeScaleAspectFit;
-    purchaseImageView.backgroundColor   = [UIColor yellowColor];
+- (void)createPurchaseImageButton {
     
-    [self.contentView addSubview:purchaseImageView];
+    purchaseImageButton  = [[UIButton alloc] initWithFrame:CGRectMake(11,11,298,224)];
+    purchaseImageButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
+    /*
+    [purchaseImageButton addTarget:self
+                            action:@selector(didTapUserImageButton:)
+                  forControlEvents:UIControlEventTouchUpInside];
+    */
+    
+    [self.contentView addSubview:purchaseImageButton];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -302,7 +307,8 @@ NSInteger const kTotalLikeUserButtons   = 5;
 
 //----------------------------------------------------------------------------------------------------
 - (void)setPurchaseImage:(UIImage*)image {
-    purchaseImageView.image = image;
+    [purchaseImageButton setImage:image forState:UIControlStateNormal];
+    //[purchaseImageButton setImage:image forState:UIControlStateHighlighted];
 }
 
 //----------------------------------------------------------------------------------------------------
