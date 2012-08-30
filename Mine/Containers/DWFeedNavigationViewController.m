@@ -182,6 +182,7 @@
 		
         if(!self.isProgressBarActive) {
             self.isProgressBarActive = YES;
+            [self.navTitleView removeFromSuperview];
             [self.navigationController.navigationBar addSubview:self.queueProgressView];
         }
 		
@@ -193,6 +194,9 @@
         self.isProgressBarActive = NO;
         
         [self.queueProgressView removeFromSuperview];
+        
+        if(self.navigationController.topViewController == self)
+            [self.navigationController.navigationBar addSubview:self.navTitleView];
     }
 }
 
@@ -224,8 +228,11 @@
 - (void)searchButtonClicked {
     //[self.customTabBarController enableFullScreen];
     self.feedViewController.view.hidden             = YES;    
+    self.navTitleView.hidden                        = YES;
+    self.queueProgressView.hidden                   = YES;
     self.usersSearchViewController.view.hidden      = NO;
     self.searchBar.hidden                           = NO;
+
     
     [self.searchBar becomeActive];
     
@@ -243,7 +250,9 @@
     
     self.usersSearchViewController.view.hidden      = YES;
     self.searchBar.hidden                           = YES;
-    self.feedViewController.view.hidden             = NO;    
+    self.feedViewController.view.hidden             = NO; 
+    self.navTitleView.hidden                        = NO;
+    self.queueProgressView.hidden                   = NO;
     
     //[self.customTabBarController disableFullScreen];
     
@@ -290,7 +299,11 @@
 //----------------------------------------------------------------------------------------------------
 - (void)willShowOnNav {
     [self.navigationController.navigationBar addSubview:self.searchBar];
-    [self.navigationController.navigationBar addSubview:self.navTitleView];
+    
+    if(_isProgressBarActive)
+        [self.navigationController.navigationBar addSubview:self.queueProgressView];        
+    else
+        [self.navigationController.navigationBar addSubview:self.navTitleView];
 }
 
 @end
