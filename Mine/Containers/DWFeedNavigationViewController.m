@@ -18,6 +18,8 @@
 #import "DWUser.h"
 #import "DWStore.h"
 
+#import "DWConstants.h"
+
 
 @interface DWFeedNavigationViewController () {
     DWFeedViewController        *_feedViewController;
@@ -139,7 +141,7 @@
     
     if(!self.navTitleView) {
         self.navTitleView =  [[DWNavigationBarTitleView alloc] initWithFrame:CGRectMake(121,0,76,44)
-                                                                andImageName:@"nav-mine-logo.png"];
+                                                                andImageName:kNavBarMineLogo];
     }
     
     if(!self.queueProgressView) {    

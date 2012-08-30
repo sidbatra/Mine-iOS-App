@@ -90,7 +90,10 @@ extern NSString* const kKeyPurchase;
  */
 extern NSString* const kRailsDateTimeFormat;
 
-
+/**
+ * UI Related
+ */
+extern NSString* const kNavBarMineLogo;
 
 
 /**

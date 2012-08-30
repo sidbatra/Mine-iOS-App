@@ -76,6 +76,9 @@ NSString* const kKeyPurchase    = @"purchase";
 NSString* const kRailsDateTimeFormat = @"yyyy-MM-dd HH:mm:ss ZZZ";
 
 //----------------------------------------------------------------------------------------------------
+NSString* const kNavBarMineLogo = @"nav-mine-logo.png";
+
+//----------------------------------------------------------------------------------------------------
 NSInteger const kDefaultModelPresenter = 0;
 
 
