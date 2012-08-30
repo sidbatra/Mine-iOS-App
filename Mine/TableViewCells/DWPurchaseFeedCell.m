@@ -130,6 +130,8 @@ NSInteger const kTotalLikeUserButtons   = 5;
     
     purchaseImageButton  = [[UIButton alloc] initWithFrame:CGRectMake(11,11,298,224)];
     purchaseImageButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
+    purchaseImageButton.adjustsImageWhenHighlighted = NO;
+    
     /*
     [purchaseImageButton addTarget:self
                             action:@selector(didTapUserImageButton:)
