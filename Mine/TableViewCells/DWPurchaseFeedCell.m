@@ -121,11 +121,13 @@ NSInteger const kTotalLikeUserButtons   = 5;
 //----------------------------------------------------------------------------------------------------
 - (void)createInfoBackground {
     infoBackground = [CALayer layer];
-    infoBackground.frame = CGRectMake(0,
+    infoBackground.frame = CGRectMake(-1,
                                       purchaseImageButton.frame.origin.y + purchaseImageButton.frame.size.height+11,
-                                      self.contentView.frame.size.width,
+                                      self.contentView.frame.size.width+1,
                                       kPurchaseFeedCellHeight-purchaseImageButton.frame.size.height-11-purchaseImageButton.frame.origin.y);
     infoBackground.backgroundColor = [UIColor colorWithRed:0.933 green:0.933 blue:0.933 alpha:1.0].CGColor;
+    infoBackground.borderWidth = 1.0f;
+    infoBackground.borderColor = [UIColor colorWithRed:0.878 green:0.878 blue:0.878 alpha:1.0].CGColor;
     
     [self.contentView.layer addSublayer:infoBackground];
 }
