@@ -15,6 +15,8 @@
 NSInteger const kPurchaseFeedCellHeight = 430;
 NSInteger const kTotalLikeUserButtons   = 5;
 
+static NSString* const kImgDoinkUp = @"doink-up-14.png";
+
 
 @interface DWPurchaseFeedCell() {
     NSMutableArray  *_likeUserButtons;
@@ -84,6 +86,7 @@ NSInteger const kTotalLikeUserButtons   = 5;
         [self createPurchaseImageButton];
         
         [self createInfoBackground];
+        [self createDoinkImageView];
         //[self createUserNameButton];
         //[self createTitleLabel];
         
@@ -130,6 +133,14 @@ NSInteger const kTotalLikeUserButtons   = 5;
     infoBackground.borderColor = [UIColor colorWithRed:0.878 green:0.878 blue:0.878 alpha:1.0].CGColor;
     
     [self.contentView.layer addSublayer:infoBackground];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)createDoinkImageView {
+    UIImageView *doinkImageView = [[UIImageView alloc] initWithFrame:CGRectMake(40,infoBackground.frame.origin.y-7,16,8)];
+    doinkImageView.image = [UIImage imageNamed:kImgDoinkUp];
+    
+    [self.contentView addSubview:doinkImageView];
 }
 
 //----------------------------------------------------------------------------------------------------
