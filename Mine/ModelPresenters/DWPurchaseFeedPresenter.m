@@ -55,6 +55,7 @@
     
     [cell setLikeCount:[purchase.likes count]];
     
+    /*
     for(NSInteger i=0 ; i<MIN(kTotalLikeUserButtons,[purchase.likes count]) ; i++) {
         DWLike *like = [purchase.likes objectAtIndex:i];
         
@@ -64,8 +65,9 @@
           forButtonAtIndex:i
                  forUserID:like.user.databaseID];
     }
+     */
     
-    
+    /*
     for(DWComment *comment in purchase.comments) {
         [comment.user downloadSquareImage];
         
@@ -74,7 +76,7 @@
                               withUserID:comment.user.databaseID
                               andMessage:comment.message];
     }
-    
+    */
     
     return cell;
 }

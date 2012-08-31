@@ -30,6 +30,8 @@ extern NSInteger const kTotalLikeUserButtons;
 	UILabel         *titleLabel;
     UILabel         *likesCountLabel;
     
+    CALayer         *infoBackground;
+    
     __weak id<DWPurchaseFeedCellDelegate,NSObject> _delegate;
 }
 

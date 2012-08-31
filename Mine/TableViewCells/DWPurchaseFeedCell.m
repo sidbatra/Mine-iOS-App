@@ -6,6 +6,8 @@
 //  Copyright (c) 2012 Denwen, Inc. All rights reserved.
 //
 
+#import <QuartzCore/QuartzCore.h>
+
 #import "DWPurchaseFeedCell.h"
 #import "DWUser.h"
 #import "DWLike.h"
@@ -74,22 +76,25 @@ NSInteger const kTotalLikeUserButtons   = 5;
 	
     if (self) {
         self.contentView.clipsToBounds = YES;
+        self.contentView.backgroundColor = [UIColor whiteColor];
         
         self.likeUserButtons    = [NSMutableArray arrayWithCapacity:kTotalLikeUserButtons];
         
-        [self createUserImageButton];
+        //[self createUserImageButton];
         [self createPurchaseImageButton];
-        [self createUserNameButton];
-        [self createTitleLabel];
         
-        [self createLikeButton];
-        [self createCommentButton];
+        [self createInfoBackground];
+        //[self createUserNameButton];
+        //[self createTitleLabel];
         
-        [self createLikesCountLabel];
-        [self createLikeUserButtons];
-        [self createAllLikesButton];
-		
-		self.selectionStyle = UITableViewCellSelectionStyleNone;	
+        //[self createLikeButton];
+        //[self createCommentButton];
+        
+        //[self createLikesCountLabel];
+        //[self createLikeUserButtons];
+        //[self createAllLikesButton];
+        
+       		self.selectionStyle = UITableViewCellSelectionStyleNone;	
 	}
 	
     return self;
@@ -114,6 +119,18 @@ NSInteger const kTotalLikeUserButtons   = 5;
 #pragma mark Sub view creation
 
 //----------------------------------------------------------------------------------------------------
+- (void)createInfoBackground {
+    infoBackground = [CALayer layer];
+    infoBackground.frame = CGRectMake(0,
+                                      purchaseImageButton.frame.origin.y + purchaseImageButton.frame.size.height+11,
+                                      self.contentView.frame.size.width,
+                                      kPurchaseFeedCellHeight-purchaseImageButton.frame.size.height-11-purchaseImageButton.frame.origin.y);
+    infoBackground.backgroundColor = [UIColor colorWithRed:0.933 green:0.933 blue:0.933 alpha:1.0].CGColor;
+    
+    [self.contentView.layer addSublayer:infoBackground];
+}
+
+//----------------------------------------------------------------------------------------------------
 - (void)createUserImageButton {
     userImageButton  = [[UIButton alloc] initWithFrame:CGRectMake(0,0,50,50)];
     
@@ -129,6 +146,7 @@ NSInteger const kTotalLikeUserButtons   = 5;
 - (void)createPurchaseImageButton {
     
     purchaseImageButton  = [[UIButton alloc] initWithFrame:CGRectMake(11,11,298,224)];
+    //purchaseImageButton.backgroundColor = [UIColor redColor];
     purchaseImageButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
     purchaseImageButton.adjustsImageWhenHighlighted = NO;
     
@@ -452,8 +470,8 @@ NSInteger const kTotalLikeUserButtons   = 5;
     
     NSInteger height = kPurchaseFeedCellHeight;
     
-    height +=likesCount > 0 ? 40 : 0;
-    height += commentsCount > 0 ? 125 * commentsCount : 0;
+    //height +=likesCount > 0 ? 40 : 0;
+    //height += commentsCount > 0 ? 125 * commentsCount : 0;
     
     return  height;
 }
