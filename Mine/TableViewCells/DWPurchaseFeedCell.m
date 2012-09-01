@@ -27,6 +27,8 @@ static NSString* const kImgDoinkUp = @"doink-up-14.png";
     NSMutableArray  *_commentUserButtons;
     NSMutableArray  *_commentUserNameButtons;
     NSMutableArray  *_commentMessageLabels;
+    
+    NSURL           *_userNameLabelURL;
 }
 
 
@@ -51,6 +53,11 @@ static NSString* const kImgDoinkUp = @"doink-up-14.png";
 @property (nonatomic,strong) NSMutableArray *commentMessageLabels;
 
 /**
+ * URL used to idenfity clicks on the user name.
+ */
+@property (nonatomic,strong) NSURL *userNameLabelURL;
+
+/**
  * Fires the delegate event after a user element is clicked.
  */
 - (void)userClicked:(NSInteger)userID;
@@ -70,6 +77,7 @@ static NSString* const kImgDoinkUp = @"doink-up-14.png";
 @synthesize commentUserButtons      = _commentUserButtons;
 @synthesize commentUserNameButtons  = _commentUserNameButtons;
 @synthesize commentMessageLabels    = _commentMessageLabels;
+@synthesize userNameLabelURL        = _userNameLabelURL;
 @synthesize delegate                = _delegate;
 
 //----------------------------------------------------------------------------------------------------
@@ -84,6 +92,7 @@ static NSString* const kImgDoinkUp = @"doink-up-14.png";
         self.contentView.backgroundColor = [UIColor whiteColor];
         
         self.likeUserButtons    = [NSMutableArray arrayWithCapacity:kTotalLikeUserButtons];
+        self.userNameLabelURL   = [NSURL URLWithString:[NSString stringWithFormat:@"user"]];
         
         [self createPurchaseImageButton];
         
@@ -375,12 +384,11 @@ static NSString* const kImgDoinkUp = @"doink-up-14.png";
 	[attrStr setTextColor:[UIColor colorWithRed:0.333 green:0.333 blue:0.333 alpha:1.0]];
     //[attrStr setTextAlignment:kCTLeftTextAlignment lineBreakMode:kCTLineBreakByWordWrapping];
     
-    
 	[attrStr setTextBold:YES range:userNameRange];
     
     boughtLabel.attributedText = attrStr;
     
-    [boughtLabel addCustomLink:[NSURL URLWithString:[NSString stringWithFormat:@"user:1"]]
+    [boughtLabel addCustomLink:self.userNameLabelURL
                        inRange:userNameRange];
 }
 
@@ -529,7 +537,7 @@ static NSString* const kImgDoinkUp = @"doink-up-14.png";
 -(BOOL)attributedLabel:(OHAttributedLabel *)attributedLabel 
       shouldFollowLink:(NSTextCheckingResult *)linkInfo {
     
-    NSLog(@"%@",linkInfo.URL);
+    [self userClicked:self.userID];
     
     return true;
 }
