@@ -82,11 +82,12 @@ static NSString* const kImgDoinkUp = @"doink-up-14.png";
         
         self.likeUserButtons    = [NSMutableArray arrayWithCapacity:kTotalLikeUserButtons];
         
-        //[self createUserImageButton];
         [self createPurchaseImageButton];
         
         [self createInfoBackground];
         [self createDoinkImageView];
+        
+        [self createUserImageButton];
         //[self createUserNameButton];
         //[self createTitleLabel];
         
@@ -145,8 +146,9 @@ static NSString* const kImgDoinkUp = @"doink-up-14.png";
 
 //----------------------------------------------------------------------------------------------------
 - (void)createUserImageButton {
-    userImageButton  = [[UIButton alloc] initWithFrame:CGRectMake(0,0,50,50)];
-    
+    userImageButton  = [[UIButton alloc] initWithFrame:CGRectMake(11,infoBackground.frame.origin.y+11,34,34)];
+    userImageButton.imageView.layer.cornerRadius = 3;
+    userImageButton.backgroundColor = [UIColor colorWithRed:0.878 green:0.878 blue:0.878 alpha:1.0];
     
     [userImageButton addTarget:self
                        action:@selector(didTapUserImageButton:)
