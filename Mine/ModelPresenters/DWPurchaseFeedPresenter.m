@@ -9,6 +9,7 @@
 #import "DWPurchaseFeedPresenter.h"
 
 #import "DWPurchaseFeedCell.h"
+#import "DWPurchasesHelper.h"
 #import "DWSession.h"
 
 #import "DWUser.h"
@@ -46,8 +47,8 @@
     [cell setPurchaseImage:purchase.giantImage];
     [cell setUserImage:purchase.user.squareImage];
     
-    [cell setUserName:purchase.user.fullName];
-    [cell setTitle:purchase.title];
+    [cell setBoughtText:[DWPurchasesHelper boughtTextForPurchase:purchase]
+           withUserName:purchase.user.fullName];
     
     
     if([purchase isLikedByUserID:[DWSession sharedDWSession].currentUser.databaseID])

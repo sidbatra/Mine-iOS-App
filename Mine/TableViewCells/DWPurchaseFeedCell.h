@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+#import "OHAttributedLabel.h"
+
 
 extern NSInteger const kPurchaseFeedCellHeight;
 extern NSInteger const kTotalLikeUserButtons;
@@ -15,22 +17,25 @@ extern NSInteger const kTotalLikeUserButtons;
 @protocol DWPurchaseFeedCellDelegate;
 
 
-@interface DWPurchaseFeedCell : UITableViewCell {
-    NSInteger       _purchaseID;
-    NSInteger       _userID;
+@interface DWPurchaseFeedCell : UITableViewCell<OHAttributedLabelDelegate> {
+    NSInteger           _purchaseID;
+    NSInteger           _userID;
     
-    UIButton        *purchaseImageButton;
+    UIButton            *purchaseImageButton;
+    CALayer             *infoBackground;
     
-    UIButton        *userImageButton;
-    UIButton        *userNameButton;
-    UIButton        *likeButton;
-    UIButton        *allLikesButton;
-    UIButton        *commentButton;
+    UIButton            *userImageButton;
     
-	UILabel         *titleLabel;
-    UILabel         *likesCountLabel;
+    OHAttributedLabel   *boughtLabel;
     
-    CALayer         *infoBackground;
+    UIButton            *userNameButton;
+    UIButton            *likeButton;
+    UIButton            *allLikesButton;
+    UIButton            *commentButton;
+    
+	UILabel             *titleLabel;
+    UILabel             *likesCountLabel;
+
     
     __weak id<DWPurchaseFeedCellDelegate,NSObject> _delegate;
 }
@@ -74,14 +79,9 @@ extern NSInteger const kTotalLikeUserButtons;
 - (void)setPurchaseImage:(UIImage*)image;
 
 /**
- * Set user name for the purchase.
+ * Set the bought text for the purchase.
  */
-- (void)setUserName:(NSString*)userName;
-
-/**
- * Set purchase title.
- */
-- (void)setTitle:(NSString*)title;
+- (void)setBoughtText:(NSString*)boughtText withUserName:(NSString*)userName;
 
 /**
  * Disable like button interaction.

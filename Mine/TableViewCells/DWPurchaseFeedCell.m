@@ -8,9 +8,12 @@
 
 #import <QuartzCore/QuartzCore.h>
 
+#import "NSAttributedString+Attributes.h"
+
 #import "DWPurchaseFeedCell.h"
 #import "DWUser.h"
 #import "DWLike.h"
+
 
 NSInteger const kPurchaseFeedCellHeight = 430;
 NSInteger const kTotalLikeUserButtons   = 5;
@@ -88,6 +91,7 @@ static NSString* const kImgDoinkUp = @"doink-up-14.png";
         [self createDoinkImageView];
         
         [self createUserImageButton];
+        [self createBoughtLabel];
         //[self createUserNameButton];
         //[self createTitleLabel];
         
@@ -172,6 +176,21 @@ static NSString* const kImgDoinkUp = @"doink-up-14.png";
     */
     
     [self.contentView addSubview:purchaseImageButton];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)createBoughtLabel {
+    boughtLabel = [[OHAttributedLabel alloc] initWithFrame:CGRectMake(userImageButton.frame.origin.x+userImageButton.frame.size.width+16,
+                                                                      userImageButton.frame.origin.y,
+                                                                      229,
+                                                                      34)];
+    boughtLabel.linkColor = [UIColor colorWithRed:0.333 green:0.333 blue:0.333 alpha:1.0];
+    boughtLabel.underlineLinks = NO;
+    boughtLabel.delegate = self;
+    boughtLabel.automaticallyAddLinksForType = 0;
+    boughtLabel.backgroundColor = [UIColor clearColor];
+    
+    [self.contentView addSubview:boughtLabel];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -347,13 +366,22 @@ static NSString* const kImgDoinkUp = @"doink-up-14.png";
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)setUserName:(NSString *)userName {
-    [userNameButton setTitle:userName forState:UIControlStateNormal];
-}
-
-//----------------------------------------------------------------------------------------------------
-- (void)setTitle:(NSString*)title {
-    titleLabel.text = title;
+- (void)setBoughtText:(NSString*)boughtText withUserName:(NSString*)userName  {
+    
+    NSRange userNameRange = NSMakeRange(0,userName.length);
+    
+	NSMutableAttributedString* attrStr = [NSMutableAttributedString attributedStringWithString:boughtText];
+	[attrStr setFont:[UIFont fontWithName:@"HelveticaNeue" size:14]];
+	[attrStr setTextColor:[UIColor colorWithRed:0.333 green:0.333 blue:0.333 alpha:1.0]];
+    //[attrStr setTextAlignment:kCTLeftTextAlignment lineBreakMode:kCTLineBreakByWordWrapping];
+    
+    
+	[attrStr setTextBold:YES range:userNameRange];
+    
+    boughtLabel.attributedText = attrStr;
+    
+    [boughtLabel addCustomLink:[NSURL URLWithString:[NSString stringWithFormat:@"user:1"]]
+                       inRange:userNameRange];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -489,6 +517,21 @@ static NSString* const kImgDoinkUp = @"doink-up-14.png";
     //height += commentsCount > 0 ? 125 * commentsCount : 0;
     
     return  height;
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark OHAttributedLabelDelegate
+
+//----------------------------------------------------------------------------------------------------
+-(BOOL)attributedLabel:(OHAttributedLabel *)attributedLabel 
+      shouldFollowLink:(NSTextCheckingResult *)linkInfo {
+    
+    NSLog(@"%@",linkInfo.URL);
+    
+    return true;
 }
 
 

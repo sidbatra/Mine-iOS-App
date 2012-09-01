@@ -190,7 +190,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWSession);
         self.statusController.delegate = self;
     }
     
-    [self.statusController getStatus];
+    //[self.statusController getStatus];
 }
 
 
