@@ -15,7 +15,7 @@
 #import "DWLike.h"
 
 
-NSInteger const kPurchaseFeedCellHeight = 430;
+NSInteger const kPurchaseFeedCellHeight = 350;
 NSInteger const kTotalLikeUserButtons   = 5;
 
 static NSString* const kImgDoinkUp = @"doink-up-14.png";
@@ -101,10 +101,9 @@ static NSString* const kImgDoinkUp = @"doink-up-14.png";
         
         [self createUserImageButton];
         [self createBoughtLabel];
-        //[self createUserNameButton];
-        //[self createTitleLabel];
+        [self createEndorsementLabel];
         
-        //[self createLikeButton];
+        [self createLikeButton];
         //[self createCommentButton];
         
         //[self createLikesCountLabel];
@@ -203,42 +202,26 @@ static NSString* const kImgDoinkUp = @"doink-up-14.png";
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)createUserNameButton {
+- (void)createEndorsementLabel {
     
-    userNameButton = [[UIButton alloc] initWithFrame:CGRectMake(55,5,250,30)];
+    endorsementLabel					= [[UILabel alloc] initWithFrame:CGRectMake(11,
+                                                                                userImageButton.frame.origin.y+userImageButton.frame.size.height+11,
+                                                                                298,
+                                                                                1)];
+    endorsementLabel.font				= [UIFont fontWithName:@"HelveticaNeue" size:13];	
+    endorsementLabel.textColor          = [UIColor colorWithRed:0.333 green:0.333 blue:0.333 alpha:1.0];
+    endorsementLabel.backgroundColor    = [UIColor clearColor];
+    endorsementLabel.textAlignment      = UITextAlignmentLeft;
+    endorsementLabel.numberOfLines      = 0;
+    endorsementLabel.lineBreakMode      = UILineBreakModeWordWrap;
     
-    userNameButton.titleLabel.font              = [UIFont fontWithName:@"HelveticaNeue" size:13];
-    userNameButton.titleLabel.textColor         = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0];
-    userNameButton.titleLabel.backgroundColor	= [UIColor redColor];
-    userNameButton.titleLabel.textAlignment     = UITextAlignmentLeft;
-    
-    [userNameButton addTarget:self
-                    action:@selector(didTapUserNameButton:)
-          forControlEvents:UIControlEventTouchUpInside];
-    
-    
-    [self.contentView addSubview:userNameButton];
-}
-
-//----------------------------------------------------------------------------------------------------
-- (void)createTitleLabel {
-    
-    titleLabel					= [[UILabel alloc] initWithFrame:CGRectMake(0,
-                                                                                370,
-                                                                                self.contentView.frame.size.width-40,
-                                                                                30)];
-    titleLabel.font				= [UIFont fontWithName:@"HelveticaNeue" size:13];	
-    titleLabel.textColor		= [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0];
-    titleLabel.backgroundColor	= [UIColor redColor];
-    titleLabel.textAlignment	= UITextAlignmentLeft;
-    
-    [self.contentView addSubview:titleLabel];
+    [self.contentView addSubview:endorsementLabel];
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)createLikeButton {
     
-    likeButton = [[UIButton alloc] initWithFrame:CGRectMake(5,400,50,30)];
+    likeButton = [[UIButton alloc] initWithFrame:CGRectMake(11,400,50,30)];
     
     likeButton.titleLabel.font              = [UIFont fontWithName:@"HelveticaNeue" size:13];
     likeButton.titleLabel.textColor         = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0];
@@ -393,6 +376,25 @@ static NSString* const kImgDoinkUp = @"doink-up-14.png";
 }
 
 //----------------------------------------------------------------------------------------------------
+- (void)setEndorsement:(NSString*)endorsement {
+
+    CGRect frame = endorsementLabel.frame;
+    frame.size.width = 298;
+    endorsementLabel.frame = frame;
+    
+    endorsementLabel.text = endorsement;
+    [endorsementLabel sizeToFit];
+    
+    CGRect likeButtonFrame = likeButton.frame;
+    likeButtonFrame.origin.y = endorsementLabel.frame.origin.y + endorsementLabel.frame.size.height;
+    likeButton.frame = likeButtonFrame;
+    
+    CGRect infoFrame = infoBackground.frame;
+    infoFrame.size.height =  likeButton.frame.origin.y + likeButton.frame.size.height - infoFrame.origin.y;
+    infoBackground.frame = infoFrame;
+}
+
+//----------------------------------------------------------------------------------------------------
 - (void)disableLikeButton {
     [likeButton setTitle:@"LIKED" forState:UIControlStateNormal];
     likeButton.enabled = NO;
@@ -517,9 +519,15 @@ static NSString* const kImgDoinkUp = @"doink-up-14.png";
 
 //----------------------------------------------------------------------------------------------------
 + (NSInteger)heightForCellWithLikesCount:(NSInteger)likesCount 
-                        andCommentsCount:(NSInteger)commentsCount {
+                           commentsCount:(NSInteger)commentsCount
+                          andEndorsement:(NSString*)endorsement {
     
     NSInteger height = kPurchaseFeedCellHeight;
+    
+    if(endorsement && endorsement.length)
+        height += [endorsement sizeWithFont:[UIFont fontWithName:@"HelveticaNeue" size:13] 
+                          constrainedToSize:CGSizeMake(298,750)
+                              lineBreakMode:UILineBreakModeWordWrap].height;
     
     //height +=likesCount > 0 ? 40 : 0;
     //height += commentsCount > 0 ? 125 * commentsCount : 0;

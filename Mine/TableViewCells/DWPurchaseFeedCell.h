@@ -28,12 +28,11 @@ extern NSInteger const kTotalLikeUserButtons;
     
     OHAttributedLabel   *boughtLabel;
     
-    UIButton            *userNameButton;
     UIButton            *likeButton;
     UIButton            *allLikesButton;
     UIButton            *commentButton;
     
-	UILabel             *titleLabel;
+	UILabel             *endorsementLabel;
     UILabel             *likesCountLabel;
 
     
@@ -84,6 +83,11 @@ extern NSInteger const kTotalLikeUserButtons;
 - (void)setBoughtText:(NSString*)boughtText withUserName:(NSString*)userName;
 
 /**
+ * Set an endorsement.
+ */
+- (void)setEndorsement:(NSString*)endorsement;
+
+/**
  * Disable like button interaction.
  */
 - (void)disableLikeButton;
@@ -119,7 +123,8 @@ extern NSInteger const kTotalLikeUserButtons;
  * Compute the height of the cell based on the content.
  */
 + (NSInteger)heightForCellWithLikesCount:(NSInteger)likesCount 
-                        andCommentsCount:(NSInteger)commentsCount;
+                           commentsCount:(NSInteger)commentsCount
+                          andEndorsement:(NSString*)endorsement;
 
 @end
 

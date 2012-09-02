@@ -50,6 +50,8 @@
     [cell setBoughtText:[DWPurchasesHelper boughtTextForPurchase:purchase]
            withUserName:purchase.user.fullName];
     
+    [cell setEndorsement:purchase.endorsement];
+    
     
     if([purchase isLikedByUserID:[DWSession sharedDWSession].currentUser.databaseID])
         [cell disableLikeButton];
@@ -88,8 +90,9 @@
     
      DWPurchase *purchase = object;
     
-    return [DWPurchaseFeedCell heightForCellWithLikesCount:[purchase.likes count] 
-                                          andCommentsCount:[purchase.comments count]];
+    return [DWPurchaseFeedCell heightForCellWithLikesCount:purchase.likes.count 
+                                             commentsCount:purchase.comments.count
+                                            andEndorsement:purchase.endorsement];
 }
 
 //----------------------------------------------------------------------------------------------------
