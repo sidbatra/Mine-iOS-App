@@ -15,10 +15,11 @@
 #import "DWLike.h"
 
 
-NSInteger const kPurchaseFeedCellHeight = 350;
+NSInteger const kPurchaseFeedCellHeight = 370;
 NSInteger const kTotalLikeUserButtons   = 5;
 
-static NSString* const kImgDoinkUp = @"doink-up-14.png";
+static NSString* const kImgDoinkUp  = @"doink-up-14.png";
+static NSString* const kImgActionBg = @"btn-action-bg.png";
 
 
 @interface DWPurchaseFeedCell() {
@@ -103,12 +104,14 @@ static NSString* const kImgDoinkUp = @"doink-up-14.png";
         [self createBoughtLabel];
         [self createEndorsementLabel];
         
+        [self createAllLikesButton];
         [self createLikeButton];
+        
         //[self createCommentButton];
         
         //[self createLikesCountLabel];
         //[self createLikeUserButtons];
-        //[self createAllLikesButton];
+        
         
        		self.selectionStyle = UITableViewCellSelectionStyleNone;	
 	}
@@ -221,15 +224,12 @@ static NSString* const kImgDoinkUp = @"doink-up-14.png";
 //----------------------------------------------------------------------------------------------------
 - (void)createLikeButton {
     
-    likeButton = [[UIButton alloc] initWithFrame:CGRectMake(11,400,50,30)];
+    likeButton = [[UIButton alloc] initWithFrame:CGRectMake(11,400,76,24)];
     
-    likeButton.titleLabel.font              = [UIFont fontWithName:@"HelveticaNeue" size:13];
-    likeButton.titleLabel.textColor         = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0];
-    likeButton.titleLabel.backgroundColor	= [UIColor blueColor];
-    likeButton.titleLabel.textAlignment     = UITextAlignmentLeft;
     
-    [likeButton setTitle:@"Like"
+    [likeButton setImage:[UIImage imageNamed:kImgActionBg] 
                 forState:UIControlStateNormal];
+    
     
     [likeButton addTarget:self
                        action:@selector(didTapLikeButton:)
@@ -292,20 +292,16 @@ static NSString* const kImgDoinkUp = @"doink-up-14.png";
 
 //----------------------------------------------------------------------------------------------------
 - (void)createAllLikesButton {
-    allLikesButton = [[UIButton alloc] initWithFrame:CGRectMake(220,430,50,30)];
-    
-    allLikesButton.titleLabel.font              = [UIFont fontWithName:@"HelveticaNeue" size:13];
-    allLikesButton.titleLabel.textColor         = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0];
-    allLikesButton.titleLabel.backgroundColor	= [UIColor blueColor];
-    allLikesButton.titleLabel.textAlignment     = UITextAlignmentLeft;
-    
-    [allLikesButton setTitle:@"All"
-                    forState:UIControlStateNormal];
+    allLikesButton = [[UIButton alloc] initWithFrame:CGRectMake(11,400,96,44)];
 
+    allLikesButton.backgroundColor              = [UIColor whiteColor];
+    allLikesButton.layer.borderColor            = [UIColor colorWithRed:0.843 green:0.843 blue:0.843 alpha:1.0].CGColor;
+    allLikesButton.layer.borderWidth            = 1;
+    allLikesButton.layer.cornerRadius           = 5;
+    
     [allLikesButton addTarget:self
                        action:@selector(didTapAllLikeButton:)
              forControlEvents:UIControlEventTouchUpInside];
-
     
     [self.contentView addSubview:allLikesButton];
 }
@@ -326,7 +322,7 @@ static NSString* const kImgDoinkUp = @"doink-up-14.png";
         likeUserButton.hidden = YES;
     
     likesCountLabel.hidden = YES;
-    allLikesButton.hidden = YES;
+    //allLikesButton.hidden = YES;
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -377,7 +373,7 @@ static NSString* const kImgDoinkUp = @"doink-up-14.png";
 
 //----------------------------------------------------------------------------------------------------
 - (void)setEndorsement:(NSString*)endorsement {
-
+    
     CGRect frame = endorsementLabel.frame;
     frame.size.width = 298;
     endorsementLabel.frame = frame;
@@ -385,18 +381,23 @@ static NSString* const kImgDoinkUp = @"doink-up-14.png";
     endorsementLabel.text = endorsement;
     [endorsementLabel sizeToFit];
     
+    CGRect allLikeButtonFrame = allLikesButton.frame;
+    allLikeButtonFrame.origin.y = endorsementLabel.frame.origin.y + endorsementLabel.frame.size.height;
+    allLikesButton.frame = allLikeButtonFrame;
+    
     CGRect likeButtonFrame = likeButton.frame;
-    likeButtonFrame.origin.y = endorsementLabel.frame.origin.y + endorsementLabel.frame.size.height;
+    likeButtonFrame.origin.x = allLikesButton.frame.origin.x + 9;
+    likeButtonFrame.origin.y = allLikesButton.frame.origin.y + 9;
     likeButton.frame = likeButtonFrame;
     
     CGRect infoFrame = infoBackground.frame;
-    infoFrame.size.height =  likeButton.frame.origin.y + likeButton.frame.size.height - infoFrame.origin.y;
+    infoFrame.size.height =  allLikesButton.frame.origin.y + allLikesButton.frame.size.height - infoFrame.origin.y + 10;
     infoBackground.frame = infoFrame;
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)disableLikeButton {
-    [likeButton setTitle:@"LIKED" forState:UIControlStateNormal];
+    //[likeButton setTitle:@"LIKED" forState:UIControlStateNormal];
     likeButton.enabled = NO;
 }
 
@@ -407,7 +408,7 @@ static NSString* const kImgDoinkUp = @"doink-up-14.png";
         return;
     
     likesCountLabel.hidden = NO;
-    allLikesButton.hidden = count <= 5;
+    //allLikesButton.hidden = count <= 5;
     
     if(count == 1)
         likesCountLabel.text = @"1 like";
@@ -584,7 +585,7 @@ static NSString* const kImgDoinkUp = @"doink-up-14.png";
 
 //----------------------------------------------------------------------------------------------------
 - (void)didTapLikeButton:(UIButton*)button {
-    
+
     SEL sel = @selector(likeClickedForPurchaseID:);
     
     if(![self.delegate respondsToSelector:sel])
