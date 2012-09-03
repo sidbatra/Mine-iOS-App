@@ -15,7 +15,7 @@
 #import "DWLike.h"
 
 
-NSInteger const kPurchaseFeedCellHeight = 370;
+NSInteger const kPurchaseFeedCellHeight = 350;
 NSInteger const kTotalLikeUserButtons   = 5;
 
 static NSString* const kImgDoinkUp  = @"doink-up-14.png";
@@ -104,8 +104,8 @@ static NSString* const kImgActionBg = @"btn-action-bg.png";
         [self createBoughtLabel];
         [self createEndorsementLabel];
         
-        [self createAllLikesButton];
-        [self createLikeButton];
+        //[self createAllLikesButton];
+        //[self createLikeButton];
         
         //[self createCommentButton];
         
@@ -391,7 +391,7 @@ static NSString* const kImgActionBg = @"btn-action-bg.png";
     likeButton.frame = likeButtonFrame;
     
     CGRect infoFrame = infoBackground.frame;
-    infoFrame.size.height =  allLikesButton.frame.origin.y + allLikesButton.frame.size.height - infoFrame.origin.y + 10;
+    infoFrame.size.height = endorsementLabel.frame.origin.y + endorsementLabel.frame.size.height - infoFrame.origin.y + 10; //allLikesButton.frame.origin.y + allLikesButton.frame.size.height - infoFrame.origin.y + 10;
     infoBackground.frame = infoFrame;
 }
 
