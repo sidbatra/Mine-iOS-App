@@ -7,6 +7,7 @@
 //
 
 #import "DWUserCell.h"
+#import <QuartzCore/QuartzCore.h>
 
 NSInteger const kUserCellHeight = 50;
 
@@ -34,6 +35,9 @@ NSInteger const kUserCellHeight = 50;
 				reuseIdentifier:reuseIdentifier];
 	
     if (self) {        
+        self.contentView.backgroundColor = [UIColor colorWithRed:0.929 green:0.929 blue:0.929 alpha:1.0];
+        
+        [self createBorders];
         [self createUserImageView];
         [self createUserNameLabel];
         
@@ -49,19 +53,36 @@ NSInteger const kUserCellHeight = 50;
 }
 
 //----------------------------------------------------------------------------------------------------
+- (void)createBorders {
+    UILabel *topBorder = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.contentView.frame.size.width,1)];
+    topBorder.backgroundColor = [UIColor colorWithRed:0.972 green:0.972 blue:0.972 alpha:1.0];
+    
+    [self.contentView addSubview:topBorder];
+    
+    
+    UILabel *bottomBorder = [[UILabel alloc] initWithFrame:CGRectMake(0, kUserCellHeight-1, self.contentView.frame.size.width,1)];
+    bottomBorder.backgroundColor = [UIColor colorWithRed:0.839 green:0.839 blue:0.839 alpha:1.0];
+    
+    [self.contentView addSubview:bottomBorder];
+}
+
+//----------------------------------------------------------------------------------------------------
 - (void)createUserImageView {
-    userImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 50, 50)];
+    userImageView = [[UIImageView alloc] initWithFrame:CGRectMake(11,9,32,32)];
+    userImageView.backgroundColor = [UIColor clearColor];
+    userImageView.layer.cornerRadius = 3;
+    userImageView.layer.masksToBounds = YES;
     
     [self.contentView addSubview:userImageView];
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)createUserNameLabel {
-    userNameLabel  = [[UILabel alloc] initWithFrame:CGRectMake(50, 0, self.contentView.frame.size.width-50, 50)];
-    userNameLabel.backgroundColor = [UIColor whiteColor];
+    userNameLabel  = [[UILabel alloc] initWithFrame:CGRectMake(51,9,175,32)];
     
-    userNameLabel.font               = [UIFont fontWithName:@"HelveticaNeue" size:13];
-    userNameLabel.textColor          = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1.0];
+    userNameLabel.backgroundColor    = [UIColor clearColor];
+    userNameLabel.font               = [UIFont fontWithName:@"HelveticaNeue-Bold" size:14];
+    userNameLabel.textColor          = [UIColor colorWithRed:0.333 green:0.333 blue:0.333 alpha:1.0];
     userNameLabel.textAlignment      = UITextAlignmentLeft;
     
     [self.contentView addSubview:userNameLabel];
