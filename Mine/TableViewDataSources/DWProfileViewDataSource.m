@@ -188,6 +188,7 @@
     if(!paginate) {
         [self clean];
         self.objects = [NSMutableArray array];
+        [self.objects addObject:self.user];
     }
     else {
         [self.objects removeLastObject];

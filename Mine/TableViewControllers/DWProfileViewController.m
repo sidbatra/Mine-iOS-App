@@ -8,6 +8,7 @@
 
 #import "DWProfileViewController.h"
 #import "DWProfileViewDataSource.h"
+#import "DWUserPresenter.h"
 #import "DWPurchaseProfilePresenter.h"
 #import "DWPaginationPresenter.h"
 #import "DWPurchase.h"
@@ -53,6 +54,9 @@
         self.tableViewDataSource = [[DWProfileViewDataSource alloc] init];
         ((DWProfileViewDataSource*)self.tableViewDataSource).userID = self.user.databaseID;
         
+        [self addModelPresenterForClass:[DWUser class]
+                              withStyle:kDefaultModelPresenter 
+                          withPresenter:[DWUserPresenter class]];
         
         [self addModelPresenterForClass:[DWModelSet class]
                               withStyle:kDefaultModelPresenter 
