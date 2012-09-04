@@ -168,6 +168,9 @@
 		BB9F314315F61CB6009C1385 /* list-btn-follow-off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB9F314015F61CB4009C1385 /* list-btn-follow-off@2x.png */; };
 		BB9F314415F61CB6009C1385 /* nav-btn-follow-off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB9F314115F61CB5009C1385 /* nav-btn-follow-off@2x.png */; };
 		BB9F314515F61CB6009C1385 /* nav-btn-follow-on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB9F314215F61CB5009C1385 /* nav-btn-follow-on@2x.png */; };
+		BB9F314815F62BC2009C1385 /* DWNavigationBarBackButton.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9F314715F62BC2009C1385 /* DWNavigationBarBackButton.m */; };
+		BB9F314B15F62C6A009C1385 /* nav-btn-back-off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB9F314915F62C69009C1385 /* nav-btn-back-off@2x.png */; };
+		BB9F314C15F62C6A009C1385 /* nav-btn-back-on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB9F314A15F62C69009C1385 /* nav-btn-back-on@2x.png */; };
 		BB9F70AB15B9E62F0099C80A /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB9F70AA15B9E62F0099C80A /* CFNetwork.framework */; };
 		BB9F70AE15B9E6400099C80A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB9F70AD15B9E6400099C80A /* SystemConfiguration.framework */; };
 		BB9F70B015B9E6450099C80A /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB9F70AF15B9E6450099C80A /* MobileCoreServices.framework */; };
@@ -507,6 +510,10 @@
 		BB9F314015F61CB4009C1385 /* list-btn-follow-off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "list-btn-follow-off@2x.png"; sourceTree = "<group>"; };
 		BB9F314115F61CB5009C1385 /* nav-btn-follow-off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-btn-follow-off@2x.png"; sourceTree = "<group>"; };
 		BB9F314215F61CB5009C1385 /* nav-btn-follow-on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-btn-follow-on@2x.png"; sourceTree = "<group>"; };
+		BB9F314615F62BC2009C1385 /* DWNavigationBarBackButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWNavigationBarBackButton.h; sourceTree = "<group>"; };
+		BB9F314715F62BC2009C1385 /* DWNavigationBarBackButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWNavigationBarBackButton.m; sourceTree = "<group>"; };
+		BB9F314915F62C69009C1385 /* nav-btn-back-off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-btn-back-off@2x.png"; sourceTree = "<group>"; };
+		BB9F314A15F62C69009C1385 /* nav-btn-back-on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-btn-back-on@2x.png"; sourceTree = "<group>"; };
 		BB9F70AA15B9E62F0099C80A /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		BB9F70AD15B9E6400099C80A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		BB9F70AF15B9E6450099C80A /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
@@ -763,6 +770,8 @@
 		BB06360315BF7258001F26E1 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				BB9F314915F62C69009C1385 /* nav-btn-back-off@2x.png */,
+				BB9F314A15F62C69009C1385 /* nav-btn-back-on@2x.png */,
 				BB9F314015F61CB4009C1385 /* list-btn-follow-off@2x.png */,
 				BB9F314115F61CB5009C1385 /* nav-btn-follow-off@2x.png */,
 				BB9F314215F61CB5009C1385 /* nav-btn-follow-on@2x.png */,
@@ -1063,6 +1072,8 @@
 			children = (
 				BB59B4B915EE500E000756EE /* DWNavigationBar.h */,
 				BB59B4BA15EE500E000756EE /* DWNavigationBar.m */,
+				BB9F314615F62BC2009C1385 /* DWNavigationBarBackButton.h */,
+				BB9F314715F62BC2009C1385 /* DWNavigationBarBackButton.m */,
 				BB59B4C815EF3B65000756EE /* DWNavigationBarTitleView.h */,
 				BB59B4C915EF3B65000756EE /* DWNavigationBarTitleView.m */,
 			);
@@ -1558,6 +1569,8 @@
 				BB9F314315F61CB6009C1385 /* list-btn-follow-off@2x.png in Resources */,
 				BB9F314415F61CB6009C1385 /* nav-btn-follow-off@2x.png in Resources */,
 				BB9F314515F61CB6009C1385 /* nav-btn-follow-on@2x.png in Resources */,
+				BB9F314B15F62C6A009C1385 /* nav-btn-back-off@2x.png in Resources */,
+				BB9F314C15F62C6A009C1385 /* nav-btn-back-on@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1728,6 +1741,7 @@
 				BB59B4DD15F1F1F8000756EE /* DWUsersHelper.m in Sources */,
 				BB59B4E015F1F2AB000756EE /* DWPurchasesHelper.m in Sources */,
 				BB9F313F15F609FF009C1385 /* DWFollowButton.m in Sources */,
+				BB9F314815F62BC2009C1385 /* DWNavigationBarBackButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

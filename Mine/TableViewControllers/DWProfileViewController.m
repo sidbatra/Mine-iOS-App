@@ -16,6 +16,7 @@
 #import "DWUser.h"
 
 #import "DWSession.h"
+#import "DWNavigationBarBackButton.h"
 #import "DWNavigationBarTitleView.h"
 #import "DWConstants.h"
 
@@ -96,6 +97,8 @@
     }
     
     if(self.navigationController) {
+        
+        self.navigationItem.leftBarButtonItem = [DWNavigationBarBackButton backButtonForNavigationController:self.navigationController];
         
         if(!self.navTitleView) {
             self.navTitleView =  [[DWNavigationBarTitleView alloc] initWithFrame:CGRectMake(121,0,76,44)
