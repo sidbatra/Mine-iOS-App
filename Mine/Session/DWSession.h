@@ -48,4 +48,9 @@
  */
 - (BOOL)isAuthenticated;
 
+/**
+ * Test if the given user id is the current user's id.
+ */
+- (BOOL)isCurrentUser:(NSInteger)userID;
+
 @end

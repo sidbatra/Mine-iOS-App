@@ -95,6 +95,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWSession);
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
+
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
@@ -172,6 +173,11 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWSession);
 //----------------------------------------------------------------------------------------------------
 - (BOOL)isAuthenticated {
 	return self.currentUser != nil;
+}
+
+//----------------------------------------------------------------------------------------------------
+- (BOOL)isCurrentUser:(NSInteger)userID {
+    return [self isAuthenticated] && self.currentUser.databaseID == userID;
 }
 
 

@@ -11,6 +11,7 @@
 #import "DWModelSet.h"
 #import "DWPurchase.h"
 #import "DWuser.h"
+#import "DWSession.h"
 #import "DWConstants.h"
 
  
@@ -90,7 +91,9 @@
     
     if(!self.oldestTimestamp) {
         [self.usersController getUserWithID:self.userID];
-        [self.followingsController getFollowingForUserID:self.userID];
+        
+        if(![[DWSession sharedDWSession] isCurrentUser:self.userID])
+            [self.followingsController getFollowingForUserID:self.userID];
     }
 }
 
