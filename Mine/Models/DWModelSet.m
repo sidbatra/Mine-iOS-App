@@ -24,6 +24,16 @@
 }
 
 //----------------------------------------------------------------------------------------------------
+- (void)destroy {
+    SEL destroySelector = @selector(destroy);
+    
+    for(id object in self.models) {
+        if([object respondsToSelector:destroySelector])
+            [object performSelector:destroySelector];
+    }
+}
+
+//----------------------------------------------------------------------------------------------------
 - (void)addModel:(id)model {
     [self.models addObject:model];
 }
