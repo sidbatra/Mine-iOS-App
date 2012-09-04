@@ -6,6 +6,7 @@
 #import "DWSearchBar.h"
 #import "DWConstants.h"
 
+static NSString* const kImgSearchBackground     = @"nav-field-search.png";
 static NSString* const kImgCancelButton         = @"button_cancel.png";
 static NSString* const kMsgSearchPlaceholder    = @"Search for people";
 
@@ -56,22 +57,21 @@ static NSString* const kMsgSearchPlaceholder    = @"Search for people";
 
 //----------------------------------------------------------------------------------------------------
 - (void)createBackground {
-    UILabel *label                  = [[UILabel alloc] initWithFrame:CGRectMake(7,6,253,32)];
-    label.backgroundColor           = [UIColor whiteColor];
-    label.layer.cornerRadius        = 1.5;
-    label.userInteractionEnabled    = NO;
+    UIImageView *background = [[UIImageView alloc] initWithFrame:CGRectMake(7,6,250,32)];
+    background.contentMode = UIViewContentModeCenter;
+    background.image = [UIImage imageNamed:kImgSearchBackground];
+    background.userInteractionEnabled    = NO;
     
-    
-    [self addSubview:label];
+    [self addSubview:background];
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)createSearchField {
-    searchTextField                         = [[UITextField alloc] initWithFrame:CGRectMake(12,11,246,22)];
+    searchTextField                         = [[UITextField alloc] initWithFrame:CGRectMake(38,13,220,20)];
     searchTextField.delegate                = self;
     searchTextField.autocorrectionType      = UITextAutocorrectionTypeNo;
     searchTextField.autocapitalizationType  = UITextAutocapitalizationTypeNone;
-    searchTextField.font                    = [UIFont fontWithName:@"HelveticaNeue" size:17];	
+    searchTextField.font                    = [UIFont fontWithName:@"HelveticaNeue" size:14];	
 	searchTextField.textColor               = [UIColor colorWithRed:0.2 green:0.2 blue:0.2 alpha:1.0];
 	searchTextField.textAlignment           = UITextAlignmentLeft;
     searchTextField.clearButtonMode         = UITextFieldViewModeWhileEditing;

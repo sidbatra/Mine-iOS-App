@@ -161,6 +161,7 @@
 		BB9F312715F3CFEA009C1385 /* btn-action-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB9F312615F3CFEA009C1385 /* btn-action-bg@2x.png */; };
 		BB9F312B15F49CE6009C1385 /* nav-btn-search-off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB9F312915F49CE6009C1385 /* nav-btn-search-off@2x.png */; };
 		BB9F312C15F49CE6009C1385 /* nav-btn-search-on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB9F312A15F49CE6009C1385 /* nav-btn-search-on@2x.png */; };
+		BB9F313515F5E55C009C1385 /* nav-field-search@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB9F313415F5E55C009C1385 /* nav-field-search@2x.png */; };
 		BB9F70AB15B9E62F0099C80A /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB9F70AA15B9E62F0099C80A /* CFNetwork.framework */; };
 		BB9F70AE15B9E6400099C80A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB9F70AD15B9E6400099C80A /* SystemConfiguration.framework */; };
 		BB9F70B015B9E6450099C80A /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB9F70AF15B9E6450099C80A /* MobileCoreServices.framework */; };
@@ -500,6 +501,7 @@
 		BB9F312615F3CFEA009C1385 /* btn-action-bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-action-bg@2x.png"; sourceTree = "<group>"; };
 		BB9F312915F49CE6009C1385 /* nav-btn-search-off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-btn-search-off@2x.png"; sourceTree = "<group>"; };
 		BB9F312A15F49CE6009C1385 /* nav-btn-search-on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-btn-search-on@2x.png"; sourceTree = "<group>"; };
+		BB9F313415F5E55C009C1385 /* nav-field-search@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-field-search@2x.png"; sourceTree = "<group>"; };
 		BB9F70AA15B9E62F0099C80A /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		BB9F70AD15B9E6400099C80A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		BB9F70AF15B9E6450099C80A /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
@@ -764,6 +766,7 @@
 		BB06360315BF7258001F26E1 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				BB9F313415F5E55C009C1385 /* nav-field-search@2x.png */,
 				BB9F312915F49CE6009C1385 /* nav-btn-search-off@2x.png */,
 				BB9F312A15F49CE6009C1385 /* nav-btn-search-on@2x.png */,
 				BB9F312615F3CFEA009C1385 /* btn-action-bg@2x.png */,
@@ -1561,6 +1564,7 @@
 				BB9F312715F3CFEA009C1385 /* btn-action-bg@2x.png in Resources */,
 				BB9F312B15F49CE6009C1385 /* nav-btn-search-off@2x.png in Resources */,
 				BB9F312C15F49CE6009C1385 /* nav-btn-search-on@2x.png in Resources */,
+				BB9F313515F5E55C009C1385 /* nav-field-search@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
