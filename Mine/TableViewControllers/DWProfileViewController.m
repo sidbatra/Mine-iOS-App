@@ -14,7 +14,18 @@
 #import "DWPagination.h"
 #import "DWModelSet.h"
 #import "DWUser.h"
+
+#import "DWSession.h"
+#import "DWFollowButton.h"
 #import "DWConstants.h"
+
+@interface DWProfileViewController() {
+    DWFollowButton  *_followButton;
+}
+
+@property (nonatomic,strong) DWFollowButton *followButton;
+
+@end
 
 
 
@@ -23,8 +34,9 @@
 //----------------------------------------------------------------------------------------------------
 @implementation DWProfileViewController
 
-@synthesize user        = _user;
-@synthesize delegate    = _delegate;
+@synthesize user            = _user;
+@synthesize followButton    = _followButton;
+@synthesize delegate        = _delegate;
 
 //----------------------------------------------------------------------------------------------------
 - (id)initWithUser:(DWUser*)user {
@@ -69,6 +81,12 @@
 //----------------------------------------------------------------------------------------------------
 - (void)viewDidLoad {
 	[super viewDidLoad];
+    
+    if(![[DWSession sharedDWSession] isCurrentUser:self.user.databaseID] && !self.followButton) {
+        self.followButton = [[DWFollowButton alloc] initWithFrame:CGRectMake(240, 6, 81, 32)];
+    }
+    
+    
     
     [(DWProfileViewDataSource*)self.tableViewDataSource loadPurchases];
 }
@@ -140,5 +158,17 @@
     [self provideResourceToVisibleCells:[DWUser class] 
                                objectID:[[userInfo objectForKey:kKeyResourceID] integerValue]
                               objectKey:kKeySquareImageURL];
+}
+
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark Nav Stack Selectors
+
+//----------------------------------------------------------------------------------------------------
+- (void)willShowOnNav {
+    [self.navigationController.navigationBar addSubview:self.followButton];
 }
 @end

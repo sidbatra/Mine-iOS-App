@@ -6,10 +6,10 @@
 #import "DWFollowButton.h"
 #import "DWConstants.h"
 
-static NSString* const kImgInactiveButton                   = @"button_unfollow.png";
-static NSString* const kImgInactiveButtonHighlighted        = @"button_loading.png";
-static NSString* const kImgActiveButton                     = @"button_follow.png";
-static NSString* const kImgActiveButtonHighlighted          = @"button_follow_active.png";
+static NSString* const kImgInactiveButton                   = @"nav-btn-follow-off.png";
+static NSString* const kImgInactiveButtonHighlighted        = @"nav-btn-follow-on.png";
+static NSString* const kImgActiveButton                     = @"list-btn-follow-off.png";
+static NSString* const kImgActiveButtonHighlighted          = @"list-btn-follow-off.png";
 
 
 @interface DWFollowButton() {
@@ -61,7 +61,7 @@ static NSString* const kImgActiveButtonHighlighted          = @"button_follow_ac
 //----------------------------------------------------------------------------------------------------
 - (void)createUnderlayButton {    
     underlayButton              = [UIButton buttonWithType:UIButtonTypeCustom];
-    underlayButton.frame        = self.frame;
+    underlayButton.frame        = CGRectMake(0,0,self.frame.size.width,self.frame.size.height);
     
     [underlayButton addTarget:self 
                        action:@selector(didTouchDownOnButton:) 
