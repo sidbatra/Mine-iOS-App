@@ -83,6 +83,7 @@ NSInteger const kUserCellHeight = 50;
     userNameLabel.backgroundColor    = [UIColor clearColor];
     userNameLabel.font               = [UIFont fontWithName:@"HelveticaNeue-Bold" size:14];
     userNameLabel.textColor          = [UIColor colorWithRed:0.333 green:0.333 blue:0.333 alpha:1.0];
+    userNameLabel.highlightedTextColor  = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0];
     userNameLabel.textAlignment      = UITextAlignmentLeft;
     
     [self.contentView addSubview:userNameLabel];

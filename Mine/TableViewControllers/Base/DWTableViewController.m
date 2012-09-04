@@ -333,6 +333,9 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
                             withBaseCell:cell
                    withPresentationStyle:modelPresenterStyle
                             withDelegate:self];
+    
+    
+    [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 
