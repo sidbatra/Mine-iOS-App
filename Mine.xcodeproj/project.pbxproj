@@ -164,6 +164,7 @@
 		BB9F313515F5E55C009C1385 /* nav-field-search@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB9F313415F5E55C009C1385 /* nav-field-search@2x.png */; };
 		BB9F313815F5E897009C1385 /* nav-btn-cancel-off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB9F313615F5E896009C1385 /* nav-btn-cancel-off@2x.png */; };
 		BB9F313915F5E897009C1385 /* nav-btn-cancel-on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB9F313715F5E896009C1385 /* nav-btn-cancel-on@2x.png */; };
+		BB9F313F15F609FF009C1385 /* DWFollowButton.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9F313E15F609FF009C1385 /* DWFollowButton.m */; };
 		BB9F70AB15B9E62F0099C80A /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB9F70AA15B9E62F0099C80A /* CFNetwork.framework */; };
 		BB9F70AE15B9E6400099C80A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB9F70AD15B9E6400099C80A /* SystemConfiguration.framework */; };
 		BB9F70B015B9E6450099C80A /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB9F70AF15B9E6450099C80A /* MobileCoreServices.framework */; };
@@ -498,6 +499,8 @@
 		BB9F313415F5E55C009C1385 /* nav-field-search@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-field-search@2x.png"; sourceTree = "<group>"; };
 		BB9F313615F5E896009C1385 /* nav-btn-cancel-off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-btn-cancel-off@2x.png"; sourceTree = "<group>"; };
 		BB9F313715F5E896009C1385 /* nav-btn-cancel-on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-btn-cancel-on@2x.png"; sourceTree = "<group>"; };
+		BB9F313D15F609FF009C1385 /* DWFollowButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWFollowButton.h; sourceTree = "<group>"; };
+		BB9F313E15F609FF009C1385 /* DWFollowButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWFollowButton.m; sourceTree = "<group>"; };
 		BB9F70AA15B9E62F0099C80A /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		BB9F70AD15B9E6400099C80A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		BB9F70AF15B9E6450099C80A /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
@@ -1424,6 +1427,8 @@
 			children = (
 				BB06360A15BF726D001F26E1 /* DWErrorView.h */,
 				BB06360B15BF726D001F26E1 /* DWErrorView.m */,
+				BB9F313D15F609FF009C1385 /* DWFollowButton.h */,
+				BB9F313E15F609FF009C1385 /* DWFollowButton.m */,
 				BBE42F5415BE0F58000F6AE1 /* DWLoadingView.h */,
 				BBE42F5515BE0F58000F6AE1 /* DWLoadingView.m */,
 				BB2BC07515D0B95600CCC4BB /* DWQueueProgressView.h */,
@@ -1710,6 +1715,7 @@
 				BB59B4D715F1EB5B000756EE /* OHAttributedLabel.m in Sources */,
 				BB59B4DD15F1F1F8000756EE /* DWUsersHelper.m in Sources */,
 				BB59B4E015F1F2AB000756EE /* DWPurchasesHelper.m in Sources */,
+				BB9F313F15F609FF009C1385 /* DWFollowButton.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
