@@ -82,12 +82,15 @@
 - (void)viewDidLoad {
 	[super viewDidLoad];
     
-    if(![[DWSession sharedDWSession] isCurrentUser:self.user.databaseID] && !self.followButton) {
-        self.followButton = [[DWFollowButton alloc] initWithFrame:CGRectMake(240, 6, 81, 32)];
+    if(![[DWSession sharedDWSession] isCurrentUser:self.user.databaseID]) {
+        
+        if(!self.followButton)
+            self.followButton = [[DWFollowButton alloc] initWithFrame:CGRectMake(240, 6, 81, 32)];
+        
+        [(DWProfileViewDataSource*)self.tableViewDataSource loadFollowing];
     }
     
-    
-    
+    [(DWProfileViewDataSource*)self.tableViewDataSource loadUser];
     [(DWProfileViewDataSource*)self.tableViewDataSource loadPurchases];
 }
 

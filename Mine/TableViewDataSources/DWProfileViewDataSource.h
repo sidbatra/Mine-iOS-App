@@ -22,9 +22,8 @@
 @property (nonatomic,assign) NSInteger userID;
 
 
-/**
- * Load user purchases.
- */
+- (void)loadUser;
+- (void)loadFollowing;
 - (void)loadPurchases;
 
 @end
