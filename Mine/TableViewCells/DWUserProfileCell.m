@@ -78,14 +78,13 @@ NSInteger const kUserPurchaseCellHeight = 166;
 
 //----------------------------------------------------------------------------------------------------
 - (void)createUserNameLabel {
-    userNameLabel  = [[UILabel alloc] initWithFrame:CGRectMake(51,9,175,32)];
+    userNameLabel  = [[UILabel alloc] initWithFrame:CGRectMake(68,12,240,32)];
     
     userNameLabel.backgroundColor    = [UIColor clearColor];
-    userNameLabel.font               = [UIFont fontWithName:@"HelveticaNeue-Bold" size:14];
-    userNameLabel.textColor          = [UIColor colorWithRed:0.333 green:0.333 blue:0.333 alpha:1.0];
-    userNameLabel.highlightedTextColor  = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0];
+    userNameLabel.font               = [UIFont fontWithName:@"HelveticaNeue-Bold" size:20];
+    userNameLabel.textColor          = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0];
     userNameLabel.textAlignment      = UITextAlignmentLeft;
-    userNameLabel.layer.shadowColor  = [UIColor colorWithRed:0.972 green:0.972 blue:0.972 alpha:1.0].CGColor;
+    userNameLabel.layer.shadowColor  = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1.0].CGColor;
     userNameLabel.layer.shadowOffset = CGSizeMake(0,1);
     userNameLabel.layer.shadowRadius = 0;
     userNameLabel.layer.shadowOpacity = 1.0;
