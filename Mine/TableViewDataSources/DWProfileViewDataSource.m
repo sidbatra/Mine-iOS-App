@@ -64,6 +64,7 @@
 @synthesize usersController         = _usersController;
 @synthesize user                    = _user;
 @synthesize oldestTimestamp         = _oldestTimestamp;
+@dynamic delegate;
 
 //----------------------------------------------------------------------------------------------------
 - (id)init {
@@ -228,10 +229,12 @@
     if(self.userID != [userID integerValue])
         return;
     
-    if(following)
-        NSLog(@"Following active");
-    else
-        NSLog(@"Following inactive");
+    SEL sel = @selector(followingLoaded:);
+    
+    if(![self.delegate respondsToSelector:sel])
+         return;
+    
+    [self.delegate performSelector:sel withObject:following];
 }
 
 //----------------------------------------------------------------------------------------------------

@@ -11,6 +11,8 @@
 #import "DWFollowingsController.h"
 #import "DWUsersController.h"
 
+@protocol DWProfileViewDataSourceDelegate;
+
 
 @interface DWProfileViewDataSource : DWTableViewDataSource<DWPurchasesControllerDelegate,DWFollowingsControllerDelegate,DWUsersControllerDelegate> {
     NSInteger   _userID;
@@ -21,9 +23,25 @@
  */
 @property (nonatomic,assign) NSInteger userID;
 
+/**
+ * Override delegate type.
+ */
+@property (nonatomic,weak) id<DWProfileViewDataSourceDelegate,DWTableViewDataSourceDelegate,NSObject> delegate;
+
 
 - (void)loadUser;
 - (void)loadFollowing;
 - (void)loadPurchases;
 
+@end
+
+
+/**
+ * Additional delegate methods for the data source
+ */
+@protocol DWProfileViewDataSourceDelegate<DWTableViewDataSourceDelegate>
+
+@optional
+
+- (void)followingLoaded:(DWFollowing*)following;
 @end
