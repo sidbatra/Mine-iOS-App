@@ -73,8 +73,8 @@
                                                    object:nil];
         
         [[NSNotificationCenter defaultCenter] addObserver:self 
-                                                 selector:@selector(userLargeImageLoaded:) 
-                                                     name:kNImgUserLargeLoaded
+                                                 selector:@selector(userSquareImageLoaded:) 
+                                                     name:kNImgUserSquareLoaded
                                                    object:nil];
     }
     
@@ -199,12 +199,12 @@
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)userLargeImageLoaded:(NSNotification*)notification {
+- (void)userSquareImageLoaded:(NSNotification*)notification {
     NSDictionary *userInfo = [notification userInfo];
     
     [self provideResourceToVisibleCells:[DWUser class] 
                                objectID:[[userInfo objectForKey:kKeyResourceID] integerValue]
-                              objectKey:kKeyLargeUserImageURL];
+                              objectKey:kKeySquareImageURL];
 }
 
 

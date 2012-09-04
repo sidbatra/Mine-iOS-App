@@ -34,9 +34,9 @@
     
     [cell resetUI];
     
-    [user downloadLargeImage];
+    [user downloadSquareImage];
     
-    [cell setUserImage:user.largeImage];
+    [cell setUserImage:user.squareImage];
     [cell setUserName:user.fullName];
     
     return cell;
@@ -61,8 +61,8 @@
     DWUser *user                = object;
     DWUserProfileCell *cell     = base;
     
-    if([user class] == objectClass && user.databaseID == objectID && objectKey == kKeyLargeUserImageURL) {
-        [cell setUserImage:user.largeImage];
+    if([user class] == objectClass && user.databaseID == objectID && objectKey == kKeySquareImageURL) {
+        [cell setUserImage:user.squareImage];
     }
 }
 

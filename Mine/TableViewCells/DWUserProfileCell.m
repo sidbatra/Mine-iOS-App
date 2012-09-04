@@ -68,7 +68,7 @@ NSInteger const kUserPurchaseCellHeight = 166;
 
 //----------------------------------------------------------------------------------------------------
 - (void)createUserImageView {
-    userImageView = [[UIImageView alloc] initWithFrame:CGRectMake(11,9,32,32)];
+    userImageView = [[UIImageView alloc] initWithFrame:CGRectMake(11,9,48,48)];
     userImageView.backgroundColor = [UIColor clearColor];
     userImageView.layer.cornerRadius = 3;
     userImageView.layer.masksToBounds = YES;
