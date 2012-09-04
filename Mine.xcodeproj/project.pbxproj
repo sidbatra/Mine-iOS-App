@@ -162,6 +162,8 @@
 		BB9F312B15F49CE6009C1385 /* nav-btn-search-off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB9F312915F49CE6009C1385 /* nav-btn-search-off@2x.png */; };
 		BB9F312C15F49CE6009C1385 /* nav-btn-search-on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB9F312A15F49CE6009C1385 /* nav-btn-search-on@2x.png */; };
 		BB9F313515F5E55C009C1385 /* nav-field-search@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB9F313415F5E55C009C1385 /* nav-field-search@2x.png */; };
+		BB9F313815F5E897009C1385 /* nav-btn-cancel-off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB9F313615F5E896009C1385 /* nav-btn-cancel-off@2x.png */; };
+		BB9F313915F5E897009C1385 /* nav-btn-cancel-on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB9F313715F5E896009C1385 /* nav-btn-cancel-on@2x.png */; };
 		BB9F70AB15B9E62F0099C80A /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB9F70AA15B9E62F0099C80A /* CFNetwork.framework */; };
 		BB9F70AE15B9E6400099C80A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB9F70AD15B9E6400099C80A /* SystemConfiguration.framework */; };
 		BB9F70B015B9E6450099C80A /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB9F70AF15B9E6450099C80A /* MobileCoreServices.framework */; };
@@ -218,14 +220,6 @@
 		BBEDD31C15E4FFF1007F862F /* DWUsersSearchViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = BBEDD31B15E4FFF1007F862F /* DWUsersSearchViewDataSource.m */; };
 		BBEDD31F15E50191007F862F /* DWUsersSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBEDD31E15E50190007F862F /* DWUsersSearchViewController.m */; };
 		BBEDD32215E5087B007F862F /* DWSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BBEDD32115E5087B007F862F /* DWSearchBar.m */; };
-		BBEDD32915E509BA007F862F /* button_cancel_left.png in Resources */ = {isa = PBXBuildFile; fileRef = BBEDD32315E509BA007F862F /* button_cancel_left.png */; };
-		BBEDD32A15E509BA007F862F /* button_cancel_left@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BBEDD32415E509BA007F862F /* button_cancel_left@2x.png */; };
-		BBEDD32B15E509BA007F862F /* button_cancel_white.png in Resources */ = {isa = PBXBuildFile; fileRef = BBEDD32515E509BA007F862F /* button_cancel_white.png */; };
-		BBEDD32C15E509BA007F862F /* button_cancel_white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BBEDD32615E509BA007F862F /* button_cancel_white@2x.png */; };
-		BBEDD32D15E509BA007F862F /* button_cancel.png in Resources */ = {isa = PBXBuildFile; fileRef = BBEDD32715E509BA007F862F /* button_cancel.png */; };
-		BBEDD32E15E509BA007F862F /* button_cancel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BBEDD32815E509BA007F862F /* button_cancel@2x.png */; };
-		BBEDD33115E50CC4007F862F /* button_search.png in Resources */ = {isa = PBXBuildFile; fileRef = BBEDD32F15E50CC4007F862F /* button_search.png */; };
-		BBEDD33215E50CC4007F862F /* button_search@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BBEDD33015E50CC4007F862F /* button_search@2x.png */; };
 		BBEDD33615EB3D6D007F862F /* DWUserDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBEDD33415EB3D6D007F862F /* DWUserDetailsViewController.m */; };
 		BBEDD33715EB3D6D007F862F /* DWUserDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBEDD33515EB3D6D007F862F /* DWUserDetailsViewController.xib */; };
 /* End PBXBuildFile section */
@@ -502,6 +496,8 @@
 		BB9F312915F49CE6009C1385 /* nav-btn-search-off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-btn-search-off@2x.png"; sourceTree = "<group>"; };
 		BB9F312A15F49CE6009C1385 /* nav-btn-search-on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-btn-search-on@2x.png"; sourceTree = "<group>"; };
 		BB9F313415F5E55C009C1385 /* nav-field-search@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-field-search@2x.png"; sourceTree = "<group>"; };
+		BB9F313615F5E896009C1385 /* nav-btn-cancel-off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-btn-cancel-off@2x.png"; sourceTree = "<group>"; };
+		BB9F313715F5E896009C1385 /* nav-btn-cancel-on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-btn-cancel-on@2x.png"; sourceTree = "<group>"; };
 		BB9F70AA15B9E62F0099C80A /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		BB9F70AD15B9E6400099C80A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		BB9F70AF15B9E6450099C80A /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
@@ -612,14 +608,6 @@
 		BBEDD31E15E50190007F862F /* DWUsersSearchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWUsersSearchViewController.m; sourceTree = "<group>"; };
 		BBEDD32015E5087B007F862F /* DWSearchBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWSearchBar.h; sourceTree = "<group>"; };
 		BBEDD32115E5087B007F862F /* DWSearchBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWSearchBar.m; sourceTree = "<group>"; };
-		BBEDD32315E509BA007F862F /* button_cancel_left.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_cancel_left.png; sourceTree = "<group>"; };
-		BBEDD32415E509BA007F862F /* button_cancel_left@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_cancel_left@2x.png"; sourceTree = "<group>"; };
-		BBEDD32515E509BA007F862F /* button_cancel_white.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_cancel_white.png; sourceTree = "<group>"; };
-		BBEDD32615E509BA007F862F /* button_cancel_white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_cancel_white@2x.png"; sourceTree = "<group>"; };
-		BBEDD32715E509BA007F862F /* button_cancel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_cancel.png; sourceTree = "<group>"; };
-		BBEDD32815E509BA007F862F /* button_cancel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_cancel@2x.png"; sourceTree = "<group>"; };
-		BBEDD32F15E50CC4007F862F /* button_search.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_search.png; sourceTree = "<group>"; };
-		BBEDD33015E50CC4007F862F /* button_search@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "button_search@2x.png"; sourceTree = "<group>"; };
 		BBEDD33315EB3D6D007F862F /* DWUserDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWUserDetailsViewController.h; sourceTree = "<group>"; };
 		BBEDD33415EB3D6D007F862F /* DWUserDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWUserDetailsViewController.m; sourceTree = "<group>"; };
 		BBEDD33515EB3D6D007F862F /* DWUserDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DWUserDetailsViewController.xib; sourceTree = "<group>"; };
@@ -766,6 +754,8 @@
 		BB06360315BF7258001F26E1 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				BB9F313615F5E896009C1385 /* nav-btn-cancel-off@2x.png */,
+				BB9F313715F5E896009C1385 /* nav-btn-cancel-on@2x.png */,
 				BB9F313415F5E55C009C1385 /* nav-field-search@2x.png */,
 				BB9F312915F49CE6009C1385 /* nav-btn-search-off@2x.png */,
 				BB9F312A15F49CE6009C1385 /* nav-btn-search-on@2x.png */,
@@ -779,14 +769,6 @@
 				BB59B4C015EE628A000756EE /* tab-right-profile-on@2x.png */,
 				BB59B4B215EE4FA8000756EE /* nav-bg@2x.png */,
 				BB59B4B315EE4FA8000756EE /* nav-shadow@2x.png */,
-				BBEDD32F15E50CC4007F862F /* button_search.png */,
-				BBEDD33015E50CC4007F862F /* button_search@2x.png */,
-				BBEDD32315E509BA007F862F /* button_cancel_left.png */,
-				BBEDD32415E509BA007F862F /* button_cancel_left@2x.png */,
-				BBEDD32515E509BA007F862F /* button_cancel_white.png */,
-				BBEDD32615E509BA007F862F /* button_cancel_white@2x.png */,
-				BBEDD32715E509BA007F862F /* button_cancel.png */,
-				BBEDD32815E509BA007F862F /* button_cancel@2x.png */,
 				BB2BC07815D0BA7C00CCC4BB /* button_loading.png */,
 				BB2BC07915D0BA7C00CCC4BB /* button_loading@2x.png */,
 				BB2BC07A15D0BA7C00CCC4BB /* loading_bar_fail.png */,
@@ -1543,14 +1525,6 @@
 				267E550D15D1B4E900A3A8C0 /* DWTumblrConnectViewController.xib in Resources */,
 				267E551615D1CA4300A3A8C0 /* DWFacebookConnectViewController.xib in Resources */,
 				267B3FC215D43AE90001AC64 /* DWStorePickerViewController.xib in Resources */,
-				BBEDD32915E509BA007F862F /* button_cancel_left.png in Resources */,
-				BBEDD32A15E509BA007F862F /* button_cancel_left@2x.png in Resources */,
-				BBEDD32B15E509BA007F862F /* button_cancel_white.png in Resources */,
-				BBEDD32C15E509BA007F862F /* button_cancel_white@2x.png in Resources */,
-				BBEDD32D15E509BA007F862F /* button_cancel.png in Resources */,
-				BBEDD32E15E509BA007F862F /* button_cancel@2x.png in Resources */,
-				BBEDD33115E50CC4007F862F /* button_search.png in Resources */,
-				BBEDD33215E50CC4007F862F /* button_search@2x.png in Resources */,
 				BBEDD33715EB3D6D007F862F /* DWUserDetailsViewController.xib in Resources */,
 				BB59B4B415EE4FA8000756EE /* nav-bg@2x.png in Resources */,
 				BB59B4B515EE4FA8000756EE /* nav-shadow@2x.png in Resources */,
@@ -1565,6 +1539,8 @@
 				BB9F312B15F49CE6009C1385 /* nav-btn-search-off@2x.png in Resources */,
 				BB9F312C15F49CE6009C1385 /* nav-btn-search-on@2x.png in Resources */,
 				BB9F313515F5E55C009C1385 /* nav-field-search@2x.png in Resources */,
+				BB9F313815F5E897009C1385 /* nav-btn-cancel-off@2x.png in Resources */,
+				BB9F313915F5E897009C1385 /* nav-btn-cancel-on@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

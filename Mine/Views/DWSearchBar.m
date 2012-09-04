@@ -7,7 +7,8 @@
 #import "DWConstants.h"
 
 static NSString* const kImgSearchBackground     = @"nav-field-search.png";
-static NSString* const kImgCancelButton         = @"button_cancel.png";
+static NSString* const kImgCancelButtonOff      = @"nav-btn-cancel-off.png";
+static NSString* const kImgCancelButtonOn       = @"nav-btn-cancel-on.png";
 static NSString* const kMsgSearchPlaceholder    = @"Search for people";
 
 /**
@@ -57,7 +58,7 @@ static NSString* const kMsgSearchPlaceholder    = @"Search for people";
 
 //----------------------------------------------------------------------------------------------------
 - (void)createBackground {
-    UIImageView *background = [[UIImageView alloc] initWithFrame:CGRectMake(7,6,250,32)];
+    UIImageView *background = [[UIImageView alloc] initWithFrame:CGRectMake(2,6,250,32)];
     background.contentMode = UIViewContentModeCenter;
     background.image = [UIImage imageNamed:kImgSearchBackground];
     background.userInteractionEnabled    = NO;
@@ -67,7 +68,7 @@ static NSString* const kMsgSearchPlaceholder    = @"Search for people";
 
 //----------------------------------------------------------------------------------------------------
 - (void)createSearchField {
-    searchTextField                         = [[UITextField alloc] initWithFrame:CGRectMake(38,13,220,20)];
+    searchTextField                         = [[UITextField alloc] initWithFrame:CGRectMake(33,13,220,20)];
     searchTextField.delegate                = self;
     searchTextField.autocorrectionType      = UITextAutocorrectionTypeNo;
     searchTextField.autocapitalizationType  = UITextAutocapitalizationTypeNone;
@@ -85,20 +86,21 @@ static NSString* const kMsgSearchPlaceholder    = @"Search for people";
 //----------------------------------------------------------------------------------------------------
 - (void)createCancelButton {
     UIButton *button    = [UIButton buttonWithType:UIButtonTypeCustom];
-    button.frame        = CGRectMake(260,0,60,44);
+    button.frame        = CGRectMake(258,7,63,30);
     
-    [button setBackgroundImage:[UIImage imageNamed:kImgCancelButton]
+    [button setBackgroundImage:[UIImage imageNamed:kImgCancelButtonOff]
                                           forState:UIControlStateNormal];
+    
+    [button setBackgroundImage:[UIImage imageNamed:kImgCancelButtonOn]
+                      forState:UIControlStateHighlighted];
     
     [button addTarget:self
                action:@selector(didTapCancelButton:)
-     forControlEvents:UIControlEventTouchDown];
+     forControlEvents:UIControlEventTouchUpInside];
     
     
     [self addSubview:button];
 }
-
-//----------------------------------------------------------------------------------------------------
 
 //----------------------------------------------------------------------------------------------------
 - (void)becomeActive {
