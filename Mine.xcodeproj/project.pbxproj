@@ -171,6 +171,8 @@
 		BB9F314815F62BC2009C1385 /* DWNavigationBarBackButton.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9F314715F62BC2009C1385 /* DWNavigationBarBackButton.m */; };
 		BB9F314B15F62C6A009C1385 /* nav-btn-back-off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB9F314915F62C69009C1385 /* nav-btn-back-off@2x.png */; };
 		BB9F314C15F62C6A009C1385 /* nav-btn-back-on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB9F314A15F62C69009C1385 /* nav-btn-back-on@2x.png */; };
+		BB9F314F15F645C5009C1385 /* DWUserProfileCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9F314E15F645C5009C1385 /* DWUserProfileCell.m */; };
+		BB9F315315F64750009C1385 /* DWUserProfilePresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9F315215F64750009C1385 /* DWUserProfilePresenter.m */; };
 		BB9F70AB15B9E62F0099C80A /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB9F70AA15B9E62F0099C80A /* CFNetwork.framework */; };
 		BB9F70AE15B9E6400099C80A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB9F70AD15B9E6400099C80A /* SystemConfiguration.framework */; };
 		BB9F70B015B9E6450099C80A /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB9F70AF15B9E6450099C80A /* MobileCoreServices.framework */; };
@@ -514,6 +516,10 @@
 		BB9F314715F62BC2009C1385 /* DWNavigationBarBackButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWNavigationBarBackButton.m; sourceTree = "<group>"; };
 		BB9F314915F62C69009C1385 /* nav-btn-back-off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-btn-back-off@2x.png"; sourceTree = "<group>"; };
 		BB9F314A15F62C69009C1385 /* nav-btn-back-on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-btn-back-on@2x.png"; sourceTree = "<group>"; };
+		BB9F314D15F645C5009C1385 /* DWUserProfileCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWUserProfileCell.h; sourceTree = "<group>"; };
+		BB9F314E15F645C5009C1385 /* DWUserProfileCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWUserProfileCell.m; sourceTree = "<group>"; };
+		BB9F315115F6474F009C1385 /* DWUserProfilePresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWUserProfilePresenter.h; sourceTree = "<group>"; };
+		BB9F315215F64750009C1385 /* DWUserProfilePresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWUserProfilePresenter.m; sourceTree = "<group>"; };
 		BB9F70AA15B9E62F0099C80A /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		BB9F70AD15B9E6400099C80A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		BB9F70AF15B9E6450099C80A /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
@@ -1415,6 +1421,8 @@
 				BBE42F4B15BCCB7A000F6AE1 /* DWPurchaseFeedPresenter.m */,
 				BB46140015CB3A5A00B38D71 /* DWUserPresenter.h */,
 				BB46140115CB3A5A00B38D71 /* DWUserPresenter.m */,
+				BB9F315115F6474F009C1385 /* DWUserProfilePresenter.h */,
+				BB9F315215F64750009C1385 /* DWUserProfilePresenter.m */,
 				267B3FBB15D4322A0001AC64 /* DWStorePresenter.h */,
 				267B3FBC15D4322A0001AC64 /* DWStorePresenter.m */,
 			);
@@ -1438,6 +1446,8 @@
 				BB2D167515CC7C2E005F571F /* DWPurchaseProfileCell.m */,
 				BB46140415CB3A7500B38D71 /* DWUserCell.h */,
 				BB46140515CB3A7500B38D71 /* DWUserCell.m */,
+				BB9F314D15F645C5009C1385 /* DWUserProfileCell.h */,
+				BB9F314E15F645C5009C1385 /* DWUserProfileCell.m */,
 			);
 			path = TableViewCells;
 			sourceTree = "<group>";
@@ -1742,6 +1752,8 @@
 				BB59B4E015F1F2AB000756EE /* DWPurchasesHelper.m in Sources */,
 				BB9F313F15F609FF009C1385 /* DWFollowButton.m in Sources */,
 				BB9F314815F62BC2009C1385 /* DWNavigationBarBackButton.m in Sources */,
+				BB9F314F15F645C5009C1385 /* DWUserProfileCell.m in Sources */,
+				BB9F315315F64750009C1385 /* DWUserProfilePresenter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

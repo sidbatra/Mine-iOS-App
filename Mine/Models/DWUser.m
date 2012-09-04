@@ -11,6 +11,7 @@
 #import "DWImageManager.h"
 
 NSString* const kKeySquareImageURL          = @"square_image_url";
+NSString* const kKeyLargeUserImageURL       = @"large_image_url";
 NSString* const kNImgUserSquareLoaded       = @"NImgUserSquareLoaded";
 NSString* const kNImgUserSquareLoadError    = @"NImgUserSquareLoadError";
 NSString* const kNImgUserLargeLoaded        = @"NImgUserLargeLoaded";
@@ -53,7 +54,6 @@ static NSString* const kKeyTwitterAccessToken           = @"tw_access_token";
 static NSString* const kKeyTwitterAccessTokenSecret     = @"tw_access_token_secret";
 static NSString* const kKeyTumblrAccessToken            = @"tumblr_access_token";
 static NSString* const kKeyTumblrAccessTokenSecret      = @"tumblr_access_token_secret";
-static NSString* const kKeyLargeImageURL                = @"large_image_url";
 static NSString* const kKeyAge                          = @"age";
 static NSString* const kKeyPurchasesCount               = @"purchases_count";
 static NSString* const kKeyFollowingsCount              = @"followings_count";
@@ -200,7 +200,7 @@ static NSString* const kKeySetting                      = @"setting";
     NSString *tumblrAccessTokenSecret   = [user objectForKey:kKeyTumblrAccessTokenSecret];    
     
     NSString *squareImageURL            = [user objectForKey:kKeySquareImageURL];
-    NSString *largeImageURL             = [user objectForKey:kKeyLargeImageURL];
+    NSString *largeImageURL             = [user objectForKey:kKeyLargeUserImageURL];
     
     NSString *age                       = [user objectForKey:kKeyAge];
     NSString *purchasesCount            = [user objectForKey:kKeyPurchasesCount];

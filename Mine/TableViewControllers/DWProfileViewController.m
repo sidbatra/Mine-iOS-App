@@ -8,7 +8,7 @@
 
 #import "DWProfileViewController.h"
 #import "DWProfileViewDataSource.h"
-#import "DWUserPresenter.h"
+#import "DWUserProfilePresenter.h"
 #import "DWPurchaseProfilePresenter.h"
 #import "DWPaginationPresenter.h"
 #import "DWPurchase.h"
@@ -56,7 +56,7 @@
         
         [self addModelPresenterForClass:[DWUser class]
                               withStyle:kDefaultModelPresenter 
-                          withPresenter:[DWUserPresenter class]];
+                          withPresenter:[DWUserProfilePresenter class]];
         
         [self addModelPresenterForClass:[DWModelSet class]
                               withStyle:kDefaultModelPresenter 
@@ -73,8 +73,8 @@
                                                    object:nil];
         
         [[NSNotificationCenter defaultCenter] addObserver:self 
-                                                 selector:@selector(userSquareImageLoaded:) 
-                                                     name:kNImgUserSquareLoaded
+                                                 selector:@selector(userLargeImageLoaded:) 
+                                                     name:kNImgUserLargeLoaded
                                                    object:nil];
     }
     
@@ -199,14 +199,13 @@
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)userSquareImageLoaded:(NSNotification*)notification {
+- (void)userLargeImageLoaded:(NSNotification*)notification {
     NSDictionary *userInfo = [notification userInfo];
     
     [self provideResourceToVisibleCells:[DWUser class] 
                                objectID:[[userInfo objectForKey:kKeyResourceID] integerValue]
-                              objectKey:kKeySquareImageURL];
+                              objectKey:kKeyLargeUserImageURL];
 }
-
 
 
 //----------------------------------------------------------------------------------------------------
