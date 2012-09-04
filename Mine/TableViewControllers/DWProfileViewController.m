@@ -127,7 +127,7 @@
     
     DWPurchase *purchase = [DWPurchase fetch:purchaseID];
     
-    if(!purchaseID)
+    if(!purchase)
         return;
     
 
