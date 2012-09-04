@@ -125,9 +125,6 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)loadPurchases {
-
-    self.purchases = nil;
-    
     [self.purchasesController getPurchasesForUser:self.userID 
                                            before:self.oldestTimestamp];
 }
@@ -175,6 +172,7 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)displayPurchasesAndUser {
+    
     if(!self.purchases || !self.user)
         return;
     
@@ -215,6 +213,8 @@
         pagination.owner            = self;
         [self.objects addObject:pagination];
     }
+    
+    self.purchases = nil;
     
     [self.delegate reloadTableView];
 
