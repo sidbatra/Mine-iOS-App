@@ -8,12 +8,14 @@
 
 #import "DWTableViewController.h"
 
+#import "DWFollowButton.h"
+
 @class DWUser;
 @class DWPurchase;
 @protocol DWProfileViewControllerDelegate;
 
 
-@interface DWProfileViewController : DWTableViewController {
+@interface DWProfileViewController : DWTableViewController<DWFollowButtonDelegate> {
     DWUser  *_user;
     
     __weak id<DWProfileViewControllerDelegate,NSObject> delegate;

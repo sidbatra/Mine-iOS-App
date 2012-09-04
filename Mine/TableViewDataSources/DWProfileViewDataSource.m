@@ -11,6 +11,7 @@
 #import "DWModelSet.h"
 #import "DWPurchase.h"
 #import "DWuser.h"
+#import "DWFollowing.h"
 #import "DWConstants.h"
 
  
@@ -20,6 +21,7 @@
     DWUsersController       *_usersController;
     
     DWUser                  *_user;
+    DWFollowing             *_following;
     
     NSInteger _oldestTimestamp;
 }
@@ -45,6 +47,11 @@
 @property (nonatomic,strong) DWUser *user;
 
 /**
+ * The status of the following with the user whose profile is being displayed.
+ */
+@property (nonatomic,strong) DWFollowing *following;
+
+/**
  * Timestamp of the last item in the feed. Used to fetch more items.
  */
 @property (nonatomic,assign) NSInteger oldestTimestamp;
@@ -63,6 +70,7 @@
 @synthesize followingsController    = _followingsController;
 @synthesize usersController         = _usersController;
 @synthesize user                    = _user;
+@synthesize following               = _following;
 @synthesize oldestTimestamp         = _oldestTimestamp;
 @dynamic delegate;
 
@@ -92,6 +100,17 @@
 //----------------------------------------------------------------------------------------------------
 - (void)loadFollowing {
     [self.followingsController getFollowingForUserID:self.userID];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)toggleFollowing {
+    if(self.following) {
+        [self.followingsController destroyFollowing:self.following.databaseID
+                                          ForUserID:self.userID];
+    }
+    else {
+        [self.followingsController createFollowingForUserID:self.userID];
+    }
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -137,6 +156,19 @@
         [self.objects addObject:purchaseSet];
     }
     
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)fireFollowingLoadedDelegate:(DWFollowing*)following {
+    
+    self.following = following;
+    
+    SEL sel = @selector(followingLoaded:);
+    
+    if(![self.delegate respondsToSelector:sel])
+        return;
+    
+    [self.delegate performSelector:sel withObject:following]; 
 }
 
 
@@ -229,12 +261,7 @@
     if(self.userID != [userID integerValue])
         return;
     
-    SEL sel = @selector(followingLoaded:);
-    
-    if(![self.delegate respondsToSelector:sel])
-         return;
-    
-    [self.delegate performSelector:sel withObject:following];
+    [self fireFollowingLoadedDelegate:following];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -243,6 +270,39 @@
     
     if(self.userID != [userID integerValue])
         return;
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)followingCreated:(DWFollowing *)following forUserID:(NSNumber *)userID {
+    
+    if(self.userID != [userID integerValue])
+        return;
+    
+    [self fireFollowingLoadedDelegate:following];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)followingCreateError:(NSString *)message forUserID:(NSNumber *)userID {
+    
+    if(self.userID != [userID integerValue])
+        return;
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)followingDestroyed:(DWFollowing *)following forUserID:(NSNumber *)userID {
+    
+    if(self.userID != [userID integerValue])
+        return;
+    
+    [self fireFollowingLoadedDelegate:nil];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)followingDestroyError:(NSString *)message forUserID:(NSNumber *)userID {
+    
+    if(self.userID != [userID integerValue])
+        return;
+    
 }
 
 

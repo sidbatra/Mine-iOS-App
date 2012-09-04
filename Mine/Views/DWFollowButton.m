@@ -149,6 +149,7 @@ static NSString* const kImgActiveButtonHighlighted          = @"list-btn-follow-
 
 //----------------------------------------------------------------------------------------------------
 - (void)didTouchUpInsideButton:(UIButton*)button {
+    [self startSpinning];
     [self.delegate followButtonClicked];
 }
 

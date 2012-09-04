@@ -16,7 +16,6 @@
 #import "DWUser.h"
 
 #import "DWSession.h"
-#import "DWFollowButton.h"
 #import "DWConstants.h"
 
 @interface DWProfileViewController() {
@@ -84,8 +83,10 @@
     
     if(![[DWSession sharedDWSession] isCurrentUser:self.user.databaseID]) {
         
-        if(!self.followButton)
+        if(!self.followButton) {
             self.followButton = [[DWFollowButton alloc] initWithFrame:CGRectMake(240, 6, 81, 32)];
+            self.followButton.delegate = self;
+        }
         
         [(DWProfileViewDataSource*)self.tableViewDataSource loadFollowing];
     }
@@ -150,6 +151,17 @@
         [self.followButton enterActiveState];
     else
         [self.followButton enterInactiveState];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWFollowButtonDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)followButtonClicked {
+    [(DWProfileViewDataSource*)self.tableViewDataSource toggleFollowing];
 }
 
 

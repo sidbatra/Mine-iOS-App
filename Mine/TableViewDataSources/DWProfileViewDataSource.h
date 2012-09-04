@@ -31,6 +31,7 @@
 
 - (void)loadUser;
 - (void)loadFollowing;
+- (void)toggleFollowing;
 - (void)loadPurchases;
 
 @end
