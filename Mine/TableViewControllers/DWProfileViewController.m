@@ -16,13 +16,16 @@
 #import "DWUser.h"
 
 #import "DWSession.h"
+#import "DWNavigationBarTitleView.h"
 #import "DWConstants.h"
 
 @interface DWProfileViewController() {
     DWFollowButton  *_followButton;
+    DWNavigationBarTitleView *_navTitleView;
 }
 
 @property (nonatomic,strong) DWFollowButton *followButton;
+@property (nonatomic,strong) DWNavigationBarTitleView *navTitleView;
 
 @end
 
@@ -35,6 +38,7 @@
 
 @synthesize user            = _user;
 @synthesize followButton    = _followButton;
+@synthesize navTitleView    = _navTitleView;
 @synthesize delegate        = _delegate;
 
 //----------------------------------------------------------------------------------------------------
@@ -89,6 +93,14 @@
         }
         
         [(DWProfileViewDataSource*)self.tableViewDataSource loadFollowing];
+    }
+    
+    if(self.navigationController) {
+        
+        if(!self.navTitleView) {
+            self.navTitleView =  [[DWNavigationBarTitleView alloc] initWithFrame:CGRectMake(121,0,76,44)
+                                                                    andImageName:kNavBarMineLogo];
+        }
     }
     
     [(DWProfileViewDataSource*)self.tableViewDataSource loadUser];
@@ -197,6 +209,7 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)willShowOnNav {
+    [self.navigationController.navigationBar addSubview:self.navTitleView];
     [self.navigationController.navigationBar addSubview:self.followButton];
 }
 @end
