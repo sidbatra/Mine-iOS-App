@@ -18,7 +18,8 @@
     UIView          *_productPreview;
     UIImageView     *_productImageView;
     UIButton        *_productSelectButton;
-    UIButton        *_productRejectButton;    
+    UIButton        *_productRejectButton;
+    UIButton        *_cancelCreationButton;
     
     __weak id<DWCreationViewControllerDelegate,NSObject> _delegate;
 }
@@ -31,6 +32,7 @@
 @property (nonatomic) IBOutlet UIImageView *productImageView;
 @property (nonatomic) IBOutlet UIButton *productSelectButton;
 @property (nonatomic) IBOutlet UIButton *productRejectButton;
+@property (nonatomic) IBOutlet UIButton *cancelCreationButton;
 
 /**
  * Delegate
@@ -43,6 +45,7 @@
  */
 - (IBAction)productSelectButtonClicked:(id)sender;
 - (IBAction)productRejectButtonClicked:(id)sender;
+- (IBAction)cancelCreationButtonClicked:(id)sender;
 
 @end
 
@@ -59,5 +62,10 @@
  */
 - (void)productSelected:(DWProduct*)product 
               fromQuery:(NSString*)query;
+
+/**
+ * User cancels the creation process
+ */
+- (void)creationCancelled;
 
 @end

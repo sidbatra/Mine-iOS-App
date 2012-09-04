@@ -47,7 +47,7 @@
 - (void)viewDidLoad {
 	[super viewDidLoad];
     
-    self.navigationItem.title = @"Create";
+    self.navigationController.navigationBarHidden = YES;
 
     if(!self.creationViewController) {
         self.creationViewController = [[DWCreationViewController alloc] init];
@@ -60,6 +60,17 @@
 //----------------------------------------------------------------------------------------------------
 - (void)viewDidUnload {
     [super viewDidUnload];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWCreationViewControllerDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)creationCancelled {
+    [self.delegate dismissCreateView];
 }
 
 

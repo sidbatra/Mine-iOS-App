@@ -69,6 +69,7 @@
 @synthesize productImageView            = _productImageView;
 @synthesize productSelectButton         = _productSelectButton;
 @synthesize productRejectButton         = _productRejectButton;
+@synthesize cancelCreationButton        = _cancelCreationButton;
 
 @synthesize query                       = _query;
 @synthesize product                     = _product;
@@ -167,6 +168,11 @@
     self.productImageView.image = nil;
     
     [self hideProductPreview];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)cancelCreationButtonClicked:(id)sender {
+    [self.delegate creationCancelled];
 }
 
 

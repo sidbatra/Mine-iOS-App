@@ -92,7 +92,7 @@
 //----------------------------------------------------------------------------------------------------
 - (IBAction)loginWithTWButtonClicked:(id)sender {
     [[self.delegate loginViewNavigationController] pushViewController:self.twitterConnectViewController
-                                         animated:YES];
+                                                             animated:YES];
 }
 
 
