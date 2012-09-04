@@ -21,6 +21,11 @@
 #import "DWConstants.h"
 
 
+static NSString* const kImgSearchOff    = @"nav-btn-search-off.png";
+static NSString* const kImgSearchOn     = @"nav-btn-search-on.png";
+
+
+
 @interface DWFeedNavigationViewController () {
     DWFeedViewController        *_feedViewController;
     DWUsersSearchViewController *_usersSearchViewController;
@@ -96,17 +101,19 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)loadSideButtons {
-    
     UIButton *button =  [UIButton buttonWithType:UIButtonTypeCustom];    
-    
-    [button setBackgroundImage:[UIImage imageNamed:@"button_search"] 
+
+    [button setBackgroundImage:[UIImage imageNamed:kImgSearchOff] 
                       forState:UIControlStateNormal];
+    
+    [button setBackgroundImage:[UIImage imageNamed:kImgSearchOn] 
+                      forState:UIControlStateHighlighted];
     
 	[button addTarget:self
                action:@selector(searchButtonClicked)
      forControlEvents:UIControlEventTouchUpInside];
     
-	[button setFrame:CGRectMake(0,0,55,44)];
+	[button setFrame:CGRectMake(0, 0,45,30)];
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
 }
