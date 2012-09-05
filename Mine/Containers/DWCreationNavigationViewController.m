@@ -95,4 +95,19 @@
     [self.delegate dismissCreateView];
 }
 
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark Nav Stack Selectors
+
+//----------------------------------------------------------------------------------------------------
+- (void)willShowOnNav {
+    
+     if(!self.navigationController.navigationBarHidden)
+         [self.navigationController setNavigationBarHidden:YES
+                                                  animated:YES];
+         
+}
+
 @end

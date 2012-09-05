@@ -50,4 +50,9 @@ extern NSInteger const kProductCellHeight;
  */
 - (void)productClicked:(NSNumber*)productID;
 
+/** 
+ * Fired when a product cell is touched
+ */
+- (void)productCellTouched;
+
 @end

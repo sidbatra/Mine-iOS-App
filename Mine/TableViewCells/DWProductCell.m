@@ -68,7 +68,7 @@ static NSString* const kImgProductHighlight  = @"chooser-item-bg-on@2x.png";
 - (void)createProductButtons {
     
     for(NSInteger i=0 ; i<kColumnsInProductsSearch ; i++) {
-        UIButton *productButton = [[UIButton alloc] initWithFrame:CGRectMake(102*i, 7, 95, 95)];
+        UIButton *productButton = [[UIButton alloc] initWithFrame:CGRectMake(102*i, 8, 94, 94)];
         
         productButton.backgroundColor               = [UIColor clearColor];
         productButton.imageView.contentMode         = UIViewContentModeScaleAspectFit;
@@ -105,6 +105,11 @@ static NSString* const kImgProductHighlight  = @"chooser-item-bg-on@2x.png";
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
 #pragma mark UI Events
+
+//----------------------------------------------------------------------------------------------------
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    [self.delegate productCellTouched];
+}
 
 //----------------------------------------------------------------------------------------------------
 - (void)didTapProductButton:(UIButton*)button {

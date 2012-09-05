@@ -70,6 +70,17 @@
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
+#pragma mark UIScrollView Delegate
+
+//----------------------------------------------------------------------------------------------------
+-(void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+    [self.delegate tableViewTouched];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
 #pragma mark DataSource Methods
 
 //----------------------------------------------------------------------------------------------------
@@ -85,13 +96,9 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)productsLoadedForQuery:(NSString *)query {
-    SEL sel = @selector(productsLoadedForQuery:);
-    
-    if(![self.delegate respondsToSelector:sel])
-        return;
-
     [self.delegate productsLoadedForQuery:query];
 }
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
@@ -99,18 +106,16 @@
 #pragma mark DWProductCellDelegate
 
 //----------------------------------------------------------------------------------------------------
-- (void)productClicked:(NSNumber *)productID {
-
-    SEL sel = @selector(productClicked:);
-    
-    if(![self.delegate respondsToSelector:sel])
-        return;
-    
+- (void)productClicked:(NSNumber *)productID {    
     DWProduct *product = [DWProduct fetch:[productID integerValue]];
     
     if(product)
-        [self.delegate performSelector:sel 
-                            withObject:product];
+        [self.delegate productClicked:product];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)productCellTouched {
+    [self.delegate tableViewTouched];
 }
 
 

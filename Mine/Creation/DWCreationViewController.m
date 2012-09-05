@@ -119,7 +119,7 @@ static NSString* const kImgTopShadow = @"nav-shadow.png";
         self.productsViewController = [[DWProductsViewController alloc] init];
     
     self.productsViewController.delegate    = self;
-    self.productsViewController.view.frame  = CGRectMake(10,44,320,416);
+    self.productsViewController.view.frame  = CGRectMake(11,44,309,416);
     self.productsViewController.view.hidden = YES;
     
     [self.view addSubview:self.productsViewController.view];
@@ -238,7 +238,13 @@ static NSString* const kImgTopShadow = @"nav-shadow.png";
     [self.product downloadLargeImage];    
     self.productImageView.image = self.product.largeImage;
     
+    [self.view endEditing:YES];    
     [self showProductPreview];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)tableViewTouched {
+    [self.view endEditing:YES];
 }
 
 
@@ -251,5 +257,6 @@ static NSString* const kImgTopShadow = @"nav-shadow.png";
 - (void)productLargeImageLoaded:(NSNotification*)notification {
     self.productImageView.image = self.product.largeImage;
 }
+
 
 @end

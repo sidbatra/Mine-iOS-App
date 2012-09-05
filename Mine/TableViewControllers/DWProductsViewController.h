@@ -38,8 +38,6 @@
  */
 @protocol DWProductsViewControllerDelegate
 
-@optional
-
 /**
  * Fired when the products are loaded
  */
@@ -49,5 +47,10 @@
  * Fired when a product is Clicked by the user
  */
 - (void)productClicked:(DWProduct*)product;
+
+/** 
+ * Fired when the table view is touched
+ */
+- (void)tableViewTouched;
 
 @end
