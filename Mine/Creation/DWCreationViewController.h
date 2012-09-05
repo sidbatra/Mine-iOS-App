@@ -17,6 +17,7 @@
     UITextField     *_searchTextField;
     UIView          *_productPreview;
     UIImageView     *_productImageView;
+    UIImageView     *_topShadowView;
     UIButton        *_productSelectButton;
     UIButton        *_productRejectButton;
     UIButton        *_cancelCreationButton;
@@ -30,6 +31,7 @@
 @property (nonatomic) IBOutlet UITextField *searchTextField;
 @property (nonatomic) IBOutlet UIView *productPreview;
 @property (nonatomic) IBOutlet UIImageView *productImageView;
+@property (nonatomic) IBOutlet UIImageView *topShadowView;
 @property (nonatomic) IBOutlet UIButton *productSelectButton;
 @property (nonatomic) IBOutlet UIButton *productRejectButton;
 @property (nonatomic) IBOutlet UIButton *cancelCreationButton;

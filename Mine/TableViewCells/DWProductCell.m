@@ -12,7 +12,10 @@
 /**
  *
  */
-NSInteger const kProductCellHeight = 100;
+NSInteger const kProductCellHeight = 102;
+
+static NSString* const kImgProductBackground = @"chooser-item-bg-off@2x.png";
+static NSString* const kImgProductHighlight  = @"chooser-item-bg-on@2x.png";
 
 
 @interface DWProductCell() {
@@ -65,13 +68,31 @@ NSInteger const kProductCellHeight = 100;
 - (void)createProductButtons {
     
     for(NSInteger i=0 ; i<kColumnsInProductsSearch ; i++) {
-        UIButton *productButton = [[UIButton alloc] initWithFrame:CGRectMake(100*i + 15, 0, 100, 100)];
+        UIButton *productButton = [[UIButton alloc] initWithFrame:CGRectMake(102*i, 7, 95, 95)];
         
-        productButton.backgroundColor = [UIColor redColor];
+        productButton.backgroundColor               = [UIColor clearColor];
+        productButton.imageView.contentMode         = UIViewContentModeScaleAspectFit;
+        productButton.imageEdgeInsets               = UIEdgeInsetsMake(7, 7, 7, 7);
+        productButton.adjustsImageWhenHighlighted   = NO;
         
+        [productButton setBackgroundImage:[UIImage imageNamed:kImgProductBackground] 
+                                 forState:UIControlStateNormal];
+
         [productButton addTarget:self
                            action:@selector(didTapProductButton:)
                  forControlEvents:UIControlEventTouchUpInside];
+        
+        [productButton addTarget:self
+                          action:@selector(highlightProductButton:)
+                forControlEvents:UIControlEventTouchDown];
+        
+        [productButton addTarget:self
+                          action:@selector(highlightProductButton:)
+                forControlEvents:UIControlEventTouchDragEnter];
+        
+        [productButton addTarget:self
+                          action:@selector(removeHighlightFromProductButton:)
+                forControlEvents:UIControlEventTouchDragExit];        
         
         [self.productButtons addObject:productButton];
         
@@ -94,6 +115,30 @@ NSInteger const kProductCellHeight = 100;
 
     [self.delegate performSelector:sel
                         withObject:[NSNumber numberWithInteger:button.tag]];
+    
+    [self performSelector:@selector(removeHighlightFromProductButton:) 
+               withObject:button];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)highlightProductButton:(UIButton*)button {        
+    
+    UIImageView *imageView  = [[UIImageView alloc] initWithFrame:button.bounds];
+    imageView.image         = [UIImage imageNamed:kImgProductHighlight];
+    imageView.tag           = 1000;
+    
+    [button addSubview:imageView];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)removeHighlightFromProductButton:(UIButton*)button {
+    
+    UIView *view = [button viewWithTag:1000];
+    [UIView animateWithDuration:0.2 animations:^{
+        view.alpha = 0;
+    } completion:^(BOOL finished) {
+        [view removeFromSuperview];        
+    }];
 }
 
 

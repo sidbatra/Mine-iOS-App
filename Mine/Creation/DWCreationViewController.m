@@ -10,6 +10,9 @@
 #import "DWProduct.h"
 #import "DWConstants.h"
 
+
+static NSString* const kImgTopShadow = @"nav-shadow.png";
+
 /**
  * Private declarations
  */
@@ -37,6 +40,11 @@
 
 
 /** 
+ * Show table view having search results
+ */
+- (void)showResults;
+
+/** 
  * Show keyboard for searching products
  */
 - (void)showKeyboard;
@@ -45,6 +53,11 @@
  * Hide keyboard
  */
 - (void)hideKeyboard;
+
+/** 
+ * Show nav bar shadow
+ */
+- (void)showNavBarShadow;
 
 /** 
  * Show the preview for the selected product
@@ -67,6 +80,7 @@
 @synthesize searchTextField             = _searchTextField;
 @synthesize productPreview              = _productPreview;
 @synthesize productImageView            = _productImageView;
+@synthesize topShadowView               = _topShadowView;
 @synthesize productSelectButton         = _productSelectButton;
 @synthesize productRejectButton         = _productRejectButton;
 @synthesize cancelCreationButton        = _cancelCreationButton;
@@ -105,7 +119,8 @@
         self.productsViewController = [[DWProductsViewController alloc] init];
     
     self.productsViewController.delegate    = self;
-    self.productsViewController.view.frame  = CGRectMake(0,50,320,400);
+    self.productsViewController.view.frame  = CGRectMake(10,44,320,416);
+    self.productsViewController.view.hidden = YES;
     
     [self.view addSubview:self.productsViewController.view];
     
@@ -135,13 +150,24 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)showProductPreview {
-    self.productPreview.hidden = false;
+    self.productPreview.hidden = NO;
     [self.view bringSubviewToFront:self.productPreview];
 }
 
 //----------------------------------------------------------------------------------------------------
+- (void)showNavBarShadow {
+    self.topShadowView.hidden = NO;
+    [self.view bringSubviewToFront:self.topShadowView];
+}
+
+//----------------------------------------------------------------------------------------------------
 - (void)hideProductPreview {
-    self.productPreview.hidden = true;
+    self.productPreview.hidden = YES;
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)showResults {
+    self.productsViewController.view.hidden = NO;
 }
 
 
@@ -200,6 +226,8 @@
     self.query                  = query;
     self.searchTextField.text   = self.query;
     
+    [self showResults];
+    [self showNavBarShadow];
     [self hideKeyboard];
 }
 

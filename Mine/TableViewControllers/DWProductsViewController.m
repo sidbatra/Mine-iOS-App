@@ -58,6 +58,12 @@
 - (void)viewDidLoad {
 	[super viewDidLoad];
     [self disablePullToRefresh];
+    
+    self.loadingView.hidden     = YES;
+    self.view.backgroundColor   = [UIColor colorWithRed:0.933 
+                                                  green:0.933 
+                                                   blue:0.933 
+                                                  alpha:1.0];
 }
 
 

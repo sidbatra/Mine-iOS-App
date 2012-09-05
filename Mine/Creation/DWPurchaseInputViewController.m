@@ -127,6 +127,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.navigationController.navigationBarHidden = NO;
+    
     self.nameTextField.text = [self.purchase.query capitalizedString];
     [self.nameTextField becomeFirstResponder];
     
