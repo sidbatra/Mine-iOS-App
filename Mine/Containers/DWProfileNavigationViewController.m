@@ -14,6 +14,10 @@
 #import "DWConstants.h"
 
 
+static NSString* const kImgSettingsOff    = @"nav-btn-settings-off.png";
+static NSString* const kImgSettingsOn     = @"nav-btn-settings-on.png";
+
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
@@ -75,6 +79,25 @@
     }
     
     
+    UIButton *button =  [UIButton buttonWithType:UIButtonTypeCustom];    
+    
+    [button setBackgroundImage:[UIImage imageNamed:kImgSettingsOff] 
+                      forState:UIControlStateNormal];
+    
+    [button setBackgroundImage:[UIImage imageNamed:kImgSettingsOn] 
+                      forState:UIControlStateHighlighted];
+    
+	[button addTarget:self
+               action:@selector(settingsButtonClicked)
+     forControlEvents:UIControlEventTouchUpInside];
+    
+	[button setFrame:CGRectMake(0, 0,45,30)];
+    
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
+    
+    
+    
+    
     [self.view addSubview:self.profileViewController.view];
 }
 
@@ -84,6 +107,15 @@
 }
 
 
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark UI Events
+
+//----------------------------------------------------------------------------------------------------
+- (void)settingsButtonClicked {
+}
 
 
 //----------------------------------------------------------------------------------------------------
