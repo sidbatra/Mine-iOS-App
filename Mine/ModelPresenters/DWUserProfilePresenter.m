@@ -42,8 +42,8 @@
     [cell setUserImage:user.squareImage];
     [cell setUserName:user.fullName];
     [cell setByline:user.byline 
-    followingsCount:user.followingsCount 
-     followersCount:user.inverseFollowingsCount];
+    followingsCount:user.inverseFollowingsCount
+     followersCount:user.followingsCount];
     
     return cell;
 }

@@ -148,12 +148,12 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)profileViewFollowingClickedForUser:(DWUser *)user {
-    [self displayFollowersForUser:user];
+    [self displayIfollowersForUser:user];
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)profileViewFollowersClickedForUser:(DWUser *)user {
-    [self displayIfollowersForUser:user];
+    [self displayFollowersForUser:user];
 }
 
 
