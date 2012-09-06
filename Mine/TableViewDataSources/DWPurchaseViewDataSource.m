@@ -22,6 +22,7 @@
 //----------------------------------------------------------------------------------------------------
 - (void)loadPurchase {
     DWPurchase *purchase = [DWPurchase fetch:self.purchaseID];
+    [purchase incrementPointerCount];
 
     self.objects = [NSArray arrayWithObject:purchase];
     

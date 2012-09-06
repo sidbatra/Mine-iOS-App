@@ -158,7 +158,6 @@ static NSInteger const kPurchaseProfileCellHeight = 190;
     
     [imageButton setImage:image
                  forState:UIControlStateHighlighted];
-    
 }
 
 
@@ -194,7 +193,8 @@ static NSInteger const kPurchaseProfileCellHeight = 190;
 
 //----------------------------------------------------------------------------------------------------
 - (void)didTapTitleButton:(UIButton*)button {
-    [self.delegate purchaseURLClicked:button.tag];
+    [self.delegate purchaseClicked:button.tag];
+    //[self.delegate purchaseURLClicked:button.tag];
 }
 
 @end
