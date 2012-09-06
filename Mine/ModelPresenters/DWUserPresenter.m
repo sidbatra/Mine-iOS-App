@@ -34,6 +34,8 @@
         cell = [[DWUserCell alloc] initWithStyle:UITableViewStylePlain 
                                  reuseIdentifier:identifier];
     
+    cell.delegate = delegate;
+    
     [cell resetUI];
     
     [user downloadSquareImage];

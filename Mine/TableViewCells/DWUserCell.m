@@ -16,6 +16,8 @@ NSInteger const kUserCellHeight = 50;
 @interface DWUserCell() {
     UIImageView     *userImageView;
     UILabel         *userNameLabel;
+    
+    DWFollowButton  *followButton;
 }
 
 @end
@@ -26,6 +28,8 @@ NSInteger const kUserCellHeight = 50;
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 @implementation DWUserCell
+
+@synthesize delegate = _delegate;
 
 //----------------------------------------------------------------------------------------------------
 - (id)initWithStyle:(UITableViewCellStyle)style 
@@ -40,6 +44,8 @@ NSInteger const kUserCellHeight = 50;
         [self createBorders];
         [self createUserImageView];
         [self createUserNameLabel];
+        [self createFollowButton];
+        
         
 		self.selectionStyle = UITableViewCellSelectionStyleBlue;	
 	}
@@ -94,6 +100,14 @@ NSInteger const kUserCellHeight = 50;
 }
 
 //----------------------------------------------------------------------------------------------------
+- (void)createFollowButton {
+    followButton = [[DWFollowButton alloc] initWithFrame:CGRectMake(234,10,74,30)];
+    followButton.delegate = self;
+    
+    [self.contentView addSubview:followButton];
+}
+
+//----------------------------------------------------------------------------------------------------
 - (void)setUserImage:(UIImage*)image {
     userImageView.image = image;
 }
@@ -103,6 +117,22 @@ NSInteger const kUserCellHeight = 50;
     userNameLabel.text = userName;
 }
 
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWFollowButtonDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)followButtonClicked {
+    [self.delegate userCellFollowClicked];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark Static methods
 
 //----------------------------------------------------------------------------------------------------
 + (NSInteger)heightForCell {

@@ -8,7 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DWUserCell : UITableViewCell
+#import "DWFollowButton.h"
+
+@protocol DWUserCellDelegate;
+
+
+@interface DWUserCell : UITableViewCell<DWFollowButtonDelegate> {
+    __weak id<DWUserCellDelegate,NSObject> _delegate;
+}
+
+@property (nonatomic,weak) id<DWUserCellDelegate,NSObject> delegate;
 
 
 /**
@@ -31,5 +40,14 @@
  * Return the height of the cell.
  */
 + (NSInteger)heightForCell;
+
+@end
+
+
+@protocol DWUserCellDelegate
+
+@required
+
+- (void)userCellFollowClicked;
 
 @end
