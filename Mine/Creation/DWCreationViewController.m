@@ -69,6 +69,26 @@ static NSString* const kImgTopShadow = @"nav-shadow.png";
  */
 - (void)hideProductPreview;
 
+/** 
+ * Disable search textfield
+ */
+- (void)disableSearch;
+
+/** 
+ * Enable search textfield
+ */
+- (void)enableSearch;
+
+/** 
+ * Show loading view
+ */
+- (void)showLoadingView;
+
+/** 
+ * Hide loading view
+ */
+- (void)hideLoadingView;
+
 @end
 
 
@@ -79,6 +99,8 @@ static NSString* const kImgTopShadow = @"nav-shadow.png";
 
 @synthesize searchTextField             = _searchTextField;
 @synthesize productPreview              = _productPreview;
+@synthesize loadingView                 = _loadingView;
+@synthesize spinnerImageView            = _spinnerImageView;
 @synthesize productImageView            = _productImageView;
 @synthesize topShadowView               = _topShadowView;
 @synthesize productSelectButton         = _productSelectButton;
@@ -123,6 +145,23 @@ static NSString* const kImgTopShadow = @"nav-shadow.png";
     self.productsViewController.view.hidden = YES;
     
     [self.view addSubview:self.productsViewController.view];
+    
+    self.spinnerImageView.animationImages = [NSArray arrayWithObjects:
+                                             [UIImage imageNamed:@"loading1-144@2x.png"],
+                                             [UIImage imageNamed:@"loading2-144@2x.png"],
+                                             [UIImage imageNamed:@"loading3-144@2x.png"],
+                                             [UIImage imageNamed:@"loading4-144@2x.png"],
+                                             [UIImage imageNamed:@"loading5-144@2x.png"],
+                                             [UIImage imageNamed:@"loading6-144@2x.png"],
+                                             [UIImage imageNamed:@"loading7-144@2x.png"],
+                                             [UIImage imageNamed:@"loading8-144@2x.png"],
+                                             [UIImage imageNamed:@"loading9-144@2x.png"],
+                                             [UIImage imageNamed:@"loading10-144@2x.png"],
+                                             [UIImage imageNamed:@"loading11-144@2x.png"],
+                                             [UIImage imageNamed:@"loading12-144@2x.png"],                                             
+                                             nil];
+    
+    self.spinnerImageView.animationDuration = 0.8;
     
     [self showKeyboard];
 }
@@ -170,6 +209,30 @@ static NSString* const kImgTopShadow = @"nav-shadow.png";
     self.productsViewController.view.hidden = NO;
 }
 
+//----------------------------------------------------------------------------------------------------
+- (void)disableSearch {
+    self.searchTextField.enabled = NO;
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)enableSearch {
+    self.searchTextField.enabled = YES;
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)showLoadingView {
+    self.loadingView.hidden = NO;    
+    [self.spinnerImageView startAnimating];
+    
+    [self.view bringSubviewToFront:self.loadingView];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)hideLoadingView {
+    self.loadingView.hidden = YES;
+    [self.spinnerImageView stopAnimating];
+}
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
@@ -210,8 +273,13 @@ static NSString* const kImgTopShadow = @"nav-shadow.png";
 //----------------------------------------------------------------------------------------------------
 - (BOOL)textFieldShouldReturn:(UITextField*)textField {
     
-	if(textField == self.searchTextField)
+	if(textField == self.searchTextField) {
         [self.productsViewController searchProductsForQuery:self.searchTextField.text];
+        [self hideKeyboard];
+        [self disableSearch];
+        [self showLoadingView];
+        [self.productsViewController scrollToTop];
+    }
     
 	return YES;
 }
@@ -227,8 +295,9 @@ static NSString* const kImgTopShadow = @"nav-shadow.png";
     self.searchTextField.text   = self.query;
     
     [self showResults];
+    [self enableSearch];
+    [self hideLoadingView];
     [self showNavBarShadow];
-    [self hideKeyboard];
 }
 
 //----------------------------------------------------------------------------------------------------

@@ -16,6 +16,8 @@
 @interface DWCreationViewController : UIViewController<UITextFieldDelegate,DWProductsViewControllerDelegate> {
     UITextField     *_searchTextField;
     UIView          *_productPreview;
+    UIView          *_loadingView;
+    UIImageView     *_spinnerImageView;
     UIImageView     *_productImageView;
     UIImageView     *_topShadowView;
     UIButton        *_productSelectButton;
@@ -30,6 +32,8 @@
  */
 @property (nonatomic) IBOutlet UITextField *searchTextField;
 @property (nonatomic) IBOutlet UIView *productPreview;
+@property (nonatomic) IBOutlet UIView *loadingView;
+@property (nonatomic) IBOutlet UIImageView *spinnerImageView;
 @property (nonatomic) IBOutlet UIImageView *productImageView;
 @property (nonatomic) IBOutlet UIImageView *topShadowView;
 @property (nonatomic) IBOutlet UIButton *productSelectButton;
