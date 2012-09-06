@@ -10,6 +10,7 @@
 
 #import "DWUsersViewDataSource.h"
 #import "DWuserPresenter.h"
+#import "DWNavigationBarBackButton.h"
 #import "DWUser.h"
 
 #import "DWConstants.h"
@@ -56,6 +57,8 @@
 //----------------------------------------------------------------------------------------------------
 - (void)viewDidLoad {
 	[super viewDidLoad];
+    
+    self.navigationItem.leftBarButtonItem = [DWNavigationBarBackButton backButtonForNavigationController:self.navigationController];
     
     [(DWUsersViewDataSource*)self.tableViewDataSource loadUsers];
 }
