@@ -45,16 +45,13 @@
  */ 
 @protocol DWProfileViewControllerDelegate
 
-@optional
+@required
 
-/**
- * A purchase element is clicked.
- */
+- (void)profileViewFollowingClickedForUser:(DWUser*)user;
+- (void)profileViewFollowersClickedForUser:(DWUser*)user;
+
 - (void)profileViewPurchaseClicked:(DWPurchase*)purchase;
-
-/**
- * A purchase URL element is clicked.
- */
 - (void)profileViewPurchaseURLClicked:(DWPurchase*)purchase;
 
 @end
+

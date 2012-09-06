@@ -8,7 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DWUserProfileCell : UITableViewCell
+@protocol DWUserProfileCellDelegate;
+
+@interface DWUserProfileCell : UITableViewCell {
+    __weak id<DWUserProfileCellDelegate,NSObject> _delegate;
+}
+
+@property (nonatomic,weak) id<DWUserProfileCellDelegate,NSObject> delegate;
 
 
 /**
@@ -27,5 +33,15 @@
  */
 + (NSInteger)heightForCellWithByline:(NSString*)byline
                     connectionsCount:(NSInteger)connectionsCount;
+
+@end
+
+
+@protocol DWUserProfileCellDelegate
+
+@required
+
+- (void)followingButtonClicked;
+- (void)followersButtonClicked;
 
 @end

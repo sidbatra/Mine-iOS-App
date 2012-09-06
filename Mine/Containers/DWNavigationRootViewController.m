@@ -9,6 +9,8 @@
 #import "DWNavigationRootViewController.h"
 #import "DWCommentsCreateViewController.h"
 #import "DWLikersViewController.h"
+#import "DWFollowersViewController.h"
+#import "DWIFollowersViewController.h"
 #import "DWPurchaseViewController.h"
 #import "DWCreatePurchaseBackgroundQueueItem.h"
 #import "DWBackgroundQueue.h"
@@ -108,6 +110,26 @@
                                          animated:YES];
 }
 
+//----------------------------------------------------------------------------------------------------
+- (void)displayFollowersForUser:(DWUser*)user {
+    
+    DWFollowersViewController *followersViewController = [[DWFollowersViewController alloc] initWithUser:user];
+    followersViewController.delegate = self;
+    
+    [self.navigationController pushViewController:followersViewController
+                                         animated:YES];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)displayIfollowersForUser:(DWUser*)user {
+    
+    DWIFollowersViewController *ifollowersViewController = [[DWIFollowersViewController alloc] initWithUser:user];
+    ifollowersViewController.delegate = self;
+    
+    [self.navigationController pushViewController:ifollowersViewController
+                                         animated:YES];
+}
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
@@ -122,6 +144,16 @@
 //----------------------------------------------------------------------------------------------------
 - (void)profileViewPurchaseURLClicked:(DWPurchase *)purchase {
     [self displayExternalURL:purchase.sourceURL];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)profileViewFollowingClickedForUser:(DWUser *)user {
+    [self displayFollowersForUser:user];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)profileViewFollowersClickedForUser:(DWUser *)user {
+    [self displayIfollowersForUser:user];
 }
 
 

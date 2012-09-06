@@ -42,6 +42,8 @@ static NSString* const kImgActionButtonBg = @"btn-action-bg-dark.png";
 //----------------------------------------------------------------------------------------------------
 @implementation DWUserProfileCell
 
+@synthesize delegate = _delegate;
+
 //----------------------------------------------------------------------------------------------------
 - (id)initWithStyle:(UITableViewCellStyle)style 
 	reuseIdentifier:(NSString *)reuseIdentifier {
@@ -136,9 +138,9 @@ static NSString* const kImgActionButtonBg = @"btn-action-bg-dark.png";
     [followingButton setBackgroundImage:[UIImage imageNamed:kImgActionButtonBg]
                                                    forState:UIControlStateNormal];
     
-    //[followingButton addTarget:self
-    //                    action:@selector(didTapCommentButton:)
-    //          forControlEvents:UIControlEventTouchUpInside];
+    [followingButton addTarget:self
+                        action:@selector(didTapFollowingButton:)
+              forControlEvents:UIControlEventTouchUpInside];
     
     [self.contentView addSubview:followingButton];
     
@@ -149,9 +151,9 @@ static NSString* const kImgActionButtonBg = @"btn-action-bg-dark.png";
     [followersButton setBackgroundImage:[UIImage imageNamed:kImgActionButtonBg]
                                forState:UIControlStateNormal];
 
-    //[followersButton addTarget:self
-    //                    action:@selector(didTapCommentButton:)
-    //          forControlEvents:UIControlEventTouchUpInside];
+    [followersButton addTarget:self
+                        action:@selector(didTapFollowersButton:)
+              forControlEvents:UIControlEventTouchUpInside];
     
     [self.contentView addSubview:followersButton];
 
@@ -261,6 +263,30 @@ static NSString* const kImgActionButtonBg = @"btn-action-bg-dark.png";
     }
 }
 
+
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark UI Events
+
+//----------------------------------------------------------------------------------------------------
+- (void)didTapFollowingButton:(UIButton*)button {
+    [self.delegate followingButtonClicked];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)didTapFollowersButton:(UIButton*)button {
+    [self.delegate followersButtonClicked];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark Static methods
+
 //----------------------------------------------------------------------------------------------------
 + (NSInteger)heightForCellWithByline:(NSString*)byline 
                     connectionsCount:(NSInteger)connectionsCount {
@@ -277,6 +303,7 @@ static NSString* const kImgActionButtonBg = @"btn-action-bg-dark.png";
         
     return  height;
 }
+
 
 
 @end
