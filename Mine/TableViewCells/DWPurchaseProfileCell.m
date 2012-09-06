@@ -104,7 +104,8 @@ static NSInteger const kPurchaseProfileCellHeight = 190;
     
     for(NSInteger i=0; i<kColumnsInPurchaseSearch; i++) {
         UIButton *titleButton = [[UIButton alloc] initWithFrame:CGRectMake((145+8)*i + 11,11+145+6,145,30)];
-
+        
+        titleButton.contentVerticalAlignment    = UIControlContentVerticalAlignmentTop;
         titleButton.contentHorizontalAlignment  = UIControlContentHorizontalAlignmentLeft;
         titleButton.titleLabel.font             = [UIFont fontWithName:@"HelveticaNeue" size:11];
         titleButton.titleLabel.backgroundColor  = [UIColor clearColor];
