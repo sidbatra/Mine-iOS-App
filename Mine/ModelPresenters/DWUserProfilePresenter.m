@@ -38,6 +38,7 @@
     
     [cell setUserImage:user.squareImage];
     [cell setUserName:user.fullName];
+    [cell setByline:user.byline];
     
     return cell;
 }
@@ -46,7 +47,9 @@
 + (CGFloat)heightForObject:(id)object 
      withPresentationStyle:(NSInteger)style {
     
-    return [DWUserProfileCell heightForCell];
+    DWUser *user = object;
+    
+    return [DWUserProfileCell heightForCellWithByline:user.byline];
 }
 
 //----------------------------------------------------------------------------------------------------

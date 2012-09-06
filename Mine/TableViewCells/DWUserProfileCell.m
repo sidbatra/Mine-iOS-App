@@ -9,13 +9,16 @@
 #import "DWUserProfileCell.h"
 #import <QuartzCore/QuartzCore.h>
 
-NSInteger const kUserPurchaseCellHeight = 166;
+NSInteger const kUserPurchaseCellHeight = 84;
 
+static const NSInteger kBylineWidth = 298;
+#define kBylineFont [UIFont fontWithName:@"HelveticaNeue" size:14]
 
 
 @interface DWUserProfileCell() {
     UIImageView     *userImageView;
     UILabel         *userNameLabel;
+    UILabel         *bylineLabel;
 }
 
 @end
@@ -40,6 +43,7 @@ NSInteger const kUserPurchaseCellHeight = 166;
         //[self createBorders];
         [self createUserImageView];
         [self createUserNameLabel];
+        [self createBylineLabel];
         
 		self.selectionStyle = UITableViewCellSelectionStyleNone;	
 	}
@@ -78,7 +82,7 @@ NSInteger const kUserPurchaseCellHeight = 166;
 
 //----------------------------------------------------------------------------------------------------
 - (void)createUserNameLabel {
-    userNameLabel  = [[UILabel alloc] initWithFrame:CGRectMake(68,12,240,32)];
+    userNameLabel  = [[UILabel alloc] initWithFrame:CGRectMake(68,10,240,32)];
     
     userNameLabel.backgroundColor    = [UIColor clearColor];
     userNameLabel.font               = [UIFont fontWithName:@"HelveticaNeue-Bold" size:20];
@@ -93,6 +97,22 @@ NSInteger const kUserPurchaseCellHeight = 166;
 }
 
 //----------------------------------------------------------------------------------------------------
+- (void)createBylineLabel {
+    bylineLabel = [[UILabel alloc] initWithFrame:CGRectMake(11, 
+                                                            userImageView.frame.origin.y + userImageView.frame.size.height + 10,
+                                                            kBylineWidth,
+                                                            1)];
+    bylineLabel.backgroundColor    = [UIColor clearColor];
+    bylineLabel.font               = kBylineFont;
+    bylineLabel.textColor          = [UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1.0];
+    bylineLabel.textAlignment      = UITextAlignmentLeft;
+    bylineLabel.numberOfLines      = 0;
+    bylineLabel.lineBreakMode      = UILineBreakModeWordWrap;
+    
+    [self.contentView addSubview:bylineLabel];
+}
+
+//----------------------------------------------------------------------------------------------------
 - (void)setUserImage:(UIImage*)image {
     userImageView.image = image;
 }
@@ -102,10 +122,27 @@ NSInteger const kUserPurchaseCellHeight = 166;
     userNameLabel.text = userName;
 }
 
+//----------------------------------------------------------------------------------------------------
+- (void)setByline:(NSString*)byline {
+
+    CGRect frame = bylineLabel.frame;
+    frame.size.width = kBylineWidth;
+    bylineLabel.frame = frame;
+    
+    bylineLabel.text = byline;
+    [bylineLabel sizeToFit];
+
+}
 
 //----------------------------------------------------------------------------------------------------
-+ (NSInteger)heightForCell {
-    return kUserPurchaseCellHeight;
++ (NSInteger)heightForCellWithByline:(NSString*)byline {
+    NSInteger height = kUserPurchaseCellHeight;
+    
+    if(byline && byline.length)
+        height += [byline sizeWithFont:kBylineFont 
+                     constrainedToSize:CGSizeMake(kBylineWidth,1000)
+                              lineBreakMode:UILineBreakModeWordWrap].height;
+    return  height;
 }
 
 

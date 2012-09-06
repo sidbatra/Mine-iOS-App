@@ -16,20 +16,13 @@
  */
 - (void)resetUI;
 
-/**
- * Set the user image in the cell.
- */
 - (void)setUserImage:(UIImage*)image;
-
-/**
- * Set the user name in the cell.
- */
 - (void)setUserName:(NSString*)userName;
-
+- (void)setByline:(NSString*)byline ;
 
 /**
  * Return the height of the cell.
  */
-+ (NSInteger)heightForCell;
++ (NSInteger)heightForCellWithByline:(NSString*)byline;
 
 @end
