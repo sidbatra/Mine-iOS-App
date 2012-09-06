@@ -14,11 +14,14 @@
 
 
 static NSString* const kGetURI                  = @"/followings/%d.json?";
+static NSString* const kIndexURI                = @"/followings.json?";
 static NSString* const kCreateURI               = @"/followings.json?user_id=%d";
 static NSString* const kDestroyURI              = @"/followings/%d.json?";
 
 static NSString* const kNFollowingLoaded        = @"NFollowingLoaded";
 static NSString* const kNFollowingLoadError     = @"NFollowingLoadError";
+static NSString* const kNFollowingsLoaded       = @"NFollowingsLoaded";
+static NSString* const kNFollowingsLoadError    = @"NFollowingsLoadError";
 static NSString* const kNFollowingCreated       = @"NFollowingCreated";
 static NSString* const kNFollowingCreateError   = @"NFollowingCreateError";
 static NSString* const kNFollowingDestroyed     = @"NFollowingDestroyed";
@@ -47,6 +50,17 @@ static NSString* const kNFollowingDestroyError  = @"NFollowingDestroyError";
 		[[NSNotificationCenter defaultCenter] addObserver:self 
 												 selector:@selector(followingLoadError:) 
 													 name:kNFollowingLoadError
+												   object:nil];
+        
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self 
+												 selector:@selector(followingsLoaded:) 
+													 name:kNFollowingsLoaded
+												   object:nil];
+		
+		[[NSNotificationCenter defaultCenter] addObserver:self 
+												 selector:@selector(followingsLoadError:) 
+													 name:kNFollowingsLoadError
 												   object:nil];
         
         [[NSNotificationCenter defaultCenter] addObserver:self 
@@ -91,6 +105,18 @@ static NSString* const kNFollowingDestroyError  = @"NFollowingDestroyError";
                                                   requestMethod:kGet
                                                    authenticate:YES
                                                      resourceID:userID];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)getFollowings {
+    
+    NSString *localURL = [NSString stringWithFormat:kIndexURI];
+    
+    [[DWRequestManager sharedDWRequestManager] createAppRequest:localURL
+                                            successNotification:kNFollowingsLoaded
+                                              errorNotification:kNFollowingsLoadError
+                                                  requestMethod:kGet
+                                                   authenticate:YES];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -163,6 +189,43 @@ static NSString* const kNFollowingDestroyError  = @"NFollowingDestroyError";
     [self.delegate performSelector:sel 
                         withObject:[error localizedDescription]
                         withObject:[info objectForKey:kKeyResourceID]];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)followingsLoaded:(NSNotification*)notification {
+    
+    SEL sel = @selector(followingsLoaded:);
+    
+    if(![self.delegate respondsToSelector:sel])
+        return;
+    
+    
+    NSDictionary *info          = [notification userInfo];
+    NSArray *response           = [info objectForKey:kKeyResponse];
+    NSMutableArray *followings  = [NSMutableArray arrayWithCapacity:[response count]];
+    
+    for(NSDictionary *following in response) {
+        [followings addObject:[DWFollowing create:following]];
+    }
+    
+    [self.delegate performSelector:sel
+                        withObject:followings];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)followingsLoadError:(NSNotification*)notification {
+    
+    SEL sel = @selector(followingsLoadError:);
+    
+    if(![self.delegate respondsToSelector:sel])
+        return;
+    
+    
+    NSDictionary *info  = [notification userInfo];
+    NSError *error      = [info objectForKey:kKeyError];
+    
+    [self.delegate performSelector:sel 
+                        withObject:[error localizedDescription]];
 }
 
 

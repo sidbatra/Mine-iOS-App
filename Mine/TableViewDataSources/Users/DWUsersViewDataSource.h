@@ -9,16 +9,19 @@
 #import "DWTableViewDataSource.h"
 
 #import "DWUsersController.h"
+#import "DWFollowingsController.h"
 
 
-@interface DWUsersViewDataSource : DWTableViewDataSource<DWUsersControllerDelegate> {
-    BOOL                _followingsLoaded;
+@interface DWUsersViewDataSource : DWTableViewDataSource<DWUsersControllerDelegate,DWFollowingsControllerDelegate> {
+    BOOL                    _followingsLoaded;
     
-    DWUsersController   *_usersController;
+    DWUsersController       *_usersController;
+    DWFollowingsController  *_followingsController;
 }
 
 @property (nonatomic,assign) BOOL followingsLoaded;
 @property (nonatomic,strong) DWUsersController *usersController;
+@property (nonatomic,strong) DWFollowingsController *followingsController;
 
 
 /**

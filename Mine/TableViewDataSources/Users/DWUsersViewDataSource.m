@@ -18,8 +18,9 @@
 //----------------------------------------------------------------------------------------------------
 @implementation DWUsersViewDataSource
 
-@synthesize followingsLoaded    = _followingsLoaded;
-@synthesize usersController     = _usersController;
+@synthesize followingsLoaded        = _followingsLoaded;
+@synthesize usersController         = _usersController;
+@synthesize followingsController    = _followingsController;
 
 //----------------------------------------------------------------------------------------------------
 - (id)init {
@@ -28,6 +29,9 @@
     if(self) {
         self.usersController            = [[DWUsersController alloc] init];
         self.usersController.delegate   = self;
+        
+        self.followingsController = [[DWFollowingsController alloc] init];
+        self.followingsController.delegate = self;
     }
     
     return self;
@@ -38,7 +42,7 @@
     if(self.followingsLoaded)
         return;
     
-    self.followingsLoaded = YES;
+    [self.followingsController getFollowings];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -49,6 +53,22 @@
 //----------------------------------------------------------------------------------------------------
 - (void)refreshInitiated {
     [self loadUsers];
+}
+
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWFollowingsControllerDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)followingsLoaded:(NSMutableArray *)followings {
+    self.followingsLoaded = YES;
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)followingsLoadError:(NSString *)message {    
 }
    
 @end

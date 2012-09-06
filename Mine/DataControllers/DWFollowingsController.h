@@ -27,6 +27,11 @@
 - (void)getFollowingForUserID:(NSInteger)userID;
 
 /**
+ * Fetch all followings for the current user.
+ */
+- (void)getFollowings;
+
+/**
  * Create a new following between the current user and the given user.
  */
 - (void)createFollowingForUserID:(NSInteger)userID;
@@ -60,6 +65,15 @@
 - (void)followingLoadError:(NSString*)message
                  forUserID:(NSNumber*)userID;
 
+/**
+ * All followings of the current user loaded.
+ */
+- (void)followingsLoaded:(NSMutableArray*)followings;
+
+/**
+ * Error loading followings for the currrent user.
+ */
+- (void)followingsLoadError:(NSString*)message;
 
 /**
  * Following created.
