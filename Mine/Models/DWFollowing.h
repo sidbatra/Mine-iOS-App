@@ -15,4 +15,10 @@
 
 @property (nonatomic,assign) NSInteger userID;
 
+
+/**
+ * Return first following in memory pool for the given user id.
+ */
++ (DWFollowing*)followingForUserID:(NSInteger)userID;
+
 @end

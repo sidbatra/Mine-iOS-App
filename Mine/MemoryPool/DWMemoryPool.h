@@ -44,5 +44,10 @@
  */
 - (void)freeMemory;
 
+/**
+ * Return entire pool for the given class name.
+ */
+- (NSMutableDictionary*)poolForClass:(NSString*)className;
+
 @end
 

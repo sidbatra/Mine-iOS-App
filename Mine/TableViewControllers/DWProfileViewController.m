@@ -166,6 +166,7 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)followingLoaded:(DWFollowing*)following {
+    
     if(following)
         [self.followButton enterActiveState];
     else

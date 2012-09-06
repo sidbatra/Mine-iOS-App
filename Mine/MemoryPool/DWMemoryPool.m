@@ -105,6 +105,10 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWMemoryPool);
     }
 }
 
+//----------------------------------------------------------------------------------------------------
+- (NSMutableDictionary*)poolForClass:(NSString*)className {
+    return [self.memoryPool objectForKey:className];
+}
 
 
 //----------------------------------------------------------------------------------------------------
