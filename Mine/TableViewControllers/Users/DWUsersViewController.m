@@ -64,7 +64,6 @@
 }
 
 
-
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
@@ -94,7 +93,7 @@
 //----------------------------------------------------------------------------------------------------
 - (void)userSquareImageLoaded:(NSNotification*)notification {
     NSDictionary *userInfo = [notification userInfo];
-    
+
     [self provideResourceToVisibleCells:[DWUser class] 
                                objectID:[[userInfo objectForKey:kKeyResourceID] integerValue]
                               objectKey:kKeySquareImageURL];

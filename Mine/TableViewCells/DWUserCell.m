@@ -59,6 +59,16 @@ NSInteger const kUserCellHeight = 50;
 }
 
 //----------------------------------------------------------------------------------------------------
+- (void)displayActiveFollowing {
+    [followButton enterActiveState];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)displayInactiveFollowing {
+    [followButton enterInactiveState];
+}
+
+//----------------------------------------------------------------------------------------------------
 - (void)createBorders {
     UILabel *topBorder = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.contentView.frame.size.width,1)];
     topBorder.backgroundColor = [UIColor colorWithRed:0.972 green:0.972 blue:0.972 alpha:1.0];

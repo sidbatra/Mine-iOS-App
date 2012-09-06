@@ -82,7 +82,7 @@ static NSString* const kNFollowingDestroyError  = @"NFollowingDestroyError";
 
 //----------------------------------------------------------------------------------------------------
 - (void)getFollowingForUserID:(NSInteger)userID {
-    
+
     NSString *localURL = [NSString stringWithFormat:kGetURI,userID];
     
     [[DWRequestManager sharedDWRequestManager] createAppRequest:localURL
@@ -142,7 +142,6 @@ static NSString* const kNFollowingDestroyError  = @"NFollowingDestroyError";
     
     if(response && [response count])
         following = [DWFollowing create:response];
-    
     
     [self.delegate performSelector:sel
                         withObject:following

@@ -84,6 +84,7 @@ extern NSString* const kKeyImage;
 extern NSString* const kKeyError;
 extern NSString* const kKeyUser;
 extern NSString* const kKeyPurchase;
+extern NSString* const kKeyFollowing;
 
 /**
  * Misc

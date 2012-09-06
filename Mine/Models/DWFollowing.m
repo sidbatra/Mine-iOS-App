@@ -8,6 +8,8 @@
 
 #import "DWFollowing.h"
 
+NSString* const kKeyUserID  = @"user_id";
+
 
 
 //----------------------------------------------------------------------------------------------------
@@ -15,9 +17,21 @@
 //----------------------------------------------------------------------------------------------------
 @implementation DWFollowing
 
+@synthesize userID = _userID;
+
 //----------------------------------------------------------------------------------------------------
 -(void)dealloc{
     NSLog(@"Following released - %d",self.databaseID);
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)update:(NSDictionary*)following {
+    [super update:following];
+
+    NSString *userID  = [following objectForKey:kKeyUserID];
+    
+    if(userID)
+        self.userID = [userID integerValue];
 }
 
 @end

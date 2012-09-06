@@ -10,6 +10,7 @@
 
 #import "DWUserCell.h"
 #import "DWUser.h"
+#import "DWFollowing.h"
 
 #import "DWConstants.h"
 
@@ -62,11 +63,16 @@
                      andObjectKey:(NSString*)objectKey {
     
     
-    DWUser *user        = object;
-    DWUserCell *cell    = base;
+    DWUser *user            = object;    
+    DWUserCell *cell        = base;
     
-    if([user class] == objectClass && user.databaseID == objectID && objectKey == kKeySquareImageURL) {
-        [cell setUserImage:user.squareImage];
+    if([user class] == objectClass && user.databaseID == objectID) {
+        
+        if(objectKey == kKeySquareImageURL)
+            [cell setUserImage:user.squareImage];
+        else if(objectKey == kKeyFollowing) {
+            //[cell displayActiveFollowing];
+        }
     }
 }
 

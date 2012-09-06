@@ -24,6 +24,8 @@
  * Reset cell UI before changing the values.
  */
 - (void)resetUI;
+- (void)displayActiveFollowing;
+- (void)displayInactiveFollowing;
 
 /**
  * Set the user image in the cell.

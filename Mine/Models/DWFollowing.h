@@ -9,6 +9,10 @@
 #import "DWPoolObject.h"
 
 
-@interface DWFollowing : DWPoolObject
+@interface DWFollowing : DWPoolObject {
+     NSInteger  _userID;
+}
+
+@property (nonatomic,assign) NSInteger userID;
 
 @end
