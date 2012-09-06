@@ -12,7 +12,7 @@
 /**
  * Base height of the purchase cell
  */
-static NSInteger const kPurchaseProfileCellHeight = 175;
+static NSInteger const kPurchaseProfileCellHeight = 190;
 
 
 @interface DWPurchaseProfileCell() {
@@ -60,6 +60,8 @@ static NSInteger const kPurchaseProfileCellHeight = 175;
         
         [self createImageButtons];
         [self createTitleButtons];
+        
+        self.contentView.backgroundColor = [UIColor whiteColor];
 		
 		self.selectionStyle = UITableViewCellSelectionStyleNone;	
 	}
@@ -82,10 +84,10 @@ static NSInteger const kPurchaseProfileCellHeight = 175;
 - (void)createImageButtons {
     
     for(NSInteger i=0 ; i<kColumnsInPurchaseSearch ; i++) {
-        UIButton *imageButton = [[UIButton alloc] initWithFrame:CGRectMake(150*i + 10, 0, 150, 150)];
+        UIButton *imageButton = [[UIButton alloc] initWithFrame:CGRectMake((145+8)*i + 11,11,145,145)];
         
         imageButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
-        imageButton.backgroundColor = [UIColor yellowColor];
+        imageButton.backgroundColor = [UIColor clearColor];
         
          [imageButton addTarget:self
          action:@selector(didTapImageButton:)
@@ -101,12 +103,17 @@ static NSInteger const kPurchaseProfileCellHeight = 175;
 - (void)createTitleButtons {
     
     for(NSInteger i=0; i<kColumnsInPurchaseSearch; i++) {
-        UIButton *titleButton = [[UIButton alloc] initWithFrame:CGRectMake(150*i + 10, 150, 150, 25)];
-        
-        titleButton.titleLabel.font             = [UIFont fontWithName:@"HelveticaNeue" size:13];
-        titleButton.titleLabel.textColor        = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0];
-        titleButton.titleLabel.backgroundColor  = [UIColor blueColor];
+        UIButton *titleButton = [[UIButton alloc] initWithFrame:CGRectMake((145+8)*i + 11,11+145+6,145,30)];
+
+        titleButton.contentHorizontalAlignment  = UIControlContentHorizontalAlignmentLeft;
+        titleButton.titleLabel.font             = [UIFont fontWithName:@"HelveticaNeue" size:11];
+        titleButton.titleLabel.backgroundColor  = [UIColor clearColor];
         titleButton.titleLabel.textAlignment    = UITextAlignmentLeft;
+        titleButton.titleLabel.numberOfLines    = 2;
+        titleButton.titleLabel.lineBreakMode    = UILineBreakModeWordWrap;
+
+        [titleButton setTitleColor:[UIColor colorWithRed:0.333 green:0.333 blue:0.333 alpha:1.0]  
+                          forState:UIControlStateNormal];
         
         [titleButton addTarget:self
                         action:@selector(didTapTitleButton:)
@@ -166,6 +173,9 @@ static NSInteger const kPurchaseProfileCellHeight = 175;
     UIButton *titleButton = [self.titleButtons objectAtIndex:index];
     titleButton.tag = purchaseID;
     titleButton.hidden = NO;
+    
+    if([title length] > 50)
+        title = [NSString stringWithFormat:@"%@...",[title substringToIndex:47]];
     
     [titleButton setTitle:title 
                  forState:UIControlStateNormal];
