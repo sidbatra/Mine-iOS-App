@@ -11,7 +11,9 @@
 
 NSInteger const kUserPurchaseCellHeight = 84;
 
-static const NSInteger kBylineWidth = 298;
+static NSInteger const kBylineWidth = 298;
+static NSString* const kImgActionButtonBg = @"btn-action-bg-dark.png";
+
 #define kBylineFont [UIFont fontWithName:@"HelveticaNeue" size:14]
 
 
@@ -19,6 +21,9 @@ static const NSInteger kBylineWidth = 298;
     UIImageView     *userImageView;
     UILabel         *userNameLabel;
     UILabel         *bylineLabel;
+    
+    UIButton        *followingButton;
+    UIButton        *followersButton;
 }
 
 @end
@@ -44,6 +49,7 @@ static const NSInteger kBylineWidth = 298;
         [self createUserImageView];
         [self createUserNameLabel];
         [self createBylineLabel];
+        [self createConnectionButtons];
         
 		self.selectionStyle = UITableViewCellSelectionStyleNone;	
 	}
@@ -54,6 +60,8 @@ static const NSInteger kBylineWidth = 298;
 //----------------------------------------------------------------------------------------------------
 - (void)resetUI {
     userImageView.image = nil;
+    followingButton.hidden = NO;
+    followersButton.hidden = NO;
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -113,6 +121,35 @@ static const NSInteger kBylineWidth = 298;
 }
 
 //----------------------------------------------------------------------------------------------------
+- (void)createConnectionButtons {
+    
+    followingButton = [[UIButton alloc] initWithFrame:CGRectMake(11,0,149,44)];
+    
+    [followingButton setBackgroundImage:[UIImage imageNamed:kImgActionButtonBg]
+                                                   forState:UIControlStateNormal];
+    
+    //[followingButton addTarget:self
+    //                    action:@selector(didTapCommentButton:)
+    //          forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.contentView addSubview:followingButton];
+    
+    
+    
+    followersButton = [[UIButton alloc] initWithFrame:CGRectMake(163,0,149,44)];
+    
+    [followersButton setBackgroundImage:[UIImage imageNamed:kImgActionButtonBg]
+                               forState:UIControlStateNormal];
+
+    //[followersButton addTarget:self
+    //                    action:@selector(didTapCommentButton:)
+    //          forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.contentView addSubview:followersButton];
+
+}
+
+//----------------------------------------------------------------------------------------------------
 - (void)setUserImage:(UIImage*)image {
     userImageView.image = image;
 }
@@ -123,25 +160,55 @@ static const NSInteger kBylineWidth = 298;
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)setByline:(NSString*)byline {
+- (void)setByline:(NSString*)byline 
+  followingsCount:(NSInteger)followingsCount
+   followersCount:(NSInteger)followersCount {
 
     CGRect frame = bylineLabel.frame;
     frame.size.width = kBylineWidth;
     bylineLabel.frame = frame;
-    
     bylineLabel.text = byline;
     [bylineLabel sizeToFit];
-
+    
+    
+    if(followingsCount) {
+        frame = followingButton.frame;
+        frame.origin.y = bylineLabel.frame.origin.y+bylineLabel.frame.size.height+11;
+        followingButton.frame = frame;
+    }
+    else {
+        followingButton.hidden = YES;
+        
+        frame = followersButton.frame;
+        frame.origin.x = followingButton.frame.origin.x;
+        followersButton.frame = frame;
+    }
+    
+    
+    if(followersCount) {
+        frame = followersButton.frame;
+        frame.origin.y = bylineLabel.frame.origin.y+bylineLabel.frame.size.height+11;
+        followersButton.frame = frame; 
+    }
+    else {
+        followersButton.hidden = YES;
+    }
 }
 
 //----------------------------------------------------------------------------------------------------
-+ (NSInteger)heightForCellWithByline:(NSString*)byline {
++ (NSInteger)heightForCellWithByline:(NSString*)byline 
+                    connectionsCount:(NSInteger)connectionsCount {
+    
     NSInteger height = kUserPurchaseCellHeight;
     
     if(byline && byline.length)
         height += [byline sizeWithFont:kBylineFont 
                      constrainedToSize:CGSizeMake(kBylineWidth,1000)
                               lineBreakMode:UILineBreakModeWordWrap].height;
+    
+    if(connectionsCount)
+        height += 55;
+        
     return  height;
 }
 

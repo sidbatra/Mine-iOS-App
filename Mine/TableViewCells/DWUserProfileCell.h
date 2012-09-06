@@ -18,11 +18,14 @@
 
 - (void)setUserImage:(UIImage*)image;
 - (void)setUserName:(NSString*)userName;
-- (void)setByline:(NSString*)byline ;
+- (void)setByline:(NSString*)byline   
+  followingsCount:(NSInteger)followingsCount
+   followersCount:(NSInteger)followersCount;
 
 /**
  * Return the height of the cell.
  */
-+ (NSInteger)heightForCellWithByline:(NSString*)byline;
++ (NSInteger)heightForCellWithByline:(NSString*)byline
+                    connectionsCount:(NSInteger)connectionsCount;
 
 @end

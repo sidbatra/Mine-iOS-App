@@ -38,7 +38,9 @@
     
     [cell setUserImage:user.squareImage];
     [cell setUserName:user.fullName];
-    [cell setByline:user.byline];
+    [cell setByline:user.byline 
+    followingsCount:user.followingsCount 
+     followersCount:user.inverseFollowingsCount];
     
     return cell;
 }
@@ -49,7 +51,8 @@
     
     DWUser *user = object;
     
-    return [DWUserProfileCell heightForCellWithByline:user.byline];
+    return [DWUserProfileCell heightForCellWithByline:user.byline 
+                                     connectionsCount:user.followingsCount+user.inverseFollowingsCount];
 }
 
 //----------------------------------------------------------------------------------------------------
