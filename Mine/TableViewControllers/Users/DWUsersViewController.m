@@ -17,7 +17,10 @@
 
 
 @interface DWUsersViewController () {
+    BOOL    _followingsLoaded;
 }
+
+@property (nonatomic,assign) BOOL followingsLoaded;
 
 @end
 
@@ -28,7 +31,8 @@
 //----------------------------------------------------------------------------------------------------
 @implementation DWUsersViewController
 
-@synthesize delegate = _delegate;
+@synthesize followingsLoaded    = _followingsLoaded;
+@synthesize delegate            = _delegate;
 
 //----------------------------------------------------------------------------------------------------
 - (id)init {
@@ -61,6 +65,11 @@
     self.navigationItem.leftBarButtonItem = [DWNavigationBarBackButton backButtonForNavigationController:self.navigationController];
     
     [(DWUsersViewDataSource*)self.tableViewDataSource loadUsers];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (BOOL)areFollowingsLoaded {
+    return self.followingsLoaded;
 }
 
 
@@ -97,6 +106,8 @@
     [self provideResourceToVisibleCells:[DWUser class] 
                                objectID:[[userInfo objectForKey:kKeyResourceID] integerValue]
                               objectKey:kKeySquareImageURL];
+    
+    
 }    
 
 @end

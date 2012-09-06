@@ -44,6 +44,14 @@
     [cell setUserImage:user.squareImage];
     [cell setUserName:user.fullName];
     
+    
+    if([delegate performSelector:@selector(areFollowingsLoaded)]) {
+        if([DWFollowing followingForUserID:user.databaseID])
+            [cell displayActiveFollowing];
+        else
+            [cell displayInactiveFollowing]; 
+    }
+    
     return cell;
 }
 
@@ -71,7 +79,10 @@
         if(objectKey == kKeySquareImageURL)
             [cell setUserImage:user.squareImage];
         else if(objectKey == kKeyFollowing) {
-            //[cell displayActiveFollowing];
+            if([DWFollowing followingForUserID:user.databaseID])
+                [cell displayActiveFollowing];
+            else
+                [cell displayInactiveFollowing];
         }
     }
 }
