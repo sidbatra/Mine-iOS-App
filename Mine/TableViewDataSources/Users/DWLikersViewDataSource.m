@@ -22,6 +22,8 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)loadUsers {
+    [super loadUsers];
+    
     DWPurchase *purchase = [DWPurchase fetch:self.purchaseID];
     
     NSMutableArray *users = [NSMutableArray arrayWithCapacity:[purchase.likes count]];

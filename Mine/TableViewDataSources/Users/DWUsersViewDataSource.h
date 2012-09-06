@@ -12,12 +12,12 @@
 
 
 @interface DWUsersViewDataSource : DWTableViewDataSource<DWUsersControllerDelegate> {
+    BOOL                _followingsLoaded;
+    
     DWUsersController   *_usersController;
 }
 
-/**
- * Data controller for fetching a list of users.
- */
+@property (nonatomic,assign) BOOL followingsLoaded;
 @property (nonatomic,strong) DWUsersController *usersController;
 
 

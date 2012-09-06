@@ -8,9 +8,7 @@
 
 #import "DWUsersViewDataSource.h"
 
-@interface DWUsersViewDataSource() {
-}
-
+@interface DWUsersViewDataSource()
 @end
 
 
@@ -20,7 +18,8 @@
 //----------------------------------------------------------------------------------------------------
 @implementation DWUsersViewDataSource
 
-@synthesize usersController = _usersController;
+@synthesize followingsLoaded    = _followingsLoaded;
+@synthesize usersController     = _usersController;
 
 //----------------------------------------------------------------------------------------------------
 - (id)init {
@@ -35,7 +34,16 @@
 }
 
 //----------------------------------------------------------------------------------------------------
+- (void)loadFollowings {
+    if(self.followingsLoaded)
+        return;
+    
+    self.followingsLoaded = YES;
+}
+
+//----------------------------------------------------------------------------------------------------
 - (void)loadUsers {
+    [self loadFollowings];
 }
 
 //----------------------------------------------------------------------------------------------------

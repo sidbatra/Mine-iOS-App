@@ -16,12 +16,7 @@
 #import "DWConstants.h"
 
 
-@interface DWUsersViewController () {
-    BOOL    _followingsLoaded;
-}
-
-@property (nonatomic,assign) BOOL followingsLoaded;
-
+@interface DWUsersViewController ()
 @end
 
 
@@ -31,7 +26,6 @@
 //----------------------------------------------------------------------------------------------------
 @implementation DWUsersViewController
 
-@synthesize followingsLoaded    = _followingsLoaded;
 @synthesize delegate            = _delegate;
 
 //----------------------------------------------------------------------------------------------------
@@ -69,7 +63,7 @@
 
 //----------------------------------------------------------------------------------------------------
 - (BOOL)areFollowingsLoaded {
-    return self.followingsLoaded;
+    return [(DWUsersViewDataSource*)self.tableViewDataSource followingsLoaded];
 }
 
 

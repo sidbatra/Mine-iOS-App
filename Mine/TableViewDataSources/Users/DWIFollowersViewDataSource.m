@@ -21,6 +21,7 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)loadUsers {
+    [super loadUsers];
     [self.usersController getIFollowersForUserID:self.userID];
 }
 

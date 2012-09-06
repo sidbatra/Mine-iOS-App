@@ -46,6 +46,8 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)loadUsersForQuery:(NSString*)query {
+    [super loadUsers];
+    
     self.query = query;
     self.resourceID = [self.usersController getUsersForQuery:query];
 }

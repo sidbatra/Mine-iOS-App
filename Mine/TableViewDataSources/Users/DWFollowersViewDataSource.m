@@ -21,6 +21,7 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)loadUsers {
+    [super loadUsers];
     [self.usersController getFollowersForUserID:self.userID];
 }
 
