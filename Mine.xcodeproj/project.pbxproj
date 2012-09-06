@@ -178,6 +178,8 @@
 		BB9F314F15F645C5009C1385 /* DWUserProfileCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9F314E15F645C5009C1385 /* DWUserProfileCell.m */; };
 		BB9F315315F64750009C1385 /* DWUserProfilePresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9F315215F64750009C1385 /* DWUserProfilePresenter.m */; };
 		BB9F316115F87CF5009C1385 /* btn-action-bg-dark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB9F316015F87CF5009C1385 /* btn-action-bg-dark@2x.png */; };
+		BB9F316515F8B8E2009C1385 /* nav-btn-settings-off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB9F316315F8B8E2009C1385 /* nav-btn-settings-off@2x.png */; };
+		BB9F316615F8B8E2009C1385 /* nav-btn-settings-on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB9F316415F8B8E2009C1385 /* nav-btn-settings-on@2x.png */; };
 		BB9F70AB15B9E62F0099C80A /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB9F70AA15B9E62F0099C80A /* CFNetwork.framework */; };
 		BB9F70AE15B9E6400099C80A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB9F70AD15B9E6400099C80A /* SystemConfiguration.framework */; };
 		BB9F70B015B9E6450099C80A /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB9F70AF15B9E6450099C80A /* MobileCoreServices.framework */; };
@@ -530,6 +532,8 @@
 		BB9F315115F6474F009C1385 /* DWUserProfilePresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWUserProfilePresenter.h; sourceTree = "<group>"; };
 		BB9F315215F64750009C1385 /* DWUserProfilePresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWUserProfilePresenter.m; sourceTree = "<group>"; };
 		BB9F316015F87CF5009C1385 /* btn-action-bg-dark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-action-bg-dark@2x.png"; sourceTree = "<group>"; };
+		BB9F316315F8B8E2009C1385 /* nav-btn-settings-off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-btn-settings-off@2x.png"; sourceTree = "<group>"; };
+		BB9F316415F8B8E2009C1385 /* nav-btn-settings-on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-btn-settings-on@2x.png"; sourceTree = "<group>"; };
 		BB9F70AA15B9E62F0099C80A /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		BB9F70AD15B9E6400099C80A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		BB9F70AF15B9E6450099C80A /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
@@ -786,6 +790,8 @@
 		BB06360315BF7258001F26E1 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				BB9F316315F8B8E2009C1385 /* nav-btn-settings-off@2x.png */,
+				BB9F316415F8B8E2009C1385 /* nav-btn-settings-on@2x.png */,
 				BB9F316015F87CF5009C1385 /* btn-action-bg-dark@2x.png */,
 				26A83C4E15F6D51A0095B72D /* chooser-item-bg-on@2x.png */,
 				26A83C4815F6BE860095B72D /* chooser-item-bg-off@2x.png */,
@@ -1601,6 +1607,8 @@
 				26A83C4915F6BE870095B72D /* chooser-item-bg-off@2x.png in Resources */,
 				26A83C4F15F6D51A0095B72D /* chooser-item-bg-on@2x.png in Resources */,
 				BB9F316115F87CF5009C1385 /* btn-action-bg-dark@2x.png in Resources */,
+				BB9F316515F8B8E2009C1385 /* nav-btn-settings-off@2x.png in Resources */,
+				BB9F316615F8B8E2009C1385 /* nav-btn-settings-on@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

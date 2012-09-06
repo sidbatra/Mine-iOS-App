@@ -106,7 +106,7 @@ static NSInteger const kCreateTabIndex              = 1;
                                 selectedImageName:@"tab-left-feed-on.png"
                              highlightedImageName:nil
                              isMappedToController:YES
-                                       isSelected:NO];
+                                       isSelected:YES];
     
     [self.tabBarController.tabBar addTabWithWidth:92
                                   normalImageName:@"tab-center-add-off.png"
@@ -120,7 +120,7 @@ static NSInteger const kCreateTabIndex              = 1;
                                 selectedImageName:@"tab-right-profile-on.png"
                              highlightedImageName:nil
                              isMappedToController:YES
-                                       isSelected:YES];
+                                       isSelected:NO];
 }
 
 //----------------------------------------------------------------------------------------------------

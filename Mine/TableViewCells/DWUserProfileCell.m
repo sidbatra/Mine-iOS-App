@@ -91,7 +91,7 @@ static NSString* const kImgActionButtonBg = @"btn-action-bg-dark.png";
 //----------------------------------------------------------------------------------------------------
 - (void)createUserImageView {
     userImageView = [[UIImageView alloc] initWithFrame:CGRectMake(11,9,48,48)];
-    userImageView.backgroundColor = [UIColor clearColor];
+    userImageView.backgroundColor = [UIColor colorWithRed:0.2 green:0.2 blue:0.2 alpha:1.0];
     userImageView.layer.cornerRadius = 3;
     userImageView.layer.masksToBounds = YES;
     
