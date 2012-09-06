@@ -7,7 +7,11 @@
 //
 
 #import "DWUserProfileCell.h"
+
 #import <QuartzCore/QuartzCore.h>
+#import "OHAttributedLabel.h"
+#import "NSAttributedString+Attributes.h"
+
 
 NSInteger const kUserPurchaseCellHeight = 84;
 
@@ -24,6 +28,9 @@ static NSString* const kImgActionButtonBg = @"btn-action-bg-dark.png";
     
     UIButton        *followingButton;
     UIButton        *followersButton;
+    
+    OHAttributedLabel   *followingLabel;
+    OHAttributedLabel   *followersLabel;
 }
 
 @end
@@ -50,6 +57,7 @@ static NSString* const kImgActionButtonBg = @"btn-action-bg-dark.png";
         [self createUserNameLabel];
         [self createBylineLabel];
         [self createConnectionButtons];
+        [self createConnectionLabels];
         
 		self.selectionStyle = UITableViewCellSelectionStyleNone;	
 	}
@@ -150,6 +158,27 @@ static NSString* const kImgActionButtonBg = @"btn-action-bg-dark.png";
 }
 
 //----------------------------------------------------------------------------------------------------
+- (void)createConnectionLabels {
+    followingLabel = [[OHAttributedLabel alloc] initWithFrame:CGRectMake(0,0,149,44)];
+    followingLabel.textAlignment = UITextAlignmentLeft;
+    followingLabel.centerVertically = YES;
+    followingLabel.automaticallyAddLinksForType = 0;
+    followingLabel.backgroundColor = [UIColor clearColor];
+    
+    [self.contentView addSubview:followingLabel];
+    
+    
+    followersLabel = [[OHAttributedLabel alloc] initWithFrame:CGRectMake(0,0,149,44)];
+    followersLabel.textAlignment = UITextAlignmentLeft;
+    followersLabel.centerVertically = YES;
+    followersLabel.automaticallyAddLinksForType = 0;
+    followersLabel.backgroundColor = [UIColor clearColor];
+    
+    [self.contentView addSubview:followersLabel];
+
+}
+
+//----------------------------------------------------------------------------------------------------
 - (void)setUserImage:(UIImage*)image {
     userImageView.image = image;
 }
@@ -175,6 +204,24 @@ static NSString* const kImgActionButtonBg = @"btn-action-bg-dark.png";
         frame = followingButton.frame;
         frame.origin.y = bylineLabel.frame.origin.y+bylineLabel.frame.size.height+11;
         followingButton.frame = frame;
+        
+        frame = followingButton.frame;
+        frame.origin.x += 10;
+        frame.origin.y -= 2;
+        followingLabel.frame = frame;
+        
+        
+        NSString *followingCountString = [NSString stringWithFormat:@"%d",followingsCount];
+        NSString *followingText = [NSString stringWithFormat:@"%@ following",followingCountString];
+        
+        NSRange countRange = NSMakeRange(0,followingCountString.length);
+        
+        NSMutableAttributedString* attrStr = [NSMutableAttributedString attributedStringWithString:followingText];
+        [attrStr setFont:[UIFont fontWithName:@"HelveticaNeue" size:13.5]];
+        [attrStr setFont:[UIFont fontWithName:@"HelveticaNeue-Bold" size:20] range:countRange];
+        [attrStr setTextColor:[UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1.0]];
+        
+        followingLabel.attributedText = attrStr;
     }
     else {
         followingButton.hidden = YES;
@@ -189,6 +236,25 @@ static NSString* const kImgActionButtonBg = @"btn-action-bg-dark.png";
         frame = followersButton.frame;
         frame.origin.y = bylineLabel.frame.origin.y+bylineLabel.frame.size.height+11;
         followersButton.frame = frame; 
+        
+        
+        frame = followersButton.frame;
+        frame.origin.x += 10;
+        frame.origin.y -= 2;
+        followersLabel.frame = frame;
+        
+        
+        NSString *followersCountString = [NSString stringWithFormat:@"%d",followersCount];
+        NSString *followersText = [NSString stringWithFormat:@"%@ %@",followersCountString,followersCount > 1 ? @"followers" : @"follower"];
+        
+        NSRange countRange = NSMakeRange(0,followersCountString.length);
+        
+        NSMutableAttributedString* attrStr = [NSMutableAttributedString attributedStringWithString:followersText];
+        [attrStr setFont:[UIFont fontWithName:@"HelveticaNeue" size:13.5]];
+        [attrStr setFont:[UIFont fontWithName:@"HelveticaNeue-Bold" size:20] range:countRange];
+        [attrStr setTextColor:[UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1.0]];
+        
+        followersLabel.attributedText = attrStr;
     }
     else {
         followersButton.hidden = YES;

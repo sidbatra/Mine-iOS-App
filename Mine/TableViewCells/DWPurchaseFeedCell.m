@@ -6,11 +6,11 @@
 //  Copyright (c) 2012 Denwen, Inc. All rights reserved.
 //
 
-#import <QuartzCore/QuartzCore.h>
+#import "DWPurchaseFeedCell.h"
 
+#import <QuartzCore/QuartzCore.h>
 #import "NSAttributedString+Attributes.h"
 
-#import "DWPurchaseFeedCell.h"
 #import "DWUser.h"
 #import "DWLike.h"
 
