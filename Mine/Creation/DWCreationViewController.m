@@ -157,18 +157,14 @@ static NSString* const kImgTopShadow = @"nav-shadow.png";
     [self.view addSubview:self.productsViewController.view];
     
     self.spinnerImageView.animationImages = [NSArray arrayWithObjects:
-                                             [UIImage imageNamed:@"loading1-144@2x.png"],
-                                             [UIImage imageNamed:@"loading2-144@2x.png"],
-                                             [UIImage imageNamed:@"loading3-144@2x.png"],
-                                             [UIImage imageNamed:@"loading4-144@2x.png"],
-                                             [UIImage imageNamed:@"loading5-144@2x.png"],
-                                             [UIImage imageNamed:@"loading6-144@2x.png"],
-                                             [UIImage imageNamed:@"loading7-144@2x.png"],
-                                             [UIImage imageNamed:@"loading8-144@2x.png"],
-                                             [UIImage imageNamed:@"loading9-144@2x.png"],
-                                             [UIImage imageNamed:@"loading10-144@2x.png"],
-                                             [UIImage imageNamed:@"loading11-144@2x.png"],
-                                             [UIImage imageNamed:@"loading12-144@2x.png"],                                             
+                                             [UIImage imageNamed:@"loading1-72@2x.png"],
+                                             [UIImage imageNamed:@"loading2-72@2x.png"],
+                                             [UIImage imageNamed:@"loading3-72@2x.png"],
+                                             [UIImage imageNamed:@"loading4-72@2x.png"],
+                                             [UIImage imageNamed:@"loading5-72@2x.png"],
+                                             [UIImage imageNamed:@"loading6-72@2x.png"],
+                                             [UIImage imageNamed:@"loading7-72@2x.png"],
+                                             [UIImage imageNamed:@"loading8-72@2x.png"],                                             
                                              nil];
     
     self.spinnerImageView.animationDuration = 0.8;
