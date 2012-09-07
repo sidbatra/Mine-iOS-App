@@ -7,12 +7,16 @@
 //
 
 #import "DWPurchaseInputViewController.h"
+#import "DWNavigationBarBackButton.h"
 #import "DWStore.h"
 #import "DWProduct.h"
 #import "DWPurchase.h"
 #import "DWSetting.h"
 #import "DWSession.h"
 
+
+static NSString* const kImgDoneOff    = @"nav-btn-done-off@2x.png";
+static NSString* const kImgDoneOn     = @"nav-btn-done-on@2x.png";
 
 /**
  * Private declarations
@@ -65,6 +69,11 @@
  * Setup the UI (switch vs button) for the fb,tw and tumblr switches
  */
 - (void)setupSharingUI;
+
+/**
+ * Setup done button (right NavBarButton)
+ */
+- (void)setupDoneButton;
 
 @end
 
@@ -127,7 +136,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.navigationItem.leftBarButtonItem = [DWNavigationBarBackButton backButtonForNavigationController:self.navigationController];
     self.navigationController.navigationBarHidden = NO;
+    
+    [self setupDoneButton];
     
     self.nameTextField.text = [self.purchase.query capitalizedString];
     [self.nameTextField becomeFirstResponder];
@@ -147,6 +159,25 @@
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
 #pragma mark Private Methods
+
+//----------------------------------------------------------------------------------------------------
+- (void)setupDoneButton {
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];    
+    
+    [button setBackgroundImage:[UIImage imageNamed:kImgDoneOff] 
+                      forState:UIControlStateNormal];
+    
+    [button setBackgroundImage:[UIImage imageNamed:kImgDoneOn] 
+                      forState:UIControlStateHighlighted];
+    
+	[button addTarget:self
+               action:@selector(post)
+     forControlEvents:UIControlEventTouchUpInside];
+    
+	[button setFrame:CGRectMake(0,0,58,30)];
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
+}
 
 //----------------------------------------------------------------------------------------------------
 - (void)setupSharingUI {    

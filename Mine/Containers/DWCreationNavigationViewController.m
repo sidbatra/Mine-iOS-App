@@ -7,6 +7,7 @@
 //
 
 #import "DWCreationNavigationViewController.h"
+#import "DWNavigationBar.h"
 
 /**
  * Private declarations
@@ -47,6 +48,7 @@
 - (void)viewDidLoad {
 	[super viewDidLoad];
     
+    [self.navigationController setValue:[[DWNavigationBar alloc] init] forKeyPath:@"navigationBar"];
     self.navigationController.navigationBarHidden = YES;
 
     if(!self.creationViewController) {
