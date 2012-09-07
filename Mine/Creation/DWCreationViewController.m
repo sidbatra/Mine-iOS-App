@@ -89,6 +89,16 @@ static NSString* const kImgTopShadow = @"nav-shadow.png";
  */
 - (void)hideLoadingView;
 
+/** 
+ * Show spinner
+ */
+- (void)showSpinner;
+
+/** 
+ * Hide spinner
+ */
+- (void)hideSpinner;
+
 @end
 
 
@@ -188,20 +198,26 @@ static NSString* const kImgTopShadow = @"nav-shadow.png";
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)showProductPreview {
-    self.productPreview.hidden = NO;
-    [self.view bringSubviewToFront:self.productPreview];
-}
-
-//----------------------------------------------------------------------------------------------------
 - (void)showNavBarShadow {
     self.topShadowView.hidden = NO;
     [self.view bringSubviewToFront:self.topShadowView];
 }
 
 //----------------------------------------------------------------------------------------------------
+- (void)showProductPreview {
+    self.productPreview.hidden = NO;
+    
+    [self.view bringSubviewToFront:self.productPreview];
+    [self.view bringSubviewToFront:self.spinnerImageView];    
+    
+    if(!self.product.largeImage)
+        [self showSpinner];
+}
+
+//----------------------------------------------------------------------------------------------------
 - (void)hideProductPreview {
     self.productPreview.hidden = YES;
+    [self hideSpinner];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -221,15 +237,29 @@ static NSString* const kImgTopShadow = @"nav-shadow.png";
 
 //----------------------------------------------------------------------------------------------------
 - (void)showLoadingView {
-    self.loadingView.hidden = NO;    
-    [self.spinnerImageView startAnimating];
+    self.loadingView.hidden = NO;  
     
     [self.view bringSubviewToFront:self.loadingView];
+    [self.view bringSubviewToFront:self.spinnerImageView];    
+    
+    [self showSpinner];
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)hideLoadingView {
-    self.loadingView.hidden = YES;
+- (void)hideLoadingView {    
+    self.loadingView.hidden = YES;    
+    [self hideSpinner];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)showSpinner {
+    self.spinnerImageView.hidden = NO;
+    [self.spinnerImageView startAnimating];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)hideSpinner {
+    self.spinnerImageView.hidden = YES;
     [self.spinnerImageView stopAnimating];
 }
 
@@ -325,6 +355,7 @@ static NSString* const kImgTopShadow = @"nav-shadow.png";
 //----------------------------------------------------------------------------------------------------
 - (void)productLargeImageLoaded:(NSNotification*)notification {
     self.productImageView.image = self.product.largeImage;
+    [self hideSpinner];
 }
 
 

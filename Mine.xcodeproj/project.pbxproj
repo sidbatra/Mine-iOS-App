@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		261D0F8315F971570085591F /* preview-btn-no-off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 261D0F7F15F971570085591F /* preview-btn-no-off@2x.png */; };
+		261D0F8415F971570085591F /* preview-btn-no-on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 261D0F8015F971570085591F /* preview-btn-no-on@2x.png */; };
+		261D0F8515F971570085591F /* preview-btn-yes-off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 261D0F8115F971570085591F /* preview-btn-yes-off@2x.png */; };
+		261D0F8615F971570085591F /* preview-btn-yes-on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 261D0F8215F971570085591F /* preview-btn-yes-on@2x.png */; };
+		261D0F8915F9761A0085591F /* preview-crosshairs@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 261D0F8815F9761A0085591F /* preview-crosshairs@2x.png */; };
 		2622005215C71393003DC1DF /* DWContactsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 2622005115C71393003DC1DF /* DWContactsDataSource.m */; };
 		2622005715C713A7003DC1DF /* DWInviteViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2622005515C713A7003DC1DF /* DWInviteViewController.m */; };
 		2622005815C713A7003DC1DF /* DWInviteViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2622005615C713A7003DC1DF /* DWInviteViewController.xib */; };
@@ -39,6 +44,7 @@
 		262376B515BF6C0A00B3A037 /* FBFrictionlessRequestSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 262376AD15BF6C0A00B3A037 /* FBFrictionlessRequestSettings.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		262376B615BF6C0A00B3A037 /* FBLoginDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 262376AF15BF6C0A00B3A037 /* FBLoginDialog.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		262376B715BF6C0A00B3A037 /* FBRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 262376B115BF6C0A00B3A037 /* FBRequest.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		263F4B4615F96A4C00941159 /* preview-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 263F4B4515F96A4C00941159 /* preview-bg@2x.png */; };
 		267B3FB915D42D0B0001AC64 /* DWStoresViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 267B3FB815D42D0B0001AC64 /* DWStoresViewController.m */; };
 		267B3FBD15D4322A0001AC64 /* DWStorePresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 267B3FBC15D4322A0001AC64 /* DWStorePresenter.m */; };
 		267B3FC115D43AE90001AC64 /* DWStorePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 267B3FBF15D43AE90001AC64 /* DWStorePickerViewController.m */; };
@@ -253,6 +259,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		261D0F7F15F971570085591F /* preview-btn-no-off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "preview-btn-no-off@2x.png"; sourceTree = "<group>"; };
+		261D0F8015F971570085591F /* preview-btn-no-on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "preview-btn-no-on@2x.png"; sourceTree = "<group>"; };
+		261D0F8115F971570085591F /* preview-btn-yes-off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "preview-btn-yes-off@2x.png"; sourceTree = "<group>"; };
+		261D0F8215F971570085591F /* preview-btn-yes-on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "preview-btn-yes-on@2x.png"; sourceTree = "<group>"; };
+		261D0F8815F9761A0085591F /* preview-crosshairs@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "preview-crosshairs@2x.png"; sourceTree = "<group>"; };
 		2622005015C71393003DC1DF /* DWContactsDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWContactsDataSource.h; sourceTree = "<group>"; };
 		2622005115C71393003DC1DF /* DWContactsDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWContactsDataSource.m; sourceTree = "<group>"; };
 		2622005415C713A7003DC1DF /* DWInviteViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWInviteViewController.h; sourceTree = "<group>"; };
@@ -309,6 +320,7 @@
 		262376B015BF6C0A00B3A037 /* FBRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FBRequest.h; path = Facebook/FBRequest.h; sourceTree = "<group>"; };
 		262376B115BF6C0A00B3A037 /* FBRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FBRequest.m; path = Facebook/FBRequest.m; sourceTree = "<group>"; };
 		262376B815BF6CBA00B3A037 /* Facebook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Facebook.h; path = Facebook/Facebook.h; sourceTree = "<group>"; };
+		263F4B4515F96A4C00941159 /* preview-bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "preview-bg@2x.png"; sourceTree = "<group>"; };
 		267B3FB715D42D0B0001AC64 /* DWStoresViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWStoresViewController.h; sourceTree = "<group>"; };
 		267B3FB815D42D0B0001AC64 /* DWStoresViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWStoresViewController.m; sourceTree = "<group>"; };
 		267B3FBB15D4322A0001AC64 /* DWStorePresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWStorePresenter.h; sourceTree = "<group>"; };
@@ -814,6 +826,12 @@
 		BB06360315BF7258001F26E1 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				261D0F8815F9761A0085591F /* preview-crosshairs@2x.png */,
+				261D0F7F15F971570085591F /* preview-btn-no-off@2x.png */,
+				261D0F8015F971570085591F /* preview-btn-no-on@2x.png */,
+				261D0F8115F971570085591F /* preview-btn-yes-off@2x.png */,
+				261D0F8215F971570085591F /* preview-btn-yes-on@2x.png */,
+				263F4B4515F96A4C00941159 /* preview-bg@2x.png */,
 				BB9F316315F8B8E2009C1385 /* nav-btn-settings-off@2x.png */,
 				BB9F316415F8B8E2009C1385 /* nav-btn-settings-on@2x.png */,
 				BB9F316015F87CF5009C1385 /* btn-action-bg-dark@2x.png */,
@@ -1657,6 +1675,12 @@
 				26A83C6A15F82C8A0095B72D /* loading10-144@2x.png in Resources */,
 				26A83C6B15F82C8A0095B72D /* loading11-144@2x.png in Resources */,
 				26A83C6C15F82C8A0095B72D /* loading12-144@2x.png in Resources */,
+				263F4B4615F96A4C00941159 /* preview-bg@2x.png in Resources */,
+				261D0F8315F971570085591F /* preview-btn-no-off@2x.png in Resources */,
+				261D0F8415F971570085591F /* preview-btn-no-on@2x.png in Resources */,
+				261D0F8515F971570085591F /* preview-btn-yes-off@2x.png in Resources */,
+				261D0F8615F971570085591F /* preview-btn-yes-on@2x.png in Resources */,
+				261D0F8915F9761A0085591F /* preview-crosshairs@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
