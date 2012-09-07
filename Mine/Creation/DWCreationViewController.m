@@ -299,7 +299,7 @@ static NSString* const kImgTopShadow = @"nav-shadow.png";
 //----------------------------------------------------------------------------------------------------
 - (BOOL)textFieldShouldReturn:(UITextField*)textField {
     
-	if(textField == self.searchTextField) {
+	if(textField == self.searchTextField && self.searchTextField.text.length) {
         [self.productsViewController searchProductsForQuery:self.searchTextField.text];
         [self hideKeyboard];
         [self disableSearch];

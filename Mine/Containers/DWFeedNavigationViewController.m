@@ -113,7 +113,7 @@ static NSString* const kImgSearchOn     = @"nav-btn-search-on.png";
                action:@selector(searchButtonClicked)
      forControlEvents:UIControlEventTouchUpInside];
     
-	[button setFrame:CGRectMake(0, 0,45,30)];
+	[button setFrame:CGRectMake(0, 0,40,30)];
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
 }

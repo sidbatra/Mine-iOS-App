@@ -31,7 +31,7 @@ static NSString* const kImgBackButtonOff    = @"nav-btn-back-off.png";
 
 //----------------------------------------------------------------------------------------------------
 - (id)init {
-    self = [super initWithFrame:CGRectMake(0,0,56,30)];
+    self = [super initWithFrame:CGRectMake(0,0,51,30)];
     
     if (self) {
         [self createButton];

@@ -91,7 +91,7 @@ static NSString* const kImgSettingsOn     = @"nav-btn-settings-on.png";
                action:@selector(settingsButtonClicked)
      forControlEvents:UIControlEventTouchUpInside];
     
-	[button setFrame:CGRectMake(0, 0,45,30)];
+	[button setFrame:CGRectMake(0, 0,40,30)];
     
     self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
     

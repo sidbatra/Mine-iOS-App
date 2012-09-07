@@ -155,8 +155,9 @@ static NSString* const kImgProductHighlight  = @"chooser-item-bg-on@2x.png";
 //----------------------------------------------------------------------------------------------------
 - (void)resetUI {
     
-    for(UIButton *productButton in self.productButtons) 
+    for(UIButton *productButton in self.productButtons) {
         productButton.hidden = YES;
+    }
     
 }
 
