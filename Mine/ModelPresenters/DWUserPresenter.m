@@ -37,6 +37,7 @@
         cell = [[DWUserCell alloc] initWithStyle:UITableViewStylePlain 
                                  reuseIdentifier:identifier];
     
+    cell.userID = user.databaseID;
     cell.delegate = delegate;
     
     [cell resetUI];
@@ -76,16 +77,20 @@
     DWUser *user            = object;    
     DWUserCell *cell        = base;
     
-    if([user class] == objectClass && (user.databaseID == objectID || objectID == -1)) {
-        
+    if([user class] == objectClass && user.databaseID == objectID) {
         if(objectKey == kKeySquareImageURL)
             [cell setUserImage:user.squareImage];
-        else if(objectKey == kKeyFollowing) {
-            if([[DWFollowingManager sharedDWFollowingManager] followingForUserID:user.databaseID])
+        else if(objectKey == kKeyFollowingCreated)
+            [cell displayActiveFollowing];
+        else if(objectKey == kKeyFollowingDestroyed)
+            [cell displayInactiveFollowing];
+    }
+    
+    if([user class] == objectClass && objectKey == kKeyFollowing) {
+        if([[DWFollowingManager sharedDWFollowingManager] followingForUserID:user.databaseID])
                 [cell displayActiveFollowing];
-            else
-                [cell displayInactiveFollowing];
-        }
+        else
+            [cell displayInactiveFollowing];
     }
 }
 

@@ -36,6 +36,11 @@
  */
 - (void)loadUsers;
 
+/**
+ * Toggle remote & local status of following between current user and user id.
+ */
+- (void)toggleFollowForUserID:(NSInteger)userID;
+
 @end
 
 
@@ -44,6 +49,6 @@
 @required
 
 - (void)followingsLoaded;
-- (void)followingModifiedForUserID:(NSInteger)userID;
+- (void)followingModifiedForUserID:(NSInteger)userID toStatus:(BOOL)isActive;
 
 @end

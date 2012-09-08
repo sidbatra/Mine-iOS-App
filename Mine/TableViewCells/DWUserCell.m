@@ -29,7 +29,8 @@ NSInteger const kUserCellHeight = 50;
 //----------------------------------------------------------------------------------------------------
 @implementation DWUserCell
 
-@synthesize delegate = _delegate;
+@synthesize userID      = _userID;
+@synthesize delegate    = _delegate;
 
 //----------------------------------------------------------------------------------------------------
 - (id)initWithStyle:(UITableViewCellStyle)style 
@@ -135,7 +136,7 @@ NSInteger const kUserCellHeight = 50;
 
 //----------------------------------------------------------------------------------------------------
 - (void)followButtonClicked {
-    [self.delegate userCellFollowClicked];
+    [self.delegate userCellFollowClickedForUserID:self.userID];
 }
 
 

@@ -14,9 +14,12 @@
 
 
 @interface DWUserCell : UITableViewCell<DWFollowButtonDelegate> {
+    NSInteger _userID;
+    
     __weak id<DWUserCellDelegate,NSObject> _delegate;
 }
 
+@property (nonatomic,assign) NSInteger userID;
 @property (nonatomic,weak) id<DWUserCellDelegate,NSObject> delegate;
 
 
@@ -50,6 +53,6 @@
 
 @required
 
-- (void)userCellFollowClicked;
+- (void)userCellFollowClickedForUserID:(NSInteger)userID;
 
 @end

@@ -57,6 +57,20 @@
     [self loadUsers];
 }
 
+//----------------------------------------------------------------------------------------------------
+- (void)toggleFollowForUserID:(NSInteger)userID {
+    
+    DWFollowing *following = [[DWFollowingManager sharedDWFollowingManager] followingForUserID:userID];
+    
+    if(following) {
+        [self.followingsController destroyFollowing:following.databaseID
+                                          ForUserID:userID];
+    }
+    else {
+        [self.followingsController createFollowingForUserID:userID];
+    }
+}
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
@@ -70,6 +84,25 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)followingsLoadError:(NSString *)message {    
+}
+
+
+//----------------------------------------------------------------------------------------------------
+- (void)followingCreated:(DWFollowing *)following forUserID:(NSNumber *)userID {
+    [self.delegate followingModifiedForUserID:[userID integerValue] toStatus:YES];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)followingCreateError:(NSString *)message forUserID:(NSNumber *)userID {
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)followingDestroyed:(DWFollowing *)following forUserID:(NSNumber *)userID {
+    [self.delegate followingModifiedForUserID:[userID integerValue] toStatus:NO];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)followingDestroyError:(NSString *)message forUserID:(NSNumber *)userID {
 }
    
 @end

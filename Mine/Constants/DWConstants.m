@@ -72,6 +72,8 @@ NSString* const kKeyError       = @"error";
 NSString* const kKeyUser        = @"user";
 NSString* const kKeyPurchase    = @"purchase";
 NSString* const kKeyFollowing   = @"following";
+NSString* const kKeyFollowingCreated   = @"following_created";
+NSString* const kKeyFollowingDestroyed = @"following_destroyed";
 
 //----------------------------------------------------------------------------------------------------
 NSString* const kRailsDateTimeFormat = @"yyyy-MM-dd HH:mm:ss ZZZ";

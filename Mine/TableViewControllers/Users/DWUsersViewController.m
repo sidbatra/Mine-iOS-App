@@ -68,7 +68,8 @@
 #pragma mark DWUserCellDelegate
 
 //----------------------------------------------------------------------------------------------------
-- (void)userCellFollowClicked {
+- (void)userCellFollowClickedForUserID:(NSInteger)userID {
+    [(DWUsersViewDataSource*)self.tableViewDataSource toggleFollowForUserID:userID];
 }
 
 
@@ -78,7 +79,10 @@
 #pragma mark DWUserViewDataSourceDelegate
 
 //----------------------------------------------------------------------------------------------------
-- (void)followingModifiedForUserID:(NSInteger)userID {
+- (void)followingModifiedForUserID:(NSInteger)userID toStatus:(BOOL)isActive {
+    [self provideResourceToVisibleCells:[DWUser class] 
+                               objectID:userID
+                              objectKey:isActive ? kKeyFollowingCreated : kKeyFollowingDestroyed];
 }
 
 //----------------------------------------------------------------------------------------------------
