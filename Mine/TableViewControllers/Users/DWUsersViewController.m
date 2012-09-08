@@ -75,6 +75,23 @@
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
+#pragma mark DWUserViewDataSourceDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)followingModifiedForUserID:(NSInteger)userID {
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)followingsLoaded {
+    [self provideResourceToVisibleCells:[DWUser class] 
+                               objectID:-1
+                              objectKey:kKeyFollowing];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
 #pragma mark User presenter events
 
 //----------------------------------------------------------------------------------------------------
@@ -95,8 +112,6 @@
     [self provideResourceToVisibleCells:[DWUser class] 
                                objectID:[[userInfo objectForKey:kKeyResourceID] integerValue]
                               objectKey:kKeySquareImageURL];
-    
-    
 }    
 
 @end

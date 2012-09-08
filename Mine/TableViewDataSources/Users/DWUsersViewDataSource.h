@@ -12,6 +12,9 @@
 #import "DWFollowingsController.h"
 
 
+@protocol DWUsersViewDataSourceDelegate;
+
+
 @interface DWUsersViewDataSource : DWTableViewDataSource<DWUsersControllerDelegate,DWFollowingsControllerDelegate> {
     
     DWUsersController       *_usersController;
@@ -23,8 +26,24 @@
 
 
 /**
+ * Override delegate type.
+ */
+@property (nonatomic,weak) id<DWUsersViewDataSourceDelegate,DWTableViewDataSourceDelegate,NSObject> delegate;
+
+
+/**
  * Fetch the designated set of users.
  */
 - (void)loadUsers;
+
+@end
+
+
+@protocol DWUsersViewDataSourceDelegate<DWTableViewDataSourceDelegate>
+
+@required
+
+- (void)followingsLoaded;
+- (void)followingModifiedForUserID:(NSInteger)userID;
 
 @end

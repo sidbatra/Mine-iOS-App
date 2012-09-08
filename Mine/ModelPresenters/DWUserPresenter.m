@@ -76,7 +76,7 @@
     DWUser *user            = object;    
     DWUserCell *cell        = base;
     
-    if([user class] == objectClass && user.databaseID == objectID) {
+    if([user class] == objectClass && (user.databaseID == objectID || objectID == -1)) {
         
         if(objectKey == kKeySquareImageURL)
             [cell setUserImage:user.squareImage];

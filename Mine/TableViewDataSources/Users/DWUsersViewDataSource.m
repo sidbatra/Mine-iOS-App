@@ -7,6 +7,7 @@
 //
 
 #import "DWUsersViewDataSource.h"
+#import "DWFollowing.h"
 #import "DWFollowingManager.h"
 
 @interface DWUsersViewDataSource()
@@ -21,6 +22,7 @@
 
 @synthesize usersController         = _usersController;
 @synthesize followingsController    = _followingsController;
+@dynamic delegate;
 
 //----------------------------------------------------------------------------------------------------
 - (id)init {
@@ -56,7 +58,6 @@
 }
 
 
-
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
@@ -64,6 +65,7 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)followingsLoaded:(NSMutableArray *)followings {
+    [self.delegate followingsLoaded];
 }
 
 //----------------------------------------------------------------------------------------------------
