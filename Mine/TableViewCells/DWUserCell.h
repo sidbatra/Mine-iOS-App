@@ -29,6 +29,7 @@
 - (void)resetUI;
 - (void)displayActiveFollowing;
 - (void)displayInactiveFollowing;
+- (void)hideFollowButton;
 
 /**
  * Set the user image in the cell.

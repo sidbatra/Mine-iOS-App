@@ -14,6 +14,7 @@
 #import "DWUser.h"
 #import "DWFollowing.h"
 
+#import "DWSession.h"
 #import "DWConstants.h"
 
 
@@ -48,11 +49,16 @@
     [cell setUserName:user.fullName];
     
     
-    if([DWFollowingManager sharedDWFollowingManager].areBulkFollowingsLoaded) {
-        if([[DWFollowingManager sharedDWFollowingManager] followingForUserID:user.databaseID])
-            [cell displayActiveFollowing];
-        else
-            [cell displayInactiveFollowing]; 
+    if(![[DWSession sharedDWSession] isCurrentUser:user.databaseID]) {
+        if([DWFollowingManager sharedDWFollowingManager].areBulkFollowingsLoaded) {
+            if([[DWFollowingManager sharedDWFollowingManager] followingForUserID:user.databaseID])
+                [cell displayActiveFollowing];
+            else
+                [cell displayInactiveFollowing]; 
+        }        
+    }
+    else {
+        [cell hideFollowButton];
     }
     
     return cell;
