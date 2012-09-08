@@ -98,6 +98,12 @@ static NSInteger const kDefaultDatabaseID   = -1;
 }
 
 //----------------------------------------------------------------------------------------------------
+- (void)forceDestroy {
+    self.pointerCount = 0;
+    [self destroy];
+}
+
+//----------------------------------------------------------------------------------------------------
 - (BOOL)isUnmounted {
     return self.databaseID == kDefaultDatabaseID;
 }

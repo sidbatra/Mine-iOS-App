@@ -8,7 +8,6 @@
 
 #import "DWFollowing.h"
 #import "DWMemoryPool.h"
-#import "NSObject+Helpers.h"
 
 NSString* const kKeyUserID  = @"user_id";
 
@@ -34,28 +33,6 @@ NSString* const kKeyUserID  = @"user_id";
     
     if(userID)
         self.userID = [userID integerValue];
-}
-
-
-//----------------------------------------------------------------------------------------------------
-//----------------------------------------------------------------------------------------------------
-#pragma mark -
-#pragma mark Static methods
-
-//----------------------------------------------------------------------------------------------------
-+ (DWFollowing*)followingForUserID:(NSInteger)userID {
-    
-    NSMutableDictionary *followings = [[DWMemoryPool sharedDWMemoryPool] poolForClass:[DWFollowing className]];
-    DWFollowing *result = nil;
-    
-    for(DWFollowing *following in [followings allValues]) {
-        if(following.userID == userID) {
-            result = following;
-            break;
-        }
-    }
-    
-    return result;
 }
 
 @end

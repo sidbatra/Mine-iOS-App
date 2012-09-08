@@ -66,6 +66,12 @@
 - (void)destroy;
 
 /**
+ * Remove object from memory pool irrespective of pointer count.
+ * Use with caution.
+ */
+- (void)forceDestroy;
+
+/**
  * Increment point count by one - imply an extra reference which wasn't done
  * via the convential create or mount methods.
  */

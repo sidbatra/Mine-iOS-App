@@ -42,7 +42,7 @@
  */
 @protocol DWProfileViewDataSourceDelegate<DWTableViewDataSourceDelegate>
 
-@optional
+@required
 
-- (void)followingLoaded:(DWFollowing*)following;
+- (void)followingLoadedAndIsActive:(BOOL)isActive;
 @end

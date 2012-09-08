@@ -279,11 +279,11 @@ static NSString* const kNFollowingDestroyError  = @"NFollowingDestroyError";
     
     
     NSDictionary *info          = [notification userInfo];
-    NSDictionary *response      = [info objectForKey:kKeyResponse];
+    //NSDictionary *response      = [info objectForKey:kKeyResponse];
     DWFollowing *following      = nil;
     
-    if(response && [response count])
-        following = [DWFollowing create:response];
+    //if(response && [response count])
+    //    following = [DWFollowing create:response];
     
     
     [self.delegate performSelector:sel

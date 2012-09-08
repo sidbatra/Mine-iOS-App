@@ -8,6 +8,8 @@
 
 #import "DWUserPresenter.h"
 
+#import "DWFollowingManager.h"
+
 #import "DWUserCell.h"
 #import "DWUser.h"
 #import "DWFollowing.h"
@@ -45,8 +47,8 @@
     [cell setUserName:user.fullName];
     
     
-    if([delegate performSelector:@selector(areFollowingsLoaded)]) {
-        if([DWFollowing followingForUserID:user.databaseID])
+    if([DWFollowingManager sharedDWFollowingManager].areBulkFollowingsLoaded) {
+        if([[DWFollowingManager sharedDWFollowingManager] followingForUserID:user.databaseID])
             [cell displayActiveFollowing];
         else
             [cell displayInactiveFollowing]; 
@@ -79,7 +81,7 @@
         if(objectKey == kKeySquareImageURL)
             [cell setUserImage:user.squareImage];
         else if(objectKey == kKeyFollowing) {
-            if([DWFollowing followingForUserID:user.databaseID])
+            if([[DWFollowingManager sharedDWFollowingManager] followingForUserID:user.databaseID])
                 [cell displayActiveFollowing];
             else
                 [cell displayInactiveFollowing];

@@ -165,9 +165,9 @@
 #pragma mark DWProfileViewDataSourceDelegate
 
 //----------------------------------------------------------------------------------------------------
-- (void)followingLoaded:(DWFollowing*)following {
+- (void)followingLoadedAndIsActive:(BOOL)isActive {
     
-    if(following)
+    if(isActive)
         [self.followButton enterActiveState];
     else
         [self.followButton enterInactiveState];

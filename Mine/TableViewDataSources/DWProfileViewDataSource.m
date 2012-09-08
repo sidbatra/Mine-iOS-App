@@ -7,6 +7,7 @@
 //
 
 #import "DWProfileViewDataSource.h"
+#import "DWFollowingManager.h"
 #import "DWPagination.h"
 #import "DWModelSet.h"
 #import "DWPurchase.h"
@@ -21,7 +22,6 @@
     DWUsersController       *_usersController;
     
     DWUser                  *_user;
-    DWFollowing             *_following;
     
     NSMutableArray          *_purchases;
     
@@ -49,11 +49,6 @@
 @property (nonatomic,strong) DWUser *user;
 
 /**
- * The status of the following with the user whose profile is being displayed.
- */
-@property (nonatomic,strong) DWFollowing *following;
-
-/**
  * Holds the last page of purchases loaded from the server to break deadlocks
  * in displaying the profile view since the user cell and purchases cells must be
  * displayed together.
@@ -79,7 +74,6 @@
 @synthesize followingsController    = _followingsController;
 @synthesize usersController         = _usersController;
 @synthesize user                    = _user;
-@synthesize following               = _following;
 @synthesize purchases               = _purchases;
 @synthesize oldestTimestamp         = _oldestTimestamp;
 @dynamic delegate;
@@ -114,8 +108,11 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)toggleFollowing {
-    if(self.following) {
-        [self.followingsController destroyFollowing:self.following.databaseID
+    
+    DWFollowing *following = [[DWFollowingManager sharedDWFollowingManager] followingForUserID:self.userID];
+    
+    if(following) {
+        [self.followingsController destroyFollowing:following.databaseID
                                           ForUserID:self.userID];
     }
     else {
@@ -223,15 +220,10 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)fireFollowingLoadedDelegate:(DWFollowing*)following {
+        
+    [self.delegate followingLoadedAndIsActive:following ? YES : NO];
     
-    self.following = following;
-    
-    SEL sel = @selector(followingLoaded:);
-    
-    if(![self.delegate respondsToSelector:sel])
-        return;
-    
-    [self.delegate performSelector:sel withObject:following]; 
+    [following destroy];
 }
 
 

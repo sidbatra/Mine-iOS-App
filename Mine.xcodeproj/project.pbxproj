@@ -196,6 +196,7 @@
 		BB9F316115F87CF5009C1385 /* btn-action-bg-dark@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB9F316015F87CF5009C1385 /* btn-action-bg-dark@2x.png */; };
 		BB9F316515F8B8E2009C1385 /* nav-btn-settings-off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB9F316315F8B8E2009C1385 /* nav-btn-settings-off@2x.png */; };
 		BB9F316615F8B8E2009C1385 /* nav-btn-settings-on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB9F316415F8B8E2009C1385 /* nav-btn-settings-on@2x.png */; };
+		BB9F316D15FB5725009C1385 /* DWFollowingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9F316C15FB5725009C1385 /* DWFollowingManager.m */; };
 		BB9F70AB15B9E62F0099C80A /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB9F70AA15B9E62F0099C80A /* CFNetwork.framework */; };
 		BB9F70AE15B9E6400099C80A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB9F70AD15B9E6400099C80A /* SystemConfiguration.framework */; };
 		BB9F70B015B9E6450099C80A /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB9F70AF15B9E6450099C80A /* MobileCoreServices.framework */; };
@@ -566,6 +567,8 @@
 		BB9F316015F87CF5009C1385 /* btn-action-bg-dark@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn-action-bg-dark@2x.png"; sourceTree = "<group>"; };
 		BB9F316315F8B8E2009C1385 /* nav-btn-settings-off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-btn-settings-off@2x.png"; sourceTree = "<group>"; };
 		BB9F316415F8B8E2009C1385 /* nav-btn-settings-on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-btn-settings-on@2x.png"; sourceTree = "<group>"; };
+		BB9F316B15FB5725009C1385 /* DWFollowingManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWFollowingManager.h; sourceTree = "<group>"; };
+		BB9F316C15FB5725009C1385 /* DWFollowingManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWFollowingManager.m; sourceTree = "<group>"; };
 		BB9F70AA15B9E62F0099C80A /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		BB9F70AD15B9E6400099C80A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		BB9F70AF15B9E6450099C80A /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
@@ -1018,10 +1021,12 @@
 		BB26987115BB6E0600037453 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
-				BB26987515BB6F3E00037453 /* DWImageManager.h */,
-				BB26987615BB6F3E00037453 /* DWImageManager.m */,
 				BB2BC08A15D1909600CCC4BB /* DWAnalyticsManager.h */,
 				BB2BC08B15D1909600CCC4BB /* DWAnalyticsManager.m */,
+				BB9F316B15FB5725009C1385 /* DWFollowingManager.h */,
+				BB9F316C15FB5725009C1385 /* DWFollowingManager.m */,
+				BB26987515BB6F3E00037453 /* DWImageManager.h */,
+				BB26987615BB6F3E00037453 /* DWImageManager.m */,
 				BBEDD2FC15D30798007F862F /* DWNotificationManager.h */,
 				BBEDD2FD15D30798007F862F /* DWNotificationManager.m */,
 			);
@@ -1846,6 +1851,7 @@
 				BB9F314815F62BC2009C1385 /* DWNavigationBarBackButton.m in Sources */,
 				BB9F314F15F645C5009C1385 /* DWUserProfileCell.m in Sources */,
 				BB9F315315F64750009C1385 /* DWUserProfilePresenter.m in Sources */,
+				BB9F316D15FB5725009C1385 /* DWFollowingManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
