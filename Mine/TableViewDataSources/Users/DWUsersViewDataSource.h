@@ -13,13 +13,11 @@
 
 
 @interface DWUsersViewDataSource : DWTableViewDataSource<DWUsersControllerDelegate,DWFollowingsControllerDelegate> {
-    BOOL                    _followingsLoaded;
     
     DWUsersController       *_usersController;
     DWFollowingsController  *_followingsController;
 }
 
-@property (nonatomic,assign) BOOL followingsLoaded;
 @property (nonatomic,strong) DWUsersController *usersController;
 @property (nonatomic,strong) DWFollowingsController *followingsController;
 

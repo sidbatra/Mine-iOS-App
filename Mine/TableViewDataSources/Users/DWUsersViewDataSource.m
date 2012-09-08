@@ -7,6 +7,7 @@
 //
 
 #import "DWUsersViewDataSource.h"
+#import "DWFollowingManager.h"
 
 @interface DWUsersViewDataSource()
 @end
@@ -18,7 +19,6 @@
 //----------------------------------------------------------------------------------------------------
 @implementation DWUsersViewDataSource
 
-@synthesize followingsLoaded        = _followingsLoaded;
 @synthesize usersController         = _usersController;
 @synthesize followingsController    = _followingsController;
 
@@ -39,7 +39,7 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)loadFollowings {
-    if(self.followingsLoaded)
+    if([DWFollowingManager sharedDWFollowingManager].areBulkFollowingsLoaded)
         return;
     
     [self.followingsController getFollowings];
@@ -64,7 +64,6 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)followingsLoaded:(NSMutableArray *)followings {
-    self.followingsLoaded = YES;
 }
 
 //----------------------------------------------------------------------------------------------------
