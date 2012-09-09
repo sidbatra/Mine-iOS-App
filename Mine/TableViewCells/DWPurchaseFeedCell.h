@@ -137,6 +137,11 @@ extern NSInteger const kTotalLikeUserButtons;
 @optional
 
 /**
+ * An element pointing to the purchase source url is clicked.
+ */
+- (void)purchaseURLClicked:(NSNumber*)purchaseID;
+
+/**
  * A link to a user profile is clicked.
  */
 - (void)userClicked:(NSNumber*)userID;

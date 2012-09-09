@@ -161,6 +161,23 @@
 #pragma mark DWPurchaseFeedCellDelegate
 
 //----------------------------------------------------------------------------------------------------
+- (void)purchaseURLClicked:(NSNumber*)purchaseID {
+    
+    SEL sel = @selector(purchaseViewURLClicked:);
+    
+    if(![self.delegate respondsToSelector:sel])
+        return;
+    
+    DWPurchase *purchase = [DWPurchase fetch:[purchaseID integerValue]];
+    
+    if(!purchase)
+        return;
+    
+    [self.delegate performSelector:sel
+                        withObject:purchase];
+}
+
+//----------------------------------------------------------------------------------------------------
 - (void)userClicked:(NSNumber *)userID {
     
     SEL sel = @selector(purchasesViewUserClicked:);

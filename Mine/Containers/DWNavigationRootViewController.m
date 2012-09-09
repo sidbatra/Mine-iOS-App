@@ -174,6 +174,11 @@
 #pragma mark DWPurchasesViewControllerDelegate
 
 //----------------------------------------------------------------------------------------------------
+- (void)purchaseViewURLClicked:(DWPurchase *)purchase {
+    [self displayExternalURL:purchase.sourceURL];
+}
+
+//----------------------------------------------------------------------------------------------------
 - (void)purchasesViewUserClicked:(DWUser *)user {
     [self displayUserProfile:user];
 }

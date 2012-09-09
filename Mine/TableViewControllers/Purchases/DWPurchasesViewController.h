@@ -43,6 +43,11 @@
 @optional
 
 /**
+ * Display the source url for the given purchase.
+ */
+- (void)purchaseViewURLClicked:(DWPurchase*)purchase;
+
+/**
  * A user UI element is clicked from one of the feed cells.
  */
 - (void)purchasesViewUserClicked:(DWUser*)user;

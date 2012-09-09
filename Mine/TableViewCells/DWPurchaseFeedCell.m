@@ -180,11 +180,10 @@ static NSString* const kImgActionBg = @"btn-action-bg.png";
     purchaseImageButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
     purchaseImageButton.adjustsImageWhenHighlighted = NO;
     
-    /*
+    
     [purchaseImageButton addTarget:self
-                            action:@selector(didTapUserImageButton:)
+                            action:@selector(didTapPurchaseImageButton:)
                   forControlEvents:UIControlEventTouchUpInside];
-    */
     
     [self.contentView addSubview:purchaseImageButton];
 }
@@ -556,6 +555,18 @@ static NSString* const kImgActionBg = @"btn-action-bg.png";
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
 #pragma mark UI Events
+
+//----------------------------------------------------------------------------------------------------
+- (void)didTapPurchaseImageButton:(UIButton*)button {
+    
+    SEL sel = @selector(purchaseURLClicked:);
+    
+    if(![self.delegate respondsToSelector:sel])
+        return;
+    
+    [self.delegate performSelector:sel
+                        withObject:[NSNumber numberWithInteger:self.purchaseID]];
+}
 
 //----------------------------------------------------------------------------------------------------
 - (void)didTapUserImageButton:(UIButton*)button {
