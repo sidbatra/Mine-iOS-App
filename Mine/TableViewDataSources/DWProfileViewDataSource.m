@@ -351,5 +351,14 @@
                   withRefreshUI:YES];
 }
 
+//----------------------------------------------------------------------------------------------------
+- (void)userUpdated:(DWUser *)user {
+    
+    if(self.userID != user.databaseID)
+        return;
+    
+    [self.delegate reloadRowAtIndex:0];
+}
+
 
 @end

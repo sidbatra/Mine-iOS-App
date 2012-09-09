@@ -415,6 +415,11 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
     
     NSIndexPath *indexPath  = [NSIndexPath indexPathForRow:index
                                                  inSection:0];
+    
+    if(!indexPath)
+        return;
+    
+    
     NSArray *indexPaths		= [NSArray arrayWithObjects:indexPath,nil];
     
     [self.tableView deleteRowsAtIndexPaths:indexPaths
@@ -426,6 +431,9 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
     
     NSIndexPath *indexPath  = [NSIndexPath indexPathForRow:index
                                                  inSection:0];
+    
+    if(!indexPath)
+        return;
     
     NSArray *indexPaths		= [NSArray arrayWithObjects:indexPath,nil];
     

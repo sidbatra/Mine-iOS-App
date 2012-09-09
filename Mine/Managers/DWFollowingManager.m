@@ -9,6 +9,10 @@
 #import "DWFollowingManager.h"
 #import "DWMemoryPool.h"
 #import "DWFollowing.h"
+#import "DWUser.h"
+#import "DWUsersController.h"
+#import "DWSession.h"
+#import "DWConstants.h"
 
 #import "NSObject+Helpers.h"
 
@@ -67,6 +71,37 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWFollowingManager);
     return result;
 }
 
+//----------------------------------------------------------------------------------------------------
+- (void)launchManualUpdateForUser:(DWUser*)user {
+    
+    NSDictionary *info = [NSDictionary dictionaryWithObjectsAndKeys:
+                          user, kKeyUser,
+                          nil];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:kNUserManualUpdated
+                                                        object:nil
+                                                      userInfo:info];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)modifyFollowingCountForUserID:(NSInteger)userID 
+                              byCount:(NSInteger)count {
+    
+    DWUser *user = [DWUser fetch:userID];
+    
+    if(user) {
+        user.followingsCount += count;
+        [self launchManualUpdateForUser:user];
+    }
+    
+    user = [DWSession sharedDWSession].currentUser;
+    
+    if(user) {
+        user.inverseFollowingsCount += count;
+        [self launchManualUpdateForUser:user];
+    }
+}
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
@@ -86,6 +121,9 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWFollowingManager);
 //----------------------------------------------------------------------------------------------------
 - (void)followingCreated:(DWFollowing *)following 
                forUserID:(NSNumber *)userID {
+    
+    [self modifyFollowingCountForUserID:[userID integerValue]
+                                byCount:1];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -96,6 +134,10 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWFollowingManager);
     
     if(existingFollowing)
         [existingFollowing forceDestroy];
+    
+    
+   [self modifyFollowingCountForUserID:[userID integerValue]
+                               byCount:-1];
 }
 
 @end

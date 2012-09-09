@@ -10,6 +10,9 @@
 
 #import "DWUser.h"
 
+extern NSString* const kNUserManualUpdated;
+
+
 
 @protocol DWUsersControllerDelegate;
 

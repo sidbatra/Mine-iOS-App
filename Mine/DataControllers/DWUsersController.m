@@ -15,6 +15,9 @@
 #import "DWConstants.h"
 #import "DWSession.h"
 
+NSString* const kNUserManualUpdated = @"NUserManualUpdated";
+
+
 
 static NSString* const kNewUserFBURI                    = @"/users.json?using=facebook&access_token=%@&src=iphone";
 static NSString* const kNewUserTWURI                    = @"/users.json?using=twitter&tw_access_token=%@&tw_access_token_secret=%@&src=iphone";
@@ -48,7 +51,6 @@ static NSString* const kNUsersLoadError         = @"NUsersLoadError";
 
 static NSString* const kNUserUpdated            = @"NUserUpdated";
 static NSString* const kNUserUpdateError        = @"NUserUpdateError";
-
 
 /**
  * Private declarations
@@ -140,6 +142,11 @@ static NSString* const kNUserUpdateError        = @"NUserUpdateError";
         [[NSNotificationCenter defaultCenter] addObserver:self 
 												 selector:@selector(userUpdated:) 
 													 name:kNUserUpdated
+												   object:nil];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self 
+												 selector:@selector(userManualUpdated:) 
+													 name:kNUserManualUpdated
 												   object:nil];
 		
 		[[NSNotificationCenter defaultCenter] addObserver:self 
@@ -403,6 +410,21 @@ static NSString* const kNUserUpdateError        = @"NUserUpdateError";
     NSDictionary *info      = [notification userInfo];
     NSDictionary *response  = [info objectForKey:kKeyResponse];
     DWUser *user            = [DWUser create:response];   
+    
+    [self.delegate performSelector:sel
+                        withObject:user];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)userManualUpdated:(NSNotification*)notification {
+    
+    SEL sel = @selector(userUpdated:);
+    
+    if(![self.delegate respondsToSelector:sel])
+        return;
+    
+    NSDictionary *info      = [notification userInfo];
+    DWUser *user            = (DWUser*)[info objectForKey:kKeyUser];
     
     [self.delegate performSelector:sel
                         withObject:user];
