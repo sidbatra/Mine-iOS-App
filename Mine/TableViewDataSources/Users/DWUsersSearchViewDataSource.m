@@ -7,6 +7,8 @@
 //
 
 #import "DWUsersSearchViewDataSource.h"
+#import "DWUnion.h"
+
 
 @interface DWUsersSearchViewDataSource() {
     NSString    *_query;
@@ -66,6 +68,11 @@
         return;
     
     self.objects = users;
+    
+    DWUnion *uni = [[DWUnion alloc] init];
+    uni.title = @"Invite a friend";
+    
+    [self.objects addObject:uni];
     
     [self.delegate reloadTableView];
 }

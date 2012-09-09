@@ -9,6 +9,9 @@
 #import "DWUsersSearchViewController.h"
 
 #import "DWUsersSearchViewDataSource.h"
+#import "DWUnion.h"
+#import "DWInviteFriendPresenter.h"
+#import "DWConstants.h"
 
 
 
@@ -23,6 +26,10 @@
     
     if(self) {        
         self.tableViewDataSource = [[DWUsersSearchViewDataSource alloc] init];
+        
+        [self addModelPresenterForClass:[DWUnion class]
+                              withStyle:kDefaultModelPresenter 
+                          withPresenter:[DWInviteFriendPresenter class]];
     }
     
     return self;

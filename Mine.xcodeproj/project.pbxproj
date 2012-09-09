@@ -197,6 +197,9 @@
 		BB9F316515F8B8E2009C1385 /* nav-btn-settings-off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB9F316315F8B8E2009C1385 /* nav-btn-settings-off@2x.png */; };
 		BB9F316615F8B8E2009C1385 /* nav-btn-settings-on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB9F316415F8B8E2009C1385 /* nav-btn-settings-on@2x.png */; };
 		BB9F316D15FB5725009C1385 /* DWFollowingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9F316C15FB5725009C1385 /* DWFollowingManager.m */; };
+		BB9F317115FCA713009C1385 /* DWUnion.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9F317015FCA713009C1385 /* DWUnion.m */; };
+		BB9F317415FCA9BF009C1385 /* DWInviteFriendCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9F317315FCA9BE009C1385 /* DWInviteFriendCell.m */; };
+		BB9F317715FCAB47009C1385 /* DWInviteFriendPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9F317615FCAB47009C1385 /* DWInviteFriendPresenter.m */; };
 		BB9F70AB15B9E62F0099C80A /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB9F70AA15B9E62F0099C80A /* CFNetwork.framework */; };
 		BB9F70AE15B9E6400099C80A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB9F70AD15B9E6400099C80A /* SystemConfiguration.framework */; };
 		BB9F70B015B9E6450099C80A /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB9F70AF15B9E6450099C80A /* MobileCoreServices.framework */; };
@@ -569,6 +572,12 @@
 		BB9F316415F8B8E2009C1385 /* nav-btn-settings-on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-btn-settings-on@2x.png"; sourceTree = "<group>"; };
 		BB9F316B15FB5725009C1385 /* DWFollowingManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWFollowingManager.h; sourceTree = "<group>"; };
 		BB9F316C15FB5725009C1385 /* DWFollowingManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWFollowingManager.m; sourceTree = "<group>"; };
+		BB9F316F15FCA713009C1385 /* DWUnion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWUnion.h; sourceTree = "<group>"; };
+		BB9F317015FCA713009C1385 /* DWUnion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWUnion.m; sourceTree = "<group>"; };
+		BB9F317215FCA9BD009C1385 /* DWInviteFriendCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWInviteFriendCell.h; sourceTree = "<group>"; };
+		BB9F317315FCA9BE009C1385 /* DWInviteFriendCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWInviteFriendCell.m; sourceTree = "<group>"; };
+		BB9F317515FCAB46009C1385 /* DWInviteFriendPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWInviteFriendPresenter.h; sourceTree = "<group>"; };
+		BB9F317615FCAB47009C1385 /* DWInviteFriendPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWInviteFriendPresenter.m; sourceTree = "<group>"; };
 		BB9F70AA15B9E62F0099C80A /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		BB9F70AD15B9E6400099C80A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		BB9F70AF15B9E6450099C80A /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
@@ -1288,6 +1297,8 @@
 				BB2BC0AE15D1DCA000CCC4BB /* DWSetting.m */,
 				BB26987E15BBA2E300037453 /* DWStore.h */,
 				BB26987F15BBA2E300037453 /* DWStore.m */,
+				BB9F316F15FCA713009C1385 /* DWUnion.h */,
+				BB9F317015FCA713009C1385 /* DWUnion.m */,
 				BB9F710715B9EBED0099C80A /* DWUser.h */,
 				BB9F710815B9EBED0099C80A /* DWUser.m */,
 				2681C4E815DAF4E7003046F1 /* DWSuggestion.h */,
@@ -1485,6 +1496,8 @@
 				BBC0608D15C7436E000D3480 /* DWCommentPresenter.m */,
 				2622005C15C713DE003DC1DF /* DWContactPresenter.h */,
 				2622005D15C713DE003DC1DF /* DWContactPresenter.m */,
+				BB9F317515FCAB46009C1385 /* DWInviteFriendPresenter.h */,
+				BB9F317615FCAB47009C1385 /* DWInviteFriendPresenter.m */,
 				BB06367D15C31968001F26E1 /* DWPaginationPresenter.h */,
 				BB06367E15C31968001F26E1 /* DWPaginationPresenter.m */,
 				262200AB15C76A39003DC1DF /* DWProductPresenter.h */,
@@ -1510,6 +1523,8 @@
 				BBC0609015C74483000D3480 /* DWCommentCell.m */,
 				2622005F15C713EE003DC1DF /* DWDoubleLineCell.h */,
 				2622006015C713EE003DC1DF /* DWDoubleLineCell.m */,
+				BB9F317215FCA9BD009C1385 /* DWInviteFriendCell.h */,
+				BB9F317315FCA9BE009C1385 /* DWInviteFriendCell.m */,
 				BB06368015C31973001F26E1 /* DWPaginationCell.h */,
 				BB06368115C31973001F26E1 /* DWPaginationCell.m */,
 				BBE42F4715BCCA52000F6AE1 /* DWPurchaseFeedCell.h */,
@@ -1852,6 +1867,9 @@
 				BB9F314F15F645C5009C1385 /* DWUserProfileCell.m in Sources */,
 				BB9F315315F64750009C1385 /* DWUserProfilePresenter.m in Sources */,
 				BB9F316D15FB5725009C1385 /* DWFollowingManager.m in Sources */,
+				BB9F317115FCA713009C1385 /* DWUnion.m in Sources */,
+				BB9F317415FCA9BF009C1385 /* DWInviteFriendCell.m in Sources */,
+				BB9F317715FCAB47009C1385 /* DWInviteFriendPresenter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
