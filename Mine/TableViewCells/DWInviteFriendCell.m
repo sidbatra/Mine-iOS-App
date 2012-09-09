@@ -33,12 +33,12 @@ static NSInteger const kInviteFriendCellHeight = 50;
 				reuseIdentifier:reuseIdentifier];
 	
     if (self) {
-        self.contentView.clipsToBounds = YES;
+        self.contentView.backgroundColor = [UIColor colorWithRed:0.929 green:0.929 blue:0.929 alpha:1.0];
         
         [self createBorders];
         [self createMessageLabel];
         
-		self.selectionStyle = UITableViewCellSelectionStyleNone;	
+		self.selectionStyle = UITableViewCellSelectionStyleBlue;	
 	}
 	
     return self;
