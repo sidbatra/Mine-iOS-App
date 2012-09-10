@@ -8,7 +8,6 @@
 
 #import "DWFeedNavigationViewController.h"
 #import "DWFeedViewController.h"
-#import "DWUsersSearchViewController.h"
 #import "DWNavigationBarTitleView.h"
 
 #import "DWBackgroundQueue.h"
@@ -28,7 +27,7 @@ static NSString* const kImgSearchOn     = @"nav-btn-search-on.png";
 
 @interface DWFeedNavigationViewController () {
     DWFeedViewController        *_feedViewController;
-    DWUsersSearchViewController *_usersSearchViewController;
+    DWUsersViewController       *_usersSearchViewController;
     
     DWNavigationBarTitleView    *_navTitleView;
     DWQueueProgressView         *_queueProgressView;
@@ -45,7 +44,7 @@ static NSString* const kImgSearchOn     = @"nav-btn-search-on.png";
 /**
  * Table view for displaying search results.
  */
-@property (nonatomic,strong) DWUsersSearchViewController *usersSearchViewController;
+@property (nonatomic,strong) DWUsersViewController *usersSearchViewController;
 
 /**
  * Tile view inserted onto the navigation bar.
@@ -265,7 +264,7 @@ static NSString* const kImgSearchOn     = @"nav-btn-search-on.png";
     
     //[self.customTabBarController disableFullScreen];
     
-    [self.usersSearchViewController reset];
+    [(DWUsersSearchViewController*)self.usersSearchViewController reset];
     [self.searchBar resignActive];
     
     [self loadSideButtons];
@@ -273,10 +272,19 @@ static NSString* const kImgSearchOn     = @"nav-btn-search-on.png";
 
 //----------------------------------------------------------------------------------------------------
 - (void)searchWithQuery:(NSString*)query {
-    [self.usersSearchViewController loadUsersForQuery:query];
+    [(DWUsersSearchViewController*)self.usersSearchViewController loadUsersForQuery:query];
 }
 
 
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWUsersSearchViewControllerDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)searchViewInviteFriendClicked {
+    [self displayInvite];
+}
 
 
 //----------------------------------------------------------------------------------------------------

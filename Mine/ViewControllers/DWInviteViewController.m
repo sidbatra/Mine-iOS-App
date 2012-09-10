@@ -8,6 +8,7 @@
 #import "DWConstants.h"
 #import "DWContact.h"
 #import "ABContactsHelper.h"
+#import "DWnavigationBarBackButton.h"
 
 
 static NSString* const kImgTopShadow                        = @"shadow_top.png";
@@ -167,6 +168,8 @@ static NSInteger const kTableViewHeight						= 200;
 //----------------------------------------------------------------------------------------------------
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.navigationItem.leftBarButtonItem   = [DWNavigationBarBackButton backButtonForNavigationController:self.navigationController];
             
 //    self.messageLabel.text = self.messageLabelText;
 //    

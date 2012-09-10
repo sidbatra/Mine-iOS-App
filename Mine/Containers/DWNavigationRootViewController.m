@@ -130,6 +130,16 @@
                                          animated:YES];
 }
 
+//----------------------------------------------------------------------------------------------------
+- (void)displayInvite {
+    
+    DWInviteViewController *inviteViewController = [[DWInviteViewController alloc] init];
+    inviteViewController.delegate = self;
+    
+    [self.navigationController pushViewController:inviteViewController
+                                         animated:YES];
+}
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------

@@ -58,7 +58,7 @@
        withPresentationStyle:(NSInteger)style
                 withDelegate:(id)delegate {
     
-    SEL sel = @selector(inviteFriendClicked:);
+    SEL sel = @selector(inviteFriendClicked);
     
     if(![delegate respondsToSelector:sel])
         return;

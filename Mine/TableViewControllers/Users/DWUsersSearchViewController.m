@@ -20,6 +20,8 @@
 //----------------------------------------------------------------------------------------------------
 @implementation DWUsersSearchViewController
 
+@dynamic delegate;
+
 //----------------------------------------------------------------------------------------------------
 - (id)init {
     self = [super init];
@@ -34,6 +36,7 @@
     
     return self;
 }
+
 //----------------------------------------------------------------------------------------------------
 - (void)reset {
     [self.tableViewDataSource clean];
@@ -46,6 +49,17 @@
     [self reset];
     self.loadingView.hidden = NO;
     [(DWUsersSearchViewDataSource*)self.tableViewDataSource loadUsersForQuery:query];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWIniteFriendCellDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)inviteFriendClicked {
+    [self.delegate performSelector:@selector(searchViewInviteFriendClicked)];
 }
 
 @end

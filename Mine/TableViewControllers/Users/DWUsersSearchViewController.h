@@ -8,7 +8,13 @@
 
 #import "DWUsersViewController.h"
 
-@interface DWUsersSearchViewController : DWUsersViewController
+@protocol DWUsersSearchViewControllerDelegate;
+
+
+@interface DWUsersSearchViewController : DWUsersViewController {
+}
+
+@property (nonatomic,weak) id<DWUsersSearchViewControllerDelegate,DWUsersViewControllerDelegate,NSObject> delegate;
 
 /**
  * Clear the UI and start a new search.
@@ -19,5 +25,14 @@
  * Reset the UI to the starting position.
  */
 - (void)reset;
+
+@end
+
+
+@protocol DWUsersSearcViewControllerDelegate<DWUsersViewControllerDelegate>
+
+@required
+
+- (void)searchViewInviteFriendClicked;
 
 @end
