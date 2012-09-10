@@ -9,6 +9,8 @@
 #import "DWInviteFriendCell.h"
 #import <QuartzCore/QuartzCore.h>
 
+#import "DWConstants.h"
+
 
 static NSInteger const kInviteFriendCellHeight = 50;
 
@@ -37,6 +39,7 @@ static NSInteger const kInviteFriendCellHeight = 50;
         
         [self createBorders];
         [self createMessageLabel];
+        [self createChevron];
         
 		self.selectionStyle = UITableViewCellSelectionStyleBlue;	
 	}
@@ -73,6 +76,14 @@ static NSInteger const kInviteFriendCellHeight = 50;
     messageLabel.layer.shadowOpacity = 1.0;
     
     [self.contentView addSubview:messageLabel];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)createChevron {
+    UIImageView *chevron = [[UIImageView alloc] initWithFrame:CGRectMake(300,18,9,13)];
+    chevron.image = [UIImage imageNamed:kImgChevron];
+    
+    [self.contentView addSubview:chevron];
 }
 
 //----------------------------------------------------------------------------------------------------

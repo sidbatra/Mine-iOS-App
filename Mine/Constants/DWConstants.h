@@ -97,6 +97,7 @@ extern NSString* const kRailsDateTimeFormat;
  * UI Related
  */
 extern NSString* const kNavBarMineLogo;
+extern NSString* const kImgChevron;
 
 
 /**
