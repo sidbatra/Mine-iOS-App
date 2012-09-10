@@ -20,8 +20,9 @@
 @interface DWPurchaseInputViewController : UIViewController<UITextFieldDelegate,DWStorePickerViewControllerDelegate,DWFacebookConnectViewControllerDelegate,DWTwitterConnectViewControllerDelegate,DWTumblrConnectViewControllerDelegate> {
     
     UITextField     *_nameTextField;
-    UITextField     *_storeTextField;
     UITextField     *_reviewTextField; 
+    
+    UILabel         *_storeNameLabel;
     UIButton        *_storePickerButton;
   
     UIButton        *_facebookConfigureButton;
@@ -39,8 +40,8 @@
  * IBOutlet properties
  */
 @property (nonatomic) IBOutlet UITextField *nameTextField;
-@property (nonatomic) IBOutlet UITextField *storeTextField;
 @property (nonatomic) IBOutlet UITextField *reviewTextField;
+@property (nonatomic) IBOutlet UILabel *storeNameLabel;
 @property (nonatomic) IBOutlet UIButton *storePickerButton;
 
 @property (nonatomic) IBOutlet UIButton *facebookConfigureButton;

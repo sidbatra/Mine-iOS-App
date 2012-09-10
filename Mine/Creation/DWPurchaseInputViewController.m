@@ -8,6 +8,7 @@
 
 #import "DWPurchaseInputViewController.h"
 #import "DWNavigationBarBackButton.h"
+#import "DWGUIManager.h"
 #import "DWStore.h"
 #import "DWProduct.h"
 #import "DWPurchase.h"
@@ -84,8 +85,8 @@ static NSString* const kImgDoneOn     = @"nav-btn-done-on@2x.png";
 @implementation DWPurchaseInputViewController
 
 @synthesize nameTextField                   = _nameTextField;
-@synthesize storeTextField                  = _storeTextField;
 @synthesize reviewTextField                 = _reviewTextField;
+@synthesize storeNameLabel                  = _storeNameLabel;
 @synthesize storePickerButton               = _storePickerButton;
 
 @synthesize facebookConfigureButton         = _facebookConfigureButton;
@@ -136,13 +137,14 @@ static NSString* const kImgDoneOn     = @"nav-btn-done-on@2x.png";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navigationItem.leftBarButtonItem = [DWNavigationBarBackButton backButtonForNavigationController:self.navigationController];
+    self.navigationItem.leftBarButtonItem   = [DWNavigationBarBackButton backButtonForNavigationController:self.navigationController];
+    self.navigationItem.titleView           = [DWGUIManager navBarTitleViewWithText:@"Item info"];
+    
     self.navigationController.navigationBarHidden = NO;
     
     [self setupDoneButton];
     
     self.nameTextField.text = [self.purchase.query capitalizedString];
-    [self.nameTextField becomeFirstResponder];
     
     [self setupSharingUI];
     
@@ -152,6 +154,11 @@ static NSString* const kImgDoneOn     = @"nav-btn-done-on@2x.png";
 //----------------------------------------------------------------------------------------------------
 - (void)viewDidUnload {
     [super viewDidUnload];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    [self.view endEditing:YES];
 }
 
 
@@ -208,7 +215,7 @@ static NSString* const kImgDoneOn     = @"nav-btn-done-on@2x.png";
 - (void)createPurchase {  
     
     DWStore *store  = [[DWStore alloc] init];
-    store.name      = self.storeTextField.text;
+    store.name      = self.storeNameLabel.text;
         
     self.purchase.store             = store;
     self.purchase.origThumbURL      = self.product.mediumImageURL;
@@ -220,7 +227,7 @@ static NSString* const kImgDoneOn     = @"nav-btn-done-on@2x.png";
 
 //----------------------------------------------------------------------------------------------------
 - (void)post {
-    if (self.nameTextField.text.length == 0 || self.storeTextField.text.length == 0) {
+    if (self.nameTextField.text.length == 0) {
         NSLog(@"incomplete fields - display alert");
     }
     else {
@@ -242,10 +249,7 @@ static NSString* const kImgDoneOn     = @"nav-btn-done-on@2x.png";
 
 //----------------------------------------------------------------------------------------------------
 - (BOOL)textFieldShouldReturn:(UITextField*)textField {
-    
-	if(textField == self.storeTextField || textField == self.reviewTextField)
-        [self post];
-    
+    //TODO
 	return YES;
 }
 
@@ -256,7 +260,7 @@ static NSString* const kImgDoneOn     = @"nav-btn-done-on@2x.png";
 
 //----------------------------------------------------------------------------------------------------
 - (void)storePicked:(NSString *)storeName {
-    self.storeTextField.text = storeName;
+    self.storeNameLabel.text = storeName;
 }
 
 
@@ -320,7 +324,7 @@ static NSString* const kImgDoneOn     = @"nav-btn-done-on@2x.png";
 }
 
 //----------------------------------------------------------------------------------------------------
-- (IBAction)twitterConfigureButtonClicked:(id)sender {
+- (IBAction)twitterConfigureButtonClicked:(id)sender {    
     [self.navigationController pushViewController:self.twitterConnectViewController 
                                          animated:YES];    
 }
