@@ -33,7 +33,7 @@ static NSString* const kImgBorder  = @"hr-D6D6D6.png";
 	
     if (self) {
         self.contentView.clipsToBounds = YES;
-		self.selectionStyle = UITableViewCellSelectionStyleGray;	
+		self.selectionStyle = UITableViewCellSelectionStyleBlue;	
         
         self.contentView.backgroundColor = [UIColor colorWithRed:0.9333 green:0.9333 blue:0.9333 alpha:1.0];
         
@@ -46,20 +46,21 @@ static NSString* const kImgBorder  = @"hr-D6D6D6.png";
 
 //----------------------------------------------------------------------------------------------------
 - (void)createStoreNameLabel {
-    storeNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(11,0,288,44)];
+    storeNameLabel = [[UILabel alloc] initWithFrame:CGRectMake(11,0,288,43)];
     
-    storeNameLabel.numberOfLines       = 1;
-    storeNameLabel.backgroundColor     = [UIColor clearColor];
-    storeNameLabel.font                = [UIFont fontWithName:@"HelveticaNeue-Bold" size:16];
-    storeNameLabel.textColor           = [UIColor colorWithRed:0.2 green:0.2 blue:0.2 alpha:1.0];
-    storeNameLabel.textAlignment       = UITextAlignmentLeft;
+    storeNameLabel.numberOfLines        = 1;
+    storeNameLabel.backgroundColor      = [UIColor clearColor];
+    storeNameLabel.font                 = [UIFont fontWithName:@"HelveticaNeue-Bold" size:16];
+    storeNameLabel.textColor            = [UIColor colorWithRed:0.2 green:0.2 blue:0.2 alpha:1.0];
+    storeNameLabel.highlightedTextColor = [UIColor whiteColor];     
+    storeNameLabel.textAlignment        = UITextAlignmentLeft;
     
     [self.contentView addSubview:storeNameLabel];
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)createBorderImageView {
-    borderImageView         = [[UIImageView alloc] initWithFrame:CGRectMake(0, 43, 320, 1)];
+    borderImageView         = [[UIImageView alloc] initWithFrame:CGRectMake(0, 42, 320, 1)];
     borderImageView.image   = [UIImage imageNamed:kImgBorder];
     
     [self.contentView addSubview:borderImageView];

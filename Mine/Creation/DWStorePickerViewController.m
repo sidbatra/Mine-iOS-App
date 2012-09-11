@@ -72,7 +72,7 @@
     [super viewDidLoad];
         
     self.navigationItem.leftBarButtonItem   = [DWNavigationBarBackButton backButtonForNavigationController:self.navigationController];
-    self.navigationItem.titleView           = [DWGUIManager navBarTitleViewWithText:@"Pick a store"];
+    self.navigationItem.titleView           = [DWGUIManager navBarTitleViewWithText:@"Stores"];
 
     self.storesViewController.view.frame = CGRectMake(0,44,320,200);
     

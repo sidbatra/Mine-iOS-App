@@ -10,7 +10,7 @@
 #import "DWStore.h"
 #import "DWStoreCell.h"
 
-static NSInteger const kStoreCellHeight = 44;
+static NSInteger const kStoreCellHeight = 43;
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
