@@ -20,12 +20,14 @@ static NSString* const kImgProductHighlight  = @"chooser-item-bg-on@2x.png";
 
 @interface DWProductCell() {
     NSMutableArray  *_productButtons;
+    NSMutableArray  *_productImageViews;    
 }
 
 /**
  * Product image buttons for displaying multiple products in a row
  */
 @property (nonatomic,strong) NSMutableArray *productButtons;
+@property (nonatomic,strong) NSMutableArray *productImageViews;
 
 @end
 
@@ -36,8 +38,9 @@ static NSString* const kImgProductHighlight  = @"chooser-item-bg-on@2x.png";
 //----------------------------------------------------------------------------------------------------
 @implementation DWProductCell
 
-@synthesize productButtons  = _productButtons;
-@synthesize delegate        = _delegate;
+@synthesize productButtons      = _productButtons;
+@synthesize productImageViews   = _productImageViews;
+@synthesize delegate            = _delegate;
 
 
 //----------------------------------------------------------------------------------------------------
@@ -49,9 +52,11 @@ static NSString* const kImgProductHighlight  = @"chooser-item-bg-on@2x.png";
 	
     if (self) {
         self.contentView.clipsToBounds = YES;
-        self.productButtons = [NSMutableArray arrayWithCapacity:kColumnsInProductsSearch];
         
-        [self createProductButtons];
+        self.productButtons     = [NSMutableArray arrayWithCapacity:kColumnsInProductsSearch];
+        self.productImageViews  = [NSMutableArray arrayWithCapacity:kColumnsInProductsSearch];
+        
+        [self createProductCells];
 		
 		self.selectionStyle = UITableViewCellSelectionStyleNone;	
 	}
@@ -65,37 +70,27 @@ static NSString* const kImgProductHighlight  = @"chooser-item-bg-on@2x.png";
 #pragma mark Sub view creation
 
 //----------------------------------------------------------------------------------------------------
-- (void)createProductButtons {
+- (void)createProductCells {
     
     for(NSInteger i=0 ; i<kColumnsInProductsSearch ; i++) {
+        
+        UIImageView *productImageView   = [[UIImageView alloc] initWithFrame:CGRectMake(102*i + 7, 15, 80, 80)];
+        productImageView.contentMode    = UIViewContentModeScaleAspectFit;
+        
+        [self.productImageViews addObject:productImageView];
+        [self.contentView addSubview:productImageView];
+        
+                
         UIButton *productButton = [[UIButton alloc] initWithFrame:CGRectMake(102*i, 8, 94, 94)];
         
-        productButton.backgroundColor               = [UIColor clearColor];
-        productButton.imageView.contentMode         = UIViewContentModeScaleAspectFit;
-        productButton.imageEdgeInsets               = UIEdgeInsetsMake(7, 7, 7, 7);
-        productButton.adjustsImageWhenHighlighted   = NO;
-        
-        [productButton setBackgroundImage:[UIImage imageNamed:kImgProductBackground] 
-                                 forState:UIControlStateNormal];
+        //[productButton setBackgroundImage:[UIImage imageNamed:kImgProductBackground] 
+        //                         forState:UIControlStateNormal];
 
         [productButton addTarget:self
                            action:@selector(didTapProductButton:)
                  forControlEvents:UIControlEventTouchUpInside];
         
-        [productButton addTarget:self
-                          action:@selector(highlightProductButton:)
-                forControlEvents:UIControlEventTouchDown];
-        
-        [productButton addTarget:self
-                          action:@selector(highlightProductButton:)
-                forControlEvents:UIControlEventTouchDragEnter];
-        
-        [productButton addTarget:self
-                          action:@selector(removeHighlightFromProductButton:)
-                forControlEvents:UIControlEventTouchDragExit];        
-        
         [self.productButtons addObject:productButton];
-        
         [self.contentView addSubview:productButton];
     }
 }
@@ -120,30 +115,6 @@ static NSString* const kImgProductHighlight  = @"chooser-item-bg-on@2x.png";
 
     [self.delegate performSelector:sel
                         withObject:[NSNumber numberWithInteger:button.tag]];
-    
-    [self performSelector:@selector(removeHighlightFromProductButton:) 
-               withObject:button];
-}
-
-//----------------------------------------------------------------------------------------------------
-- (void)highlightProductButton:(UIButton*)button {        
-    
-    UIImageView *imageView  = [[UIImageView alloc] initWithFrame:button.bounds];
-    imageView.image         = [UIImage imageNamed:kImgProductHighlight];
-    imageView.tag           = 1000;
-    
-    [button addSubview:imageView];
-}
-
-//----------------------------------------------------------------------------------------------------
-- (void)removeHighlightFromProductButton:(UIButton*)button {
-    
-    UIView *view = [button viewWithTag:1000];
-    [UIView animateWithDuration:0.2 animations:^{
-        view.alpha = 0;
-    } completion:^(BOOL finished) {
-        [view removeFromSuperview];        
-    }];
 }
 
 
@@ -153,11 +124,10 @@ static NSString* const kImgProductHighlight  = @"chooser-item-bg-on@2x.png";
 #pragma mark Accessor methods to populate cell UI
 
 //----------------------------------------------------------------------------------------------------
-- (void)resetUI {
+- (void)resetUI {        
     
-    for(UIButton *productButton in self.productButtons) {
-        productButton.hidden = YES;
-    }
+    for(UIButton *productButton in self.productButtons) 
+        productButton.hidden = YES;    
     
 }
 
@@ -170,11 +140,10 @@ static NSString* const kImgProductHighlight  = @"chooser-item-bg-on@2x.png";
         return;
     
     UIButton *productButton = [self.productButtons objectAtIndex:index];
-
-    productButton.tag = productID;
+    productButton.tag       = productID;
     
-    [productButton setImage:image
-                    forState:UIControlStateNormal];
+    UIImageView *productImageView   = [self.productImageViews objectAtIndex:index];
+    productImageView.image          = image;
     
     productButton.hidden = NO;
 }
