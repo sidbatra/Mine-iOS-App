@@ -14,10 +14,8 @@
 #import "DWPurchase.h"
 #import "DWSetting.h"
 #import "DWSession.h"
+#import "DWConstants.h"
 
-
-static NSString* const kImgDoneOff    = @"nav-btn-done-off@2x.png";
-static NSString* const kImgDoneOn     = @"nav-btn-done-on@2x.png";
 
 /**
  * Private declarations

@@ -24,7 +24,6 @@
  * IBOutlet properties
  */
 @property (nonatomic) IBOutlet UITextField *searchTextField;
-@property (nonatomic) IBOutlet UIButton *doneButton;
 
 /**
  * Delegate
@@ -36,7 +35,6 @@
  * IBActions
  */
 - (IBAction)searchTextFieldEditingChanged:(id)sender;
-- (IBAction)doneButtonClicked:(id)sender;
 
 
 /**

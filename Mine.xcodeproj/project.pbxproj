@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2618C0F615FEACC100CA41B9 /* hr-A4A4A4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2618C0F415FEACC100CA41B9 /* hr-A4A4A4@2x.png */; };
+		2618C0F715FEACC100CA41B9 /* hr-D6D6D6@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2618C0F515FEACC100CA41B9 /* hr-D6D6D6@2x.png */; };
+		2618C0FE15FEAE9500CA41B9 /* DWStoreCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2618C0FD15FEAE9500CA41B9 /* DWStoreCell.m */; };
 		261D0F8315F971570085591F /* preview-btn-no-off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 261D0F7F15F971570085591F /* preview-btn-no-off@2x.png */; };
 		261D0F8415F971570085591F /* preview-btn-no-on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 261D0F8015F971570085591F /* preview-btn-no-on@2x.png */; };
 		261D0F8515F971570085591F /* preview-btn-yes-off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 261D0F8115F971570085591F /* preview-btn-yes-off@2x.png */; };
@@ -269,6 +272,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2618C0F415FEACC100CA41B9 /* hr-A4A4A4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hr-A4A4A4@2x.png"; sourceTree = "<group>"; };
+		2618C0F515FEACC100CA41B9 /* hr-D6D6D6@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hr-D6D6D6@2x.png"; sourceTree = "<group>"; };
+		2618C0FC15FEAE9500CA41B9 /* DWStoreCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWStoreCell.h; sourceTree = "<group>"; };
+		2618C0FD15FEAE9500CA41B9 /* DWStoreCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWStoreCell.m; sourceTree = "<group>"; };
 		261D0F7F15F971570085591F /* preview-btn-no-off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "preview-btn-no-off@2x.png"; sourceTree = "<group>"; };
 		261D0F8015F971570085591F /* preview-btn-no-on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "preview-btn-no-on@2x.png"; sourceTree = "<group>"; };
 		261D0F8115F971570085591F /* preview-btn-yes-off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "preview-btn-yes-off@2x.png"; sourceTree = "<group>"; };
@@ -851,6 +858,8 @@
 		BB06360315BF7258001F26E1 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				2618C0F415FEACC100CA41B9 /* hr-A4A4A4@2x.png */,
+				2618C0F515FEACC100CA41B9 /* hr-D6D6D6@2x.png */,
 				2676AA0415FE79E100B0B579 /* cell-bottom-off@2x.png */,
 				2676AA0515FE79E100B0B579 /* cell-middle-off@2x.png */,
 				2676AA0615FE79E100B0B579 /* cell-off@2x.png */,
@@ -1563,6 +1572,8 @@
 				BB46140515CB3A7500B38D71 /* DWUserCell.m */,
 				BB9F314D15F645C5009C1385 /* DWUserProfileCell.h */,
 				BB9F314E15F645C5009C1385 /* DWUserProfileCell.m */,
+				2618C0FC15FEAE9500CA41B9 /* DWStoreCell.h */,
+				2618C0FD15FEAE9500CA41B9 /* DWStoreCell.m */,
 			);
 			path = TableViewCells;
 			sourceTree = "<group>";
@@ -1726,6 +1737,8 @@
 				2676AA0B15FE79E100B0B579 /* cell-off@2x.png in Resources */,
 				2676AA0C15FE79E100B0B579 /* cell-top-off@2x.png in Resources */,
 				2676AA0D15FE79E100B0B579 /* cell-trans-4-off@2x.png in Resources */,
+				2618C0F615FEACC100CA41B9 /* hr-A4A4A4@2x.png in Resources */,
+				2618C0F715FEACC100CA41B9 /* hr-D6D6D6@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1904,6 +1917,7 @@
 				BB9F317415FCA9BF009C1385 /* DWInviteFriendCell.m in Sources */,
 				BB9F317715FCAB47009C1385 /* DWInviteFriendPresenter.m in Sources */,
 				2676AA0215FE714B00B0B579 /* DWGUIManager.m in Sources */,
+				2618C0FE15FEAE9500CA41B9 /* DWStoreCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

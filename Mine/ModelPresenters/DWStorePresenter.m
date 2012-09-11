@@ -8,11 +8,9 @@
 
 #import "DWStorePresenter.h"
 #import "DWStore.h"
-#import "DWDoubleLineCell.h"
+#import "DWStoreCell.h"
 
-static CGFloat const kCellHeight  = 44;
-
-
+static NSInteger const kStoreCellHeight = 44;
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
@@ -26,17 +24,14 @@ static CGFloat const kCellHeight  = 44;
                      withDelegate:(id)delegate
              andPresentationStyle:(NSInteger)style {
     
-    DWStore *store                      = object;
-    DWDoubleLineCell *cell              = base;
+    DWStore *store      = object;
+    DWStoreCell *cell   = base;
     
     if(!cell)
-        cell = [[DWDoubleLineCell alloc] initWithStyle:UITableViewStylePlain
+        cell = [[DWStoreCell alloc] initWithStyle:UITableViewStylePlain
                                        reuseIdentifier:identifier];
     
-    [cell setFirstLine:store.name];
-
-    [cell reset];
-    [cell redisplay];
+    [cell setStoreName:store.name];
     
     return cell;
 }
@@ -45,7 +40,7 @@ static CGFloat const kCellHeight  = 44;
 + (CGFloat)heightForObject:(id)object 
      withPresentationStyle:(NSInteger)style {
     
-    return kCellHeight;
+    return kStoreCellHeight;
 }
 
 //----------------------------------------------------------------------------------------------------

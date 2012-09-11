@@ -7,7 +7,10 @@
 //
 
 #import "DWStorePickerViewController.h"
+#import "DWNavigationBarBackButton.h"
+#import "DWGUIManager.h"
 #import "DWStore.h"
+#import "DWConstants.h"
 
 /**
  * Private declarations
@@ -21,6 +24,11 @@
  */
 @property (nonatomic,strong) DWStoresViewController *storesViewController;
 
+
+/**
+ * Setup done button (right NavBarButton)
+ */
+- (void)setupDoneButton;
 
 /** 
  * Show keyboard for searching stores
@@ -48,7 +56,6 @@
 @implementation DWStorePickerViewController
 
 @synthesize searchTextField             = _searchTextField;
-@synthesize doneButton                  = _doneButton;
 @synthesize storesViewController        = _storesViewController;
 
 @synthesize delegate                    = _delegate;
@@ -59,7 +66,7 @@
     
     if (self) {
         self.storesViewController = [[DWStoresViewController alloc] init];
-        self.storesViewController.delegate    = self;
+        self.storesViewController.delegate = self;
     }
     
     return self;
@@ -69,7 +76,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
         
-    self.storesViewController.view.frame  = CGRectMake(0,50,320,400);
+    self.navigationItem.leftBarButtonItem   = [DWNavigationBarBackButton backButtonForNavigationController:self.navigationController];
+    self.navigationItem.titleView           = [DWGUIManager navBarTitleViewWithText:@"Pick a store"];
+
+    self.storesViewController.view.frame = CGRectMake(0,44,320,200);
     
     [self.view addSubview:self.storesViewController.view];
     
@@ -91,6 +101,25 @@
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
 #pragma mark Private Methods
+
+//----------------------------------------------------------------------------------------------------
+- (void)setupDoneButton {
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];    
+    
+    [button setBackgroundImage:[UIImage imageNamed:kImgDoneOff] 
+                      forState:UIControlStateNormal];
+    
+    [button setBackgroundImage:[UIImage imageNamed:kImgDoneOn] 
+                      forState:UIControlStateHighlighted];
+    
+	[button addTarget:self
+               action:@selector(doneButtonClicked)
+     forControlEvents:UIControlEventTouchUpInside];
+    
+	[button setFrame:CGRectMake(0,0,58,30)];
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
+}
 
 //----------------------------------------------------------------------------------------------------
 - (void)showKeyboard {
@@ -124,7 +153,7 @@
 }
 
 //----------------------------------------------------------------------------------------------------
-- (IBAction)doneButtonClicked:(id)sender {
+- (void)doneButtonClicked {
     [self storePicked:self.searchTextField.text];
 }
 
@@ -141,12 +170,12 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)storesFetched {
-    self.doneButton.hidden = true;
+    self.navigationItem.rightBarButtonItem = nil;
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)noStoresFetched {
-    self.doneButton.hidden = false;
+    [self setupDoneButton];
 }
 
 

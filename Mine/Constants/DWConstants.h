@@ -98,6 +98,8 @@ extern NSString* const kRailsDateTimeFormat;
  */
 extern NSString* const kNavBarMineLogo;
 extern NSString* const kImgChevron;
+extern NSString* const kImgDoneOff;
+extern NSString* const kImgDoneOn;
 
 
 /**

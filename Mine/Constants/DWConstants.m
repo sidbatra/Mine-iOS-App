@@ -81,6 +81,8 @@ NSString* const kRailsDateTimeFormat = @"yyyy-MM-dd HH:mm:ss ZZZ";
 //----------------------------------------------------------------------------------------------------
 NSString* const kNavBarMineLogo = @"nav-mine-logo.png";
 NSString* const kImgChevron     = @"chevron.png";
+NSString* const kImgDoneOff     = @"nav-btn-done-off@2x.png";
+NSString* const kImgDoneOn     	= @"nav-btn-done-on@2x.png";
 
 //----------------------------------------------------------------------------------------------------
 NSInteger const kDefaultModelPresenter = 0;
