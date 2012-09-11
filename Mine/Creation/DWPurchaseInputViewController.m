@@ -69,11 +69,6 @@
  */
 - (void)setupSharingUI;
 
-/**
- * Setup done button (right NavBarButton)
- */
-- (void)setupDoneButton;
-
 @end
 
 
@@ -137,11 +132,10 @@
     
     self.navigationItem.leftBarButtonItem   = [DWNavigationBarBackButton backButtonForNavigationController:self.navigationController];
     self.navigationItem.titleView           = [DWGUIManager navBarTitleViewWithText:@"Item info"];
+    self.navigationItem.rightBarButtonItem  = [DWGUIManager navBarDoneButtonWithTarget:self];    
     
     self.navigationController.navigationBarHidden = NO;
-    
-    [self setupDoneButton];
-    
+
     self.nameTextField.text = [self.purchase.query capitalizedString];
     
     [self setupSharingUI];
@@ -164,25 +158,6 @@
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
 #pragma mark Private Methods
-
-//----------------------------------------------------------------------------------------------------
-- (void)setupDoneButton {
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];    
-    
-    [button setBackgroundImage:[UIImage imageNamed:kImgDoneOff] 
-                      forState:UIControlStateNormal];
-    
-    [button setBackgroundImage:[UIImage imageNamed:kImgDoneOn] 
-                      forState:UIControlStateHighlighted];
-    
-	[button addTarget:self
-               action:@selector(post)
-     forControlEvents:UIControlEventTouchUpInside];
-    
-	[button setFrame:CGRectMake(0,0,58,30)];
-    
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
-}
 
 //----------------------------------------------------------------------------------------------------
 - (void)setupSharingUI {    
@@ -308,6 +283,11 @@
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
 #pragma mark IBActions
+
+//----------------------------------------------------------------------------------------------------
+- (void)doneButtonClicked {
+    [self post];
+}
 
 //----------------------------------------------------------------------------------------------------
 - (IBAction)storePickerButtonClicked:(id)sender {

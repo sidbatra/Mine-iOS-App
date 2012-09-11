@@ -21,4 +21,9 @@
  */
 + (UILabel*)navBarTitleViewWithText:(NSString*)text;
 
+/**
+ * Custom done button used in the right side of the navigation bar
+ */
++ (UIBarButtonItem*)navBarDoneButtonWithTarget:(id)target;
+
 @end

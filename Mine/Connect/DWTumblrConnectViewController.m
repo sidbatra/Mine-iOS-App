@@ -7,6 +7,8 @@
 //
 
 #import "DWTumblrConnectViewController.h"
+#import "DWNavigationBarBackButton.h"
+#import "DWGUIManager.h"
 #import "DWSession.h"
 
 /**
@@ -28,6 +30,12 @@
  * Data controller for the users model.
  */
 @property (nonatomic,strong) DWUsersController *usersController;
+
+
+/**
+ * Authorize user's Tumblr account
+ */
+- (void)authorize;
 
 @end
 
@@ -63,11 +71,33 @@
 //----------------------------------------------------------------------------------------------------
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+    self.navigationItem.leftBarButtonItem   = [DWNavigationBarBackButton backButtonForNavigationController:self.navigationController];
+    self.navigationItem.titleView           = [DWGUIManager navBarTitleViewWithText:@"Tumblr Login"];    
+    self.navigationItem.rightBarButtonItem  = [DWGUIManager navBarDoneButtonWithTarget:self];    
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)viewDidUnload {
     [super viewDidUnload];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark Private Methods
+
+//----------------------------------------------------------------------------------------------------
+- (void)authorize {
+    
+    if(self.emailTextField.text.length && self.passwordTextField.text.length) {
+        [self.tumblrConnect authorizeWithUsername:self.emailTextField.text 
+                                      andPassword:self.passwordTextField.text];    
+    }
+    else {
+        NSLog(@"incomplete fields");
+    }
 }
 
 
@@ -80,10 +110,20 @@
 - (BOOL)textFieldShouldReturn:(UITextField*)textField {
     
 	if(textField == self.passwordTextField)
-        [self.tumblrConnect authorizeWithUsername:self.emailTextField.text 
-                                      andPassword:self.passwordTextField.text];    
+        [self authorize];
     
 	return YES;
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark IBActions
+
+//----------------------------------------------------------------------------------------------------
+- (void)doneButtonClicked {
+    [self authorize];
 }
 
 

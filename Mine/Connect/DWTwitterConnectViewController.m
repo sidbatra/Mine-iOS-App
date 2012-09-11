@@ -7,7 +7,10 @@
 //
 
 #import "DWTwitterConnectViewController.h"
+#import "DWNavigationBarBackButton.h"
+#import "DWGUIManager.h"
 #import "DWSession.h"
+#import "DWConstants.h"
 
 /**
  * Private declarations
@@ -28,6 +31,12 @@
  * Data controller for the users model.
  */
 @property (nonatomic,strong) DWUsersController *usersController;
+
+
+/**
+ * Authorize user's Twitter account
+ */
+- (void)authorize;
 
 @end
 
@@ -66,11 +75,44 @@
 //----------------------------------------------------------------------------------------------------
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.navigationItem.leftBarButtonItem   = [DWNavigationBarBackButton backButtonForNavigationController:self.navigationController];
+    self.navigationItem.titleView           = [DWGUIManager navBarTitleViewWithText:@"Twitter Login"];    
+    self.navigationItem.rightBarButtonItem  = [DWGUIManager navBarDoneButtonWithTarget:self];
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)viewDidUnload {
     [super viewDidUnload];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark Private Methods
+
+//----------------------------------------------------------------------------------------------------
+- (void)authorize {
+    
+    if (self.usernameTextField.text.length && self.passwordTextField.text.length) {        
+        [self.twitterConnect authorizeWithUsername:self.usernameTextField.text 
+                                       andPassword:self.passwordTextField.text];   
+    }
+    else {
+        NSLog(@"incomplete fields");
+    }
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark IBActions
+
+//----------------------------------------------------------------------------------------------------
+- (void)doneButtonClicked {
+    [self authorize];
 }
 
 
@@ -83,8 +125,7 @@
 - (BOOL)textFieldShouldReturn:(UITextField*)textField {
     
 	if(textField == self.passwordTextField)
-        [self.twitterConnect authorizeWithUsername:self.usernameTextField.text 
-                                       andPassword:self.passwordTextField.text];
+        [self authorize];
     
 	return YES;
 }

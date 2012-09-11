@@ -7,6 +7,7 @@
 //
 
 #import "DWGUIManager.h"
+#import "DWConstants.h"
 
 
 //----------------------------------------------------------------------------------------------------
@@ -26,6 +27,26 @@
     titleLabel.text                = text;
     
     return titleLabel;
+}
+
+//----------------------------------------------------------------------------------------------------
++ (UIBarButtonItem*)navBarDoneButtonWithTarget:(id)target {
+    
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];    
+    
+    [button setBackgroundImage:[UIImage imageNamed:kImgDoneOff] 
+                      forState:UIControlStateNormal];
+    
+    [button setBackgroundImage:[UIImage imageNamed:kImgDoneOn] 
+                      forState:UIControlStateHighlighted];
+    
+	[button addTarget:target
+               action:@selector(doneButtonClicked)
+     forControlEvents:UIControlEventTouchUpInside];
+    
+	[button setFrame:CGRectMake(0,0,58,30)];
+    
+    return [[UIBarButtonItem alloc] initWithCustomView:button];
 }
 
 @end
