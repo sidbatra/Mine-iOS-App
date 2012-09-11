@@ -131,7 +131,7 @@
     [super viewDidLoad];
     
     self.navigationItem.leftBarButtonItem   = [DWNavigationBarBackButton backButtonForNavigationController:self.navigationController];
-    self.navigationItem.titleView           = [DWGUIManager navBarTitleViewWithText:@"Item info"];
+    self.navigationItem.titleView           = [DWGUIManager navBarTitleViewWithText:@"Share"];
     self.navigationItem.rightBarButtonItem  = [DWGUIManager navBarDoneButtonWithTarget:self];    
     
     self.navigationController.navigationBarHidden = NO;

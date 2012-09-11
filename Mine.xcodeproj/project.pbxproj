@@ -76,6 +76,7 @@
 		26A83C4915F6BE870095B72D /* chooser-item-bg-off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26A83C4815F6BE860095B72D /* chooser-item-bg-off@2x.png */; };
 		26A83C4F15F6D51A0095B72D /* chooser-item-bg-on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26A83C4E15F6D51A0095B72D /* chooser-item-bg-on@2x.png */; };
 		26B3237815D31C4A00F1E28F /* DWStoresViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B3237715D31C4A00F1E28F /* DWStoresViewDataSource.m */; };
+		26BB9B4C15FFD04C00844E9F /* cell-chevron-off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26BB9B4B15FFD04C00844E9F /* cell-chevron-off@2x.png */; };
 		26C4467715C8BA4400E9A50B /* DWProductCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C4467615C8BA4400E9A50B /* DWProductCell.m */; };
 		26C446A615C9D02700E9A50B /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C446A315C9D02700E9A50B /* NSData+Base64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		26C446A715C9D02700E9A50B /* TumblrXAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C446A515C9D02700E9A50B /* TumblrXAuth.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -379,6 +380,7 @@
 		26A83C4E15F6D51A0095B72D /* chooser-item-bg-on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chooser-item-bg-on@2x.png"; sourceTree = "<group>"; };
 		26B3237615D31C4A00F1E28F /* DWStoresViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWStoresViewDataSource.h; sourceTree = "<group>"; };
 		26B3237715D31C4A00F1E28F /* DWStoresViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWStoresViewDataSource.m; sourceTree = "<group>"; };
+		26BB9B4B15FFD04C00844E9F /* cell-chevron-off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cell-chevron-off@2x.png"; sourceTree = "<group>"; };
 		26C4467515C8BA4400E9A50B /* DWProductCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWProductCell.h; sourceTree = "<group>"; };
 		26C4467615C8BA4400E9A50B /* DWProductCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWProductCell.m; sourceTree = "<group>"; };
 		26C446A215C9D02700E9A50B /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
@@ -858,6 +860,7 @@
 		BB06360315BF7258001F26E1 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				26BB9B4B15FFD04C00844E9F /* cell-chevron-off@2x.png */,
 				2618C0F415FEACC100CA41B9 /* hr-A4A4A4@2x.png */,
 				2618C0F515FEACC100CA41B9 /* hr-D6D6D6@2x.png */,
 				2676AA0415FE79E100B0B579 /* cell-bottom-off@2x.png */,
@@ -1739,6 +1742,7 @@
 				2676AA0D15FE79E100B0B579 /* cell-trans-4-off@2x.png in Resources */,
 				2618C0F615FEACC100CA41B9 /* hr-A4A4A4@2x.png in Resources */,
 				2618C0F715FEACC100CA41B9 /* hr-D6D6D6@2x.png in Resources */,
+				26BB9B4C15FFD04C00844E9F /* cell-chevron-off@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
