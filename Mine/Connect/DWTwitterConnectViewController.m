@@ -79,6 +79,8 @@
     self.navigationItem.leftBarButtonItem   = [DWNavigationBarBackButton backButtonForNavigationController:self.navigationController];
     self.navigationItem.titleView           = [DWGUIManager navBarTitleViewWithText:@"Twitter Login"];    
     self.navigationItem.rightBarButtonItem  = [DWGUIManager navBarDoneButtonWithTarget:self];
+    
+    [self.usernameTextField becomeFirstResponder];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -123,8 +125,11 @@
 
 //----------------------------------------------------------------------------------------------------
 - (BOOL)textFieldShouldReturn:(UITextField*)textField {
+
+    if(textField == self.usernameTextField)
+        [self.passwordTextField becomeFirstResponder];
     
-	if(textField == self.passwordTextField)
+	else if(textField == self.passwordTextField)
         [self authorize];
     
 	return YES;

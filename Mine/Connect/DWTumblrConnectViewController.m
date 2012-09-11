@@ -75,6 +75,8 @@
     self.navigationItem.leftBarButtonItem   = [DWNavigationBarBackButton backButtonForNavigationController:self.navigationController];
     self.navigationItem.titleView           = [DWGUIManager navBarTitleViewWithText:@"Tumblr Login"];    
     self.navigationItem.rightBarButtonItem  = [DWGUIManager navBarDoneButtonWithTarget:self];    
+    
+    [self.emailTextField becomeFirstResponder];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -108,6 +110,9 @@
 
 //----------------------------------------------------------------------------------------------------
 - (BOOL)textFieldShouldReturn:(UITextField*)textField {
+
+    if(textField == self.emailTextField)
+        [self.passwordTextField becomeFirstResponder];
     
 	if(textField == self.passwordTextField)
         [self authorize];
