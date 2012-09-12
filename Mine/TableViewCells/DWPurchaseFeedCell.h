@@ -11,8 +11,7 @@
 #import "OHAttributedLabel.h"
 
 
-extern NSInteger const kPurchaseFeedCellHeight;
-extern NSInteger const kTotalLikeUserButtons;
+extern NSInteger const kTotalLikeUserImages;
 
 @protocol DWPurchaseFeedCellDelegate;
 
@@ -23,6 +22,7 @@ extern NSInteger const kTotalLikeUserButtons;
     
     UIButton            *purchaseImageButton;
     CALayer             *infoBackground;
+    CALayer             *likesBackground;
     
     UIButton            *userImageButton;
     
@@ -33,8 +33,9 @@ extern NSInteger const kTotalLikeUserButtons;
     UIButton            *commentButton;
     
 	UILabel             *endorsementLabel;
-    UILabel             *likesCountLabel;
+    OHAttributedLabel   *likesCountLabel;
 
+    UIImageView         *likesChevron;
     
     __weak id<DWPurchaseFeedCellDelegate,NSObject> _delegate;
 }

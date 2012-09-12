@@ -13,18 +13,18 @@
 
 #import "DWUser.h"
 #import "DWLike.h"
+#import "DWConstants.h"
 
 
-NSInteger const kPurchaseFeedCellHeight = 350;
-NSInteger const kTotalLikeUserButtons   = 5;
+NSInteger const kTotalLikeUserImages = 6;
 
 static NSString* const kImgDoinkUp  = @"doink-up-16.png";
 static NSString* const kImgActionBg = @"btn-action-bg.png";
 static NSInteger const kEndorsementWidth = 274;
-
+static NSInteger const kPurchaseFeedCellHeight = 350;
 
 @interface DWPurchaseFeedCell() {
-    NSMutableArray  *_likeUserButtons;
+    NSMutableArray  *_likeUserImages;
     
     NSMutableArray  *_commentUserButtons;
     NSMutableArray  *_commentUserNameButtons;
@@ -37,7 +37,7 @@ static NSInteger const kEndorsementWidth = 274;
 /**
  * User image buttons for the likers of this purchase.
  */
-@property (nonatomic,strong) NSMutableArray *likeUserButtons;
+@property (nonatomic,strong) NSMutableArray *likeUserImages;
 
 /**
  * Image buttons for the comments.
@@ -75,7 +75,7 @@ static NSInteger const kEndorsementWidth = 274;
 
 @synthesize purchaseID              = _purchaseID;
 @synthesize userID                  = _userID;
-@synthesize likeUserButtons         = _likeUserButtons;
+@synthesize likeUserImages          = _likeUserImages;
 @synthesize commentUserButtons      = _commentUserButtons;
 @synthesize commentUserNameButtons  = _commentUserNameButtons;
 @synthesize commentMessageLabels    = _commentMessageLabels;
@@ -93,7 +93,7 @@ static NSInteger const kEndorsementWidth = 274;
         self.contentView.clipsToBounds = YES;
         self.contentView.backgroundColor = [UIColor whiteColor];
         
-        self.likeUserButtons    = [NSMutableArray arrayWithCapacity:kTotalLikeUserButtons];
+        self.likeUserImages     = [NSMutableArray arrayWithCapacity:kTotalLikeUserImages];
         self.userNameLabelURL   = [NSURL URLWithString:[NSString stringWithFormat:@"user"]];
         
         [self createPurchaseImageButton];
@@ -110,11 +110,13 @@ static NSInteger const kEndorsementWidth = 274;
         
         //[self createCommentButton];
         
-        //[self createLikesCountLabel];
-        //[self createLikeUserButtons];
+        [self createLikesBackground];
+        [self createLikesCountLabel];
+        [self createLikeUserImages];
+        [self createLikesChevron];
         
         
-       		self.selectionStyle = UITableViewCellSelectionStyleNone;	
+        self.selectionStyle = UITableViewCellSelectionStyleNone;	
 	}
 	
     return self;
@@ -260,35 +262,46 @@ static NSInteger const kEndorsementWidth = 274;
 }
 
 //----------------------------------------------------------------------------------------------------
+- (void)createLikesBackground {
+    likesBackground = [CALayer layer];
+    likesBackground.backgroundColor = [UIColor whiteColor].CGColor;
+    likesBackground.frame = CGRectMake(22,0,250,44);
+    likesBackground.cornerRadius = 6;
+    
+    [self.contentView.layer addSublayer:likesBackground];
+}
+
+//----------------------------------------------------------------------------------------------------
 - (void)createLikesCountLabel {
-    likesCountLabel					= [[UILabel alloc] initWithFrame:CGRectMake(0,
-                                                                            430,
-                                                                            40,
-                                                                            30)];
-    likesCountLabel.font            = [UIFont fontWithName:@"HelveticaNeue" size:13];	
-    likesCountLabel.textColor		= [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0];
-    likesCountLabel.backgroundColor	= [UIColor blueColor];
-    likesCountLabel.textAlignment	= UITextAlignmentLeft;
+    likesCountLabel					= [[OHAttributedLabel alloc] initWithFrame:CGRectMake(33,0,0,41)];
+    likesCountLabel.backgroundColor	= [UIColor clearColor];
+    boughtLabel.automaticallyAddLinksForType = 0;
     
     [self.contentView addSubview:likesCountLabel]; 
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)createLikeUserButtons {
+- (void)createLikeUserImages {
     
-    for(NSInteger i=0 ; i<kTotalLikeUserButtons ; i++) {
-        UIButton *likeUserButton = [[UIButton alloc] initWithFrame:CGRectMake(45 + i*35, 430, 30,30)];
+    for(NSInteger i=0 ; i<kTotalLikeUserImages ; i++) {
+        UIImageView *likeUserImage = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,24,24)];
         
-        likeUserButton.backgroundColor = [UIColor redColor];
+        likeUserImage.backgroundColor = [UIColor colorWithRed:0.878 green:0.878 blue:0.878 alpha:1.0];
+        likeUserImage.layer.cornerRadius = 3;
+        likeUserImage.layer.masksToBounds = YES;
         
-        [likeUserButton addTarget:self
-                           action:@selector(didTapLikeUserImageButton:)
-                 forControlEvents:UIControlEventTouchUpInside];
+        [self.likeUserImages addObject:likeUserImage];
         
-        [self.likeUserButtons addObject:likeUserButton];
-        
-        [self.contentView addSubview:likeUserButton];
+        [self.contentView addSubview:likeUserImage];
     }
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)createLikesChevron {
+    likesChevron = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 9, 13)];
+    likesChevron.image = [UIImage imageNamed:kImgChevron];
+    
+    [self.contentView addSubview:likesChevron];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -316,14 +329,16 @@ static NSInteger const kEndorsementWidth = 274;
 //----------------------------------------------------------------------------------------------------
 - (void)resetLikesUI {
     
-    [likeButton setTitle:@"Like" forState:UIControlStateNormal];
+    //[likeButton setTitle:@"Like" forState:UIControlStateNormal];
     likeButton.enabled = YES;
     
-    for(UIButton *likeUserButton in self.likeUserButtons) 
-        likeUserButton.hidden = YES;
+    for(UIButton *likeUserImage in self.likeUserImages) 
+        likeUserImage.hidden = YES;
     
+    likesBackground.hidden = YES;
     likesCountLabel.hidden = YES;
-    //allLikesButton.hidden = YES;
+    likesChevron.hidden = YES;
+    allLikesButton.hidden = YES;
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -390,10 +405,6 @@ static NSInteger const kEndorsementWidth = 274;
     likeButtonFrame.origin.x = allLikesButton.frame.origin.x + 9;
     likeButtonFrame.origin.y = allLikesButton.frame.origin.y + 9;
     likeButton.frame = likeButtonFrame;
-    
-    CGRect infoFrame = infoBackground.frame;
-    infoFrame.size.height = endorsementLabel.frame.origin.y + endorsementLabel.frame.size.height - infoFrame.origin.y + 10; //allLikesButton.frame.origin.y + allLikesButton.frame.size.height - infoFrame.origin.y + 10;
-    infoBackground.frame = infoFrame;
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -408,13 +419,75 @@ static NSInteger const kEndorsementWidth = 274;
     if(!count)
         return;
     
+    NSString *countText = nil;
+    NSString *baseText = nil;
+    likesBackground.hidden = NO;
     likesCountLabel.hidden = NO;
-    //allLikesButton.hidden = count <= 5;
     
-    if(count == 1)
-        likesCountLabel.text = @"1 like";
-    else
-        likesCountLabel.text = [NSString stringWithFormat:@"%d likes",count];
+    if(count == 1) {
+        countText = @"1";
+        baseText = @"1 like";
+    }
+    else {
+        countText = [NSString stringWithFormat:@"%d",count];
+        baseText = [NSString stringWithFormat:@"%@ likes",countText];
+    }
+    
+    CGRect frame = likesBackground.frame;
+    frame.origin.y = endorsementLabel.frame.origin.y + endorsementLabel.frame.size.height + 18;
+    likesBackground.frame = frame;
+    
+    frame = likesCountLabel.frame;
+    frame.origin.x = likesBackground.frame.origin.x + 11;
+    frame.origin.y = likesBackground.frame.origin.y + 4;
+    frame.size.width = 200;
+    likesCountLabel.frame = frame;
+    
+    
+    
+    
+    NSRange countRange = NSMakeRange(0,countText.length);
+    
+	NSMutableAttributedString* attrStr = [NSMutableAttributedString attributedStringWithString:baseText];
+    
+	[attrStr setFont:[UIFont fontWithName:@"HelveticaNeue" size:14]];
+	[attrStr setTextColor:[UIColor colorWithRed:0.333 green:0.333 blue:0.333 alpha:1.0]];
+    
+    [attrStr setFont:[UIFont fontWithName:@"HelveticaNeue" size:31] range:countRange];
+	[attrStr setTextBold:YES range:countRange];
+    
+    likesCountLabel.attributedText = attrStr;
+    [likesCountLabel sizeToFit];
+    
+    
+    CGFloat chevronX = 0;
+    
+    for(NSInteger i=0; i<MIN(count,kTotalLikeUserImages) ; i++) {
+        UIButton *likeUserButton = [self.likeUserImages objectAtIndex:i];
+
+        CGRect frame = likeUserButton.frame;
+        frame.origin.x = likesCountLabel.frame.origin.x + likesCountLabel.frame.size.width + 5 + (i * 27);
+        frame.origin.y = likesBackground.frame.origin.y + 10;
+        likeUserButton.frame = frame;
+        likeUserButton.hidden = NO;
+        
+        chevronX = frame.origin.x;
+    }
+    
+    frame = likesChevron.frame;
+    frame.origin.x = chevronX + 10 + 24;
+    frame.origin.y = likesBackground.frame.origin.y + 15;
+    likesChevron.frame = frame;
+    likesChevron.hidden = NO;
+    
+    frame = likesBackground.frame;
+    frame.size.width =  likesChevron.frame.origin.x + likesChevron.frame.size.width - likesBackground.frame.origin.x + 10;
+    likesBackground.frame = frame;
+    
+    
+    CGRect infoFrame = infoBackground.frame;
+    infoFrame.size.height = likesBackground.frame.origin.y + likesBackground.frame.size.height - infoFrame.origin.y + 10;
+    infoBackground.frame = infoFrame;
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -422,17 +495,12 @@ static NSInteger const kEndorsementWidth = 274;
     forButtonAtIndex:(NSInteger)index
            forUserID:(NSInteger)userID {
     
-    if(index >= [self.likeUserButtons count])
+    if(index >= [self.likeUserImages count])
         return;
     
-    UIButton *likeUserButton = [self.likeUserButtons objectAtIndex:index];
+    UIImageView *likeUserImage = [self.likeUserImages objectAtIndex:index];
     
-    likeUserButton.tag = userID;
-    
-    [likeUserButton setImage:image
-                    forState:UIControlStateNormal];
-    
-    likeUserButton.hidden = NO;
+    likeUserImage.image = image;
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -531,7 +599,7 @@ static NSInteger const kEndorsementWidth = 274;
                           constrainedToSize:CGSizeMake(kEndorsementWidth,750)
                               lineBreakMode:UILineBreakModeWordWrap].height;
     
-    //height +=likesCount > 0 ? 40 : 0;
+    height +=likesCount > 0 ? 64 : 0;
     //height += commentsCount > 0 ? 125 * commentsCount : 0;
     
     return  height;
@@ -582,12 +650,6 @@ static NSInteger const kEndorsementWidth = 274;
 
 //----------------------------------------------------------------------------------------------------
 - (void)didTapLikeUserImageButton:(UIButton*)button {
-    [self userClicked:button.tag];
-}
-
-
-//----------------------------------------------------------------------------------------------------
-- (void)didTapCommentUserImageButton:(UIButton*)button {
     [self userClicked:button.tag];
 }
 

@@ -53,13 +53,13 @@
     [cell setEndorsement:purchase.endorsement];
     
     
-    if([purchase isLikedByUserID:[DWSession sharedDWSession].currentUser.databaseID])
-        [cell disableLikeButton];
+    //if([purchase isLikedByUserID:[DWSession sharedDWSession].currentUser.databaseID])
+    //    [cell disableLikeButton];
     
     [cell setLikeCount:[purchase.likes count]];
     
-    /*
-    for(NSInteger i=0 ; i<MIN(kTotalLikeUserButtons,[purchase.likes count]) ; i++) {
+    
+    for(NSInteger i=0 ; i<MIN(kTotalLikeUserImages,[purchase.likes count]) ; i++) {
         DWLike *like = [purchase.likes objectAtIndex:i];
         
         [like.user downloadSquareImage];
@@ -68,7 +68,6 @@
           forButtonAtIndex:i
                  forUserID:like.user.databaseID];
     }
-     */
     
     /*
     for(DWComment *comment in purchase.comments) {
@@ -118,7 +117,7 @@
             if(purchase.user.databaseID == objectID)
                 [cell setUserImage:purchase.user.squareImage];
                 
-            for(NSInteger i=0 ; i<MIN(kTotalLikeUserButtons,[purchase.likes count]) ; i++) {
+            for(NSInteger i=0 ; i<MIN(kTotalLikeUserImages,[purchase.likes count]) ; i++) {
                 DWLike *like = [purchase.likes objectAtIndex:i];
                     
                 if(like.user.databaseID == objectID) {
