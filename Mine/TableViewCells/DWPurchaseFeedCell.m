@@ -27,6 +27,8 @@ static NSInteger const kPurchaseFeedCellHeight = 350;
 static NSInteger const kCommentWidth = 244;
 
 #define kCommentFont [UIFont fontWithName:@"HelveticaNeue" size:13]
+#define kActiveColor [UIColor colorWithRed:0.090 green:0.435 blue:0.627 alpha:1.0]
+
 
 @interface DWPurchaseFeedCell() {
     NSMutableArray  *_likeUserImages;
@@ -111,6 +113,7 @@ static NSInteger const kCommentWidth = 244;
         [self createLikesChevron];
         [self createAllLikesButton];
         
+        [self createAllCommentsButton];
         //[self createLikeButton];
         //[self createCommentButton];
         
@@ -196,7 +199,7 @@ static NSInteger const kCommentWidth = 244;
                                                                       userImageButton.frame.origin.y,
                                                                       228,
                                                                       34)];
-    boughtLabel.linkColor = [UIColor colorWithRed:0.333 green:0.333 blue:0.333 alpha:1.0];
+    boughtLabel.linkColor = kActiveColor;
     boughtLabel.underlineLinks = NO;
     boughtLabel.delegate = self;
     boughtLabel.automaticallyAddLinksForType = 0;
@@ -260,6 +263,21 @@ static NSInteger const kCommentWidth = 244;
 }
 
 //----------------------------------------------------------------------------------------------------
+- (void)createAllCommentsButton {
+    allCommentsButton = [[UIButton alloc] initWithFrame:CGRectMake(53,0,0,34)];
+    allCommentsButton.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:13];
+    allCommentsButton.backgroundColor = [UIColor clearColor];
+    
+    [allCommentsButton setTitleColor:kActiveColor forState:UIControlStateNormal];
+    
+    [allCommentsButton addTarget:self
+                          action:@selector(didTapAllCommentsButton:)
+                forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.contentView addSubview:allCommentsButton];
+}
+
+//----------------------------------------------------------------------------------------------------
 - (void)createLikesBackground {
     likesBackground = [CALayer layer];
     likesBackground.backgroundColor = [UIColor whiteColor].CGColor;
@@ -309,7 +327,7 @@ static NSInteger const kCommentWidth = 244;
     allLikesButton.backgroundColor = [UIColor clearColor];
     
     [allLikesButton addTarget:self
-                       action:@selector(didTapAllLikeButton:)
+                       action:@selector(didTapAllLikesButton:)
              forControlEvents:UIControlEventTouchUpInside];
     
     [self.contentView addSubview:allLikesButton];
@@ -334,6 +352,7 @@ static NSInteger const kCommentWidth = 244;
     likesCountLabel.hidden = YES;
     likesChevron.hidden = YES;
     allLikesButton.hidden = YES;
+    allCommentsButton.hidden = YES;
     
     commentsBaseY = 0;
 }
@@ -428,7 +447,6 @@ static NSInteger const kCommentWidth = 244;
     frame.origin.y = likesBackground.frame.origin.y + 4;
     frame.size.width = 200;
     likesCountLabel.frame = frame;
-    
     
     
     
@@ -560,7 +578,7 @@ static NSInteger const kCommentWidth = 244;
     
 	[attrStr setTextBold:YES range:NSMakeRange(0,userName.length+1)];
     
-    [attrStr setTextColor:[UIColor colorWithRed:0.090 green:0.435 blue:0.627 alpha:1.0] range:nameRange];
+    [attrStr setTextColor:kActiveColor range:nameRange];
     
     commentMessageLabel.attributedText = attrStr;
     [commentMessageLabel sizeToFit];
@@ -584,6 +602,25 @@ static NSInteger const kCommentWidth = 244;
                        forState:UIControlStateNormal];
 }
 
+//----------------------------------------------------------------------------------------------------
+- (void)setAllCommentsButtonWithCount:(NSInteger)count {
+    [allCommentsButton setTitle:[NSString stringWithFormat:@"View all %d comments",count]
+                       forState:UIControlStateNormal];
+    
+    OHAttributedLabel *lastMessageLabel = [self.commentMessageLabels objectAtIndex:[self.commentMessageLabels count]-1];
+    UIButton *lastUserImage = [self.commentUserButtons objectAtIndex:[self.commentUserButtons count]-1];
+    
+    
+    CGRect frame = allCommentsButton.frame;
+    frame.size.width = 250;
+    frame.origin.y = MAX(lastUserImage.frame.origin.y + lastUserImage.frame.size.height, 
+                           lastMessageLabel.frame.origin.y + lastMessageLabel.frame.size.height) + 10;
+    allCommentsButton.frame = frame;
+    [allCommentsButton sizeToFit];
+    
+    allCommentsButton.hidden = NO;
+}
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
@@ -602,13 +639,16 @@ static NSInteger const kCommentWidth = 244;
                           constrainedToSize:CGSizeMake(kEndorsementWidth,1500)
                               lineBreakMode:UILineBreakModeWordWrap].height;
     
-    height +=likesCount > 0 ? 64 : 0;
+    height += likesCount > 0 ? 64 : 0;
     
     for(DWComment *comment in comments) {
         height += [[NSString stringWithFormat:@"%@: %@",comment.user.fullName,comment.message] sizeWithFont:kCommentFont 
                                                                                           constrainedToSize:CGSizeMake(kCommentWidth,1500)
                                                                                               lineBreakMode:UILineBreakModeWordWrap].height;
     }
+    
+    if([comments count] > kTotalComments)
+        height += 45;
     
     return  height;
 }
@@ -679,7 +719,7 @@ static NSInteger const kCommentWidth = 244;
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)didTapAllLikeButton:(UIButton*)button {
+- (void)didTapAllLikesButton:(UIButton*)button {
     
     SEL sel = @selector(allLikesClickedForPurchaseID:);
     
@@ -701,6 +741,18 @@ static NSInteger const kCommentWidth = 244;
     [self.delegate performSelector:sel
                         withObject:[NSNumber numberWithInteger:self.purchaseID]
                         withObject:[NSNumber numberWithBool:YES]];
+}
+//----------------------------------------------------------------------------------------------------
+- (void)didTapAllCommentsButton:(UIButton*)button {
+    
+    SEL sel = @selector(commentClickedForPurchaseID:withCreationIntent:);
+    
+    if(![self.delegate respondsToSelector:sel])
+        return;
+    
+    [self.delegate performSelector:sel
+                        withObject:[NSNumber numberWithInteger:self.purchaseID]
+                        withObject:[NSNumber numberWithBool:NO]];
 }
 
 @end

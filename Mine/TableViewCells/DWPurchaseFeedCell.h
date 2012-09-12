@@ -32,6 +32,7 @@ extern NSInteger const kTotalComments;
     UIButton            *likeButton;
     UIButton            *allLikesButton;
     UIButton            *commentButton;
+    UIButton            *allCommentsButton;
     
 	UILabel             *endorsementLabel;
     OHAttributedLabel   *likesCountLabel;
@@ -120,6 +121,10 @@ extern NSInteger const kTotalComments;
 - (void)setCommentUserImage:(UIImage*)image
            forButtonAtIndex:(NSInteger)index;
 
+/**
+ * Display the all comments button.
+ */
+- (void)setAllCommentsButtonWithCount:(NSInteger)count;
 
 /**
  * Compute the height of the cell based on the content.

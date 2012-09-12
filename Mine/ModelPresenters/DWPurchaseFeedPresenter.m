@@ -80,6 +80,9 @@
                               andMessage:comment.message];
     }
     
+    if([purchase.comments count] > kTotalComments)
+        [cell setAllCommentsButtonWithCount:[purchase.comments count]];
+    
     return cell;
 }
 
