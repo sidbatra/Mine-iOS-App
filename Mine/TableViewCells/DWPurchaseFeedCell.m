@@ -105,16 +105,14 @@ static NSInteger const kPurchaseFeedCellHeight = 350;
         [self createBoughtLabel];
         [self createEndorsementLabel];
         
-        //[self createAllLikesButton];
-        //[self createLikeButton];
-        
-        //[self createCommentButton];
-        
         [self createLikesBackground];
         [self createLikesCountLabel];
         [self createLikeUserImages];
         [self createLikesChevron];
+        [self createAllLikesButton];
         
+        //[self createLikeButton];
+        //[self createCommentButton];
         
         self.selectionStyle = UITableViewCellSelectionStyleNone;	
 	}
@@ -306,12 +304,9 @@ static NSInteger const kPurchaseFeedCellHeight = 350;
 
 //----------------------------------------------------------------------------------------------------
 - (void)createAllLikesButton {
-    allLikesButton = [[UIButton alloc] initWithFrame:CGRectMake(11,400,96,44)];
-
-    allLikesButton.backgroundColor              = [UIColor whiteColor];
-    allLikesButton.layer.borderColor            = [UIColor colorWithRed:0.843 green:0.843 blue:0.843 alpha:1.0].CGColor;
-    allLikesButton.layer.borderWidth            = 1;
-    allLikesButton.layer.cornerRadius           = 5;
+    allLikesButton = [[UIButton alloc] initWithFrame:CGRectZero];
+    
+    allLikesButton.backgroundColor = [UIColor clearColor];
     
     [allLikesButton addTarget:self
                        action:@selector(didTapAllLikeButton:)
@@ -396,15 +391,6 @@ static NSInteger const kPurchaseFeedCellHeight = 350;
     
     endorsementLabel.text = endorsement;
     [endorsementLabel sizeToFit];
-    
-    CGRect allLikeButtonFrame = allLikesButton.frame;
-    allLikeButtonFrame.origin.y = endorsementLabel.frame.origin.y + endorsementLabel.frame.size.height;
-    allLikesButton.frame = allLikeButtonFrame;
-    
-    CGRect likeButtonFrame = likeButton.frame;
-    likeButtonFrame.origin.x = allLikesButton.frame.origin.x + 9;
-    likeButtonFrame.origin.y = allLikesButton.frame.origin.y + 9;
-    likeButton.frame = likeButtonFrame;
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -423,6 +409,8 @@ static NSInteger const kPurchaseFeedCellHeight = 350;
     NSString *baseText = nil;
     likesBackground.hidden = NO;
     likesCountLabel.hidden = NO;
+    likesChevron.hidden = NO;
+    allLikesButton.hidden = NO;
     
     if(count == 1) {
         countText = @"1";
@@ -478,11 +466,11 @@ static NSInteger const kPurchaseFeedCellHeight = 350;
     frame.origin.x = chevronX + 10 + 24;
     frame.origin.y = likesBackground.frame.origin.y + 15;
     likesChevron.frame = frame;
-    likesChevron.hidden = NO;
     
     frame = likesBackground.frame;
     frame.size.width =  likesChevron.frame.origin.x + likesChevron.frame.size.width - likesBackground.frame.origin.x + 10;
     likesBackground.frame = frame;
+    allLikesButton.frame = frame;
     
     
     CGRect infoFrame = infoBackground.frame;
