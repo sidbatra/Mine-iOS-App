@@ -12,6 +12,7 @@
 
 
 extern NSInteger const kTotalLikeUserImages;
+extern NSInteger const kTotalComments;
 
 @protocol DWPurchaseFeedCellDelegate;
 
@@ -124,7 +125,7 @@ extern NSInteger const kTotalLikeUserImages;
  * Compute the height of the cell based on the content.
  */
 + (NSInteger)heightForCellWithLikesCount:(NSInteger)likesCount 
-                           commentsCount:(NSInteger)commentsCount
+                                comments:(NSMutableArray*)comments
                           andEndorsement:(NSString*)endorsement;
 
 @end

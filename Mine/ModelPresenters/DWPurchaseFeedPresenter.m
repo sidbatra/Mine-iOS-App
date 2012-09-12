@@ -69,8 +69,9 @@
                  forUserID:like.user.databaseID];
     }
     
-    /*
-    for(DWComment *comment in purchase.comments) {
+    for(NSInteger i=0 ; i<MIN(kTotalComments,[purchase.comments count]) ; i++) {
+        DWComment *comment = [purchase.comments objectAtIndex:i];
+        
         [comment.user downloadSquareImage];
         
         [cell createCommentWithUserImage:comment.user.squareImage
@@ -78,7 +79,6 @@
                               withUserID:comment.user.databaseID
                               andMessage:comment.message];
     }
-    */
     
     return cell;
 }
@@ -90,7 +90,7 @@
      DWPurchase *purchase = object;
     
     return [DWPurchaseFeedCell heightForCellWithLikesCount:purchase.likes.count 
-                                             commentsCount:purchase.comments.count
+                                                  comments:purchase.comments
                                             andEndorsement:purchase.endorsement];
 }
 

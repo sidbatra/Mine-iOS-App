@@ -13,24 +13,30 @@
 
 #import "DWUser.h"
 #import "DWLike.h"
+#import "DWComment.h"
 #import "DWConstants.h"
 
 
 NSInteger const kTotalLikeUserImages = 6;
+NSInteger const kTotalComments = 3;
 
 static NSString* const kImgDoinkUp  = @"doink-up-16.png";
 static NSString* const kImgActionBg = @"btn-action-bg.png";
 static NSInteger const kEndorsementWidth = 274;
 static NSInteger const kPurchaseFeedCellHeight = 350;
+static NSInteger const kCommentWidth = 244;
+
+#define kCommentFont [UIFont fontWithName:@"HelveticaNeue" size:13]
 
 @interface DWPurchaseFeedCell() {
     NSMutableArray  *_likeUserImages;
     
     NSMutableArray  *_commentUserButtons;
-    NSMutableArray  *_commentUserNameButtons;
     NSMutableArray  *_commentMessageLabels;
     
     NSURL           *_userNameLabelURL;
+    
+    NSInteger       commentsBaseY;
 }
 
 
@@ -43,11 +49,6 @@ static NSInteger const kPurchaseFeedCellHeight = 350;
  * Image buttons for the comments.
  */
 @property (nonatomic,strong) NSMutableArray *commentUserButtons;
-
-/**
- * User name buttons for the comments.
- */
-@property (nonatomic,strong) NSMutableArray *commentUserNameButtons;
 
 /**
  * Comment message labels.
@@ -77,7 +78,6 @@ static NSInteger const kPurchaseFeedCellHeight = 350;
 @synthesize userID                  = _userID;
 @synthesize likeUserImages          = _likeUserImages;
 @synthesize commentUserButtons      = _commentUserButtons;
-@synthesize commentUserNameButtons  = _commentUserNameButtons;
 @synthesize commentMessageLabels    = _commentMessageLabels;
 @synthesize userNameLabelURL        = _userNameLabelURL;
 @synthesize delegate                = _delegate;
@@ -334,6 +334,8 @@ static NSInteger const kPurchaseFeedCellHeight = 350;
     likesCountLabel.hidden = YES;
     likesChevron.hidden = YES;
     allLikesButton.hidden = YES;
+    
+    commentsBaseY = 0;
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -342,14 +344,10 @@ static NSInteger const kPurchaseFeedCellHeight = 350;
     for(UIButton *commentUserButton in self.commentUserButtons)
         [commentUserButton removeFromSuperview];
     
-    for(UIButton *commentUserNameButton in self.commentUserNameButtons)
-        [commentUserNameButton removeFromSuperview];
-    
     for(UILabel *commentMessageLabel in self.commentMessageLabels)
         [commentMessageLabel removeFromSuperview];
     
     self.commentUserButtons     = [NSMutableArray array];
-    self.commentUserNameButtons = [NSMutableArray array];
     self.commentMessageLabels   = [NSMutableArray array];
 }
 
@@ -496,11 +494,39 @@ static NSInteger const kPurchaseFeedCellHeight = 350;
                       withUserName:(NSString*)userName
                         withUserID:(NSInteger)userID
                         andMessage:(NSString*)message {
-    UIButton *commentUserButton = [[UIButton alloc] initWithFrame:CGRectMake(0,
-                                                                            480 + [self.commentUserButtons count] * 110,
-                                                                             30,
-                                                                             30)];
-    commentUserButton.backgroundColor = [UIColor redColor];
+    
+    if(!commentsBaseY) {
+        if(!likesChevron.hidden) {
+            commentsBaseY = likesBackground.frame.origin.y + likesBackground.frame.size.height;
+        }
+        else if(endorsementLabel.text && endorsementLabel.text.length) {
+            commentsBaseY = endorsementLabel.frame.origin.y + endorsementLabel.frame.size.height;
+        }
+        else {
+            commentsBaseY = userImageButton.frame.origin.y + userImageButton.frame.size.height;
+        }
+        
+        commentsBaseY += 10;
+    }
+    
+    
+    NSInteger previousCommentY = commentsBaseY;
+    
+    if([self.commentMessageLabels count]) {
+        OHAttributedLabel *lastMessageLabel = [self.commentMessageLabels objectAtIndex:[self.commentMessageLabels count]-1];
+        UIButton *lastUserImage = [self.commentUserButtons objectAtIndex:[self.commentUserButtons count]-1];
+        
+        previousCommentY = MAX(lastUserImage.frame.origin.y + lastUserImage.frame.size.height, 
+                               lastMessageLabel.frame.origin.y + lastMessageLabel.frame.size.height);
+    }
+    
+    
+    UIButton *commentUserButton = [[UIButton alloc] initWithFrame:CGRectMake(22,
+                                                                            previousCommentY + 10,
+                                                                             24,
+                                                                             24)];
+    commentUserButton.backgroundColor = [UIColor colorWithRed:0.878 green:0.878 blue:0.878 alpha:1.0];
+    commentUserButton.imageView.layer.cornerRadius = 3;
     commentUserButton.tag = userID;
     
     [commentUserButton setImage:image
@@ -515,41 +541,30 @@ static NSInteger const kPurchaseFeedCellHeight = 350;
     [self.contentView addSubview:commentUserButton];
     
     
-    UIButton *commentUserNameButton = [[UIButton alloc] initWithFrame:CGRectMake(50,
-                                                                             480 + [self.commentUserNameButtons count] * 110,
-                                                                             150,
-                                                                             30)];
-    commentUserNameButton.backgroundColor   = [UIColor redColor];
-    commentUserNameButton.tag               = userID;
     
-    commentUserNameButton.titleLabel.font               = [UIFont fontWithName:@"HelveticaNeue" size:13];
-    commentUserNameButton.titleLabel.textColor          = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0];
-    commentUserNameButton.titleLabel.textAlignment      = UITextAlignmentLeft;
-   
-    [commentUserNameButton setTitle:userName
-                           forState:UIControlStateNormal];
+    NSString *commentText = [NSString stringWithFormat:@"%@: %@",userName,message];
     
-    [commentUserNameButton addTarget:self
-                          action:@selector(didTapCommentUserNameButton:)
-                forControlEvents:UIControlEventTouchUpInside];
+    OHAttributedLabel *commentMessageLabel = [[OHAttributedLabel alloc] initWithFrame:CGRectMake(53, 
+                                                                             commentUserButton.frame.origin.y,
+                                                                             kCommentWidth,
+                                                                             0)];
+    commentMessageLabel.backgroundColor = [UIColor clearColor];
+
     
-    [self.commentUserNameButtons addObject:commentUserNameButton];
+    NSRange nameRange = NSMakeRange(0,userName.length);
     
-    [self.contentView addSubview:commentUserNameButton];
+	NSMutableAttributedString* attrStr = [NSMutableAttributedString attributedStringWithString:commentText];
     
+	[attrStr setFont:kCommentFont];
+	[attrStr setTextColor:[UIColor colorWithRed:0.333 green:0.333 blue:0.333 alpha:1.0]];
     
+	[attrStr setTextBold:YES range:NSMakeRange(0,userName.length+1)];
     
-    UILabel *commentMessageLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 
-                                                                             480 + [self.commentMessageLabels count] * 110 + 35 ,
-                                                                             self.contentView.frame.size.width - 10,
-                                                                             60)];
-    commentMessageLabel.numberOfLines       = 0;
-    commentMessageLabel.text                = message;
-    commentMessageLabel.backgroundColor     = [UIColor greenColor];
-    commentMessageLabel.font                = [UIFont fontWithName:@"HelveticaNeue" size:13];
-    commentMessageLabel.textColor           = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0];
-    commentMessageLabel.textAlignment       = UITextAlignmentLeft;
+    [attrStr setTextColor:[UIColor colorWithRed:0.090 green:0.435 blue:0.627 alpha:1.0] range:nameRange];
+    
+    commentMessageLabel.attributedText = attrStr;
     [commentMessageLabel sizeToFit];
+    
     
     [self.commentMessageLabels addObject:commentMessageLabel];
     
@@ -577,18 +592,23 @@ static NSInteger const kPurchaseFeedCellHeight = 350;
 
 //----------------------------------------------------------------------------------------------------
 + (NSInteger)heightForCellWithLikesCount:(NSInteger)likesCount 
-                           commentsCount:(NSInteger)commentsCount
-                          andEndorsement:(NSString*)endorsement {
+                                comments:(NSMutableArray *)comments 
+                          andEndorsement:(NSString *)endorsement { 
     
     NSInteger height = kPurchaseFeedCellHeight;
     
     if(endorsement && endorsement.length)
         height += [endorsement sizeWithFont:[UIFont fontWithName:@"HelveticaNeue" size:13] 
-                          constrainedToSize:CGSizeMake(kEndorsementWidth,750)
+                          constrainedToSize:CGSizeMake(kEndorsementWidth,1500)
                               lineBreakMode:UILineBreakModeWordWrap].height;
     
     height +=likesCount > 0 ? 64 : 0;
-    //height += commentsCount > 0 ? 125 * commentsCount : 0;
+    
+    for(DWComment *comment in comments) {
+        height += [[NSString stringWithFormat:@"%@: %@",comment.user.fullName,comment.message] sizeWithFont:kCommentFont 
+                                                                                          constrainedToSize:CGSizeMake(kCommentWidth,1500)
+                                                                                              lineBreakMode:UILineBreakModeWordWrap].height;
+    }
     
     return  height;
 }
@@ -637,7 +657,7 @@ static NSInteger const kPurchaseFeedCellHeight = 350;
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)didTapLikeUserImageButton:(UIButton*)button {
+- (void)didTapCommentUserImageButton:(UIButton*)button {
     [self userClicked:button.tag];
 }
 
