@@ -28,10 +28,13 @@ static NSString* const kImgCommentOn    = @"feed-btn-comment-on.png";
 static NSString* const kImgCommentOff   = @"feed-btn-comment-off.png";
 static NSString* const kImgURLOn        = @"feed-btn-explore-on.png";
 static NSString* const kImgURLOff       = @"feed-btn-explore-off.png";
+static NSString* const kUserURLScheme   = @"user";
 
-static NSInteger const kEndorsementWidth = 274;
-static NSInteger const kPurchaseFeedCellHeight = 380;
-static NSInteger const kCommentWidth = 244;
+static NSInteger const kPurchaseFeedCellHeight  = 380;
+static NSInteger const kEndorsementWidth        = 274;
+static NSInteger const kCommentWidth            = 244;
+
+
 
 #define kCommentFont [UIFont fontWithName:@"HelveticaNeue" size:13]
 #define kActiveColor [UIColor colorWithRed:0.090 green:0.435 blue:0.627 alpha:1.0]
@@ -42,9 +45,7 @@ static NSInteger const kCommentWidth = 244;
     
     NSMutableArray  *_commentUserButtons;
     NSMutableArray  *_commentMessageLabels;
-    
-    NSURL           *_userNameLabelURL;
-    
+        
     NSInteger       commentsBaseY;
 }
 
@@ -65,11 +66,6 @@ static NSInteger const kCommentWidth = 244;
 @property (nonatomic,strong) NSMutableArray *commentMessageLabels;
 
 /**
- * URL used to idenfity clicks on the user name.
- */
-@property (nonatomic,strong) NSURL *userNameLabelURL;
-
-/**
  * Fires the delegate event after a user element is clicked.
  */
 - (void)userClicked:(NSInteger)userID;
@@ -88,7 +84,6 @@ static NSInteger const kCommentWidth = 244;
 @synthesize likeUserImages          = _likeUserImages;
 @synthesize commentUserButtons      = _commentUserButtons;
 @synthesize commentMessageLabels    = _commentMessageLabels;
-@synthesize userNameLabelURL        = _userNameLabelURL;
 @synthesize delegate                = _delegate;
 
 //----------------------------------------------------------------------------------------------------
@@ -103,7 +98,6 @@ static NSInteger const kCommentWidth = 244;
         self.contentView.backgroundColor = [UIColor whiteColor];
         
         self.likeUserImages     = [NSMutableArray arrayWithCapacity:kTotalLikeUserImages];
-        self.userNameLabelURL   = [NSURL URLWithString:[NSString stringWithFormat:@"user"]];
         
         [self createPurchaseImageButton];
         
@@ -476,7 +470,7 @@ static NSInteger const kCommentWidth = 244;
     
     boughtLabel.attributedText = attrStr;
     
-    [boughtLabel addCustomLink:self.userNameLabelURL
+    [boughtLabel addCustomLink:[NSURL URLWithString:[NSString stringWithFormat:@"%@:%d",kUserURLScheme,self.userID]]
                        inRange:userNameRange];
 }
 
@@ -648,7 +642,10 @@ static NSInteger const kCommentWidth = 244;
                                                                              kCommentWidth,
                                                                              0)];
     commentMessageLabel.backgroundColor = [UIColor clearColor];
-
+    commentMessageLabel.automaticallyAddLinksForType = 0;
+    commentMessageLabel.linkColor = kActiveColor;
+    commentMessageLabel.underlineLinks = NO;
+    commentMessageLabel.delegate = self;
     
     NSRange nameRange = NSMakeRange(0,userName.length);
     
@@ -659,10 +656,11 @@ static NSInteger const kCommentWidth = 244;
     
 	[attrStr setTextBold:YES range:NSMakeRange(0,userName.length+1)];
     
-    [attrStr setTextColor:kActiveColor range:nameRange];
-    
     commentMessageLabel.attributedText = attrStr;
     [commentMessageLabel sizeToFit];
+    
+    [commentMessageLabel addCustomLink:[NSURL URLWithString:[NSString stringWithFormat:@"%@:%d",kUserURLScheme,userID]]
+                               inRange:nameRange];
     
     
     [self.commentMessageLabels addObject:commentMessageLabel];
@@ -739,8 +737,8 @@ static NSInteger const kCommentWidth = 244;
 //----------------------------------------------------------------------------------------------------
 -(BOOL)attributedLabel:(OHAttributedLabel *)attributedLabel 
       shouldFollowLink:(NSTextCheckingResult *)linkInfo {
-    
-    [self userClicked:self.userID];
+
+    [self userClicked:[[linkInfo.URL resourceSpecifier] integerValue]];
     
     return true;
 }
