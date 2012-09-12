@@ -213,6 +213,13 @@
 		BB9F317A15FDFFAD009C1385 /* chevron-white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB9F317815FDFFAD009C1385 /* chevron-white@2x.png */; };
 		BB9F317B15FDFFAD009C1385 /* chevron@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB9F317915FDFFAD009C1385 /* chevron@2x.png */; };
 		BB9F318116005346009C1385 /* doink-up-16@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB9F318016005346009C1385 /* doink-up-16@2x.png */; };
+		BB9F318E16010172009C1385 /* feed-btn-comment-off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB9F318716010172009C1385 /* feed-btn-comment-off@2x.png */; };
+		BB9F318F16010172009C1385 /* feed-btn-comment-on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB9F318816010172009C1385 /* feed-btn-comment-on@2x.png */; };
+		BB9F319016010172009C1385 /* feed-btn-explore-off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB9F318916010172009C1385 /* feed-btn-explore-off@2x.png */; };
+		BB9F319116010172009C1385 /* feed-btn-explore-on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB9F318A16010172009C1385 /* feed-btn-explore-on@2x.png */; };
+		BB9F319216010172009C1385 /* feed-btn-like-off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB9F318B16010172009C1385 /* feed-btn-like-off@2x.png */; };
+		BB9F319316010172009C1385 /* feed-btn-like-on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB9F318C16010172009C1385 /* feed-btn-like-on@2x.png */; };
+		BB9F319416010172009C1385 /* feed-btn-like-pushed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB9F318D16010172009C1385 /* feed-btn-like-pushed@2x.png */; };
 		BB9F70AB15B9E62F0099C80A /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB9F70AA15B9E62F0099C80A /* CFNetwork.framework */; };
 		BB9F70AE15B9E6400099C80A /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB9F70AD15B9E6400099C80A /* SystemConfiguration.framework */; };
 		BB9F70B015B9E6450099C80A /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB9F70AF15B9E6450099C80A /* MobileCoreServices.framework */; };
@@ -606,6 +613,13 @@
 		BB9F317815FDFFAD009C1385 /* chevron-white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chevron-white@2x.png"; sourceTree = "<group>"; };
 		BB9F317915FDFFAD009C1385 /* chevron@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chevron@2x.png"; sourceTree = "<group>"; };
 		BB9F318016005346009C1385 /* doink-up-16@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "doink-up-16@2x.png"; sourceTree = "<group>"; };
+		BB9F318716010172009C1385 /* feed-btn-comment-off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "feed-btn-comment-off@2x.png"; sourceTree = "<group>"; };
+		BB9F318816010172009C1385 /* feed-btn-comment-on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "feed-btn-comment-on@2x.png"; sourceTree = "<group>"; };
+		BB9F318916010172009C1385 /* feed-btn-explore-off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "feed-btn-explore-off@2x.png"; sourceTree = "<group>"; };
+		BB9F318A16010172009C1385 /* feed-btn-explore-on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "feed-btn-explore-on@2x.png"; sourceTree = "<group>"; };
+		BB9F318B16010172009C1385 /* feed-btn-like-off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "feed-btn-like-off@2x.png"; sourceTree = "<group>"; };
+		BB9F318C16010172009C1385 /* feed-btn-like-on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "feed-btn-like-on@2x.png"; sourceTree = "<group>"; };
+		BB9F318D16010172009C1385 /* feed-btn-like-pushed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "feed-btn-like-pushed@2x.png"; sourceTree = "<group>"; };
 		BB9F70AA15B9E62F0099C80A /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		BB9F70AD15B9E6400099C80A /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		BB9F70AF15B9E6450099C80A /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
@@ -862,6 +876,13 @@
 		BB06360315BF7258001F26E1 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				BB9F318716010172009C1385 /* feed-btn-comment-off@2x.png */,
+				BB9F318816010172009C1385 /* feed-btn-comment-on@2x.png */,
+				BB9F318916010172009C1385 /* feed-btn-explore-off@2x.png */,
+				BB9F318A16010172009C1385 /* feed-btn-explore-on@2x.png */,
+				BB9F318B16010172009C1385 /* feed-btn-like-off@2x.png */,
+				BB9F318C16010172009C1385 /* feed-btn-like-on@2x.png */,
+				BB9F318D16010172009C1385 /* feed-btn-like-pushed@2x.png */,
 				26BB9B4B15FFD04C00844E9F /* cell-chevron-off@2x.png */,
 				BB9F318016005346009C1385 /* doink-up-16@2x.png */,
 				2618C0F415FEACC100CA41B9 /* hr-A4A4A4@2x.png */,
@@ -1747,6 +1768,13 @@
 				2618C0F715FEACC100CA41B9 /* hr-D6D6D6@2x.png in Resources */,
 				26BB9B4C15FFD04C00844E9F /* cell-chevron-off@2x.png in Resources */,
 				BB9F318116005346009C1385 /* doink-up-16@2x.png in Resources */,
+				BB9F318E16010172009C1385 /* feed-btn-comment-off@2x.png in Resources */,
+				BB9F318F16010172009C1385 /* feed-btn-comment-on@2x.png in Resources */,
+				BB9F319016010172009C1385 /* feed-btn-explore-off@2x.png in Resources */,
+				BB9F319116010172009C1385 /* feed-btn-explore-on@2x.png in Resources */,
+				BB9F319216010172009C1385 /* feed-btn-like-off@2x.png in Resources */,
+				BB9F319316010172009C1385 /* feed-btn-like-on@2x.png in Resources */,
+				BB9F319416010172009C1385 /* feed-btn-like-pushed@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

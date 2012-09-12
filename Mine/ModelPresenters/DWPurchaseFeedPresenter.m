@@ -53,9 +53,6 @@
     [cell setEndorsement:purchase.endorsement];
     
     
-    //if([purchase isLikedByUserID:[DWSession sharedDWSession].currentUser.databaseID])
-    //    [cell disableLikeButton];
-    
     [cell setLikeCount:[purchase.likes count]];
     
     
@@ -82,6 +79,10 @@
     
     if([purchase.comments count] > kTotalComments)
         [cell setAllCommentsButtonWithCount:[purchase.comments count]];
+    
+    
+    [cell setInteractionButtonsWithLikedStatus:[purchase isLikedByUserID:[DWSession sharedDWSession].currentUser.databaseID]];
+    
     
     return cell;
 }

@@ -33,6 +33,7 @@ extern NSInteger const kTotalComments;
     UIButton            *allLikesButton;
     UIButton            *commentButton;
     UIButton            *allCommentsButton;
+    UIButton            *urlButton;
     
 	UILabel             *endorsementLabel;
     OHAttributedLabel   *likesCountLabel;
@@ -91,9 +92,9 @@ extern NSInteger const kTotalComments;
 - (void)setEndorsement:(NSString*)endorsement;
 
 /**
- * Disable like button interaction.
+ * Set interaction button states.
  */
-- (void)disableLikeButton;
+- (void)setInteractionButtonsWithLikedStatus:(BOOL)liked;
 
 /**
  * Set like count for the purchase.

@@ -20,10 +20,17 @@
 NSInteger const kTotalLikeUserImages = 6;
 NSInteger const kTotalComments = 3;
 
-static NSString* const kImgDoinkUp  = @"doink-up-16.png";
-static NSString* const kImgActionBg = @"btn-action-bg.png";
+static NSString* const kImgDoinkUp      = @"doink-up-16.png";
+static NSString* const kImgLikeOn       = @"feed-btn-like-on.png";
+static NSString* const kImgLikeOff      = @"feed-btn-like-off.png";
+static NSString* const kImgLikePushed   = @"feed-btn-like-pushed.png";
+static NSString* const kImgCommentOn    = @"feed-btn-comment-on.png";
+static NSString* const kImgCommentOff   = @"feed-btn-comment-off.png";
+static NSString* const kImgURLOn        = @"feed-btn-explore-on.png";
+static NSString* const kImgURLOff       = @"feed-btn-explore-off.png";
+
 static NSInteger const kEndorsementWidth = 274;
-static NSInteger const kPurchaseFeedCellHeight = 350;
+static NSInteger const kPurchaseFeedCellHeight = 380;
 static NSInteger const kCommentWidth = 244;
 
 #define kCommentFont [UIFont fontWithName:@"HelveticaNeue" size:13]
@@ -114,8 +121,9 @@ static NSInteger const kCommentWidth = 244;
         [self createAllLikesButton];
         
         [self createAllCommentsButton];
-        //[self createLikeButton];
-        //[self createCommentButton];
+        [self createLikeButton];
+        [self createCommentButton];
+        [self createURLButton];
         
         self.selectionStyle = UITableViewCellSelectionStyleNone;	
 	}
@@ -133,6 +141,18 @@ static NSInteger const kCommentWidth = 244;
     
     [self.delegate performSelector:sel
                         withObject:[NSNumber numberWithInteger:userID]];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)fireExternalURLDelegate {
+    
+    SEL sel = @selector(purchaseURLClicked:);
+    
+    if(![self.delegate respondsToSelector:sel])
+        return;
+    
+    [self.delegate performSelector:sel
+                        withObject:[NSNumber numberWithInteger:self.purchaseID]];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -269,11 +289,17 @@ static NSInteger const kCommentWidth = 244;
 //----------------------------------------------------------------------------------------------------
 - (void)createLikeButton {
     
-    likeButton = [[UIButton alloc] initWithFrame:CGRectMake(11,400,76,24)];
+    likeButton = [[UIButton alloc] initWithFrame:CGRectMake(22,0,76,24)];
     
     
-    [likeButton setImage:[UIImage imageNamed:kImgActionBg] 
+    [likeButton setImage:[UIImage imageNamed:kImgLikeOff] 
                 forState:UIControlStateNormal];
+    
+    [likeButton setImage:[UIImage imageNamed:kImgLikeOn] 
+                forState:UIControlStateHighlighted];
+    
+    [likeButton setImage:[UIImage imageNamed:kImgLikePushed] 
+                forState:UIControlStateDisabled];
     
     
     [likeButton addTarget:self
@@ -286,21 +312,38 @@ static NSInteger const kCommentWidth = 244;
 //----------------------------------------------------------------------------------------------------
 - (void)createCommentButton {
     
-    commentButton = [[UIButton alloc] initWithFrame:CGRectMake(60,400,75,30)];
+    commentButton = [[UIButton alloc] initWithFrame:CGRectMake(104,0,76,24)];
     
-    commentButton.titleLabel.font               = [UIFont fontWithName:@"HelveticaNeue" size:13];
-    commentButton.titleLabel.textColor          = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0];
-    commentButton.titleLabel.backgroundColor    = [UIColor blueColor];
-    commentButton.titleLabel.textAlignment      = UITextAlignmentLeft;
+    [commentButton setImage:[UIImage imageNamed:kImgCommentOff]
+                   forState:UIControlStateNormal];
     
-    [commentButton setTitle:@"Comment"
-                forState:UIControlStateNormal];
+    [commentButton setImage:[UIImage imageNamed:kImgCommentOn]
+                   forState:UIControlStateHighlighted];
     
     [commentButton addTarget:self
                    action:@selector(didTapCommentButton:)
          forControlEvents:UIControlEventTouchUpInside];
     
     [self.contentView addSubview:commentButton];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+- (void)createURLButton {
+    
+    urlButton = [[UIButton alloc] initWithFrame:CGRectMake(242,0,56,24)];
+    
+    [urlButton setImage:[UIImage imageNamed:kImgURLOff]
+                   forState:UIControlStateNormal];
+    
+    [urlButton setImage:[UIImage imageNamed:kImgURLOn]
+                   forState:UIControlStateHighlighted];
+    
+    [urlButton addTarget:self
+                      action:@selector(didTapURLButton:)
+            forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.contentView addSubview:urlButton];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -383,7 +426,6 @@ static NSInteger const kCommentWidth = 244;
 //----------------------------------------------------------------------------------------------------
 - (void)resetLikesUI {
     
-    //[likeButton setTitle:@"Like" forState:UIControlStateNormal];
     likeButton.enabled = YES;
     
     for(UIButton *likeUserImage in self.likeUserImages) 
@@ -419,7 +461,6 @@ static NSInteger const kCommentWidth = 244;
 //----------------------------------------------------------------------------------------------------
 - (void)setPurchaseImage:(UIImage*)image {
     [purchaseImageButton setImage:image forState:UIControlStateNormal];
-    //[purchaseImageButton setImage:image forState:UIControlStateHighlighted];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -430,7 +471,6 @@ static NSInteger const kCommentWidth = 244;
 	NSMutableAttributedString* attrStr = [NSMutableAttributedString attributedStringWithString:boughtText];
 	[attrStr setFont:[UIFont fontWithName:@"HelveticaNeue" size:14]];
 	[attrStr setTextColor:[UIColor colorWithRed:0.333 green:0.333 blue:0.333 alpha:1.0]];
-    //[attrStr setTextAlignment:kCTLeftTextAlignment lineBreakMode:kCTLineBreakByWordWrapping];
     
 	[attrStr setTextBold:YES range:userNameRange];
     
@@ -452,9 +492,28 @@ static NSInteger const kCommentWidth = 244;
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)disableLikeButton {
-    //[likeButton setTitle:@"LIKED" forState:UIControlStateNormal];
-    likeButton.enabled = NO;
+- (void)setInteractionButtonsWithLikedStatus:(BOOL)liked {
+    CGRect frame = likeButton.frame;
+    frame.origin.y = [self yValueOfCellWithLastComment:YES
+                                 withAllCommentsButton:YES] + 10;
+    likeButton.frame = frame;
+    
+    likeButton.enabled = !liked;
+    
+    
+    frame = commentButton.frame;
+    frame.origin.y = likeButton.frame.origin.y;
+    commentButton.frame = frame;
+    
+    
+    frame = urlButton.frame;
+    frame.origin.y = likeButton.frame.origin.y;
+    urlButton.frame = frame;
+    
+    
+    CGRect infoFrame = infoBackground.frame;
+    infoFrame.size.height = likeButton.frame.origin.y + likeButton.frame.size.height - infoFrame.origin.y + 10;
+    infoBackground.frame = infoFrame;
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -528,11 +587,6 @@ static NSInteger const kCommentWidth = 244;
     frame.size.width =  likesChevron.frame.origin.x + likesChevron.frame.size.width - likesBackground.frame.origin.x + 10;
     likesBackground.frame = frame;
     allLikesButton.frame = frame;
-    
-    
-    CGRect infoFrame = infoBackground.frame;
-    infoFrame.size.height = likesBackground.frame.origin.y + likesBackground.frame.size.height - infoFrame.origin.y + 10;
-    infoBackground.frame = infoFrame;
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -664,9 +718,10 @@ static NSInteger const kCommentWidth = 244;
     height += likesCount > 0 ? 64 : 0;
     
     for(DWComment *comment in comments) {
-        height += [[NSString stringWithFormat:@"%@: %@",comment.user.fullName,comment.message] sizeWithFont:kCommentFont 
-                                                                                          constrainedToSize:CGSizeMake(kCommentWidth,1500)
-                                                                                              lineBreakMode:UILineBreakModeWordWrap].height;
+        NSInteger textHeight = [[NSString stringWithFormat:@"%@: %@",comment.user.fullName,comment.message] sizeWithFont:kCommentFont 
+                                                                                                       constrainedToSize:CGSizeMake(kCommentWidth,1500)
+                                                                                                           lineBreakMode:UILineBreakModeWordWrap].height;
+        height += MAX(25,textHeight);
     }
     
     if([comments count] > kTotalComments)
@@ -698,14 +753,12 @@ static NSInteger const kCommentWidth = 244;
 
 //----------------------------------------------------------------------------------------------------
 - (void)didTapPurchaseImageButton:(UIButton*)button {
-    
-    SEL sel = @selector(purchaseURLClicked:);
-    
-    if(![self.delegate respondsToSelector:sel])
-        return;
-    
-    [self.delegate performSelector:sel
-                        withObject:[NSNumber numberWithInteger:self.purchaseID]];
+    [self fireExternalURLDelegate];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)didTapURLButton:(UIButton*)button {
+    [self fireExternalURLDelegate];
 }
 
 //----------------------------------------------------------------------------------------------------
