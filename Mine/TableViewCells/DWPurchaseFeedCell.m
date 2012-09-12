@@ -135,6 +135,47 @@ static NSInteger const kCommentWidth = 244;
                         withObject:[NSNumber numberWithInteger:userID]];
 }
 
+//----------------------------------------------------------------------------------------------------
+- (NSInteger)yValueOfLastComment {
+    
+    NSInteger lastCommentY = 0;
+    
+    if([self.commentMessageLabels count] && [self.commentUserButtons count]) {
+        OHAttributedLabel *lastMessageLabel = [self.commentMessageLabels objectAtIndex:[self.commentMessageLabels count]-1];
+        UIButton *lastUserImage = [self.commentUserButtons objectAtIndex:[self.commentUserButtons count]-1];
+        
+        lastCommentY = MAX(lastUserImage.frame.origin.y + lastUserImage.frame.size.height, 
+                               lastMessageLabel.frame.origin.y + lastMessageLabel.frame.size.height);
+    }
+
+    return lastCommentY;
+}
+
+//----------------------------------------------------------------------------------------------------
+- (NSInteger)yValueOfCellWithLastComment:(BOOL)withLastComment 
+                        withAllCommentsButton:(BOOL)withAllCommentsButton  {
+    
+    NSInteger baseY = 0;
+    
+    if(withAllCommentsButton && !allCommentsButton.hidden) {
+        baseY = allCommentsButton.frame.origin.y + allCommentsButton.frame.size.height;
+    }
+    else if(withLastComment && [self.commentUserButtons count]) {
+        baseY = [self yValueOfLastComment];
+    }
+    else if(!likesChevron.hidden) {
+        baseY = likesBackground.frame.origin.y + likesBackground.frame.size.height;
+    }
+    else if(endorsementLabel.text && endorsementLabel.text.length) {
+        baseY = endorsementLabel.frame.origin.y + endorsementLabel.frame.size.height;
+    }
+    else {
+        baseY = userImageButton.frame.origin.y + userImageButton.frame.size.height;
+    }
+    
+    return baseY;
+}
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
@@ -514,29 +555,15 @@ static NSInteger const kCommentWidth = 244;
                         andMessage:(NSString*)message {
     
     if(!commentsBaseY) {
-        if(!likesChevron.hidden) {
-            commentsBaseY = likesBackground.frame.origin.y + likesBackground.frame.size.height;
-        }
-        else if(endorsementLabel.text && endorsementLabel.text.length) {
-            commentsBaseY = endorsementLabel.frame.origin.y + endorsementLabel.frame.size.height;
-        }
-        else {
-            commentsBaseY = userImageButton.frame.origin.y + userImageButton.frame.size.height;
-        }
-        
-        commentsBaseY += 10;
+        commentsBaseY = [self yValueOfCellWithLastComment:NO
+                                    withAllCommentsButton:NO] + 10;
     }
     
     
-    NSInteger previousCommentY = commentsBaseY;
-    
-    if([self.commentMessageLabels count]) {
-        OHAttributedLabel *lastMessageLabel = [self.commentMessageLabels objectAtIndex:[self.commentMessageLabels count]-1];
-        UIButton *lastUserImage = [self.commentUserButtons objectAtIndex:[self.commentUserButtons count]-1];
+    NSInteger previousCommentY = [self yValueOfLastComment];
         
-        previousCommentY = MAX(lastUserImage.frame.origin.y + lastUserImage.frame.size.height, 
-                               lastMessageLabel.frame.origin.y + lastMessageLabel.frame.size.height);
-    }
+    if(!previousCommentY)
+        previousCommentY = commentsBaseY;
     
     
     UIButton *commentUserButton = [[UIButton alloc] initWithFrame:CGRectMake(22,
@@ -607,14 +634,9 @@ static NSInteger const kCommentWidth = 244;
     [allCommentsButton setTitle:[NSString stringWithFormat:@"View all %d comments",count]
                        forState:UIControlStateNormal];
     
-    OHAttributedLabel *lastMessageLabel = [self.commentMessageLabels objectAtIndex:[self.commentMessageLabels count]-1];
-    UIButton *lastUserImage = [self.commentUserButtons objectAtIndex:[self.commentUserButtons count]-1];
-    
-    
     CGRect frame = allCommentsButton.frame;
     frame.size.width = 250;
-    frame.origin.y = MAX(lastUserImage.frame.origin.y + lastUserImage.frame.size.height, 
-                           lastMessageLabel.frame.origin.y + lastMessageLabel.frame.size.height) + 10;
+    frame.origin.y = [self yValueOfLastComment] + 5;
     allCommentsButton.frame = frame;
     [allCommentsButton sizeToFit];
     
