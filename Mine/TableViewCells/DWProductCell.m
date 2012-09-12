@@ -64,6 +64,7 @@ static NSString* const kImgProductHighlight  = @"chooser-item-bg-on@2x.png";
     return self;
 }
 
+
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
@@ -74,8 +75,9 @@ static NSString* const kImgProductHighlight  = @"chooser-item-bg-on@2x.png";
     
     for(NSInteger i=0 ; i<kColumnsInProductsSearch ; i++) {
         
-        UIImageView *productImageView   = [[UIImageView alloc] initWithFrame:CGRectMake(102*i + 7, 15, 80, 80)];
-        productImageView.contentMode    = UIViewContentModeScaleAspectFit;
+        UIImageView *productImageView       = [[UIImageView alloc] initWithFrame:CGRectMake(102*i + 7, 15, 80, 80)];
+        productImageView.contentMode        = UIViewContentModeScaleAspectFit;
+        productImageView.backgroundColor    = [UIColor whiteColor];
         
         [self.productImageViews addObject:productImageView];
         [self.contentView addSubview:productImageView];
@@ -83,8 +85,11 @@ static NSString* const kImgProductHighlight  = @"chooser-item-bg-on@2x.png";
                 
         UIButton *productButton = [[UIButton alloc] initWithFrame:CGRectMake(102*i, 8, 94, 94)];
         
-        //[productButton setBackgroundImage:[UIImage imageNamed:kImgProductBackground] 
-        //                         forState:UIControlStateNormal];
+        [productButton setBackgroundImage:[UIImage imageNamed:kImgProductBackground] 
+                                 forState:UIControlStateNormal];
+
+        [productButton setBackgroundImage:[UIImage imageNamed:kImgProductHighlight] 
+                                 forState:UIControlStateHighlighted];
 
         [productButton addTarget:self
                            action:@selector(didTapProductButton:)
