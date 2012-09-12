@@ -18,8 +18,9 @@
 NSInteger const kPurchaseFeedCellHeight = 350;
 NSInteger const kTotalLikeUserButtons   = 5;
 
-static NSString* const kImgDoinkUp  = @"doink-up-14.png";
+static NSString* const kImgDoinkUp  = @"doink-up-16.png";
 static NSString* const kImgActionBg = @"btn-action-bg.png";
+static NSInteger const kEndorsementWidth = 274;
 
 
 @interface DWPurchaseFeedCell() {
@@ -140,20 +141,21 @@ static NSString* const kImgActionBg = @"btn-action-bg.png";
 //----------------------------------------------------------------------------------------------------
 - (void)createInfoBackground {
     infoBackground = [CALayer layer];
-    infoBackground.frame = CGRectMake(-1,
+    infoBackground.frame = CGRectMake(11,
                                       purchaseImageButton.frame.origin.y + purchaseImageButton.frame.size.height+11,
-                                      self.contentView.frame.size.width+1,
+                                      298,
                                       kPurchaseFeedCellHeight-purchaseImageButton.frame.size.height-11-purchaseImageButton.frame.origin.y);
-    infoBackground.backgroundColor = [UIColor colorWithRed:0.933 green:0.933 blue:0.933 alpha:1.0].CGColor;
-    infoBackground.borderWidth = 1.0f;
-    infoBackground.borderColor = [UIColor colorWithRed:0.878 green:0.878 blue:0.878 alpha:1.0].CGColor;
+    infoBackground.cornerRadius = 6;
+    infoBackground.backgroundColor = [UIColor colorWithRed:0.960 green:0.960 blue:0.960 alpha:1.0].CGColor;
+    //infoBackground.borderWidth = 1.0f;
+    //infoBackground.borderColor = [UIColor colorWithRed:0.878 green:0.878 blue:0.878 alpha:1.0].CGColor;
     
     [self.contentView.layer addSublayer:infoBackground];
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)createDoinkImageView {
-    UIImageView *doinkImageView = [[UIImageView alloc] initWithFrame:CGRectMake(40,infoBackground.frame.origin.y-7,16,8)];
+    UIImageView *doinkImageView = [[UIImageView alloc] initWithFrame:CGRectMake(31,infoBackground.frame.origin.y-7,16,8)];
     doinkImageView.image = [UIImage imageNamed:kImgDoinkUp];
     
     [self.contentView addSubview:doinkImageView];
@@ -161,7 +163,7 @@ static NSString* const kImgActionBg = @"btn-action-bg.png";
 
 //----------------------------------------------------------------------------------------------------
 - (void)createUserImageButton {
-    userImageButton  = [[UIButton alloc] initWithFrame:CGRectMake(11,infoBackground.frame.origin.y+11,34,34)];
+    userImageButton  = [[UIButton alloc] initWithFrame:CGRectMake(22,infoBackground.frame.origin.y+11,34,34)];
     userImageButton.imageView.layer.cornerRadius = 3;
     userImageButton.backgroundColor = [UIColor colorWithRed:0.878 green:0.878 blue:0.878 alpha:1.0];
     
@@ -175,7 +177,7 @@ static NSString* const kImgActionBg = @"btn-action-bg.png";
 //----------------------------------------------------------------------------------------------------
 - (void)createPurchaseImageButton {
     
-    purchaseImageButton  = [[UIButton alloc] initWithFrame:CGRectMake(11,11,298,224)];
+    purchaseImageButton  = [[UIButton alloc] initWithFrame:CGRectMake(11,11,kEndorsementWidth,224)];
     //purchaseImageButton.backgroundColor = [UIColor redColor];
     purchaseImageButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
     purchaseImageButton.adjustsImageWhenHighlighted = NO;
@@ -192,7 +194,7 @@ static NSString* const kImgActionBg = @"btn-action-bg.png";
 - (void)createBoughtLabel {
     boughtLabel = [[OHAttributedLabel alloc] initWithFrame:CGRectMake(userImageButton.frame.origin.x+userImageButton.frame.size.width+16,
                                                                       userImageButton.frame.origin.y,
-                                                                      229,
+                                                                      228,
                                                                       34)];
     boughtLabel.linkColor = [UIColor colorWithRed:0.333 green:0.333 blue:0.333 alpha:1.0];
     boughtLabel.underlineLinks = NO;
@@ -206,9 +208,9 @@ static NSString* const kImgActionBg = @"btn-action-bg.png";
 //----------------------------------------------------------------------------------------------------
 - (void)createEndorsementLabel {
     
-    endorsementLabel					= [[UILabel alloc] initWithFrame:CGRectMake(11,
+    endorsementLabel					= [[UILabel alloc] initWithFrame:CGRectMake(22,
                                                                                 userImageButton.frame.origin.y+userImageButton.frame.size.height+11,
-                                                                                298,
+                                                                                kEndorsementWidth,
                                                                                 1)];
     endorsementLabel.font				= [UIFont fontWithName:@"HelveticaNeue" size:13];	
     endorsementLabel.textColor          = [UIColor colorWithRed:0.333 green:0.333 blue:0.333 alpha:1.0];
@@ -374,7 +376,7 @@ static NSString* const kImgActionBg = @"btn-action-bg.png";
 - (void)setEndorsement:(NSString*)endorsement {
     
     CGRect frame = endorsementLabel.frame;
-    frame.size.width = 298;
+    frame.size.width = kEndorsementWidth;
     endorsementLabel.frame = frame;
     
     endorsementLabel.text = endorsement;
@@ -526,7 +528,7 @@ static NSString* const kImgActionBg = @"btn-action-bg.png";
     
     if(endorsement && endorsement.length)
         height += [endorsement sizeWithFont:[UIFont fontWithName:@"HelveticaNeue" size:13] 
-                          constrainedToSize:CGSizeMake(298,750)
+                          constrainedToSize:CGSizeMake(kEndorsementWidth,750)
                               lineBreakMode:UILineBreakModeWordWrap].height;
     
     //height +=likesCount > 0 ? 40 : 0;
