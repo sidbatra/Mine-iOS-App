@@ -7,6 +7,8 @@
 //
 
 #import "DWSuggestionsViewController.h"
+#import "DWNavigationBarBackButton.h"
+#import "DWNavigationBarTitleView.h"
 #import "DWSuggestion.h"
 #import "DWConstants.h"
 
@@ -14,14 +16,18 @@
 /**
  * Total number of suggestions
  */
-static NSInteger const kTotalSuggestions = 4;
+static NSInteger const kTotalSuggestions        = 4;
+static NSString* const kImgMessageDrawer        = @"message-drawer-opaque@2x.png";
+static NSString* const kMessageTitle            = @"Pick a great item you bought recently:";
+static NSString* const kMessageSubtitle         = @"You'll choose how you share it.";
 
 
 @interface DWSuggestionsViewController () {
-    NSMutableArray          *_imageButtons;
-    NSMutableArray          *_titleLabels;    
+    NSMutableArray              *_imageButtons;
+    NSMutableArray              *_titleLabels;    
     
-    DWSuggestionsController *_suggestionsController;
+    DWSuggestionsController     *_suggestionsController;
+    DWNavigationBarTitleView    *_navTitleView;
 }
 
 /**
@@ -39,6 +45,11 @@ static NSInteger const kTotalSuggestions = 4;
  */
 @property (nonatomic,strong) DWSuggestionsController *suggestionsController;
 
+/**
+ * Tile view inserted onto the navigation bar.
+ */
+@property (nonatomic,strong) DWNavigationBarTitleView *navTitleView;
+
 @end
 
 
@@ -51,6 +62,7 @@ static NSInteger const kTotalSuggestions = 4;
 @synthesize imageButtons                = _imageButtons;
 @synthesize titleLabels                 = _titleLabels;
 @synthesize suggestionsController       = _suggestionsController;
+@synthesize navTitleView                = _navTitleView;
 @synthesize delegate                    = _delegate;
 
 //----------------------------------------------------------------------------------------------------
@@ -82,7 +94,15 @@ static NSInteger const kTotalSuggestions = 4;
 //----------------------------------------------------------------------------------------------------
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.navigationItem.leftBarButtonItem   = [DWNavigationBarBackButton backButtonForNavigationController:self.navigationController];
+    self.navigationItem.title               = @"";
+    
+    if(!self.navTitleView)
+        self.navTitleView =  [[DWNavigationBarTitleView alloc] initWithFrame:CGRectMake(121,0,76,44)
+                                                                andImageName:kNavBarMineLogo];
 
+    [self createMessageBox];
     [self createSuggestionImageButtons];
     [self createSuggestionTitleLabels];
     
@@ -101,36 +121,76 @@ static NSInteger const kTotalSuggestions = 4;
 #pragma mark Sub view creation
 
 //----------------------------------------------------------------------------------------------------
+- (void)createMessageBox {
+    
+    UIImageView *messageDrawer  = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 66)];
+    messageDrawer.image         = [UIImage imageNamed:kImgMessageDrawer];
+    
+    [self.view addSubview:messageDrawer];
+    
+    
+    UILabel *titleLabel                     = [[UILabel alloc] initWithFrame:CGRectMake(0, 13, 320, 18)];
+    titleLabel.backgroundColor              = [UIColor clearColor];
+    titleLabel.shadowColor                  = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.48];
+    titleLabel.shadowOffset                 = CGSizeMake(0,1);    
+    titleLabel.textColor                    = [UIColor whiteColor];
+    titleLabel.textAlignment                = UITextAlignmentCenter;
+    titleLabel.text                         = kMessageTitle;
+    titleLabel.font                         = [UIFont fontWithName:@"HelveticaNeue-Bold" 
+                                                              size:14];
+    [self.view addSubview:titleLabel];
+    
+    
+    UILabel *subtitleLabel                  = [[UILabel alloc] initWithFrame:CGRectMake(0, 32, 320, 18)];
+    subtitleLabel.backgroundColor           = [UIColor clearColor]; 
+    subtitleLabel.shadowColor               = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.48];
+    subtitleLabel.shadowOffset              = CGSizeMake(0,1);
+    subtitleLabel.textColor                 = [UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1.0];    
+    subtitleLabel.textAlignment             = UITextAlignmentCenter;
+    subtitleLabel.text                      = kMessageSubtitle;
+    subtitleLabel.font                      = [UIFont fontWithName:@"HelveticaNeue" 
+                                                              size:14];
+    [self.view addSubview:subtitleLabel];
+}
+
+//----------------------------------------------------------------------------------------------------
 - (void)createSuggestionImageButtons {
     
-    for(NSInteger i=0 ; i<kTotalSuggestions ; i++) {
-        UIButton *imageButton = [[UIButton alloc] initWithFrame:CGRectMake(70*i + 10, 40, 60, 60)];
+    for(NSInteger i=0 ; i<kTotalSuggestions/2 ; i++) {                
+        for(NSInteger j=0 ; j<kTotalSuggestions/2 ; j++) {
+            
+            UIButton *imageButton       = [[UIButton alloc] initWithFrame:CGRectMake(160*j, 175*i+66, 160, 175)];
+            imageButton.backgroundColor = [UIColor colorWithRed:0.266 green:0.266 blue:0.266 alpha:1.0];
         
-        imageButton.imageView.contentMode   = UIViewContentModeScaleAspectFit;
-        imageButton.backgroundColor         = [UIColor yellowColor];
+            [imageButton addTarget:self
+                            action:@selector(didTapImageButton:)
+                  forControlEvents:UIControlEventTouchUpInside];
         
-        [imageButton addTarget:self
-                        action:@selector(didTapImageButton:)
-              forControlEvents:UIControlEventTouchUpInside];
-        
-        [self.imageButtons addObject:imageButton];        
-        [self.view addSubview:imageButton];
+            [self.imageButtons addObject:imageButton];        
+            [self.view addSubview:imageButton];
+        }
     }
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)createSuggestionTitleLabels {
     
-    for(NSInteger i=0 ; i<kTotalSuggestions ; i++) {        
-        UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(70*i + 10, 120, 60, 80)];
+    for(NSInteger i=0 ; i<kTotalSuggestions/2 ; i++) {                
+        for(NSInteger j=0 ; j<kTotalSuggestions/2 ; j++) {
+            
+            UILabel *titleLabel         = [[UILabel alloc] initWithFrame:CGRectMake(160*j, 175*i+125, 160, 175)];        
+            
+            titleLabel.backgroundColor  = [UIColor clearColor];
+            titleLabel.shadowColor      = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.4];
+            titleLabel.shadowOffset     = CGSizeMake(0,1);            
+            titleLabel.textColor        = [UIColor whiteColor];            
+            titleLabel.textAlignment	= UITextAlignmentCenter;
+            titleLabel.font				= [UIFont fontWithName:@"HelveticaNeue-Bold" 
+                                                 size:14];	            
         
-        titleLabel.font				= [UIFont fontWithName:@"HelveticaNeue" size:13];	
-        titleLabel.textColor        = [UIColor blueColor];
-        titleLabel.textAlignment	= UITextAlignmentLeft;
-        titleLabel.numberOfLines    = 0;
-        
-        [self.titleLabels addObject:titleLabel];        
-        [self.view addSubview:titleLabel];
+            [self.titleLabels addObject:titleLabel];        
+            [self.view addSubview:titleLabel];
+        }
     }
 }
 
@@ -153,8 +213,8 @@ static NSInteger const kTotalSuggestions = 4;
         titleLabel.text = suggestion.title;
         
         [suggestion downloadImage];
-        [imageButton setImage:suggestion.image 
-                     forState:UIControlStateNormal];
+        [imageButton setBackgroundImage:suggestion.image 
+                               forState:UIControlStateNormal];
     }
 }
 
@@ -187,11 +247,22 @@ static NSInteger const kTotalSuggestions = 4;
     
     for(UIButton *imageButton in self.imageButtons) {        
         if(imageButton.tag == resourceID) {            
-            [imageButton setImage:[userInfo objectForKey:kKeyImage] 
-                         forState:UIControlStateNormal];
+            [imageButton setBackgroundImage:[userInfo objectForKey:kKeyImage] 
+                                   forState:UIControlStateNormal];
             break;
         }
     }
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark Nav Stack Selectors
+
+//----------------------------------------------------------------------------------------------------
+- (void)willShowOnNav {
+    [self.navigationController.navigationBar addSubview:self.navTitleView];
 }
 
 @end

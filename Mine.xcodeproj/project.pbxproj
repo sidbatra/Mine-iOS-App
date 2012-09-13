@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2618480A16011F080022A1EE /* message-drawer-opaque@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2618480916011F080022A1EE /* message-drawer-opaque@2x.png */; };
 		2618C0F615FEACC100CA41B9 /* hr-A4A4A4@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2618C0F415FEACC100CA41B9 /* hr-A4A4A4@2x.png */; };
 		2618C0F715FEACC100CA41B9 /* hr-D6D6D6@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2618C0F515FEACC100CA41B9 /* hr-D6D6D6@2x.png */; };
 		2618C0FE15FEAE9500CA41B9 /* DWStoreCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 2618C0FD15FEAE9500CA41B9 /* DWStoreCell.m */; };
@@ -281,6 +282,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2618480916011F080022A1EE /* message-drawer-opaque@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "message-drawer-opaque@2x.png"; sourceTree = "<group>"; };
 		2618C0F415FEACC100CA41B9 /* hr-A4A4A4@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hr-A4A4A4@2x.png"; sourceTree = "<group>"; };
 		2618C0F515FEACC100CA41B9 /* hr-D6D6D6@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hr-D6D6D6@2x.png"; sourceTree = "<group>"; };
 		2618C0FC15FEAE9500CA41B9 /* DWStoreCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWStoreCell.h; sourceTree = "<group>"; };
@@ -876,6 +878,7 @@
 		BB06360315BF7258001F26E1 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				2618480916011F080022A1EE /* message-drawer-opaque@2x.png */,
 				BB9F318716010172009C1385 /* feed-btn-comment-off@2x.png */,
 				BB9F318816010172009C1385 /* feed-btn-comment-on@2x.png */,
 				BB9F318916010172009C1385 /* feed-btn-explore-off@2x.png */,
@@ -1775,6 +1778,7 @@
 				BB9F319216010172009C1385 /* feed-btn-like-off@2x.png in Resources */,
 				BB9F319316010172009C1385 /* feed-btn-like-on@2x.png in Resources */,
 				BB9F319416010172009C1385 /* feed-btn-like-pushed@2x.png in Resources */,
+				2618480A16011F080022A1EE /* message-drawer-opaque@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
