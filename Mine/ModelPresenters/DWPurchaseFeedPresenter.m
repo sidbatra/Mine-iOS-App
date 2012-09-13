@@ -66,7 +66,7 @@
         
         
         for(NSInteger i=0 ; i<MIN(kTotalLikeUserImages,[purchase.likes count]) ; i++) {
-            DWLike *like = [purchase.likes objectAtIndex:i];
+            DWLike *like = [purchase.likes objectAtIndex:[purchase.likes count]-1-i];
             
             [like.user downloadSquareImage];
             
@@ -132,8 +132,8 @@
                 [cell setUserImage:purchase.user.squareImage];
                 
             for(NSInteger i=0 ; i<MIN(kTotalLikeUserImages,[purchase.likes count]) ; i++) {
-                DWLike *like = [purchase.likes objectAtIndex:i];
-                    
+                DWLike *like = [purchase.likes objectAtIndex:[purchase.likes count]-1-i];
+                
                 if(like.user.databaseID == objectID) {
                     [cell setLikeImage:like.user.squareImage
                       forButtonAtIndex:i
