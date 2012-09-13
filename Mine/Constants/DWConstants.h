@@ -148,9 +148,13 @@ enum {
  * Presentation styles for the contacts presenter
  */
 typedef enum {
-    kContactPresenterStyleSelected = 1,
+    kContactPresenterStyleSelected = 1
 } DWContactPresenterStyle;
 
+
+typedef enum {
+    kPurchaseFeedPresenterStyleDisabled = 1
+} DWPurchaseFeedPresenterStyle;
 
 @interface DWConstants : NSObject
 @end

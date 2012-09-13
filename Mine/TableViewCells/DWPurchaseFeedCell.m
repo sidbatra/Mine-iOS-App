@@ -30,7 +30,7 @@ static NSString* const kImgURLOn        = @"feed-btn-explore-on.png";
 static NSString* const kImgURLOff       = @"feed-btn-explore-off.png";
 static NSString* const kUserURLScheme   = @"user";
 
-static NSInteger const kPurchaseFeedCellHeight  = 380;
+static NSInteger const kPurchaseFeedCellHeight  = 350;
 static NSInteger const kEndorsementWidth        = 274;
 static NSInteger const kCommentWidth            = 244;
 
@@ -84,6 +84,7 @@ static NSInteger const kCommentWidth            = 244;
 @synthesize likeUserImages          = _likeUserImages;
 @synthesize commentUserButtons      = _commentUserButtons;
 @synthesize commentMessageLabels    = _commentMessageLabels;
+@synthesize isInteractive           = _isInteractive;
 @synthesize delegate                = _delegate;
 
 //----------------------------------------------------------------------------------------------------
@@ -224,6 +225,7 @@ static NSInteger const kCommentWidth            = 244;
     userImageButton  = [[UIButton alloc] initWithFrame:CGRectMake(22,infoBackground.frame.origin.y+11,34,34)];
     userImageButton.imageView.layer.cornerRadius = 3;
     userImageButton.backgroundColor = [UIColor colorWithRed:0.878 green:0.878 blue:0.878 alpha:1.0];
+    userImageButton.adjustsImageWhenDisabled = NO;
     
     [userImageButton addTarget:self
                        action:@selector(didTapUserImageButton:)
@@ -239,7 +241,7 @@ static NSInteger const kCommentWidth            = 244;
     //purchaseImageButton.backgroundColor = [UIColor redColor];
     purchaseImageButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
     purchaseImageButton.adjustsImageWhenHighlighted = NO;
-    
+    purchaseImageButton.adjustsImageWhenDisabled = NO;
     
     [purchaseImageButton addTarget:self
                             action:@selector(didTapPurchaseImageButton:)
@@ -432,6 +434,11 @@ static NSInteger const kCommentWidth            = 244;
     allCommentsButton.hidden = YES;
     
     commentsBaseY = 0;
+    
+    if(!self.isInteractive) {
+        [purchaseImageButton setEnabled:NO];
+        [userImageButton setEnabled:NO];
+    }
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -470,8 +477,10 @@ static NSInteger const kCommentWidth            = 244;
     
     boughtLabel.attributedText = attrStr;
     
-    [boughtLabel addCustomLink:[NSURL URLWithString:[NSString stringWithFormat:@"%@:%d",kUserURLScheme,self.userID]]
-                       inRange:userNameRange];
+    if(self.isInteractive) {
+        [boughtLabel addCustomLink:[NSURL URLWithString:[NSString stringWithFormat:@"%@:%d",kUserURLScheme,self.userID]]
+                           inRange:userNameRange];
+    }
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -487,27 +496,40 @@ static NSInteger const kCommentWidth            = 244;
 
 //----------------------------------------------------------------------------------------------------
 - (void)setInteractionButtonsWithLikedStatus:(BOOL)liked {
-    CGRect frame = likeButton.frame;
-    frame.origin.y = [self yValueOfCellWithLastComment:YES
-                                 withAllCommentsButton:YES] + 10;
-    likeButton.frame = frame;
     
-    likeButton.enabled = !liked;
-    
-    
-    frame = commentButton.frame;
-    frame.origin.y = likeButton.frame.origin.y;
-    commentButton.frame = frame;
-    
-    
-    frame = urlButton.frame;
-    frame.origin.y = likeButton.frame.origin.y;
-    urlButton.frame = frame;
-    
-    
-    CGRect infoFrame = infoBackground.frame;
-    infoFrame.size.height = likeButton.frame.origin.y + likeButton.frame.size.height - infoFrame.origin.y + 10;
-    infoBackground.frame = infoFrame;
+    if(self.isInteractive) {
+        CGRect frame = likeButton.frame;
+        frame.origin.y = [self yValueOfCellWithLastComment:YES
+                                     withAllCommentsButton:YES] + 10;
+        likeButton.frame = frame;
+        
+        likeButton.enabled = !liked;
+        
+        
+        frame = commentButton.frame;
+        frame.origin.y = likeButton.frame.origin.y;
+        commentButton.frame = frame;
+        
+        
+        frame = urlButton.frame;
+        frame.origin.y = likeButton.frame.origin.y;
+        urlButton.frame = frame;
+        
+        
+        CGRect infoFrame = infoBackground.frame;
+        infoFrame.size.height = likeButton.frame.origin.y + likeButton.frame.size.height - infoFrame.origin.y + 10;
+        infoBackground.frame = infoFrame;
+    }
+    else {
+        likeButton.hidden = YES;
+        commentButton.hidden = YES;
+        urlButton.hidden = YES;
+        
+        CGRect infoFrame = infoBackground.frame;
+        infoFrame.size.height = [self yValueOfCellWithLastComment:NO
+                                            withAllCommentsButton:NO] - infoFrame.origin.y + 10;
+        infoBackground.frame = infoFrame;
+    }
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -703,7 +725,8 @@ static NSInteger const kCommentWidth            = 244;
 
 //----------------------------------------------------------------------------------------------------
 + (NSInteger)heightForCellWithLikesCount:(NSInteger)likesCount 
-                                comments:(NSMutableArray *)comments 
+                                comments:(NSMutableArray *)comments
+                           isInteractive:(BOOL)isInteractive
                           andEndorsement:(NSString *)endorsement { 
     
     NSInteger height = kPurchaseFeedCellHeight;
@@ -712,18 +735,22 @@ static NSInteger const kCommentWidth            = 244;
         height += [endorsement sizeWithFont:[UIFont fontWithName:@"HelveticaNeue" size:13] 
                           constrainedToSize:CGSizeMake(kEndorsementWidth,1500)
                               lineBreakMode:UILineBreakModeWordWrap].height;
-    
-    height += likesCount > 0 ? 64 : 0;
-    
-    for(DWComment *comment in comments) {
-        NSInteger textHeight = [[NSString stringWithFormat:@"%@: %@",comment.user.fullName,comment.message] sizeWithFont:kCommentFont 
-                                                                                                       constrainedToSize:CGSizeMake(kCommentWidth,1500)
-                                                                                                           lineBreakMode:UILineBreakModeWordWrap].height;
-        height += MAX(25,textHeight);
+
+    if(isInteractive) {
+        height += 30;
+        
+        height += likesCount > 0 ? 64 : 0;
+        
+        for(DWComment *comment in comments) {
+            NSInteger textHeight = [[NSString stringWithFormat:@"%@: %@",comment.user.fullName,comment.message] sizeWithFont:kCommentFont 
+                                                                                                           constrainedToSize:CGSizeMake(kCommentWidth,1500)
+                                                                                                               lineBreakMode:UILineBreakModeWordWrap].height;
+            height += MAX(25,textHeight);
+        }
+        
+        if([comments count] > kTotalComments)
+            height += 45;
     }
-    
-    if([comments count] > kTotalComments)
-        height += 45;
     
     return  height;
 }

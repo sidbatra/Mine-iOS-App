@@ -10,7 +10,9 @@
 
 #import "DWGlobalFeedViewDataSource.h"
 #import "DWPaginationPresenter.h"
+#import "DWPurchaseFeedPresenter.h"
 
+#import "DWPurchase.h"
 #import "DWPagination.h"
 #import "DWConstants.h"
 
@@ -34,6 +36,10 @@
     if(self) {        
         
         self.tableViewDataSource = [[DWGlobalFeedViewDataSource alloc] init];
+        
+        [self addModelPresenterForClass:[DWPurchase class]
+                              withStyle:kPurchaseFeedPresenterStyleDisabled 
+                          withPresenter:[DWPurchaseFeedPresenter class]];
         
         [self addModelPresenterForClass:[DWPagination class]
                               withStyle:kDefaultModelPresenter 

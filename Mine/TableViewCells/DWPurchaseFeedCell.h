@@ -40,6 +40,8 @@ extern NSInteger const kTotalComments;
 
     UIImageView         *likesChevron;
     
+    BOOL                _isInteractive;
+    
     __weak id<DWPurchaseFeedCellDelegate,NSObject> _delegate;
 }
 
@@ -53,6 +55,11 @@ extern NSInteger const kTotalComments;
  * ID of the user who created the purchase.
  */
 @property (nonatomic,assign) NSInteger userID;
+
+/**
+ * Whether the purchase unit is interactive.
+ */
+@property (nonatomic,assign) BOOL isInteractive;
 
 
 /**
@@ -132,6 +139,7 @@ extern NSInteger const kTotalComments;
  */
 + (NSInteger)heightForCellWithLikesCount:(NSInteger)likesCount 
                                 comments:(NSMutableArray*)comments
+                           isInteractive:(BOOL)isInteractive
                           andEndorsement:(NSString*)endorsement;
 
 @end

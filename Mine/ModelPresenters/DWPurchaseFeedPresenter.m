@@ -16,9 +16,14 @@
 #import "DWLike.h"
 #import "DWComment.h"
 #import "DWPurchase.h"
+#import "DWConstants.h"
 
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
 @implementation DWPurchaseFeedPresenter
-
 
 //----------------------------------------------------------------------------------------------------
 + (UITableViewCell*)cellForObject:(id)object
@@ -30,11 +35,14 @@
     DWPurchase *purchase        = object;
     DWPurchaseFeedCell *cell    = base;
     
+    BOOL isInteractve = style != kPurchaseFeedPresenterStyleDisabled;
+    
     if(!cell)
         cell = [[DWPurchaseFeedCell alloc] initWithStyle:UITableViewStylePlain 
                                          reuseIdentifier:identifier];
 
     cell.delegate   = delegate;
+    cell.isInteractive  = isInteractve;
     cell.purchaseID = purchase.databaseID;
     cell.userID     = purchase.user.databaseID;
     
@@ -53,33 +61,34 @@
     [cell setEndorsement:purchase.endorsement];
     
     
-    [cell setLikeCount:[purchase.likes count]];
-    
-    
-    for(NSInteger i=0 ; i<MIN(kTotalLikeUserImages,[purchase.likes count]) ; i++) {
-        DWLike *like = [purchase.likes objectAtIndex:i];
+    if(isInteractve) {
+        [cell setLikeCount:[purchase.likes count]];
         
-        [like.user downloadSquareImage];
         
-        [cell setLikeImage:like.user.squareImage
-          forButtonAtIndex:i
-                 forUserID:like.user.databaseID];
+        for(NSInteger i=0 ; i<MIN(kTotalLikeUserImages,[purchase.likes count]) ; i++) {
+            DWLike *like = [purchase.likes objectAtIndex:i];
+            
+            [like.user downloadSquareImage];
+            
+            [cell setLikeImage:like.user.squareImage
+              forButtonAtIndex:i
+                     forUserID:like.user.databaseID];
+        }
+        
+        for(NSInteger i=0 ; i<MIN(kTotalComments,[purchase.comments count]) ; i++) {
+            DWComment *comment = [purchase.comments objectAtIndex:i];
+            
+            [comment.user downloadSquareImage];
+            
+            [cell createCommentWithUserImage:comment.user.squareImage
+                                withUserName:comment.user.fullName
+                                  withUserID:comment.user.databaseID
+                                  andMessage:comment.message];
+        }
+        
+        if([purchase.comments count] > kTotalComments)
+            [cell setAllCommentsButtonWithCount:[purchase.comments count]];
     }
-    
-    for(NSInteger i=0 ; i<MIN(kTotalComments,[purchase.comments count]) ; i++) {
-        DWComment *comment = [purchase.comments objectAtIndex:i];
-        
-        [comment.user downloadSquareImage];
-        
-        [cell createCommentWithUserImage:comment.user.squareImage
-                            withUserName:comment.user.fullName
-                              withUserID:comment.user.databaseID
-                              andMessage:comment.message];
-    }
-    
-    if([purchase.comments count] > kTotalComments)
-        [cell setAllCommentsButtonWithCount:[purchase.comments count]];
-    
     
     [cell setInteractionButtonsWithLikedStatus:[purchase isLikedByUserID:[DWSession sharedDWSession].currentUser.databaseID]];
     
@@ -95,6 +104,7 @@
     
     return [DWPurchaseFeedCell heightForCellWithLikesCount:purchase.likes.count 
                                                   comments:purchase.comments
+                                             isInteractive:style != kPurchaseFeedPresenterStyleDisabled
                                             andEndorsement:purchase.endorsement];
 }
 
