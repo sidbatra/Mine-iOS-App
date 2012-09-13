@@ -69,6 +69,10 @@
 		267E550D15D1B4E900A3A8C0 /* DWTumblrConnectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 267E550B15D1B4E900A3A8C0 /* DWTumblrConnectViewController.xib */; };
 		267E551515D1CA4300A3A8C0 /* DWFacebookConnectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 267E551315D1CA4200A3A8C0 /* DWFacebookConnectViewController.m */; };
 		267E551615D1CA4300A3A8C0 /* DWFacebookConnectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 267E551415D1CA4300A3A8C0 /* DWFacebookConnectViewController.xib */; };
+		267F270B160289610061ACEF /* sex-picker-female-off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 267F2707160289610061ACEF /* sex-picker-female-off@2x.png */; };
+		267F270C160289610061ACEF /* sex-picker-female-on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 267F2708160289610061ACEF /* sex-picker-female-on@2x.png */; };
+		267F270D160289610061ACEF /* sex-picker-male-off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 267F2709160289610061ACEF /* sex-picker-male-off@2x.png */; };
+		267F270E160289610061ACEF /* sex-picker-male-on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 267F270A160289610061ACEF /* sex-picker-male-on@2x.png */; };
 		2681C4E615DAEE17003046F1 /* DWSuggestionsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2681C4E515DAEE17003046F1 /* DWSuggestionsController.m */; };
 		2681C4EA15DAF4E7003046F1 /* DWSuggestion.m in Sources */ = {isa = PBXBuildFile; fileRef = 2681C4E915DAF4E7003046F1 /* DWSuggestion.m */; };
 		2681C4F315DC323D003046F1 /* DWSuggestionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2681C4F115DC323D003046F1 /* DWSuggestionsViewController.m */; };
@@ -378,6 +382,10 @@
 		267E551215D1CA4200A3A8C0 /* DWFacebookConnectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWFacebookConnectViewController.h; path = Connect/DWFacebookConnectViewController.h; sourceTree = "<group>"; };
 		267E551315D1CA4200A3A8C0 /* DWFacebookConnectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWFacebookConnectViewController.m; path = Connect/DWFacebookConnectViewController.m; sourceTree = "<group>"; };
 		267E551415D1CA4300A3A8C0 /* DWFacebookConnectViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DWFacebookConnectViewController.xib; path = Connect/DWFacebookConnectViewController.xib; sourceTree = "<group>"; };
+		267F2707160289610061ACEF /* sex-picker-female-off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sex-picker-female-off@2x.png"; sourceTree = "<group>"; };
+		267F2708160289610061ACEF /* sex-picker-female-on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sex-picker-female-on@2x.png"; sourceTree = "<group>"; };
+		267F2709160289610061ACEF /* sex-picker-male-off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sex-picker-male-off@2x.png"; sourceTree = "<group>"; };
+		267F270A160289610061ACEF /* sex-picker-male-on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sex-picker-male-on@2x.png"; sourceTree = "<group>"; };
 		2681C4E415DAEE17003046F1 /* DWSuggestionsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWSuggestionsController.h; sourceTree = "<group>"; };
 		2681C4E515DAEE17003046F1 /* DWSuggestionsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWSuggestionsController.m; sourceTree = "<group>"; };
 		2681C4E815DAF4E7003046F1 /* DWSuggestion.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWSuggestion.h; sourceTree = "<group>"; };
@@ -878,6 +886,10 @@
 		BB06360315BF7258001F26E1 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				267F2707160289610061ACEF /* sex-picker-female-off@2x.png */,
+				267F2708160289610061ACEF /* sex-picker-female-on@2x.png */,
+				267F2709160289610061ACEF /* sex-picker-male-off@2x.png */,
+				267F270A160289610061ACEF /* sex-picker-male-on@2x.png */,
 				2618480916011F080022A1EE /* message-drawer-opaque@2x.png */,
 				BB9F318716010172009C1385 /* feed-btn-comment-off@2x.png */,
 				BB9F318816010172009C1385 /* feed-btn-comment-on@2x.png */,
@@ -1779,6 +1791,10 @@
 				BB9F319316010172009C1385 /* feed-btn-like-on@2x.png in Resources */,
 				BB9F319416010172009C1385 /* feed-btn-like-pushed@2x.png in Resources */,
 				2618480A16011F080022A1EE /* message-drawer-opaque@2x.png in Resources */,
+				267F270B160289610061ACEF /* sex-picker-female-off@2x.png in Resources */,
+				267F270C160289610061ACEF /* sex-picker-female-on@2x.png in Resources */,
+				267F270D160289610061ACEF /* sex-picker-male-off@2x.png in Resources */,
+				267F270E160289610061ACEF /* sex-picker-male-on@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
