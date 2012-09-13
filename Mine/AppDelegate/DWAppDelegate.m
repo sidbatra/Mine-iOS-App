@@ -102,7 +102,7 @@ static NSInteger const kCreateTabIndex              = 1;
     [self.tabBarController addSubController:self.profileNavController];
     
     
-    self.tabBarController.tabBar.frame = CGRectMake(0, 406, 320, 44);
+    self.tabBarController.tabBar.frame = CGRectMake(0, 416, 320, 44);
     
     [self.tabBarController.tabBar addTabWithWidth:114 
                                   normalImageName:@"tab-left-feed-off.png"
