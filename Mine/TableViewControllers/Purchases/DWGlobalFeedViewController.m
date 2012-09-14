@@ -17,7 +17,7 @@
 
 
 static NSString* const kMessageTitle            = @"People use mine to share their best buys";
-static NSString* const kMessageSubtitle         = @"It's the ultimate way to discover great stuff";
+static NSString* const kMessageSubtitle         = @"It's the ultimate way to discover great stuff.";
 
 
 /**
