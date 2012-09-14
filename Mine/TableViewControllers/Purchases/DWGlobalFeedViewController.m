@@ -11,13 +11,27 @@
 #import "DWGlobalFeedViewDataSource.h"
 #import "DWPaginationPresenter.h"
 #import "DWPurchaseFeedPresenter.h"
-
 #import "DWPurchase.h"
 #import "DWPagination.h"
 #import "DWConstants.h"
 
 
-@interface DWGlobalFeedViewController()
+static NSString* const kMessageTitle            = @"People use mine to share their best buys";
+static NSString* const kMessageSubtitle         = @"It's the ultimate way to discover great stuff";
+
+
+/**
+ * Private declarations
+ */
+@interface DWGlobalFeedViewController() {
+
+}
+
+/**
+ * Create a scrollable header view having the message box
+ */
+- (void)createHeader;
+
 @end
 
 
@@ -26,8 +40,6 @@
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 @implementation DWGlobalFeedViewController
-
-@dynamic delegate;
 
 //----------------------------------------------------------------------------------------------------
 - (id)init {
@@ -52,11 +64,8 @@
 //----------------------------------------------------------------------------------------------------
 - (void)viewDidLoad {
 	[super viewDidLoad];
-    
-    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Next" 
-                                                                              style:UIBarButtonItemStyleDone
-                                                                             target:self 
-                                                                             action:@selector(nextButtonClicked:)];
+        
+    [self createHeader];
     
     [(DWGlobalFeedViewDataSource*)self.tableViewDataSource loadFeed];
 }
@@ -65,16 +74,39 @@
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
-#pragma mark IBAction
+#pragma mark Private Methods
 
 //----------------------------------------------------------------------------------------------------
-- (void)nextButtonClicked:(id)sender {
-    SEL sel = @selector(showScreenAfterGlobalFeed);
+- (void)createHeader {
+    UIImageView *headerImageView            = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 66)];
+    headerImageView.image                   = [UIImage imageNamed:kImgMessageDrawer];
+        
     
-    if(![self.delegate respondsToSelector:sel])
-        return;
+    UILabel *titleLabel                     = [[UILabel alloc] initWithFrame:CGRectMake(0, 13, 320, 18)];
+    titleLabel.backgroundColor              = [UIColor clearColor];
+    titleLabel.shadowColor                  = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.48];
+    titleLabel.shadowOffset                 = CGSizeMake(0,1);    
+    titleLabel.textColor                    = [UIColor whiteColor];
+    titleLabel.textAlignment                = UITextAlignmentCenter;
+    titleLabel.text                         = kMessageTitle;
+    titleLabel.font                         = [UIFont fontWithName:@"HelveticaNeue-Bold" 
+                                                              size:14];
+    [headerImageView addSubview:titleLabel];
     
-    [self.delegate performSelector:sel];
+    
+    UILabel *subtitleLabel                  = [[UILabel alloc] initWithFrame:CGRectMake(0, 32, 320, 18)];
+    subtitleLabel.backgroundColor           = [UIColor clearColor]; 
+    subtitleLabel.shadowColor               = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.48];
+    subtitleLabel.shadowOffset              = CGSizeMake(0,1);
+    subtitleLabel.textColor                 = [UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1.0];    
+    subtitleLabel.textAlignment             = UITextAlignmentCenter;
+    subtitleLabel.text                      = kMessageSubtitle;
+    subtitleLabel.font                      = [UIFont fontWithName:@"HelveticaNeue" 
+                                                              size:14];
+    [headerImageView addSubview:subtitleLabel];  
+    
+    self.tableView.tableHeaderView = headerImageView;
 }
+
 
 @end

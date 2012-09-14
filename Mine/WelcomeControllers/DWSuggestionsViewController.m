@@ -17,7 +17,6 @@
  * Total number of suggestions
  */
 static NSInteger const kTotalSuggestions        = 4;
-static NSString* const kImgMessageDrawer        = @"message-drawer-opaque@2x.png";
 static NSString* const kMessageTitle            = @"Pick a great item you bought recently:";
 static NSString* const kMessageSubtitle         = @"You'll choose how you share it.";
 

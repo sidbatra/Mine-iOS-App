@@ -81,10 +81,10 @@
 //----------------------------------------------------------------------------------------------------
 - (void)showGlobalFeedView {
     
-    DWGlobalFeedViewController *globalFeedViewController = [[DWGlobalFeedViewController alloc] init];
-    globalFeedViewController.delegate = self;
+    DWOnboardingFeedViewController *onboardingFeedViewController = [[DWOnboardingFeedViewController alloc] init];
+    onboardingFeedViewController.delegate = self;
     
-    [self.navigationController pushViewController:globalFeedViewController 
+    [self.navigationController pushViewController:onboardingFeedViewController 
                                          animated:YES];
 }
 
@@ -160,7 +160,7 @@
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
-#pragma mark DWGlobalFeedViewControllerDelegate
+#pragma mark DWOnboardingFeedViewControllerDelegate
 
 //----------------------------------------------------------------------------------------------------
 - (void)showScreenAfterGlobalFeed {

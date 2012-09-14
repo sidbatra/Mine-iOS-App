@@ -8,31 +8,6 @@
 
 #import "DWPurchasesViewController.h"
 
-
-@protocol DWGlobalFeedViewControllerDelegate;
-
-
-@interface DWGlobalFeedViewController : DWPurchasesViewController {
-}
-
-/**
- * Redefine the delegate
- */
-@property (nonatomic,weak) id<DWPurchasesViewControllerDelegate,DWGlobalFeedViewControllerDelegate,NSObject> delegate;
-
-@end
-
-
-/**
- * Protocol for delegates of DWGlobalFeedViewController
- */
-@protocol DWGlobalFeedViewControllerDelegate
-
-@optional
-
-/**
- * Fired to show the screen after global feed.
- */
-- (void)showScreenAfterGlobalFeed;
+@interface DWGlobalFeedViewController : DWPurchasesViewController 
 
 @end
