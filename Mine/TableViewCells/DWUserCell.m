@@ -88,8 +88,8 @@ NSInteger const kUserCellHeight = 50;
 - (void)createUserImageView {
     userImageView = [[UIImageView alloc] initWithFrame:CGRectMake(11,9,32,32)];
     userImageView.backgroundColor = [UIColor clearColor];
-    userImageView.layer.cornerRadius = 3;
-    userImageView.layer.masksToBounds = YES;
+    //userImageView.layer.cornerRadius = 3;
+    //userImageView.layer.masksToBounds = YES;
     
     [self.contentView addSubview:userImageView];
 }
