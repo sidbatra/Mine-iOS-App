@@ -79,6 +79,13 @@ static NSString* const kImgStartMineButtonOn    = @"btn-start-on@2x.png";
     self.globalFeedViewController.view.frame = CGRectMake(0,0,320,460);
     
     [self.view addSubview:self.globalFeedViewController.view];    
+    
+    
+    UIImageView *topShadowView      = [[UIImageView alloc] initWithImage:[UIImage imageNamed:kImgTopShadow]];
+    topShadowView.frame             = CGRectMake(0,0,320,3);
+    
+    [self.view addSubview:topShadowView];
+
     [self createFooter];
 }
 

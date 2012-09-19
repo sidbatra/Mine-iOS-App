@@ -10,7 +10,6 @@
 static NSInteger const kScreenHeight    = 460;
 static CGRect const kFullScreenFrame    = { {0,0}, {320, kScreenHeight} };
 
-static NSString* const kImgTopShadow        = @"nav-shadow.png";
 //static NSString* const kImgBottomShadow     = @"shadow_bottom.png";
 
 

@@ -11,8 +11,6 @@
 #import "DWConstants.h"
 
 
-static NSString* const kImgTopShadow = @"nav-shadow.png";
-
 /**
  * Private declarations
  */
