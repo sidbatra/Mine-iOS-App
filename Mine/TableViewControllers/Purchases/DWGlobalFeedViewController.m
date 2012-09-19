@@ -16,7 +16,7 @@
 #import "DWConstants.h"
 
 
-static NSString* const kMessageTitle            = @"People use mine to share their best buys";
+static NSString* const kMessageTitle            = @"People share their best buys on mine";
 static NSString* const kMessageSubtitle         = @"It's the ultimate way to discover great stuff.";
 
 
@@ -94,7 +94,7 @@ static NSString* const kMessageSubtitle         = @"It's the ultimate way to dis
     [headerImageView addSubview:titleLabel];
     
     
-    UILabel *subtitleLabel                  = [[UILabel alloc] initWithFrame:CGRectMake(0, 32, 320, 18)];
+    UILabel *subtitleLabel                  = [[UILabel alloc] initWithFrame:CGRectMake(0, 34, 320, 18)];
     subtitleLabel.backgroundColor           = [UIColor clearColor]; 
     subtitleLabel.shadowColor               = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.48];
     subtitleLabel.shadowOffset              = CGSizeMake(0,1);
