@@ -146,8 +146,7 @@ static NSString* const kImgSearchOn     = @"nav-btn-search-on.png";
 
     
     if(!self.navTitleView) {
-        self.navTitleView =  [[DWNavigationBarTitleView alloc] initWithFrame:CGRectMake(121,0,76,44)
-                                                                andImageName:kNavBarMineLogo];
+        self.navTitleView =  [DWNavigationBarTitleView logoTitleView];
     }
     
     if(!self.queueProgressView) {    

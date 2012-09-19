@@ -73,8 +73,7 @@ static NSString* const kImgStartMineButtonOn    = @"btn-start-on@2x.png";
     self.navigationItem.title           = @"";    
     
     if(!self.navTitleView)
-        self.navTitleView = [[DWNavigationBarTitleView alloc] initWithFrame:CGRectMake(121,0,76,44)
-                                                               andImageName:kNavBarMineLogo];
+        self.navTitleView = [DWNavigationBarTitleView logoTitleView];
     
     self.globalFeedViewController.view.frame = CGRectMake(0,0,320,460);
     

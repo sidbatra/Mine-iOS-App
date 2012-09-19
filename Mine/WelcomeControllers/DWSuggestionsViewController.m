@@ -98,8 +98,7 @@ static NSString* const kMessageSubtitle         = @"You'll choose how you share 
     self.navigationItem.title               = @"";
     
     if(!self.navTitleView)
-        self.navTitleView =  [[DWNavigationBarTitleView alloc] initWithFrame:CGRectMake(121,0,76,44)
-                                                                andImageName:kNavBarMineLogo];
+        self.navTitleView = [DWNavigationBarTitleView logoTitleView];
 
     [self createMessageBox];
     [self createSuggestionImageButtons];
