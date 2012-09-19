@@ -14,15 +14,15 @@
 @class DWProduct;
 
 @interface DWCreationViewController : UIViewController<UITextFieldDelegate,DWProductsViewControllerDelegate> {
-    UITextField     *_searchTextField;
-    UIView          *_productPreview;
-    UIView          *_loadingView;
-    UIImageView     *_spinnerImageView;
-    UIImageView     *_productImageView;
-    UIImageView     *_topShadowView;
-    UIButton        *_productSelectButton;
-    UIButton        *_productRejectButton;
-    UIButton        *_cancelCreationButton;
+    UITextField             *_searchTextField;
+    UIView                  *_productPreview;
+    UIView                  *_loadingView;
+    UIImageView             *_productImageView;
+    UIImageView             *_topShadowView;
+    UIButton                *_productSelectButton;
+    UIButton                *_productRejectButton;
+    UIButton                *_cancelCreationButton;
+    UIActivityIndicatorView *_spinner;
     
     __weak id<DWCreationViewControllerDelegate,NSObject> _delegate;
 }
@@ -33,12 +33,12 @@
 @property (nonatomic) IBOutlet UITextField *searchTextField;
 @property (nonatomic) IBOutlet UIView *productPreview;
 @property (nonatomic) IBOutlet UIView *loadingView;
-@property (nonatomic) IBOutlet UIImageView *spinnerImageView;
 @property (nonatomic) IBOutlet UIImageView *productImageView;
 @property (nonatomic) IBOutlet UIImageView *topShadowView;
 @property (nonatomic) IBOutlet UIButton *productSelectButton;
 @property (nonatomic) IBOutlet UIButton *productRejectButton;
 @property (nonatomic) IBOutlet UIButton *cancelCreationButton;
+@property (nonatomic) IBOutlet UIActivityIndicatorView *spinner;
 
 /**
  * Delegate

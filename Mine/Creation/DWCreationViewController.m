@@ -87,16 +87,6 @@
  */
 - (void)hideLoadingView;
 
-/** 
- * Show spinner
- */
-- (void)showSpinner;
-
-/** 
- * Hide spinner
- */
-- (void)hideSpinner;
-
 @end
 
 
@@ -108,12 +98,12 @@
 @synthesize searchTextField             = _searchTextField;
 @synthesize productPreview              = _productPreview;
 @synthesize loadingView                 = _loadingView;
-@synthesize spinnerImageView            = _spinnerImageView;
 @synthesize productImageView            = _productImageView;
 @synthesize topShadowView               = _topShadowView;
 @synthesize productSelectButton         = _productSelectButton;
 @synthesize productRejectButton         = _productRejectButton;
 @synthesize cancelCreationButton        = _cancelCreationButton;
+@synthesize spinner                     = _spinner;
 
 @synthesize query                       = _query;
 @synthesize product                     = _product;
@@ -154,19 +144,6 @@
     
     [self.view addSubview:self.productsViewController.view];
     
-    self.spinnerImageView.animationImages = [NSArray arrayWithObjects:
-                                             [UIImage imageNamed:@"loading1-72@2x.png"],
-                                             [UIImage imageNamed:@"loading2-72@2x.png"],
-                                             [UIImage imageNamed:@"loading3-72@2x.png"],
-                                             [UIImage imageNamed:@"loading4-72@2x.png"],
-                                             [UIImage imageNamed:@"loading5-72@2x.png"],
-                                             [UIImage imageNamed:@"loading6-72@2x.png"],
-                                             [UIImage imageNamed:@"loading7-72@2x.png"],
-                                             [UIImage imageNamed:@"loading8-72@2x.png"],                                             
-                                             nil];
-    
-    self.spinnerImageView.animationDuration = 0.8;
-    
     [self showKeyboard];
 }
 
@@ -199,19 +176,16 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)showProductPreview {
-    self.productPreview.hidden = NO;
-    
-    [self.view bringSubviewToFront:self.productPreview];
-    [self.view bringSubviewToFront:self.spinnerImageView];    
+    self.productPreview.hidden = NO;    
+    [self.view bringSubviewToFront:self.productPreview];   
     
     if(!self.product.largeImage)
-        [self showSpinner];
+        self.spinner.hidden = NO;
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)hideProductPreview {
     self.productPreview.hidden = YES;
-    [self hideSpinner];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -232,29 +206,12 @@
 //----------------------------------------------------------------------------------------------------
 - (void)showLoadingView {
     self.loadingView.hidden = NO;  
-    
     [self.view bringSubviewToFront:self.loadingView];
-    [self.view bringSubviewToFront:self.spinnerImageView];    
-    
-    [self showSpinner];
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)hideLoadingView {    
     self.loadingView.hidden = YES;    
-    [self hideSpinner];
-}
-
-//----------------------------------------------------------------------------------------------------
-- (void)showSpinner {
-    self.spinnerImageView.hidden = NO;
-    [self.spinnerImageView startAnimating];
-}
-
-//----------------------------------------------------------------------------------------------------
-- (void)hideSpinner {
-    self.spinnerImageView.hidden = YES;
-    [self.spinnerImageView stopAnimating];
 }
 
 
@@ -349,7 +306,22 @@
 //----------------------------------------------------------------------------------------------------
 - (void)productLargeImageLoaded:(NSNotification*)notification {
     self.productImageView.image = self.product.largeImage;
-    [self hideSpinner];
+    self.spinner.hidden = YES;
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark Nav Stack Selectors
+
+//----------------------------------------------------------------------------------------------------
+- (void)willShowOnNav {
+    
+    if(!self.navigationController.navigationBarHidden)
+        [self.navigationController setNavigationBarHidden:YES
+                                                 animated:YES];
+    
 }
 
 
