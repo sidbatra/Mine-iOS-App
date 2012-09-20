@@ -91,7 +91,9 @@ extern NSInteger const kTotalComments;
 /**
  * Set the bought text for the purchase.
  */
-- (void)setBoughtText:(NSString*)boughtText withUserName:(NSString*)userName;
+- (void)setBoughtText:(NSString*)boughtText 
+         withUserName:(NSString*)userName
+        withTimestamp:(NSString*)timestamp;
 
 /**
  * Set an endorsement.

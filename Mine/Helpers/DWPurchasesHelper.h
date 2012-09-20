@@ -12,6 +12,7 @@
 
 @interface DWPurchasesHelper : NSObject
 
++ (NSString*)timestamp:(DWPurchase*)purchase;
 + (NSString*)boughtTextForPurchase:(DWPurchase*)purchase;
 
 @end
