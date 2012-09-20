@@ -191,6 +191,7 @@
 		BB26988315BBA75B00037453 /* DWFeedController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB26988215BBA75B00037453 /* DWFeedController.m */; };
 		BB29D6C5160BB27F00FC69F4 /* cell-bottom-faded-off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB29D6C3160BB27F00FC69F4 /* cell-bottom-faded-off@2x.png */; };
 		BB29D6C6160BB27F00FC69F4 /* cell-middle-chevron-off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB29D6C4160BB27F00FC69F4 /* cell-middle-chevron-off@2x.png */; };
+		BB29D6C9160BB4B100FC69F4 /* login-strapline@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB29D6C8160BB4B100FC69F4 /* login-strapline@2x.png */; };
 		BB2B93C915BA3F78002C3DA0 /* DWAppRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = BB2B93C815BA3F78002C3DA0 /* DWAppRequest.m */; };
 		BB2BC01B15CC83B200CCC4BB /* DWPurchaseProfilePresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = BB2BC01A15CC83B200CCC4BB /* DWPurchaseProfilePresenter.m */; };
 		BB2BC02215CDC4B800CCC4BB /* DWPurchaseViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = BB2BC02115CDC4B800CCC4BB /* DWPurchaseViewDataSource.m */; };
@@ -564,6 +565,7 @@
 		BB26988215BBA75B00037453 /* DWFeedController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWFeedController.m; sourceTree = "<group>"; };
 		BB29D6C3160BB27F00FC69F4 /* cell-bottom-faded-off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cell-bottom-faded-off@2x.png"; sourceTree = "<group>"; };
 		BB29D6C4160BB27F00FC69F4 /* cell-middle-chevron-off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cell-middle-chevron-off@2x.png"; sourceTree = "<group>"; };
+		BB29D6C8160BB4B100FC69F4 /* login-strapline@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login-strapline@2x.png"; sourceTree = "<group>"; };
 		BB2B93C715BA3F78002C3DA0 /* DWAppRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWAppRequest.h; sourceTree = "<group>"; };
 		BB2B93C815BA3F78002C3DA0 /* DWAppRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWAppRequest.m; sourceTree = "<group>"; };
 		BB2BC01915CC83B200CCC4BB /* DWPurchaseProfilePresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWPurchaseProfilePresenter.h; sourceTree = "<group>"; };
@@ -974,6 +976,7 @@
 		BB125087160BA2F400AA2521 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				BB29D6C8160BB4B100FC69F4 /* login-strapline@2x.png */,
 				BB29D6C3160BB27F00FC69F4 /* cell-bottom-faded-off@2x.png */,
 				BB29D6C4160BB27F00FC69F4 /* cell-middle-chevron-off@2x.png */,
 				BB125088160BA2F400AA2521 /* arrow-up@2x.png */,
@@ -1860,6 +1863,7 @@
 				BB125143160BA2F400AA2521 /* tab-right-profile-on@2x.png in Resources */,
 				BB29D6C5160BB27F00FC69F4 /* cell-bottom-faded-off@2x.png in Resources */,
 				BB29D6C6160BB27F00FC69F4 /* cell-middle-chevron-off@2x.png in Resources */,
+				BB29D6C9160BB4B100FC69F4 /* login-strapline@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
