@@ -35,6 +35,8 @@
 //----------------------------------------------------------------------------------------------------
 @implementation DWNavigationRootViewController
 
+@synthesize customTabBarController = _customTabBarController;
+
 //----------------------------------------------------------------------------------------------------
 - (void)awakeFromNib {
 }

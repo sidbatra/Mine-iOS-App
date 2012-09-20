@@ -123,8 +123,8 @@
     
     UIActionSheet *actionSheet  = [[UIActionSheet alloc] initWithTitle:nil 
                                                               delegate:self 
-                                                     cancelButtonTitle:kMsgActionSheetCancel
-                                                destructiveButtonTitle:kMsgActionSheetDelete
+                                                     cancelButtonTitle:@"Cancel"
+                                                destructiveButtonTitle:@"Delete"
                                                      otherButtonTitles:nil];
     
     [actionSheet showInView:view];

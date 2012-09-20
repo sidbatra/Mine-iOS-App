@@ -8,6 +8,7 @@
 
 #import "DWAppDelegate.h"
 
+#import "DWNavigationRootViewController.h"
 #import "DWNotificationManager.h"
 #import "DWFollowingManager.h"
 #import "DWSession.h"
@@ -96,6 +97,12 @@ static NSInteger const kCreateTabIndex              = 1;
     
     self.tabBarController = [[DWTabBarController alloc] init];
     self.tabBarController.delegate = self;
+    
+    
+    ((DWNavigationRootViewController*)self.welcomeNavController.topViewController).customTabBarController = self.tabBarController;
+    ((DWNavigationRootViewController*)self.feedNavController.topViewController).customTabBarController = self.tabBarController;
+    ((DWNavigationRootViewController*)self.profileNavController.topViewController).customTabBarController = self.tabBarController;
+
     
     [self.tabBarController addSubController:self.feedNavController];
     [self.tabBarController addSubController:[[UIViewController alloc] init]];

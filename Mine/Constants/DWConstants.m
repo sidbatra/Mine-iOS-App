@@ -44,11 +44,6 @@ NSString* const kNPaginationCellReached     = @"NPaginationCellReached";
 NSString* const kNCommentAddedForPurchase   = @"NCommentAddedForPurchase";
 
 //----------------------------------------------------------------------------------------------------
-NSString* const kMsgActionSheetCancel           = @"Cancel";
-NSString* const kMsgActionSheetDelete           = @"Delete";
-
-
-//----------------------------------------------------------------------------------------------------
 NSInteger const kColumnsInProductsSearch        = 3;
 NSInteger const kColumnsInPurchaseSearch        = 2;
 

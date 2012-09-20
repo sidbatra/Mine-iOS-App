@@ -14,6 +14,7 @@
 #import "DWCreationViewController.h"
 #import "DWPurchaseInputViewController.h"
 #import "DWInviteViewController.h"
+#import "DWTabBarController.h"
 
 
 
@@ -24,7 +25,15 @@
  * Base class for navigation root view controllers which are used as
  * sub controllers of the custom tab bar controller.
  */
-@interface DWNavigationRootViewController : UIViewController<UINavigationControllerDelegate,DWProfileViewControllerDelegate,DWUsersViewControllerDelegate,DWPurchasesViewControllerDelegate,DWCreationViewControllerDelegate,DWPurchaseInputViewControllerDelegate,DWInviteViewControllerDelegate>
+@interface DWNavigationRootViewController : UIViewController<UINavigationControllerDelegate,DWProfileViewControllerDelegate,DWUsersViewControllerDelegate,DWPurchasesViewControllerDelegate,DWCreationViewControllerDelegate,DWPurchaseInputViewControllerDelegate,DWInviteViewControllerDelegate> {
+    
+    __weak DWTabBarController *_customTabBarController;
+}
+
+/**
+ * Weak referene to the custom tab bar controller in which the container is displayed.
+ */
+@property (nonatomic,weak) DWTabBarController *customTabBarController;
 
 /**
  * Display invite ui onto the nav stack.

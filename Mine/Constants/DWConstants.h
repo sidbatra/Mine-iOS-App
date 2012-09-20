@@ -47,14 +47,6 @@ extern NSString* const kNWelcomeNavigationFinished;
 extern NSString* const kNPaginationCellReached;
 extern NSString* const kNCommentAddedForPurchase;
 
-
-
-/**
- * Action sheet button text
- */
-extern NSString* const kMsgActionSheetCancel;
-extern NSString* const kMsgActionSheetDelete;
-
 /**
  * Grid view related constants
  */
