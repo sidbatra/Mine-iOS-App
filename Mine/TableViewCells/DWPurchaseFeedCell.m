@@ -201,11 +201,11 @@ static NSInteger const kCommentWidth            = 244;
 - (void)createInfoBackground {
     infoBackground = [CALayer layer];
     infoBackground.frame = CGRectMake(11,
-                                      purchaseImageButton.frame.origin.y + purchaseImageButton.frame.size.height+11,
+                                      purchaseImageButton.frame.origin.y + purchaseImageButton.frame.size.height+16,
                                       298,
-                                      kPurchaseFeedCellHeight-purchaseImageButton.frame.size.height-11-purchaseImageButton.frame.origin.y);
+                                      kPurchaseFeedCellHeight-purchaseImageButton.frame.size.height-16-purchaseImageButton.frame.origin.y);
     infoBackground.cornerRadius = 6;
-    infoBackground.backgroundColor = [UIColor colorWithRed:0.960 green:0.960 blue:0.960 alpha:1.0].CGColor;
+    infoBackground.backgroundColor = [UIColor colorWithRed:0.933 green:0.933 blue:0.933 alpha:1.0].CGColor;
     //infoBackground.borderWidth = 1.0f;
     //infoBackground.borderColor = [UIColor colorWithRed:0.878 green:0.878 blue:0.878 alpha:1.0].CGColor;
     
@@ -237,7 +237,7 @@ static NSInteger const kCommentWidth            = 244;
 //----------------------------------------------------------------------------------------------------
 - (void)createPurchaseImageButton {
     
-    purchaseImageButton  = [[UIButton alloc] initWithFrame:CGRectMake(11,11,kEndorsementWidth,224)];
+    purchaseImageButton  = [[UIButton alloc] initWithFrame:CGRectMake(11,16,298,224)]; 
     //purchaseImageButton.backgroundColor = [UIColor redColor];
     purchaseImageButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
     purchaseImageButton.adjustsImageWhenHighlighted = NO;
@@ -252,8 +252,8 @@ static NSInteger const kCommentWidth            = 244;
 
 //----------------------------------------------------------------------------------------------------
 - (void)createBoughtLabel {
-    boughtLabel = [[OHAttributedLabel alloc] initWithFrame:CGRectMake(userImageButton.frame.origin.x+userImageButton.frame.size.width+16,
-                                                                      userImageButton.frame.origin.y,
+    boughtLabel = [[OHAttributedLabel alloc] initWithFrame:CGRectMake(userImageButton.frame.origin.x+userImageButton.frame.size.width+8,
+                                                                      userImageButton.frame.origin.y+1,
                                                                       228,
                                                                       34)];
     boughtLabel.linkColor = kActiveColor;
@@ -555,7 +555,7 @@ static NSInteger const kCommentWidth            = 244;
     }
     
     CGRect frame = likesBackground.frame;
-    frame.origin.y = endorsementLabel.frame.origin.y + endorsementLabel.frame.size.height + 18;
+    frame.origin.y = endorsementLabel.frame.origin.y + endorsementLabel.frame.size.height + (endorsementLabel.text.length ?  18 : 0);
     likesBackground.frame = frame;
     
     frame = likesCountLabel.frame;
