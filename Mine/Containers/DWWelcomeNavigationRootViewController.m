@@ -122,6 +122,7 @@
     if(!self.loginViewController) {
         self.loginViewController              = [[DWLoginViewController alloc] init];
         self.loginViewController.delegate     = self;
+        self.loginViewController.view.frame   = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
     }
     
     [self.view addSubview:self.loginViewController.view];
