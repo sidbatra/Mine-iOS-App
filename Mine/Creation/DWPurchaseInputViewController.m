@@ -21,6 +21,8 @@
  * Private declarations
  */
 @interface DWPurchaseInputViewController () {
+    BOOL                                _storePicked;
+    
     DWProduct                           *_product;
     DWPurchase                          *_purchase;
     
@@ -185,10 +187,12 @@
 //----------------------------------------------------------------------------------------------------
 - (void)createPurchase {  
     
-    DWStore *store  = [[DWStore alloc] init];
-    store.name      = self.storeNameLabel.text;
-        
-    self.purchase.store             = store;
+    if(_storePicked) {
+        DWStore *store          = [[DWStore alloc] init];
+        store.name              = self.storeNameLabel.text;
+        self.purchase.store     = store;
+    }
+    
     self.purchase.origThumbURL      = self.product.mediumImageURL;
     self.purchase.title             = self.nameTextField.text;
     self.purchase.origImageURL      = self.product.largeImageURL;
@@ -231,6 +235,7 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)storePicked:(NSString *)storeName {
+    _storePicked = YES;
     self.storeNameLabel.text = storeName;
 }
 
