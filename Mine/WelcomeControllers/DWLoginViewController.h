@@ -20,6 +20,7 @@
  */
 @interface DWLoginViewController : UIViewController<DWUsersControllerDelegate,DWFacebookConnectDelegate,DWTwitterConnectViewControllerDelegate> {
     
+    UIButton *_playButton;
     UIButton *_loginWithFBButton;
     UIButton *_loginWithTWButton;
     
@@ -34,6 +35,7 @@
 /**
  * IBOutlets
  */
+@property (nonatomic) IBOutlet UIButton *playButton;
 @property (nonatomic) IBOutlet UIButton *loginWithFBButton;
 @property (nonatomic) IBOutlet UIButton *loginWithTWButton;
 
@@ -41,8 +43,9 @@
 /**
  * IBActions
  */
- - (IBAction)loginWithFBButtonClicked:(id)sender;
- - (IBAction)loginWithTWButtonClicked:(id)sender;
+- (IBAction)playButtonClicked:(id)sender;
+- (IBAction)loginWithFBButtonClicked:(id)sender;
+- (IBAction)loginWithTWButtonClicked:(id)sender;
 
 @end
 

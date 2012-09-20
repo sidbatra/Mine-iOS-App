@@ -37,13 +37,13 @@
 				<reference key="NSNextResponder"/>
 				<int key="NSvFlags">274</int>
 				<array class="NSMutableArray" key="NSSubviews">
-					<object class="IBUIImageView" id="1014031221">
+					<object class="IBUIImageView" id="746057778">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
 						<string key="NSFrameSize">{320, 416}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="1064813939"/>
+						<reference key="NSNextKeyView" ref="211390174"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -52,13 +52,13 @@
 							<string key="NSResourceName">login-bg-girl@2x.jpg</string>
 						</object>
 					</object>
-					<object class="IBUIImageView" id="1064813939">
+					<object class="IBUIImageView" id="211390174">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{0, 96}, {320, 320}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="217287381"/>
+						<reference key="NSNextKeyView" ref="74078606"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -103,7 +103,7 @@
 							<int key="type">2</int>
 							<double key="pointSize">15</double>
 						</object>
-						<object class="NSFont" key="IBUIFont" id="885821361">
+						<object class="NSFont" key="IBUIFont" id="724344687">
 							<string key="NSName">Helvetica-Bold</string>
 							<double key="NSSize">15</double>
 							<int key="NSfFlags">16</int>
@@ -136,9 +136,9 @@
 							<string key="NSResourceName">login-btn-facebook-off@2x.png</string>
 						</object>
 						<reference key="IBUIFontDescription" ref="4908273"/>
-						<reference key="IBUIFont" ref="885821361"/>
+						<reference key="IBUIFont" ref="724344687"/>
 					</object>
-					<object class="IBUILabel" id="795631172">
+					<object class="IBUILabel" id="546740253">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{11, 229}, {298, 53}}</string>
@@ -152,7 +152,7 @@
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<string type="base64-UTF8" key="IBUIText">VGVsbCB0aGUgd29ybGQgCndoZW4geW91IGJ1eSBzb21ldGhpbmcgZ3JlYXQuA</string>
-						<object class="NSColor" key="IBUITextColor" id="894358652">
+						<object class="NSColor" key="IBUITextColor" id="51072551">
 							<int key="NSColorSpace">1</int>
 							<bytes key="NSRGB">MSAxIDEAA</bytes>
 						</object>
@@ -180,13 +180,13 @@
 						</object>
 						<bool key="IBUIAdjustsFontSizeToFit">NO</bool>
 					</object>
-					<object class="IBUIButton" id="217287381">
+					<object class="IBUIButton" id="74078606">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
 						<string key="NSFrame">{{124, 118}, {72, 72}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="795631172"/>
+						<reference key="NSNextKeyView" ref="546740253"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -203,14 +203,14 @@
 							<string key="NSResourceName">login-play@2x.png</string>
 						</object>
 						<reference key="IBUIFontDescription" ref="4908273"/>
-						<reference key="IBUIFont" ref="885821361"/>
+						<reference key="IBUIFont" ref="724344687"/>
 					</object>
 				</array>
 				<string key="NSFrame">{{0, 64}, {320, 416}}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
-				<reference key="NSNextKeyView" ref="1014031221"/>
-				<reference key="IBUIBackgroundColor" ref="894358652"/>
+				<reference key="NSNextKeyView" ref="746057778"/>
+				<reference key="IBUIBackgroundColor" ref="51072551"/>
 				<object class="IBUISimulatedStatusBarMetrics" key="IBUISimulatedStatusBarMetrics">
 					<int key="IBUIStatusBarStyle">2</int>
 				</object>
@@ -248,6 +248,14 @@
 					<int key="connectionID">14</int>
 				</object>
 				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">playButton</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="74078606"/>
+					</object>
+					<int key="connectionID">20</int>
+				</object>
+				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
 						<string key="label">loginWithFBButtonClicked:</string>
 						<reference key="source" ref="876385234"/>
@@ -265,6 +273,15 @@
 					</object>
 					<int key="connectionID">13</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">playButtonClicked:</string>
+						<reference key="source" ref="74078606"/>
+						<reference key="destination" ref="372490531"/>
+						<int key="IBEventType">7</int>
+					</object>
+					<int key="connectionID">19</int>
+				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<array key="orderedObjects">
@@ -279,11 +296,11 @@
 						<reference key="object" ref="191373211"/>
 						<array class="NSMutableArray" key="children">
 							<reference ref="876385234"/>
-							<reference ref="1014031221"/>
-							<reference ref="1064813939"/>
+							<reference ref="746057778"/>
+							<reference ref="211390174"/>
 							<reference ref="624212657"/>
-							<reference ref="795631172"/>
-							<reference ref="217287381"/>
+							<reference ref="546740253"/>
+							<reference ref="74078606"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -310,22 +327,22 @@
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">15</int>
-						<reference key="object" ref="1014031221"/>
+						<reference key="object" ref="746057778"/>
 						<reference key="parent" ref="191373211"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">16</int>
-						<reference key="object" ref="1064813939"/>
+						<reference key="object" ref="211390174"/>
 						<reference key="parent" ref="191373211"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">17</int>
-						<reference key="object" ref="795631172"/>
+						<reference key="object" ref="546740253"/>
 						<reference key="parent" ref="191373211"/>
 					</object>
 					<object class="IBObjectRecord">
 						<int key="objectID">18</int>
-						<reference key="object" ref="217287381"/>
+						<reference key="object" ref="74078606"/>
 						<reference key="parent" ref="191373211"/>
 					</object>
 				</array>
@@ -349,7 +366,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">18</int>
+			<int key="maxID">20</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -359,6 +376,7 @@
 					<dictionary class="NSMutableDictionary" key="actions">
 						<string key="loginWithFBButtonClicked:">id</string>
 						<string key="loginWithTWButtonClicked:">id</string>
+						<string key="playButtonClicked:">id</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="actionInfosByName">
 						<object class="IBActionInfo" key="loginWithFBButtonClicked:">
@@ -369,10 +387,15 @@
 							<string key="name">loginWithTWButtonClicked:</string>
 							<string key="candidateClassName">id</string>
 						</object>
+						<object class="IBActionInfo" key="playButtonClicked:">
+							<string key="name">playButtonClicked:</string>
+							<string key="candidateClassName">id</string>
+						</object>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="loginWithFBButton">UIButton</string>
 						<string key="loginWithTWButton">UIButton</string>
+						<string key="playButton">UIButton</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
 						<object class="IBToOneOutletInfo" key="loginWithFBButton">
@@ -381,6 +404,10 @@
 						</object>
 						<object class="IBToOneOutletInfo" key="loginWithTWButton">
 							<string key="name">loginWithTWButton</string>
+							<string key="candidateClassName">UIButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="playButton">
+							<string key="name">playButton</string>
 							<string key="candidateClassName">UIButton</string>
 						</object>
 					</dictionary>
