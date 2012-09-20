@@ -13,7 +13,7 @@
 #import "DWConstants.h"
 
 
-static NSString* const kSuggestionMessageTitle            = @"Let's find your exact %@:";
+static NSString* const kSuggestionMessageTitle            = @"Let's find your exact %@";
 static NSString* const kSuggestionMessageSubtitle         = @"e.g. ‘%@’";
 
 /**
