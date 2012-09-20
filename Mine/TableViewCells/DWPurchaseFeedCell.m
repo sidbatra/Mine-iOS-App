@@ -31,7 +31,7 @@ static NSString* const kImgURLOff       = @"feed-btn-explore-off.png";
 static NSString* const kUserURLScheme   = @"user";
 
 static NSInteger const kPurchaseFeedCellHeight  = 350;
-static NSInteger const kEndorsementWidth        = 274;
+static NSInteger const kEndorsementWidth        = 276;
 static NSInteger const kCommentWidth            = 244;
 
 
@@ -223,8 +223,8 @@ static NSInteger const kCommentWidth            = 244;
 //----------------------------------------------------------------------------------------------------
 - (void)createUserImageButton {
     userImageButton  = [[UIButton alloc] initWithFrame:CGRectMake(22,infoBackground.frame.origin.y+11,34,34)];
-    userImageButton.imageView.layer.cornerRadius = 3;
-    userImageButton.backgroundColor = [UIColor colorWithRed:0.878 green:0.878 blue:0.878 alpha:1.0];
+    userImageButton.imageView.layer.cornerRadius = 4;
+    userImageButton.imageView.backgroundColor = [UIColor colorWithRed:0.878 green:0.878 blue:0.878 alpha:1.0];
     userImageButton.adjustsImageWhenDisabled = NO;
     
     [userImageButton addTarget:self
@@ -269,7 +269,7 @@ static NSInteger const kCommentWidth            = 244;
 - (void)createEndorsementLabel {
     
     endorsementLabel					= [[UILabel alloc] initWithFrame:CGRectMake(22,
-                                                                                userImageButton.frame.origin.y+userImageButton.frame.size.height+11,
+                                                                                userImageButton.frame.origin.y+userImageButton.frame.size.height+8,
                                                                                 kEndorsementWidth,
                                                                                 1)];
     endorsementLabel.font				= [UIFont fontWithName:@"HelveticaNeue" size:13];	
@@ -383,7 +383,7 @@ static NSInteger const kCommentWidth            = 244;
         UIImageView *likeUserImage = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,24,24)];
         
         likeUserImage.backgroundColor = [UIColor colorWithRed:0.878 green:0.878 blue:0.878 alpha:1.0];
-        likeUserImage.layer.cornerRadius = 3;
+        likeUserImage.layer.cornerRadius = 2;
         likeUserImage.layer.masksToBounds = YES;
         
         [self.likeUserImages addObject:likeUserImage];
@@ -517,7 +517,7 @@ static NSInteger const kCommentWidth            = 244;
         
         
         CGRect infoFrame = infoBackground.frame;
-        infoFrame.size.height = likeButton.frame.origin.y + likeButton.frame.size.height - infoFrame.origin.y + 10;
+        infoFrame.size.height = likeButton.frame.origin.y + likeButton.frame.size.height - infoFrame.origin.y + 11;
         infoBackground.frame = infoFrame;
     }
     else {
@@ -527,7 +527,7 @@ static NSInteger const kCommentWidth            = 244;
         
         CGRect infoFrame = infoBackground.frame;
         infoFrame.size.height = [self yValueOfCellWithLastComment:NO
-                                            withAllCommentsButton:NO] - infoFrame.origin.y + 10;
+                                            withAllCommentsButton:NO] - infoFrame.origin.y + 11;
         infoBackground.frame = infoFrame;
     }
 }
@@ -555,7 +555,7 @@ static NSInteger const kCommentWidth            = 244;
     }
     
     CGRect frame = likesBackground.frame;
-    frame.origin.y = endorsementLabel.frame.origin.y + endorsementLabel.frame.size.height + (endorsementLabel.text.length ?  18 : 0);
+    frame.origin.y = endorsementLabel.frame.origin.y + endorsementLabel.frame.size.height + (endorsementLabel.text.length ?  9 : 3);
     likesBackground.frame = frame;
     
     frame = likesCountLabel.frame;
@@ -586,7 +586,7 @@ static NSInteger const kCommentWidth            = 244;
         UIButton *likeUserButton = [self.likeUserImages objectAtIndex:i];
 
         CGRect frame = likeUserButton.frame;
-        frame.origin.x = likesCountLabel.frame.origin.x + likesCountLabel.frame.size.width + 5 + (i * 27);
+        frame.origin.x = likesCountLabel.frame.origin.x + likesCountLabel.frame.size.width + 6 + (i * 28);
         frame.origin.y = likesBackground.frame.origin.y + 10;
         likeUserButton.frame = frame;
         likeUserButton.hidden = NO;
@@ -626,7 +626,7 @@ static NSInteger const kCommentWidth            = 244;
     
     if(!commentsBaseY) {
         commentsBaseY = [self yValueOfCellWithLastComment:NO
-                                    withAllCommentsButton:NO] + 10;
+                                    withAllCommentsButton:NO];
     }
     
     
@@ -637,11 +637,11 @@ static NSInteger const kCommentWidth            = 244;
     
     
     UIButton *commentUserButton = [[UIButton alloc] initWithFrame:CGRectMake(22,
-                                                                            previousCommentY + 10,
+                                                                            previousCommentY + 9,
                                                                              24,
                                                                              24)];
     commentUserButton.backgroundColor = [UIColor colorWithRed:0.878 green:0.878 blue:0.878 alpha:1.0];
-    commentUserButton.imageView.layer.cornerRadius = 3;
+    commentUserButton.imageView.layer.cornerRadius = 2;
     commentUserButton.tag = userID;
     
     [commentUserButton setImage:image
@@ -660,7 +660,7 @@ static NSInteger const kCommentWidth            = 244;
     NSString *commentText = [NSString stringWithFormat:@"%@: %@",userName,message];
     
     OHAttributedLabel *commentMessageLabel = [[OHAttributedLabel alloc] initWithFrame:CGRectMake(53, 
-                                                                             commentUserButton.frame.origin.y,
+                                                                             commentUserButton.frame.origin.y-3,
                                                                              kCommentWidth,
                                                                              0)];
     commentMessageLabel.backgroundColor = [UIColor clearColor];
@@ -710,7 +710,7 @@ static NSInteger const kCommentWidth            = 244;
     
     CGRect frame = allCommentsButton.frame;
     frame.size.width = 250;
-    frame.origin.y = [self yValueOfLastComment] + 5;
+    frame.origin.y = [self yValueOfLastComment] + 9;
     allCommentsButton.frame = frame;
     [allCommentsButton sizeToFit];
     
