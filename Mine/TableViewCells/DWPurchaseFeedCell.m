@@ -626,7 +626,7 @@ static NSInteger const kCommentWidth            = 244;
     
     if(!commentsBaseY) {
         commentsBaseY = [self yValueOfCellWithLastComment:NO
-                                    withAllCommentsButton:NO];
+                                    withAllCommentsButton:NO] + 5;
     }
     
     
@@ -640,7 +640,7 @@ static NSInteger const kCommentWidth            = 244;
                                                                             previousCommentY + 9,
                                                                              24,
                                                                              24)];
-    commentUserButton.backgroundColor = [UIColor colorWithRed:0.878 green:0.878 blue:0.878 alpha:1.0];
+    commentUserButton.imageView.backgroundColor = [UIColor colorWithRed:0.878 green:0.878 blue:0.878 alpha:1.0];
     commentUserButton.imageView.layer.cornerRadius = 2;
     commentUserButton.tag = userID;
     
