@@ -7,6 +7,7 @@
 //
 
 #import "DWWelcomeNavigationRootViewController.h"
+#import "DWNavigationBarTitleView.h"
 #import "DWConstants.h"
 
 /**
@@ -14,12 +15,18 @@
  */
 @interface DWWelcomeNavigationRootViewController () {
     DWLoginViewController   *_loginViewController;
+    
+    DWNavigationBarTitleView *_navTitleView;
 }
 
 /**
  * Login view controller
  */
 @property (nonatomic,strong) DWLoginViewController *loginViewController;
+
+@property (nonatomic,strong) DWNavigationBarTitleView *navTitleView;
+
+
 
 /**
  * End the welcome navigation by firing a notification.
@@ -53,11 +60,13 @@
 @implementation DWWelcomeNavigationRootViewController
 
 @synthesize loginViewController = _loginViewController;
+@synthesize navTitleView = _navTitleView;
 
 //----------------------------------------------------------------------------------------------------
 - (void)awakeFromNib {
 	[super awakeFromNib];	
 }
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
@@ -107,7 +116,7 @@
 - (void)viewDidLoad {
 	[super viewDidLoad];
     
-    self.navigationItem.title = @"Onboarding";
+    self.navigationItem.title = @"";
     
     if(!self.loginViewController) {
         self.loginViewController              = [[DWLoginViewController alloc] init];
@@ -115,6 +124,11 @@
     }
     
     [self.view addSubview:self.loginViewController.view];
+    
+    
+    if(!self.navTitleView) {
+        self.navTitleView =  [DWNavigationBarTitleView logoTitleView];
+    }    
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -208,6 +222,17 @@
               shareToTB:shareToTB];
     
     [self endWelcomeNavigation];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark Nav Stack Selectors
+
+//----------------------------------------------------------------------------------------------------
+- (void)willShowOnNav {
+    [self.navigationController.navigationBar addSubview:self.navTitleView];
 }
 
 @end
