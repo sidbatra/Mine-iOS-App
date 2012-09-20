@@ -39,6 +39,7 @@ NSString* const kNImageDownloaded           = @"NImageDownloaded";
 NSString* const kNImageDownloadError        = @"NImageDownloadError";
 NSString* const kNFacebookURLOpened         = @"NFacebookURLOpened";
 NSString* const kNUserLoggedIn              = @"NUserLoggedIn";
+NSString* const kNUserLoggedOut             = @"NUserLoggedOut";
 NSString* const kNWelcomeNavigationFinished = @"NWelcomeNavigationFinished";
 NSString* const kNPaginationCellReached     = @"NPaginationCellReached";
 NSString* const kNCommentAddedForPurchase   = @"NCommentAddedForPurchase";

@@ -128,7 +128,6 @@ static NSInteger const kSettingsActionSheetTag  = -1;
 }
 
 
-
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
@@ -142,7 +141,9 @@ static NSInteger const kSettingsActionSheetTag  = -1;
     
     switch(buttonIndex) {
         case 0:
-            NSLog(@"Log OUT");
+            [[NSNotificationCenter defaultCenter] postNotificationName:kNUserLoggedOut
+                                                                object:nil
+                                                              userInfo:nil];
             break;
         case 1:
             NSLog(@"Edit bio");

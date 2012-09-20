@@ -9,6 +9,9 @@
 #import "DWAppDelegate.h"
 
 #import "DWNavigationRootViewController.h"
+#import "DWWelcomeNavigationRootViewController.h"
+#import "DWFeedNavigationViewController.h"
+#import "DWProfileNavigationViewController.h"
 #import "DWNotificationManager.h"
 #import "DWFollowingManager.h"
 #import "DWSession.h"
@@ -72,7 +75,12 @@ static NSInteger const kCreateTabIndex              = 1;
     [[NSNotificationCenter defaultCenter] addObserver:self 
                                              selector:@selector(userLoggedIn:) 
                                                  name:kNUserLoggedIn
-                                               object:nil];    
+                                               object:nil];   
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self 
+                                             selector:@selector(userLoggedOut:) 
+                                                 name:kNUserLoggedOut
+                                               object:nil]; 
     
     [[NSNotificationCenter defaultCenter] addObserver:self 
                                              selector:@selector(welcomeNavigationFinished:) 
@@ -90,6 +98,9 @@ static NSInteger const kCreateTabIndex              = 1;
     if(![[DWSession sharedDWSession] isAuthenticated])
         [self.tabBarController presentModalViewController:self.welcomeNavController
                                                  animated:NO];
+    
+    
+    [self registerForPushNotifications];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -131,6 +142,21 @@ static NSInteger const kCreateTabIndex              = 1;
                              highlightedImageName:nil
                              isMappedToController:YES
                                        isSelected:NO];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)destroyApplication {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+    
+    [self.tabBarController.view removeFromSuperview];
+    
+    [self.welcomeNavController popToRootViewControllerAnimated:NO];
+    [self.feedNavController popToRootViewControllerAnimated:NO];
+    [self.profileNavController popToRootViewControllerAnimated:NO];
+    
+    self.welcomeNavController.viewControllers = [NSArray arrayWithObject:[[DWWelcomeNavigationRootViewController alloc] init]];
+    self.feedNavController.viewControllers  = [NSArray arrayWithObject:[[DWFeedNavigationViewController alloc] init]];
+    self.profileNavController.viewControllers  = [NSArray arrayWithObject:[[DWProfileNavigationViewController alloc] init]];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -198,6 +224,13 @@ static NSInteger const kCreateTabIndex              = 1;
 }
 
 //----------------------------------------------------------------------------------------------------
+- (void)userLoggedOut:(NSNotification*)notification {
+    [[DWSession sharedDWSession] destroy];
+    [self destroyApplication];
+    [self setupApplication];
+}
+
+//----------------------------------------------------------------------------------------------------
 - (void)welcomeNavigationFinished:(NSNotification*)notification {  
     
     [self.tabBarController dismissModalViewControllerAnimated:YES];
@@ -214,7 +247,6 @@ static NSInteger const kCreateTabIndex              = 1;
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     [self setupApplication];
-    [self registerForPushNotifications];
     return YES;
 }
 
