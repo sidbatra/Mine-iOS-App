@@ -22,14 +22,11 @@
 
 //----------------------------------------------------------------------------------------------------
 + (NSString*)boughtTextForPurchase:(DWPurchase*)purchase {
-    NSString *title = [purchase.title length] < 20 ? 
-                        purchase.title : 
-                        [NSString stringWithFormat:@"%@...",[purchase.title substringToIndex:17]];
-    
+
     NSMutableString *boughtText = [NSMutableString stringWithFormat:@"%@ bought %@ %@",
                                    purchase.user.fullName,
                                    [DWUsersHelper genderPronounForUser:purchase.user],
-                                   title];
+                                   purchase.title];
     
     if(purchase.store) {
         [boughtText appendFormat:@" from %@",purchase.store.name];

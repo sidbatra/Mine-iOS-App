@@ -105,7 +105,8 @@
     return [DWPurchaseFeedCell heightForCellWithLikesCount:purchase.likes.count 
                                                   comments:purchase.comments
                                              isInteractive:style != kPurchaseFeedPresenterStyleDisabled
-                                            andEndorsement:purchase.endorsement];
+                                               endorsement:purchase.endorsement
+                                                boughtText:[DWPurchasesHelper boughtTextForPurchase:purchase]];
 }
 
 //----------------------------------------------------------------------------------------------------

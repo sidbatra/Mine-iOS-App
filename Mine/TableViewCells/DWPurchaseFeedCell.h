@@ -140,7 +140,8 @@ extern NSInteger const kTotalComments;
 + (NSInteger)heightForCellWithLikesCount:(NSInteger)likesCount 
                                 comments:(NSMutableArray*)comments
                            isInteractive:(BOOL)isInteractive
-                          andEndorsement:(NSString*)endorsement;
+                             endorsement:(NSString*)endorsement
+                              boughtText:(NSString*)boughtText;
 
 @end
 
