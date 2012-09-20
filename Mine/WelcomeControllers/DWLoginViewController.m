@@ -124,11 +124,9 @@ static NSString* const kVideoIntro = @"mine_intro_640x280.mp4";
 //----------------------------------------------------------------------------------------------------
 - (IBAction)playButtonClicked:(id)sender {
     
-    if(!self.moviePlayerController) {
-        NSString *mediaPath = [[[NSBundle mainBundle]resourcePath] stringByAppendingPathComponent:kVideoIntro];
-        self.moviePlayerController = [[DWMoviePlayerController alloc] initWithContentURL:[NSURL fileURLWithPath:mediaPath]];
-        self.moviePlayerController.moviePlayer.scalingMode = MPMovieScalingModeAspectFill;
-    }
+    NSString *mediaPath = [[[NSBundle mainBundle]resourcePath] stringByAppendingPathComponent:kVideoIntro];
+    self.moviePlayerController = [[DWMoviePlayerController alloc] initWithContentURL:[NSURL fileURLWithPath:mediaPath]];
+    self.moviePlayerController.moviePlayer.scalingMode = MPMovieScalingModeAspectFill;
         
     [[self.delegate loginViewNavigationController] presentMoviePlayerViewControllerAnimated:self.moviePlayerController];
     [self.moviePlayerController.moviePlayer play];
