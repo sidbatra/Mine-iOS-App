@@ -139,7 +139,7 @@ static NSString* const kMessageSubtitle         = @"You'll choose how you share 
     [self.view addSubview:titleLabel];
     
     
-    UILabel *subtitleLabel                  = [[UILabel alloc] initWithFrame:CGRectMake(0, 32, 320, 18)];
+    UILabel *subtitleLabel                  = [[UILabel alloc] initWithFrame:CGRectMake(0, 34, 320, 18)];
     subtitleLabel.backgroundColor           = [UIColor clearColor]; 
     subtitleLabel.shadowColor               = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.48];
     subtitleLabel.shadowOffset              = CGSizeMake(0,1);
@@ -260,6 +260,11 @@ static NSString* const kMessageSubtitle         = @"You'll choose how you share 
 
 //----------------------------------------------------------------------------------------------------
 - (void)willShowOnNav {
+    
+    if(self.navigationController.navigationBarHidden)
+        [self.navigationController setNavigationBarHidden:NO
+                                                 animated:YES];
+    
     [self.navigationController.navigationBar addSubview:self.navTitleView];
 }
 

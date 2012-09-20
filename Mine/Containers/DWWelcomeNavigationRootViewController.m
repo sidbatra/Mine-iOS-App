@@ -8,6 +8,7 @@
 
 #import "DWWelcomeNavigationRootViewController.h"
 #import "DWNavigationBarTitleView.h"
+#import "DWSuggestion.h"
 #import "DWConstants.h"
 
 /**
@@ -195,11 +196,22 @@
 //----------------------------------------------------------------------------------------------------
 - (void)suggestionPicked:(NSInteger)suggestionID {
     
-    DWCreationViewController *creationViewController = [[DWCreationViewController alloc] init];
+    DWCreationViewController *creationViewController = [[DWCreationViewController alloc] initWithSuggestion:[DWSuggestion fetch:suggestionID]];
     creationViewController.delegate = self;
     
     [self.navigationController pushViewController:creationViewController 
                                          animated:YES];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWCreationViewControllerDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)creationCancelled {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 

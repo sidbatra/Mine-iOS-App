@@ -127,12 +127,16 @@ static NSString* const kNPurchaseCreateError    = @"NPurchaseCreateError";
     [params setObject:purchase.origThumbURL     forKey:[self purchasePostParam:kKeyOrigThumbURL]];
     [params setObject:purchase.title            forKey:[self purchasePostParam:kKeyTitle]];
     [params setObject:purchase.sourceURL        forKey:[self purchasePostParam:kKeySourceURL]];
-    [params setObject:[NSString stringWithFormat:@"%d",purchase.suggestionID]      forKey:[self purchasePostParam:kKeySuggestionID]];
+    
     [params setObject:purchase.endorsement      forKey:[self purchasePostParam:kKeyEndorsement]];
     [params setObject:purchase.query            forKey:[self purchasePostParam:kKeyQuery]];
     
     [params setObject:product.title             forKey:[self purchasePostSubParam:kKeyProduct withParamName:kKeyTitle]];
     [params setObject:product.uniqueID          forKey:[self purchasePostSubParam:kKeyProduct withParamName:kKeyExternalID]];
+    
+    if(purchase.suggestionID) {
+        [params setObject:[NSString stringWithFormat:@"%d",purchase.suggestionID] forKey:[self purchasePostParam:kKeySuggestionID]];
+    }
     
     if(purchase.store) {
         [params setObject:purchase.store.name   forKey:[self purchasePostParam:kKeyStoreName]];

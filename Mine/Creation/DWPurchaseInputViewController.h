@@ -58,10 +58,10 @@
 @property (nonatomic,weak) id<DWPurchaseInputViewControllerDelegate,NSObject> delegate;
 
 /**
- * Initialize with the selected product and the query made in the previous screen
+ * Initialize with a partial purchase and the selected product from the previous screen
  */
 - (id)initWithProduct:(DWProduct*)product 
-             andQuery:(NSString*)query;
+          andPurchase:(DWPurchase*)purchase;
 
 /**
  * IBActions

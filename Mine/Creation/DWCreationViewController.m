@@ -8,15 +8,22 @@
 
 #import "DWCreationViewController.h"
 #import "DWProduct.h"
+#import "DWPurchase.h"
+#import "DWSuggestion.h"
 #import "DWConstants.h"
 
+
+static NSString* const kSuggestionMessageTitle            = @"Let's find your exact %@:";
+static NSString* const kSuggestionMessageSubtitle         = @"e.g. ‘%@’";
 
 /**
  * Private declarations
  */
 @interface DWCreationViewController () {
     NSString                    *_query;    
-    DWProduct                   *_product;        
+    DWProduct                   *_product;
+    DWPurchase                  *_purchase;
+    DWSuggestion                *_suggestion;
     
     DWProductsViewController    *_productsViewController;
 }
@@ -30,6 +37,16 @@
  * Product selected by the user
  */
 @property (nonatomic,strong) DWProduct *product;
+
+/**
+ * Purchase the user is about to make
+ */
+@property (nonatomic,strong) DWPurchase *purchase;
+
+/**
+ * Suggestion (if any) for which the user is creating
+ */
+@property (nonatomic,strong) DWSuggestion *suggestion;
 
 /**
  * Products View Controller for displaying product search results
@@ -95,6 +112,8 @@
 //----------------------------------------------------------------------------------------------------
 @implementation DWCreationViewController
 
+@synthesize messageTitleLabel           = _messageTitleLabel;
+@synthesize messageSubtitleLabel        = _messageSubtitleLabel;
 @synthesize searchTextField             = _searchTextField;
 @synthesize productPreview              = _productPreview;
 @synthesize loadingView                 = _loadingView;
@@ -107,15 +126,19 @@
 
 @synthesize query                       = _query;
 @synthesize product                     = _product;
+@synthesize purchase                    = _purchase;
+@synthesize suggestion                  = _suggestion;
 @synthesize productsViewController      = _productsViewController;
 @synthesize delegate                    = _delegate;
 
+
 //----------------------------------------------------------------------------------------------------
-- (id)init
-{
+- (id)init {
     self = [super init];
     
     if (self) {
+        
+        self.purchase = [[DWPurchase alloc] init];
         
         [[NSNotificationCenter defaultCenter] addObserver:self 
                                                  selector:@selector(productLargeImageLoaded:) 
@@ -124,6 +147,13 @@
     }
     
     return self;
+}
+
+//----------------------------------------------------------------------------------------------------
+- (id)initWithSuggestion:(DWSuggestion*)suggestion {
+    self.suggestion = suggestion;
+    
+    return [self init];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -139,10 +169,15 @@
         self.productsViewController = [[DWProductsViewController alloc] init];
     
     self.productsViewController.delegate    = self;
-    self.productsViewController.view.frame  = CGRectMake(11,44,309,416);
+    self.productsViewController.view.frame  = CGRectMake(0,44,320,416);
     self.productsViewController.view.hidden = YES;
     
     [self.view addSubview:self.productsViewController.view];
+    
+    if (self.suggestion) {
+        self.messageTitleLabel.text     = [NSString stringWithFormat:kSuggestionMessageTitle,self.suggestion.thing];
+        self.messageSubtitleLabel.text  = [NSString stringWithFormat:kSuggestionMessageSubtitle,self.suggestion.example];
+    }
     
     [self showKeyboard];
 }
@@ -221,15 +256,16 @@
 #pragma mark IBAction
 
 //----------------------------------------------------------------------------------------------------
-- (void)productSelectButtonClicked:(id)sender {
-    SEL sel = @selector(productSelected:fromQuery:);
+- (void)productSelectButtonClicked:(id)sender {    
     
-    if(![self.delegate respondsToSelector:sel])
-        return;
+    self.purchase.query = self.query;
     
-    [self.delegate performSelector:sel
-                        withObject:self.product 
-                        withObject:self.query];
+    if (self.suggestion) 
+        self.purchase.suggestionID = self.suggestion.databaseID;
+    
+    
+    [self.delegate productSelected:self.product 
+                       forPurchase:self.purchase];
 }
 
 //----------------------------------------------------------------------------------------------------

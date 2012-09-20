@@ -12,8 +12,12 @@
 
 @protocol DWCreationViewControllerDelegate;
 @class DWProduct;
+@class DWPurchase;
+@class DWSuggestion;
 
 @interface DWCreationViewController : UIViewController<UITextFieldDelegate,DWProductsViewControllerDelegate> {
+    UILabel                 *_messageTitleLabel;
+    UILabel                 *_messageSubtitleLabel;
     UITextField             *_searchTextField;
     UIView                  *_productPreview;
     UIView                  *_loadingView;
@@ -30,6 +34,8 @@
 /**
  * IBOutlet properties
  */
+@property (nonatomic) IBOutlet UILabel *messageTitleLabel;
+@property (nonatomic) IBOutlet UILabel *messageSubtitleLabel;
 @property (nonatomic) IBOutlet UITextField *searchTextField;
 @property (nonatomic) IBOutlet UIView *productPreview;
 @property (nonatomic) IBOutlet UIView *loadingView;
@@ -53,6 +59,12 @@
 - (IBAction)productRejectButtonClicked:(id)sender;
 - (IBAction)cancelCreationButtonClicked:(id)sender;
 
+
+/**
+ * Alternate initialization
+ */
+- (id)initWithSuggestion:(DWSuggestion*)suggestion;
+
 @end
 
 
@@ -61,13 +73,12 @@
  */
 @protocol DWCreationViewControllerDelegate
 
-@optional
-
 /**
  * A product is selected from the search results
  */
 - (void)productSelected:(DWProduct*)product 
-              fromQuery:(NSString*)query;
+            forPurchase:(DWPurchase*)purchase;
+
 
 /**
  * User cancels the creation process

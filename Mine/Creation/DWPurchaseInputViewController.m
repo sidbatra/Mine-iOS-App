@@ -100,15 +100,13 @@
 
 //----------------------------------------------------------------------------------------------------
 - (id)initWithProduct:(DWProduct*)product 
-             andQuery:(NSString*)query {
+          andPurchase:(DWPurchase *)purchase {
     
     self = [super init];
     
     if(self) {        
-        self.product        = product;   
-        
-        self.purchase       = [[DWPurchase alloc] init];
-        self.purchase.query = query;
+        self.product                = product;         
+        self.purchase               = purchase;
         
         self.storePickerViewController              = [[DWStorePickerViewController alloc] init];
         self.storePickerViewController.delegate     = self;

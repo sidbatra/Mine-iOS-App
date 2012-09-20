@@ -75,7 +75,7 @@ static NSString* const kImgProductHighlight  = @"chooser-item-bg-on@2x.png";
     
     for(NSInteger i=0 ; i<kColumnsInProductsSearch ; i++) {
         
-        UIImageView *productImageView       = [[UIImageView alloc] initWithFrame:CGRectMake(102*i + 7, 15, 80, 80)];
+        UIImageView *productImageView       = [[UIImageView alloc] initWithFrame:CGRectMake(102*i + 18, 15, 80, 80)];
         productImageView.contentMode        = UIViewContentModeScaleAspectFit;
         productImageView.backgroundColor    = [UIColor whiteColor];
         
@@ -83,7 +83,7 @@ static NSString* const kImgProductHighlight  = @"chooser-item-bg-on@2x.png";
         [self.contentView addSubview:productImageView];
         
                 
-        UIButton *productButton = [[UIButton alloc] initWithFrame:CGRectMake(102*i, 8, 94, 94)];
+        UIButton *productButton = [[UIButton alloc] initWithFrame:CGRectMake(102*i + 11, 8, 94, 94)];
         
         [productButton setBackgroundImage:[UIImage imageNamed:kImgProductBackground] 
                                  forState:UIControlStateNormal];
@@ -132,7 +132,10 @@ static NSString* const kImgProductHighlight  = @"chooser-item-bg-on@2x.png";
 - (void)resetUI {        
     
     for(UIButton *productButton in self.productButtons) 
-        productButton.hidden = YES;    
+        productButton.hidden = YES;
+    
+    for(UIImageView *productImageView in self.productImageViews) 
+        productImageView.image = nil;
     
 }
 
