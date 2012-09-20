@@ -16,6 +16,8 @@
 
 static NSString* const kImgSettingsOff          = @"nav-btn-settings-off.png";
 static NSString* const kImgSettingsOn           = @"nav-btn-settings-on.png";
+static NSString* const kAboutURL                = @"/about?web_view_mode=true";
+static NSString* const kFAQURL                  = @"/faq?web_view_mode=true";
 static NSInteger const kSettingsActionSheetTag  = -1;
 
 
@@ -107,7 +109,6 @@ static NSInteger const kSettingsActionSheetTag  = -1;
 }
 
 
-
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
@@ -138,6 +139,23 @@ static NSInteger const kSettingsActionSheetTag  = -1;
 	
     if (actionSheet.tag != kSettingsActionSheetTag)
         return;
+    
+    switch(buttonIndex) {
+        case 0:
+            NSLog(@"Log OUT");
+            break;
+        case 1:
+            NSLog(@"Edit bio");
+            break;
+        case 2:
+            [self displayExternalURL:[NSString stringWithFormat:@"%@%@%@",kAppProtocol,kAppServer,kAboutURL]];
+            break;
+        case 3:
+            [self displayExternalURL:[NSString stringWithFormat:@"%@%@%@",kAppProtocol,kAppServer,kFAQURL]];
+            break;
+        default:
+            break;
+    }    
 }
 
 

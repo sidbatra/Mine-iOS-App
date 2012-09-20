@@ -41,6 +41,11 @@
 - (void)displayInvite;
 
 /**
+ * Display given URL in a UIWebView
+ */
+- (void)displayExternalURL:(NSString*)url;
+
+/**
  * Push a user profile onto the nav stack.
  */
 - (void)displayUserProfile:(DWUser*)user;
