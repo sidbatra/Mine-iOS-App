@@ -53,8 +53,6 @@
 		2681C4E615DAEE17003046F1 /* DWSuggestionsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2681C4E515DAEE17003046F1 /* DWSuggestionsController.m */; };
 		2681C4EA15DAF4E7003046F1 /* DWSuggestion.m in Sources */ = {isa = PBXBuildFile; fileRef = 2681C4E915DAF4E7003046F1 /* DWSuggestion.m */; };
 		2681C4F315DC323D003046F1 /* DWSuggestionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2681C4F115DC323D003046F1 /* DWSuggestionsViewController.m */; };
-		268B6905160BB292003F4A67 /* cell-bottom-faded-off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 268B6903160BB292003F4A67 /* cell-bottom-faded-off@2x.png */; };
-		268B6906160BB292003F4A67 /* cell-middle-chevron-off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 268B6904160BB292003F4A67 /* cell-middle-chevron-off@2x.png */; };
 		26B3237815D31C4A00F1E28F /* DWStoresViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B3237715D31C4A00F1E28F /* DWStoresViewDataSource.m */; };
 		26C4467715C8BA4400E9A50B /* DWProductCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C4467615C8BA4400E9A50B /* DWProductCell.m */; };
 		26C446A615C9D02700E9A50B /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C446A315C9D02700E9A50B /* NSData+Base64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -191,6 +189,8 @@
 		BB26987D15BB956700037453 /* DWPurchase.m in Sources */ = {isa = PBXBuildFile; fileRef = BB26987C15BB956700037453 /* DWPurchase.m */; };
 		BB26988015BBA2E300037453 /* DWStore.m in Sources */ = {isa = PBXBuildFile; fileRef = BB26987F15BBA2E300037453 /* DWStore.m */; };
 		BB26988315BBA75B00037453 /* DWFeedController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB26988215BBA75B00037453 /* DWFeedController.m */; };
+		BB29D6C5160BB27F00FC69F4 /* cell-bottom-faded-off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB29D6C3160BB27F00FC69F4 /* cell-bottom-faded-off@2x.png */; };
+		BB29D6C6160BB27F00FC69F4 /* cell-middle-chevron-off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB29D6C4160BB27F00FC69F4 /* cell-middle-chevron-off@2x.png */; };
 		BB2B93C915BA3F78002C3DA0 /* DWAppRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = BB2B93C815BA3F78002C3DA0 /* DWAppRequest.m */; };
 		BB2BC01B15CC83B200CCC4BB /* DWPurchaseProfilePresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = BB2BC01A15CC83B200CCC4BB /* DWPurchaseProfilePresenter.m */; };
 		BB2BC02215CDC4B800CCC4BB /* DWPurchaseViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = BB2BC02115CDC4B800CCC4BB /* DWPurchaseViewDataSource.m */; };
@@ -386,8 +386,6 @@
 		2681C4E915DAF4E7003046F1 /* DWSuggestion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWSuggestion.m; sourceTree = "<group>"; };
 		2681C4F015DC323D003046F1 /* DWSuggestionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWSuggestionsViewController.h; sourceTree = "<group>"; };
 		2681C4F115DC323D003046F1 /* DWSuggestionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWSuggestionsViewController.m; sourceTree = "<group>"; };
-		268B6903160BB292003F4A67 /* cell-bottom-faded-off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "cell-bottom-faded-off@2x.png"; path = "Mine/Images/cell-bottom-faded-off@2x.png"; sourceTree = SOURCE_ROOT; };
-		268B6904160BB292003F4A67 /* cell-middle-chevron-off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "cell-middle-chevron-off@2x.png"; path = "Mine/Images/cell-middle-chevron-off@2x.png"; sourceTree = SOURCE_ROOT; };
 		26B3237615D31C4A00F1E28F /* DWStoresViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWStoresViewDataSource.h; sourceTree = "<group>"; };
 		26B3237715D31C4A00F1E28F /* DWStoresViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWStoresViewDataSource.m; sourceTree = "<group>"; };
 		26C4467515C8BA4400E9A50B /* DWProductCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWProductCell.h; sourceTree = "<group>"; };
@@ -564,6 +562,8 @@
 		BB26987F15BBA2E300037453 /* DWStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWStore.m; sourceTree = "<group>"; };
 		BB26988115BBA75B00037453 /* DWFeedController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWFeedController.h; sourceTree = "<group>"; };
 		BB26988215BBA75B00037453 /* DWFeedController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWFeedController.m; sourceTree = "<group>"; };
+		BB29D6C3160BB27F00FC69F4 /* cell-bottom-faded-off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cell-bottom-faded-off@2x.png"; sourceTree = "<group>"; };
+		BB29D6C4160BB27F00FC69F4 /* cell-middle-chevron-off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cell-middle-chevron-off@2x.png"; sourceTree = "<group>"; };
 		BB2B93C715BA3F78002C3DA0 /* DWAppRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWAppRequest.h; sourceTree = "<group>"; };
 		BB2B93C815BA3F78002C3DA0 /* DWAppRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWAppRequest.m; sourceTree = "<group>"; };
 		BB2BC01915CC83B200CCC4BB /* DWPurchaseProfilePresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWPurchaseProfilePresenter.h; sourceTree = "<group>"; };
@@ -974,8 +974,8 @@
 		BB125087160BA2F400AA2521 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				268B6903160BB292003F4A67 /* cell-bottom-faded-off@2x.png */,
-				268B6904160BB292003F4A67 /* cell-middle-chevron-off@2x.png */,
+				BB29D6C3160BB27F00FC69F4 /* cell-bottom-faded-off@2x.png */,
+				BB29D6C4160BB27F00FC69F4 /* cell-middle-chevron-off@2x.png */,
 				BB125088160BA2F400AA2521 /* arrow-up@2x.png */,
 				BB125089160BA2F400AA2521 /* bottom-drawer-trans@2x.png */,
 				BB12508A160BA2F400AA2521 /* btn-action-bg-dark@2x.png */,
@@ -1858,8 +1858,8 @@
 				BB125141160BA2F400AA2521 /* tab-left-feed-on@2x.png in Resources */,
 				BB125142160BA2F400AA2521 /* tab-right-profile-off@2x.png in Resources */,
 				BB125143160BA2F400AA2521 /* tab-right-profile-on@2x.png in Resources */,
-				268B6905160BB292003F4A67 /* cell-bottom-faded-off@2x.png in Resources */,
-				268B6906160BB292003F4A67 /* cell-middle-chevron-off@2x.png in Resources */,
+				BB29D6C5160BB27F00FC69F4 /* cell-bottom-faded-off@2x.png in Resources */,
+				BB29D6C6160BB27F00FC69F4 /* cell-middle-chevron-off@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
