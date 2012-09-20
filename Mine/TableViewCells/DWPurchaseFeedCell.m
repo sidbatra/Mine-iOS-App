@@ -30,7 +30,7 @@ static NSString* const kImgURLOn        = @"feed-btn-explore-on.png";
 static NSString* const kImgURLOff       = @"feed-btn-explore-off.png";
 static NSString* const kUserURLScheme   = @"user";
 
-static NSInteger const kPurchaseFeedCellHeight  = 350;
+static NSInteger const kPurchaseFeedCellHeight  = 224 + 16 + 16 + 11 + 8;
 static NSInteger const kEndorsementWidth        = 276;
 static NSInteger const kCommentWidth            = 244;
 static NSInteger const kBoughtTextWidth         = 228;
@@ -543,7 +543,7 @@ static NSInteger const kUserImageSide           = 34;
         
         CGRect infoFrame = infoBackground.frame;
         infoFrame.size.height = likeButton.frame.origin.y + likeButton.frame.size.height - infoFrame.origin.y + 11;
-        infoBackground.frame = infoFrame;
+        infoBackground.frame = infoFrame;        
     }
     else {
         likeButton.hidden = YES;
@@ -580,7 +580,7 @@ static NSInteger const kUserImageSide           = 34;
     }
     
     CGRect frame = likesBackground.frame;
-    frame.origin.y = endorsementLabel.frame.origin.y + endorsementLabel.frame.size.height + (endorsementLabel.text.length ?  9 : 3);
+    frame.origin.y =  endorsementLabel.frame.origin.y + endorsementLabel.frame.size.height + (endorsementLabel.text.length ?  9 : 3);
     likesBackground.frame = frame;
     
     frame = likesCountLabel.frame;
@@ -767,19 +767,23 @@ static NSInteger const kUserImageSide           = 34;
                               lineBreakMode:UILineBreakModeWordWrap].height;
 
     if(isInteractive) {
-        height += 30;
+        height += 24 + 10 + 11;
         
-        height += likesCount > 0 ? 64 : 0;
+        height += likesCount > 0 ? 44 + (endorsement.length ? 9 : 3) : 0;
         
-        for(DWComment *comment in comments) {
+        if(comments.count)
+            height += 5;
+        
+        for(NSInteger i=0 ; i<MIN(comments.count,kTotalComments) ; i++) {
+            DWComment *comment = [comments objectAtIndex:i];
             NSInteger textHeight = [[NSString stringWithFormat:@"%@: %@",comment.user.fullName,comment.message] sizeWithFont:kCommentFont 
                                                                                                            constrainedToSize:CGSizeMake(kCommentWidth,1500)
                                                                                                                lineBreakMode:UILineBreakModeWordWrap].height;
-            height += MAX(25,textHeight);
+            height += MAX(24,textHeight) + 9;
         }
         
         if([comments count] > kTotalComments)
-            height += 45;
+            height += 34 + 9;
     }
     
     return  height;
