@@ -13,8 +13,10 @@
 #import "DWConstants.h"
 
 
-static NSString* const kSuggestionMessageTitle            = @"Let's find your exact %@";
-static NSString* const kSuggestionMessageSubtitle         = @"e.g. ‘%@’";
+static NSString* const kDefaultMessageTitle             = @"To be decided";
+static NSString* const kDefaultMessageSubtitle          = @"To be decided";
+static NSString* const kSuggestionMessageTitle          = @"Let's find your exact %@";
+static NSString* const kSuggestionMessageSubtitle       = @"e.g. ‘%@’";
 
 /**
  * Private declarations

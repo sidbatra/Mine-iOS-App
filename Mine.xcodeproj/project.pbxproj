@@ -53,6 +53,14 @@
 		2681C4E615DAEE17003046F1 /* DWSuggestionsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2681C4E515DAEE17003046F1 /* DWSuggestionsController.m */; };
 		2681C4EA15DAF4E7003046F1 /* DWSuggestion.m in Sources */ = {isa = PBXBuildFile; fileRef = 2681C4E915DAF4E7003046F1 /* DWSuggestion.m */; };
 		2681C4F315DC323D003046F1 /* DWSuggestionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2681C4F115DC323D003046F1 /* DWSuggestionsViewController.m */; };
+		268B68EC160A93A0003F4A67 /* arrow-up@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 268B68EB160A93A0003F4A67 /* arrow-up@2x.png */; };
+		268B68F8160B9D2B003F4A67 /* cell-bottom-faded-off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 268B68F6160B9D2B003F4A67 /* cell-bottom-faded-off@2x.png */; };
+		268B68F9160B9D2B003F4A67 /* cell-middle-chevron-off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 268B68F7160B9D2B003F4A67 /* cell-middle-chevron-off@2x.png */; };
+		26A83C4515F6AA9C0095B72D /* nav-field-creation@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26A83C4315F6AA9C0095B72D /* nav-field-creation@2x.png */; };
+		26A83C4615F6AA9C0095B72D /* stamp-inset-144@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26A83C4415F6AA9C0095B72D /* stamp-inset-144@2x.png */; };
+		26A83C4915F6BE870095B72D /* chooser-item-bg-off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26A83C4815F6BE860095B72D /* chooser-item-bg-off@2x.png */; };
+		26A83C4F15F6D51A0095B72D /* chooser-item-bg-on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26A83C4E15F6D51A0095B72D /* chooser-item-bg-on@2x.png */; };
+>>>>>>> purchase input view designed and positioned
 		26B3237815D31C4A00F1E28F /* DWStoresViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B3237715D31C4A00F1E28F /* DWStoresViewDataSource.m */; };
 		26C4467715C8BA4400E9A50B /* DWProductCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C4467615C8BA4400E9A50B /* DWProductCell.m */; };
 		26C446A615C9D02700E9A50B /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C446A315C9D02700E9A50B /* NSData+Base64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -384,6 +392,13 @@
 		2681C4E915DAF4E7003046F1 /* DWSuggestion.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWSuggestion.m; sourceTree = "<group>"; };
 		2681C4F015DC323D003046F1 /* DWSuggestionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWSuggestionsViewController.h; sourceTree = "<group>"; };
 		2681C4F115DC323D003046F1 /* DWSuggestionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWSuggestionsViewController.m; sourceTree = "<group>"; };
+		268B68EB160A93A0003F4A67 /* arrow-up@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow-up@2x.png"; sourceTree = "<group>"; };
+		268B68F6160B9D2B003F4A67 /* cell-bottom-faded-off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cell-bottom-faded-off@2x.png"; sourceTree = "<group>"; };
+		268B68F7160B9D2B003F4A67 /* cell-middle-chevron-off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cell-middle-chevron-off@2x.png"; sourceTree = "<group>"; };
+		26A83C4315F6AA9C0095B72D /* nav-field-creation@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-field-creation@2x.png"; sourceTree = "<group>"; };
+		26A83C4415F6AA9C0095B72D /* stamp-inset-144@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "stamp-inset-144@2x.png"; sourceTree = "<group>"; };
+		26A83C4815F6BE860095B72D /* chooser-item-bg-off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chooser-item-bg-off@2x.png"; sourceTree = "<group>"; };
+		26A83C4E15F6D51A0095B72D /* chooser-item-bg-on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "chooser-item-bg-on@2x.png"; sourceTree = "<group>"; };
 		26B3237615D31C4A00F1E28F /* DWStoresViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWStoresViewDataSource.h; sourceTree = "<group>"; };
 		26B3237715D31C4A00F1E28F /* DWStoresViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWStoresViewDataSource.m; sourceTree = "<group>"; };
 		26C4467515C8BA4400E9A50B /* DWProductCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWProductCell.h; sourceTree = "<group>"; };
@@ -913,6 +928,102 @@
 			path = Twitter;
 			sourceTree = "<group>";
 		};
+		BB06360315BF7258001F26E1 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				268B68F6160B9D2B003F4A67 /* cell-bottom-faded-off@2x.png */,
+				268B68F7160B9D2B003F4A67 /* cell-middle-chevron-off@2x.png */,
+				268B68EB160A93A0003F4A67 /* arrow-up@2x.png */,
+				267F27141602B3030061ACEF /* bottom-drawer-trans@2x.png */,
+				267F27151602B3030061ACEF /* btn-start-off@2x.png */,
+				267F27161602B3030061ACEF /* btn-start-on@2x.png */,
+				267F2707160289610061ACEF /* sex-picker-female-off@2x.png */,
+				267F2708160289610061ACEF /* sex-picker-female-on@2x.png */,
+				267F2709160289610061ACEF /* sex-picker-male-off@2x.png */,
+				267F270A160289610061ACEF /* sex-picker-male-on@2x.png */,
+				2618480916011F080022A1EE /* message-drawer-opaque@2x.png */,
+				BB9F318716010172009C1385 /* feed-btn-comment-off@2x.png */,
+				BB9F318816010172009C1385 /* feed-btn-comment-on@2x.png */,
+				BB9F318916010172009C1385 /* feed-btn-explore-off@2x.png */,
+				BB9F318A16010172009C1385 /* feed-btn-explore-on@2x.png */,
+				BB9F318B16010172009C1385 /* feed-btn-like-off@2x.png */,
+				BB9F318C16010172009C1385 /* feed-btn-like-on@2x.png */,
+				BB9F318D16010172009C1385 /* feed-btn-like-pushed@2x.png */,
+				26BB9B4B15FFD04C00844E9F /* cell-chevron-off@2x.png */,
+				BB9F318016005346009C1385 /* doink-up-16@2x.png */,
+				2618C0F415FEACC100CA41B9 /* hr-A4A4A4@2x.png */,
+				2618C0F515FEACC100CA41B9 /* hr-D6D6D6@2x.png */,
+				2676AA0415FE79E100B0B579 /* cell-bottom-off@2x.png */,
+				2676AA0515FE79E100B0B579 /* cell-middle-off@2x.png */,
+				2676AA0615FE79E100B0B579 /* cell-off@2x.png */,
+				2676AA0715FE79E100B0B579 /* cell-top-off@2x.png */,
+				2676AA0815FE79E100B0B579 /* cell-trans-4-off@2x.png */,
+				BB9F317815FDFFAD009C1385 /* chevron-white@2x.png */,
+				BB9F317915FDFFAD009C1385 /* chevron@2x.png */,
+				26FF313A15FAAB0B006EC316 /* nav-btn-done-off@2x.png */,
+				26FF313B15FAAB0B006EC316 /* nav-btn-done-on@2x.png */,
+				26FF312615F99B85006EC316 /* loading1-72@2x.png */,
+				26FF312715F99B85006EC316 /* loading2-72@2x.png */,
+				26FF312815F99B85006EC316 /* loading3-72@2x.png */,
+				26FF312915F99B85006EC316 /* loading4-72@2x.png */,
+				26FF312A15F99B85006EC316 /* loading5-72@2x.png */,
+				26FF312B15F99B85006EC316 /* loading6-72@2x.png */,
+				26FF312C15F99B85006EC316 /* loading7-72@2x.png */,
+				26FF312D15F99B85006EC316 /* loading8-72@2x.png */,
+				261D0F8815F9761A0085591F /* preview-crosshairs@2x.png */,
+				261D0F7F15F971570085591F /* preview-btn-no-off@2x.png */,
+				261D0F8015F971570085591F /* preview-btn-no-on@2x.png */,
+				261D0F8115F971570085591F /* preview-btn-yes-off@2x.png */,
+				261D0F8215F971570085591F /* preview-btn-yes-on@2x.png */,
+				263F4B4515F96A4C00941159 /* preview-bg@2x.png */,
+				BB9F316315F8B8E2009C1385 /* nav-btn-settings-off@2x.png */,
+				BB9F316415F8B8E2009C1385 /* nav-btn-settings-on@2x.png */,
+				BB9F316015F87CF5009C1385 /* btn-action-bg-dark@2x.png */,
+				26A83C4E15F6D51A0095B72D /* chooser-item-bg-on@2x.png */,
+				26A83C4815F6BE860095B72D /* chooser-item-bg-off@2x.png */,
+				26A83C4315F6AA9C0095B72D /* nav-field-creation@2x.png */,
+				26A83C4415F6AA9C0095B72D /* stamp-inset-144@2x.png */,
+				BB9F314915F62C69009C1385 /* nav-btn-back-off@2x.png */,
+				BB9F314A15F62C69009C1385 /* nav-btn-back-on@2x.png */,
+				BB9F314015F61CB4009C1385 /* list-btn-follow-off@2x.png */,
+				BB9F314115F61CB5009C1385 /* nav-btn-follow-off@2x.png */,
+				BB9F314215F61CB5009C1385 /* nav-btn-follow-on@2x.png */,
+				BB9F313615F5E896009C1385 /* nav-btn-cancel-off@2x.png */,
+				BB9F313715F5E896009C1385 /* nav-btn-cancel-on@2x.png */,
+				BB9F313415F5E55C009C1385 /* nav-field-search@2x.png */,
+				BB9F312915F49CE6009C1385 /* nav-btn-search-off@2x.png */,
+				BB9F312A15F49CE6009C1385 /* nav-btn-search-on@2x.png */,
+				BB9F312615F3CFEA009C1385 /* btn-action-bg@2x.png */,
+				BB59B4CB15F0A7D4000756EE /* doink-up-14@2x.png */,
+				BB59B4C615EF041E000756EE /* nav-mine-logo@2x.png */,
+				BB59B4BC15EE628A000756EE /* tab-center-add-off@2x.png */,
+				BB59B4BD15EE628A000756EE /* tab-left-feed-off@2x.png */,
+				BB59B4BE15EE628A000756EE /* tab-left-feed-on@2x.png */,
+				BB59B4BF15EE628A000756EE /* tab-right-profile-off@2x.png */,
+				BB59B4C015EE628A000756EE /* tab-right-profile-on@2x.png */,
+				BB59B4B215EE4FA8000756EE /* nav-bg@2x.png */,
+				BB59B4B315EE4FA8000756EE /* nav-shadow@2x.png */,
+				BB2BC07815D0BA7C00CCC4BB /* button_loading.png */,
+				BB2BC07915D0BA7C00CCC4BB /* button_loading@2x.png */,
+				BB2BC07A15D0BA7C00CCC4BB /* loading_bar_fail.png */,
+				BB2BC07B15D0BA7C00CCC4BB /* loading_bar_fail@2x.png */,
+				BB2BC07C15D0BA7C00CCC4BB /* loading_bar.png */,
+				BB2BC07D15D0BA7C00CCC4BB /* loading_bar@2x.png */,
+				BB2BC07E15D0BA7C00CCC4BB /* post_cancel.png */,
+				BB2BC07F15D0BA7C00CCC4BB /* post_cancel@2x.png */,
+				BB2BC08015D0BA7C00CCC4BB /* post_retry@2x.png */,
+				2622006B15C71453003DC1DF /* check_mark_white.png */,
+				2622006C15C71453003DC1DF /* check_mark_white@2x.png */,
+				2622006D15C71453003DC1DF /* hr_dark.png */,
+				2622006E15C71453003DC1DF /* hr_dark@2x.png */,
+				2622006F15C71453003DC1DF /* hr_gray_create.png */,
+				2622007015C71453003DC1DF /* hr_gray_create@2x.png */,
+				BB06360415BF7258001F26E1 /* post_retry.png */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
+>>>>>>> purchase input view designed and positioned
 		BB06360515BF7258001F26E1 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
@@ -1852,6 +1963,80 @@
 				BB125141160BA2F400AA2521 /* tab-left-feed-on@2x.png in Resources */,
 				BB125142160BA2F400AA2521 /* tab-right-profile-off@2x.png in Resources */,
 				BB125143160BA2F400AA2521 /* tab-right-profile-on@2x.png in Resources */,
+=======
+				BB59B4B415EE4FA8000756EE /* nav-bg@2x.png in Resources */,
+				BB59B4B515EE4FA8000756EE /* nav-shadow@2x.png in Resources */,
+				BB59B4C115EE628A000756EE /* tab-center-add-off@2x.png in Resources */,
+				BB59B4C215EE628A000756EE /* tab-left-feed-off@2x.png in Resources */,
+				BB59B4C315EE628A000756EE /* tab-left-feed-on@2x.png in Resources */,
+				BB59B4C415EE628A000756EE /* tab-right-profile-off@2x.png in Resources */,
+				BB59B4C515EE628A000756EE /* tab-right-profile-on@2x.png in Resources */,
+				BB59B4C715EF041E000756EE /* nav-mine-logo@2x.png in Resources */,
+				BB59B4CC15F0A7D4000756EE /* doink-up-14@2x.png in Resources */,
+				BB9F312715F3CFEA009C1385 /* btn-action-bg@2x.png in Resources */,
+				BB9F312B15F49CE6009C1385 /* nav-btn-search-off@2x.png in Resources */,
+				BB9F312C15F49CE6009C1385 /* nav-btn-search-on@2x.png in Resources */,
+				BB9F313515F5E55C009C1385 /* nav-field-search@2x.png in Resources */,
+				BB9F313815F5E897009C1385 /* nav-btn-cancel-off@2x.png in Resources */,
+				BB9F313915F5E897009C1385 /* nav-btn-cancel-on@2x.png in Resources */,
+				BB9F314315F61CB6009C1385 /* list-btn-follow-off@2x.png in Resources */,
+				BB9F314415F61CB6009C1385 /* nav-btn-follow-off@2x.png in Resources */,
+				BB9F314515F61CB6009C1385 /* nav-btn-follow-on@2x.png in Resources */,
+				BB9F314B15F62C6A009C1385 /* nav-btn-back-off@2x.png in Resources */,
+				BB9F314C15F62C6A009C1385 /* nav-btn-back-on@2x.png in Resources */,
+				26A83C4515F6AA9C0095B72D /* nav-field-creation@2x.png in Resources */,
+				26A83C4615F6AA9C0095B72D /* stamp-inset-144@2x.png in Resources */,
+				26A83C4915F6BE870095B72D /* chooser-item-bg-off@2x.png in Resources */,
+				26A83C4F15F6D51A0095B72D /* chooser-item-bg-on@2x.png in Resources */,
+				BB9F316115F87CF5009C1385 /* btn-action-bg-dark@2x.png in Resources */,
+				BB9F316515F8B8E2009C1385 /* nav-btn-settings-off@2x.png in Resources */,
+				BB9F316615F8B8E2009C1385 /* nav-btn-settings-on@2x.png in Resources */,
+				263F4B4615F96A4C00941159 /* preview-bg@2x.png in Resources */,
+				261D0F8315F971570085591F /* preview-btn-no-off@2x.png in Resources */,
+				261D0F8415F971570085591F /* preview-btn-no-on@2x.png in Resources */,
+				261D0F8515F971570085591F /* preview-btn-yes-off@2x.png in Resources */,
+				261D0F8615F971570085591F /* preview-btn-yes-on@2x.png in Resources */,
+				261D0F8915F9761A0085591F /* preview-crosshairs@2x.png in Resources */,
+				26FF312E15F99B85006EC316 /* loading1-72@2x.png in Resources */,
+				26FF312F15F99B85006EC316 /* loading2-72@2x.png in Resources */,
+				26FF313015F99B85006EC316 /* loading3-72@2x.png in Resources */,
+				26FF313115F99B85006EC316 /* loading4-72@2x.png in Resources */,
+				26FF313215F99B85006EC316 /* loading5-72@2x.png in Resources */,
+				26FF313315F99B85006EC316 /* loading6-72@2x.png in Resources */,
+				26FF313415F99B85006EC316 /* loading7-72@2x.png in Resources */,
+				26FF313515F99B85006EC316 /* loading8-72@2x.png in Resources */,
+				26FF313C15FAAB0B006EC316 /* nav-btn-done-off@2x.png in Resources */,
+				26FF313D15FAAB0B006EC316 /* nav-btn-done-on@2x.png in Resources */,
+				BB9F317A15FDFFAD009C1385 /* chevron-white@2x.png in Resources */,
+				BB9F317B15FDFFAD009C1385 /* chevron@2x.png in Resources */,
+				2676AA0915FE79E100B0B579 /* cell-bottom-off@2x.png in Resources */,
+				2676AA0A15FE79E100B0B579 /* cell-middle-off@2x.png in Resources */,
+				2676AA0B15FE79E100B0B579 /* cell-off@2x.png in Resources */,
+				2676AA0C15FE79E100B0B579 /* cell-top-off@2x.png in Resources */,
+				2676AA0D15FE79E100B0B579 /* cell-trans-4-off@2x.png in Resources */,
+				2618C0F615FEACC100CA41B9 /* hr-A4A4A4@2x.png in Resources */,
+				2618C0F715FEACC100CA41B9 /* hr-D6D6D6@2x.png in Resources */,
+				26BB9B4C15FFD04C00844E9F /* cell-chevron-off@2x.png in Resources */,
+				BB9F318116005346009C1385 /* doink-up-16@2x.png in Resources */,
+				BB9F318E16010172009C1385 /* feed-btn-comment-off@2x.png in Resources */,
+				BB9F318F16010172009C1385 /* feed-btn-comment-on@2x.png in Resources */,
+				BB9F319016010172009C1385 /* feed-btn-explore-off@2x.png in Resources */,
+				BB9F319116010172009C1385 /* feed-btn-explore-on@2x.png in Resources */,
+				BB9F319216010172009C1385 /* feed-btn-like-off@2x.png in Resources */,
+				BB9F319316010172009C1385 /* feed-btn-like-on@2x.png in Resources */,
+				BB9F319416010172009C1385 /* feed-btn-like-pushed@2x.png in Resources */,
+				2618480A16011F080022A1EE /* message-drawer-opaque@2x.png in Resources */,
+				267F270B160289610061ACEF /* sex-picker-female-off@2x.png in Resources */,
+				267F270C160289610061ACEF /* sex-picker-female-on@2x.png in Resources */,
+				267F270D160289610061ACEF /* sex-picker-male-off@2x.png in Resources */,
+				267F270E160289610061ACEF /* sex-picker-male-on@2x.png in Resources */,
+				267F27171602B3030061ACEF /* bottom-drawer-trans@2x.png in Resources */,
+				267F27181602B3030061ACEF /* btn-start-off@2x.png in Resources */,
+				267F27191602B3030061ACEF /* btn-start-on@2x.png in Resources */,
+				268B68EC160A93A0003F4A67 /* arrow-up@2x.png in Resources */,
+				268B68F8160B9D2B003F4A67 /* cell-bottom-faded-off@2x.png in Resources */,
+				268B68F9160B9D2B003F4A67 /* cell-middle-chevron-off@2x.png in Resources */,
+>>>>>>> purchase input view designed and positioned
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
