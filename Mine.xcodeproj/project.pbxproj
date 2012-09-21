@@ -34,6 +34,7 @@
 		262376B515BF6C0A00B3A037 /* FBFrictionlessRequestSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 262376AD15BF6C0A00B3A037 /* FBFrictionlessRequestSettings.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		262376B615BF6C0A00B3A037 /* FBLoginDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 262376AF15BF6C0A00B3A037 /* FBLoginDialog.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		262376B715BF6C0A00B3A037 /* FBRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 262376B115BF6C0A00B3A037 /* FBRequest.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		26659339160D306700A2B716 /* invite-loading@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26659338160D306700A2B716 /* invite-loading@2x.png */; };
 		2676AA0215FE714B00B0B579 /* DWGUIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2676AA0115FE714B00B0B579 /* DWGUIManager.m */; };
 		267B3FB915D42D0B0001AC64 /* DWStoresViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 267B3FB815D42D0B0001AC64 /* DWStoresViewController.m */; };
 		267B3FBD15D4322A0001AC64 /* DWStorePresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 267B3FBC15D4322A0001AC64 /* DWStorePresenter.m */; };
@@ -368,6 +369,7 @@
 		262376B015BF6C0A00B3A037 /* FBRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FBRequest.h; path = Facebook/FBRequest.h; sourceTree = "<group>"; };
 		262376B115BF6C0A00B3A037 /* FBRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FBRequest.m; path = Facebook/FBRequest.m; sourceTree = "<group>"; };
 		262376B815BF6CBA00B3A037 /* Facebook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Facebook.h; path = Facebook/Facebook.h; sourceTree = "<group>"; };
+		26659338160D306700A2B716 /* invite-loading@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "invite-loading@2x.png"; sourceTree = "<group>"; };
 		2676AA0015FE714B00B0B579 /* DWGUIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWGUIManager.h; sourceTree = "<group>"; };
 		2676AA0115FE714B00B0B579 /* DWGUIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWGUIManager.m; sourceTree = "<group>"; };
 		267B3FB715D42D0B0001AC64 /* DWStoresViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWStoresViewController.h; sourceTree = "<group>"; };
@@ -1003,6 +1005,7 @@
 		BB125087160BA2F400AA2521 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				26659338160D306700A2B716 /* invite-loading@2x.png */,
 				269A4191160D286500BF613F /* hr-125980@2x.png */,
 				269A4192160D286500BF613F /* hr-AECDDE@2x.png */,
 				BB31FC27160CC2AB0049B6BF /* cell-5rows@2x.png */,
@@ -1917,6 +1920,7 @@
 				BB31FC30160CC2AB0049B6BF /* nav-btn-save-on@2x.png in Resources */,
 				269A4193160D286500BF613F /* hr-125980@2x.png in Resources */,
 				269A4194160D286500BF613F /* hr-AECDDE@2x.png in Resources */,
+				26659339160D306700A2B716 /* invite-loading@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
