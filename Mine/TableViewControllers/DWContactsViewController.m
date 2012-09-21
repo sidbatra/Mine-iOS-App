@@ -31,7 +31,7 @@
         self.tableViewDataSource = [[DWContactsDataSource alloc] init];
         
         [self addModelPresenterForClass:[DWContact class]
-                              withStyle:kDefaultModelPresenter 
+                              withStyle:style 
                           withPresenter:[DWContactPresenter class]];
     }
     

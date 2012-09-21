@@ -37,10 +37,11 @@
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];    
     
     [button setBackgroundImage:[UIImage imageNamed:kImgDoneOff] 
-                      forState:UIControlStateNormal];
-    
+                      forState:UIControlStateNormal];    
     [button setBackgroundImage:[UIImage imageNamed:kImgDoneOn] 
                       forState:UIControlStateHighlighted];
+    [button setBackgroundImage:[UIImage imageNamed:kImgDoneOff] 
+                      forState:UIControlStateDisabled];    
     
 	[button addTarget:target
                action:@selector(doneButtonClicked)

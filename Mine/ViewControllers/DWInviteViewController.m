@@ -12,21 +12,15 @@
 #import "DWConstants.h"
 
 
-static NSString* const kMsgErrorTitle                       = @"Error";
-static NSString* const kMsgCancelTitle                      = @"OK";
-static NSString* const kMsgProcessingText                   = @"Inviting...";
-
-
-
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 @implementation DWInviteViewController
 
 @synthesize searchContactsTextField         = _searchContactsTextField;
+@synthesize loadingView                     = _loadingView;
 @synthesize queryContactsViewController     = _queryContactsViewController;
 @synthesize addedContactsViewController     = _addedContactsViewController;
-@synthesize delegate                        = _delegate;
 
 //----------------------------------------------------------------------------------------------------
 - (id)init {
@@ -50,12 +44,19 @@ static NSString* const kMsgProcessingText                   = @"Inviting...";
 
 //----------------------------------------------------------------------------------------------------
 - (void)freezeUI {	
+    self.loadingView.hidden = NO;
+    [self.view bringSubviewToFront:self.loadingView];
     
+    self.navigationItem.leftBarButtonItem.enabled   = NO;
+    self.navigationItem.rightBarButtonItem.enabled  = NO;    
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)unfreezeUI {
+    self.loadingView.hidden = YES; 
     
+    self.navigationItem.leftBarButtonItem.enabled   = YES;
+    self.navigationItem.rightBarButtonItem.enabled  = YES;    
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -91,30 +92,19 @@ static NSString* const kMsgProcessingText                   = @"Inviting...";
 
 //----------------------------------------------------------------------------------------------------
 - (void)displayInviteAlert {
-//    
-//    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:kMsgErrorTitle
-//                                                    message:self.inviteAlertText
-//                                                   delegate:nil
-//                                          cancelButtonTitle:kMsgCancelTitle
-//                                          otherButtonTitles:nil];
-//    [alert show];
+    
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)createInvites {
     
     if ([self.addedContactsViewController.tableView numberOfRowsInSection:0]) {
-        //[self freezeUI];
+        [self freezeUI];
         [self.addedContactsViewController triggerInvites];            
     }
     else {
-        /*
-        if (self.enforceInvite) 
-            [self displayInviteAlert];
-        else
-            [self.delegate inviteSkipped];*/
-        
-    }    
+        [self displayInviteAlert];
+    }
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -172,13 +162,8 @@ static NSString* const kMsgProcessingText                   = @"Inviting...";
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)didTapNavBarRightButton:(id)sender event:(id)event {
+- (void)doneButtonClicked {
     [self createInvites];
-}
-
-//----------------------------------------------------------------------------------------------------
-- (void)didTapCancelButton:(UIButton*)button {  
-    [self.navigationController popViewControllerAnimated:NO];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -227,13 +212,12 @@ static NSString* const kMsgProcessingText                   = @"Inviting...";
     [self.queryContactsViewController addContactToCache:contact];
 }
 
-
 //----------------------------------------------------------------------------------------------------
 - (void)invitesTriggeredFromObject:(id)object {
     
     if ([object isEqual:self.addedContactsViewController]) {
-        //[self unfreezeUI];
-        [self.delegate peopleInvited];        
+        [self unfreezeUI];
+        [self.navigationController popViewControllerAnimated:YES];
     }
 }
 
@@ -241,7 +225,7 @@ static NSString* const kMsgProcessingText                   = @"Inviting...";
 - (void)invitesTriggerErrorFromObject:(id)object {
     
     if ([object isEqual:self.addedContactsViewController]) {
-        //[self unfreezeUI];
+        [self unfreezeUI];
     }
 }
 

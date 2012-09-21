@@ -123,7 +123,7 @@ static NSString* const kNInvitesCreateError     = @"NInvitesCreateError";
 //----------------------------------------------------------------------------------------------------
 - (void)invitesCreationError:(NSNotification*)notification {
     
-    SEL sel = @selector(invitesCreateError:);
+    SEL sel = @selector(invitesCreationError:);
     
     if(![self.delegate respondsToSelector:sel])
         return;
