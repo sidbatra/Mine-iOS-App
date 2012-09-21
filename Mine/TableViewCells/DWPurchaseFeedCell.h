@@ -91,7 +91,9 @@ extern NSInteger const kTotalComments;
 /**
  * Set the bought text for the purchase.
  */
-- (void)setBoughtText:(NSString*)boughtText withUserName:(NSString*)userName;
+- (void)setBoughtText:(NSString*)boughtText 
+         withUserName:(NSString*)userName
+        withTimestamp:(NSString*)timestamp;
 
 /**
  * Set an endorsement.
@@ -140,7 +142,8 @@ extern NSInteger const kTotalComments;
 + (NSInteger)heightForCellWithLikesCount:(NSInteger)likesCount 
                                 comments:(NSMutableArray*)comments
                            isInteractive:(BOOL)isInteractive
-                          andEndorsement:(NSString*)endorsement;
+                             endorsement:(NSString*)endorsement
+                              boughtText:(NSString*)boughtText;
 
 @end
 

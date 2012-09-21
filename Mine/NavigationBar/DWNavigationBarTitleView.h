@@ -17,4 +17,9 @@
 - (id)initWithFrame:(CGRect)frame 
        andImageName:(NSString*)imageName;
 
+/**
+ * Factory method for generating the mine logo title view.
+ */
++ (DWNavigationBarTitleView*)logoTitleView;
+
 @end

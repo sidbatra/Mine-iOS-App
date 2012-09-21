@@ -14,8 +14,11 @@
 
 
 @interface DWUserDetailsViewController : UIViewController<DWUsersControllerDelegate> {
+    UILabel                 *_titleLabel;
+    UILabel                 *_exampleLabel;
     UITextField             *_emailTextField;
-    UISegmentedControl      *_genderSegmentedControl;
+    UIButton                *_maleButton;
+    UIButton                *_femaleButton;
     
     __weak id<NSObject,DWUserDetailsViewControllerDelegate> _delegate;
 }
@@ -23,11 +26,21 @@
 /**
  * IBOutlets
  */
+@property (nonatomic) IBOutlet UILabel *titleLabel;
+@property (nonatomic) IBOutlet UILabel *exampleLabel;
 @property (nonatomic) IBOutlet UITextField *emailTextField;
-@property (nonatomic) IBOutlet UISegmentedControl *genderSegmentedControl;
+@property (nonatomic) IBOutlet UIButton *maleButton;
+@property (nonatomic) IBOutlet UIButton *femaleButton;
 
 
 @property (nonatomic,weak) id<NSObject,DWUserDetailsViewControllerDelegate> delegate;
+
+
+/**
+ * IBActions
+ */
+- (IBAction)maleButtonClicked:(id)sender;
+- (IBAction)femaleButtonClicked:(id)sender;
 
 @end
 

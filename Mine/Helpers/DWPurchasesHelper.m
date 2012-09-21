@@ -14,6 +14,9 @@
 #import "DWStore.h"
 
 
+static NSDateFormatter *dateFormat;
+
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
@@ -21,15 +24,36 @@
 @implementation DWPurchasesHelper
 
 //----------------------------------------------------------------------------------------------------
++ (NSString*)timestamp:(DWPurchase*)purchase {
+    
+    if(!dateFormat) {
+        dateFormat = [[NSDateFormatter alloc] init];
+    }
+    
+    [dateFormat setDateFormat:@"d MMM"];
+    
+    
+    NSString *timestamp = nil;
+    CGFloat timeInterval = -[purchase.createdAt timeIntervalSinceNow];
+    
+    if(timeInterval < 86400)
+        timestamp = @"Today";
+    else if(timeInterval < 172800)
+        timestamp = @"Yesterday";
+    else {
+        timestamp = [dateFormat stringFromDate:purchase.createdAt];
+    }
+    
+    return timestamp;
+}
+
+//----------------------------------------------------------------------------------------------------
 + (NSString*)boughtTextForPurchase:(DWPurchase*)purchase {
-    NSString *title = [purchase.title length] < 20 ? 
-                        purchase.title : 
-                        [NSString stringWithFormat:@"%@...",[purchase.title substringToIndex:17]];
     
     NSMutableString *boughtText = [NSMutableString stringWithFormat:@"%@ bought %@ %@",
                                    purchase.user.fullName,
                                    [DWUsersHelper genderPronounForUser:purchase.user],
-                                   title];
+                                   purchase.title];
     
     if(purchase.store) {
         [boughtText appendFormat:@" from %@",purchase.store.name];

@@ -8,17 +8,24 @@
 
 #import "DWCreationViewController.h"
 #import "DWProduct.h"
+#import "DWPurchase.h"
+#import "DWSuggestion.h"
 #import "DWConstants.h"
 
 
-static NSString* const kImgTopShadow = @"nav-shadow.png";
+static NSString* const kDefaultMessageTitle             = @"To be decided";
+static NSString* const kDefaultMessageSubtitle          = @"To be decided";
+static NSString* const kSuggestionMessageTitle          = @"Let's find your exact %@";
+static NSString* const kSuggestionMessageSubtitle       = @"e.g. ‘%@’";
 
 /**
  * Private declarations
  */
 @interface DWCreationViewController () {
     NSString                    *_query;    
-    DWProduct                   *_product;        
+    DWProduct                   *_product;
+    DWPurchase                  *_purchase;
+    DWSuggestion                *_suggestion;
     
     DWProductsViewController    *_productsViewController;
 }
@@ -32,6 +39,16 @@ static NSString* const kImgTopShadow = @"nav-shadow.png";
  * Product selected by the user
  */
 @property (nonatomic,strong) DWProduct *product;
+
+/**
+ * Purchase the user is about to make
+ */
+@property (nonatomic,strong) DWPurchase *purchase;
+
+/**
+ * Suggestion (if any) for which the user is creating
+ */
+@property (nonatomic,strong) DWSuggestion *suggestion;
 
 /**
  * Products View Controller for displaying product search results
@@ -89,16 +106,6 @@ static NSString* const kImgTopShadow = @"nav-shadow.png";
  */
 - (void)hideLoadingView;
 
-/** 
- * Show spinner
- */
-- (void)showSpinner;
-
-/** 
- * Hide spinner
- */
-- (void)hideSpinner;
-
 @end
 
 
@@ -107,27 +114,33 @@ static NSString* const kImgTopShadow = @"nav-shadow.png";
 //----------------------------------------------------------------------------------------------------
 @implementation DWCreationViewController
 
+@synthesize messageTitleLabel           = _messageTitleLabel;
+@synthesize messageSubtitleLabel        = _messageSubtitleLabel;
 @synthesize searchTextField             = _searchTextField;
 @synthesize productPreview              = _productPreview;
 @synthesize loadingView                 = _loadingView;
-@synthesize spinnerImageView            = _spinnerImageView;
 @synthesize productImageView            = _productImageView;
 @synthesize topShadowView               = _topShadowView;
 @synthesize productSelectButton         = _productSelectButton;
 @synthesize productRejectButton         = _productRejectButton;
 @synthesize cancelCreationButton        = _cancelCreationButton;
+@synthesize spinner                     = _spinner;
 
 @synthesize query                       = _query;
 @synthesize product                     = _product;
+@synthesize purchase                    = _purchase;
+@synthesize suggestion                  = _suggestion;
 @synthesize productsViewController      = _productsViewController;
 @synthesize delegate                    = _delegate;
 
+
 //----------------------------------------------------------------------------------------------------
-- (id)init
-{
+- (id)init {
     self = [super init];
     
     if (self) {
+        
+        self.purchase = [[DWPurchase alloc] init];
         
         [[NSNotificationCenter defaultCenter] addObserver:self 
                                                  selector:@selector(productLargeImageLoaded:) 
@@ -136,6 +149,13 @@ static NSString* const kImgTopShadow = @"nav-shadow.png";
     }
     
     return self;
+}
+
+//----------------------------------------------------------------------------------------------------
+- (id)initWithSuggestion:(DWSuggestion*)suggestion {
+    self.suggestion = suggestion;
+    
+    return [self init];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -151,23 +171,15 @@ static NSString* const kImgTopShadow = @"nav-shadow.png";
         self.productsViewController = [[DWProductsViewController alloc] init];
     
     self.productsViewController.delegate    = self;
-    self.productsViewController.view.frame  = CGRectMake(11,44,309,416);
+    self.productsViewController.view.frame  = CGRectMake(0,44,320,416);
     self.productsViewController.view.hidden = YES;
     
     [self.view addSubview:self.productsViewController.view];
     
-    self.spinnerImageView.animationImages = [NSArray arrayWithObjects:
-                                             [UIImage imageNamed:@"loading1-72@2x.png"],
-                                             [UIImage imageNamed:@"loading2-72@2x.png"],
-                                             [UIImage imageNamed:@"loading3-72@2x.png"],
-                                             [UIImage imageNamed:@"loading4-72@2x.png"],
-                                             [UIImage imageNamed:@"loading5-72@2x.png"],
-                                             [UIImage imageNamed:@"loading6-72@2x.png"],
-                                             [UIImage imageNamed:@"loading7-72@2x.png"],
-                                             [UIImage imageNamed:@"loading8-72@2x.png"],                                             
-                                             nil];
-    
-    self.spinnerImageView.animationDuration = 0.8;
+    if (self.suggestion) {
+        self.messageTitleLabel.text     = [NSString stringWithFormat:kSuggestionMessageTitle,self.suggestion.thing];
+        self.messageSubtitleLabel.text  = [NSString stringWithFormat:kSuggestionMessageSubtitle,self.suggestion.example];
+    }
     
     [self showKeyboard];
 }
@@ -201,19 +213,16 @@ static NSString* const kImgTopShadow = @"nav-shadow.png";
 
 //----------------------------------------------------------------------------------------------------
 - (void)showProductPreview {
-    self.productPreview.hidden = NO;
-    
-    [self.view bringSubviewToFront:self.productPreview];
-    [self.view bringSubviewToFront:self.spinnerImageView];    
+    self.productPreview.hidden = NO;    
+    [self.view bringSubviewToFront:self.productPreview];   
     
     if(!self.product.largeImage)
-        [self showSpinner];
+        self.spinner.hidden = NO;
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)hideProductPreview {
     self.productPreview.hidden = YES;
-    [self hideSpinner];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -234,29 +243,12 @@ static NSString* const kImgTopShadow = @"nav-shadow.png";
 //----------------------------------------------------------------------------------------------------
 - (void)showLoadingView {
     self.loadingView.hidden = NO;  
-    
     [self.view bringSubviewToFront:self.loadingView];
-    [self.view bringSubviewToFront:self.spinnerImageView];    
-    
-    [self showSpinner];
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)hideLoadingView {    
     self.loadingView.hidden = YES;    
-    [self hideSpinner];
-}
-
-//----------------------------------------------------------------------------------------------------
-- (void)showSpinner {
-    self.spinnerImageView.hidden = NO;
-    [self.spinnerImageView startAnimating];
-}
-
-//----------------------------------------------------------------------------------------------------
-- (void)hideSpinner {
-    self.spinnerImageView.hidden = YES;
-    [self.spinnerImageView stopAnimating];
 }
 
 
@@ -266,15 +258,16 @@ static NSString* const kImgTopShadow = @"nav-shadow.png";
 #pragma mark IBAction
 
 //----------------------------------------------------------------------------------------------------
-- (void)productSelectButtonClicked:(id)sender {
-    SEL sel = @selector(productSelected:fromQuery:);
+- (void)productSelectButtonClicked:(id)sender {    
     
-    if(![self.delegate respondsToSelector:sel])
-        return;
+    self.purchase.query = self.query;
     
-    [self.delegate performSelector:sel
-                        withObject:self.product 
-                        withObject:self.query];
+    if (self.suggestion) 
+        self.purchase.suggestionID = self.suggestion.databaseID;
+    
+    
+    [self.delegate productSelected:self.product 
+                       forPurchase:self.purchase];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -351,7 +344,22 @@ static NSString* const kImgTopShadow = @"nav-shadow.png";
 //----------------------------------------------------------------------------------------------------
 - (void)productLargeImageLoaded:(NSNotification*)notification {
     self.productImageView.image = self.product.largeImage;
-    [self hideSpinner];
+    self.spinner.hidden = YES;
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark Nav Stack Selectors
+
+//----------------------------------------------------------------------------------------------------
+- (void)willShowOnNav {
+    
+    if(!self.navigationController.navigationBarHidden)
+        [self.navigationController setNavigationBarHidden:YES
+                                                 animated:YES];
+    
 }
 
 

@@ -7,6 +7,8 @@
 //
 
 #import "DWWelcomeNavigationRootViewController.h"
+#import "DWNavigationBarTitleView.h"
+#import "DWSuggestion.h"
 #import "DWConstants.h"
 
 /**
@@ -14,12 +16,18 @@
  */
 @interface DWWelcomeNavigationRootViewController () {
     DWLoginViewController   *_loginViewController;
+    
+    DWNavigationBarTitleView *_navTitleView;
 }
 
 /**
  * Login view controller
  */
 @property (nonatomic,strong) DWLoginViewController *loginViewController;
+
+@property (nonatomic,strong) DWNavigationBarTitleView *navTitleView;
+
+
 
 /**
  * End the welcome navigation by firing a notification.
@@ -53,11 +61,13 @@
 @implementation DWWelcomeNavigationRootViewController
 
 @synthesize loginViewController = _loginViewController;
+@synthesize navTitleView = _navTitleView;
 
 //----------------------------------------------------------------------------------------------------
 - (void)awakeFromNib {
 	[super awakeFromNib];	
 }
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
@@ -81,10 +91,10 @@
 //----------------------------------------------------------------------------------------------------
 - (void)showGlobalFeedView {
     
-    DWGlobalFeedViewController *globalFeedViewController = [[DWGlobalFeedViewController alloc] init];
-    globalFeedViewController.delegate = self;
+    DWOnboardingFeedViewController *onboardingFeedViewController = [[DWOnboardingFeedViewController alloc] init];
+    onboardingFeedViewController.delegate = self;
     
-    [self.navigationController pushViewController:globalFeedViewController 
+    [self.navigationController pushViewController:onboardingFeedViewController 
                                          animated:YES];
 }
 
@@ -107,14 +117,20 @@
 - (void)viewDidLoad {
 	[super viewDidLoad];
     
-    self.navigationItem.title = @"Onboarding";
+    self.navigationItem.title = @"";
     
     if(!self.loginViewController) {
         self.loginViewController              = [[DWLoginViewController alloc] init];
         self.loginViewController.delegate     = self;
+        self.loginViewController.view.frame   = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
     }
     
     [self.view addSubview:self.loginViewController.view];
+    
+    
+    if(!self.navTitleView) {
+        self.navTitleView =  [DWNavigationBarTitleView logoTitleView];
+    }    
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -160,7 +176,7 @@
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
-#pragma mark DWGlobalFeedViewControllerDelegate
+#pragma mark DWOnboardingFeedViewControllerDelegate
 
 //----------------------------------------------------------------------------------------------------
 - (void)showScreenAfterGlobalFeed {
@@ -181,11 +197,22 @@
 //----------------------------------------------------------------------------------------------------
 - (void)suggestionPicked:(NSInteger)suggestionID {
     
-    DWCreationViewController *creationViewController = [[DWCreationViewController alloc] init];
+    DWCreationViewController *creationViewController = [[DWCreationViewController alloc] initWithSuggestion:[DWSuggestion fetch:suggestionID]];
     creationViewController.delegate = self;
     
     [self.navigationController pushViewController:creationViewController 
                                          animated:YES];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWCreationViewControllerDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)creationCancelled {
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 
@@ -208,6 +235,17 @@
               shareToTB:shareToTB];
     
     [self endWelcomeNavigation];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark Nav Stack Selectors
+
+//----------------------------------------------------------------------------------------------------
+- (void)willShowOnNav {
+    [self.navigationController.navigationBar addSubview:self.navTitleView];
 }
 
 @end

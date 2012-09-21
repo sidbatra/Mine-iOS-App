@@ -8,6 +8,9 @@
 
 #import "DWNavigationBarTitleView.h"
 
+static NSString* const kNavBarMineLogo = @"nav-mine-logo.png";
+
+
 @interface DWNavigationBarTitleView() {
     UIImageView     *_imageView;
 }
@@ -41,11 +44,23 @@
     return self;
 }
 
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark Nav Stack Selectors
+
+//----------------------------------------------------------------------------------------------------
++ (DWNavigationBarTitleView*)logoTitleView {
+    return [[DWNavigationBarTitleView alloc] initWithFrame:CGRectMake(121,0,77,44)
+                                              andImageName:kNavBarMineLogo];
+}
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
 #pragma mark Nav Stack Selectors
+
 //----------------------------------------------------------------------------------------------------
 - (void)shouldBeRemovedFromNav {
     

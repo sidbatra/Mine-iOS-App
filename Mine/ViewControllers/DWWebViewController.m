@@ -8,14 +8,20 @@
 
 #import "DWWebViewController.h"
 
+#import "DWNavigationBarBackButton.h"
+#import "DWNavigationBarTitleView.h"
+
 @interface DWWebViewController () {
     NSURL *_url;
+    DWNavigationBarTitleView *_navTitleView;
 }
 
 /**
  * URL to be displayed.
  */
 @property (nonatomic,strong) NSURL *url;
+
+@property (nonatomic,strong) DWNavigationBarTitleView *navTitleView;
 
 @end
 
@@ -26,8 +32,9 @@
 //----------------------------------------------------------------------------------------------------
 @implementation DWWebViewController
 
-@synthesize webView = _webView;
-@synthesize url     = _url;
+@synthesize webView         = _webView;
+@synthesize url             = _url;
+@synthesize navTitleView    = _navTitleView;
 
 //----------------------------------------------------------------------------------------------------
 - (id)initWithURL:(NSString*)url {
@@ -43,6 +50,11 @@
 //----------------------------------------------------------------------------------------------------
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.navigationItem.leftBarButtonItem = [DWNavigationBarBackButton backButtonForNavigationController:self.navigationController];
+    
+    if(!self.navTitleView) 
+        self.navTitleView = [DWNavigationBarTitleView logoTitleView];
     
     [self.webView loadRequest:[NSURLRequest requestWithURL:self.url]];
     
@@ -75,5 +87,15 @@
 	[UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 }
 
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark Nav Stack Selectors
+
+//----------------------------------------------------------------------------------------------------
+- (void)willShowOnNav {
+    [self.navigationController.navigationBar addSubview:self.navTitleView];
+}
 
 @end

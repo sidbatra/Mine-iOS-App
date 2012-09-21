@@ -105,8 +105,7 @@
         self.navigationItem.leftBarButtonItem = [DWNavigationBarBackButton backButtonForNavigationController:self.navigationController];
         
         if(!self.navTitleView) {
-            self.navTitleView =  [[DWNavigationBarTitleView alloc] initWithFrame:CGRectMake(121,0,76,44)
-                                                                    andImageName:kNavBarMineLogo];
+            self.navTitleView =  [DWNavigationBarTitleView logoTitleView];
         }
     }
     

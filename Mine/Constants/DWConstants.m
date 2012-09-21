@@ -20,7 +20,7 @@ NSString* const kClientName         = @"iphone";
 NSString* const kUserAgent          = @"Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.8.1.6) Gecko/20070802 SeaMonkey/1.1.4";
 
 #if ENVIRONMENT == DEVELOPMENT
-NSString* const kAppServer      = @"drao.getmine.com";
+NSString* const kAppServer      = @"sbat.getmine.com";
 #elif ENVIRONMENT == STAGING
 NSString* const kAppServer	= @"staging.getmine.com";
 #elif ENVIRONMENT == PRODUCTION
@@ -39,14 +39,10 @@ NSString* const kNImageDownloaded           = @"NImageDownloaded";
 NSString* const kNImageDownloadError        = @"NImageDownloadError";
 NSString* const kNFacebookURLOpened         = @"NFacebookURLOpened";
 NSString* const kNUserLoggedIn              = @"NUserLoggedIn";
+NSString* const kNUserLoggedOut             = @"NUserLoggedOut";
 NSString* const kNWelcomeNavigationFinished = @"NWelcomeNavigationFinished";
 NSString* const kNPaginationCellReached     = @"NPaginationCellReached";
 NSString* const kNCommentAddedForPurchase   = @"NCommentAddedForPurchase";
-
-//----------------------------------------------------------------------------------------------------
-NSString* const kMsgActionSheetCancel           = @"Cancel";
-NSString* const kMsgActionSheetDelete           = @"Delete";
-
 
 //----------------------------------------------------------------------------------------------------
 NSInteger const kColumnsInProductsSearch        = 3;
@@ -79,10 +75,11 @@ NSString* const kKeyFollowingDestroyed = @"following_destroyed";
 NSString* const kRailsDateTimeFormat = @"yyyy-MM-dd HH:mm:ss ZZZ";
 
 //----------------------------------------------------------------------------------------------------
-NSString* const kNavBarMineLogo = @"nav-mine-logo.png";
-NSString* const kImgChevron     = @"chevron.png";
-NSString* const kImgDoneOff     = @"nav-btn-done-off@2x.png";
-NSString* const kImgDoneOn     	= @"nav-btn-done-on@2x.png";
+NSString* const kImgChevron         = @"chevron.png";
+NSString* const kImgDoneOff         = @"nav-btn-done-off@2x.png";
+NSString* const kImgDoneOn          = @"nav-btn-done-on@2x.png";
+NSString* const kImgMessageDrawer   = @"message-drawer-opaque@2x.png";
+NSString* const kImgTopShadow       = @"nav-shadow.png";
 
 //----------------------------------------------------------------------------------------------------
 NSInteger const kDefaultModelPresenter = 0;

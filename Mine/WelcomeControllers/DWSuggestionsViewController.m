@@ -17,7 +17,6 @@
  * Total number of suggestions
  */
 static NSInteger const kTotalSuggestions        = 4;
-static NSString* const kImgMessageDrawer        = @"message-drawer-opaque@2x.png";
 static NSString* const kMessageTitle            = @"Pick a great item you bought recently:";
 static NSString* const kMessageSubtitle         = @"You'll choose how you share it.";
 
@@ -28,6 +27,8 @@ static NSString* const kMessageSubtitle         = @"You'll choose how you share 
     
     DWSuggestionsController     *_suggestionsController;
     DWNavigationBarTitleView    *_navTitleView;
+    
+    UIView                      *_loadingView;
 }
 
 /**
@@ -50,6 +51,11 @@ static NSString* const kMessageSubtitle         = @"You'll choose how you share 
  */
 @property (nonatomic,strong) DWNavigationBarTitleView *navTitleView;
 
+/**
+ * Loading view with the spinner
+ */
+@property (nonatomic,strong) UIView *loadingView;
+
 @end
 
 
@@ -63,6 +69,7 @@ static NSString* const kMessageSubtitle         = @"You'll choose how you share 
 @synthesize titleLabels                 = _titleLabels;
 @synthesize suggestionsController       = _suggestionsController;
 @synthesize navTitleView                = _navTitleView;
+@synthesize loadingView                 = _loadingView;
 @synthesize delegate                    = _delegate;
 
 //----------------------------------------------------------------------------------------------------
@@ -99,12 +106,12 @@ static NSString* const kMessageSubtitle         = @"You'll choose how you share 
     self.navigationItem.title               = @"";
     
     if(!self.navTitleView)
-        self.navTitleView =  [[DWNavigationBarTitleView alloc] initWithFrame:CGRectMake(121,0,76,44)
-                                                                andImageName:kNavBarMineLogo];
+        self.navTitleView = [DWNavigationBarTitleView logoTitleView];
 
     [self createMessageBox];
     [self createSuggestionImageButtons];
     [self createSuggestionTitleLabels];
+    [self createLoadingView];
     
     [self.suggestionsController getSuggestions];
 }
@@ -141,7 +148,7 @@ static NSString* const kMessageSubtitle         = @"You'll choose how you share 
     [self.view addSubview:titleLabel];
     
     
-    UILabel *subtitleLabel                  = [[UILabel alloc] initWithFrame:CGRectMake(0, 32, 320, 18)];
+    UILabel *subtitleLabel                  = [[UILabel alloc] initWithFrame:CGRectMake(0, 34, 320, 18)];
     subtitleLabel.backgroundColor           = [UIColor clearColor]; 
     subtitleLabel.shadowColor               = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.48];
     subtitleLabel.shadowOffset              = CGSizeMake(0,1);
@@ -194,6 +201,21 @@ static NSString* const kMessageSubtitle         = @"You'll choose how you share 
     }
 }
 
+//----------------------------------------------------------------------------------------------------
+- (void)createLoadingView {
+    
+    self.loadingView                        = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 416)];
+    self.loadingView.backgroundColor        = [UIColor clearColor];
+    
+    UIActivityIndicatorView *spinnerView    = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+    spinnerView.frame                       = CGRectMake(150, 198, 20, 20);
+    [spinnerView startAnimating];
+    
+    [self.loadingView addSubview:spinnerView];
+    
+    [self.view addSubview:self.loadingView];
+}
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
@@ -216,6 +238,8 @@ static NSString* const kMessageSubtitle         = @"You'll choose how you share 
         [imageButton setBackgroundImage:suggestion.image 
                                forState:UIControlStateNormal];
     }
+    
+    self.loadingView.hidden = YES;
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -262,6 +286,11 @@ static NSString* const kMessageSubtitle         = @"You'll choose how you share 
 
 //----------------------------------------------------------------------------------------------------
 - (void)willShowOnNav {
+    
+    if(self.navigationController.navigationBarHidden)
+        [self.navigationController setNavigationBarHidden:NO
+                                                 animated:YES];
+    
     [self.navigationController.navigationBar addSubview:self.navTitleView];
 }
 

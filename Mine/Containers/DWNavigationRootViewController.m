@@ -35,6 +35,8 @@
 //----------------------------------------------------------------------------------------------------
 @implementation DWNavigationRootViewController
 
+@synthesize customTabBarController = _customTabBarController;
+
 //----------------------------------------------------------------------------------------------------
 - (void)awakeFromNib {
 }
@@ -214,14 +216,19 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)productSelected:(DWProduct *)product 
-              fromQuery:(NSString *)query {
+            forPurchase:(DWPurchase *)purchase {
     
-    DWPurchaseInputViewController *purchaseInputViewController = [[DWPurchaseInputViewController alloc] initWithProduct:product
-                                                                                                               andQuery:query];
+    DWPurchaseInputViewController *purchaseInputViewController = [[DWPurchaseInputViewController alloc] initWithProduct:product 
+                                                                                                            andPurchase:purchase];
     purchaseInputViewController.delegate = self;
     
     [self.navigationController pushViewController:purchaseInputViewController 
                                          animated:YES];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)creationCancelled {
+    
 }
 
 

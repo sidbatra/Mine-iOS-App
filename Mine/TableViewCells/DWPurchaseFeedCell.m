@@ -30,13 +30,17 @@ static NSString* const kImgURLOn        = @"feed-btn-explore-on.png";
 static NSString* const kImgURLOff       = @"feed-btn-explore-off.png";
 static NSString* const kUserURLScheme   = @"user";
 
-static NSInteger const kPurchaseFeedCellHeight  = 350;
-static NSInteger const kEndorsementWidth        = 274;
+static NSInteger const kPurchaseFeedCellHeight  = 224 + 16 + 16 + 11 + 8;
+static NSInteger const kEndorsementWidth        = 276;
 static NSInteger const kCommentWidth            = 244;
+static NSInteger const kBoughtTextWidth         = 228;
+static NSInteger const kUserImageSide           = 34;
 
 
 
 #define kCommentFont [UIFont fontWithName:@"HelveticaNeue" size:13]
+#define kEndorsementFont [UIFont fontWithName:@"HelveticaNeue" size:13]
+#define kBoughtTextFont [UIFont fontWithName:@"HelveticaNeue" size:14]
 #define kActiveColor [UIColor colorWithRed:0.090 green:0.435 blue:0.627 alpha:1.0]
 
 
@@ -151,6 +155,11 @@ static NSInteger const kCommentWidth            = 244;
 }
 
 //----------------------------------------------------------------------------------------------------
+- (NSInteger)yValueOfBoughtArea {
+    return MAX(userImageButton.frame.origin.y+userImageButton.frame.size.height,boughtLabel.frame.origin.y+boughtLabel.frame.size.height);
+}
+
+//----------------------------------------------------------------------------------------------------
 - (NSInteger)yValueOfLastComment {
     
     NSInteger lastCommentY = 0;
@@ -185,7 +194,7 @@ static NSInteger const kCommentWidth            = 244;
         baseY = endorsementLabel.frame.origin.y + endorsementLabel.frame.size.height;
     }
     else {
-        baseY = userImageButton.frame.origin.y + userImageButton.frame.size.height;
+        baseY = [self yValueOfBoughtArea];
     }
     
     return baseY;
@@ -201,11 +210,11 @@ static NSInteger const kCommentWidth            = 244;
 - (void)createInfoBackground {
     infoBackground = [CALayer layer];
     infoBackground.frame = CGRectMake(11,
-                                      purchaseImageButton.frame.origin.y + purchaseImageButton.frame.size.height+11,
+                                      purchaseImageButton.frame.origin.y + purchaseImageButton.frame.size.height+16,
                                       298,
-                                      kPurchaseFeedCellHeight-purchaseImageButton.frame.size.height-11-purchaseImageButton.frame.origin.y);
+                                      kPurchaseFeedCellHeight-purchaseImageButton.frame.size.height-16-purchaseImageButton.frame.origin.y);
     infoBackground.cornerRadius = 6;
-    infoBackground.backgroundColor = [UIColor colorWithRed:0.960 green:0.960 blue:0.960 alpha:1.0].CGColor;
+    infoBackground.backgroundColor = [UIColor colorWithRed:0.933 green:0.933 blue:0.933 alpha:1.0].CGColor;
     //infoBackground.borderWidth = 1.0f;
     //infoBackground.borderColor = [UIColor colorWithRed:0.878 green:0.878 blue:0.878 alpha:1.0].CGColor;
     
@@ -223,8 +232,8 @@ static NSInteger const kCommentWidth            = 244;
 //----------------------------------------------------------------------------------------------------
 - (void)createUserImageButton {
     userImageButton  = [[UIButton alloc] initWithFrame:CGRectMake(22,infoBackground.frame.origin.y+11,34,34)];
-    userImageButton.imageView.layer.cornerRadius = 3;
-    userImageButton.backgroundColor = [UIColor colorWithRed:0.878 green:0.878 blue:0.878 alpha:1.0];
+    userImageButton.imageView.layer.cornerRadius = 4;
+    userImageButton.imageView.backgroundColor = [UIColor colorWithRed:0.878 green:0.878 blue:0.878 alpha:1.0];
     userImageButton.adjustsImageWhenDisabled = NO;
     
     [userImageButton addTarget:self
@@ -237,7 +246,7 @@ static NSInteger const kCommentWidth            = 244;
 //----------------------------------------------------------------------------------------------------
 - (void)createPurchaseImageButton {
     
-    purchaseImageButton  = [[UIButton alloc] initWithFrame:CGRectMake(11,11,kEndorsementWidth,224)];
+    purchaseImageButton  = [[UIButton alloc] initWithFrame:CGRectMake(11,16,298,224)]; 
     //purchaseImageButton.backgroundColor = [UIColor redColor];
     purchaseImageButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
     purchaseImageButton.adjustsImageWhenHighlighted = NO;
@@ -252,10 +261,10 @@ static NSInteger const kCommentWidth            = 244;
 
 //----------------------------------------------------------------------------------------------------
 - (void)createBoughtLabel {
-    boughtLabel = [[OHAttributedLabel alloc] initWithFrame:CGRectMake(userImageButton.frame.origin.x+userImageButton.frame.size.width+16,
-                                                                      userImageButton.frame.origin.y,
-                                                                      228,
-                                                                      34)];
+    boughtLabel = [[OHAttributedLabel alloc] initWithFrame:CGRectMake(userImageButton.frame.origin.x+userImageButton.frame.size.width+8,
+                                                                      userImageButton.frame.origin.y+1,
+                                                                      kBoughtTextWidth,
+                                                                      0)];
     boughtLabel.linkColor = kActiveColor;
     boughtLabel.underlineLinks = NO;
     boughtLabel.delegate = self;
@@ -269,10 +278,10 @@ static NSInteger const kCommentWidth            = 244;
 - (void)createEndorsementLabel {
     
     endorsementLabel					= [[UILabel alloc] initWithFrame:CGRectMake(22,
-                                                                                userImageButton.frame.origin.y+userImageButton.frame.size.height+11,
+                                                                                0,
                                                                                 kEndorsementWidth,
                                                                                 1)];
-    endorsementLabel.font				= [UIFont fontWithName:@"HelveticaNeue" size:13];	
+    endorsementLabel.font				= kEndorsementFont;	
     endorsementLabel.textColor          = [UIColor colorWithRed:0.333 green:0.333 blue:0.333 alpha:1.0];
     endorsementLabel.backgroundColor    = [UIColor clearColor];
     endorsementLabel.textAlignment      = UITextAlignmentLeft;
@@ -383,7 +392,7 @@ static NSInteger const kCommentWidth            = 244;
         UIImageView *likeUserImage = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,24,24)];
         
         likeUserImage.backgroundColor = [UIColor colorWithRed:0.878 green:0.878 blue:0.878 alpha:1.0];
-        likeUserImage.layer.cornerRadius = 3;
+        likeUserImage.layer.cornerRadius = 2;
         likeUserImage.layer.masksToBounds = YES;
         
         [self.likeUserImages addObject:likeUserImage];
@@ -465,17 +474,32 @@ static NSInteger const kCommentWidth            = 244;
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)setBoughtText:(NSString*)boughtText withUserName:(NSString*)userName  {
+- (void)setBoughtText:(NSString*)boughtText 
+         withUserName:(NSString*)userName 
+        withTimestamp:(NSString*)timestamp {
     
     NSRange userNameRange = NSMakeRange(0,userName.length);
+    NSRange timestampRange = NSMakeRange(boughtText.length+1,timestamp.length);
     
-	NSMutableAttributedString* attrStr = [NSMutableAttributedString attributedStringWithString:boughtText];
-	[attrStr setFont:[UIFont fontWithName:@"HelveticaNeue" size:14]];
+	NSMutableAttributedString* attrStr = [NSMutableAttributedString attributedStringWithString:[NSString stringWithFormat:@"%@ %@",boughtText,timestamp]];
+	[attrStr setFont:kBoughtTextFont];
 	[attrStr setTextColor:[UIColor colorWithRed:0.333 green:0.333 blue:0.333 alpha:1.0]];
     
+    [attrStr setFont:[UIFont fontWithName:@"HelveticaNeue" size:10] range:timestampRange];
+    [attrStr setTextColor:[UIColor colorWithRed:0.6 green:0.6 blue:0.6 alpha:1.0] range:timestampRange];
+    
 	[attrStr setTextBold:YES range:userNameRange];
+
+    
+    CGRect frame = boughtLabel.frame;
+    frame.size.width = kBoughtTextWidth;
+    frame.size.height = 0;
+    boughtLabel.frame = frame;
+    
     
     boughtLabel.attributedText = attrStr;
+    [boughtLabel sizeToFit];
+    
     
     if(self.isInteractive) {
         [boughtLabel addCustomLink:[NSURL URLWithString:[NSString stringWithFormat:@"%@:%d",kUserURLScheme,self.userID]]
@@ -487,6 +511,7 @@ static NSInteger const kCommentWidth            = 244;
 - (void)setEndorsement:(NSString*)endorsement {
     
     CGRect frame = endorsementLabel.frame;
+    frame.origin.y =  [self yValueOfBoughtArea] + 8;
     frame.size.width = kEndorsementWidth;
     endorsementLabel.frame = frame;
     
@@ -517,8 +542,8 @@ static NSInteger const kCommentWidth            = 244;
         
         
         CGRect infoFrame = infoBackground.frame;
-        infoFrame.size.height = likeButton.frame.origin.y + likeButton.frame.size.height - infoFrame.origin.y + 10;
-        infoBackground.frame = infoFrame;
+        infoFrame.size.height = likeButton.frame.origin.y + likeButton.frame.size.height - infoFrame.origin.y + 11;
+        infoBackground.frame = infoFrame;        
     }
     else {
         likeButton.hidden = YES;
@@ -527,7 +552,7 @@ static NSInteger const kCommentWidth            = 244;
         
         CGRect infoFrame = infoBackground.frame;
         infoFrame.size.height = [self yValueOfCellWithLastComment:NO
-                                            withAllCommentsButton:NO] - infoFrame.origin.y + 10;
+                                            withAllCommentsButton:NO] - infoFrame.origin.y + 11;
         infoBackground.frame = infoFrame;
     }
 }
@@ -555,7 +580,7 @@ static NSInteger const kCommentWidth            = 244;
     }
     
     CGRect frame = likesBackground.frame;
-    frame.origin.y = endorsementLabel.frame.origin.y + endorsementLabel.frame.size.height + 18;
+    frame.origin.y =  endorsementLabel.frame.origin.y + endorsementLabel.frame.size.height + (endorsementLabel.text.length ?  9 : 3);
     likesBackground.frame = frame;
     
     frame = likesCountLabel.frame;
@@ -586,7 +611,7 @@ static NSInteger const kCommentWidth            = 244;
         UIButton *likeUserButton = [self.likeUserImages objectAtIndex:i];
 
         CGRect frame = likeUserButton.frame;
-        frame.origin.x = likesCountLabel.frame.origin.x + likesCountLabel.frame.size.width + 5 + (i * 27);
+        frame.origin.x = likesCountLabel.frame.origin.x + likesCountLabel.frame.size.width + 6 + (i * 28);
         frame.origin.y = likesBackground.frame.origin.y + 10;
         likeUserButton.frame = frame;
         likeUserButton.hidden = NO;
@@ -626,7 +651,7 @@ static NSInteger const kCommentWidth            = 244;
     
     if(!commentsBaseY) {
         commentsBaseY = [self yValueOfCellWithLastComment:NO
-                                    withAllCommentsButton:NO] + 10;
+                                    withAllCommentsButton:NO] + 5;
     }
     
     
@@ -637,11 +662,11 @@ static NSInteger const kCommentWidth            = 244;
     
     
     UIButton *commentUserButton = [[UIButton alloc] initWithFrame:CGRectMake(22,
-                                                                            previousCommentY + 10,
+                                                                            previousCommentY + 9,
                                                                              24,
                                                                              24)];
-    commentUserButton.backgroundColor = [UIColor colorWithRed:0.878 green:0.878 blue:0.878 alpha:1.0];
-    commentUserButton.imageView.layer.cornerRadius = 3;
+    commentUserButton.imageView.backgroundColor = [UIColor colorWithRed:0.878 green:0.878 blue:0.878 alpha:1.0];
+    commentUserButton.imageView.layer.cornerRadius = 2;
     commentUserButton.tag = userID;
     
     [commentUserButton setImage:image
@@ -660,7 +685,7 @@ static NSInteger const kCommentWidth            = 244;
     NSString *commentText = [NSString stringWithFormat:@"%@: %@",userName,message];
     
     OHAttributedLabel *commentMessageLabel = [[OHAttributedLabel alloc] initWithFrame:CGRectMake(53, 
-                                                                             commentUserButton.frame.origin.y,
+                                                                             commentUserButton.frame.origin.y-3,
                                                                              kCommentWidth,
                                                                              0)];
     commentMessageLabel.backgroundColor = [UIColor clearColor];
@@ -710,7 +735,7 @@ static NSInteger const kCommentWidth            = 244;
     
     CGRect frame = allCommentsButton.frame;
     frame.size.width = 250;
-    frame.origin.y = [self yValueOfLastComment] + 5;
+    frame.origin.y = [self yValueOfLastComment] + 9;
     allCommentsButton.frame = frame;
     [allCommentsButton sizeToFit];
     
@@ -727,29 +752,38 @@ static NSInteger const kCommentWidth            = 244;
 + (NSInteger)heightForCellWithLikesCount:(NSInteger)likesCount 
                                 comments:(NSMutableArray *)comments
                            isInteractive:(BOOL)isInteractive
-                          andEndorsement:(NSString *)endorsement { 
+                             endorsement:(NSString *)endorsement
+                              boughtText:(NSString*)boughtText { 
     
     NSInteger height = kPurchaseFeedCellHeight;
     
+    height += MAX([boughtText sizeWithFont:kBoughtTextFont
+                     constrainedToSize:CGSizeMake(kBoughtTextWidth,1500)
+                         lineBreakMode:UILineBreakModeWordWrap].height,kUserImageSide);
+    
     if(endorsement && endorsement.length)
-        height += [endorsement sizeWithFont:[UIFont fontWithName:@"HelveticaNeue" size:13] 
+        height += [endorsement sizeWithFont:kEndorsementFont
                           constrainedToSize:CGSizeMake(kEndorsementWidth,1500)
                               lineBreakMode:UILineBreakModeWordWrap].height;
 
     if(isInteractive) {
-        height += 30;
+        height += 24 + 10 + 11;
         
-        height += likesCount > 0 ? 64 : 0;
+        height += likesCount > 0 ? 44 + (endorsement.length ? 9 : 3) : 0;
         
-        for(DWComment *comment in comments) {
+        if(comments.count)
+            height += 5;
+        
+        for(NSInteger i=0 ; i<MIN(comments.count,kTotalComments) ; i++) {
+            DWComment *comment = [comments objectAtIndex:i];
             NSInteger textHeight = [[NSString stringWithFormat:@"%@: %@",comment.user.fullName,comment.message] sizeWithFont:kCommentFont 
                                                                                                            constrainedToSize:CGSizeMake(kCommentWidth,1500)
                                                                                                                lineBreakMode:UILineBreakModeWordWrap].height;
-            height += MAX(25,textHeight);
+            height += MAX(24,textHeight) + 9;
         }
         
         if([comments count] > kTotalComments)
-            height += 45;
+            height += 34 + 9;
     }
     
     return  height;

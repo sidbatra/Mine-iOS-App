@@ -56,7 +56,8 @@
     [cell setUserImage:purchase.user.squareImage];
     
     [cell setBoughtText:[DWPurchasesHelper boughtTextForPurchase:purchase]
-           withUserName:purchase.user.fullName];
+           withUserName:purchase.user.fullName
+          withTimestamp:[DWPurchasesHelper timestamp:purchase]];
     
     [cell setEndorsement:purchase.endorsement];
     
@@ -105,7 +106,8 @@
     return [DWPurchaseFeedCell heightForCellWithLikesCount:purchase.likes.count 
                                                   comments:purchase.comments
                                              isInteractive:style != kPurchaseFeedPresenterStyleDisabled
-                                            andEndorsement:purchase.endorsement];
+                                               endorsement:purchase.endorsement
+                                                boughtText:[NSString stringWithFormat:@"%@ %@",[DWPurchasesHelper boughtTextForPurchase:purchase],[DWPurchasesHelper timestamp:purchase]]];
 }
 
 //----------------------------------------------------------------------------------------------------

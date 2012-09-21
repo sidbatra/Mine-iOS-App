@@ -12,17 +12,21 @@
 
 @protocol DWCreationViewControllerDelegate;
 @class DWProduct;
+@class DWPurchase;
+@class DWSuggestion;
 
 @interface DWCreationViewController : UIViewController<UITextFieldDelegate,DWProductsViewControllerDelegate> {
-    UITextField     *_searchTextField;
-    UIView          *_productPreview;
-    UIView          *_loadingView;
-    UIImageView     *_spinnerImageView;
-    UIImageView     *_productImageView;
-    UIImageView     *_topShadowView;
-    UIButton        *_productSelectButton;
-    UIButton        *_productRejectButton;
-    UIButton        *_cancelCreationButton;
+    UILabel                 *_messageTitleLabel;
+    UILabel                 *_messageSubtitleLabel;
+    UITextField             *_searchTextField;
+    UIView                  *_productPreview;
+    UIView                  *_loadingView;
+    UIImageView             *_productImageView;
+    UIImageView             *_topShadowView;
+    UIButton                *_productSelectButton;
+    UIButton                *_productRejectButton;
+    UIButton                *_cancelCreationButton;
+    UIActivityIndicatorView *_spinner;
     
     __weak id<DWCreationViewControllerDelegate,NSObject> _delegate;
 }
@@ -30,15 +34,17 @@
 /**
  * IBOutlet properties
  */
+@property (nonatomic) IBOutlet UILabel *messageTitleLabel;
+@property (nonatomic) IBOutlet UILabel *messageSubtitleLabel;
 @property (nonatomic) IBOutlet UITextField *searchTextField;
 @property (nonatomic) IBOutlet UIView *productPreview;
 @property (nonatomic) IBOutlet UIView *loadingView;
-@property (nonatomic) IBOutlet UIImageView *spinnerImageView;
 @property (nonatomic) IBOutlet UIImageView *productImageView;
 @property (nonatomic) IBOutlet UIImageView *topShadowView;
 @property (nonatomic) IBOutlet UIButton *productSelectButton;
 @property (nonatomic) IBOutlet UIButton *productRejectButton;
 @property (nonatomic) IBOutlet UIButton *cancelCreationButton;
+@property (nonatomic) IBOutlet UIActivityIndicatorView *spinner;
 
 /**
  * Delegate
@@ -53,6 +59,12 @@
 - (IBAction)productRejectButtonClicked:(id)sender;
 - (IBAction)cancelCreationButtonClicked:(id)sender;
 
+
+/**
+ * Alternate initialization
+ */
+- (id)initWithSuggestion:(DWSuggestion*)suggestion;
+
 @end
 
 
@@ -61,13 +73,12 @@
  */
 @protocol DWCreationViewControllerDelegate
 
-@optional
-
 /**
  * A product is selected from the search results
  */
 - (void)productSelected:(DWProduct*)product 
-              fromQuery:(NSString*)query;
+            forPurchase:(DWPurchase*)purchase;
+
 
 /**
  * User cancels the creation process

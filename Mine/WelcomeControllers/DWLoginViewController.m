@@ -8,6 +8,34 @@
 
 #import "DWLoginViewController.h"
 
+#import <MediaPlayer/MediaPlayer.h>
+
+
+static NSString* const kVideoIntro = @"mine_intro_640x280.mp4";
+
+
+
+
+
+@interface DWMoviePlayerController : MPMoviePlayerViewController
+@end
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+@implementation DWMoviePlayerController
+
+/**
+ * Force MPMoviePlayerViewController to only play in landscape.
+ */
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {
+    return UIInterfaceOrientationIsLandscape(toInterfaceOrientation);
+}
+@end
+
+
+
+
 /**
  * Private declarations
  */
@@ -16,6 +44,8 @@
     
     DWFacebookConnect *_facebookConnect;
     DWTwitterConnectViewController  *_twitterConnectViewController;
+    
+    DWMoviePlayerController *_moviePlayerController;
 }
 
 /**
@@ -33,6 +63,11 @@
  */
 @property (nonatomic,strong) DWTwitterConnectViewController *twitterConnectViewController;
 
+/**
+ * Video player interface.
+ */
+@property (nonatomic,strong) DWMoviePlayerController *moviePlayerController;
+
 @end
 
 
@@ -42,12 +77,14 @@
 //----------------------------------------------------------------------------------------------------
 @implementation DWLoginViewController
 
+@synthesize playButton                      = _playButton;
 @synthesize loginWithFBButton               = _loginWithFBButton;
 @synthesize loginWithTWButton               = _loginWithTWButton;
 @synthesize delegate                        = _delegate;
 @synthesize usersController                 = _usersController;
 @synthesize facebookConnect                 = _facebookConnect;
 @synthesize twitterConnectViewController    = _twitterConnectViewController;
+@synthesize moviePlayerController           = _moviePlayerController;
 
 //----------------------------------------------------------------------------------------------------
 - (id)init {
@@ -83,6 +120,17 @@
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
 #pragma mark IBActions
+
+//----------------------------------------------------------------------------------------------------
+- (IBAction)playButtonClicked:(id)sender {
+    
+    NSString *mediaPath = [[[NSBundle mainBundle]resourcePath] stringByAppendingPathComponent:kVideoIntro];
+    self.moviePlayerController = [[DWMoviePlayerController alloc] initWithContentURL:[NSURL fileURLWithPath:mediaPath]];
+    self.moviePlayerController.moviePlayer.scalingMode = MPMovieScalingModeAspectFill;
+        
+    [[self.delegate loginViewNavigationController] presentMoviePlayerViewControllerAnimated:self.moviePlayerController];
+    [self.moviePlayerController.moviePlayer play];
+}
 
 //----------------------------------------------------------------------------------------------------
 - (IBAction)loginWithFBButtonClicked:(id)sender {

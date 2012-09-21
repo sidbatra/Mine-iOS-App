@@ -14,8 +14,11 @@
 #import "DWConstants.h"
 
 
-static NSString* const kImgSettingsOff    = @"nav-btn-settings-off.png";
-static NSString* const kImgSettingsOn     = @"nav-btn-settings-on.png";
+static NSString* const kImgSettingsOff          = @"nav-btn-settings-off.png";
+static NSString* const kImgSettingsOn           = @"nav-btn-settings-on.png";
+static NSString* const kAboutURL                = @"/about?web_view_mode=true";
+static NSString* const kFAQURL                  = @"/faq?web_view_mode=true";
+static NSInteger const kSettingsActionSheetTag  = -1;
 
 
 
@@ -74,8 +77,7 @@ static NSString* const kImgSettingsOn     = @"nav-btn-settings-on.png";
     }
     
     if(!self.navTitleView) {
-        self.navTitleView =  [[DWNavigationBarTitleView alloc] initWithFrame:CGRectMake(121,0,76,44)
-                                                                andImageName:kNavBarMineLogo];
+        self.navTitleView = [DWNavigationBarTitleView logoTitleView];
     }
     
     
@@ -107,7 +109,6 @@ static NSString* const kImgSettingsOn     = @"nav-btn-settings-on.png";
 }
 
 
-
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
@@ -115,6 +116,47 @@ static NSString* const kImgSettingsOn     = @"nav-btn-settings-on.png";
 
 //----------------------------------------------------------------------------------------------------
 - (void)settingsButtonClicked {
+    UIActionSheet *actionSheet  = [[UIActionSheet alloc] initWithTitle:nil 
+                                                              delegate:self 
+                                                     cancelButtonTitle:@"Cancel"
+                                                destructiveButtonTitle:@"Log Out"
+                                                     otherButtonTitles:@"Edit bio",@"About",@"FAQ",nil];
+    
+    actionSheet.tag = kSettingsActionSheetTag;
+    
+    [actionSheet showInView:self.customTabBarController.view];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark UIActionSheet Delegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {	
+	
+    if (actionSheet.tag != kSettingsActionSheetTag)
+        return;
+    
+    switch(buttonIndex) {
+        case 0:
+            [[NSNotificationCenter defaultCenter] postNotificationName:kNUserLoggedOut
+                                                                object:nil
+                                                              userInfo:nil];
+            break;
+        case 1:
+            NSLog(@"Edit bio");
+            break;
+        case 2:
+            [self displayExternalURL:[NSString stringWithFormat:@"%@%@%@",kAppProtocol,kAppServer,kAboutURL]];
+            break;
+        case 3:
+            [self displayExternalURL:[NSString stringWithFormat:@"%@%@%@",kAppProtocol,kAppServer,kFAQURL]];
+            break;
+        default:
+            break;
+    }    
 }
 
 

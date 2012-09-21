@@ -43,17 +43,10 @@ extern NSString* const kNImageDownloaded;
 extern NSString* const kNImageDownloadError;
 extern NSString* const kNFacebookURLOpened;
 extern NSString* const kNUserLoggedIn;
+extern NSString* const kNUserLoggedOut;
 extern NSString* const kNWelcomeNavigationFinished;
 extern NSString* const kNPaginationCellReached;
 extern NSString* const kNCommentAddedForPurchase;
-
-
-
-/**
- * Action sheet button text
- */
-extern NSString* const kMsgActionSheetCancel;
-extern NSString* const kMsgActionSheetDelete;
 
 /**
  * Grid view related constants
@@ -96,10 +89,11 @@ extern NSString* const kRailsDateTimeFormat;
 /**
  * UI Related
  */
-extern NSString* const kNavBarMineLogo;
 extern NSString* const kImgChevron;
 extern NSString* const kImgDoneOff;
 extern NSString* const kImgDoneOn;
+extern NSString* const kImgMessageDrawer;
+extern NSString* const kImgTopShadow;
 
 
 /**

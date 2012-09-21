@@ -8,6 +8,6 @@
 
 #import "DWNavigationRootViewController.h"
 
-@interface DWProfileNavigationViewController : DWNavigationRootViewController
+@interface DWProfileNavigationViewController : DWNavigationRootViewController<UIActionSheetDelegate>
 
 @end
