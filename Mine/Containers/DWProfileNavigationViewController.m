@@ -9,6 +9,7 @@
 #import "DWProfileNavigationViewController.h"
 
 #import "DWProfileViewController.h"
+#import "DWEditBylineViewController.h"
 #import "DWNavigationBarTitleView.h"
 #import "DWSession.h"
 #import "DWConstants.h"
@@ -158,16 +159,19 @@ static NSInteger const kSettingsActionSheetTag  = -1;
 	
     if (actionSheet.tag != kSettingsActionSheetTag)
         return;
-    
+                
     switch(buttonIndex) {
         case 0:
             [[NSNotificationCenter defaultCenter] postNotificationName:kNUserLoggedOut
                                                                 object:nil
                                                               userInfo:nil];
             break;
-        case 1:
-            NSLog(@"Edit bio");
+        case 1: {
+            DWEditBylineViewController *editBylineViewController = [[DWEditBylineViewController alloc] init];
+            [self.navigationController pushViewController:editBylineViewController
+                                                 animated:YES];
             break;
+        }
         case 2:
             [self displayExternalURL:[NSString stringWithFormat:@"%@%@%@",kAppProtocol,kAppServer,kAboutURL]];
             break;
