@@ -230,6 +230,11 @@
 		BB31FC17160BEE9C0049B6BF /* login-btn-twitter-loading@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB31FC15160BEE9C0049B6BF /* login-btn-twitter-loading@2x.png */; };
 		BB31FC25160BFA750049B6BF /* DWEditBylineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB31FC23160BFA750049B6BF /* DWEditBylineViewController.m */; };
 		BB31FC26160BFA750049B6BF /* DWEditBylineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB31FC24160BFA750049B6BF /* DWEditBylineViewController.xib */; };
+		BB31FC2C160CC2AB0049B6BF /* cell-5rows@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB31FC27160CC2AB0049B6BF /* cell-5rows@2x.png */; };
+		BB31FC2D160CC2AB0049B6BF /* nav-btn-cancel-left-off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB31FC28160CC2AB0049B6BF /* nav-btn-cancel-left-off@2x.png */; };
+		BB31FC2E160CC2AB0049B6BF /* nav-btn-cancel-left-on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB31FC29160CC2AB0049B6BF /* nav-btn-cancel-left-on@2x.png */; };
+		BB31FC2F160CC2AB0049B6BF /* nav-btn-save-off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB31FC2A160CC2AB0049B6BF /* nav-btn-save-off@2x.png */; };
+		BB31FC30160CC2AB0049B6BF /* nav-btn-save-on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB31FC2B160CC2AB0049B6BF /* nav-btn-save-on@2x.png */; };
 		BB46140215CB3A5A00B38D71 /* DWUserPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = BB46140115CB3A5A00B38D71 /* DWUserPresenter.m */; };
 		BB46140615CB3A7500B38D71 /* DWUserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BB46140515CB3A7500B38D71 /* DWUserCell.m */; };
 		BB46142615CC6ABD00B38D71 /* DWModelSet.m in Sources */ = {isa = PBXBuildFile; fileRef = BB46142515CC6ABD00B38D71 /* DWModelSet.m */; };
@@ -643,6 +648,11 @@
 		BB31FC22160BFA750049B6BF /* DWEditBylineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWEditBylineViewController.h; sourceTree = "<group>"; };
 		BB31FC23160BFA750049B6BF /* DWEditBylineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWEditBylineViewController.m; sourceTree = "<group>"; };
 		BB31FC24160BFA750049B6BF /* DWEditBylineViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DWEditBylineViewController.xib; sourceTree = "<group>"; };
+		BB31FC27160CC2AB0049B6BF /* cell-5rows@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cell-5rows@2x.png"; sourceTree = "<group>"; };
+		BB31FC28160CC2AB0049B6BF /* nav-btn-cancel-left-off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-btn-cancel-left-off@2x.png"; sourceTree = "<group>"; };
+		BB31FC29160CC2AB0049B6BF /* nav-btn-cancel-left-on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-btn-cancel-left-on@2x.png"; sourceTree = "<group>"; };
+		BB31FC2A160CC2AB0049B6BF /* nav-btn-save-off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-btn-save-off@2x.png"; sourceTree = "<group>"; };
+		BB31FC2B160CC2AB0049B6BF /* nav-btn-save-on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-btn-save-on@2x.png"; sourceTree = "<group>"; };
 		BB46140015CB3A5A00B38D71 /* DWUserPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWUserPresenter.h; sourceTree = "<group>"; };
 		BB46140115CB3A5A00B38D71 /* DWUserPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWUserPresenter.m; sourceTree = "<group>"; };
 		BB46140415CB3A7500B38D71 /* DWUserCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWUserCell.h; sourceTree = "<group>"; };
@@ -989,6 +999,11 @@
 		BB125087160BA2F400AA2521 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				BB31FC27160CC2AB0049B6BF /* cell-5rows@2x.png */,
+				BB31FC28160CC2AB0049B6BF /* nav-btn-cancel-left-off@2x.png */,
+				BB31FC29160CC2AB0049B6BF /* nav-btn-cancel-left-on@2x.png */,
+				BB31FC2A160CC2AB0049B6BF /* nav-btn-save-off@2x.png */,
+				BB31FC2B160CC2AB0049B6BF /* nav-btn-save-on@2x.png */,
 				268B6914160BD0E6003F4A67 /* nav-btn-invite-off@2x.png */,
 				268B6915160BD0E6003F4A67 /* nav-btn-invite-on@2x.png */,
 				BB31FC14160BEE9C0049B6BF /* login-btn-facebook-loading@2x.png */,
@@ -1889,6 +1904,11 @@
 				BB31FC16160BEE9C0049B6BF /* login-btn-facebook-loading@2x.png in Resources */,
 				BB31FC17160BEE9C0049B6BF /* login-btn-twitter-loading@2x.png in Resources */,
 				BB31FC26160BFA750049B6BF /* DWEditBylineViewController.xib in Resources */,
+				BB31FC2C160CC2AB0049B6BF /* cell-5rows@2x.png in Resources */,
+				BB31FC2D160CC2AB0049B6BF /* nav-btn-cancel-left-off@2x.png in Resources */,
+				BB31FC2E160CC2AB0049B6BF /* nav-btn-cancel-left-on@2x.png in Resources */,
+				BB31FC2F160CC2AB0049B6BF /* nav-btn-save-off@2x.png in Resources */,
+				BB31FC30160CC2AB0049B6BF /* nav-btn-save-on@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -11,6 +11,11 @@
 #import "DWGUIManager.h"
 #import "DWNavigationBarBackButton.h"
 
+#import "DWSession.h"
+
+
+static NSInteger const kMaxBylineLength = 160;
+
 
 @interface DWEditBylineViewController () {
     DWUsersController   *_usersController;
@@ -28,6 +33,8 @@
 @implementation DWEditBylineViewController
 
 @synthesize usersController = _usersController;
+@synthesize bylineTextView  = _bylineTextView;
+@synthesize spinnerView     = _spinnerView;
 
 //----------------------------------------------------------------------------------------------------
 - (id)init {
@@ -45,8 +52,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.bylineTextView.text = [DWSession sharedDWSession].currentUser.byline;
+    
     self.navigationItem.leftBarButtonItem = [DWNavigationBarBackButton backButtonForNavigationController:self.navigationController];
-    self.navigationItem.titleView  = [DWGUIManager navBarTitleViewWithText:@"Edit Bio"];   
+    self.navigationItem.rightBarButtonItem = [DWGUIManager navBarSaveButtonWithTarget:self];  
+    self.navigationItem.titleView  = [DWGUIManager navBarTitleViewWithText:@"Edit Bio"];
+    
+    [self.bylineTextView becomeFirstResponder];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -56,12 +68,42 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)showSpinner {
-    
+    self.view.userInteractionEnabled = NO;
+    [self.spinnerView startAnimating];
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)hideSpinner {
+    self.view.userInteractionEnabled = YES;    
+    [self.spinnerView stopAnimating];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark UITextViewDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (BOOL)textView:(UITextView *)textView shouldChangeTextInRange:(NSRange)range replacementText:(NSString *)text {
+    return ([textView.text length] + [text length] - range.length > kMaxBylineLength) || [text isEqualToString:@"\n"] ? NO : YES;
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark UI Events
+
+//----------------------------------------------------------------------------------------------------
+- (void)saveButtonClicked {
+    if([self.spinnerView isAnimating])
+        return;
+
+    [self showSpinner];
     
+    [self.usersController updateUserHavingID:[DWSession sharedDWSession].currentUser.databaseID
+                                  withByline:self.bylineTextView.text];
 }
 
 
@@ -74,11 +116,24 @@
 - (void)userUpdated:(DWUser*)user {
     [user destroy];
     [self hideSpinner];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)userUpdateError:(NSString *)error {
     [self hideSpinner];
+    [self.bylineTextView becomeFirstResponder];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark Nav stack selectors
+
+//----------------------------------------------------------------------------------------------------
+- (void)requiresFullScreenMode {
+    
 }
 
 

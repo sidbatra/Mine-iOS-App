@@ -9,6 +9,10 @@
 #import "DWGUIManager.h"
 #import "DWConstants.h"
 
+static NSString* const kImgSaveOff  = @"nav-btn-save-off.png";
+static NSString* const kImgSaveOn   = @"nav-btn-save-on.png";
+
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
@@ -44,6 +48,27 @@
     
 	[button addTarget:target
                action:@selector(doneButtonClicked)
+     forControlEvents:UIControlEventTouchUpInside];
+    
+	[button setFrame:CGRectMake(0,0,58,30)];
+    
+    return [[UIBarButtonItem alloc] initWithCustomView:button];
+}
+
+
+//----------------------------------------------------------------------------------------------------
++ (UIBarButtonItem*)navBarSaveButtonWithTarget:(id)target {
+    
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];    
+    
+    [button setBackgroundImage:[UIImage imageNamed:kImgSaveOff] 
+                      forState:UIControlStateNormal];
+    
+    [button setBackgroundImage:[UIImage imageNamed:kImgSaveOn] 
+                      forState:UIControlStateHighlighted];
+    
+	[button addTarget:target
+               action:@selector(saveButtonClicked)
      forControlEvents:UIControlEventTouchUpInside];
     
 	[button setFrame:CGRectMake(0,0,58,30)];

@@ -10,6 +10,15 @@
 
 #import "DWUsersController.h"
 
-@interface DWEditBylineViewController : UIViewController<DWUsersControllerDelegate>
+@interface DWEditBylineViewController : UIViewController<DWUsersControllerDelegate,UITextViewDelegate> {
+    UITextView  *_bylineTextView;
+    UIActivityIndicatorView *_spinnerView;
+}
+
+/**
+ * IBOutlets
+ */
+@property (nonatomic) IBOutlet UITextView *bylineTextView;
+@property (nonatomic) IBOutlet UIActivityIndicatorView *spinnerView;
 
 @end
