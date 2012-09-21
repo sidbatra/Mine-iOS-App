@@ -113,9 +113,8 @@ static NSString* const kNInvitesCreateError     = @"NInvitesCreateError";
     if(![self.delegate respondsToSelector:sel])
         return;
 
-    NSDictionary *info      = [notification userInfo];
-    NSDictionary *response  = [info objectForKey:kKeyResponse];
-    NSLog(@"%@",response);
+    //NSDictionary *info      = [notification userInfo];
+    //NSDictionary *response  = [info objectForKey:kKeyResponse];
     
     [self.delegate performSelector:sel];
 }
