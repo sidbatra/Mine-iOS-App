@@ -80,6 +80,10 @@ static NSString* const kVideoIntro = @"mine_intro_640x280.mp4";
 @synthesize playButton                      = _playButton;
 @synthesize loginWithFBButton               = _loginWithFBButton;
 @synthesize loginWithTWButton               = _loginWithTWButton;
+@synthesize loadingFBImageView              = _loadingFBImageView;
+@synthesize loadingTWImageView              = _loadingTWImageView;
+@synthesize loadingFBSpinner                = _loadingFBSpinner;
+@synthesize loadingTWSpinner                = _loadingTWSpinner;
 @synthesize delegate                        = _delegate;
 @synthesize usersController                 = _usersController;
 @synthesize facebookConnect                 = _facebookConnect;
@@ -113,6 +117,42 @@ static NSString* const kVideoIntro = @"mine_intro_640x280.mp4";
 //----------------------------------------------------------------------------------------------------
 - (void)viewDidUnload {
     [super viewDidUnload];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)startLoadingFB {
+    self.view.userInteractionEnabled = NO;
+    
+    self.loadingFBImageView.hidden = NO;
+    self.loadingFBSpinner.hidden = NO;
+    [self.loadingFBSpinner startAnimating];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)stopLoadingFB {
+    self.view.userInteractionEnabled = YES;
+    
+    self.loadingFBImageView.hidden = YES;
+    self.loadingFBSpinner.hidden = YES;
+    [self.loadingFBSpinner stopAnimating];    
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)startLoadingTW {
+    self.view.userInteractionEnabled = NO;
+    
+    self.loadingTWImageView.hidden = NO;
+    self.loadingTWSpinner.hidden = NO;
+    [self.loadingTWSpinner startAnimating];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)stopLoadingTW {
+    self.view.userInteractionEnabled = YES;
+    
+    self.loadingTWImageView.hidden = YES;
+    self.loadingTWSpinner.hidden = YES;
+    [self.loadingTWSpinner stopAnimating];    
 }
 
 
@@ -156,6 +196,8 @@ static NSString* const kVideoIntro = @"mine_intro_640x280.mp4";
 
 //----------------------------------------------------------------------------------------------------
 - (void)userCreationError:(NSString*)error {
+    [self stopLoadingFB];
+    [self stopLoadingTW];
 }
 
 
@@ -166,6 +208,7 @@ static NSString* const kVideoIntro = @"mine_intro_640x280.mp4";
 
 //----------------------------------------------------------------------------------------------------
 - (void)fbAuthenticatedWithToken:(NSString *)accessToken {
+    [self startLoadingFB];
     [self.usersController createUserFromFacebookWithAccessToken:accessToken];
 }
 
@@ -182,6 +225,8 @@ static NSString* const kVideoIntro = @"mine_intro_640x280.mp4";
 //----------------------------------------------------------------------------------------------------
 - (void)twitterAuthorizedWithAccessToken:(NSString *)accessToken 
                     andAccessTokenSecret:(NSString *)accessTokenSecret {
+    
+    [self startLoadingTW];
     
     [[self.delegate loginViewNavigationController] popViewControllerAnimated:YES];
     
