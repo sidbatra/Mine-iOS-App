@@ -136,8 +136,8 @@ static NSString* const kMsgProcessingText                   = @"Inviting...";
     self.navigationItem.titleView                   = [DWGUIManager navBarTitleViewWithText:@"Invite People"];
     self.navigationItem.rightBarButtonItem          = [DWGUIManager navBarDoneButtonWithTarget:self];    
            
-    self.queryContactsViewController.view.frame     = CGRectMake(0,44,320,244);
-    self.addedContactsViewController.view.frame     = CGRectMake(0,44,320,244);
+    self.queryContactsViewController.view.frame     = CGRectMake(0,44,320,200);
+    self.addedContactsViewController.view.frame     = CGRectMake(0,44,320,200);
 
     [self.view addSubview:self.queryContactsViewController.view];    
     [self.view addSubview:self.addedContactsViewController.view];   

@@ -270,8 +270,7 @@
 - (void)navigationController:(UINavigationController *)navigationController 
 	  willShowViewController:(UIViewController *)viewController
 					animated:(BOOL)animated {
-    
-    
+        
 	for (UIView *view in [self.navigationController.navigationBar subviews]) 
 		if ([view respondsToSelector:@selector(shouldBeRemovedFromNav)]) 
             [view removeFromSuperview];
@@ -280,18 +279,12 @@
     if ([viewController respondsToSelector:@selector(willShowOnNav)])
         [viewController performSelector:@selector(willShowOnNav)];
     
-    /*
+    
     if ([viewController respondsToSelector:@selector(requiresFullScreenMode)])
         [self.customTabBarController enableFullScreen];
     else
         [self.customTabBarController disableFullScreen];
     
-    
-    if ([viewController respondsToSelector:@selector(hideTopShadowOnTabBar)])
-        [self.customTabBarController hideTopShadowView];
-    else
-        [self.customTabBarController showTopShadowView];
-     */
 }
 
 
