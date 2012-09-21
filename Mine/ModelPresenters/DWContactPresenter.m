@@ -11,7 +11,7 @@
 #import "DWDoubleLineCell.h"
 #import "DWConstants.h"
 
-static CGFloat const kCellHeight  = 44;
+static CGFloat const kCellHeight  = 43;
 
 
 

@@ -123,7 +123,7 @@
     [super viewDidLoad];
     
     self.navigationItem.leftBarButtonItem           = [DWNavigationBarBackButton backButtonForNavigationController:self.navigationController];
-    self.navigationItem.titleView                   = [DWGUIManager navBarTitleViewWithText:@"Invite People"];
+    self.navigationItem.titleView                   = [DWGUIManager navBarTitleViewWithText:@"Invite Friends"];
     self.navigationItem.rightBarButtonItem          = [DWGUIManager navBarDoneButtonWithTarget:self];    
            
     self.queryContactsViewController.view.frame     = CGRectMake(0,44,320,200);

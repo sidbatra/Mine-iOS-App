@@ -9,8 +9,8 @@
 #import "DWDoubleLineCell.h"
 
 static NSString* const kImgCheckMarkIcon			= @"check_mark_white.png";
-static NSString* const kImgSeparatorLight           = @"hr_gray_create.png";
-static NSString* const kImgSeparatorDark            = @"hr_dark.png";
+static NSString* const kImgSeparatorLight           = @"hr-AECDDE.png";
+static NSString* const kImgSeparatorDark            = @"hr-125980.png";
 
 
 //----------------------------------------------------------------------------------------------------
@@ -24,7 +24,7 @@ static NSString* const kImgSeparatorDark            = @"hr_dark.png";
 	
     if (self) {
         self.opaque				= YES;
-		self.backgroundColor	= [UIColor grayColor];
+		self.backgroundColor	= [UIColor colorWithRed:0.0901 green:0.4352 blue:0.6274 alpha:1.0];
     }
     
     return self;
@@ -49,7 +49,7 @@ static NSString* const kImgSeparatorDark            = @"hr_dark.png";
 	
     if (self) {
         self.opaque				= YES;
-		self.backgroundColor	= [UIColor colorWithRed:0.9725 green:0.9725 blue:0.9725 alpha:1.0];
+		self.backgroundColor	= [UIColor colorWithRed:0.8156 green:0.8862 blue:0.9254 alpha:1.0];
         self.isDarker           = NO;
     }
     
@@ -65,7 +65,7 @@ static NSString* const kImgSeparatorDark            = @"hr_dark.png";
 
 //----------------------------------------------------------------------------------------------------
 - (void)drawFirstLine {
-    [self.firstLine drawInRect:CGRectMake(7, 3, 306, 18) 
+    [self.firstLine drawInRect:CGRectMake(11, 3, 306, 18) 
                       withFont:[UIFont fontWithName:@"HelveticaNeue-Bold" size:15]
                  lineBreakMode:UILineBreakModeTailTruncation
                      alignment:UITextAlignmentLeft];    
@@ -73,7 +73,7 @@ static NSString* const kImgSeparatorDark            = @"hr_dark.png";
 
 //----------------------------------------------------------------------------------------------------
 - (void)drawSecondLine {
-    [self.secondLine drawInRect:CGRectMake(7, 20, 306, 18) 
+    [self.secondLine drawInRect:CGRectMake(11, 20, 306, 18) 
                        withFont:[UIFont fontWithName:@"HelveticaNeue" size:15] 
                   lineBreakMode:UILineBreakModeTailTruncation
                       alignment:UITextAlignmentLeft];
@@ -90,16 +90,16 @@ static NSString* const kImgSeparatorDark            = @"hr_dark.png";
         [self drawSecondLine];
         
         [[UIImage imageNamed:kImgCheckMarkIcon] drawInRect:CGRectMake(285, 15, 13, 14)];
-        [[UIImage imageNamed:kImgSeparatorDark] drawInRect:CGRectMake(0, 43, 320, 1)];        
+        [[UIImage imageNamed:kImgSeparatorDark] drawInRect:CGRectMake(0, 42, 320, 1)];        
     }
     else {
-        _highlighted ? [[UIColor whiteColor] set] : [[UIColor blackColor] set];
+        _highlighted ? [[UIColor whiteColor] set] : [[UIColor colorWithRed:0.0901 green:0.4352 blue:0.6274 alpha:1.0] set];
         [self drawFirstLine]; 
         
-        _highlighted ? [[UIColor whiteColor] set] : [[UIColor colorWithRed:0.4588 green:0.4588 blue:0.4588 alpha:1.0] set];
+        _highlighted ? [[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.5] set] : [[UIColor colorWithRed:0.0901 green:0.4352 blue:0.6274 alpha:1.0] set];
         [self drawSecondLine];
         
-        [[UIImage imageNamed:kImgSeparatorLight] drawInRect:CGRectMake(0, 43, 320, 1)];
+        [[UIImage imageNamed:kImgSeparatorLight] drawInRect:CGRectMake(0, 42, 320, 1)];
     }
 }
 
@@ -156,9 +156,8 @@ static NSString* const kImgSeparatorDark            = @"hr_dark.png";
 		
 		[self.contentView addSubview:self.doubleLineView];
 		
-		//self.selectedBackgroundView = [[[DWDoubleLineSelectedView alloc] initWithFrame:frame] autorelease];
+		self.selectedBackgroundView = [[DWDoubleLineSelectedView alloc] initWithFrame:frame];
 		self.accessoryType			= UITableViewCellAccessoryNone;
-        self.selectionStyle         = UITableViewCellSelectionStyleBlue;
     }
 	
     return self;
@@ -184,7 +183,7 @@ static NSString* const kImgSeparatorDark            = @"hr_dark.png";
 
 //----------------------------------------------------------------------------------------------------
 - (void)turnOnDarkerState {
-    self.doubleLineView.backgroundColor = [UIColor colorWithRed:0.2156 green:0.2196 blue:0.2196 alpha:1.0];
+    self.doubleLineView.backgroundColor = [UIColor colorWithRed:0.0901 green:0.4352 blue:0.6274 alpha:1.0];
     self.doubleLineView.isDarker        = YES;
     self.selectionStyle                 = UITableViewCellAccessoryNone;
 }
