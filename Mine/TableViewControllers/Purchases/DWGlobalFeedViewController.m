@@ -64,6 +64,8 @@ static NSString* const kMessageSubtitle         = @"It's the ultimate way to dis
 //----------------------------------------------------------------------------------------------------
 - (void)viewDidLoad {
 	[super viewDidLoad];
+    
+     [self disablePullToRefresh];
         
     [self createHeader];
     
