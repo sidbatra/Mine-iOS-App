@@ -226,6 +226,15 @@
 		BB2BC0AF15D1DCA000CCC4BB /* DWSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = BB2BC0AE15D1DCA000CCC4BB /* DWSetting.m */; };
 		BB2BC0B315D1E74800CCC4BB /* DWStatusController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB2BC0B215D1E74800CCC4BB /* DWStatusController.m */; };
 		BB2D167615CC7C2E005F571F /* DWPurchaseProfileCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BB2D167515CC7C2E005F571F /* DWPurchaseProfileCell.m */; };
+		BB31FC16160BEE9C0049B6BF /* login-btn-facebook-loading@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB31FC14160BEE9C0049B6BF /* login-btn-facebook-loading@2x.png */; };
+		BB31FC17160BEE9C0049B6BF /* login-btn-twitter-loading@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB31FC15160BEE9C0049B6BF /* login-btn-twitter-loading@2x.png */; };
+		BB31FC25160BFA750049B6BF /* DWEditBylineViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB31FC23160BFA750049B6BF /* DWEditBylineViewController.m */; };
+		BB31FC26160BFA750049B6BF /* DWEditBylineViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB31FC24160BFA750049B6BF /* DWEditBylineViewController.xib */; };
+		BB31FC2C160CC2AB0049B6BF /* cell-5rows@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB31FC27160CC2AB0049B6BF /* cell-5rows@2x.png */; };
+		BB31FC2D160CC2AB0049B6BF /* nav-btn-cancel-left-off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB31FC28160CC2AB0049B6BF /* nav-btn-cancel-left-off@2x.png */; };
+		BB31FC2E160CC2AB0049B6BF /* nav-btn-cancel-left-on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB31FC29160CC2AB0049B6BF /* nav-btn-cancel-left-on@2x.png */; };
+		BB31FC2F160CC2AB0049B6BF /* nav-btn-save-off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB31FC2A160CC2AB0049B6BF /* nav-btn-save-off@2x.png */; };
+		BB31FC30160CC2AB0049B6BF /* nav-btn-save-on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB31FC2B160CC2AB0049B6BF /* nav-btn-save-on@2x.png */; };
 		BB46140215CB3A5A00B38D71 /* DWUserPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = BB46140115CB3A5A00B38D71 /* DWUserPresenter.m */; };
 		BB46140615CB3A7500B38D71 /* DWUserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BB46140515CB3A7500B38D71 /* DWUserCell.m */; };
 		BB46142615CC6ABD00B38D71 /* DWModelSet.m in Sources */ = {isa = PBXBuildFile; fileRef = BB46142515CC6ABD00B38D71 /* DWModelSet.m */; };
@@ -634,6 +643,16 @@
 		BB2BC0B215D1E74800CCC4BB /* DWStatusController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWStatusController.m; sourceTree = "<group>"; };
 		BB2D167415CC7C2E005F571F /* DWPurchaseProfileCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWPurchaseProfileCell.h; sourceTree = "<group>"; };
 		BB2D167515CC7C2E005F571F /* DWPurchaseProfileCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWPurchaseProfileCell.m; sourceTree = "<group>"; };
+		BB31FC14160BEE9C0049B6BF /* login-btn-facebook-loading@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login-btn-facebook-loading@2x.png"; sourceTree = "<group>"; };
+		BB31FC15160BEE9C0049B6BF /* login-btn-twitter-loading@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login-btn-twitter-loading@2x.png"; sourceTree = "<group>"; };
+		BB31FC22160BFA750049B6BF /* DWEditBylineViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWEditBylineViewController.h; sourceTree = "<group>"; };
+		BB31FC23160BFA750049B6BF /* DWEditBylineViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWEditBylineViewController.m; sourceTree = "<group>"; };
+		BB31FC24160BFA750049B6BF /* DWEditBylineViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DWEditBylineViewController.xib; sourceTree = "<group>"; };
+		BB31FC27160CC2AB0049B6BF /* cell-5rows@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cell-5rows@2x.png"; sourceTree = "<group>"; };
+		BB31FC28160CC2AB0049B6BF /* nav-btn-cancel-left-off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-btn-cancel-left-off@2x.png"; sourceTree = "<group>"; };
+		BB31FC29160CC2AB0049B6BF /* nav-btn-cancel-left-on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-btn-cancel-left-on@2x.png"; sourceTree = "<group>"; };
+		BB31FC2A160CC2AB0049B6BF /* nav-btn-save-off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-btn-save-off@2x.png"; sourceTree = "<group>"; };
+		BB31FC2B160CC2AB0049B6BF /* nav-btn-save-on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-btn-save-on@2x.png"; sourceTree = "<group>"; };
 		BB46140015CB3A5A00B38D71 /* DWUserPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWUserPresenter.h; sourceTree = "<group>"; };
 		BB46140115CB3A5A00B38D71 /* DWUserPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWUserPresenter.m; sourceTree = "<group>"; };
 		BB46140415CB3A7500B38D71 /* DWUserCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWUserCell.h; sourceTree = "<group>"; };
@@ -980,8 +999,15 @@
 		BB125087160BA2F400AA2521 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				BB31FC27160CC2AB0049B6BF /* cell-5rows@2x.png */,
+				BB31FC28160CC2AB0049B6BF /* nav-btn-cancel-left-off@2x.png */,
+				BB31FC29160CC2AB0049B6BF /* nav-btn-cancel-left-on@2x.png */,
+				BB31FC2A160CC2AB0049B6BF /* nav-btn-save-off@2x.png */,
+				BB31FC2B160CC2AB0049B6BF /* nav-btn-save-on@2x.png */,
 				268B6914160BD0E6003F4A67 /* nav-btn-invite-off@2x.png */,
 				268B6915160BD0E6003F4A67 /* nav-btn-invite-on@2x.png */,
+				BB31FC14160BEE9C0049B6BF /* login-btn-facebook-loading@2x.png */,
+				BB31FC15160BEE9C0049B6BF /* login-btn-twitter-loading@2x.png */,
 				BB29D6C8160BB4B100FC69F4 /* login-strapline@2x.png */,
 				BB29D6C3160BB27F00FC69F4 /* cell-bottom-faded-off@2x.png */,
 				BB29D6C4160BB27F00FC69F4 /* cell-middle-chevron-off@2x.png */,
@@ -1148,6 +1174,9 @@
 				BBC0609F15C76D57000D3480 /* DWCommentsCreateViewController.h */,
 				BBC060A015C76D57000D3480 /* DWCommentsCreateViewController.m */,
 				BBC060A115C76D57000D3480 /* DWCommentsCreateViewController.xib */,
+				BB31FC22160BFA750049B6BF /* DWEditBylineViewController.h */,
+				BB31FC23160BFA750049B6BF /* DWEditBylineViewController.m */,
+				BB31FC24160BFA750049B6BF /* DWEditBylineViewController.xib */,
 				2622005415C713A7003DC1DF /* DWInviteViewController.h */,
 				2622005515C713A7003DC1DF /* DWInviteViewController.m */,
 				2622005615C713A7003DC1DF /* DWInviteViewController.xib */,
@@ -1872,6 +1901,14 @@
 				BB29D6C9160BB4B100FC69F4 /* login-strapline@2x.png in Resources */,
 				268B6916160BD0E6003F4A67 /* nav-btn-invite-off@2x.png in Resources */,
 				268B6917160BD0E6003F4A67 /* nav-btn-invite-on@2x.png in Resources */,
+				BB31FC16160BEE9C0049B6BF /* login-btn-facebook-loading@2x.png in Resources */,
+				BB31FC17160BEE9C0049B6BF /* login-btn-twitter-loading@2x.png in Resources */,
+				BB31FC26160BFA750049B6BF /* DWEditBylineViewController.xib in Resources */,
+				BB31FC2C160CC2AB0049B6BF /* cell-5rows@2x.png in Resources */,
+				BB31FC2D160CC2AB0049B6BF /* nav-btn-cancel-left-off@2x.png in Resources */,
+				BB31FC2E160CC2AB0049B6BF /* nav-btn-cancel-left-on@2x.png in Resources */,
+				BB31FC2F160CC2AB0049B6BF /* nav-btn-save-off@2x.png in Resources */,
+				BB31FC30160CC2AB0049B6BF /* nav-btn-save-on@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2052,6 +2089,7 @@
 				2676AA0215FE714B00B0B579 /* DWGUIManager.m in Sources */,
 				2618C0FE15FEAE9500CA41B9 /* DWStoreCell.m in Sources */,
 				267F27201602C2B10061ACEF /* DWOnboardingFeedViewController.m in Sources */,
+				BB31FC25160BFA750049B6BF /* DWEditBylineViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

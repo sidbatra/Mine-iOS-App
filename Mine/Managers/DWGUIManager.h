@@ -26,4 +26,6 @@
  */
 + (UIBarButtonItem*)navBarDoneButtonWithTarget:(id)target;
 
++ (UIBarButtonItem*)navBarSaveButtonWithTarget:(id)target;
+
 @end

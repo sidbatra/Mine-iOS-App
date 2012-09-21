@@ -24,6 +24,12 @@
     UIButton *_loginWithFBButton;
     UIButton *_loginWithTWButton;
     
+    UIImageView *_loadingFBImageView;
+    UIImageView *_loadingTWImageView;
+    
+    UIActivityIndicatorView *_loadingFBSpinner;
+    UIActivityIndicatorView *_loadingTWSpinner;
+    
     __weak id<DWLoginViewControllerDelegate> _delegate;
 }
 
@@ -38,7 +44,10 @@
 @property (nonatomic) IBOutlet UIButton *playButton;
 @property (nonatomic) IBOutlet UIButton *loginWithFBButton;
 @property (nonatomic) IBOutlet UIButton *loginWithTWButton;
-
+@property (nonatomic) IBOutlet UIImageView *loadingFBImageView;
+@property (nonatomic) IBOutlet UIImageView *loadingTWImageView;
+@property (nonatomic) IBOutlet UIActivityIndicatorView *loadingFBSpinner;
+@property (nonatomic) IBOutlet UIActivityIndicatorView *loadingTWSpinner;
 
 /**
  * IBActions

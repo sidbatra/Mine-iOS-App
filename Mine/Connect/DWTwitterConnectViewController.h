@@ -55,4 +55,5 @@
 
 - (void)twitterAuthorizedWithAccessToken:(NSString*)accessToken 
                     andAccessTokenSecret:(NSString*)accessTokenSecret;
+
 @end

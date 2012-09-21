@@ -11,9 +11,9 @@
 #import "DWNavigationBarTitleView.h"
 #import "DWConstants.h"
 
-static NSString* const kImgBottomDrawer         = @"bottom-drawer-trans@2x.png";
-static NSString* const kImgStartMineButtonOff   = @"btn-start-off@2x.png";
-static NSString* const kImgStartMineButtonOn    = @"btn-start-on@2x.png";
+static NSString* const kImgBottomDrawer         = @"bottom-drawer-trans.png";
+static NSString* const kImgStartMineButtonOff   = @"btn-start-off.png";
+static NSString* const kImgStartMineButtonOn    = @"btn-start-on.png";
 
 
 /**

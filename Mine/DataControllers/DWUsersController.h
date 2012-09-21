@@ -99,6 +99,9 @@ extern NSString* const kNUserManualUpdated;
 - (void)updateUserHavingID:(NSInteger)userID
                  withEmail:(NSString*)email
                 withGender:(NSString*)gender;
+
+- (void)updateUserHavingID:(NSInteger)userID
+                withByline:(NSString*)byline;
 @end
 
 

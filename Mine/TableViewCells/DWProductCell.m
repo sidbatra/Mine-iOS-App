@@ -14,8 +14,8 @@
  */
 NSInteger const kProductCellHeight = 102;
 
-static NSString* const kImgProductBackground = @"chooser-item-bg-off@2x.png";
-static NSString* const kImgProductHighlight  = @"chooser-item-bg-on@2x.png";
+static NSString* const kImgProductBackground = @"chooser-item-bg-off.png";
+static NSString* const kImgProductHighlight  = @"chooser-item-bg-on.png";
 
 
 @interface DWProductCell() {
