@@ -179,7 +179,6 @@ static CGRect const kFullScreenFrame    = { {0,0}, {320, kScreenHeight} };
  }
  */
 
-/*
  //----------------------------------------------------------------------------------------------------
  - (void)hideTopShadowView {
  self.topShadowView.hidden = YES;
@@ -189,7 +188,7 @@ static CGRect const kFullScreenFrame    = { {0,0}, {320, kScreenHeight} };
  - (void)showTopShadowView {
  self.topShadowView.hidden = NO;
  }
- */
+ 
 
 
 //----------------------------------------------------------------------------------------------------

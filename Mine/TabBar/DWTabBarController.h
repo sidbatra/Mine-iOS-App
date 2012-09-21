@@ -63,12 +63,12 @@
 /**
  * Hide the top show shadow image
  */
-//- (void)hideTopShadowView;
+- (void)hideTopShadowView;
 
 /**
  * Display the top shadow image
  */
-//- (void)showTopShadowView;
+- (void)showTopShadowView;
 
 @end
 

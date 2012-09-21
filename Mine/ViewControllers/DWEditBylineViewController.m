@@ -136,6 +136,9 @@ static NSInteger const kMaxBylineLength = 160;
     
 }
 
+//----------------------------------------------------------------------------------------------------
+- (void)hideTopShadowOnTabBar {
 
+}
 
 @end

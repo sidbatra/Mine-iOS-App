@@ -284,6 +284,10 @@
     else
         [self.customTabBarController disableFullScreen];
     
+    if ([viewController respondsToSelector:@selector(hideTopShadowOnTabBar)])
+        [self.customTabBarController hideTopShadowView]; 	
+    else
+        [self.customTabBarController showTopShadowView];
 }
 
 
