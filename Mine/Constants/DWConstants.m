@@ -76,9 +76,9 @@ NSString* const kRailsDateTimeFormat = @"yyyy-MM-dd HH:mm:ss ZZZ";
 
 //----------------------------------------------------------------------------------------------------
 NSString* const kImgChevron         = @"chevron.png";
-NSString* const kImgDoneOff         = @"nav-btn-done-off@2x.png";
-NSString* const kImgDoneOn          = @"nav-btn-done-on@2x.png";
-NSString* const kImgMessageDrawer   = @"message-drawer-opaque@2x.png";
+NSString* const kImgDoneOff         = @"nav-btn-done-off.png";
+NSString* const kImgDoneOn          = @"nav-btn-done-on.png";
+NSString* const kImgMessageDrawer   = @"message-drawer-opaque.png";
 NSString* const kImgTopShadow       = @"nav-shadow.png";
 
 //----------------------------------------------------------------------------------------------------
