@@ -1876,13 +1876,10 @@
 				BB29D6C5160BB27F00FC69F4 /* cell-bottom-faded-off@2x.png in Resources */,
 				BB29D6C6160BB27F00FC69F4 /* cell-middle-chevron-off@2x.png in Resources */,
 				BB29D6C9160BB4B100FC69F4 /* login-strapline@2x.png in Resources */,
-<<<<<<< HEAD
 				268B6916160BD0E6003F4A67 /* nav-btn-invite-off@2x.png in Resources */,
 				268B6917160BD0E6003F4A67 /* nav-btn-invite-on@2x.png in Resources */,
-=======
 				BB31FC16160BEE9C0049B6BF /* login-btn-facebook-loading@2x.png in Resources */,
 				BB31FC17160BEE9C0049B6BF /* login-btn-twitter-loading@2x.png in Resources */,
->>>>>>> spinners on login view.
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
