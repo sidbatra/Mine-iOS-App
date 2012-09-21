@@ -16,10 +16,11 @@
 
 static NSString* const kImgSettingsOff          = @"nav-btn-settings-off.png";
 static NSString* const kImgSettingsOn           = @"nav-btn-settings-on.png";
+static NSString* const kImgInviteOff            = @"nav-btn-invite-off.png";
+static NSString* const kImgInviteOn             = @"nav-btn-invite-on.png";
 static NSString* const kAboutURL                = @"/about?web_view_mode=true";
 static NSString* const kFAQURL                  = @"/faq?web_view_mode=true";
 static NSInteger const kSettingsActionSheetTag  = -1;
-
 
 
 //----------------------------------------------------------------------------------------------------
@@ -65,12 +66,49 @@ static NSInteger const kSettingsActionSheetTag  = -1;
 #pragma mark View Lifecycle
 
 //----------------------------------------------------------------------------------------------------
+- (void)loadSideButtons {
+    
+    UIButton *settingsButton =  [UIButton buttonWithType:UIButtonTypeCustom];    
+    
+    [settingsButton setBackgroundImage:[UIImage imageNamed:kImgSettingsOff] 
+                      forState:UIControlStateNormal];
+    
+    [settingsButton setBackgroundImage:[UIImage imageNamed:kImgSettingsOn] 
+                      forState:UIControlStateHighlighted];
+    
+	[settingsButton addTarget:self
+               action:@selector(settingsButtonClicked)
+     forControlEvents:UIControlEventTouchUpInside];
+    
+	[settingsButton setFrame:CGRectMake(0, 0,40,30)];
+    
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:settingsButton];    
+    
+    
+    
+    UIButton *inviteButton =  [UIButton buttonWithType:UIButtonTypeCustom];    
+    
+    [inviteButton setBackgroundImage:[UIImage imageNamed:kImgInviteOff] 
+                            forState:UIControlStateNormal];
+    
+    [inviteButton setBackgroundImage:[UIImage imageNamed:kImgInviteOn] 
+                            forState:UIControlStateHighlighted];
+    
+	[inviteButton addTarget:self
+                     action:@selector(inviteButtonClicked)
+           forControlEvents:UIControlEventTouchUpInside];
+    
+	[inviteButton setFrame:CGRectMake(0,0,55,30)];
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:inviteButton];
+}
+
+//----------------------------------------------------------------------------------------------------
 - (void)viewDidLoad {
 	[super viewDidLoad];
     
     self.navigationItem.title = @"";
-    
-    
+        
     if(!self.profileViewController) {
         self.profileViewController = [[DWProfileViewController alloc] initWithUser:[DWSession sharedDWSession].currentUser];
         self.profileViewController.delegate = self;
@@ -79,26 +117,8 @@ static NSInteger const kSettingsActionSheetTag  = -1;
     if(!self.navTitleView) {
         self.navTitleView = [DWNavigationBarTitleView logoTitleView];
     }
-    
-    
-    UIButton *button =  [UIButton buttonWithType:UIButtonTypeCustom];    
-    
-    [button setBackgroundImage:[UIImage imageNamed:kImgSettingsOff] 
-                      forState:UIControlStateNormal];
-    
-    [button setBackgroundImage:[UIImage imageNamed:kImgSettingsOn] 
-                      forState:UIControlStateHighlighted];
-    
-	[button addTarget:self
-               action:@selector(settingsButtonClicked)
-     forControlEvents:UIControlEventTouchUpInside];
-    
-	[button setFrame:CGRectMake(0, 0,40,30)];
-    
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
-    
-    
-    
+
+    [self loadSideButtons];  
     
     [self.view addSubview:self.profileViewController.view];
 }
@@ -157,6 +177,11 @@ static NSInteger const kSettingsActionSheetTag  = -1;
         default:
             break;
     }    
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)inviteButtonClicked {
+    [self displayInvite];
 }
 
 
