@@ -140,7 +140,7 @@ static NSInteger const kSettingsActionSheetTag  = -1;
                                                               delegate:self 
                                                      cancelButtonTitle:@"Cancel"
                                                 destructiveButtonTitle:@"Log Out"
-                                                     otherButtonTitles:@"Edit bio",@"About",@"FAQ",nil];
+                                                     otherButtonTitles:@"Edit Bio",@"About",@"FAQ",nil];
     
     actionSheet.tag = kSettingsActionSheetTag;
     
