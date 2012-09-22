@@ -96,7 +96,7 @@ static NSString* const kImgSeparatorDark            = @"hr-125980.png";
         _highlighted ? [[UIColor whiteColor] set] : [[UIColor colorWithRed:0.0901 green:0.4352 blue:0.6274 alpha:1.0] set];
         [self drawFirstLine]; 
         
-        _highlighted ? [[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.5] set] : [[UIColor colorWithRed:0.0901 green:0.4352 blue:0.6274 alpha:1.0] set];
+        _highlighted ? [[UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.5] set] : [[UIColor colorWithRed:0.0901 green:0.4352 blue:0.6274 alpha:0.75] set];
         [self drawSecondLine];
         
         [[UIImage imageNamed:kImgSeparatorLight] drawInRect:CGRectMake(0, 42, 320, 1)];
