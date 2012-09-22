@@ -165,6 +165,7 @@ static NSInteger const kBottomBarMargin = 44;
     if(self.creationIntent) {
         [self.commentTextField becomeFirstResponder];    
         [self.commentsViewController scrollToBottomWithAnimation:NO];
+        self.creationIntent = NO;
     }
 }
 
