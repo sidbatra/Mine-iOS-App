@@ -8,15 +8,23 @@
 
 #import <UIKit/UIKit.h>
 
+#import "DWCommentsViewController.h"
 #import "DWCommentsController.h"
 
+@class DWUser;
 @class DWPurchase;
+@protocol DWCommentsCreateViewControllerDelegate;
 
-@interface DWCommentsCreateViewController : UIViewController<UITextFieldDelegate,DWCommentsControllerDelegate> {
+
+@interface DWCommentsCreateViewController : UIViewController<UITextFieldDelegate,DWCommentsViewControllerDelegate,DWCommentsControllerDelegate> {
     UIImageView     *_commentBarView;
     UITextField     *_commentTextField;
     UIButton        *_sendButton;
+    
+    __weak id<DWCommentsCreateViewControllerDelegate> _delegate;
 }
+
+@property (nonatomic,weak) id<DWCommentsCreateViewControllerDelegate> delegate;
 
 /**
  * Text field for creating comments.
@@ -31,5 +39,15 @@
  */
 - (id)initWithPurchase:(DWPurchase*)purchase 
     withCreationIntent:(BOOL)creationIntent;
+
+@end
+
+
+
+@protocol DWCommentsCreateViewControllerDelegate
+
+@required
+
+- (void)commentsCreateViewUserClicked:(DWUser*)user;
 
 @end

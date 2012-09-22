@@ -8,7 +8,6 @@
 
 #import "DWCommentsCreateViewController.h"
 
-#import "DWCommentsViewController.h"
 #import "DWNavigationBarBackButton.h"
 #import "DWGUIManager.h"
 #import "DWSession.h"
@@ -85,6 +84,7 @@ static NSInteger const kBottomBarMargin = 44;
 @synthesize commentBarView          = _commentBarView;
 @synthesize commentTextField        = _commentTextField;
 @synthesize sendButton              = _sendButton;
+@synthesize delegate                = _delegate;
 
 //----------------------------------------------------------------------------------------------------
 - (id)initWithPurchase:(DWPurchase*)purchase 
@@ -139,6 +139,7 @@ static NSInteger const kBottomBarMargin = 44;
     
     if(!self.commentsViewController) {
         self.commentsViewController = [[DWCommentsViewController alloc] initWithComments:self.purchase.comments];
+        self.commentsViewController.delegate = self;
         self.commentsViewController.view.frame = CGRectMake(0,
                                                             0, 
                                                             self.view.frame.size.width, 
@@ -242,6 +243,21 @@ static NSInteger const kBottomBarMargin = 44;
     
     [self.commentsController createCommentForPurchaseID:self.purchase.databaseID
                                             withMessage:message];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWCommentsViewControllerDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)commentsViewUserClicked:(DWUser *)user {
+
+    if(!user)
+        return;
+    
+    [self.delegate commentsCreateViewUserClicked:user];
 }
 
 

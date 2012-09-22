@@ -30,6 +30,7 @@
     
     for(DWLike *like in purchase.likes) {
         [users addObject:like.user];
+        [like.user incrementPointerCount];
     }
     
     self.objects = users;

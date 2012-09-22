@@ -28,6 +28,8 @@
 //----------------------------------------------------------------------------------------------------
 @implementation DWCommentsViewController
 
+@synthesize delegate = _delegate;
+
 
 //----------------------------------------------------------------------------------------------------
 - (id)initWithComments:(NSMutableArray*)comments {
@@ -36,6 +38,10 @@
     if(self) {        
                 
         self.tableViewDataSource = [[DWCommentsViewDataSource alloc] init];
+        
+        for(DWComment *comment in comments)
+            [comment incrementPointerCount];
+        
         self.tableViewDataSource.objects = comments;
         
         [self addModelPresenterForClass:[DWComment class]
@@ -98,9 +104,11 @@
 //----------------------------------------------------------------------------------------------------
 - (void)userClickedForCommentID:(NSNumber*)commentID {
     DWComment *comment = [DWComment fetch:[commentID integerValue]];
-    
+
     if(!comment)
         return;
+    
+    [self.delegate commentsViewUserClicked:comment.user];
 }
 
 

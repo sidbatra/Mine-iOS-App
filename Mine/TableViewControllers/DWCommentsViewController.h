@@ -8,7 +8,15 @@
 
 #import "DWTableViewController.h"
 
-@interface DWCommentsViewController : DWTableViewController
+@class DWUser;
+@protocol DWCommentsViewControllerDelegate;
+
+
+@interface DWCommentsViewController : DWTableViewController {
+    __weak id<DWCommentsViewControllerDelegate> _delegate;
+}
+
+@property (nonatomic,weak) id<DWCommentsViewControllerDelegate> delegate;
 
 
 /**
@@ -25,5 +33,14 @@
  * Update UI after a new comment failed to be created.
  */
 - (void)newCommentFailed;
+
+@end
+
+
+@protocol DWCommentsViewControllerDelegate
+
+@required
+
+- (void)commentsViewUserClicked:(DWUser*)user;
 
 @end

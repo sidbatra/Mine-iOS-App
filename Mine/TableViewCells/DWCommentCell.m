@@ -122,6 +122,7 @@ static NSInteger const kUserImageSide = 32;
 	[attrStr setTextBold:YES range:NSMakeRange(0,userName.length+1)];
     
     CGRect frame = messageLabel.frame;
+    frame.size.height = 0;
     frame.size.width = kCommentWidth;
     messageLabel.frame = frame;
     

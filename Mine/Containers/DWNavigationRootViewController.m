@@ -7,7 +7,6 @@
 //
 
 #import "DWNavigationRootViewController.h"
-#import "DWCommentsCreateViewController.h"
 #import "DWLikersViewController.h"
 #import "DWFollowersViewController.h"
 #import "DWIFollowersViewController.h"
@@ -88,6 +87,7 @@
     
     DWCommentsCreateViewController *commentsViewController = [[DWCommentsCreateViewController alloc] initWithPurchase:purchase
                                                                                                    withCreationIntent:creationIntent];
+    commentsViewController.delegate = self;
     
     [self.navigationController pushViewController:commentsViewController 
                                          animated:YES];
@@ -257,6 +257,17 @@
     [DWSession sharedDWSession].currentUser.setting.shareToTumblr   = shareToTB;    
     
     [[DWSession sharedDWSession] update];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWCreationViewControllerDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)commentsCreateViewUserClicked:(DWUser *)user {
+    [self displayUserProfile:user];
 }
 
 
