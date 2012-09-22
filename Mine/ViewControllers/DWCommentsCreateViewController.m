@@ -9,6 +9,8 @@
 #import "DWCommentsCreateViewController.h"
 
 #import "DWCommentsViewController.h"
+#import "DWNavigationBarBackButton.h"
+#import "DWGUIManager.h"
 #import "DWSession.h"
 
 #import "DWPurchase.h"
@@ -98,17 +100,6 @@ static NSInteger const kBottomBarMargin = 44;
         self.commentsController.delegate = self;
     }
     
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self 
-                                             selector:@selector(keyboardWillShow:) 
-                                                 name:UIKeyboardWillShowNotification 
-                                               object:self.view.window];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self 
-                                             selector:@selector(keyboardWillHide:) 
-                                                 name:UIKeyboardWillHideNotification 
-                                               object:self.view.window];
-    
     return self;
 }
 
@@ -131,6 +122,20 @@ static NSInteger const kBottomBarMargin = 44;
 //----------------------------------------------------------------------------------------------------
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self 
+                                             selector:@selector(keyboardWillShow:) 
+                                                 name:UIKeyboardWillShowNotification 
+                                               object:self.view.window];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self 
+                                             selector:@selector(keyboardWillHide:) 
+                                                 name:UIKeyboardWillHideNotification 
+                                               object:self.view.window];
+    
+    
+    self.navigationItem.leftBarButtonItem = [DWNavigationBarBackButton backButtonForNavigationController:self.navigationController];
+    self.navigationItem.titleView  = [DWGUIManager navBarTitleViewWithText:@"Comments"];
     
     if(!self.commentsViewController) {
         self.commentsViewController = [[DWCommentsViewController alloc] initWithComments:self.purchase.comments];
@@ -165,7 +170,8 @@ static NSInteger const kBottomBarMargin = 44;
 //----------------------------------------------------------------------------------------------------
 - (void)viewDidUnload {
     [super viewDidUnload];
-
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -215,7 +221,6 @@ static NSInteger const kBottomBarMargin = 44;
     
     
     self.isKeyboardShown = movingUp;
-
 }
 
 
