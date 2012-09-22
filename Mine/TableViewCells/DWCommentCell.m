@@ -8,14 +8,22 @@
 
 #import "DWCommentCell.h"
 
-static NSInteger const kCommentCellHeight = 150;
+#import <QuartzCore/QuartzCore.h>
+#import "NSAttributedString+Attributes.h"
+
+static NSString* const kUserURLScheme   = @"user";
+
+static NSInteger const kCommentCellHeight = 20;
+static NSInteger const kCommentWidth = 250;
+static NSInteger const kUserImageSide = 32;
+
+#define kCommentFont [UIFont fontWithName:@"HelveticaNeue" size:14]
 
 
 @interface DWCommentCell() {
     UIButton    *userImageButton;
-    UIButton    *userNameButton;
     
-    UILabel     *messageLabel;
+    OHAttributedLabel   *messageLabel;
 }
 
 
@@ -47,7 +55,6 @@ static NSInteger const kCommentCellHeight = 150;
         self.contentView.clipsToBounds = YES;
         
         [self createUserImageButton];
-        [self createUserNameButton];
         [self createMessageLabel];
         
 		self.selectionStyle = UITableViewCellSelectionStyleNone;	
@@ -67,7 +74,9 @@ static NSInteger const kCommentCellHeight = 150;
 
 //----------------------------------------------------------------------------------------------------
 - (void)createUserImageButton {
-    userImageButton  = [[UIButton alloc] initWithFrame:CGRectMake(0,0,50,50)];
+    userImageButton  = [[UIButton alloc] initWithFrame:CGRectMake(10,10,kUserImageSide,kUserImageSide)];
+    
+     userImageButton.imageView.layer.cornerRadius = 2;
     
     [userImageButton addTarget:self
                         action:@selector(didTapUserImageButton:)
@@ -77,32 +86,17 @@ static NSInteger const kCommentCellHeight = 150;
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)createUserNameButton {
-    userNameButton  = [[UIButton alloc] initWithFrame:CGRectMake(55,0,self.contentView.frame.size.width-10,50)];
-    userNameButton.backgroundColor = [UIColor redColor];
-    
-    userNameButton.titleLabel.font               = [UIFont fontWithName:@"HelveticaNeue" size:13];
-    userNameButton.titleLabel.textColor          = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0];
-    userNameButton.titleLabel.textAlignment      = UITextAlignmentLeft;
-    
-    [userNameButton addTarget:self
-                       action:@selector(didTapUserNameButton:)
-             forControlEvents:UIControlEventTouchUpInside];
-    
-    [self.contentView addSubview:userNameButton];
-}
-
-//----------------------------------------------------------------------------------------------------
 - (void)createMessageLabel {
-    messageLabel = [[UILabel alloc] initWithFrame:CGRectMake(10,
-                                                             55,
-                                                             self.contentView.frame.size.width - 10,
-                                                             60)];
-    messageLabel.numberOfLines       = 0;
-    messageLabel.backgroundColor     = [UIColor greenColor];
-    messageLabel.font                = [UIFont fontWithName:@"HelveticaNeue" size:13];
-    messageLabel.textColor           = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0];
-    messageLabel.textAlignment       = UITextAlignmentLeft;
+    
+    messageLabel =  [[OHAttributedLabel alloc] initWithFrame:CGRectMake(userImageButton.frame.origin.y + userImageButton.frame.size.width + 5, 
+                                                        11,
+                                                        kCommentWidth,
+                                                        0)];
+    messageLabel.backgroundColor = [UIColor clearColor];
+    messageLabel.automaticallyAddLinksForType = 0;
+    messageLabel.linkColor = [UIColor colorWithRed:0.090 green:0.435 blue:0.627 alpha:1.0];
+    messageLabel.underlineLinks = NO;
+    messageLabel.delegate = self;
     
     [self.contentView addSubview:messageLabel];
 }
@@ -114,24 +108,38 @@ static NSInteger const kCommentCellHeight = 150;
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)setUserName:(NSString*)userName {
-    [userNameButton setTitle:userName
-                    forState:UIControlStateNormal];
-}
-
-//----------------------------------------------------------------------------------------------------
-- (void)setMessage:(NSString*)message {
-    messageLabel.frame = CGRectMake(10,
-                                    55,
-                                    self.contentView.frame.size.width - 10,
-                                    60);
-    messageLabel.text = message;
+- (void)setMessage:(NSString*)message userName:(NSString*)userName {
+    
+    NSString *commentText = [NSString stringWithFormat:@"%@: %@",userName,message];
+        
+    NSRange nameRange = NSMakeRange(0,userName.length);
+    
+	NSMutableAttributedString* attrStr = [NSMutableAttributedString attributedStringWithString:commentText];
+    
+	[attrStr setFont:kCommentFont];
+	[attrStr setTextColor:[UIColor colorWithRed:0.333 green:0.333 blue:0.333 alpha:1.0]];
+    
+	[attrStr setTextBold:YES range:NSMakeRange(0,userName.length+1)];
+    
+    CGRect frame = messageLabel.frame;
+    frame.size.width = kCommentWidth;
+    messageLabel.frame = frame;
+    
+    messageLabel.attributedText = attrStr;
     [messageLabel sizeToFit];
+    
+    [messageLabel addCustomLink:[NSURL URLWithString:kUserURLScheme]
+                               inRange:nameRange];
 }
 
 //----------------------------------------------------------------------------------------------------
-+ (NSInteger)heightForCellWithMessage:(NSString*)message {
-    return kCommentCellHeight;
++ (NSInteger)heightForCellWithMessage:(NSString*)message userName:(NSString*)userName {
+    
+    NSInteger textHeight = [[NSString stringWithFormat:@"%@: %@",userName,message] sizeWithFont:kCommentFont 
+                                                                                                   constrainedToSize:CGSizeMake(kCommentWidth,1500)
+                                                                                                       lineBreakMode:UILineBreakModeWordWrap].height;
+    
+    return kCommentCellHeight +  MAX(kUserImageSide,textHeight);
 }
 
 
@@ -145,9 +153,19 @@ static NSInteger const kCommentCellHeight = 150;
     [self userClicked];
 }
 
+
 //----------------------------------------------------------------------------------------------------
-- (void)didTapUserNameButton:(UIButton*)button {
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark OHAttributedLabelDelegate
+
+//----------------------------------------------------------------------------------------------------
+-(BOOL)attributedLabel:(OHAttributedLabel *)attributedLabel 
+      shouldFollowLink:(NSTextCheckingResult *)linkInfo {
+    
     [self userClicked];
+    
+    return true;
 }
 
 

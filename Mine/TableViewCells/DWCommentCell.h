@@ -8,11 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+#import "OHAttributedLabel.h"
+
 
 @protocol DWCommentCellDelegate;
 
 
-@interface DWCommentCell : UITableViewCell {
+@interface DWCommentCell : UITableViewCell<OHAttributedLabelDelegate> {
     NSInteger   _commentID;
     
     __weak id<DWCommentCellDelegate,NSObject> _delegate;
@@ -33,21 +35,13 @@
  */
 - (void)setUserImage:(UIImage*)image;
 
-/**
- * Apply commentor's name
- */
-- (void)setUserName:(NSString*)userName;
-
-/**
- * Apply the comment message.
- */
-- (void)setMessage:(NSString*)message;
+- (void)setMessage:(NSString*)message userName:(NSString*)userName;
 
 
 /**
  * Compute height of cell with the given message.
  */
-+ (NSInteger)heightForCellWithMessage:(NSString*)message;
++ (NSInteger)heightForCellWithMessage:(NSString*)message userName:(NSString*)userName; 
 
 @end
 

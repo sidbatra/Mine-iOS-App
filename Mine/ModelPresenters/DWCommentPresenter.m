@@ -39,8 +39,7 @@
     [comment.user downloadSquareImage];
     
     [cell setUserImage:comment.user.squareImage];
-    [cell setUserName:comment.user.fullName];
-    [cell setMessage:comment.message];
+    [cell setMessage:comment.message userName:comment.user.fullName];
     
     return cell;
 }
@@ -51,7 +50,8 @@
     
     DWComment *comment = object;
     
-    return [DWCommentCell heightForCellWithMessage:comment.message];
+    return [DWCommentCell heightForCellWithMessage:comment.message 
+                                          userName:comment.user.fullName];
 }
 
 //----------------------------------------------------------------------------------------------------
