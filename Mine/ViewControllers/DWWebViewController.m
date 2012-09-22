@@ -98,4 +98,10 @@
     [self.navigationController.navigationBar addSubview:self.navTitleView];
 }
 
+//----------------------------------------------------------------------------------------------------
+- (void)requiresFullScreenMode {
+    
+}
+
+
 @end

@@ -15,7 +15,7 @@
 #import "DWConstants.h"
 
 
-static NSInteger const kBottomBarMargin = 49;
+static NSInteger const kBottomBarMargin = 44;
 
 
 @interface DWCommentsCreateViewController () {
@@ -80,7 +80,9 @@ static NSInteger const kBottomBarMargin = 49;
 @synthesize lastCommentMessage      = _lastCommentMessage;
 @synthesize commentsViewController  = _commentsViewController;
 @synthesize isKeyboardShown         = _isKeyboardShown;
+@synthesize commentBarView          = _commentBarView;
 @synthesize commentTextField        = _commentTextField;
+@synthesize sendButton              = _sendButton;
 
 //----------------------------------------------------------------------------------------------------
 - (id)initWithPurchase:(DWPurchase*)purchase 
@@ -135,7 +137,7 @@ static NSInteger const kBottomBarMargin = 49;
         self.commentsViewController.view.frame = CGRectMake(0,
                                                             0, 
                                                             self.view.frame.size.width, 
-                                                            self.view.frame.size.height - self.commentTextField.frame.size.height);
+                                                            self.view.frame.size.height - self.commentBarView.frame.size.height);
         
         UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self
                                                                                             action:@selector(commentsViewControllerTapped)];
@@ -144,7 +146,7 @@ static NSInteger const kBottomBarMargin = 49;
     }
     
     [self.view insertSubview:self.commentsViewController.view
-                belowSubview:self.commentTextField];
+                belowSubview:self.commentBarView];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -163,6 +165,56 @@ static NSInteger const kBottomBarMargin = 49;
 //----------------------------------------------------------------------------------------------------
 - (void)viewDidUnload {
     [super viewDidUnload];
+
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)keyboardMovingUp:(BOOL)movingUp withNotification:(NSNotification*)notification {
+    
+    if(self.isKeyboardShown == movingUp)
+        return;
+    
+    
+    NSDictionary* userInfo = [notification userInfo];
+    
+    
+    NSTimeInterval animationDuration;
+    UIViewAnimationCurve animationCurve;
+    
+    [[userInfo objectForKey:UIKeyboardAnimationCurveUserInfoKey] getValue:&animationCurve];
+    [[userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] getValue:&animationDuration];
+    
+    
+    CGSize keyboardSize = [[userInfo objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+    CGFloat delta = keyboardSize.height * (movingUp ? -1 : 1);
+    
+    CGRect textFieldFrame = self.commentTextField.frame;
+    textFieldFrame.origin.y += delta;
+    
+    CGRect barFrame = self.commentBarView.frame;
+    barFrame.origin.y += delta;
+    
+    CGRect buttonFrame = self.sendButton.frame;
+    buttonFrame.origin.y += delta;
+    
+    CGRect tableViewFrame = self.commentsViewController.view.frame;
+    tableViewFrame.size.height += delta;
+    
+    
+    [UIView beginAnimations:nil context:NULL];
+    [UIView setAnimationBeginsFromCurrentState:YES];
+    [UIView setAnimationDuration:animationDuration];
+    [UIView setAnimationCurve:animationCurve];
+    
+    [self.commentsViewController.view setFrame:tableViewFrame];
+    [self.commentTextField setFrame:textFieldFrame];
+    [self.commentBarView setFrame:barFrame];
+    [self.sendButton setFrame:buttonFrame];
+    
+    [UIView commitAnimations];
+    
+    
+    self.isKeyboardShown = movingUp;
 
 }
 
@@ -262,79 +314,25 @@ static NSInteger const kBottomBarMargin = 49;
 //----------------------------------------------------------------------------------------------------
 - (void)keyboardWillHide:(NSNotification *)notification {
     
-    NSDictionary* userInfo = [notification userInfo];
-    
-    
-    NSTimeInterval animationDuration;
-    UIViewAnimationCurve animationCurve;
-    
-    [[userInfo objectForKey:UIKeyboardAnimationCurveUserInfoKey] getValue:&animationCurve];
-    [[userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] getValue:&animationDuration];
-    
-    
-    CGSize keyboardSize = [[userInfo objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
-    
-    
-    CGRect textFieldFrame = self.commentTextField.frame;
-    textFieldFrame.origin.y += keyboardSize.height - kBottomBarMargin;
-    
-    
-    CGRect tableViewFrame = self.commentsViewController.view.frame;
-    tableViewFrame.size.height += (keyboardSize.height - kBottomBarMargin);
-    
-    
-    [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationBeginsFromCurrentState:YES];
-    [UIView setAnimationDuration:animationDuration];
-    [UIView setAnimationCurve:animationCurve];
-    
-        [self.commentsViewController.view setFrame:tableViewFrame];
-        [self.commentTextField setFrame:textFieldFrame];
-    
-    [UIView commitAnimations];
-    
-    
-    self.isKeyboardShown = NO;
+    [self keyboardMovingUp:NO
+          withNotification:notification];
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)keyboardWillShow:(NSNotification *)notification {
     
-    if (self.isKeyboardShown)
-        return;
-    
-    
-    NSDictionary* userInfo = [notification userInfo];
-    
-    NSTimeInterval animationDuration;
-    UIViewAnimationCurve animationCurve;
-    
-    [[userInfo objectForKey:UIKeyboardAnimationCurveUserInfoKey] getValue:&animationCurve];
-    [[userInfo objectForKey:UIKeyboardAnimationDurationUserInfoKey] getValue:&animationDuration];
-    
-    CGSize keyboardSize = [[userInfo objectForKey:UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
-    
-    
-    CGRect textFieldFrame = self.commentTextField.frame;
-    textFieldFrame.origin.y -= keyboardSize.height - kBottomBarMargin;
-    
-    
-    CGRect tableViewFrame = self.commentsViewController.view.frame;
-    tableViewFrame.size.height -= (keyboardSize.height - kBottomBarMargin);
-    
-    
-    [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationBeginsFromCurrentState:YES];
-    [UIView setAnimationDuration:animationDuration];
-    [UIView setAnimationCurve:animationCurve];
-    
-        [self.commentsViewController.view setFrame:tableViewFrame];
-        [self.commentTextField setFrame:textFieldFrame];
-    
-    [UIView commitAnimations];
-    
-    
-    self.isKeyboardShown = YES;
+    [self keyboardMovingUp:YES
+          withNotification:notification];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark Nav stack selectors
+
+//----------------------------------------------------------------------------------------------------
+- (void)requiresFullScreenMode {
 }
 
 @end

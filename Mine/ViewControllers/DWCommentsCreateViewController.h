@@ -13,13 +13,17 @@
 @class DWPurchase;
 
 @interface DWCommentsCreateViewController : UIViewController<UITextFieldDelegate,DWCommentsControllerDelegate> {
+    UIImageView     *_commentBarView;
     UITextField     *_commentTextField;
+    UIButton        *_sendButton;
 }
 
 /**
  * Text field for creating comments.
  */
+@property (nonatomic) IBOutlet UIImageView *commentBarView;
 @property (nonatomic) IBOutlet UITextField *commentTextField;
+@property (nonatomic) IBOutlet UIButton *sendButton;
 
 
 /**
