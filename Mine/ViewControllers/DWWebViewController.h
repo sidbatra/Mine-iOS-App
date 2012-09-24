@@ -8,11 +8,15 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DWWebViewController : UIViewController<UIWebViewDelegate> {
+@class DWToolbar;
+
+@interface DWWebViewController : UIViewController<UIWebViewDelegate,UIActionSheetDelegate> {
     UIWebView   *_webView;
+    DWToolbar   *_toolbar;
 }
 
 @property (nonatomic) IBOutlet UIWebView *webView;
+@property (nonatomic) IBOutlet DWToolbar *toolbar;
 
 
 /**

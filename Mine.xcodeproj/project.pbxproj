@@ -240,6 +240,7 @@
 		BB31FC30160CC2AB0049B6BF /* nav-btn-save-on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB31FC2B160CC2AB0049B6BF /* nav-btn-save-on@2x.png */; };
 		BB31FC37160D35770049B6BF /* comments-bar@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB31FC35160D35770049B6BF /* comments-bar@2x.png */; };
 		BB31FC38160D35770049B6BF /* comments-btn-send@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB31FC36160D35770049B6BF /* comments-btn-send@2x.png */; };
+		BB31FC481610DC190049B6BF /* DWToolbar.m in Sources */ = {isa = PBXBuildFile; fileRef = BB31FC471610DC190049B6BF /* DWToolbar.m */; };
 		BB46140215CB3A5A00B38D71 /* DWUserPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = BB46140115CB3A5A00B38D71 /* DWUserPresenter.m */; };
 		BB46140615CB3A7500B38D71 /* DWUserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BB46140515CB3A7500B38D71 /* DWUserCell.m */; };
 		BB46142615CC6ABD00B38D71 /* DWModelSet.m in Sources */ = {isa = PBXBuildFile; fileRef = BB46142515CC6ABD00B38D71 /* DWModelSet.m */; };
@@ -316,6 +317,10 @@
 		BBEDD32215E5087B007F862F /* DWSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BBEDD32115E5087B007F862F /* DWSearchBar.m */; };
 		BBEDD33615EB3D6D007F862F /* DWUserDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBEDD33415EB3D6D007F862F /* DWUserDetailsViewController.m */; };
 		BBEDD33715EB3D6D007F862F /* DWUserDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBEDD33515EB3D6D007F862F /* DWUserDetailsViewController.xib */; };
+		BBFC7AF11610E3D300C880C6 /* tab-bar-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BBFC7AED1610E3D300C880C6 /* tab-bar-bg@2x.png */; };
+		BBFC7AF21610E3D300C880C6 /* tab-web-back@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BBFC7AEE1610E3D300C880C6 /* tab-web-back@2x.png */; };
+		BBFC7AF31610E3D300C880C6 /* tab-web-fwd@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BBFC7AEF1610E3D300C880C6 /* tab-web-fwd@2x.png */; };
+		BBFC7AF41610E3D300C880C6 /* tab-web-share@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BBFC7AF01610E3D300C880C6 /* tab-web-share@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -663,6 +668,8 @@
 		BB31FC2B160CC2AB0049B6BF /* nav-btn-save-on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-btn-save-on@2x.png"; sourceTree = "<group>"; };
 		BB31FC35160D35770049B6BF /* comments-bar@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "comments-bar@2x.png"; sourceTree = "<group>"; };
 		BB31FC36160D35770049B6BF /* comments-btn-send@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "comments-btn-send@2x.png"; sourceTree = "<group>"; };
+		BB31FC461610DC190049B6BF /* DWToolbar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWToolbar.h; sourceTree = "<group>"; };
+		BB31FC471610DC190049B6BF /* DWToolbar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWToolbar.m; sourceTree = "<group>"; };
 		BB46140015CB3A5A00B38D71 /* DWUserPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWUserPresenter.h; sourceTree = "<group>"; };
 		BB46140115CB3A5A00B38D71 /* DWUserPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWUserPresenter.m; sourceTree = "<group>"; };
 		BB46140415CB3A7500B38D71 /* DWUserCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWUserCell.h; sourceTree = "<group>"; };
@@ -811,6 +818,10 @@
 		BBEDD33315EB3D6D007F862F /* DWUserDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWUserDetailsViewController.h; sourceTree = "<group>"; };
 		BBEDD33415EB3D6D007F862F /* DWUserDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWUserDetailsViewController.m; sourceTree = "<group>"; };
 		BBEDD33515EB3D6D007F862F /* DWUserDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DWUserDetailsViewController.xib; sourceTree = "<group>"; };
+		BBFC7AED1610E3D300C880C6 /* tab-bar-bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab-bar-bg@2x.png"; sourceTree = "<group>"; };
+		BBFC7AEE1610E3D300C880C6 /* tab-web-back@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab-web-back@2x.png"; sourceTree = "<group>"; };
+		BBFC7AEF1610E3D300C880C6 /* tab-web-fwd@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab-web-fwd@2x.png"; sourceTree = "<group>"; };
+		BBFC7AF01610E3D300C880C6 /* tab-web-share@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab-web-share@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1009,6 +1020,10 @@
 		BB125087160BA2F400AA2521 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				BBFC7AED1610E3D300C880C6 /* tab-bar-bg@2x.png */,
+				BBFC7AEE1610E3D300C880C6 /* tab-web-back@2x.png */,
+				BBFC7AEF1610E3D300C880C6 /* tab-web-fwd@2x.png */,
+				BBFC7AF01610E3D300C880C6 /* tab-web-share@2x.png */,
 				BB31FC35160D35770049B6BF /* comments-bar@2x.png */,
 				BB31FC36160D35770049B6BF /* comments-btn-send@2x.png */,
 				26659338160D306700A2B716 /* invite-loading@2x.png */,
@@ -1737,6 +1752,8 @@
 				BB2BC07615D0B95600CCC4BB /* DWQueueProgressView.m */,
 				BBEDD32015E5087B007F862F /* DWSearchBar.h */,
 				BBEDD32115E5087B007F862F /* DWSearchBar.m */,
+				BB31FC461610DC190049B6BF /* DWToolbar.h */,
+				BB31FC471610DC190049B6BF /* DWToolbar.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1929,6 +1946,10 @@
 				26659339160D306700A2B716 /* invite-loading@2x.png in Resources */,
 				BB31FC37160D35770049B6BF /* comments-bar@2x.png in Resources */,
 				BB31FC38160D35770049B6BF /* comments-btn-send@2x.png in Resources */,
+				BBFC7AF11610E3D300C880C6 /* tab-bar-bg@2x.png in Resources */,
+				BBFC7AF21610E3D300C880C6 /* tab-web-back@2x.png in Resources */,
+				BBFC7AF31610E3D300C880C6 /* tab-web-fwd@2x.png in Resources */,
+				BBFC7AF41610E3D300C880C6 /* tab-web-share@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2110,6 +2131,7 @@
 				2618C0FE15FEAE9500CA41B9 /* DWStoreCell.m in Sources */,
 				267F27201602C2B10061ACEF /* DWOnboardingFeedViewController.m in Sources */,
 				BB31FC25160BFA750049B6BF /* DWEditBylineViewController.m in Sources */,
+				BB31FC481610DC190049B6BF /* DWToolbar.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
