@@ -52,6 +52,7 @@ static NSInteger const kUserImageSide = 32;
 				reuseIdentifier:reuseIdentifier];
 	
     if (self) {
+        self.contentView.backgroundColor = [UIColor clearColor];
         self.contentView.clipsToBounds = YES;
         
         [self createUserImageButton];
@@ -88,8 +89,8 @@ static NSInteger const kUserImageSide = 32;
 //----------------------------------------------------------------------------------------------------
 - (void)createMessageLabel {
     
-    messageLabel =  [[OHAttributedLabel alloc] initWithFrame:CGRectMake(userImageButton.frame.origin.y + userImageButton.frame.size.width + 5, 
-                                                        11,
+    messageLabel =  [[OHAttributedLabel alloc] initWithFrame:CGRectMake(userImageButton.frame.origin.y + userImageButton.frame.size.width + 9, 
+                                                        10,
                                                         kCommentWidth,
                                                         0)];
     messageLabel.backgroundColor = [UIColor clearColor];
