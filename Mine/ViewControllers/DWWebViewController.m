@@ -67,7 +67,7 @@ static NSString* const kLoadingText = @"Loading...";
     [self.webView loadRequest:[NSURLRequest requestWithURL:self.url]];
     
     UIBarButtonItem *initialSpacer = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-    initialSpacer.width = -20;
+    initialSpacer.width = -12;
     
     if(!self.backButton) {
         self.backButton = [[UIButton alloc] initWithFrame:CGRectMake(0,0,68,44)];
@@ -80,7 +80,7 @@ static NSString* const kLoadingText = @"Loading...";
     }
         
     UIBarButtonItem *intraNavSpacer = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-    intraNavSpacer.width = -1;
+    intraNavSpacer.width = -10;
     
     if(!self.forwardButton) {
         self.forwardButton = [[UIButton alloc] initWithFrame:CGRectMake(0,0,68,44)];
@@ -93,7 +93,7 @@ static NSString* const kLoadingText = @"Loading...";
     }
     
     UIBarButtonItem *postNavSpacer = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
-    postNavSpacer.width = 120;
+    postNavSpacer.width = 107;
     
     UIButton *shareButton = [[UIButton alloc] initWithFrame:CGRectMake(0,0,68,44)];
     [shareButton setBackgroundImage:[UIImage imageNamed:kImgShare] forState:UIControlStateNormal];
