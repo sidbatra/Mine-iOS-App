@@ -26,9 +26,7 @@
 
 @property (nonatomic,weak) id<DWCommentsCreateViewControllerDelegate> delegate;
 
-/**
- * Text field for creating comments.
- */
+
 @property (nonatomic) IBOutlet UIImageView *commentBarView;
 @property (nonatomic) IBOutlet UITextField *commentTextField;
 @property (nonatomic) IBOutlet UIButton *sendButton;
@@ -39,6 +37,8 @@
  */
 - (id)initWithPurchase:(DWPurchase*)purchase 
     withCreationIntent:(BOOL)creationIntent;
+
+- (IBAction)sendButtonClicked:(id)sender;
 
 @end
 

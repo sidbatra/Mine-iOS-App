@@ -317,6 +317,16 @@ static NSInteger const kBottomBarMargin = 44;
 }
 
 //----------------------------------------------------------------------------------------------------
+- (IBAction)sendButtonClicked:(id)sender {
+    
+    if(self.commentTextField.text.length) {
+        [self createCommentWithMessage:self.commentTextField.text];
+        [self.commentTextField resignFirstResponder];
+    }
+}
+
+
+//----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
 #pragma mark UITapGestureRecognizer
