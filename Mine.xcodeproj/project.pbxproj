@@ -251,6 +251,7 @@
 		BB59B4D915F1EB7D000756EE /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB59B4D815F1EB7D000756EE /* CoreText.framework */; };
 		BB59B4DD15F1F1F8000756EE /* DWUsersHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BB59B4DC15F1F1F8000756EE /* DWUsersHelper.m */; };
 		BB59B4E015F1F2AB000756EE /* DWPurchasesHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BB59B4DF15F1F2AB000756EE /* DWPurchasesHelper.m */; };
+		BB5BE3B316121C00006EA2C4 /* ASIDataCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = BB5BE3B216121C00006EA2C4 /* ASIDataCompressor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		BB9F313F15F609FF009C1385 /* DWFollowButton.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9F313E15F609FF009C1385 /* DWFollowButton.m */; };
 		BB9F314815F62BC2009C1385 /* DWNavigationBarBackButton.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9F314715F62BC2009C1385 /* DWNavigationBarBackButton.m */; };
 		BB9F314F15F645C5009C1385 /* DWUserProfileCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9F314E15F645C5009C1385 /* DWUserProfileCell.m */; };
@@ -264,7 +265,6 @@
 		BB9F70B015B9E6450099C80A /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB9F70AF15B9E6450099C80A /* MobileCoreServices.framework */; };
 		BB9F70B215B9E6630099C80A /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = BB9F70B115B9E6630099C80A /* libz.dylib */; };
 		BB9F70DD15B9E6A60099C80A /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9F70B615B9E6A60099C80A /* ASIAuthenticationDialog.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		BB9F70DE15B9E6A60099C80A /* ASIDataCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9F70B915B9E6A60099C80A /* ASIDataCompressor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		BB9F70DF15B9E6A60099C80A /* ASIDataDecompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9F70BB15B9E6A60099C80A /* ASIDataDecompressor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		BB9F70E015B9E6A60099C80A /* ASIDownloadCache.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9F70BD15B9E6A60099C80A /* ASIDownloadCache.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		BB9F70E115B9E6A60099C80A /* ASIFormDataRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9F70BF15B9E6A60099C80A /* ASIFormDataRequest.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -689,6 +689,8 @@
 		BB59B4DC15F1F1F8000756EE /* DWUsersHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWUsersHelper.m; sourceTree = "<group>"; };
 		BB59B4DE15F1F2AB000756EE /* DWPurchasesHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWPurchasesHelper.h; sourceTree = "<group>"; };
 		BB59B4DF15F1F2AB000756EE /* DWPurchasesHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWPurchasesHelper.m; sourceTree = "<group>"; };
+		BB5BE3B116121C00006EA2C4 /* ASIDataCompressor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIDataCompressor.h; sourceTree = "<group>"; };
+		BB5BE3B216121C00006EA2C4 /* ASIDataCompressor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIDataCompressor.m; sourceTree = "<group>"; };
 		BB9F313D15F609FF009C1385 /* DWFollowButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWFollowButton.h; sourceTree = "<group>"; };
 		BB9F313E15F609FF009C1385 /* DWFollowButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWFollowButton.m; sourceTree = "<group>"; };
 		BB9F314615F62BC2009C1385 /* DWNavigationBarBackButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWNavigationBarBackButton.h; sourceTree = "<group>"; };
@@ -712,8 +714,6 @@
 		BB9F70B515B9E6A60099C80A /* ASIAuthenticationDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIAuthenticationDialog.h; sourceTree = "<group>"; };
 		BB9F70B615B9E6A60099C80A /* ASIAuthenticationDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIAuthenticationDialog.m; sourceTree = "<group>"; };
 		BB9F70B715B9E6A60099C80A /* ASICacheDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASICacheDelegate.h; sourceTree = "<group>"; };
-		BB9F70B815B9E6A60099C80A /* ASIDataCompressor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIDataCompressor.h; sourceTree = "<group>"; };
-		BB9F70B915B9E6A60099C80A /* ASIDataCompressor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIDataCompressor.m; sourceTree = "<group>"; };
 		BB9F70BA15B9E6A60099C80A /* ASIDataDecompressor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIDataDecompressor.h; sourceTree = "<group>"; };
 		BB9F70BB15B9E6A60099C80A /* ASIDataDecompressor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIDataDecompressor.m; sourceTree = "<group>"; };
 		BB9F70BC15B9E6A60099C80A /* ASIDownloadCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIDownloadCache.h; sourceTree = "<group>"; };
@@ -1407,11 +1407,11 @@
 		BB9F70B415B9E6A60099C80A /* ASI */ = {
 			isa = PBXGroup;
 			children = (
+				BB5BE3B116121C00006EA2C4 /* ASIDataCompressor.h */,
+				BB5BE3B216121C00006EA2C4 /* ASIDataCompressor.m */,
 				BB9F70B515B9E6A60099C80A /* ASIAuthenticationDialog.h */,
 				BB9F70B615B9E6A60099C80A /* ASIAuthenticationDialog.m */,
 				BB9F70B715B9E6A60099C80A /* ASICacheDelegate.h */,
-				BB9F70B815B9E6A60099C80A /* ASIDataCompressor.h */,
-				BB9F70B915B9E6A60099C80A /* ASIDataCompressor.m */,
 				BB9F70BA15B9E6A60099C80A /* ASIDataDecompressor.h */,
 				BB9F70BB15B9E6A60099C80A /* ASIDataDecompressor.m */,
 				BB9F70BC15B9E6A60099C80A /* ASIDownloadCache.h */,
@@ -1962,7 +1962,6 @@
 			files = (
 				BBC8A0A115B9D26D00DF58F6 /* main.m in Sources */,
 				BB9F70DD15B9E6A60099C80A /* ASIAuthenticationDialog.m in Sources */,
-				BB9F70DE15B9E6A60099C80A /* ASIDataCompressor.m in Sources */,
 				BB9F70DF15B9E6A60099C80A /* ASIDataDecompressor.m in Sources */,
 				BB9F70E015B9E6A60099C80A /* ASIDownloadCache.m in Sources */,
 				BB9F70E115B9E6A60099C80A /* ASIFormDataRequest.m in Sources */,
@@ -2132,6 +2131,7 @@
 				267F27201602C2B10061ACEF /* DWOnboardingFeedViewController.m in Sources */,
 				BB31FC25160BFA750049B6BF /* DWEditBylineViewController.m in Sources */,
 				BB31FC481610DC190049B6BF /* DWToolbar.m in Sources */,
+				BB5BE3B316121C00006EA2C4 /* ASIDataCompressor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

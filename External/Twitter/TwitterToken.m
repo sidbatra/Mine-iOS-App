@@ -66,7 +66,7 @@
 
 - (NSString*) description
 {
-	return [NSString stringWithFormat: @"<TwitterToken@0x%x token=%@ secret=%@>", self, _token, _secret];
+	return [NSString stringWithFormat: @"<TwitterToken@0x%@ token=%@ secret=%@>", self, _token, _secret];
 }
 
 @end

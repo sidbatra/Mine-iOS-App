@@ -53,7 +53,7 @@
 
 - (NSString*) _generateTimestamp
 {
-	return [NSString stringWithFormat: @"%d", time(NULL)];
+	return [NSString stringWithFormat: @"%ld", time(NULL)];
 }
 
 - (NSString*) _generateNonce

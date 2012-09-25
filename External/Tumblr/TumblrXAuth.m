@@ -104,10 +104,10 @@
 
   NSString * oauth_consumer_key = [self.consumerKey urlEncode];
   NSString * oauth_nonce = [self.nonce urlEncode];
-  NSString * oauth_signature_method = [[NSString stringWithString:@"HMAC-SHA1"] urlEncode];
+  NSString * oauth_signature_method = [@"HMAC-SHA1" urlEncode];
   NSString * oauth_timestamp = [self.timestamp urlEncode];
-  NSString * oauth_version = [[NSString stringWithString:@"1.0"] urlEncode];
-  NSString * x_auth_mode = [[NSString stringWithString:@"client_auth"] urlEncode];
+  NSString * oauth_version = [@"1.0" urlEncode];
+  NSString * x_auth_mode = [@"client_auth" urlEncode];
   NSString * x_auth_password = [self.password urlEncode];
   NSString * x_auth_username = [self.username urlEncode];
 
@@ -159,11 +159,11 @@
 {
   NSArray * keysAndValues = [NSArray arrayWithObjects:
 				     [NSString stringWithFormat:@"%@=\"%@\"", @"oauth_nonce", [self.nonce urlEncode]],
-				     [NSString stringWithFormat:@"%@=\"%@\"", @"oauth_signature_method", [[NSString stringWithString:@"HMAC-SHA1"] urlEncode]],
+				     [NSString stringWithFormat:@"%@=\"%@\"", @"oauth_signature_method", [@"HMAC-SHA1" urlEncode]],
 				     [NSString stringWithFormat:@"%@=\"%@\"", @"oauth_timestamp", [self.timestamp urlEncode]],
 				     [NSString stringWithFormat:@"%@=\"%@\"", @"oauth_consumer_key", [self.consumerKey urlEncode]],
 				     [NSString stringWithFormat:@"%@=\"%@\"", @"oauth_signature", [self.signature urlEncode]],
-				     [NSString stringWithFormat:@"%@=\"%@\"", @"oauth_version", [[NSString stringWithString:@"1.0"] urlEncode]],
+				     [NSString stringWithFormat:@"%@=\"%@\"", @"oauth_version", [@"1.0" urlEncode]],
 				     nil];
     
   return [NSString stringWithFormat:@"OAuth %@", [keysAndValues componentsJoinedByString:@", "]];
@@ -179,7 +179,7 @@
   state = TumblrXAuthStateAuthorize;
 
   [tumblrURL release];
-  tumblrURL = [[NSString stringWithString:@"https://www.tumblr.com/oauth/access_token"] retain];
+  tumblrURL = [@"https://www.tumblr.com/oauth/access_token" retain];
   NSMutableURLRequest* postRequest = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:tumblrURL]];
   [postRequest setHTTPMethod: @"POST"];
   NSArray * parameterArray = [NSArray arrayWithObjects:
