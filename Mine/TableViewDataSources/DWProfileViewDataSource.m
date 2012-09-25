@@ -276,7 +276,7 @@
     
     //TODO - update current user's purchase count in session
     
-    self.objects = [NSMutableArray array];        
+    self.objects = nil;
     [self displayPurchasesAndUser];
 }
 
@@ -301,7 +301,7 @@
     
     //TODO - update current user's purchase count in session
     
-    self.objects = [NSMutableArray array];        
+    self.objects = nil;       
     [self displayPurchasesAndUser];
 }
 

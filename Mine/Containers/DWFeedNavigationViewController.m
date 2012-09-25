@@ -322,4 +322,9 @@ static NSString* const kImgSearchOn     = @"nav-btn-search-on.png";
         [self.navigationController.navigationBar addSubview:self.navTitleView];
 }
 
+//----------------------------------------------------------------------------------------------------
+- (void)scrollToTop {
+    [self.feedViewController scrollToTop];
+}
+
 @end
