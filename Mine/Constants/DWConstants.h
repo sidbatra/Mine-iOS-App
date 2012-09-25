@@ -47,6 +47,7 @@ extern NSString* const kNUserLoggedOut;
 extern NSString* const kNWelcomeNavigationFinished;
 extern NSString* const kNPaginationCellReached;
 extern NSString* const kNCommentAddedForPurchase;
+extern NSString* const kNRequestTabBarIndexChange;
 
 /**
  * Grid view related constants
@@ -80,11 +81,20 @@ extern NSString* const kKeyPurchase;
 extern NSString* const kKeyFollowing;
 extern NSString* const kKeyFollowingCreated;
 extern NSString* const kKeyFollowingDestroyed;
+extern NSString* const kKeyTabIndex;
+extern NSString* const kKeyResetType;
 
 /**
  * Misc
  */
 extern NSString* const kRailsDateTimeFormat;
+
+/**
+ * Tab bar
+ */ 
+extern NSInteger const kFeedTabIndex;
+extern NSInteger const kCreateTabIndex;
+
 
 /**
  * UI Related

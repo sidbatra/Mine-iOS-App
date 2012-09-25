@@ -8,6 +8,7 @@
 
 #import "DWCreationNavigationViewController.h"
 #import "DWNavigationBar.h"
+#import "DWConstants.h"
 
 /**
  * Private declarations
@@ -88,12 +89,20 @@
            shareToTW:(BOOL)shareToTW 
            shareToTB:(BOOL)shareToTB {
     
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:kNRequestTabBarIndexChange
+                                                        object:nil
+                                                      userInfo:[NSDictionary dictionaryWithObjectsAndKeys:
+                                                                [NSNumber numberWithInteger:kFeedTabIndex],kKeyTabIndex,
+                                                                [NSNumber numberWithInteger:DWTabBarResetTypeHard],kKeyResetType,
+                                                                nil]];
+    
     [super postPurchase:purchase 
                 product:product 
               shareToFB:shareToFB 
               shareToTW:shareToTW 
               shareToTB:shareToTB];
-    
+
     [self.delegate dismissCreateView];
 }
 

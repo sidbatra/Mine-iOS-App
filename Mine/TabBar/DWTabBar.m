@@ -62,12 +62,11 @@ typedef enum {
 	if (self) {		
 		self.buttons = [NSMutableArray array];
         
-        /*
+        
         [[NSNotificationCenter defaultCenter] addObserver:self 
                                                  selector:@selector(requestTabBarIndexChange:) 
                                                      name:kNRequestTabBarIndexChange
-                                                   object:nil];
-         */
+                                                   object:nil];        
     }
 	
     return self;
@@ -254,7 +253,6 @@ typedef enum {
 #pragma mark -
 #pragma mark Notifications
 
-/*
 //----------------------------------------------------------------------------------------------------
 - (void)requestTabBarIndexChange:(NSNotification*)notification {
     
@@ -266,7 +264,5 @@ typedef enum {
           withResetType:resetType
              isExternal:YES];
 }
- */
-
 
 @end

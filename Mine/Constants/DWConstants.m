@@ -43,6 +43,7 @@ NSString* const kNUserLoggedOut             = @"NUserLoggedOut";
 NSString* const kNWelcomeNavigationFinished = @"NWelcomeNavigationFinished";
 NSString* const kNPaginationCellReached     = @"NPaginationCellReached";
 NSString* const kNCommentAddedForPurchase   = @"NCommentAddedForPurchase";
+NSString* const kNRequestTabBarIndexChange  = @"NRequestTabBarIndexChange";
 
 //----------------------------------------------------------------------------------------------------
 NSInteger const kColumnsInProductsSearch        = 3;
@@ -57,22 +58,28 @@ NSString* const kTwitterOAuthConsumerSecret     = @"i7Oqqpy1I1ZycqRpJOSsBMylURsF
 
 
 //----------------------------------------------------------------------------------------------------
-NSString* const kKeyID          = @"id";
-NSString* const kKeyCallerID    = @"caller_id";
-NSString* const kKeyResourceID  = @"resource_id";
-NSString* const kKeyMessage     = @"message";
-NSString* const kKeyResponse    = @"response";
-NSString* const kKeyURL         = @"url";
-NSString* const kKeyImage       = @"image";
-NSString* const kKeyError       = @"error";
-NSString* const kKeyUser        = @"user";
-NSString* const kKeyPurchase    = @"purchase";
-NSString* const kKeyFollowing   = @"following";
-NSString* const kKeyFollowingCreated   = @"following_created";
-NSString* const kKeyFollowingDestroyed = @"following_destroyed";
+NSString* const kKeyID                  = @"id";
+NSString* const kKeyCallerID            = @"caller_id";
+NSString* const kKeyResourceID          = @"resource_id";
+NSString* const kKeyMessage             = @"message";
+NSString* const kKeyResponse            = @"response";
+NSString* const kKeyURL                 = @"url";
+NSString* const kKeyImage               = @"image";
+NSString* const kKeyError               = @"error";
+NSString* const kKeyUser                = @"user";
+NSString* const kKeyPurchase            = @"purchase";
+NSString* const kKeyFollowing           = @"following";
+NSString* const kKeyFollowingCreated    = @"following_created";
+NSString* const kKeyFollowingDestroyed  = @"following_destroyed";
+NSString* const kKeyTabIndex            = @"tabIndex";
+NSString* const kKeyResetType           = @"reset_type";
 
 //----------------------------------------------------------------------------------------------------
 NSString* const kRailsDateTimeFormat = @"yyyy-MM-dd HH:mm:ss ZZZ";
+
+//----------------------------------------------------------------------------------------------------
+NSInteger const kFeedTabIndex       = 0;
+NSInteger const kCreateTabIndex     = 1;
 
 //----------------------------------------------------------------------------------------------------
 NSString* const kImgChevron         = @"chevron.png";

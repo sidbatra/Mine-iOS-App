@@ -18,8 +18,7 @@
 #import "DWConstants.h"
 
 
-static NSString* const kFacebookURLPrefix			= @"fb";
-static NSInteger const kCreateTabIndex              = 1;
+static NSString* const kFacebookURLPrefix = @"fb";
 
 
 /**
