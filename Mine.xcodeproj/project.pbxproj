@@ -253,6 +253,10 @@
 		BB5BE3B316121C00006EA2C4 /* ASIDataCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = BB5BE3B216121C00006EA2C4 /* ASIDataCompressor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		BB5BE3C216123C57006EA2C4 /* doink-up-8@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB5BE3C016123C57006EA2C4 /* doink-up-8@2x.png */; };
 		BB5BE3C316123C57006EA2C4 /* profile-followings-divider@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB5BE3C116123C57006EA2C4 /* profile-followings-divider@2x.png */; };
+		BB5BE3DD16126712006EA2C4 /* nav-btn-follow-loading@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB5BE3D916126712006EA2C4 /* nav-btn-follow-loading@2x.png */; };
+		BB5BE3DE16126712006EA2C4 /* nav-btn-following-loading@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB5BE3DA16126712006EA2C4 /* nav-btn-following-loading@2x.png */; };
+		BB5BE3DF16126712006EA2C4 /* nav-btn-following-off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB5BE3DB16126712006EA2C4 /* nav-btn-following-off@2x.png */; };
+		BB5BE3E016126712006EA2C4 /* nav-btn-following-on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB5BE3DC16126712006EA2C4 /* nav-btn-following-on@2x.png */; };
 		BB9F313F15F609FF009C1385 /* DWFollowButton.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9F313E15F609FF009C1385 /* DWFollowButton.m */; };
 		BB9F314815F62BC2009C1385 /* DWNavigationBarBackButton.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9F314715F62BC2009C1385 /* DWNavigationBarBackButton.m */; };
 		BB9F314F15F645C5009C1385 /* DWUserProfileCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9F314E15F645C5009C1385 /* DWUserProfileCell.m */; };
@@ -693,6 +697,10 @@
 		BB5BE3B216121C00006EA2C4 /* ASIDataCompressor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIDataCompressor.m; sourceTree = "<group>"; };
 		BB5BE3C016123C57006EA2C4 /* doink-up-8@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "doink-up-8@2x.png"; sourceTree = "<group>"; };
 		BB5BE3C116123C57006EA2C4 /* profile-followings-divider@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profile-followings-divider@2x.png"; sourceTree = "<group>"; };
+		BB5BE3D916126712006EA2C4 /* nav-btn-follow-loading@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-btn-follow-loading@2x.png"; sourceTree = "<group>"; };
+		BB5BE3DA16126712006EA2C4 /* nav-btn-following-loading@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-btn-following-loading@2x.png"; sourceTree = "<group>"; };
+		BB5BE3DB16126712006EA2C4 /* nav-btn-following-off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-btn-following-off@2x.png"; sourceTree = "<group>"; };
+		BB5BE3DC16126712006EA2C4 /* nav-btn-following-on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-btn-following-on@2x.png"; sourceTree = "<group>"; };
 		BB9F313D15F609FF009C1385 /* DWFollowButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWFollowButton.h; sourceTree = "<group>"; };
 		BB9F313E15F609FF009C1385 /* DWFollowButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWFollowButton.m; sourceTree = "<group>"; };
 		BB9F314615F62BC2009C1385 /* DWNavigationBarBackButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWNavigationBarBackButton.h; sourceTree = "<group>"; };
@@ -1022,6 +1030,10 @@
 		BB125087160BA2F400AA2521 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				BB5BE3D916126712006EA2C4 /* nav-btn-follow-loading@2x.png */,
+				BB5BE3DA16126712006EA2C4 /* nav-btn-following-loading@2x.png */,
+				BB5BE3DB16126712006EA2C4 /* nav-btn-following-off@2x.png */,
+				BB5BE3DC16126712006EA2C4 /* nav-btn-following-on@2x.png */,
 				BB5BE3C016123C57006EA2C4 /* doink-up-8@2x.png */,
 				BB5BE3C116123C57006EA2C4 /* profile-followings-divider@2x.png */,
 				BBFC7AED1610E3D300C880C6 /* tab-bar-bg@2x.png */,
@@ -1954,6 +1966,10 @@
 				BBFC7AF41610E3D300C880C6 /* tab-web-share@2x.png in Resources */,
 				BB5BE3C216123C57006EA2C4 /* doink-up-8@2x.png in Resources */,
 				BB5BE3C316123C57006EA2C4 /* profile-followings-divider@2x.png in Resources */,
+				BB5BE3DD16126712006EA2C4 /* nav-btn-follow-loading@2x.png in Resources */,
+				BB5BE3DE16126712006EA2C4 /* nav-btn-following-loading@2x.png in Resources */,
+				BB5BE3DF16126712006EA2C4 /* nav-btn-following-off@2x.png in Resources */,
+				BB5BE3E016126712006EA2C4 /* nav-btn-following-on@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

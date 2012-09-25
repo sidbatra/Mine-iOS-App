@@ -205,7 +205,7 @@
                 withStartingIndex:startingIndex];
     
     
-    if([self.purchases count]) {        
+    if([self.purchases count]) {
         self.oldestTimestamp        = [((DWPurchase*)[self.purchases lastObject]).createdAt timeIntervalSince1970];
         
         DWPagination *pagination    = [[DWPagination alloc] init];

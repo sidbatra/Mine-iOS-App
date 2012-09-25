@@ -8,8 +8,10 @@
 
 static NSString* const kImgInactiveButton                   = @"nav-btn-follow-off.png";
 static NSString* const kImgInactiveButtonHighlighted        = @"nav-btn-follow-on.png";
-static NSString* const kImgActiveButton                     = @"list-btn-follow-off.png";
-static NSString* const kImgActiveButtonHighlighted          = @"list-btn-follow-off.png";
+static NSString* const kImgInactiveSpinning                 = @"nav-btn-follow-loading.png";
+static NSString* const kImgActiveButton                     = @"nav-btn-following-off.png";
+static NSString* const kImgActiveButtonHighlighted          = @"nav-btn-following-on.png";
+static NSString* const kImgActiveSpinning                   = @"nav-btn-following-loading.png";
 
 
 @interface DWFollowButton() {
@@ -90,8 +92,9 @@ static NSString* const kImgActiveButtonHighlighted          = @"list-btn-follow-
 - (void)createSpinner {
 	spinner			= [[UIActivityIndicatorView alloc] 
                        initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
-	spinner.frame	= CGRectMake(self.frame.size.width/2-10,self.frame.size.height/2-10,20,20);
-    spinner.hidden  = YES;    
+	spinner.frame	= CGRectMake(self.frame.size.width/2-7,self.frame.size.height/2-7,14,14);
+    spinner.hidden  = YES;
+    spinner.transform = CGAffineTransformMakeScale(0.7f, 0.7f);
 	
 	[self addSubview:spinner];	
 }
@@ -132,6 +135,16 @@ static NSString* const kImgActiveButtonHighlighted          = @"list-btn-follow-
 
 //----------------------------------------------------------------------------------------------------
 - (void)startSpinning {
+    
+    if(self.isActive) {
+        [underlayButton setBackgroundImage:[UIImage imageNamed:kImgActiveSpinning]
+                                  forState:UIControlStateNormal];
+    }
+    else {
+        [underlayButton setBackgroundImage:[UIImage imageNamed:kImgInactiveSpinning]
+                                  forState:UIControlStateNormal];
+    }
+    
     underlayButton.enabled = NO;
     spinner.hidden = NO;
     [spinner startAnimating];

@@ -93,7 +93,7 @@
     if(![[DWSession sharedDWSession] isCurrentUser:self.user.databaseID]) {
         
         if(!self.followButton) {
-            self.followButton = [[DWFollowButton alloc] initWithFrame:CGRectMake(240, 6, 81, 32)];
+            self.followButton = [[DWFollowButton alloc] initWithFrame:CGRectMake(238, 6, 75, 31)];
             self.followButton.delegate = self;
         }
         
