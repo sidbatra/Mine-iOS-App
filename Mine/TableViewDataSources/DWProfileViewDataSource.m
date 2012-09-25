@@ -13,6 +13,7 @@
 #import "DWPurchase.h"
 #import "DWuser.h"
 #import "DWFollowing.h"
+#import "DWSession.h"
 #import "DWConstants.h"
 
  
@@ -263,6 +264,15 @@
         return;
     
     [self refreshInitiated];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)purchaseDeleted:(NSNumber *)purchaseID {
+    
+    if([DWSession sharedDWSession].currentUser.databaseID != self.userID)
+        return;
+    
+    [self refreshInitiated];    
 }
 
 

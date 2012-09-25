@@ -7,8 +7,9 @@
 //
 
 #import "DWTableViewDataSource.h"
+#import "DWPurchasesController.h"
 
-@interface DWPurchaseViewDataSource : DWTableViewDataSource {
+@interface DWPurchaseViewDataSource : DWTableViewDataSource<DWPurchasesControllerDelegate> {
     NSInteger   _purchaseID;
 }
 
@@ -22,5 +23,10 @@
  * Load the purchase onto the table view.
  */
 - (void)loadPurchase;
+
+/**
+ * Delete the purchase
+ */
+- (void)deletePurchase;
 
 @end

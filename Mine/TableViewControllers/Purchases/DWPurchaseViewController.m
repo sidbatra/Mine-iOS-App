@@ -55,4 +55,22 @@
     [(DWPurchaseViewDataSource*)self.tableViewDataSource loadPurchase];
 }
 
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark UIActionSheet Delegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {	
+	
+    if (actionSheet.tag == self.purchase.databaseID && buttonIndex == 0) {
+        
+        [(DWPurchaseViewDataSource*)self.tableViewDataSource deletePurchase];
+        
+        if (self.navigationController.topViewController == self) 
+            [self.navigationController popViewControllerAnimated:YES];
+    }
+}
+
 @end

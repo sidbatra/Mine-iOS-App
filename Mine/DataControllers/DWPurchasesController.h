@@ -36,6 +36,12 @@
                           withShareToTW:(BOOL)shareToTW
                           withShareToTB:(BOOL)shareToTB 
                          uploadDelegate:(id)uploadDelegate;
+
+/** 
+ * Delete a purchase
+ */
+- (void)deletePurchaseWithID:(NSInteger)purchaseID;
+
 @end
 
 
@@ -69,6 +75,17 @@
  * Purchase creation error.
  */
 - (void)purchaseCreateError:(NSString*)error
+             fromResourceID:(NSNumber*)resourceID;
+
+/**
+ * Purchase successfully deleted.
+ */
+- (void)purchaseDeleted:(NSNumber*)purchaseID;
+
+/**
+ * Purchase deletion error.
+ */
+- (void)purchaseDeleteError:(NSString*)error
              fromResourceID:(NSNumber*)resourceID;
 
 

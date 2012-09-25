@@ -15,11 +15,14 @@
 
 static NSString* const kGetUserPurchasesURI = @"/purchases.json?per_page=%d&user_id=%d";
 static NSString* const kCreateURI           = @"/purchases.json?";
+static NSString* const kDeleteURI           = @"/purchases/%d.json?";
 
 static NSString* const kNUserPurchasesLoaded    = @"NUserPurchasesLoaded";
 static NSString* const kNUserPurchasesLoadError = @"NUserPurchasesLoadError";
 static NSString* const kNPurchaseCreated        = @"NPurchaseCreated";
 static NSString* const kNPurchaseCreateError    = @"NPurchaseCreateError";
+static NSString* const kNPurchaseDeleted        = @"NPurchaseDeleted";
+static NSString* const kNPurchaseDeleteError    = @"NPurchaseDeleteError";
 
 
 @interface DWPurchasesController() {
@@ -73,6 +76,16 @@ static NSString* const kNPurchaseCreateError    = @"NPurchaseCreateError";
 												 selector:@selector(purchaseCreateError:) 
 													 name:kNPurchaseCreateError
 												   object:nil];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self 
+												 selector:@selector(purchaseDeleted:) 
+													 name:kNPurchaseDeleted
+												   object:nil];
+		
+		[[NSNotificationCenter defaultCenter] addObserver:self 
+												 selector:@selector(purchaseDeleteError:) 
+													 name:kNPurchaseDeleteError
+												   object:nil];        
     }
     
     return self;
@@ -160,6 +173,19 @@ static NSString* const kNPurchaseCreateError    = @"NPurchaseCreateError";
                                                                      uploadDelegate:uploadDelegate];
 }
 
+//----------------------------------------------------------------------------------------------------
+- (void)deletePurchaseWithID:(NSInteger)purchaseID {
+    
+    NSMutableString *localURL = [NSMutableString stringWithFormat:kDeleteURI,purchaseID];
+    
+    [[DWRequestManager sharedDWRequestManager] createAppRequest:localURL
+                                            successNotification:kNPurchaseDeleted
+                                              errorNotification:kNPurchaseDeleteError
+                                                  requestMethod:kDelete
+                                                   authenticate:YES
+                                                     resourceID:purchaseID];
+}
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
@@ -241,4 +267,37 @@ static NSString* const kNPurchaseCreateError    = @"NPurchaseCreateError";
                         withObject:[error localizedDescription]
                         withObject:[info objectForKey:kKeyResourceID]];
 }
+
+//----------------------------------------------------------------------------------------------------
+- (void)purchaseDeleted:(NSNotification*)notification {
+    
+    SEL sel = @selector(purchaseDeleted:);
+    
+    if(![self.delegate respondsToSelector:sel])
+        return;
+    
+
+    NSDictionary *info  = [notification userInfo];
+
+    [self.delegate performSelector:sel
+                        withObject:[info objectForKey:kKeyResourceID]];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)purchaseDeleteError:(NSNotification*)notification {
+    
+    SEL sel = @selector(purchaseDeleteError:fromResourceID:);
+    
+    if(![self.delegate respondsToSelector:sel])
+        return;
+    
+    
+    NSDictionary *info      = [notification userInfo];
+    NSError *error          = [info objectForKey:kKeyError];
+    
+    [self.delegate performSelector:sel
+                        withObject:[error localizedDescription] 
+                        withObject:[info objectForKey:kKeyResourceID]];
+}
+
 @end

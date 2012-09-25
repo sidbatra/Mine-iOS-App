@@ -17,7 +17,7 @@
 
 
 
-@interface DWPurchasesViewController : DWTableViewController<DWPurchaseFeedCellDelegate,DWLikesControllerDelegate> {
+@interface DWPurchasesViewController : DWTableViewController<DWPurchaseFeedCellDelegate,DWLikesControllerDelegate,UIActionSheetDelegate> {
     DWLikesController *_likesController;
     
     __weak id<DWPurchasesViewControllerDelegate,NSObject> _delegate;
@@ -39,6 +39,11 @@
  * Protocol for delegates of DWPurchasesViewController
  */
 @protocol DWPurchasesViewControllerDelegate
+
+/** 
+ * Tab controller
+ */
+- (UIViewController*)tabControllerForPurchasesView;
 
 @optional
 

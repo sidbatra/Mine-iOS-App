@@ -54,4 +54,17 @@
     [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Feed View"];
 }
 
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark UIActionSheet Delegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {	
+	
+    if (actionSheet.tag && buttonIndex == 0) 
+        [(DWFeedViewDataSource*)self.tableViewDataSource deletePurchase:actionSheet.tag];
+}
+
 @end

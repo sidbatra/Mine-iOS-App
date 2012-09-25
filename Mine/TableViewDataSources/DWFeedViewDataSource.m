@@ -71,6 +71,20 @@
 }
 
 //----------------------------------------------------------------------------------------------------
+- (void)deletePurchase:(NSInteger)purchaseID {
+    
+    DWPurchase *purchase = [DWPurchase fetch:purchaseID];
+    
+    if(!purchase)
+        return;
+    
+    [self.purchasesController deletePurchaseWithID:purchaseID];
+    
+    [self removeObject:purchase
+         withAnimation:UITableViewRowAnimationBottom];
+}
+
+//----------------------------------------------------------------------------------------------------
 - (void)refreshInitiated {
     self.oldestTimestamp = 0;
     
@@ -145,6 +159,13 @@
     [self addObject:purchase
             atIndex:0
       withAnimation:UITableViewRowAnimationTop];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)purchaseDeleted:(NSNumber *)purchaseID {
+    
+    [self removeObject:[DWPurchase fetch:[purchaseID integerValue]] 
+         withAnimation:UITableViewRowAnimationBottom];
 }
 
 

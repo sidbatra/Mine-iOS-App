@@ -81,6 +81,24 @@
 }
 
 //----------------------------------------------------------------------------------------------------
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    UISwipeGestureRecognizer *swipeRight = [[UISwipeGestureRecognizer alloc] initWithTarget:self 
+                                                                                        action:@selector(handleSwipeGesture:)];
+    
+    swipeRight.direction = UISwipeGestureRecognizerDirectionRight;
+    [self.tableView addGestureRecognizer:swipeRight];
+    
+    
+    UISwipeGestureRecognizer *swipeLeft = [[UISwipeGestureRecognizer alloc] initWithTarget:self 
+                                                                                        action:@selector(handleSwipeGesture:)];
+    
+    swipeLeft.direction = UISwipeGestureRecognizerDirectionLeft;
+    [self.tableView addGestureRecognizer:swipeLeft];
+}
+
+//----------------------------------------------------------------------------------------------------
 - (void)reloadRowForPurchase:(DWPurchase*)purchase {
     NSInteger index = [self.tableViewDataSource indexForObject:purchase];
     
@@ -88,6 +106,37 @@
         return;
     
     [self reloadRowAtIndex:index];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark UI Events
+
+//----------------------------------------------------------------------------------------------------
+-(void)handleSwipeGesture:(UIGestureRecognizer *)gestureRecognizer {
+    
+    if (gestureRecognizer.state == UIGestureRecognizerStateEnded) {
+        
+        CGPoint swipeLocation           = [gestureRecognizer locationInView:self.tableView];
+        NSIndexPath *swipedIndexPath    = [self.tableView indexPathForRowAtPoint:swipeLocation];
+
+        DWPurchase *purchase            = [self.tableViewDataSource objectAtIndex:swipedIndexPath.row 
+                                                                       forSection:0];
+        
+        if (purchase.user.databaseID == [DWSession sharedDWSession].currentUser.databaseID) {
+            
+            UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil 
+                                                                     delegate:self 
+                                                            cancelButtonTitle:@"Cancel"
+                                                       destructiveButtonTitle:@"Delete"
+                                                            otherButtonTitles:nil];
+            
+            actionSheet.tag = purchase.databaseID;
+            [actionSheet showInView:[self.delegate tabControllerForPurchasesView].view];
+        }
+    }
 }
 
 

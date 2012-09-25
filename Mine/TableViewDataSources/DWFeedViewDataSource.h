@@ -18,4 +18,9 @@
  */
 - (void)loadFeed;
 
+/**
+ * Delete a purchase with the given ID
+ */
+- (void)deletePurchase:(NSInteger)purchaseID;
+
 @end
