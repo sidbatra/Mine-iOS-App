@@ -262,8 +262,22 @@
     
     if(purchase.user.databaseID != self.userID)
         return;
+
+    self.purchases = [NSMutableArray array];
+    [self.purchases addObject:purchase];
     
-    [self refreshInitiated];
+    for(id object in self.objects) {
+        if([object isKindOfClass:[DWModelSet class]]) {
+            for(id purchase in [(DWModelSet*)object models]) {
+                [self.purchases addObject:purchase];
+            }
+        }
+    }
+    
+    //TODO - update current user's purchase count in session
+    
+    self.objects = [NSMutableArray array];        
+    [self displayPurchasesAndUser];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -272,7 +286,23 @@
     if([DWSession sharedDWSession].currentUser.databaseID != self.userID)
         return;
     
-    [self refreshInitiated];    
+    self.purchases = [NSMutableArray array];
+    
+    for(id object in self.objects) {
+        if([object isKindOfClass:[DWModelSet class]]) {
+            for(id purchase in [(DWModelSet*)object models]) {
+                
+                if ([(DWPurchase*)purchase databaseID] != [purchaseID integerValue]) 
+                    [self.purchases addObject:purchase];
+                
+            }
+        }
+    }  
+    
+    //TODO - update current user's purchase count in session
+    
+    self.objects = [NSMutableArray array];        
+    [self displayPurchasesAndUser];
 }
 
 

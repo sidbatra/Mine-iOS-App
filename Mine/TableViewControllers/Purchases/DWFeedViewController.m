@@ -63,7 +63,7 @@
 //----------------------------------------------------------------------------------------------------
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {	
 	
-    if (actionSheet.tag > 0  && buttonIndex == 0) 
+    if (actionSheet.tag > 0 && buttonIndex == 0) 
         [(DWFeedViewDataSource*)self.tableViewDataSource deletePurchase:actionSheet.tag];
 }
 
