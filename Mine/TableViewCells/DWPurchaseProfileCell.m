@@ -7,12 +7,16 @@
 //
 
 #import "DWPurchaseProfileCell.h"
+
+#import <QuartzCore/QuartzCore.h>
+
 #import "DWConstants.h"
 
-/**
- * Base height of the purchase cell
- */
-static NSInteger const kPurchaseProfileCellHeight = 190;
+
+
+static NSInteger const kPurchaseProfileCellHeight = 210;
+static NSInteger const kPurchaseImageSide = 144;
+static NSString* const kImgMiniChevron = @"doink-up-8.png";
 
 
 @interface DWPurchaseProfileCell() {
@@ -84,10 +88,10 @@ static NSInteger const kPurchaseProfileCellHeight = 190;
 - (void)createImageButtons {
     
     for(NSInteger i=0 ; i<kColumnsInPurchaseSearch ; i++) {
-        UIButton *imageButton = [[UIButton alloc] initWithFrame:CGRectMake((145+8)*i + 11,11,145,145)];
+        UIButton *imageButton = [[UIButton alloc] initWithFrame:CGRectMake((kPurchaseImageSide+8)*i + 11,11,kPurchaseImageSide,kPurchaseImageSide)];
         
         imageButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
-        imageButton.backgroundColor = [UIColor clearColor];
+        imageButton.backgroundColor = [UIColor whiteColor];
         
          [imageButton addTarget:self
          action:@selector(didTapImageButton:)
@@ -103,11 +107,33 @@ static NSInteger const kPurchaseProfileCellHeight = 190;
 - (void)createTitleButtons {
     
     for(NSInteger i=0; i<kColumnsInPurchaseSearch; i++) {
-        UIButton *titleButton = [[UIButton alloc] initWithFrame:CGRectMake((145+8)*i + 11,11+145+6,145,30)];
         
+        CALayer *backgroundLayer = [CALayer layer];
+        backgroundLayer.cornerRadius = 4;
+        backgroundLayer.backgroundColor = [UIColor colorWithRed:0.933 green:0.933 blue:0.933 alpha:1.0].CGColor;
+        backgroundLayer.frame = CGRectMake((kPurchaseImageSide+8)*i + 11,11+kPurchaseImageSide+8,kPurchaseImageSide,42);
+        
+        [self.contentView.layer addSublayer:backgroundLayer];
+        
+        
+        UIImageView *chevronView = [[UIImageView alloc] initWithFrame:CGRectMake(backgroundLayer.frame.origin.x+10,backgroundLayer.frame.origin.y-4,8,4)];
+        chevronView.image = [UIImage imageNamed:kImgMiniChevron];
+        [self.contentView addSubview:chevronView];
+        
+        
+        UIButton *titleButton = [[UIButton alloc] init];
+
+        CGRect frame = backgroundLayer.frame;
+        frame.origin.x += 9;
+        frame.origin.y += 6;
+        frame.size.width -= 18;
+        frame.size.height -= 12;
+        
+        titleButton.frame = frame;
+        titleButton.backgroundColor             = [UIColor clearColor];
         titleButton.contentVerticalAlignment    = UIControlContentVerticalAlignmentTop;
         titleButton.contentHorizontalAlignment  = UIControlContentHorizontalAlignmentLeft;
-        titleButton.titleLabel.font             = [UIFont fontWithName:@"HelveticaNeue" size:11];
+        titleButton.titleLabel.font             = [UIFont fontWithName:@"HelveticaNeue" size:10];
         titleButton.titleLabel.backgroundColor  = [UIColor clearColor];
         titleButton.titleLabel.textAlignment    = UITextAlignmentLeft;
         titleButton.titleLabel.numberOfLines    = 2;
