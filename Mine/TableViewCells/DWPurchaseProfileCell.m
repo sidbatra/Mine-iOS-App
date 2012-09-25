@@ -16,24 +16,21 @@
 
 static NSInteger const kPurchaseProfileCellHeight = 210;
 static NSInteger const kPurchaseImageSide = 144;
+static NSInteger const kSpinnerSide = 20;
 static NSString* const kImgMiniChevron = @"doink-up-8.png";
 
 
 @interface DWPurchaseProfileCell() {
     NSMutableArray  *_imageButtons;
     NSMutableArray  *_titleButtons;
+    NSMutableArray  *_spinners;
 }
 
 
-/**
- * Image buttons for the purchases.
- */
 @property (nonatomic,strong) NSMutableArray *imageButtons;
-
-/**
- * Title buttons for the purchases.
- */
 @property (nonatomic,strong) NSMutableArray *titleButtons;
+@property (nonatomic,strong) NSMutableArray *spinners;
+
 
 @end
 
@@ -47,6 +44,7 @@ static NSString* const kImgMiniChevron = @"doink-up-8.png";
 
 @synthesize imageButtons    = _imageButtons;
 @synthesize titleButtons    = _titleButtons;
+@synthesize spinners        = _spinners;
 @synthesize delegate        = _delegate;
 
 
@@ -152,6 +150,28 @@ static NSString* const kImgMiniChevron = @"doink-up-8.png";
     }
 }
 
+//----------------------------------------------------------------------------------------------------
+- (void)createSpinners {
+    
+    self.spinners = [NSMutableArray arrayWithCapacity:kColumnsInPurchaseSearch];
+
+    for(NSInteger i=0; i<kColumnsInPurchaseSearch; i++) {
+        UIButton *imageButton = [self.imageButtons objectAtIndex:i];
+        UIActivityIndicatorView *spinner = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(imageButton.frame.origin.x + (imageButton.frame.size.width - kSpinnerSide) / 2,
+                                                                                                     imageButton.frame.origin.y + (imageButton.frame.size.height - kSpinnerSide) / 2,
+                                                                                                     kSpinnerSide,
+                                                                                                     kSpinnerSide)];
+        
+        spinner.hidden = YES;
+        spinner.hidesWhenStopped = YES;
+        spinner.color = [UIColor whiteColor];
+        
+        [self.spinners addObject:spinner];
+        
+        [self.contentView addSubview:spinner];
+    }
+}
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
@@ -166,6 +186,11 @@ static NSString* const kImgMiniChevron = @"doink-up-8.png";
     
     for(UIButton *titleButton in self.titleButtons)
         titleButton.hidden = YES;
+    
+    for(UIActivityIndicatorView *spinner in self.spinners) {
+        spinner.hidden = YES;
+        [spinner stopAnimating];
+    }
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -187,7 +212,6 @@ static NSString* const kImgMiniChevron = @"doink-up-8.png";
                  forState:UIControlStateHighlighted];
 }
 
-
 //----------------------------------------------------------------------------------------------------
 - (void)setPurchaseTitle:(NSString*)title
                 forIndex:(NSInteger)index 
@@ -205,6 +229,16 @@ static NSString* const kImgMiniChevron = @"doink-up-8.png";
     
     [titleButton setTitle:title 
                  forState:UIControlStateNormal];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)enterSpinningStateForIndex:(NSInteger)index {
+    if(!self.spinners)
+        [self createSpinners];
+    
+    UIActivityIndicatorView *spinner = [self.spinners objectAtIndex:index];
+    [spinner startAnimating];
+    spinner.hidden = NO;
 }
 
 

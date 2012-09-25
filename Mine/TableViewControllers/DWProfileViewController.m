@@ -130,7 +130,7 @@
     
     DWPurchase *purchase = [DWPurchase fetch:purchaseID];
     
-    if(!purchase)
+    if(!purchase || purchase.isDestroying)
         return;
     
 

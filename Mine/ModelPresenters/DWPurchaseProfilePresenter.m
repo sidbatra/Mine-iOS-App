@@ -47,6 +47,9 @@
         [cell setPurchaseTitle:purchase.title
                       forIndex:i
                 withPurchaseID:purchase.databaseID];
+        
+        if(purchase.isDestroying)
+            [cell enterSpinningStateForIndex:i];
     }
     
     return cell;

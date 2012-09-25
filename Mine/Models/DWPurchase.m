@@ -60,6 +60,7 @@ NSString* const kKeyProduct             = @"product";
 @synthesize store           = _store;
 @synthesize likes           = _likes;
 @synthesize comments        = _comments;
+@synthesize isDestroying    = _isDestroying;
 
 
 //----------------------------------------------------------------------------------------------------

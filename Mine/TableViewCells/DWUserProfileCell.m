@@ -125,7 +125,7 @@ static NSString* const kImgSeparator = @"profile-followings-divider.png";
     
     purchasesCountLabel.backgroundColor    = [UIColor clearColor];
     purchasesCountLabel.font               = [UIFont fontWithName:@"HelveticaNeue" size:14];
-    purchasesCountLabel.textColor          = [UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1.0];
+    purchasesCountLabel.textColor          = [UIColor colorWithRed:0.6 green:0.6 blue:0.6 alpha:1.0];
     purchasesCountLabel.textAlignment      = UITextAlignmentLeft;
     //purchasesCountLabel.layer.shadowColor  = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1.0].CGColor;
     //purchasesCountLabel.layer.shadowOffset = CGSizeMake(0,1);
@@ -143,7 +143,7 @@ static NSString* const kImgSeparator = @"profile-followings-divider.png";
                                                             1)];
     bylineLabel.backgroundColor    = [UIColor clearColor];
     bylineLabel.font               = kBylineFont;
-    bylineLabel.textColor          = [UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1.0];
+    bylineLabel.textColor          = [UIColor colorWithRed:0.6 green:0.6 blue:0.6 alpha:1.0];
     bylineLabel.textAlignment      = UITextAlignmentLeft;
     bylineLabel.numberOfLines      = 0;
     bylineLabel.lineBreakMode      = UILineBreakModeWordWrap;
@@ -324,7 +324,7 @@ static NSString* const kImgSeparator = @"profile-followings-divider.png";
                      constrainedToSize:CGSizeMake(kBylineWidth,1000)
                               lineBreakMode:UILineBreakModeWordWrap].height;
     
-    height += 38;
+    height += 37;
         
     return  height;
 }

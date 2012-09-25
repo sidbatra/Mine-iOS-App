@@ -64,6 +64,8 @@ extern NSString* const kNImgPurchaseGiantLoadError;
     
     NSMutableArray  *_likes;
     NSMutableArray  *_comments;
+    
+    BOOL            _isDestroying;
 }
 
 /**
@@ -136,6 +138,8 @@ extern NSString* const kNImgPurchaseGiantLoadError;
  * Comments made on the purchase.
  */
 @property (nonatomic,strong) NSMutableArray *comments;
+
+@property (nonatomic,assign) BOOL isDestroying;
 
 
 

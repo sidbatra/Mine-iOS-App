@@ -39,6 +39,9 @@
           withPurchaseID:(NSInteger)purchaseID;
 
 
+- (void)enterSpinningStateForIndex:(NSInteger)index;
+
+
 /**
  * Compute the height for the cell.
  */
