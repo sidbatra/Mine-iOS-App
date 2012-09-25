@@ -134,8 +134,10 @@ static NSString* const kImgProductHighlight  = @"chooser-item-bg-on.png";
     for(UIButton *productButton in self.productButtons) 
         productButton.hidden = YES;
     
-    for(UIImageView *productImageView in self.productImageViews) 
-        productImageView.image = nil;
+    for(UIImageView *productImageView in self.productImageViews) {
+        productImageView.hidden = YES;
+        productImageView.image  = nil;
+    }
     
 }
 
@@ -153,7 +155,8 @@ static NSString* const kImgProductHighlight  = @"chooser-item-bg-on.png";
     UIImageView *productImageView   = [self.productImageViews objectAtIndex:index];
     productImageView.image          = image;
     
-    productButton.hidden = NO;
+    productButton.hidden    = NO;
+    productImageView.hidden = NO;
 }
 
 @end
