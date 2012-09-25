@@ -88,7 +88,7 @@ static NSString* const kImgMiniChevron = @"doink-up-8.png";
 - (void)createImageButtons {
     
     for(NSInteger i=0 ; i<kColumnsInPurchaseSearch ; i++) {
-        UIButton *imageButton = [[UIButton alloc] initWithFrame:CGRectMake((kPurchaseImageSide+8)*i + 11,11,kPurchaseImageSide,kPurchaseImageSide)];
+        UIButton *imageButton = [[UIButton alloc] initWithFrame:CGRectMake((kPurchaseImageSide+10)*i + 11,11,kPurchaseImageSide,kPurchaseImageSide)];
         
         imageButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
         imageButton.backgroundColor = [UIColor whiteColor];
@@ -111,7 +111,7 @@ static NSString* const kImgMiniChevron = @"doink-up-8.png";
         CALayer *backgroundLayer = [CALayer layer];
         backgroundLayer.cornerRadius = 4;
         backgroundLayer.backgroundColor = [UIColor colorWithRed:0.933 green:0.933 blue:0.933 alpha:1.0].CGColor;
-        backgroundLayer.frame = CGRectMake((kPurchaseImageSide+8)*i + 11,11+kPurchaseImageSide+8,kPurchaseImageSide,42);
+        backgroundLayer.frame = CGRectMake((kPurchaseImageSide+10)*i + 11,11+kPurchaseImageSide+9,kPurchaseImageSide,42);
         
         [self.contentView.layer addSublayer:backgroundLayer];
         
@@ -125,7 +125,7 @@ static NSString* const kImgMiniChevron = @"doink-up-8.png";
 
         CGRect frame = backgroundLayer.frame;
         frame.origin.x += 9;
-        frame.origin.y += 6;
+        frame.origin.y += 7;
         frame.size.width -= 18;
         frame.size.height -= 12;
         

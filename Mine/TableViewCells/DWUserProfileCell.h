@@ -24,7 +24,8 @@
 
 - (void)setUserImage:(UIImage*)image;
 - (void)setUserName:(NSString*)userName;
-- (void)setByline:(NSString*)byline   
+- (void)setByline:(NSString*)byline
+   purchasesCount:(NSInteger)purchasesCount
   followingsCount:(NSInteger)followingsCount
    followersCount:(NSInteger)followersCount;
 

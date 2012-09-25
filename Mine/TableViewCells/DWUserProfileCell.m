@@ -16,14 +16,17 @@
 NSInteger const kUserPurchaseCellHeight = 84;
 
 static NSInteger const kBylineWidth = 298;
-static NSString* const kImgActionButtonBg = @"btn-action-bg-dark.png";
+static NSString* const kImgSeparator = @"profile-followings-divider.png";
 
 #define kBylineFont [UIFont fontWithName:@"HelveticaNeue" size:14]
 
 
 @interface DWUserProfileCell() {
     UIImageView     *userImageView;
+    UIImageView     *separatorImageView;
+    
     UILabel         *userNameLabel;
+    UILabel         *purchasesCountLabel;
     UILabel         *bylineLabel;
     
     UIButton        *followingButton;
@@ -52,12 +55,14 @@ static NSString* const kImgActionButtonBg = @"btn-action-bg-dark.png";
 				reuseIdentifier:reuseIdentifier];
 	
     if (self) {        
-        self.contentView.backgroundColor = [UIColor colorWithRed:0.270 green:0.270 blue:0.270 alpha:1.0];
+        self.contentView.backgroundColor = [UIColor colorWithRed:0.223 green:0.223 blue:0.223 alpha:1.0];
         
         //[self createBorders];
         [self createUserImageView];
         [self createUserNameLabel];
+        [self createPurchasesLabel];
         [self createBylineLabel];
+        [self createSeparatorImage];
         [self createConnectionButtons];
         [self createConnectionLabels];
         
@@ -90,7 +95,7 @@ static NSString* const kImgActionButtonBg = @"btn-action-bg-dark.png";
 
 //----------------------------------------------------------------------------------------------------
 - (void)createUserImageView {
-    userImageView = [[UIImageView alloc] initWithFrame:CGRectMake(11,9,48,48)];
+    userImageView = [[UIImageView alloc] initWithFrame:CGRectMake(11,11,48,48)];
     userImageView.backgroundColor = [UIColor colorWithRed:0.2 green:0.2 blue:0.2 alpha:1.0];
     userImageView.layer.cornerRadius = 3;
     userImageView.layer.masksToBounds = YES;
@@ -100,14 +105,14 @@ static NSString* const kImgActionButtonBg = @"btn-action-bg-dark.png";
 
 //----------------------------------------------------------------------------------------------------
 - (void)createUserNameLabel {
-    userNameLabel  = [[UILabel alloc] initWithFrame:CGRectMake(68,10,240,32)];
+    userNameLabel  = [[UILabel alloc] initWithFrame:CGRectMake(68,12,240,32)];
     
     userNameLabel.backgroundColor    = [UIColor clearColor];
     userNameLabel.font               = [UIFont fontWithName:@"HelveticaNeue-Bold" size:20];
     userNameLabel.textColor          = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0];
     userNameLabel.textAlignment      = UITextAlignmentLeft;
     userNameLabel.layer.shadowColor  = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1.0].CGColor;
-    userNameLabel.layer.shadowOffset = CGSizeMake(0,1);
+    userNameLabel.layer.shadowOffset = CGSizeMake(0,-1);
     userNameLabel.layer.shadowRadius = 0;
     userNameLabel.layer.shadowOpacity = 1.0;
     
@@ -115,9 +120,25 @@ static NSString* const kImgActionButtonBg = @"btn-action-bg-dark.png";
 }
 
 //----------------------------------------------------------------------------------------------------
+- (void)createPurchasesLabel {
+    purchasesCountLabel  = [[UILabel alloc] initWithFrame:CGRectMake(68,40,240,20)];
+    
+    purchasesCountLabel.backgroundColor    = [UIColor clearColor];
+    purchasesCountLabel.font               = [UIFont fontWithName:@"HelveticaNeue" size:14];
+    purchasesCountLabel.textColor          = [UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1.0];
+    purchasesCountLabel.textAlignment      = UITextAlignmentLeft;
+    //purchasesCountLabel.layer.shadowColor  = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1.0].CGColor;
+    //purchasesCountLabel.layer.shadowOffset = CGSizeMake(0,1);
+    //purchasesCountLabel.layer.shadowRadius = 0;
+    //purchasesCountLabel.layer.shadowOpacity = 1.0;
+    
+    [self.contentView addSubview:purchasesCountLabel];
+}
+
+//----------------------------------------------------------------------------------------------------
 - (void)createBylineLabel {
     bylineLabel = [[UILabel alloc] initWithFrame:CGRectMake(11, 
-                                                            userImageView.frame.origin.y + userImageView.frame.size.height + 10,
+                                                            userImageView.frame.origin.y + userImageView.frame.size.height + 9,
                                                             kBylineWidth,
                                                             1)];
     bylineLabel.backgroundColor    = [UIColor clearColor];
@@ -135,9 +156,6 @@ static NSString* const kImgActionButtonBg = @"btn-action-bg-dark.png";
     
     followingButton = [[UIButton alloc] initWithFrame:CGRectMake(11,0,149,44)];
     
-    [followingButton setBackgroundImage:[UIImage imageNamed:kImgActionButtonBg]
-                                                   forState:UIControlStateNormal];
-    
     [followingButton addTarget:self
                         action:@selector(didTapFollowingButton:)
               forControlEvents:UIControlEventTouchUpInside];
@@ -147,9 +165,6 @@ static NSString* const kImgActionButtonBg = @"btn-action-bg-dark.png";
     
     
     followersButton = [[UIButton alloc] initWithFrame:CGRectMake(163,0,149,44)];
-    
-    [followersButton setBackgroundImage:[UIImage imageNamed:kImgActionButtonBg]
-                               forState:UIControlStateNormal];
 
     [followersButton addTarget:self
                         action:@selector(didTapFollowersButton:)
@@ -160,12 +175,24 @@ static NSString* const kImgActionButtonBg = @"btn-action-bg-dark.png";
 }
 
 //----------------------------------------------------------------------------------------------------
+- (void)createSeparatorImage {
+    separatorImageView = [[UIImageView alloc] initWithFrame:CGRectMake(11, 0, 298, 38)];
+    separatorImageView.image = [UIImage imageNamed:kImgSeparator];
+    
+    [self.contentView addSubview:separatorImageView];
+}
+
+//----------------------------------------------------------------------------------------------------
 - (void)createConnectionLabels {
     followingLabel = [[OHAttributedLabel alloc] initWithFrame:CGRectMake(0,0,149,44)];
     followingLabel.textAlignment = UITextAlignmentLeft;
     followingLabel.centerVertically = YES;
     followingLabel.automaticallyAddLinksForType = 0;
     followingLabel.backgroundColor = [UIColor clearColor];
+    //followingLabel.layer.shadowColor  = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1.0].CGColor;
+    //followingLabel.layer.shadowOffset = CGSizeMake(0,1);
+    //followingLabel.layer.shadowRadius = 0;
+    //followingLabel.layer.shadowOpacity = 1.0;
     
     [self.contentView addSubview:followingLabel];
     
@@ -175,6 +202,10 @@ static NSString* const kImgActionButtonBg = @"btn-action-bg-dark.png";
     followersLabel.centerVertically = YES;
     followersLabel.automaticallyAddLinksForType = 0;
     followersLabel.backgroundColor = [UIColor clearColor];
+    //followersLabel.layer.shadowColor  = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1.0].CGColor;
+    //followersLabel.layer.shadowOffset = CGSizeMake(0,1);
+    //followersLabel.layer.shadowRadius = 0;
+    //followersLabel.layer.shadowOpacity = 1.0;
     
     [self.contentView addSubview:followersLabel];
 
@@ -191,9 +222,14 @@ static NSString* const kImgActionButtonBg = @"btn-action-bg-dark.png";
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)setByline:(NSString*)byline 
+- (void)setByline:(NSString*)byline
+   purchasesCount:(NSInteger)purchasesCount
   followingsCount:(NSInteger)followingsCount
    followersCount:(NSInteger)followersCount {
+    
+    
+    purchasesCountLabel.text = [NSString stringWithFormat:@"%d %@",purchasesCount,purchasesCount == 1 ? @"item" : @"items"];
+    
 
     CGRect frame = bylineLabel.frame;
     frame.size.width = kBylineWidth;
@@ -202,67 +238,57 @@ static NSString* const kImgActionButtonBg = @"btn-action-bg-dark.png";
     [bylineLabel sizeToFit];
     
     
-    if(followingsCount) {
-        frame = followingButton.frame;
-        frame.origin.y = bylineLabel.frame.origin.y+bylineLabel.frame.size.height+11;
-        followingButton.frame = frame;
-        
-        frame = followingButton.frame;
-        frame.origin.x += 10;
-        frame.origin.y -= 2;
-        followingLabel.frame = frame;
-        
-        
-        NSString *followingCountString = [NSString stringWithFormat:@"%d",followingsCount];
-        NSString *followingText = [NSString stringWithFormat:@"%@ following",followingCountString];
-        
-        NSRange countRange = NSMakeRange(0,followingCountString.length);
-        
-        NSMutableAttributedString* attrStr = [NSMutableAttributedString attributedStringWithString:followingText];
-        [attrStr setFont:[UIFont fontWithName:@"HelveticaNeue" size:13.5]];
-        [attrStr setFont:[UIFont fontWithName:@"HelveticaNeue-Bold" size:20] range:countRange];
-        [attrStr setTextColor:[UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1.0]];
-        
-        followingLabel.attributedText = attrStr;
-    }
-    else {
-        followingButton.hidden = YES;
-        
-        frame = followersButton.frame;
-        frame.origin.x = followingButton.frame.origin.x;
-        followersButton.frame = frame;
-    }
+    frame = separatorImageView.frame;
+    frame.origin.y = bylineLabel.frame.origin.y + bylineLabel.frame.size.height + 8;
+    separatorImageView.frame = frame;
     
     
-    if(followersCount) {
-        frame = followersButton.frame;
-        frame.origin.y = bylineLabel.frame.origin.y+bylineLabel.frame.size.height+11;
-        followersButton.frame = frame; 
-        
-        
-        frame = followersButton.frame;
-        frame.origin.x += 10;
-        frame.origin.y -= 2;
-        followersLabel.frame = frame;
-        
-        
-        NSString *followersCountString = [NSString stringWithFormat:@"%d",followersCount];
-        NSString *followersText = [NSString stringWithFormat:@"%@ %@",followersCountString,followersCount > 1 ? @"followers" : @"follower"];
-        
-        NSRange countRange = NSMakeRange(0,followersCountString.length);
-        
-        NSMutableAttributedString* attrStr = [NSMutableAttributedString attributedStringWithString:followersText];
-        [attrStr setFont:[UIFont fontWithName:@"HelveticaNeue" size:13.5]];
-        [attrStr setFont:[UIFont fontWithName:@"HelveticaNeue-Bold" size:20] range:countRange];
-        [attrStr setTextColor:[UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1.0]];
-        
-        followersLabel.attributedText = attrStr;
-    }
-    else {
-        followersButton.hidden = YES;
-    }
-}
+    frame = followingButton.frame;
+    frame.origin.y = separatorImageView.frame.origin.y + 1;
+    followingButton.frame = frame;
+    
+    frame = followingButton.frame;
+    frame.origin.x += 10;
+    frame.origin.y -= 2;
+    followingLabel.frame = frame;
+    
+    
+    NSString *followingCountString = [NSString stringWithFormat:@"%d",followingsCount];
+    NSString *followingText = [NSString stringWithFormat:@"%@ FOLLOWING",followingCountString];
+    
+    NSRange countRange = NSMakeRange(0,followingCountString.length+1);
+    
+    NSMutableAttributedString* attrStr = [NSMutableAttributedString attributedStringWithString:followingText];
+    [attrStr setFont:[UIFont fontWithName:@"HelveticaNeue-Bold" size:10]];
+    [attrStr setFont:[UIFont fontWithName:@"HelveticaNeue-Bold" size:25] range:countRange];
+    [attrStr setTextColor:[UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1.0]];
+    
+    followingLabel.attributedText = attrStr;
+    
 
+    frame = followersButton.frame;
+    frame.origin.y = separatorImageView.frame.origin.y + 1;
+    followersButton.frame = frame; 
+    
+    
+    frame = followersButton.frame;
+    frame.origin.x += 10;
+    frame.origin.y -= 2;
+    followersLabel.frame = frame;
+    
+    
+    NSString *followersCountString = [NSString stringWithFormat:@"%d",followersCount];
+    NSString *followersText = [NSString stringWithFormat:@"%@ %@",followersCountString,followersCount > 1 ? @"FOLLOWERS" : @"FOLLOWER"];
+    
+    countRange = NSMakeRange(0,followersCountString.length+1);
+    
+    attrStr = [NSMutableAttributedString attributedStringWithString:followersText];
+    [attrStr setFont:[UIFont fontWithName:@"HelveticaNeue-Bold" size:10]];
+    [attrStr setFont:[UIFont fontWithName:@"HelveticaNeue-Bold" size:25] range:countRange];
+    [attrStr setTextColor:[UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1.0]];
+    
+    followersLabel.attributedText = attrStr;
+}
 
 
 
@@ -298,8 +324,7 @@ static NSString* const kImgActionButtonBg = @"btn-action-bg-dark.png";
                      constrainedToSize:CGSizeMake(kBylineWidth,1000)
                               lineBreakMode:UILineBreakModeWordWrap].height;
     
-    if(connectionsCount)
-        height += 55;
+    height += 38;
         
     return  height;
 }

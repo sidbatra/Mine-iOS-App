@@ -41,7 +41,8 @@
     
     [cell setUserImage:user.squareImage];
     [cell setUserName:user.fullName];
-    [cell setByline:user.byline 
+    [cell setByline:user.byline
+     purchasesCount:user.purchasesCount
     followingsCount:user.inverseFollowingsCount
      followersCount:user.followingsCount];
     
