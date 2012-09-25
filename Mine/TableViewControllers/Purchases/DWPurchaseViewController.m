@@ -66,6 +66,8 @@
 	
     if (actionSheet.tag == self.purchase.databaseID && buttonIndex == 0) {
         
+        [super actionSheet:actionSheet clickedButtonAtIndex:buttonIndex];
+        
         [(DWPurchaseViewDataSource*)self.tableViewDataSource deletePurchase];
         
         if (self.navigationController.topViewController == self) 

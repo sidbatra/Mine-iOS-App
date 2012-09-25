@@ -76,6 +76,12 @@
                                                  selector:@selector(userSquareImageLoaded:) 
                                                      name:kNImgUserSquareLoaded
                                                    object:nil];
+        
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self 
+                                                 selector:@selector(requestPurchaseDelete:) 
+                                                     name:kNRequestPurchaseDelete
+                                                   object:nil];     
     }
     
     return self;
@@ -222,6 +228,18 @@
     [self provideResourceToVisibleCells:[DWUser class] 
                                objectID:[[userInfo objectForKey:kKeyResourceID] integerValue]
                               objectKey:kKeySquareImageURL];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)requestPurchaseDelete:(NSNotification*)notification {
+    
+    NSDictionary *userInfo  = [notification userInfo];
+    DWPurchase *purchase    = [DWPurchase fetch:[[userInfo objectForKey:kKeyResourceID] integerValue]];
+    
+    if(self.user.databaseID != purchase.user.databaseID)
+        return;
+    
+    [self reloadTableView];
 }
 
 

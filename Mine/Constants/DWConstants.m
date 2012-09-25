@@ -20,7 +20,7 @@ NSString* const kClientName         = @"iphone";
 NSString* const kUserAgent          = @"Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.8.1.6) Gecko/20070802 SeaMonkey/1.1.4";
 
 #if ENVIRONMENT == DEVELOPMENT
-NSString* const kAppServer      = @"sbat.getmine.com";
+NSString* const kAppServer      = @"drao.getmine.com";
 #elif ENVIRONMENT == STAGING
 NSString* const kAppServer	= @"staging.getmine.com";
 #elif ENVIRONMENT == PRODUCTION
@@ -44,6 +44,7 @@ NSString* const kNWelcomeNavigationFinished = @"NWelcomeNavigationFinished";
 NSString* const kNPaginationCellReached     = @"NPaginationCellReached";
 NSString* const kNCommentAddedForPurchase   = @"NCommentAddedForPurchase";
 NSString* const kNRequestTabBarIndexChange  = @"NRequestTabBarIndexChange";
+NSString* const kNRequestPurchaseDelete     = @"NRequestPurchaseDelete";
 
 //----------------------------------------------------------------------------------------------------
 NSInteger const kColumnsInProductsSearch        = 3;

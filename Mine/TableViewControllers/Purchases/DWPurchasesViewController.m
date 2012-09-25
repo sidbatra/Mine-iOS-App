@@ -291,4 +291,27 @@
                         withObject:creationIntent];
 }
 
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark UIActionSheet Delegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {	
+    
+    DWPurchase *purchase = [DWPurchase fetch:actionSheet.tag];
+    
+    if(!purchase)
+        return;
+    
+    purchase.isDestroying = YES;
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:kNRequestPurchaseDelete
+                                                        object:nil
+                                                      userInfo:[NSDictionary dictionaryWithObjectsAndKeys:
+                                                                [NSNumber numberWithInteger:purchase.databaseID],kKeyResourceID,
+                                                                nil]];
+}
+
 @end

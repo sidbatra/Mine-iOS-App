@@ -283,7 +283,9 @@
 //----------------------------------------------------------------------------------------------------
 - (void)purchaseDeleted:(NSNumber *)purchaseID {
     
-    if([DWSession sharedDWSession].currentUser.databaseID != self.userID)
+    DWPurchase *purchase = [DWPurchase fetch:[purchaseID integerValue]];
+    
+    if(purchase.user.databaseID != self.userID)
         return;
     
     self.purchases = [NSMutableArray array];
