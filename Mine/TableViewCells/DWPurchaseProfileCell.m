@@ -31,6 +31,7 @@ static NSString* const kImgSpinnerBackground = @"delete-loading.png";
     NSMutableArray  *_imageButtons;
     NSMutableArray  *_titleButtons;
     NSMutableArray  *_backgroundLayers;
+    NSMutableArray  *_chevrons;
     NSMutableArray  *_spinners;
     NSMutableArray  *_spinnerBackgrounds;
 }
@@ -39,6 +40,7 @@ static NSString* const kImgSpinnerBackground = @"delete-loading.png";
 @property (nonatomic,strong) NSMutableArray *imageButtons;
 @property (nonatomic,strong) NSMutableArray *titleButtons;
 @property (nonatomic,strong) NSMutableArray *backgroundLayers;
+@property (nonatomic,strong) NSMutableArray *chevrons;
 @property (nonatomic,strong) NSMutableArray *spinners;
 @property (nonatomic,strong) NSMutableArray *spinnerBackgrounds;
 
@@ -54,6 +56,7 @@ static NSString* const kImgSpinnerBackground = @"delete-loading.png";
 @synthesize imageButtons        = _imageButtons;
 @synthesize titleButtons        = _titleButtons;
 @synthesize backgroundLayers    = _backgroundLayers;
+@synthesize chevrons            = _chevrons;
 @synthesize spinners            = _spinners;
 @synthesize spinnerBackgrounds  = _spinnerBackgrounds;
 @synthesize delegate            = _delegate;
@@ -70,6 +73,7 @@ static NSString* const kImgSpinnerBackground = @"delete-loading.png";
         self.imageButtons       = [NSMutableArray arrayWithCapacity:kColumnsInPurchaseSearch];
         self.titleButtons       = [NSMutableArray arrayWithCapacity:kColumnsInPurchaseSearch];
         self.backgroundLayers   = [NSMutableArray arrayWithCapacity:kColumnsInPurchaseSearch];
+        self.chevrons           = [NSMutableArray arrayWithCapacity:kColumnsInPurchaseSearch];
         
         [self createImageButtons];
         [self createTitleButtons];
@@ -147,6 +151,8 @@ static NSString* const kImgSpinnerBackground = @"delete-loading.png";
         UIImageView *chevronView = [[UIImageView alloc] initWithFrame:CGRectMake(backgroundLayer.frame.origin.x+10,backgroundLayer.frame.origin.y-4,8,4)];
         chevronView.image = [UIImage imageNamed:kImgMiniChevron];
         [self.contentView addSubview:chevronView];
+        
+        [self.chevrons addObject:chevronView];
         
         
         UIButton *titleButton = [[UIButton alloc] init];
@@ -232,14 +238,16 @@ static NSString* const kImgSpinnerBackground = @"delete-loading.png";
     for(CALayer *backgroundLayer in self.backgroundLayers)
         backgroundLayer.hidden = YES;
     
+    for(UIImageView *chevron in self.chevrons)
+        chevron.hidden = YES;
+    
     for(UIActivityIndicatorView *spinner in self.spinners) {
         spinner.hidden = YES;
         [spinner stopAnimating];
     }
     
-    for(UIImageView *spinnerBackground in self.spinnerBackgrounds) {
+    for(UIImageView *spinnerBackground in self.spinnerBackgrounds)
         spinnerBackground.hidden = YES;
-    }
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -271,6 +279,9 @@ static NSString* const kImgSpinnerBackground = @"delete-loading.png";
     
     CALayer *backgroundLayer = [self.backgroundLayers objectAtIndex:index];
     backgroundLayer.hidden = NO;
+    
+    UIImageView *chevron = [self.chevrons objectAtIndex:index];
+    chevron.hidden = NO;
     
     
     UIButton *titleButton = [self.titleButtons objectAtIndex:index];
