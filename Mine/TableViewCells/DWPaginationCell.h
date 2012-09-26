@@ -12,6 +12,7 @@ extern NSInteger const kPaginationCellHeight;
  */
 @interface DWPaginationCell : UITableViewCell {
 }
-		
+
+- (void)displaySpinner;
 
 @end

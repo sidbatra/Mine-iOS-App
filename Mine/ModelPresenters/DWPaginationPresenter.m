@@ -39,6 +39,8 @@
         pagination.isTriggered  = YES;
     }
     
+    [cell displaySpinner];
+    
     return cell;
 }
 
