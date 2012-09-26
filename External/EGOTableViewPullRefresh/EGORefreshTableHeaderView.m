@@ -64,8 +64,8 @@
 		label.autoresizingMask = UIViewAutoresizingFlexibleWidth;
 		label.font = [UIFont fontWithName:@"HelveticaNeue-Bold" size:15];
 		label.textColor = [UIColor colorWithRed:153.0/255.0 green:153.0/255.0 blue:153.0/255.0 alpha:1.0];
-		label.shadowColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.4];
-		label.shadowOffset = CGSizeMake(0.0f, -1.0f);
+		//label.shadowColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:0.4];
+		//label.shadowOffset = CGSizeMake(0.0f, -1.0f);
 		label.backgroundColor = [UIColor clearColor];
 		label.textAlignment = UITextAlignmentCenter;
 		[self addSubview:label];

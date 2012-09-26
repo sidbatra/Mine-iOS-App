@@ -112,10 +112,10 @@ static NSString* const kImgSeparator = @"profile-followings-divider.png";
     userNameLabel.font               = [UIFont fontWithName:@"HelveticaNeue-Bold" size:24];
     userNameLabel.textColor          = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0];
     userNameLabel.textAlignment      = UITextAlignmentLeft;
-    userNameLabel.layer.shadowColor  = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1.0].CGColor;
-    userNameLabel.layer.shadowOffset = CGSizeMake(0,-1);
-    userNameLabel.layer.shadowRadius = 0;
-    userNameLabel.layer.shadowOpacity = 1.0;
+    //userNameLabel.layer.shadowColor  = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1.0].CGColor;
+    //userNameLabel.layer.shadowOffset = CGSizeMake(0,-1);
+    //userNameLabel.layer.shadowRadius = 0;
+    //userNameLabel.layer.shadowOpacity = 1.0;
     
     [self.contentView addSubview:userNameLabel];
 }
