@@ -23,12 +23,14 @@ static NSString* const kImgMiniChevron = @"doink-up-8.png";
 @interface DWPurchaseProfileCell() {
     NSMutableArray  *_imageButtons;
     NSMutableArray  *_titleButtons;
+    NSMutableArray  *_backgroundLayers;
     NSMutableArray  *_spinners;
 }
 
 
 @property (nonatomic,strong) NSMutableArray *imageButtons;
 @property (nonatomic,strong) NSMutableArray *titleButtons;
+@property (nonatomic,strong) NSMutableArray *backgroundLayers;
 @property (nonatomic,strong) NSMutableArray *spinners;
 
 
@@ -42,10 +44,11 @@ static NSString* const kImgMiniChevron = @"doink-up-8.png";
 //----------------------------------------------------------------------------------------------------
 @implementation DWPurchaseProfileCell
 
-@synthesize imageButtons    = _imageButtons;
-@synthesize titleButtons    = _titleButtons;
-@synthesize spinners        = _spinners;
-@synthesize delegate        = _delegate;
+@synthesize imageButtons        = _imageButtons;
+@synthesize titleButtons        = _titleButtons;
+@synthesize backgroundLayers    = _backgroundLayers;
+@synthesize spinners            = _spinners;
+@synthesize delegate            = _delegate;
 
 
 //----------------------------------------------------------------------------------------------------
@@ -57,8 +60,9 @@ static NSString* const kImgMiniChevron = @"doink-up-8.png";
 	
     if (self) {
         self.contentView.clipsToBounds = YES;
-        self.imageButtons   = [NSMutableArray arrayWithCapacity:kColumnsInPurchaseSearch];
-        self.titleButtons   = [NSMutableArray arrayWithCapacity:kColumnsInPurchaseSearch];
+        self.imageButtons       = [NSMutableArray arrayWithCapacity:kColumnsInPurchaseSearch];
+        self.titleButtons       = [NSMutableArray arrayWithCapacity:kColumnsInPurchaseSearch];
+        self.backgroundLayers   = [NSMutableArray arrayWithCapacity:kColumnsInPurchaseSearch];
         
         [self createImageButtons];
         [self createTitleButtons];
@@ -110,6 +114,8 @@ static NSString* const kImgMiniChevron = @"doink-up-8.png";
         backgroundLayer.cornerRadius = 4;
         backgroundLayer.backgroundColor = [UIColor colorWithRed:0.933 green:0.933 blue:0.933 alpha:1.0].CGColor;
         backgroundLayer.frame = CGRectMake((kPurchaseImageSide+10)*i + 11,11+kPurchaseImageSide+9,kPurchaseImageSide,42);
+        
+        [self.backgroundLayers addObject:backgroundLayer];
         
         [self.contentView.layer addSublayer:backgroundLayer];
         
@@ -187,6 +193,9 @@ static NSString* const kImgMiniChevron = @"doink-up-8.png";
     for(UIButton *titleButton in self.titleButtons)
         titleButton.hidden = YES;
     
+    for(CALayer *backgroundLayer in self.backgroundLayers)
+        backgroundLayer.hidden = YES;
+    
     for(UIActivityIndicatorView *spinner in self.spinners) {
         spinner.hidden = YES;
         [spinner stopAnimating];
@@ -220,12 +229,16 @@ static NSString* const kImgMiniChevron = @"doink-up-8.png";
     if(index >= [self.titleButtons count])
         return;
     
+    CALayer *backgroundLayer = [self.backgroundLayers objectAtIndex:index];
+    backgroundLayer.hidden = NO;
+    
+    
     UIButton *titleButton = [self.titleButtons objectAtIndex:index];
     titleButton.tag = purchaseID;
     titleButton.hidden = NO;
     
-    if([title length] > 50)
-        title = [NSString stringWithFormat:@"%@...",[title substringToIndex:47]];
+    if([title length] > 45)
+        title = [NSString stringWithFormat:@"%@...",[title substringToIndex:42]];
     
     [titleButton setTitle:title 
                  forState:UIControlStateNormal];
