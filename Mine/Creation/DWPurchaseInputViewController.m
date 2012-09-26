@@ -224,7 +224,6 @@
 
 //----------------------------------------------------------------------------------------------------
 - (BOOL)textFieldShouldReturn:(UITextField*)textField {
-    //TODO
 	return YES;
 }
 
