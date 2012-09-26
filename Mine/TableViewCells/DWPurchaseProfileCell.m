@@ -20,7 +20,9 @@ static NSInteger const kPurchaseImageSide = 144;
 static NSInteger const kSpinnerSide = 20;
 static NSInteger const kBackgroundBottomMargin = 12;
 static NSInteger const kMaxTitleLength = 45;
+
 static NSString* const kImgMiniChevron = @"doink-up-8.png";
+static NSString* const kImgSpinnerBackground = @"delete-loading.png";
 
 #define kTitleFont [UIFont fontWithName:@"HelveticaNeue" size:10]
 
@@ -30,6 +32,7 @@ static NSString* const kImgMiniChevron = @"doink-up-8.png";
     NSMutableArray  *_titleButtons;
     NSMutableArray  *_backgroundLayers;
     NSMutableArray  *_spinners;
+    NSMutableArray  *_spinnerBackgrounds;
 }
 
 
@@ -37,7 +40,7 @@ static NSString* const kImgMiniChevron = @"doink-up-8.png";
 @property (nonatomic,strong) NSMutableArray *titleButtons;
 @property (nonatomic,strong) NSMutableArray *backgroundLayers;
 @property (nonatomic,strong) NSMutableArray *spinners;
-
+@property (nonatomic,strong) NSMutableArray *spinnerBackgrounds;
 
 @end
 
@@ -52,8 +55,8 @@ static NSString* const kImgMiniChevron = @"doink-up-8.png";
 @synthesize titleButtons        = _titleButtons;
 @synthesize backgroundLayers    = _backgroundLayers;
 @synthesize spinners            = _spinners;
+@synthesize spinnerBackgrounds  = _spinnerBackgrounds;
 @synthesize delegate            = _delegate;
-
 
 //----------------------------------------------------------------------------------------------------
 - (id)initWithStyle:(UITableViewCellStyle)style 
@@ -181,6 +184,7 @@ static NSString* const kImgMiniChevron = @"doink-up-8.png";
 - (void)createSpinners {
     
     self.spinners = [NSMutableArray arrayWithCapacity:kColumnsInPurchaseSearch];
+    self.spinnerBackgrounds = [NSMutableArray arrayWithCapacity:kColumnsInPurchaseSearch];
 
     for(NSInteger i=0; i<kColumnsInPurchaseSearch; i++) {
         UIButton *imageButton = [self.imageButtons objectAtIndex:i];
@@ -195,6 +199,17 @@ static NSString* const kImgMiniChevron = @"doink-up-8.png";
         
         [self.spinners addObject:spinner];
         
+        
+        UIImageView *spinnerBackground = [[UIImageView alloc] initWithImage:[UIImage imageNamed:kImgSpinnerBackground]];
+        spinnerBackground.frame = CGRectMake(imageButton.frame.origin.x + (imageButton.frame.size.width - 44) / 2,
+                                     imageButton.frame.origin.y + (imageButton.frame.size.height - 44) / 2,
+                                     44,
+                                     44);
+        spinnerBackground.hidden = YES;
+        
+        [self.spinnerBackgrounds addObject:spinnerBackground];
+        
+        [self.contentView addSubview:spinnerBackground];
         [self.contentView addSubview:spinner];
     }
 }
@@ -220,6 +235,10 @@ static NSString* const kImgMiniChevron = @"doink-up-8.png";
     for(UIActivityIndicatorView *spinner in self.spinners) {
         spinner.hidden = YES;
         [spinner stopAnimating];
+    }
+    
+    for(UIImageView *spinnerBackground in self.spinnerBackgrounds) {
+        spinnerBackground.hidden = YES;
     }
 }
 
@@ -281,6 +300,10 @@ static NSString* const kImgMiniChevron = @"doink-up-8.png";
     UIActivityIndicatorView *spinner = [self.spinners objectAtIndex:index];
     [spinner startAnimating];
     spinner.hidden = NO;
+    
+    
+    UIImageView *spinnerBackground = [self.spinnerBackgrounds objectAtIndex:index];
+    spinnerBackground.hidden = NO;
 }
 
 
