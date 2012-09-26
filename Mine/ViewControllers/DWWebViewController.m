@@ -24,6 +24,8 @@ static NSString* const kLoadingText = @"Loading...";
     
     UIButton    *_backButton;
     UIButton    *_forwardButton;
+    
+    DWToolbar   *_toolbar;
 }
 
 
@@ -31,6 +33,7 @@ static NSString* const kLoadingText = @"Loading...";
 @property (nonatomic,assign) BOOL viewLoaded;
 @property (nonatomic,strong) UIButton *backButton;
 @property (nonatomic,strong) UIButton *forwardButton;
+@property (nonatomic,strong) DWToolbar *toolbar;
 
 @end
 
@@ -103,14 +106,19 @@ static NSString* const kLoadingText = @"Loading...";
                  forControlEvents:UIControlEventTouchUpInside];
     
     
-    self.toolbar.items = [NSArray arrayWithObjects:
-                          initialSpacer,
-                          [[UIBarButtonItem alloc] initWithCustomView:self.backButton], 
-                          intraNavSpacer,
-                          [[UIBarButtonItem alloc] initWithCustomView:self.forwardButton], 
-                          postNavSpacer,
-                          [[UIBarButtonItem alloc] initWithCustomView:shareButton], 
-                          nil];
+    if(!self.toolbar) {
+        self.toolbar = [[DWToolbar alloc] initWithFrame:CGRectMake(0,self.view.frame.size.height-49,320,49)];
+        self.toolbar.items = [NSArray arrayWithObjects:
+                              initialSpacer,
+                              [[UIBarButtonItem alloc] initWithCustomView:self.backButton], 
+                              intraNavSpacer,
+                              [[UIBarButtonItem alloc] initWithCustomView:self.forwardButton], 
+                              postNavSpacer,
+                              [[UIBarButtonItem alloc] initWithCustomView:shareButton], 
+                              nil];
+    }
+    
+    [self.view addSubview:self.toolbar];
     
     
     [self displayTitle:kLoadingText];
