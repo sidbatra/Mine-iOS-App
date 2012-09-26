@@ -9,18 +9,26 @@
 #import "DWPurchaseViewController.h"
 
 #import "DWPurchaseViewDataSource.h"
+#import "DWNavigationBarTitleView.h"
+#import "DWNavigationBarBackButton.h"
 #import "DWPurchase.h"
 #import "DWConstants.h"
 
 
 @interface DWPurchaseViewController () {
-    DWPurchase  *_purchase;
+    DWPurchase                  *_purchase;    
+    DWNavigationBarTitleView    *_navTitleView;
 }
 
 /**
  * Purchase being displaued.
  */
 @property (nonatomic,strong) DWPurchase *purchase;
+
+/**
+ * Tile view inserted onto the navigation bar.
+ */
+@property (nonatomic,strong) DWNavigationBarTitleView *navTitleView;
 
 @end
 
@@ -31,7 +39,8 @@
 //----------------------------------------------------------------------------------------------------
 @implementation DWPurchaseViewController
 
-@synthesize purchase = _purchase;
+@synthesize purchase        = _purchase;
+@synthesize navTitleView    = _navTitleView;
 
 //----------------------------------------------------------------------------------------------------
 - (id)initWithPurhcase:(DWPurchase*)purchase {
@@ -51,6 +60,13 @@
 //----------------------------------------------------------------------------------------------------
 - (void)viewDidLoad {
 	[super viewDidLoad];
+    
+    self.navigationItem.leftBarButtonItem   = [DWNavigationBarBackButton backButtonForNavigationController:self.navigationController];
+    self.navigationItem.title               = @"";
+    
+    if(!self.navTitleView)
+        self.navTitleView = [DWNavigationBarTitleView logoTitleView];
+
     
     [(DWPurchaseViewDataSource*)self.tableViewDataSource loadPurchase];
 }
@@ -73,6 +89,21 @@
         if (self.navigationController.topViewController == self) 
             [self.navigationController popViewControllerAnimated:YES];
     }
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark Nav Stack Selectors
+
+//----------------------------------------------------------------------------------------------------
+- (void)willShowOnNav {    
+    [self.navigationController.navigationBar addSubview:self.navTitleView];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)requiresFullScreenMode {
 }
 
 @end

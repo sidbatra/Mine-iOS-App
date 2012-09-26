@@ -57,6 +57,7 @@ static NSString* const kDiskKeyCurrentUser = @"DWSession_currentUser";
 
 @synthesize currentUser         = _currentUser;
 @synthesize statusController    = _statusController;
+@synthesize purchasesController = _purchasesController;
 @synthesize usersController     = _usersController;
 
 SYNTHESIZE_SINGLETON_FOR_CLASS(DWSession);
