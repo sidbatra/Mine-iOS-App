@@ -10,10 +10,11 @@
 
 #import "DWStatusController.h"
 #import "DWUsersController.h"
+#import "DWPurchasesController.h"
 #import "DWUser.h"
 
 
-@interface DWSession : NSObject<DWStatusControllerDelegate,DWUsersControllerDelegate> {
+@interface DWSession : NSObject<DWStatusControllerDelegate,DWUsersControllerDelegate,DWPurchasesControllerDelegate> {
     DWUser  *_currentUser;
 }
 

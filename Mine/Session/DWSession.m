@@ -8,9 +8,10 @@
 
 #import "DWSession.h"
 
-#import "DWAnalyticsManager.h"
-
 #import "SynthesizeSingleton.h"
+#import "DWAnalyticsManager.h"
+#import "DWConstants.h"
+
 
 static NSString* const kDiskKeyCurrentUser = @"DWSession_currentUser";
 
@@ -19,19 +20,15 @@ static NSString* const kDiskKeyCurrentUser = @"DWSession_currentUser";
  * Private declarations
  */
 @interface DWSession() {
-    DWStatusController  *_statusController;
-    DWUsersController   *_usersController;
+    DWStatusController      *_statusController;
+    DWUsersController       *_usersController;
+    DWPurchasesController   *_purchasesController;
 }
 
-/**
- * Data controller for fetching status updates.
- */
-@property (nonatomic,strong) DWStatusController *statusController;
 
-/**
- * Data controller for the users model.
- */
+@property (nonatomic,strong) DWStatusController *statusController;
 @property (nonatomic,strong) DWUsersController *usersController;
+@property (nonatomic,strong) DWPurchasesController *purchasesController;
 
 
 /**
@@ -85,6 +82,9 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWSession);
         
         self.usersController = [[DWUsersController alloc] init];
         self.usersController.delegate = self;
+        
+        self.purchasesController = [[DWPurchasesController alloc] init];
+        self.purchasesController.delegate = self;
 	}
 	
 	return self;
@@ -180,6 +180,18 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWSession);
     return [self isAuthenticated] && self.currentUser.databaseID == userID;
 }
 
+//----------------------------------------------------------------------------------------------------
+- (void)launchUserUpdateNotification {
+    
+    NSDictionary *info = [NSDictionary dictionaryWithObjectsAndKeys:
+                          self.currentUser, kKeyUser,
+                          nil];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:kNUserManualUpdated
+                                                        object:nil
+                                                      userInfo:info];
+}
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
@@ -221,6 +233,27 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWSession);
 - (void)userUpdated:(DWUser *)user {
     [[DWSession sharedDWSession] update];
     [user destroy];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWPurchasesControllerDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)purchaseCreated:(DWPurchase *)purchase
+         fromResourceID:(NSNumber *)resourceID {
+    
+    self.currentUser.purchasesCount++;
+    [self launchUserUpdateNotification];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)purchaseDeleted:(NSNumber *)purchaseID {
+    
+    self.currentUser.purchasesCount--;
+    [self launchUserUpdateNotification];
 }
 
 @end
