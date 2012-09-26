@@ -105,10 +105,11 @@ static NSString* const kImgSeparator = @"profile-followings-divider.png";
 
 //----------------------------------------------------------------------------------------------------
 - (void)createUserNameLabel {
-    userNameLabel  = [[UILabel alloc] initWithFrame:CGRectMake(68,12,240,32)];
+    userNameLabel  = [[UILabel alloc] initWithFrame:CGRectMake(68,10,240,32)];
     
     userNameLabel.backgroundColor    = [UIColor clearColor];
-    userNameLabel.font               = [UIFont fontWithName:@"HelveticaNeue-Bold" size:20];
+    userNameLabel.adjustsFontSizeToFitWidth = NO;
+    userNameLabel.font               = [UIFont fontWithName:@"HelveticaNeue-Bold" size:24];
     userNameLabel.textColor          = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0];
     userNameLabel.textAlignment      = UITextAlignmentLeft;
     userNameLabel.layer.shadowColor  = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1.0].CGColor;
@@ -324,7 +325,7 @@ static NSString* const kImgSeparator = @"profile-followings-divider.png";
                      constrainedToSize:CGSizeMake(kBylineWidth,1000)
                               lineBreakMode:UILineBreakModeWordWrap].height;
     
-    height += 37;
+    height += 36;
         
     return  height;
 }
