@@ -68,7 +68,7 @@ static NSString* const kMsgSearchPlaceholder    = @"Search for people";
 
 //----------------------------------------------------------------------------------------------------
 - (void)createSearchField {
-    searchTextField                         = [[UITextField alloc] initWithFrame:CGRectMake(33,13,220,20)];
+    searchTextField                         = [[UITextField alloc] initWithFrame:CGRectMake(33,12,219,20)];
     searchTextField.delegate                = self;
     searchTextField.autocorrectionType      = UITextAutocorrectionTypeNo;
     searchTextField.autocapitalizationType  = UITextAutocapitalizationTypeNone;

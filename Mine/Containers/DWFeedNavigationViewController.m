@@ -233,14 +233,14 @@ static NSString* const kImgSearchOn     = @"nav-btn-search-on.png";
 
 //----------------------------------------------------------------------------------------------------
 - (void)searchButtonClicked {
-    //[self.customTabBarController enableFullScreen];
+    
     self.feedViewController.view.hidden             = YES;    
     self.navTitleView.hidden                        = YES;
     self.queueProgressView.hidden                   = YES;
     self.usersSearchViewController.view.hidden      = NO;
     self.searchBar.hidden                           = NO;
-
     
+    [self.customTabBarController enableFullScreen];    
     [self.searchBar becomeActive];
     
     [self removeSideButtons];
@@ -261,7 +261,7 @@ static NSString* const kImgSearchOn     = @"nav-btn-search-on.png";
     self.navTitleView.hidden                        = NO;
     self.queueProgressView.hidden                   = NO;
     
-    //[self.customTabBarController disableFullScreen];
+    [self.customTabBarController disableFullScreen];
     
     [(DWUsersSearchViewController*)self.usersSearchViewController reset];
     [self.searchBar resignActive];

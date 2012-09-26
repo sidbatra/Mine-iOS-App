@@ -253,4 +253,9 @@
     [self.navigationController.navigationBar addSubview:self.navTitleView];
     [self.navigationController.navigationBar addSubview:self.followButton];
 }
+
+//----------------------------------------------------------------------------------------------------
+- (void)requiresFullScreenMode {
+    
+}
 @end

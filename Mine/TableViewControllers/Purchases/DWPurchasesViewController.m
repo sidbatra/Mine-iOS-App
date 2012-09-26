@@ -130,7 +130,7 @@
             UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil 
                                                                      delegate:self 
                                                             cancelButtonTitle:@"Cancel"
-                                                       destructiveButtonTitle:@"Delete"
+                                                       destructiveButtonTitle:@"Delete Item"
                                                             otherButtonTitles:nil];
             
             actionSheet.tag = purchase.databaseID;

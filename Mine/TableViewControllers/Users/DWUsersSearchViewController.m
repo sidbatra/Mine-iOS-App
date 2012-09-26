@@ -38,6 +38,12 @@
 }
 
 //----------------------------------------------------------------------------------------------------
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    self.loadingView.hidden = YES;
+}
+
+//----------------------------------------------------------------------------------------------------
 - (void)reset {
     [self.tableViewDataSource clean];
     self.tableViewDataSource.objects = nil;
