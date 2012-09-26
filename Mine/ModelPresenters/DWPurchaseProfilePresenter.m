@@ -59,7 +59,9 @@
 + (CGFloat)heightForObject:(id)object 
      withPresentationStyle:(NSInteger)style {
     
-    return [DWPurchaseProfileCell heightForCell];
+     DWModelSet *purchaseSet = object;
+    
+    return [DWPurchaseProfileCell heightForCellWithPurchases:purchaseSet.models];
 }
 
 //----------------------------------------------------------------------------------------------------

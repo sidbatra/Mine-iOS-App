@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-
 @protocol DWPurchaseProfileCellDelegate;
 
 @interface DWPurchaseProfileCell : UITableViewCell {
@@ -45,7 +44,7 @@
 /**
  * Compute the height for the cell.
  */
-+ (NSInteger)heightForCell;
++ (NSInteger)heightForCellWithPurchases:(NSMutableArray*)purchases;
 
 @end
 

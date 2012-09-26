@@ -10,14 +10,19 @@
 
 #import <QuartzCore/QuartzCore.h>
 
+#import "DWPurchase.h"
 #import "DWConstants.h"
 
 
 
-static NSInteger const kPurchaseProfileCellHeight = 210;
+static NSInteger const kPurchaseProfileCellHeight = 180;
 static NSInteger const kPurchaseImageSide = 144;
 static NSInteger const kSpinnerSide = 20;
+static NSInteger const kBackgroundBottomMargin = 12;
+static NSInteger const kMaxTitleLength = 45;
 static NSString* const kImgMiniChevron = @"doink-up-8.png";
+
+#define kTitleFont [UIFont fontWithName:@"HelveticaNeue" size:10]
 
 
 @interface DWPurchaseProfileCell() {
@@ -35,7 +40,6 @@ static NSString* const kImgMiniChevron = @"doink-up-8.png";
 
 
 @end
-
 
 
 
@@ -76,8 +80,25 @@ static NSString* const kImgMiniChevron = @"doink-up-8.png";
 }
 
 //----------------------------------------------------------------------------------------------------
-+ (NSInteger)heightForCell {
-    return kPurchaseProfileCellHeight;
++ (NSInteger)heightForCellWithPurchases:(NSMutableArray*)purchases {
+    
+    NSInteger height = 0;
+    
+    for(DWPurchase *purchase in purchases) {
+        
+        NSString *title = purchase.title;
+        
+        //if([title length] > kMaxTitleLength)
+        //    title = [NSString stringWithFormat:@"%@...",[title substringToIndex:kMaxTitleLength-3]];
+        
+        NSInteger newHeight = [title sizeWithFont:kTitleFont
+                                constrainedToSize:CGSizeMake(126,1000)
+                                    lineBreakMode:UILineBreakModeWordWrap].height;
+        if(newHeight > height)
+            height = newHeight;
+    }
+    
+    return kPurchaseProfileCellHeight + height;
 }
 
 
@@ -126,23 +147,23 @@ static NSString* const kImgMiniChevron = @"doink-up-8.png";
         
         
         UIButton *titleButton = [[UIButton alloc] init];
-
+        
         CGRect frame = backgroundLayer.frame;
         frame.origin.x += 9;
         frame.origin.y += 7;
         frame.size.width -= 18;
-        frame.size.height -= 12;
+        frame.size.height -= kBackgroundBottomMargin;
         
         titleButton.frame = frame;
         titleButton.backgroundColor             = [UIColor clearColor];
         titleButton.contentVerticalAlignment    = UIControlContentVerticalAlignmentTop;
         titleButton.contentHorizontalAlignment  = UIControlContentHorizontalAlignmentLeft;
-        titleButton.titleLabel.font             = [UIFont fontWithName:@"HelveticaNeue" size:10];
+        titleButton.titleLabel.font             = kTitleFont;
         titleButton.titleLabel.backgroundColor  = [UIColor clearColor];
         titleButton.titleLabel.textAlignment    = UITextAlignmentLeft;
         titleButton.titleLabel.numberOfLines    = 2;
         titleButton.titleLabel.lineBreakMode    = UILineBreakModeWordWrap;
-
+        
         [titleButton setTitleColor:[UIColor colorWithRed:0.333 green:0.333 blue:0.333 alpha:1.0]  
                           forState:UIControlStateNormal];
         
@@ -237,11 +258,19 @@ static NSString* const kImgMiniChevron = @"doink-up-8.png";
     titleButton.tag = purchaseID;
     titleButton.hidden = NO;
     
-    if([title length] > 45)
-        title = [NSString stringWithFormat:@"%@...",[title substringToIndex:42]];
+    //if([title length] > kMaxTitleLength)
+    //    title = [NSString stringWithFormat:@"%@...",[title substringToIndex:kMaxTitleLength-3]];
     
     [titleButton setTitle:title 
                  forState:UIControlStateNormal];
+    
+    CGRect frame = backgroundLayer.frame;
+    frame.size.height = titleButton.titleLabel.frame.size.height + kBackgroundBottomMargin;
+    backgroundLayer.frame = frame;
+    
+    frame = titleButton.frame;
+    frame.size.height =titleButton.titleLabel.frame.size.height;
+    titleButton.frame = frame;
 }
 
 //----------------------------------------------------------------------------------------------------
