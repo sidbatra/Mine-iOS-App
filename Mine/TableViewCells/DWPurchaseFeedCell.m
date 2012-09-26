@@ -484,6 +484,7 @@ static NSInteger const kUserImageSide           = 34;
 	NSMutableAttributedString* attrStr = [NSMutableAttributedString attributedStringWithString:[NSString stringWithFormat:@"%@ %@",boughtText,timestamp]];
 	[attrStr setFont:kBoughtTextFont];
 	[attrStr setTextColor:[UIColor colorWithRed:0.333 green:0.333 blue:0.333 alpha:1.0]];
+    //[attrStr setTextAlignment:UITextAlignmentLeft lineBreakMode:UILineBreakModeWordWrap lineHeight:5];
     
     [attrStr setFont:[UIFont fontWithName:@"HelveticaNeue" size:10] range:timestampRange];
     [attrStr setTextColor:[UIColor colorWithRed:0.6 green:0.6 blue:0.6 alpha:1.0] range:timestampRange];

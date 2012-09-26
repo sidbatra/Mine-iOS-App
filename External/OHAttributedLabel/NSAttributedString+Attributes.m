@@ -258,6 +258,11 @@
 {
 	[self setTextAlignment:alignment lineBreakMode:lineBreakMode range:NSMakeRange(0,[self length])];
 }
+
+-(void)setTextAlignment:(CTTextAlignment)alignment lineBreakMode:(CTLineBreakMode)lineBreakMode lineHeight:(CGFloat)lineHeight{
+    [self setTextAlignment:alignment lineBreakMode:lineBreakMode range:NSMakeRange(0,[self length]) lineHeight:lineHeight];
+}
+
 -(void)setTextAlignment:(CTTextAlignment)alignment lineBreakMode:(CTLineBreakMode)lineBreakMode range:(NSRange)range
 {
 	// kCTParagraphStyleAttributeName > kCTParagraphStyleSpecifierAlignment
@@ -266,6 +271,18 @@
 		{.spec = kCTParagraphStyleSpecifierLineBreakMode, .valueSize = sizeof(CTLineBreakMode), .value = (const void*)&lineBreakMode},
 	};
 	CTParagraphStyleRef aStyle = CTParagraphStyleCreate(paraStyles, 2);
+	[self removeAttribute:(BRIDGE_CAST NSString*)kCTParagraphStyleAttributeName range:range]; // Work around for Apple leak
+	[self addAttribute:(BRIDGE_CAST NSString*)kCTParagraphStyleAttributeName value:(BRIDGE_CAST id)aStyle range:range];
+	CFRelease(aStyle);
+}
+
+-(void)setTextAlignment:(CTTextAlignment)alignment lineBreakMode:(CTLineBreakMode)lineBreakMode range:(NSRange)range lineHeight:(CGFloat)lineHeight{
+    CTParagraphStyleSetting paraStyles[3] = {
+		{.spec = kCTParagraphStyleSpecifierAlignment, .valueSize = sizeof(CTTextAlignment), .value = (const void*)&alignment},
+		{.spec = kCTParagraphStyleSpecifierLineBreakMode, .valueSize = sizeof(CTLineBreakMode), .value = (const void*)&lineBreakMode},
+        {.spec = kCTParagraphStyleSpecifierLineSpacingAdjustment, .valueSize = sizeof(lineHeight),.value =(const void*)&lineHeight},
+	};
+	CTParagraphStyleRef aStyle = CTParagraphStyleCreate(paraStyles, 3);
 	[self removeAttribute:(BRIDGE_CAST NSString*)kCTParagraphStyleAttributeName range:range]; // Work around for Apple leak
 	[self addAttribute:(BRIDGE_CAST NSString*)kCTParagraphStyleAttributeName value:(BRIDGE_CAST id)aStyle range:range];
 	CFRelease(aStyle);
