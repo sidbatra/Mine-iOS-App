@@ -260,7 +260,7 @@ static NSString* const kImgSeparator = @"profile-followings-divider.png";
     NSRange countRange = NSMakeRange(0,followingCountString.length+1);
     
     NSMutableAttributedString* attrStr = [NSMutableAttributedString attributedStringWithString:followingText];
-    [attrStr setFont:[UIFont fontWithName:@"HelveticaNeue-Bold" size:10]];
+    [attrStr setFont:[UIFont fontWithName:@"HelveticaNeue-Bold" size:11]];
     [attrStr setFont:[UIFont fontWithName:@"HelveticaNeue-Bold" size:25] range:countRange];
     [attrStr setTextColor:[UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1.0]];
     
@@ -284,7 +284,7 @@ static NSString* const kImgSeparator = @"profile-followings-divider.png";
     countRange = NSMakeRange(0,followersCountString.length+1);
     
     attrStr = [NSMutableAttributedString attributedStringWithString:followersText];
-    [attrStr setFont:[UIFont fontWithName:@"HelveticaNeue-Bold" size:10]];
+    [attrStr setFont:[UIFont fontWithName:@"HelveticaNeue-Bold" size:11]];
     [attrStr setFont:[UIFont fontWithName:@"HelveticaNeue-Bold" size:25] range:countRange];
     [attrStr setTextColor:[UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1.0]];
     
