@@ -105,6 +105,7 @@ extern NSString* const kImgDoneOff;
 extern NSString* const kImgDoneOn;
 extern NSString* const kImgMessageDrawer;
 extern NSString* const kImgTopShadow;
+extern NSString* const kImgBottomShadow;
 
 
 /**

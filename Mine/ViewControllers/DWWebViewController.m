@@ -11,6 +11,7 @@
 #import "DWNavigationBarBackButton.h"
 #import "DWToolbar.h"
 #import "DWGUIManager.h"
+#import "DWConstants.h"
 
 static NSString* const kImgBack     = @"tab-web-back.png";
 static NSString* const kImgForward  = @"tab-web-fwd.png";
@@ -25,6 +26,8 @@ static NSString* const kLoadingText = @"Loading...";
     UIButton    *_backButton;
     UIButton    *_forwardButton;
     
+    UIImageView *_bottomShadowView;
+    
     DWToolbar   *_toolbar;
 }
 
@@ -33,6 +36,7 @@ static NSString* const kLoadingText = @"Loading...";
 @property (nonatomic,assign) BOOL viewLoaded;
 @property (nonatomic,strong) UIButton *backButton;
 @property (nonatomic,strong) UIButton *forwardButton;
+@property (nonatomic,strong) UIImageView *bottomShadowView;
 @property (nonatomic,strong) DWToolbar *toolbar;
 
 @end
@@ -50,6 +54,7 @@ static NSString* const kLoadingText = @"Loading...";
 @synthesize viewLoaded      = _viewLoaded;
 @synthesize backButton      = _backButton;
 @synthesize forwardButton   = _forwardButton;
+@synthesize bottomShadowView = _bottomShadowView;
 
 //----------------------------------------------------------------------------------------------------
 - (id)initWithURL:(NSString*)url {
@@ -119,6 +124,15 @@ static NSString* const kLoadingText = @"Loading...";
     }
     
     [self.view addSubview:self.toolbar];
+    
+    
+    if(!self.bottomShadowView) {
+        self.bottomShadowView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:kImgBottomShadow]];
+        self.bottomShadowView.frame = CGRectMake(0,self.view.frame.size.height-49-3,320,3);
+    }
+    
+    [self.view addSubview:self.bottomShadowView];
+        
     
     
     [self displayTitle:kLoadingText];

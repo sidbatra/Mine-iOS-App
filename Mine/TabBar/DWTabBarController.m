@@ -10,8 +10,6 @@
 static NSInteger const kScreenHeight    = 460;
 static CGRect const kFullScreenFrame    = { {0,0}, {320, kScreenHeight} };
 
-//static NSString* const kImgBottomShadow     = @"shadow_bottom.png";
-
 
 /**
  * Declarations for private methods and properties
@@ -20,6 +18,7 @@ static CGRect const kFullScreenFrame    = { {0,0}, {320, kScreenHeight} };
     NSMutableArray      *_subControllers;
 
     UIImageView         *_topShadowView;
+    UIImageView         *_bottomShadowView;
     //UIImageView         *_backgroundView;
 }
 
@@ -32,6 +31,7 @@ static CGRect const kFullScreenFrame    = { {0,0}, {320, kScreenHeight} };
  * Image view with a shadow just below the navigation bar
  */
 @property (nonatomic,strong) UIImageView *topShadowView;
+@property (nonatomic,strong) UIImageView *bottomShadowView;
 
 /**
  * Image view for background used throughout the logged in mode
@@ -67,6 +67,7 @@ static CGRect const kFullScreenFrame    = { {0,0}, {320, kScreenHeight} };
 @synthesize subControllers          = _subControllers;
 @synthesize delegate                = _delegate;
 @synthesize topShadowView           = _topShadowView;
+@synthesize bottomShadowView        = _bottomShadowView;
 //@synthesize backgroundView          = _backgroundView;
 
 
@@ -84,6 +85,9 @@ static CGRect const kFullScreenFrame    = { {0,0}, {320, kScreenHeight} };
         
         self.topShadowView              = [[UIImageView alloc] initWithImage:[UIImage imageNamed:kImgTopShadow]];
         self.topShadowView.frame        = CGRectMake(0,44,320,3);
+        
+        self.bottomShadowView           = [[UIImageView alloc] initWithImage:[UIImage imageNamed:kImgBottomShadow]];
+        self.bottomShadowView.frame     = CGRectMake(0,411-3,320,3);
         /*
         self.backgroundView             = [DWGUIManager backgroundImageViewWithFrame:kFullScreenFrame];
         */
@@ -103,6 +107,7 @@ static CGRect const kFullScreenFrame    = { {0,0}, {320, kScreenHeight} };
     
     //[self.view addSubview:self.backgroundView];
 	[self.view addSubview:self.topShadowView];
+    [self.view addSubview:self.bottomShadowView];
     
 	[self.view addSubview:self.tabBar];
     
@@ -158,12 +163,14 @@ static CGRect const kFullScreenFrame    = { {0,0}, {320, kScreenHeight} };
 //----------------------------------------------------------------------------------------------------
 - (void)enableFullScreen {
 	self.tabBar.hidden = YES;
+    self.bottomShadowView.hidden = YES;
     self.selectedController.view.frame = kFullScreenFrame;
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)disableFullScreen {
 	self.tabBar.hidden = NO;
+    self.bottomShadowView.hidden = NO;
     self.selectedController.view.frame = [self subControllerFrame];
 }
 
