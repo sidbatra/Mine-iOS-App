@@ -6,7 +6,7 @@
 #import "DWPaginationCell.h"
 #import "DWConstants.h"
 
-NSInteger const kPaginationCellHeight = 60;
+NSInteger const kPaginationCellHeight = 44;
 
 static NSInteger const kSpinnerSize = 20;
 
@@ -39,7 +39,7 @@ static NSInteger const kSpinnerSize = 20;
                 reuseIdentifier:reuseIdentifier];
     
     if (self) {
-        self.contentView.backgroundColor = [UIColor blackColor];
+        self.contentView.backgroundColor = [UIColor whiteColor];
         
         [self createSpinner];
         
@@ -53,7 +53,7 @@ static NSInteger const kSpinnerSize = 20;
 - (void)createSpinner {
 
     spinner = [[UIActivityIndicatorView alloc]
-                                            initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+                                            initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
     //spinner.alpha   = 0.5;
 	spinner.frame	= CGRectMake((self.contentView.frame.size.width - kSpinnerSize)/2,
                                  (kPaginationCellHeight - kSpinnerSize)/2,
