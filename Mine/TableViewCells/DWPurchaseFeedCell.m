@@ -262,7 +262,7 @@ static NSInteger const kUserImageSide           = 34;
 //----------------------------------------------------------------------------------------------------
 - (void)createBoughtLabel {
     boughtLabel = [[OHAttributedLabel alloc] initWithFrame:CGRectMake(userImageButton.frame.origin.x+userImageButton.frame.size.width+8,
-                                                                      userImageButton.frame.origin.y+1,
+                                                                      userImageButton.frame.origin.y,
                                                                       kBoughtTextWidth,
                                                                       0)];
     boughtLabel.linkColor = kActiveColor;
@@ -484,7 +484,7 @@ static NSInteger const kUserImageSide           = 34;
 	NSMutableAttributedString* attrStr = [NSMutableAttributedString attributedStringWithString:[NSString stringWithFormat:@"%@ %@",boughtText,timestamp]];
 	[attrStr setFont:kBoughtTextFont];
 	[attrStr setTextColor:[UIColor colorWithRed:0.333 green:0.333 blue:0.333 alpha:1.0]];
-    //[attrStr setTextAlignment:UITextAlignmentLeft lineBreakMode:UILineBreakModeWordWrap lineHeight:5];
+    [attrStr setTextAlignment:UITextAlignmentLeft lineBreakMode:UILineBreakModeWordWrap lineHeight:2];
     
     [attrStr setFont:[UIFont fontWithName:@"HelveticaNeue" size:10] range:timestampRange];
     [attrStr setTextColor:[UIColor colorWithRed:0.6 green:0.6 blue:0.6 alpha:1.0] range:timestampRange];
@@ -512,7 +512,7 @@ static NSInteger const kUserImageSide           = 34;
 - (void)setEndorsement:(NSString*)endorsement {
     
     CGRect frame = endorsementLabel.frame;
-    frame.origin.y =  [self yValueOfBoughtArea] + 8;
+    frame.origin.y =  [self yValueOfBoughtArea] + 7;
     frame.size.width = kEndorsementWidth;
     endorsementLabel.frame = frame;
     
@@ -652,7 +652,7 @@ static NSInteger const kUserImageSide           = 34;
     
     if(!commentsBaseY) {
         commentsBaseY = [self yValueOfCellWithLastComment:NO
-                                    withAllCommentsButton:NO] + 5;
+                                    withAllCommentsButton:NO] + 4;
     }
     
     
@@ -663,7 +663,7 @@ static NSInteger const kUserImageSide           = 34;
     
     
     UIButton *commentUserButton = [[UIButton alloc] initWithFrame:CGRectMake(22,
-                                                                            previousCommentY + 9,
+                                                                            previousCommentY + 10,
                                                                              24,
                                                                              24)];
     commentUserButton.imageView.backgroundColor = [UIColor colorWithRed:0.878 green:0.878 blue:0.878 alpha:1.0];
@@ -701,6 +701,7 @@ static NSInteger const kUserImageSide           = 34;
     
 	[attrStr setFont:kCommentFont];
 	[attrStr setTextColor:[UIColor colorWithRed:0.333 green:0.333 blue:0.333 alpha:1.0]];
+    [attrStr setTextAlignment:UITextAlignmentLeft lineBreakMode:UILineBreakModeWordWrap lineHeight:2];
     
 	[attrStr setTextBold:YES range:NSMakeRange(0,userName.length+1)];
     
@@ -780,7 +781,7 @@ static NSInteger const kUserImageSide           = 34;
             NSInteger textHeight = [[NSString stringWithFormat:@"%@: %@",comment.user.fullName,comment.message] sizeWithFont:kCommentFont 
                                                                                                            constrainedToSize:CGSizeMake(kCommentWidth,1500)
                                                                                                                lineBreakMode:UILineBreakModeWordWrap].height;
-            height += MAX(24,textHeight) + 9;
+            height += MAX(24,textHeight) + 10;
         }
         
         if([comments count] > kTotalComments)
