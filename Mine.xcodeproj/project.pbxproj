@@ -36,6 +36,7 @@
 		262376B715BF6C0A00B3A037 /* FBRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 262376B115BF6C0A00B3A037 /* FBRequest.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		26659339160D306700A2B716 /* invite-loading@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26659338160D306700A2B716 /* invite-loading@2x.png */; };
 		2676AA0215FE714B00B0B579 /* DWGUIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2676AA0115FE714B00B0B579 /* DWGUIManager.m */; };
+		26776BAA161285B3002EDE4E /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26776BA9161285B3002EDE4E /* Default@2x.png */; };
 		267B3FB915D42D0B0001AC64 /* DWStoresViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 267B3FB815D42D0B0001AC64 /* DWStoresViewController.m */; };
 		267B3FBD15D4322A0001AC64 /* DWStorePresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 267B3FBC15D4322A0001AC64 /* DWStorePresenter.m */; };
 		267B3FC115D43AE90001AC64 /* DWStorePickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 267B3FBF15D43AE90001AC64 /* DWStorePickerViewController.m */; };
@@ -384,6 +385,7 @@
 		26659338160D306700A2B716 /* invite-loading@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "invite-loading@2x.png"; sourceTree = "<group>"; };
 		2676AA0015FE714B00B0B579 /* DWGUIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWGUIManager.h; sourceTree = "<group>"; };
 		2676AA0115FE714B00B0B579 /* DWGUIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWGUIManager.m; sourceTree = "<group>"; };
+		26776BA9161285B3002EDE4E /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		267B3FB715D42D0B0001AC64 /* DWStoresViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWStoresViewController.h; sourceTree = "<group>"; };
 		267B3FB815D42D0B0001AC64 /* DWStoresViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWStoresViewController.m; sourceTree = "<group>"; };
 		267B3FBB15D4322A0001AC64 /* DWStorePresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWStorePresenter.h; sourceTree = "<group>"; };
@@ -1030,6 +1032,7 @@
 		BB125087160BA2F400AA2521 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				26776BA9161285B3002EDE4E /* Default@2x.png */,
 				BB5BE3D916126712006EA2C4 /* nav-btn-follow-loading@2x.png */,
 				BB5BE3DA16126712006EA2C4 /* nav-btn-following-loading@2x.png */,
 				BB5BE3DB16126712006EA2C4 /* nav-btn-following-off@2x.png */,
@@ -1970,6 +1973,7 @@
 				BB5BE3DE16126712006EA2C4 /* nav-btn-following-loading@2x.png in Resources */,
 				BB5BE3DF16126712006EA2C4 /* nav-btn-following-off@2x.png in Resources */,
 				BB5BE3E016126712006EA2C4 /* nav-btn-following-on@2x.png in Resources */,
+				26776BAA161285B3002EDE4E /* Default@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
