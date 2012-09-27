@@ -279,7 +279,7 @@ static NSString* const kImgSeparator = @"profile-followings-divider.png";
     
     
     NSString *followersCountString = [NSString stringWithFormat:@"%d",followersCount];
-    NSString *followersText = [NSString stringWithFormat:@"%@ %@",followersCountString,followersCount > 1 ? @"FOLLOWERS" : @"FOLLOWER"];
+    NSString *followersText = [NSString stringWithFormat:@"%@ %@",followersCountString,followersCount == 1 ? @"FOLLOWER" : @"FOLLOWERS"];
     
     countRange = NSMakeRange(0,followersCountString.length+1);
     
