@@ -304,8 +304,8 @@ static NSString* const kImgSearchOn     = @"nav-btn-search-on.png";
          willShowViewController:viewController 
                        animated:animated];
     
-    //if (!self.searchViewController.view.hidden) 
-    //    [self.customTabBarController enableFullScreen];
+    if(!self.usersSearchViewController.view.hidden)
+        [self.customTabBarController enableFullScreen];
 }
 
 
