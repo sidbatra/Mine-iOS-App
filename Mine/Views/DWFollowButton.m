@@ -6,22 +6,31 @@
 #import "DWFollowButton.h"
 #import "DWConstants.h"
 
-static NSString* const kImgInactiveButton                   = @"nav-btn-follow-off.png";
-static NSString* const kImgInactiveButtonHighlighted        = @"nav-btn-follow-on.png";
-static NSString* const kImgInactiveSpinning                 = @"nav-btn-follow-loading.png";
-static NSString* const kImgActiveButton                     = @"nav-btn-following-off.png";
-static NSString* const kImgActiveButtonHighlighted          = @"nav-btn-following-on.png";
-static NSString* const kImgActiveSpinning                   = @"nav-btn-following-loading.png";
+static NSString* const kImgDarkInactiveButton                   = @"nav-btn-follow-off.png";
+static NSString* const kImgDarkInactiveButtonHighlighted        = @"nav-btn-follow-on.png";
+static NSString* const kImgDarkInactiveSpinning                 = @"nav-btn-follow-loading.png";
+static NSString* const kImgDarkActiveButton                     = @"nav-btn-following-off.png";
+static NSString* const kImgDarkActiveButtonHighlighted          = @"nav-btn-following-on.png";
+static NSString* const kImgDarkActiveSpinning                   = @"nav-btn-following-loading.png";
+
+static NSString* const kImgLightInactiveButton                   = @"list-btn-follow-off.png";
+static NSString* const kImgLightInactiveButtonHighlighted        = @"list-btn-follow-on.png";
+static NSString* const kImgLightInactiveSpinning                 = @"list-btn-follow-loading.png";
+static NSString* const kImgLightActiveButton                     = @"list-btn-following-off.png";
+static NSString* const kImgLightActiveButtonHighlighted          = @"list-btn-following-on.png";
+static NSString* const kImgLightActiveSpinning                   = @"list-btn-follow-loading.png";
+
 
 
 @interface DWFollowButton() {
     BOOL _isActive;
+    DWFollowButtonStyle _followButtonStyle;
 }
 
-/**
- * Whether the following is active or not.
- */
+
 @property (nonatomic,assign) BOOL isActive;
+@property (nonatomic,assign) DWFollowButtonStyle followButtonStyle;
+
 
 /**
  * Called prior to state transitions.
@@ -42,15 +51,18 @@ static NSString* const kImgActiveSpinning                   = @"nav-btn-followin
 //----------------------------------------------------------------------------------------------------
 @implementation DWFollowButton
 
-@synthesize isActive    = _isActive;
-@synthesize delegate    = _delegate;
+@synthesize isActive            = _isActive;
+@synthesize followButtonStyle   = _followButtonStyle;
+@synthesize delegate            = _delegate;
 
 //----------------------------------------------------------------------------------------------------
-- (id)initWithFrame:(CGRect)frame {
+- (id)initWithFrame:(CGRect)frame followButtonStyle:(DWFollowButtonStyle)followButtonStyle {
     
     self = [super initWithFrame:frame];
     
     if (self) {
+        self.followButtonStyle = followButtonStyle;
+        
         [self createUnderlayButton];
         [self createSpinner];
         
@@ -90,13 +102,15 @@ static NSString* const kImgActiveSpinning                   = @"nav-btn-followin
 
 //----------------------------------------------------------------------------------------------------
 - (void)createSpinner {
+    CGFloat spinnerSide = self.followButtonStyle == kFollowButonStyleDark ? 14.0 : 15.0;
+    
 	spinner			= [[UIActivityIndicatorView alloc] 
-                       initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
-	spinner.frame	= CGRectMake(self.frame.size.width/2-7,self.frame.size.height/2-7,14,14);
+                       initWithActivityIndicatorStyle:self.followButtonStyle == kFollowButonStyleDark ? UIActivityIndicatorViewStyleWhite : UIActivityIndicatorViewStyleGray];
+	spinner.frame	= CGRectMake((self.frame.size.width-spinnerSide)/2,(self.frame.size.height-spinnerSide)/2,spinnerSide,spinnerSide);
     spinner.hidden  = YES;
-    spinner.transform = CGAffineTransformMakeScale(0.7f, 0.7f);
+    spinner.transform = CGAffineTransformMakeScale(spinnerSide/20.0, spinnerSide/20.0);
 	
-	[self addSubview:spinner];	
+	[self addSubview:spinner];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -112,10 +126,10 @@ static NSString* const kImgActiveSpinning                   = @"nav-btn-followin
     
     self.isActive = YES;
     
-    [underlayButton setBackgroundImage:[UIImage imageNamed:kImgActiveButton]
+    [underlayButton setBackgroundImage:[UIImage imageNamed:self.followButtonStyle == kFollowButonStyleDark ? kImgDarkActiveButton : kImgLightActiveButton]
                               forState:UIControlStateNormal];
     
-    [underlayButton setBackgroundImage:[UIImage imageNamed:kImgActiveButtonHighlighted]
+    [underlayButton setBackgroundImage:[UIImage imageNamed:self.followButtonStyle == kFollowButonStyleDark ? kImgDarkActiveButtonHighlighted :  kImgLightActiveButtonHighlighted]
                               forState:UIControlStateHighlighted];
 
 }
@@ -126,10 +140,10 @@ static NSString* const kImgActiveSpinning                   = @"nav-btn-followin
     
     self.isActive = NO;
     
-    [underlayButton setBackgroundImage:[UIImage imageNamed:kImgInactiveButton]
+    [underlayButton setBackgroundImage:[UIImage imageNamed:self.followButtonStyle == kFollowButonStyleDark ? kImgDarkInactiveButton : kImgLightInactiveButton]
                               forState:UIControlStateNormal];
     
-    [underlayButton setBackgroundImage:[UIImage imageNamed:kImgInactiveButtonHighlighted]
+    [underlayButton setBackgroundImage:[UIImage imageNamed:self.followButtonStyle == kFollowButonStyleDark ? kImgDarkInactiveButtonHighlighted : kImgLightInactiveButtonHighlighted]
                               forState:UIControlStateHighlighted];
 }
 
@@ -137,11 +151,11 @@ static NSString* const kImgActiveSpinning                   = @"nav-btn-followin
 - (void)startSpinning {
     
     if(self.isActive) {
-        [underlayButton setBackgroundImage:[UIImage imageNamed:kImgActiveSpinning]
+        [underlayButton setBackgroundImage:[UIImage imageNamed:self.followButtonStyle == kFollowButonStyleDark ? kImgDarkActiveSpinning : kImgLightActiveSpinning]
                                   forState:UIControlStateNormal];
     }
     else {
-        [underlayButton setBackgroundImage:[UIImage imageNamed:kImgInactiveSpinning]
+        [underlayButton setBackgroundImage:[UIImage imageNamed:self.followButtonStyle == kFollowButonStyleDark ? kImgDarkInactiveSpinning : kImgLightInactiveSpinning]
                                   forState:UIControlStateNormal];
     }
     

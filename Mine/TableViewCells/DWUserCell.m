@@ -113,7 +113,7 @@ NSInteger const kUserCellHeight = 50;
 
 //----------------------------------------------------------------------------------------------------
 - (void)createFollowButton {
-    followButton = [[DWFollowButton alloc] initWithFrame:CGRectMake(234,10,74,30)];
+    followButton = [[DWFollowButton alloc] initWithFrame:CGRectMake(234,10,83,25) followButtonStyle:kFollowButonStyleLight];
     followButton.delegate = self;
     
     [self.contentView addSubview:followButton];

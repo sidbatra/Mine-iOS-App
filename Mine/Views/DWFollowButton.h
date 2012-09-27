@@ -5,21 +5,32 @@
 
 #import <UIKit/UIKit.h>
 
+
+
+typedef enum {
+    kFollowButonStyleDark = 0,
+    kFollowButonStyleLight = 1,
+} DWFollowButtonStyle;
+
+
+
 @protocol DWFollowButtonDelegate;
 
 @interface DWFollowButton : UIView {
     UIButton                    *underlayButton;
     UIActivityIndicatorView     *spinner;
-    
+        
     __weak id <NSObject,DWFollowButtonDelegate>  _delegate;
 }
+
+@property (nonatomic,weak) id<NSObject,DWFollowButtonDelegate> delegate;
 
 - (void)enterActiveState;
 - (void)enterInactiveState;
 - (void)startSpinning;
 
 
-@property (nonatomic,weak) id<NSObject,DWFollowButtonDelegate> delegate;
+- (id)initWithFrame:(CGRect)frame followButtonStyle:(DWFollowButtonStyle)followButtonStyle;
 
 @end
 
