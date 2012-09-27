@@ -10,6 +10,7 @@
 #import "DWProduct.h"
 #import "DWPurchase.h"
 #import "DWSuggestion.h"
+#import "DWAnalyticsManager.h"
 #import "DWConstants.h"
 
 
@@ -182,6 +183,8 @@ static NSString* const kSuggestionMessageSubtitle       = @"e.g. ‘%@’";
     }
     
     [self showKeyboard];
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Create View"];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -268,6 +271,8 @@ static NSString* const kSuggestionMessageSubtitle       = @"e.g. ‘%@’";
     
     [self.delegate productSelected:self.product 
                        forPurchase:self.purchase];
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Product Selected"];    
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -276,6 +281,8 @@ static NSString* const kSuggestionMessageSubtitle       = @"e.g. ‘%@’";
     self.productImageView.image = nil;
     
     [self hideProductPreview];
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Product Rejected After Preview"];    
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -298,6 +305,8 @@ static NSString* const kSuggestionMessageSubtitle       = @"e.g. ‘%@’";
         [self disableSearch];
         [self showLoadingView];
         [self.productsViewController scrollToTop];
+        
+        [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Product Search Started"];
     }
     
 	return YES;
@@ -328,6 +337,8 @@ static NSString* const kSuggestionMessageSubtitle       = @"e.g. ‘%@’";
     
     [self.view endEditing:YES];    
     [self showProductPreview];
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Product Selected For Preview"];
 }
 
 //----------------------------------------------------------------------------------------------------

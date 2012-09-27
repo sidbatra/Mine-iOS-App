@@ -14,6 +14,7 @@
 #import "DWPurchase.h"
 #import "DWSetting.h"
 #import "DWSession.h"
+#import "DWAnalyticsManager.h"
 #import "DWConstants.h"
 
 
@@ -146,6 +147,8 @@ static NSString* const kMsgCancelTitle          = @"OK";
     [self setupSharingUI];
     
     [self.storePickerViewController preloadStores];
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Purchase Input View"];    
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -247,6 +250,8 @@ static NSString* const kMsgCancelTitle          = @"OK";
 - (void)storePicked:(NSString *)storeName {
     _storePicked = YES;
     self.storeNameLabel.text = storeName;
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Store Picked"];
 }
 
 

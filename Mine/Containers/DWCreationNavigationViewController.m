@@ -8,6 +8,7 @@
 
 #import "DWCreationNavigationViewController.h"
 #import "DWNavigationBar.h"
+#import "DWAnalyticsManager.h"
 #import "DWConstants.h"
 
 /**
@@ -74,6 +75,8 @@
 //----------------------------------------------------------------------------------------------------
 - (void)creationCancelled {
     [self.delegate dismissCreateView];
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Creation Cancelled"];
 }
 
 
@@ -104,6 +107,8 @@
               shareToTB:shareToTB];
 
     [self.delegate dismissCreateView];
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Creation Cancelled"];    
 }
 
 

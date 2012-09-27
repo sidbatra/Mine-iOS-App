@@ -10,6 +10,7 @@
 #import "DWNavigationBarBackButton.h"
 #import "DWGUIManager.h"
 #import "DWStore.h"
+#import "DWAnalyticsManager.h"
 #import "DWConstants.h"
 
 /**
@@ -79,6 +80,8 @@
     [self.view addSubview:self.storesViewController.view];
     
     [self showKeyboard];
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Store Picker View"];
 }
 
 //----------------------------------------------------------------------------------------------------

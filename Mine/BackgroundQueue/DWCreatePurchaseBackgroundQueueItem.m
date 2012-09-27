@@ -7,6 +7,7 @@
 
 #import "DWPurchase.h"
 #import "DWProduct.h"
+#import "DWAnalyticsManager.h"
 
 @interface DWCreatePurchaseBackgroundQueueItem() {
     DWPurchase  *_purchase;
@@ -116,7 +117,7 @@
     if(self.resourceID != [resourceID integerValue])
         return;
     
-    NSLog(@"Purchase created - %d",purchase.databaseID);
+    [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Purchase Created"];
     
     [purchase destroy];
     
@@ -129,8 +130,6 @@
     
     if(self.resourceID != [resourceID integerValue])
         return;
-    
-    NSLog(@"Purchase creation failed - %@",error);    
     
     [self processingError];
 }
