@@ -11,6 +11,11 @@
 #import "DWGUIManager.h"
 #import "DWSession.h"
 
+
+static NSString* const kMsgErrorTitle       = @"Error";
+static NSString* const kMsgCancelTitle      = @"OK";
+static NSString* const kMsgError            = @"Incorrect email or password";
+
 /**
  * Private declarations
  */
@@ -150,7 +155,12 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)tumblrAuthenticationFailed {
-    NSLog(@"Tumblr Authentication Failed - Show an alert");
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:kMsgErrorTitle
+                                                    message:kMsgError
+                                                   delegate:nil
+                                          cancelButtonTitle:kMsgCancelTitle
+                                          otherButtonTitles:nil];
+    [alert show];
 }
 
 

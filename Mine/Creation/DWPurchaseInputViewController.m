@@ -17,6 +17,11 @@
 #import "DWConstants.h"
 
 
+static NSString* const kMsgIncompleteTitle      = @"Incomplete";
+static NSString* const kMsgIncomplete           = @"Please enter an item name";
+static NSString* const kMsgCancelTitle          = @"OK";
+
+
 /**
  * Private declarations
  */
@@ -203,7 +208,13 @@
 //----------------------------------------------------------------------------------------------------
 - (void)post {
     if (self.nameTextField.text.length == 0) {
-        NSLog(@"incomplete fields - display alert");
+        
+		UIAlertView *alert = [[UIAlertView alloc] initWithTitle:kMsgIncompleteTitle
+														message:kMsgIncomplete
+													   delegate:nil
+											  cancelButtonTitle:kMsgCancelTitle
+											  otherButtonTitles:nil];
+		[alert show];
     }
     else {
         [self createPurchase];

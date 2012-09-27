@@ -12,6 +12,10 @@
 #import "DWSession.h"
 #import "DWConstants.h"
 
+static NSString* const kMsgErrorTitle       = @"Error";
+static NSString* const kMsgCancelTitle      = @"OK";
+static NSString* const kMsgError            = @"Incorrect twitter username or password";
+
 /**
  * Private declarations
  */
@@ -97,13 +101,9 @@
 //----------------------------------------------------------------------------------------------------
 - (void)authorize {
     
-    if (self.usernameTextField.text.length && self.passwordTextField.text.length) {        
+    if (self.usernameTextField.text.length && self.passwordTextField.text.length)     
         [self.twitterConnect authorizeWithUsername:self.usernameTextField.text 
                                        andPassword:self.passwordTextField.text];   
-    }
-    else {
-        NSLog(@"incomplete fields");
-    }
 }
 
 
@@ -164,7 +164,12 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)twAuthenticationFailed {
-    NSLog(@"Twitter Authentication Failed - Show an alert");
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:kMsgErrorTitle
+                                                    message:kMsgError
+                                                   delegate:nil
+                                          cancelButtonTitle:kMsgCancelTitle
+                                          otherButtonTitles:nil];
+    [alert show];
 }
 
 
