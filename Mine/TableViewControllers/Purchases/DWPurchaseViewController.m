@@ -67,6 +67,7 @@
     if(!self.navTitleView)
         self.navTitleView = [DWNavigationBarTitleView logoTitleView];
 
+    [self disablePullToRefresh];
     
     [(DWPurchaseViewDataSource*)self.tableViewDataSource loadPurchase];
 }
