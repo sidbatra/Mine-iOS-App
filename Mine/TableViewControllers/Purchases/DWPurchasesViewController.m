@@ -186,6 +186,7 @@
         return;
     
     [purchase replaceTempLikeWithMountedLike:like];
+    [self reloadRowForPurchase:purchase];
 }
 
 //----------------------------------------------------------------------------------------------------

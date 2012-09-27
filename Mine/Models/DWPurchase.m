@@ -299,7 +299,9 @@ NSString* const kKeyProduct             = @"product";
 //----------------------------------------------------------------------------------------------------
 - (void)replaceTempLikeWithMountedLike:(DWLike*)newLike {
     [self removeTempLike];
-    [self.likes addObject:newLike];
+    
+    if(![self isLikedByUserID:newLike.user.databaseID])
+        [self.likes addObject:newLike];
 }
 
 @end
