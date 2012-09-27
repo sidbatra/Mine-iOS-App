@@ -10,6 +10,7 @@
 
 #import <MediaPlayer/MediaPlayer.h>
 
+#import "DWAnalyticsManager.h"
 #import "DWConstants.h"
 
 
@@ -150,6 +151,8 @@ static NSString* const kVideoIntro = @"mine_intro_640x280.mp4";
 //----------------------------------------------------------------------------------------------------
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Home View"];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -213,17 +216,23 @@ static NSString* const kVideoIntro = @"mine_intro_640x280.mp4";
     if(SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"6.0"))
         [[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationLandscapeLeft
                                                           animated:NO];
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Intro Video Played"];
 }
 
 //----------------------------------------------------------------------------------------------------
 - (IBAction)loginWithFBButtonClicked:(id)sender {
     [self.facebookConnect authorize];
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Facebook Signup Button Clicked"];
 }
 
 //----------------------------------------------------------------------------------------------------
 - (IBAction)loginWithTWButtonClicked:(id)sender {
     [[self.delegate loginViewNavigationController] pushViewController:self.twitterConnectViewController
                                                              animated:YES];
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Twitter Signup Button Clicked"];
 }
 
 

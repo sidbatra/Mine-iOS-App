@@ -8,6 +8,7 @@
 
 #import "DWUserDetailsViewController.h"
 #import "DWGUIManager.h"
+#import "DWAnalyticsManager.h"
 #import "DWSession.h"
 
 
@@ -82,6 +83,8 @@ static NSString* const kExampleText = @"Example: '%@ bought %@ iPhone 5...'";
     
     self.titleLabel.text    = [NSString stringWithFormat:@"Welcome %@!",[DWSession sharedDWSession].currentUser.firstName];
     self.exampleLabel.text  = [NSString stringWithFormat:kExampleText,[DWSession sharedDWSession].currentUser.firstName,@"his"];
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Welcome Info"];
 }
 
 //----------------------------------------------------------------------------------------------------

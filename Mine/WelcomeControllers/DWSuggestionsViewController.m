@@ -10,6 +10,7 @@
 #import "DWNavigationBarBackButton.h"
 #import "DWNavigationBarTitleView.h"
 #import "DWSuggestion.h"
+#import "DWAnalyticsManager.h"
 #import "DWConstants.h"
 
 
@@ -114,6 +115,8 @@ static NSString* const kMessageSubtitle         = @"You'll choose how you share 
     [self createLoadingView];
     
     [self.suggestionsController getSuggestions];
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Welcome Create View"];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -256,6 +259,8 @@ static NSString* const kMessageSubtitle         = @"You'll choose how you share 
 //----------------------------------------------------------------------------------------------------
 - (void)didTapImageButton:(UIButton*)button {
     [self.delegate suggestionPicked:button.tag];
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Suggestion Card Clicked"];    
 }
 
 

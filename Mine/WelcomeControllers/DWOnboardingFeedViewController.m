@@ -9,6 +9,7 @@
 #import "DWOnboardingFeedViewController.h"
 #import "DWGlobalFeedViewController.h"
 #import "DWNavigationBarTitleView.h"
+#import "DWAnalyticsManager.h"
 #import "DWConstants.h"
 
 static NSString* const kImgBottomDrawer         = @"bottom-drawer-trans.png";
@@ -86,6 +87,8 @@ static NSString* const kImgStartMineButtonOn    = @"btn-start-on.png";
     [self.view addSubview:topShadowView];
 
     [self createFooter];
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Welcome View"];
 }
 
 

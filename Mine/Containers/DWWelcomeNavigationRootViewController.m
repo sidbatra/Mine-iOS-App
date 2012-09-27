@@ -9,6 +9,7 @@
 #import "DWWelcomeNavigationRootViewController.h"
 #import "DWNavigationBarTitleView.h"
 #import "DWSuggestion.h"
+#import "DWAnalyticsManager.h"
 #import "DWConstants.h"
 
 /**
@@ -155,10 +156,14 @@
                                                         object:nil
                                                       userInfo:[NSDictionary dictionaryWithObjectsAndKeys:user,kKeyUser,nil]];
     
-    if (user.purchasesCount) 
+    if (user.purchasesCount) {
         [self endWelcomeNavigation];
-    else 
+        [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"User Logged In"];
+    }
+    else {
         [self showOnboardingToUser:user];
+        [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"User Created"];
+    }
 }
 
 
