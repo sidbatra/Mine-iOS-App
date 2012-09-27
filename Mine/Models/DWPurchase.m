@@ -294,20 +294,25 @@ NSString* const kKeyProduct             = @"product";
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)removeTempLike {
+- (BOOL)removeTempLike {
+    
+    BOOL found = NO;
+    
     for(DWLike *like in [self.likes reverseObjectEnumerator]) {
         if([like isUnmounted]) {
             [self.likes removeObject:like];
+            found = YES;
             break;
         }
-    }    
+    }
+    
+    return found;
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)replaceTempLikeWithMountedLike:(DWLike*)newLike {
-    [self removeTempLike];
     
-    if(![self isLikedByUserID:newLike.user.databaseID])
+    if([self removeTempLike])
         [self.likes addObject:newLike];
 }
 

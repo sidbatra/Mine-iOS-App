@@ -186,7 +186,7 @@ extern NSString* const kNImgPurchaseGiantLoadError;
 /**
  * Remove the temp like added by addTempLikeByUser
  */
-- (void)removeTempLike;
+- (BOOL)removeTempLike;
 
 /**
  * Replace temp like with a proper mounted one.
