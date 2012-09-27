@@ -6,12 +6,12 @@
 #import "DWQueueProgressView.h"
 #import "DWConstants.h"
 
-static float const kMinimumProgress     = 0.001;
-static NSString* const kImgDelete       = @"post_cancel.png";
-static NSString* const kImgRetry        = @"post_retry.png";
-static NSString* const kImgProgress     = @"button_loading.png";
-static NSString* const kImgBackground   = @"loading_bar_fail.png";
-
+static float const kMinimumProgress         = 0.001;
+static NSString* const kImgDelete           = @"post_cancel.png";
+static NSString* const kImgRetry            = @"post_retry.png";
+static NSString* const kImgProgress         = @"nav-convex-bg.png";
+static NSString* const kImgProgressShadow   = @"nav-progress-shadow.png";
+static NSString* const kImgBackground       = @"nav-concave-bg.png";
 
 
 
@@ -41,13 +41,23 @@ static NSString* const kImgBackground   = @"loading_bar_fail.png";
         progressLayer.contents          = (id)[UIImage imageNamed:kImgProgress].CGImage;
         [self.layer addSublayer:progressLayer];            
         
+        progressShadowLayer             = [CALayer layer];
+        progressShadowLayer.actions     = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                           [NSNull null], @"hidden",
+                                           nil];
+        progressShadowLayer.contents    = (id)[UIImage imageNamed:kImgProgressShadow].CGImage;
+        [self.layer addSublayer:progressShadowLayer];
+                                           
+                                           
         
 		statusLabel					= [[UILabel alloc] initWithFrame:CGRectMake(0,12,self.frame.size.width,20)];
         statusLabel.text            = @"Posting...";
-		statusLabel.font			= [UIFont fontWithName:@"HelveticaNeue" size:15];
-		statusLabel.textColor		= [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.5];
+		statusLabel.font			= [UIFont fontWithName:@"HelveticaNeue-Bold" size:20];
+		statusLabel.textColor		= [UIColor whiteColor];
 		statusLabel.backgroundColor	= [UIColor clearColor];
 		statusLabel.textAlignment	= UITextAlignmentCenter;
+        statusLabel.shadowColor     = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.48];
+        statusLabel.shadowOffset    = CGSizeMake(0, 1);
 		[self addSubview:statusLabel];
 		
 		deleteButton					= [UIButton buttonWithType:UIButtonTypeCustom];
@@ -89,8 +99,6 @@ static NSString* const kImgBackground   = @"loading_bar_fail.png";
 }
 
 //----------------------------------------------------------------------------------------------------
-
-//----------------------------------------------------------------------------------------------------
 - (void)updateProgressBar:(float)progress 
             withAnimation:(BOOL)animation {
     
@@ -99,6 +107,7 @@ static NSString* const kImgBackground   = @"loading_bar_fail.png";
 					 forKey:kCATransactionAnimationDuration];
     
     progressLayer.frame = CGRectMake(0,0,self.frame.size.width*progress,self.frame.size.height);
+    progressShadowLayer.frame = CGRectMake(progressLayer.frame.size.width,0,5,self.frame.size.height);
     
     [CATransaction commit];
 }
@@ -113,6 +122,7 @@ static NSString* const kImgBackground   = @"loading_bar_fail.png";
 		deleteButton.hidden		= YES;
 		retryButton.hidden		= YES;
 		progressLayer.hidden	= NO;
+        progressShadowLayer.hidden = NO;
 		
         [self updateProgressBar:totalProgress
                   withAnimation:YES];
@@ -130,6 +140,7 @@ static NSString* const kImgBackground   = @"loading_bar_fail.png";
         statusLabel.alpha       = 0.5;
 		statusLabel.text		= [NSString stringWithFormat:@"%d failed",totalFailed];
 		progressLayer.hidden	= YES;
+        progressShadowLayer.hidden = YES;
 		deleteButton.hidden		= NO;
 		retryButton.hidden		= NO;
 	}
@@ -151,6 +162,7 @@ static NSString* const kImgBackground   = @"loading_bar_fail.png";
 	deleteButton.hidden		= YES;
 	retryButton.hidden		= YES;
 	progressLayer.hidden	= NO;
+    progressShadowLayer.hidden = NO;
 	
 	[_delegate retryButtonPressed];
 }

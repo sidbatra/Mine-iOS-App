@@ -56,6 +56,7 @@
 - (void)viewDidLoad {
 	[super viewDidLoad];
     
+    self.tableView.backgroundColor = [UIColor colorWithRed:0.933 green:0.933 blue:0.933 alpha:1.0];
     self.navigationItem.leftBarButtonItem = [DWNavigationBarBackButton backButtonForNavigationController:self.navigationController];
     
     [(DWUsersViewDataSource*)self.tableViewDataSource loadUsers];

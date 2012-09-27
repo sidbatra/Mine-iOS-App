@@ -162,6 +162,8 @@ static NSString* const kImgSearchOn     = @"nav-btn-search-on.png";
     }
     
     [self loadSideButtons];
+    
+    
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -190,6 +192,7 @@ static NSString* const kImgSearchOn     = @"nav-btn-search-on.png";
         if(!self.isProgressBarActive) {
             self.isProgressBarActive = YES;
             [self.navTitleView removeFromSuperview];
+            [self removeSideButtons];
             [self.navigationController.navigationBar addSubview:self.queueProgressView];
         }
 		
@@ -202,8 +205,10 @@ static NSString* const kImgSearchOn     = @"nav-btn-search-on.png";
         
         [self.queueProgressView removeFromSuperview];
         
-        if(self.navigationController.topViewController == self)
+        if(self.navigationController.topViewController == self) {
             [self.navigationController.navigationBar addSubview:self.navTitleView];
+            [self loadSideButtons];
+        }
     }
 }
 
@@ -320,6 +325,17 @@ static NSString* const kImgSearchOn     = @"nav-btn-search-on.png";
         [self.navigationController.navigationBar addSubview:self.queueProgressView];        
     else
         [self.navigationController.navigationBar addSubview:self.navTitleView];
+    
+/*
+        self.isProgressBarActive = YES;
+        [self.navTitleView removeFromSuperview];
+        [self.navigationController.navigationBar addSubview:self.queueProgressView];
+
+    
+    [self.queueProgressView updateDisplayWithTotalActive:1
+                                             totalFailed:0
+                                           totalProgress:0.5];
+*/
 }
 
 //----------------------------------------------------------------------------------------------------
