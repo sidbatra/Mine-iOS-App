@@ -9,7 +9,7 @@
 #import "DWUserCell.h"
 #import <QuartzCore/QuartzCore.h>
 
-NSInteger const kUserCellHeight = 50;
+NSInteger const kUserCellHeight = 51;
 
 
 
@@ -40,13 +40,12 @@ NSInteger const kUserCellHeight = 50;
 				reuseIdentifier:reuseIdentifier];
 	
     if (self) {        
-        self.contentView.backgroundColor = [UIColor colorWithRed:0.929 green:0.929 blue:0.929 alpha:1.0];
+        self.contentView.backgroundColor = [UIColor colorWithRed:0.933 green:0.933 blue:0.933 alpha:1.0];
         
         [self createBorders];
         [self createUserImageView];
         [self createUserNameLabel];
         [self createFollowButton];
-        
         
 		self.selectionStyle = UITableViewCellSelectionStyleBlue;	
 	}
@@ -72,22 +71,22 @@ NSInteger const kUserCellHeight = 50;
 
 //----------------------------------------------------------------------------------------------------
 - (void)createBorders {
-    UILabel *topBorder = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.contentView.frame.size.width,1)];
-    topBorder.backgroundColor = [UIColor colorWithRed:0.972 green:0.972 blue:0.972 alpha:1.0];
-    
-    [self.contentView addSubview:topBorder];
+    //UILabel *topBorder = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.contentView.frame.size.width,1)];
+    //topBorder.backgroundColor = [UIColor colorWithRed:0.972 green:0.972 blue:0.972 alpha:1.0];
+
+    //[self.contentView addSubview:topBorder];
     
     
     UILabel *bottomBorder = [[UILabel alloc] initWithFrame:CGRectMake(0, kUserCellHeight-1, self.contentView.frame.size.width,1)];
-    bottomBorder.backgroundColor = [UIColor colorWithRed:0.839 green:0.839 blue:0.839 alpha:1.0];
+    bottomBorder.backgroundColor = [UIColor colorWithRed:0.862 green:0.862 blue:0.862 alpha:1.0];
     
     [self.contentView addSubview:bottomBorder];
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)createUserImageView {
-    userImageView = [[UIImageView alloc] initWithFrame:CGRectMake(11,9,32,32)];
-    userImageView.backgroundColor = [UIColor clearColor];
+    userImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0,0,50,50)];
+    userImageView.backgroundColor = [UIColor colorWithRed:0.862 green:0.862 blue:0.862 alpha:1.0];
     //userImageView.layer.cornerRadius = 3;
     //userImageView.layer.masksToBounds = YES;
     
@@ -96,24 +95,24 @@ NSInteger const kUserCellHeight = 50;
 
 //----------------------------------------------------------------------------------------------------
 - (void)createUserNameLabel {
-    userNameLabel  = [[UILabel alloc] initWithFrame:CGRectMake(51,9,175,32)];
+    userNameLabel  = [[UILabel alloc] initWithFrame:CGRectMake(60,10,158,30)];
     
     userNameLabel.backgroundColor    = [UIColor clearColor];
-    userNameLabel.font               = [UIFont fontWithName:@"HelveticaNeue-Bold" size:14];
-    userNameLabel.textColor          = [UIColor colorWithRed:0.333 green:0.333 blue:0.333 alpha:1.0];
+    userNameLabel.font               = [UIFont fontWithName:@"HelveticaNeue-Bold" size:17];
+    userNameLabel.textColor          = [UIColor colorWithRed:0.2 green:0.2 blue:0.2 alpha:1.0];
     userNameLabel.highlightedTextColor  = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0];
     userNameLabel.textAlignment      = UITextAlignmentLeft;
-    userNameLabel.layer.shadowColor  = [UIColor colorWithRed:0.972 green:0.972 blue:0.972 alpha:1.0].CGColor;
-    userNameLabel.layer.shadowOffset = CGSizeMake(0,1);
-    userNameLabel.layer.shadowRadius = 0;
-    userNameLabel.layer.shadowOpacity = 1.0;
+    //userNameLabel.layer.shadowColor  = [UIColor colorWithRed:0.972 green:0.972 blue:0.972 alpha:1.0].CGColor;
+    //userNameLabel.layer.shadowOffset = CGSizeMake(0,1);
+    //userNameLabel.layer.shadowRadius = 0;
+    //userNameLabel.layer.shadowOpacity = 1.0;
     
     [self.contentView addSubview:userNameLabel];
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)createFollowButton {
-    followButton = [[DWFollowButton alloc] initWithFrame:CGRectMake(234,10,83,25) followButtonStyle:kFollowButonStyleLight];
+    followButton = [[DWFollowButton alloc] initWithFrame:CGRectMake(224,12,83,25) followButtonStyle:kFollowButonStyleLight];
     followButton.delegate = self;
     
     [self.contentView addSubview:followButton];
