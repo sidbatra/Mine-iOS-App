@@ -107,7 +107,7 @@
 
     if(!comment)
         return;
-    
+
     [self.delegate commentsViewUserClicked:comment.user];
 }
 

@@ -165,7 +165,7 @@ extern NSString* const kNImgPurchaseGiantLoadError;
 /**
  * Remove unmounted message with the given message.
  */
-- (void)removeTempCommentWithMessage:(NSString*)message;
+- (BOOL)removeTempCommentWithMessage:(NSString*)message;
 
 /**
  * Replace unmounted comment with the mounted one.

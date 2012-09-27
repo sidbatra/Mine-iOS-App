@@ -13,6 +13,7 @@
 #import "DWSession.h"
 
 #import "DWPurchase.h"
+#import "DWComment.h"
 #import "DWConstants.h"
 
 
@@ -257,7 +258,7 @@ static NSInteger const kBottomBarMargin = 44;
 
     if(!user)
         return;
-    
+
     [self.delegate commentsCreateViewUserClicked:user];
 }
 
@@ -276,8 +277,11 @@ static NSInteger const kBottomBarMargin = 44;
     if(!purchase)
         return;
     
+    [comment incrementPointerCount];
+    [comment.user incrementPointerCount];
     [purchase replaceTempCommentWithMountedComment:comment];
     
+    [self.commentsViewController reloadTableView];
     
     [[NSNotificationCenter defaultCenter] postNotificationName:kNCommentAddedForPurchase
                                                         object:nil

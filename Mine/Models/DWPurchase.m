@@ -241,19 +241,26 @@ NSString* const kKeyProduct             = @"product";
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)removeTempCommentWithMessage:(NSString*)message {
+- (BOOL)removeTempCommentWithMessage:(NSString*)message {
+    
+    BOOL found = NO;
+    
     for(DWComment *comment in [self.comments reverseObjectEnumerator]) {
         if([comment isUnmounted] && [comment.message isEqualToString:message]) {
             [self.comments removeObject:comment];
+            found = YES;
             break;
         }
-    }    
+    }
+    
+    return found;
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)replaceTempCommentWithMountedComment:(DWComment*)newComment {
-    [self removeTempCommentWithMessage:newComment.message];
-    [self.comments addObject:newComment];
+    
+    if([self removeTempCommentWithMessage:newComment.message])
+        [self.comments addObject:newComment];
 }
 
 
