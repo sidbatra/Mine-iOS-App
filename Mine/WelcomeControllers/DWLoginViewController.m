@@ -10,6 +10,8 @@
 
 #import <MediaPlayer/MediaPlayer.h>
 
+#import "DWConstants.h"
+
 
 static NSString* const kVideoIntro = @"mine_intro_640x280.mp4";
 
@@ -26,11 +28,36 @@ static NSString* const kVideoIntro = @"mine_intro_640x280.mp4";
 @implementation DWMoviePlayerController
 
 /**
- * Force MPMoviePlayerViewController to only play in landscape.
+ * Subcasses to Force MPMoviePlayerViewController to only play in landscape.
  */
+
+
+/**
+ * iOS 5 Only
+ */
+//----------------------------------------------------------------------------------------------------
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation {
     return UIInterfaceOrientationIsLandscape(toInterfaceOrientation);
 }
+
+/**
+ * iOS 6 Only
+ */
+//----------------------------------------------------------------------------------------------------
+-(BOOL)shouldAutorotate {
+    return NO;
+}
+
+//----------------------------------------------------------------------------------------------------
+-(NSUInteger)supportedInterfaceOrientations {
+    return UIInterfaceOrientationMaskLandscape;
+}
+
+//----------------------------------------------------------------------------------------------------
+- (UIInterfaceOrientation)preferredInterfaceOrientationForPresentation {
+    return UIInterfaceOrientationLandscapeLeft;
+}
+
 @end
 
 
@@ -104,9 +131,20 @@ static NSString* const kVideoIntro = @"mine_intro_640x280.mp4";
         self.twitterConnectViewController = [[DWTwitterConnectViewController alloc] init];
         self.twitterConnectViewController.updateCurrentUser = NO;
         self.twitterConnectViewController.delegate = self;
+        
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self
+												 selector:@selector(playbackDidFinish:)
+													 name:MPMoviePlayerPlaybackDidFinishNotification
+												   object:nil];
     }
     
     return self;
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -170,6 +208,11 @@ static NSString* const kVideoIntro = @"mine_intro_640x280.mp4";
         
     [[self.delegate loginViewNavigationController] presentMoviePlayerViewControllerAnimated:self.moviePlayerController];
     [self.moviePlayerController.moviePlayer play];
+    
+    
+    if(SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"6.0"))
+        [[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationLandscapeLeft
+                                                          animated:NO];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -236,6 +279,20 @@ static NSString* const kVideoIntro = @"mine_intro_640x280.mp4";
 
 //----------------------------------------------------------------------------------------------------
 - (void)twitterConfigured {
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark Notifications
+
+//----------------------------------------------------------------------------------------------------
+- (void)playbackDidFinish:(NSNotification*)notification {
+    if(SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"6.0")) {
+        [[UIApplication sharedApplication] setStatusBarOrientation:UIInterfaceOrientationPortrait
+                                                          animated:NO];
+    }
 }
 
 @end
