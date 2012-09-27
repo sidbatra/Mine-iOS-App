@@ -100,7 +100,12 @@
 - (void)userUpdated:(DWUser *)user {    
     
     if(_isAwaitingResponse) {
-        [self.delegate facebookConfigured];        
+        
+        SEL sel = @selector(facebookConfigured);
+        
+        if([self.delegate respondsToSelector:sel])
+            [self.delegate performSelector:sel];
+        
         _isAwaitingResponse = NO;
         [self.navigationController popViewControllerAnimated:YES];
     }

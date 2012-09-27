@@ -47,11 +47,9 @@
  */
 @protocol DWTwitterConnectViewControllerDelegate 
 
-@required
+@optional
 
 - (void)twitterConfigured;
-
-@optional
 
 - (void)twitterAuthorizedWithAccessToken:(NSString*)accessToken 
                     andAccessTokenSecret:(NSString*)accessTokenSecret;

@@ -182,7 +182,12 @@ static NSString* const kMsgError            = @"Incorrect twitter username or pa
 - (void)userUpdated:(DWUser *)user {
     
     if(_isAwaitingResponse) {
-        [self.delegate twitterConfigured];            
+        
+        SEL sel = @selector(twitterConfigured);
+        
+        if([self.delegate respondsToSelector:sel])
+            [self.delegate performSelector:sel];
+              
         _isAwaitingResponse = NO;
         [self.navigationController popViewControllerAnimated:YES];
     }

@@ -39,6 +39,8 @@
  */
 @protocol DWTumblrConnectViewControllerDelegate 
 
+@optional
+
 - (void)tumblrConfigured;
 
 @end

@@ -173,7 +173,12 @@ static NSString* const kMsgError            = @"Incorrect email or password";
 - (void)userUpdated:(DWUser *)user {
     
     if(_isAwaitingResponse) {
-        [self.delegate tumblrConfigured];
+        
+        SEL sel = @selector(tumblrConfigured);
+        
+        if([self.delegate respondsToSelector:sel])
+            [self.delegate performSelector:sel];
+        
         _isAwaitingResponse = NO;
         [self.navigationController popViewControllerAnimated:YES];
     }

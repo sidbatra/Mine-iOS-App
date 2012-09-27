@@ -28,7 +28,9 @@
 /**
  * Protocol for the delegates of DWFacebookConnectViewController
  */
-@protocol DWFacebookConnectViewControllerDelegate 
+@protocol DWFacebookConnectViewControllerDelegate
+
+@optional
 
 - (void)facebookConfigured;
 
