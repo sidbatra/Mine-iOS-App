@@ -52,8 +52,8 @@ static NSString* const kImgBackground       = @"nav-concave-bg.png";
         
 		statusLabel					= [[UILabel alloc] initWithFrame:CGRectMake(0,12,self.frame.size.width,20)];
         statusLabel.text            = @"Posting...";
-		statusLabel.font			= [UIFont fontWithName:@"HelveticaNeue-Bold" size:20];
-		statusLabel.textColor		= [UIColor whiteColor];
+		statusLabel.font			= [UIFont fontWithName:@"HelveticaNeue" size:15];
+		statusLabel.textColor		= [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.5];
 		statusLabel.backgroundColor	= [UIColor clearColor];
 		statusLabel.textAlignment	= UITextAlignmentCenter;
         statusLabel.shadowColor     = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.48];
@@ -138,7 +138,7 @@ static NSString* const kImgBackground       = @"nav-concave-bg.png";
 	}
 	else if(totalFailed) {
         statusLabel.alpha       = 0.5;
-		statusLabel.text		= [NSString stringWithFormat:@"%d failed",totalFailed];
+		statusLabel.text		= totalFailed == 1 ? @"Failed" : [NSString stringWithFormat:@"%d failed",totalFailed];
 		progressLayer.hidden	= YES;
         progressShadowLayer.hidden = YES;
 		deleteButton.hidden		= NO;
