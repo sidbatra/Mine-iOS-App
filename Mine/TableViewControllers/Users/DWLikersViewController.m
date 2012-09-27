@@ -9,6 +9,7 @@
 #import "DWLikersViewController.h"
 
 #import "DWLikersViewDataSource.h"
+#import "DWGUIManager.h"
 #import "DWPurchase.h"
 #import "DWConstants.h"
 
@@ -46,6 +47,13 @@
     }
     
     return self;
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    self.navigationItem.titleView = [DWGUIManager navBarTitleViewWithText:@"Likes"];
 }
 
 

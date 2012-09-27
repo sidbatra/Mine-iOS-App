@@ -9,6 +9,7 @@
 #import "DWIFollowersViewController.h"
 
 #import "DWIFollowersViewDataSource.h"
+#import "DWGUIManager.h"
 #import "DWUser.h"
 
 
@@ -45,6 +46,13 @@
     }
     
     return self;
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    self.navigationItem.titleView = [DWGUIManager navBarTitleViewWithText:@"Following"];
 }
 
 
