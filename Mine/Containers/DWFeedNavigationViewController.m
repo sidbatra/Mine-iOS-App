@@ -192,7 +192,6 @@ static NSString* const kImgSearchOn     = @"nav-btn-search-on.png";
         if(!self.isProgressBarActive) {
             self.isProgressBarActive = YES;
             [self.navTitleView removeFromSuperview];
-            [self removeSideButtons];
             [self.navigationController.navigationBar addSubview:self.queueProgressView];
         }
 		
@@ -205,10 +204,8 @@ static NSString* const kImgSearchOn     = @"nav-btn-search-on.png";
         
         [self.queueProgressView removeFromSuperview];
         
-        if(self.navigationController.topViewController == self) {
+        if(self.navigationController.topViewController == self)
             [self.navigationController.navigationBar addSubview:self.navTitleView];
-            [self loadSideButtons];
-        }
     }
 }
 
