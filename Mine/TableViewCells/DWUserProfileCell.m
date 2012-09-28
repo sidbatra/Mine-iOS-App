@@ -17,11 +17,15 @@ NSInteger const kUserPurchaseCellHeight = 84;
 
 static NSInteger const kBylineWidth = 298;
 static NSString* const kImgSeparator = @"profile-followings-divider.png";
+static NSString* const kImgBackground   = @"profile-userbox-gradient.png";
+
 
 #define kBylineFont [UIFont fontWithName:@"HelveticaNeue" size:14]
 
 
 @interface DWUserProfileCell() {
+    CALayer         *backgroundLayer;
+    
     UIImageView     *userImageView;
     UIImageView     *separatorImageView;
     
@@ -57,7 +61,7 @@ static NSString* const kImgSeparator = @"profile-followings-divider.png";
     if (self) {        
         self.contentView.backgroundColor = [UIColor colorWithRed:0.223 green:0.223 blue:0.223 alpha:1.0];
         
-        //[self createBorders];
+        [self createBackground];
         [self createUserImageView];
         [self createUserNameLabel];
         [self createPurchasesLabel];
@@ -80,17 +84,13 @@ static NSString* const kImgSeparator = @"profile-followings-divider.png";
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)createBorders {
-    UILabel *topBorder = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, self.contentView.frame.size.width,1)];
-    topBorder.backgroundColor = [UIColor colorWithRed:0.972 green:0.972 blue:0.972 alpha:1.0];
+- (void)createBackground {
+    backgroundLayer = [CALayer layer];
+    backgroundLayer.frame = CGRectMake(0,0,self.frame.size.width,1);
+    backgroundLayer.contents = (id)[UIImage imageNamed:kImgBackground].CGImage;
+    //backgroundLayer.backgroundColor = [UIColor redColor].CGColor;
     
-    [self.contentView addSubview:topBorder];
-    
-    
-    UILabel *bottomBorder = [[UILabel alloc] initWithFrame:CGRectMake(0, kUserPurchaseCellHeight-1, self.contentView.frame.size.width,1)];
-    bottomBorder.backgroundColor = [UIColor colorWithRed:0.839 green:0.839 blue:0.839 alpha:1.0];
-    
-    [self.contentView addSubview:bottomBorder];
+    [self.contentView.layer addSublayer:backgroundLayer];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -289,8 +289,12 @@ static NSString* const kImgSeparator = @"profile-followings-divider.png";
     [attrStr setTextColor:[UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1.0]];
     
     followersLabel.attributedText = attrStr;
+    
+    
+    frame = backgroundLayer.frame;
+    frame.size.height = followersButton.frame.origin.y + followersButton.frame.size.height - 1;
+    backgroundLayer.frame = frame;
 }
-
 
 
 //----------------------------------------------------------------------------------------------------
