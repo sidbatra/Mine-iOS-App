@@ -150,14 +150,19 @@ static NSString* const kImgLightActiveSpinning                   = @"list-btn-fo
 //----------------------------------------------------------------------------------------------------
 - (void)startSpinning {
     
-    if(self.isActive) {
-        [underlayButton setBackgroundImage:[UIImage imageNamed:self.followButtonStyle == kFollowButonStyleDark ? kImgDarkActiveSpinning : kImgLightActiveSpinning]
-                                  forState:UIControlStateNormal];
-    }
-    else {
-        [underlayButton setBackgroundImage:[UIImage imageNamed:self.followButtonStyle == kFollowButonStyleDark ? kImgDarkInactiveSpinning : kImgLightInactiveSpinning]
-                                  forState:UIControlStateNormal];
-    }
+    UIImage *spinningImage = nil;
+    
+    if(self.isActive)
+        spinningImage = [UIImage imageNamed:self.followButtonStyle == kFollowButonStyleDark ? kImgDarkActiveSpinning : kImgLightActiveSpinning];
+    else
+        spinningImage = [UIImage imageNamed:self.followButtonStyle == kFollowButonStyleDark ? kImgDarkInactiveSpinning : kImgLightInactiveSpinning];
+
+    
+    [underlayButton setBackgroundImage:spinningImage
+                              forState:UIControlStateNormal];
+    
+    [underlayButton setBackgroundImage:spinningImage
+                              forState:UIControlStateDisabled];
     
     underlayButton.enabled = NO;
     spinner.hidden = NO;
