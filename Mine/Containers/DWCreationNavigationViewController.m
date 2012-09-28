@@ -107,8 +107,6 @@
               shareToTB:shareToTB];
 
     [self.delegate dismissCreateView];
-    
-    [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Creation Cancelled"];    
 }
 
 
