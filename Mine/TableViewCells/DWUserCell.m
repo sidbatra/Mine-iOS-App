@@ -98,7 +98,7 @@ NSInteger const kUserCellHeight = 51;
     userNameLabel  = [[UILabel alloc] initWithFrame:CGRectMake(60,10,158,30)];
     
     userNameLabel.backgroundColor    = [UIColor clearColor];
-    userNameLabel.font               = [UIFont fontWithName:@"HelveticaNeue-Bold" size:17];
+    userNameLabel.font               = [UIFont fontWithName:@"HelveticaNeue-Bold" size:16];
     userNameLabel.textColor          = [UIColor colorWithRed:0.2 green:0.2 blue:0.2 alpha:1.0];
     userNameLabel.highlightedTextColor  = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0];
     userNameLabel.textAlignment      = UITextAlignmentLeft;
