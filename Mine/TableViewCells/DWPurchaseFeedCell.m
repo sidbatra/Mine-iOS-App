@@ -209,6 +209,14 @@ static NSInteger const kUserImageSide           = 34;
 //----------------------------------------------------------------------------------------------------
 - (void)createInfoBackground {
     infoBackground = [CALayer layer];
+    infoBackground.actions = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSNull null], @"onOrderIn",
+                               [NSNull null], @"position",
+                               [NSNull null], @"hidden",
+                               [NSNull null], @"onOrderOut",
+                               [NSNull null], @"sublayers",
+                               [NSNull null], @"contents",
+                               [NSNull null], @"bounds",
+                               nil];
     infoBackground.frame = CGRectMake(11,
                                       purchaseImageButton.frame.origin.y + purchaseImageButton.frame.size.height+16,
                                       298,
@@ -369,6 +377,15 @@ static NSInteger const kUserImageSide           = 34;
 //----------------------------------------------------------------------------------------------------
 - (void)createLikesBackground {
     likesBackground = [CALayer layer];
+    likesBackground.actions = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSNull null], @"onOrderIn",
+                                [NSNull null], @"position",
+                                [NSNull null], @"hidden",
+                                [NSNull null], @"onOrderOut",
+                                [NSNull null], @"sublayers",
+                                [NSNull null], @"contents",
+                                [NSNull null], @"bounds",
+                                nil];
+
     likesBackground.backgroundColor = [UIColor whiteColor].CGColor;
     likesBackground.frame = CGRectMake(22,0,250,44);
     likesBackground.cornerRadius = 6;
