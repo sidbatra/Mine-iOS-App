@@ -147,9 +147,9 @@ static NSInteger const kSettingsActionSheetTag  = -1;
     UIActionSheet *actionSheet  = [[UIActionSheet alloc] initWithTitle:nil 
                                                               delegate:self 
                                                      cancelButtonTitle:@"Cancel"
-                                                destructiveButtonTitle:@"Log Out"
-                                                     otherButtonTitles:@"Edit Bio",@"About",@"FAQ",nil];
-    
+                                                destructiveButtonTitle:nil
+                                                     otherButtonTitles:@"Edit Bio",@"About",@"FAQ",@"Log Out",nil];
+    actionSheet.destructiveButtonIndex = 3;
     actionSheet.tag = kSettingsActionSheetTag;
     
     [actionSheet showInView:self.customTabBarController.view];
@@ -168,7 +168,26 @@ static NSInteger const kSettingsActionSheetTag  = -1;
         return;
                 
     switch(buttonIndex) {
-        case 0:
+        case 0: {
+            DWEditBylineViewController *editBylineViewController = [[DWEditBylineViewController alloc] init];
+            [self.navigationController pushViewController:editBylineViewController
+                                                 animated:YES];
+            
+            break;
+        }
+        case 1:
+            [self displayExternalURL:[NSString stringWithFormat:@"%@%@%@",kAppProtocol,kAppServer,kAboutURL]];
+            
+            [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"About View"];
+            break;
+            
+        case 2:
+            [self displayExternalURL:[NSString stringWithFormat:@"%@%@%@",kAppProtocol,kAppServer,kFAQURL]];
+            
+            [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"FAQ View"];
+            break;
+            
+        case 3:
             [[NSNotificationCenter defaultCenter] postNotificationName:kNUserLoggedOut
                                                                 object:nil
                                                               userInfo:nil];
@@ -176,24 +195,6 @@ static NSInteger const kSettingsActionSheetTag  = -1;
             [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"User Logged Out"];
             break;
             
-        case 1: {
-            DWEditBylineViewController *editBylineViewController = [[DWEditBylineViewController alloc] init];
-            [self.navigationController pushViewController:editBylineViewController
-                                                 animated:YES];
-            
-            break;
-        }
-        case 2:
-            [self displayExternalURL:[NSString stringWithFormat:@"%@%@%@",kAppProtocol,kAppServer,kAboutURL]];
-            
-            [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"About View"];
-            break;
-            
-        case 3:
-            [self displayExternalURL:[NSString stringWithFormat:@"%@%@%@",kAppProtocol,kAppServer,kFAQURL]];
-            
-            [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"FAQ View"];
-            break;
         default:
             break;
     }    
