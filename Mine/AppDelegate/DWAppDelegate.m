@@ -15,6 +15,7 @@
 #import "DWNotificationManager.h"
 #import "DWFollowingManager.h"
 #import "DWSession.h"
+#import "DWDevice.h"
 #import "DWConstants.h"
 
 
@@ -119,7 +120,7 @@ static NSString* const kFacebookURLPrefix = @"fb";
     [self.tabBarController addSubController:self.profileNavController];
     
     
-    self.tabBarController.tabBar.frame = CGRectMake(0, 416, 320, 44);
+    self.tabBarController.tabBar.frame = CGRectMake(0, [DWDevice sharedDWDevice].screenHeightMinusStatusBar - kTabBarHeight, 320, kTabBarHeight);
     
     [self.tabBarController.tabBar addTabWithWidth:114 
                                   normalImageName:@"tab-left-feed-off.png"

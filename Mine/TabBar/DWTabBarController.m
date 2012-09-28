@@ -81,10 +81,10 @@
         
         
         self.topShadowView              = [[UIImageView alloc] initWithImage:[UIImage imageNamed:kImgTopShadow]];
-        self.topShadowView.frame        = CGRectMake(0,44,320,3);
+        self.topShadowView.frame        = CGRectMake(0,kTabBarHeight,320,3);
         
         self.bottomShadowView           = [[UIImageView alloc] initWithImage:[UIImage imageNamed:kImgBottomShadow]];
-        self.bottomShadowView.frame     = CGRectMake(0,416-3,320,3);
+        self.bottomShadowView.frame     = CGRectMake(0,[DWDevice sharedDWDevice].screenHeightMinusStatusBar - kTabBarHeight -3,320,3);
         /*
         self.backgroundView             = [DWGUIManager backgroundImageViewWithFrame:kFullScreenFrame];
         */

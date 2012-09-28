@@ -81,6 +81,7 @@ NSString* const kRailsDateTimeFormat = @"yyyy-MM-dd HH:mm:ss ZZZ";
 //----------------------------------------------------------------------------------------------------
 NSInteger const kFeedTabIndex       = 0;
 NSInteger const kCreateTabIndex     = 1;
+NSInteger const kTabBarHeight       = 44;
 
 //----------------------------------------------------------------------------------------------------
 NSString* const kImgChevron         = @"chevron.png";

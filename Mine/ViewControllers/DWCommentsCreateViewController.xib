@@ -55,7 +55,7 @@
 					<object class="IBUITextField" id="293728979">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{9, 380}, {227, 31}}</string>
+						<string key="NSFrame">{{16, 380}, {227, 31}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="1045342189"/>
@@ -67,13 +67,9 @@
 						<string key="IBUIText"/>
 						<string key="IBUIPlaceholder">Add a comment...</string>
 						<object class="NSColor" key="IBUITextColor">
-							<int key="NSColorSpace">3</int>
-							<bytes key="NSWhite">MAA</bytes>
-							<object class="NSColorSpace" key="NSCustomColorSpace">
-								<int key="NSID">2</int>
-							</object>
+							<int key="NSColorSpace">1</int>
+							<bytes key="NSRGB">MC4yIDAuMiAwLjIAA</bytes>
 						</object>
-						<bool key="IBUIAdjustsFontSizeToFit">YES</bool>
 						<float key="IBUIMinimumFontSize">17</float>
 						<object class="IBUITextInputTraits" key="IBUITextInputTraits">
 							<int key="IBUIAutocorrectionType">2</int>
@@ -317,7 +313,7 @@
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
-			<string key="comments-bar@2x.png">{486, 62}</string>
+			<string key="comments-bar@2x.png">{640, 88}</string>
 			<string key="comments-btn-send-off@2x.png">{114, 62}</string>
 			<string key="comments-btn-send-on@2x.png">{114, 62}</string>
 		</dictionary>
