@@ -47,7 +47,6 @@
     self.loadingView.hidden = NO;
     [self.view bringSubviewToFront:self.loadingView];
     
-    self.navigationItem.leftBarButtonItem.enabled   = NO;
     self.navigationItem.rightBarButtonItem.enabled  = NO;    
 }
 
@@ -55,7 +54,6 @@
 - (void)unfreezeUI {
     self.loadingView.hidden = YES; 
     
-    self.navigationItem.leftBarButtonItem.enabled   = YES;
     self.navigationItem.rightBarButtonItem.enabled  = YES;    
 }
 
