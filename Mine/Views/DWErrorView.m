@@ -56,7 +56,7 @@ static NSString* const kMsgRefreshText  = @"Try again";
 - (void)createText {
     
     messageLabel                   = [[UILabel alloc] initWithFrame:CGRectMake(0,
-                                                                               [DWDevice sharedDWDevice].screenHeightMinusStatusBar / 2 - [DWDevice sharedDWDevice].navBarHeight -10 - 14 - 11,
+                                                                               [DWDevice sharedDWDevice].screenHeightMinusStatusBar / 2 - [DWDevice sharedDWDevice].navBarHeight -10 - 14 - 19,
                                                                                self.frame.size.width,
                                                                                20)];	
 	messageLabel.backgroundColor	= [UIColor clearColor];

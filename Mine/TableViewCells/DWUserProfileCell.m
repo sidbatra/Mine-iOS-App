@@ -13,7 +13,7 @@
 #import "NSAttributedString+Attributes.h"
 
 
-NSInteger const kUserPurchaseCellHeight = 84;
+NSInteger const kUserPurchaseCellHeight = 90;
 
 static NSInteger const kBylineWidth = 298;
 static NSString* const kImgSeparator = @"profile-followings-divider.png";
@@ -95,7 +95,7 @@ static NSString* const kImgBackground   = @"profile-userbox-gradient.png";
 
 //----------------------------------------------------------------------------------------------------
 - (void)createUserImageView {
-    userImageView = [[UIImageView alloc] initWithFrame:CGRectMake(11,11,48,48)];
+    userImageView = [[UIImageView alloc] initWithFrame:CGRectMake(11,14,48,48)];
     userImageView.backgroundColor = [UIColor colorWithRed:0.2 green:0.2 blue:0.2 alpha:1.0];
     userImageView.layer.cornerRadius = 3;
     userImageView.layer.masksToBounds = YES;
@@ -105,7 +105,7 @@ static NSString* const kImgBackground   = @"profile-userbox-gradient.png";
 
 //----------------------------------------------------------------------------------------------------
 - (void)createUserNameLabel {
-    userNameLabel  = [[UILabel alloc] initWithFrame:CGRectMake(68,10,240,32)];
+    userNameLabel  = [[UILabel alloc] initWithFrame:CGRectMake(69,12,240,32)];
     
     userNameLabel.backgroundColor    = [UIColor clearColor];
     userNameLabel.adjustsFontSizeToFitWidth = NO;
@@ -122,7 +122,7 @@ static NSString* const kImgBackground   = @"profile-userbox-gradient.png";
 
 //----------------------------------------------------------------------------------------------------
 - (void)createPurchasesLabel {
-    purchasesCountLabel  = [[UILabel alloc] initWithFrame:CGRectMake(68,40,240,20)];
+    purchasesCountLabel  = [[UILabel alloc] initWithFrame:CGRectMake(69,42,240,20)];
     
     purchasesCountLabel.backgroundColor    = [UIColor clearColor];
     purchasesCountLabel.font               = [UIFont fontWithName:@"HelveticaNeue" size:14];
@@ -245,7 +245,7 @@ static NSString* const kImgBackground   = @"profile-userbox-gradient.png";
     
     
     frame = followingButton.frame;
-    frame.origin.y = separatorImageView.frame.origin.y + 1;
+    frame.origin.y = separatorImageView.frame.origin.y + 2;
     followingButton.frame = frame;
     
     frame = followingButton.frame;
@@ -268,7 +268,7 @@ static NSString* const kImgBackground   = @"profile-userbox-gradient.png";
     
 
     frame = followersButton.frame;
-    frame.origin.y = separatorImageView.frame.origin.y + 1;
+    frame.origin.y = separatorImageView.frame.origin.y + 2;
     followersButton.frame = frame; 
     
     
