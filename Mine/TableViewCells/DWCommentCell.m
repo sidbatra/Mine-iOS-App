@@ -119,6 +119,7 @@ static NSInteger const kUserImageSide = 32;
     
 	[attrStr setFont:kCommentFont];
 	[attrStr setTextColor:[UIColor colorWithRed:0.333 green:0.333 blue:0.333 alpha:1.0]];
+    [attrStr setTextAlignment:UITextAlignmentLeft lineBreakMode:UILineBreakModeWordWrap lineHeight:2];
     
 	[attrStr setTextBold:YES range:NSMakeRange(0,userName.length+1)];
     
