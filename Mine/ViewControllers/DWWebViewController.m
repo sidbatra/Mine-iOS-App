@@ -78,7 +78,7 @@ static NSString* const kLoadingText = @"Loading...";
     initialSpacer.width = -12;
     
     if(!self.backButton) {
-        self.backButton = [[UIButton alloc] initWithFrame:CGRectMake(0,0,68,49)];
+        self.backButton = [[UIButton alloc] initWithFrame:CGRectMake(0,0,68,44)];
         self.backButton.showsTouchWhenHighlighted = YES;
         self.backButton.enabled = NO;
         [self.backButton setBackgroundImage:[UIImage imageNamed:kImgBack] forState:UIControlStateNormal];
@@ -92,7 +92,7 @@ static NSString* const kLoadingText = @"Loading...";
     intraNavSpacer.width = -10;
     
     if(!self.forwardButton) {
-        self.forwardButton = [[UIButton alloc] initWithFrame:CGRectMake(0,0,68,49)];
+        self.forwardButton = [[UIButton alloc] initWithFrame:CGRectMake(0,0,68,44)];
         self.forwardButton.showsTouchWhenHighlighted = YES;
         self.forwardButton.enabled = NO;
         [self.forwardButton setBackgroundImage:[UIImage imageNamed:kImgForward] forState:UIControlStateNormal];
@@ -105,7 +105,7 @@ static NSString* const kLoadingText = @"Loading...";
     UIBarButtonItem *postNavSpacer = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFixedSpace target:nil action:nil];
     postNavSpacer.width = 107;
     
-    UIButton *shareButton = [[UIButton alloc] initWithFrame:CGRectMake(0,0,68,49)];
+    UIButton *shareButton = [[UIButton alloc] initWithFrame:CGRectMake(0,0,68,44)];
     shareButton.showsTouchWhenHighlighted = YES;
     [shareButton setBackgroundImage:[UIImage imageNamed:kImgShare] forState:UIControlStateNormal];
     
