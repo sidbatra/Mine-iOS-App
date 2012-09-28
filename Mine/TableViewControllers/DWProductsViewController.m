@@ -126,11 +126,13 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)productMediumImageLoaded:(NSNotification*)notification {
-    NSDictionary *userInfo = [notification userInfo];
+    
+    NSDictionary *userInfo  = [notification userInfo];
+    NSInteger databaseID    = [[userInfo objectForKey:kKeyResourceID] integerValue];
     
     [self provideResourceToVisibleCells:[DWProduct class] 
-                               objectID:[[userInfo objectForKey:kKeyResourceID] integerValue]
-                              objectKey:kKeyMediumImageURL];
+                               objectID:databaseID
+                              objectKey:[[DWProduct fetch:databaseID] mediumImageURL]];
 }
 
 @end

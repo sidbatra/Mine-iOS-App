@@ -68,7 +68,7 @@
         for(NSInteger i=0 ; i< productSet.length ; i++) {
             DWProduct *product = [productSet.models objectAtIndex:i];
         
-            if(product.databaseID == objectID) {
+            if(product.mediumImageURL == objectKey) {
                 [cell setProductImage:product.mediumImage 
                      forButtonAtIndex:i 
                          andProductID:product.databaseID];
