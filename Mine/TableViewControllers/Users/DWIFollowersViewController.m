@@ -9,6 +9,7 @@
 #import "DWIFollowersViewController.h"
 
 #import "DWIFollowersViewDataSource.h"
+#import "DWAnalyticsManager.h"
 #import "DWGUIManager.h"
 #import "DWUser.h"
 
@@ -53,6 +54,8 @@
     [super viewDidLoad];
     
     self.navigationItem.titleView = [DWGUIManager navBarTitleViewWithText:@"Following"];
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Inverse Followers View"];
 }
 
 

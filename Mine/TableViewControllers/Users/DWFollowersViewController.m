@@ -9,6 +9,7 @@
 #import "DWFollowersViewController.h"
 
 #import "DWFollowersViewDataSource.h"
+#import "DWAnalyticsManager.h"
 #import "DWGUIManager.h"
 #import "DWUser.h"
 
@@ -53,6 +54,9 @@
     [super viewDidLoad];
     
     self.navigationItem.titleView = [DWGUIManager navBarTitleViewWithText:@"Followers"];
+    
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Followers View"];
 }
 
 

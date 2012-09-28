@@ -10,6 +10,7 @@
 
 #import "DWNavigationBarBackButton.h"
 #import "DWGUIManager.h"
+#import "DWAnalyticsManager.h"
 #import "DWSession.h"
 
 #import "DWPurchase.h"
@@ -154,6 +155,11 @@ static NSInteger const kBottomBarMargin = 44;
     
     [self.view insertSubview:self.commentsViewController.view
                 belowSubview:self.commentBarView];
+    
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Comments View"
+                                          withProperties:[NSMutableDictionary dictionaryWithObjectsAndKeys:
+                                                          [NSNumber numberWithBool:self.creationIntent],@"Create Intent", nil]];
 }
 
 //----------------------------------------------------------------------------------------------------

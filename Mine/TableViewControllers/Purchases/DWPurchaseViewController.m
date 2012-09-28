@@ -11,6 +11,7 @@
 #import "DWPurchaseViewDataSource.h"
 #import "DWNavigationBarTitleView.h"
 #import "DWNavigationBarBackButton.h"
+#import "DWAnalyticsManager.h"
 #import "DWPurchase.h"
 #import "DWConstants.h"
 
@@ -70,6 +71,9 @@
     [self disablePullToRefresh];
     
     [(DWPurchaseViewDataSource*)self.tableViewDataSource loadPurchase];
+    
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Purchase View"];
 }
 
 

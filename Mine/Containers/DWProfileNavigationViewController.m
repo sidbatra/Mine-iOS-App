@@ -11,6 +11,7 @@
 #import "DWProfileViewController.h"
 #import "DWEditBylineViewController.h"
 #import "DWNavigationBarTitleView.h"
+#import "DWAnalyticsManager.h"
 #import "DWSession.h"
 #import "DWConstants.h"
 
@@ -165,18 +166,27 @@ static NSInteger const kSettingsActionSheetTag  = -1;
             [[NSNotificationCenter defaultCenter] postNotificationName:kNUserLoggedOut
                                                                 object:nil
                                                               userInfo:nil];
+            
+            [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"User Logged Out"];
             break;
+            
         case 1: {
             DWEditBylineViewController *editBylineViewController = [[DWEditBylineViewController alloc] init];
             [self.navigationController pushViewController:editBylineViewController
                                                  animated:YES];
+            
             break;
         }
         case 2:
             [self displayExternalURL:[NSString stringWithFormat:@"%@%@%@",kAppProtocol,kAppServer,kAboutURL]];
+            
+            [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"About View"];
             break;
+            
         case 3:
             [self displayExternalURL:[NSString stringWithFormat:@"%@%@%@",kAppProtocol,kAppServer,kFAQURL]];
+            
+            [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"FAQ View"];
             break;
         default:
             break;

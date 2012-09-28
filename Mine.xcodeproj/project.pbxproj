@@ -185,8 +185,6 @@
 		BB174D4515BA405900DB50CA /* DWConstants.m in Sources */ = {isa = PBXBuildFile; fileRef = BB174D4415BA405900DB50CA /* DWConstants.m */; };
 		BB174D4915BA43DC00DB50CA /* DWUsersController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB174D4815BA43DC00DB50CA /* DWUsersController.m */; };
 		BB174D5015BB426D00DB50CA /* DWCryptography.m in Sources */ = {isa = PBXBuildFile; fileRef = BB174D4F15BB426D00DB50CA /* DWCryptography.m */; };
-		BB26986F15BB653900037453 /* DWTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB26986D15BB653900037453 /* DWTestViewController.m */; };
-		BB26987015BB653900037453 /* DWTestViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB26986E15BB653900037453 /* DWTestViewController.xib */; };
 		BB26987715BB6F3E00037453 /* DWImageManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BB26987615BB6F3E00037453 /* DWImageManager.m */; };
 		BB26987A15BB6F9100037453 /* DWRequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BB26987915BB6F9100037453 /* DWRequestManager.m */; };
 		BB26987D15BB956700037453 /* DWPurchase.m in Sources */ = {isa = PBXBuildFile; fileRef = BB26987C15BB956700037453 /* DWPurchase.m */; };
@@ -590,9 +588,6 @@
 		BB174D4815BA43DC00DB50CA /* DWUsersController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWUsersController.m; sourceTree = "<group>"; };
 		BB174D4E15BB426D00DB50CA /* DWCryptography.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWCryptography.h; sourceTree = "<group>"; };
 		BB174D4F15BB426D00DB50CA /* DWCryptography.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWCryptography.m; sourceTree = "<group>"; };
-		BB26986C15BB653900037453 /* DWTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWTestViewController.h; sourceTree = "<group>"; };
-		BB26986D15BB653900037453 /* DWTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWTestViewController.m; sourceTree = "<group>"; };
-		BB26986E15BB653900037453 /* DWTestViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DWTestViewController.xib; sourceTree = "<group>"; };
 		BB26987515BB6F3E00037453 /* DWImageManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWImageManager.h; sourceTree = "<group>"; };
 		BB26987615BB6F3E00037453 /* DWImageManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWImageManager.m; sourceTree = "<group>"; };
 		BB26987815BB6F9100037453 /* DWRequestManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWRequestManager.h; sourceTree = "<group>"; };
@@ -1258,9 +1253,6 @@
 				2622005415C713A7003DC1DF /* DWInviteViewController.h */,
 				2622005515C713A7003DC1DF /* DWInviteViewController.m */,
 				2622005615C713A7003DC1DF /* DWInviteViewController.xib */,
-				BB26986C15BB653900037453 /* DWTestViewController.h */,
-				BB26986D15BB653900037453 /* DWTestViewController.m */,
-				BB26986E15BB653900037453 /* DWTestViewController.xib */,
 				BB2BC05915CF32A200CCC4BB /* DWWebViewController.h */,
 				BB2BC05A15CF32A200CCC4BB /* DWWebViewController.m */,
 				BB2BC05B15CF32A200CCC4BB /* DWWebViewController.xib */,
@@ -1870,7 +1862,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				BBC8A09F15B9D26D00DF58F6 /* InfoPlist.strings in Resources */,
-				BB26987015BB653900037453 /* DWTestViewController.xib in Resources */,
 				262376B315BF6C0A00B3A037 /* FBDialog.bundle in Resources */,
 				BB06365515C08D2E001F26E1 /* Window.xib in Resources */,
 				BB06366215C0A147001F26E1 /* DWLoginViewController.xib in Resources */,
@@ -2054,7 +2045,6 @@
 				BB174D4515BA405900DB50CA /* DWConstants.m in Sources */,
 				BB174D4915BA43DC00DB50CA /* DWUsersController.m in Sources */,
 				BB174D5015BB426D00DB50CA /* DWCryptography.m in Sources */,
-				BB26986F15BB653900037453 /* DWTestViewController.m in Sources */,
 				BB26987715BB6F3E00037453 /* DWImageManager.m in Sources */,
 				BB26987A15BB6F9100037453 /* DWRequestManager.m in Sources */,
 				BB26987D15BB956700037453 /* DWPurchase.m in Sources */,

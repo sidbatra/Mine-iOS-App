@@ -9,6 +9,7 @@
 #import "DWLikersViewController.h"
 
 #import "DWLikersViewDataSource.h"
+#import "DWAnalyticsManager.h"
 #import "DWGUIManager.h"
 #import "DWPurchase.h"
 #import "DWConstants.h"
@@ -54,6 +55,8 @@
     [super viewDidLoad];
     
     self.navigationItem.titleView = [DWGUIManager navBarTitleViewWithText:@"Likes"];
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Likers View"];
 }
 
 

@@ -226,6 +226,9 @@
     if(!purchase)
         return;
     
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Purchase URL Clicked"];
+    
     [self.delegate performSelector:sel
                         withObject:purchase];
 }

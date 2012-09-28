@@ -11,6 +11,7 @@
 #import "DWUserProfilePresenter.h"
 #import "DWPurchaseProfilePresenter.h"
 #import "DWPaginationPresenter.h"
+#import "DWAnalyticsManager.h"
 #import "DWPurchase.h"
 #import "DWPagination.h"
 #import "DWModelSet.h"
@@ -117,6 +118,9 @@
     
     [(DWProfileViewDataSource*)self.tableViewDataSource loadUser];
     [(DWProfileViewDataSource*)self.tableViewDataSource loadPurchases];
+    
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"User View"];
 }
 
 

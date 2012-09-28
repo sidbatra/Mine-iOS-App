@@ -9,6 +9,7 @@
 #import "DWEditBylineViewController.h"
 
 #import "DWGUIManager.h"
+#import "DWAnalyticsManager.h"
 #import "DWNavigationBarBackButton.h"
 
 #import "DWSession.h"
@@ -59,6 +60,8 @@ static NSInteger const kMaxBylineLength = 160;
     self.navigationItem.titleView  = [DWGUIManager navBarTitleViewWithText:@"Edit Bio"];
     
     [self.bylineTextView becomeFirstResponder];
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Byline Edit View"];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -104,6 +107,8 @@ static NSInteger const kMaxBylineLength = 160;
     
     [self.usersController updateUserHavingID:[DWSession sharedDWSession].currentUser.databaseID
                                   withByline:self.bylineTextView.text];
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Byline Edited"];
 }
 
 
