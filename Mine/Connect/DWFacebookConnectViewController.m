@@ -7,7 +7,12 @@
 //
 
 #import "DWFacebookConnectViewController.h"
+#import "DWAnalyticsManager.h"
 #import "DWSession.h"
+
+static NSString* const kMsgErrorTitle       = @"Error";
+static NSString* const kMsgCancelTitle      = @"OK";
+static NSString* const kMsgError            = @"Error connecting with Facebook";
 
 /**
  * Private declarations
@@ -63,6 +68,8 @@
     [super viewDidLoad];
     
     [self.facebookConnect authorize];
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Facebook Connect View"];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -87,7 +94,15 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)fbAuthenticationFailed {
-    NSLog(@"Facebook Authentication Failed - Show an alert");
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:kMsgErrorTitle
+                                                    message:kMsgError
+                                                   delegate:nil
+                                          cancelButtonTitle:kMsgCancelTitle
+                                          otherButtonTitles:nil];
+    [alert show];
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Facebook Connect Failed"];
 }
 
 

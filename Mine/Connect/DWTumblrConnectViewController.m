@@ -9,6 +9,7 @@
 #import "DWTumblrConnectViewController.h"
 #import "DWNavigationBarBackButton.h"
 #import "DWGUIManager.h"
+#import "DWAnalyticsManager.h"
 #import "DWSession.h"
 
 
@@ -82,6 +83,8 @@ static NSString* const kMsgError            = @"Incorrect email or password";
     self.navigationItem.rightBarButtonItem  = [DWGUIManager navBarDoneButtonWithTarget:self];    
     
     [self.emailTextField becomeFirstResponder];
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Tumblr Connect View"];            
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -161,6 +164,8 @@ static NSString* const kMsgError            = @"Incorrect email or password";
                                           cancelButtonTitle:kMsgCancelTitle
                                           otherButtonTitles:nil];
     [alert show];
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Tumblr Connect Failed"];    
 }
 
 
