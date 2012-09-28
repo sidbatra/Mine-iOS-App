@@ -316,6 +316,8 @@
                                                       userInfo:[NSDictionary dictionaryWithObjectsAndKeys:
                                                                 [NSNumber numberWithInteger:purchase.databaseID],kKeyResourceID,
                                                                 nil]];
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Purchase Deleted"];
 }
 
 @end

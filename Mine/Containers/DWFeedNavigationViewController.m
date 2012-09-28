@@ -9,6 +9,7 @@
 #import "DWFeedNavigationViewController.h"
 #import "DWFeedViewController.h"
 #import "DWNavigationBarTitleView.h"
+#import "DWAnalyticsManager.h"
 
 #import "DWBackgroundQueue.h"
 #import "DWCreatePurchaseBackgroundQueueItem.h"
@@ -245,6 +246,8 @@ static NSString* const kImgSearchOn     = @"nav-btn-search-on.png";
     [self.searchBar becomeActive];
     
     [self removeSideButtons];
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Users Search View"];
 }
 
 
@@ -273,6 +276,8 @@ static NSString* const kImgSearchOn     = @"nav-btn-search-on.png";
 //----------------------------------------------------------------------------------------------------
 - (void)searchWithQuery:(NSString*)query {
     [(DWUsersSearchViewController*)self.usersSearchViewController loadUsersForQuery:query];
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Users Searched"];
 }
 
 
