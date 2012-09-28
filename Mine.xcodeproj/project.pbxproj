@@ -143,7 +143,6 @@
 		BB12511B160BA2F400AA2521 /* login-play@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB1250BD160BA2F400AA2521 /* login-play@2x.png */; };
 		BB12511C160BA2F400AA2521 /* login-shade@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB1250BE160BA2F400AA2521 /* login-shade@2x.png */; };
 		BB12511D160BA2F400AA2521 /* message-drawer-opaque@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB1250BF160BA2F400AA2521 /* message-drawer-opaque@2x.png */; };
-		BB12511E160BA2F400AA2521 /* mine_intro_640x280.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = BB1250C0160BA2F400AA2521 /* mine_intro_640x280.mp4 */; };
 		BB12511F160BA2F400AA2521 /* nav-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB1250C1160BA2F400AA2521 /* nav-bg@2x.png */; };
 		BB125120160BA2F400AA2521 /* nav-btn-back-off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB1250C2160BA2F400AA2521 /* nav-btn-back-off@2x.png */; };
 		BB125121160BA2F400AA2521 /* nav-btn-back-on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB1250C3160BA2F400AA2521 /* nav-btn-back-on@2x.png */; };
@@ -319,6 +318,7 @@
 		BBC8A09915B9D26D00DF58F6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBC8A09815B9D26D00DF58F6 /* CoreGraphics.framework */; };
 		BBC8A09F15B9D26D00DF58F6 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BBC8A09D15B9D26D00DF58F6 /* InfoPlist.strings */; };
 		BBC8A0A115B9D26D00DF58F6 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BBC8A0A015B9D26D00DF58F6 /* main.m */; };
+		BBCFB0261616495900FCB751 /* mine_intro_480x214.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = BBCFB0251616495900FCB751 /* mine_intro_480x214.mp4 */; };
 		BBE42F3F15BCAD9E000F6AE1 /* DWTableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = BBE42F3D15BCAD9E000F6AE1 /* DWTableViewDataSource.m */; };
 		BBE42F4315BCB734000F6AE1 /* DWTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBE42F4215BCB734000F6AE1 /* DWTableViewController.m */; };
 		BBE42F4915BCCA52000F6AE1 /* DWPurchaseFeedCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BBE42F4815BCCA52000F6AE1 /* DWPurchaseFeedCell.m */; };
@@ -544,7 +544,6 @@
 		BB1250BD160BA2F400AA2521 /* login-play@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login-play@2x.png"; sourceTree = "<group>"; };
 		BB1250BE160BA2F400AA2521 /* login-shade@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login-shade@2x.png"; sourceTree = "<group>"; };
 		BB1250BF160BA2F400AA2521 /* message-drawer-opaque@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "message-drawer-opaque@2x.png"; sourceTree = "<group>"; };
-		BB1250C0160BA2F400AA2521 /* mine_intro_640x280.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = mine_intro_640x280.mp4; sourceTree = "<group>"; };
 		BB1250C1160BA2F400AA2521 /* nav-bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-bg@2x.png"; sourceTree = "<group>"; };
 		BB1250C2160BA2F400AA2521 /* nav-btn-back-off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-btn-back-off@2x.png"; sourceTree = "<group>"; };
 		BB1250C3160BA2F400AA2521 /* nav-btn-back-on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-btn-back-on@2x.png"; sourceTree = "<group>"; };
@@ -824,6 +823,7 @@
 		BBC8A09E15B9D26D00DF58F6 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		BBC8A0A015B9D26D00DF58F6 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		BBC8A0A215B9D26D00DF58F6 /* Mine-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Mine-Prefix.pch"; sourceTree = "<group>"; };
+		BBCFB0251616495900FCB751 /* mine_intro_480x214.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = mine_intro_480x214.mp4; sourceTree = "<group>"; };
 		BBE42F3C15BCAD9E000F6AE1 /* DWTableViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWTableViewDataSource.h; sourceTree = "<group>"; };
 		BBE42F3D15BCAD9E000F6AE1 /* DWTableViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWTableViewDataSource.m; sourceTree = "<group>"; };
 		BBE42F4115BCB734000F6AE1 /* DWTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWTableViewController.h; sourceTree = "<group>"; };
@@ -1052,6 +1052,7 @@
 		BB125087160BA2F400AA2521 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				BBCFB0251616495900FCB751 /* mine_intro_480x214.mp4 */,
 				BB4C77D0161562B9009C3279 /* Default-568h@2x.png */,
 				BB4C77CE16155FBD009C3279 /* profile-userbox-gradient@2x.png */,
 				BB4C77CA16153A8E009C3279 /* comments-btn-send-off@2x.png */,
@@ -1146,7 +1147,6 @@
 				BB1250BD160BA2F400AA2521 /* login-play@2x.png */,
 				BB1250BE160BA2F400AA2521 /* login-shade@2x.png */,
 				BB1250BF160BA2F400AA2521 /* message-drawer-opaque@2x.png */,
-				BB1250C0160BA2F400AA2521 /* mine_intro_640x280.mp4 */,
 				BB1250C1160BA2F400AA2521 /* nav-bg@2x.png */,
 				BB1250C2160BA2F400AA2521 /* nav-btn-back-off@2x.png */,
 				BB1250C3160BA2F400AA2521 /* nav-btn-back-on@2x.png */,
@@ -1934,7 +1934,6 @@
 				BB12511B160BA2F400AA2521 /* login-play@2x.png in Resources */,
 				BB12511C160BA2F400AA2521 /* login-shade@2x.png in Resources */,
 				BB12511D160BA2F400AA2521 /* message-drawer-opaque@2x.png in Resources */,
-				BB12511E160BA2F400AA2521 /* mine_intro_640x280.mp4 in Resources */,
 				BB12511F160BA2F400AA2521 /* nav-bg@2x.png in Resources */,
 				BB125120160BA2F400AA2521 /* nav-btn-back-off@2x.png in Resources */,
 				BB125121160BA2F400AA2521 /* nav-btn-back-on@2x.png in Resources */,
@@ -2014,6 +2013,7 @@
 				BB4C77CD16153A8E009C3279 /* comments-btn-send-on@2x.png in Resources */,
 				BB4C77CF16155FBD009C3279 /* profile-userbox-gradient@2x.png in Resources */,
 				BB4C77D1161562B9009C3279 /* Default-568h@2x.png in Resources */,
+				BBCFB0261616495900FCB751 /* mine_intro_480x214.mp4 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

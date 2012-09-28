@@ -14,7 +14,7 @@
 #import "DWConstants.h"
 
 
-static NSString* const kVideoIntro = @"mine_intro_640x280.mp4";
+static NSString* const kVideoIntro = @"mine_intro_480x214.mp4";
 
 
 
