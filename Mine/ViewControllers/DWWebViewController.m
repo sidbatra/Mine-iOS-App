@@ -115,7 +115,7 @@ static NSString* const kLoadingText = @"Loading...";
     
     
     if(!self.toolbar) {
-        self.toolbar = [[DWToolbar alloc] initWithFrame:CGRectMake(0,self.view.frame.size.height-49,320,49)];
+        self.toolbar = [[DWToolbar alloc] initWithFrame:CGRectMake(0,self.view.frame.size.height-44,320,44)];
         self.toolbar.items = [NSArray arrayWithObjects:
                               initialSpacer,
                               [[UIBarButtonItem alloc] initWithCustomView:self.backButton], 
@@ -131,7 +131,7 @@ static NSString* const kLoadingText = @"Loading...";
     
     if(!self.bottomShadowView) {
         self.bottomShadowView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:kImgBottomShadow]];
-        self.bottomShadowView.frame = CGRectMake(0,self.view.frame.size.height-49-3,320,3);
+        self.bottomShadowView.frame = CGRectMake(0,self.view.frame.size.height-44-3,320,3);
     }
     
     [self.view addSubview:self.bottomShadowView];
