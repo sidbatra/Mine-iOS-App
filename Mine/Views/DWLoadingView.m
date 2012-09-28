@@ -5,6 +5,8 @@
 
 #import "DWLoadingView.h"
 
+#import "DWDevice.h"
+
 static NSInteger const kSpinnerSize     = 20;
 
 /**
@@ -12,20 +14,8 @@ static NSInteger const kSpinnerSize     = 20;
  */
 @interface DWLoadingView()
 
-/**
- * Create and add the spinner to the view
- */
 - (void)createSpinner;
-
-/**
- * Create and add the text label to the view
- */
 - (void)createText;
-
-/**
- * Create a textured background view using an image
- */
-- (void)createBackground;
 
 @end
 
@@ -41,9 +31,8 @@ static NSInteger const kSpinnerSize     = 20;
     self = [super initWithFrame:frame];
     
     if (self) {
-        self.backgroundColor = [UIColor blackColor];
+        self.backgroundColor = [UIColor colorWithRed:0.933 green:0.933 blue:0.933 alpha:1.0];
         
-        [self createBackground];
         [self createSpinner];
         [self createText];
     }
@@ -52,14 +41,11 @@ static NSInteger const kSpinnerSize     = 20;
 }
 
 //----------------------------------------------------------------------------------------------------
-
-//----------------------------------------------------------------------------------------------------
 - (void)createSpinner {
-	
+
     UIActivityIndicatorView *spinner	= [[UIActivityIndicatorView alloc]
-                                            initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
-    spinner.alpha   = 0.5;
-	spinner.frame	= CGRectMake(109,(self.frame.size.height - kSpinnerSize) / 2 - 49,kSpinnerSize,kSpinnerSize);
+                                            initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+	spinner.frame	= CGRectMake(113,([DWDevice sharedDWDevice].screenHeightMinusStatusBar - kSpinnerSize) / 2 - [DWDevice sharedDWDevice].navBarHeight - 6,kSpinnerSize,kSpinnerSize);
     
     [spinner startAnimating];
 	
@@ -70,18 +56,14 @@ static NSInteger const kSpinnerSize     = 20;
 - (void)createText {
     
     UILabel *messageLabel			= [[UILabel alloc] 
-                                        initWithFrame:CGRectMake(135,self.frame.size.height/ 2 - 10 - 49,90,20)];	
+                                        initWithFrame:CGRectMake(138.5,[DWDevice sharedDWDevice].screenHeightMinusStatusBar / 2 - [DWDevice sharedDWDevice].navBarHeight - 10 - 6,90,20)];
 	messageLabel.backgroundColor	= [UIColor clearColor];
-	messageLabel.font				= [UIFont fontWithName:@"HelveticaNeue" size:17];	
-	messageLabel.textColor			= [UIColor colorWithRed:0.6 green:0.6 blue:0.6 alpha:1.0];
+	messageLabel.font				= [UIFont fontWithName:@"HelveticaNeue-Bold" size:17];	
+	messageLabel.textColor			= [UIColor colorWithRed:0.454 green:0.454 blue:0.454 alpha:1.0];
 	messageLabel.textAlignment		= UITextAlignmentLeft;
 	messageLabel.text				= @"Loading...";
     
 	[self addSubview:messageLabel];
-}
-
-//----------------------------------------------------------------------------------------------------
-- (void)createBackground {	
 }
 
 @end

@@ -242,6 +242,7 @@
 		BB46140215CB3A5A00B38D71 /* DWUserPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = BB46140115CB3A5A00B38D71 /* DWUserPresenter.m */; };
 		BB46140615CB3A7500B38D71 /* DWUserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BB46140515CB3A7500B38D71 /* DWUserCell.m */; };
 		BB46142615CC6ABD00B38D71 /* DWModelSet.m in Sources */ = {isa = PBXBuildFile; fileRef = BB46142515CC6ABD00B38D71 /* DWModelSet.m */; };
+		BB4C77BE161520AB009C3279 /* DWDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = BB4C77BD161520AB009C3279 /* DWDevice.m */; };
 		BB59B4BB15EE500E000756EE /* DWNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BB59B4BA15EE500E000756EE /* DWNavigationBar.m */; };
 		BB59B4CA15EF3B65000756EE /* DWNavigationBarTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = BB59B4C915EF3B65000756EE /* DWNavigationBarTitleView.m */; };
 		BB59B4D615F1EB5B000756EE /* NSAttributedString+Attributes.m in Sources */ = {isa = PBXBuildFile; fileRef = BB59B4D315F1EB5B000756EE /* NSAttributedString+Attributes.m */; };
@@ -687,6 +688,8 @@
 		BB46140515CB3A7500B38D71 /* DWUserCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWUserCell.m; sourceTree = "<group>"; };
 		BB46142415CC6ABD00B38D71 /* DWModelSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWModelSet.h; sourceTree = "<group>"; };
 		BB46142515CC6ABD00B38D71 /* DWModelSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWModelSet.m; sourceTree = "<group>"; };
+		BB4C77BC161520AB009C3279 /* DWDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWDevice.h; sourceTree = "<group>"; };
+		BB4C77BD161520AB009C3279 /* DWDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWDevice.m; sourceTree = "<group>"; };
 		BB59B4B915EE500E000756EE /* DWNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWNavigationBar.h; sourceTree = "<group>"; };
 		BB59B4BA15EE500E000756EE /* DWNavigationBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWNavigationBar.m; sourceTree = "<group>"; };
 		BB59B4C815EF3B65000756EE /* DWNavigationBarTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWNavigationBarTitleView.h; sourceTree = "<group>"; };
@@ -1264,14 +1267,16 @@
 			children = (
 				BB2BC08A15D1909600CCC4BB /* DWAnalyticsManager.h */,
 				BB2BC08B15D1909600CCC4BB /* DWAnalyticsManager.m */,
+				BB4C77BC161520AB009C3279 /* DWDevice.h */,
+				BB4C77BD161520AB009C3279 /* DWDevice.m */,
 				BB9F316B15FB5725009C1385 /* DWFollowingManager.h */,
 				BB9F316C15FB5725009C1385 /* DWFollowingManager.m */,
+				2676AA0015FE714B00B0B579 /* DWGUIManager.h */,
+				2676AA0115FE714B00B0B579 /* DWGUIManager.m */,
 				BB26987515BB6F3E00037453 /* DWImageManager.h */,
 				BB26987615BB6F3E00037453 /* DWImageManager.m */,
 				BBEDD2FC15D30798007F862F /* DWNotificationManager.h */,
 				BBEDD2FD15D30798007F862F /* DWNotificationManager.m */,
-				2676AA0015FE714B00B0B579 /* DWGUIManager.h */,
-				2676AA0115FE714B00B0B579 /* DWGUIManager.m */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -2184,6 +2189,7 @@
 				BB31FC25160BFA750049B6BF /* DWEditBylineViewController.m in Sources */,
 				BB31FC481610DC190049B6BF /* DWToolbar.m in Sources */,
 				BB5BE3B316121C00006EA2C4 /* ASIDataCompressor.m in Sources */,
+				BB4C77BE161520AB009C3279 /* DWDevice.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

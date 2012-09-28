@@ -4,11 +4,8 @@
 //
 
 #import "DWTabBarController.h"
+#import "DWDevice.h"
 #import "DWConstants.h"
-
-//#define kFullScreenFrame	CGRectMake(0,0,320,460)
-static NSInteger const kScreenHeight    = 460;
-static CGRect const kFullScreenFrame    = { {0,0}, {320, kScreenHeight} };
 
 
 /**
@@ -146,7 +143,7 @@ static CGRect const kFullScreenFrame    = { {0,0}, {320, kScreenHeight} };
 
 //----------------------------------------------------------------------------------------------------
 - (CGRect)subControllerFrame {
-    return CGRectMake(0,0,self.view.frame.size.width,kScreenHeight-self.tabBar.frame.size.height);
+    return CGRectMake(0,0,self.view.frame.size.width,[[DWDevice sharedDWDevice] screenHeightMinusStatusBar] - self.tabBar.frame.size.height);
 }
 
 
@@ -164,7 +161,7 @@ static CGRect const kFullScreenFrame    = { {0,0}, {320, kScreenHeight} };
 - (void)enableFullScreen {
 	self.tabBar.hidden = YES;
     self.bottomShadowView.hidden = YES;
-    self.selectedController.view.frame = kFullScreenFrame;
+    self.selectedController.view.frame = CGRectMake(0,0,[DWDevice sharedDWDevice].screenWidth,[DWDevice sharedDWDevice].screenHeightMinusStatusBar);
 }
 
 //----------------------------------------------------------------------------------------------------
