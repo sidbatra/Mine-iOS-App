@@ -33,12 +33,11 @@
 @property (nonatomic,weak) id<DWProfileViewControllerDelegate,NSObject> delegate;
 
 
-/**
- * Init with the user whose profile is to be displayed.
- */ 
-- (id)initWithUser:(DWUser*)user;
+- (void)applyUser:(DWUser*)user;
 
 @end
+
+
 
 /**
  * Delegate for DWProfileViewController

@@ -65,7 +65,8 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)displayUserProfile:(DWUser*)user {
-    DWProfileViewController *profileViewController = [[DWProfileViewController alloc] initWithUser:user];
+    DWProfileViewController *profileViewController = [[DWProfileViewController alloc] init];
+    [profileViewController applyUser:user];
     profileViewController.delegate = self;
     
     [self.navigationController pushViewController:profileViewController

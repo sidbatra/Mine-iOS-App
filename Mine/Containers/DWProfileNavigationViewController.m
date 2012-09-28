@@ -112,7 +112,7 @@ static NSInteger const kSettingsActionSheetTag  = -1;
     self.navigationItem.title = @"";
         
     if(!self.profileViewController) {
-        self.profileViewController = [[DWProfileViewController alloc] initWithUser:[DWSession sharedDWSession].currentUser];
+        self.profileViewController = [[DWProfileViewController alloc] init];
         self.profileViewController.delegate = self;
     }
     
@@ -128,6 +128,12 @@ static NSInteger const kSettingsActionSheetTag  = -1;
 //----------------------------------------------------------------------------------------------------
 - (void)viewDidUnload {
     [super viewDidUnload];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)viewDidAppear:(BOOL)animated {
+    [self.profileViewController applyUser:[DWSession sharedDWSession].currentUser];
+    [self.profileViewController viewDidAppear:animated];
 }
 
 

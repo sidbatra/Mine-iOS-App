@@ -17,7 +17,12 @@
 #import "DWAnalyticsManager.h"
 
 
-@interface DWFeedViewController()
+@interface DWFeedViewController() {
+    BOOL _isFeedLoaded;
+}
+
+@property (nonatomic,assign) BOOL isFeedLoaded;
+
 @end
 
 
@@ -27,6 +32,7 @@
 //----------------------------------------------------------------------------------------------------
 @implementation DWFeedViewController
 
+@synthesize isFeedLoaded = _isFeedLoaded;
 @dynamic delegate;
 
 //----------------------------------------------------------------------------------------------------
@@ -48,9 +54,21 @@
 //----------------------------------------------------------------------------------------------------
 - (void)viewDidLoad {
 	[super viewDidLoad];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)viewDidAppear:(BOOL)animated {
+    [self loadFeed];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)loadFeed {
+    if(self.isFeedLoaded)
+        return;
+    
+    self.isFeedLoaded = YES;
     
     [(DWFeedViewDataSource*)self.tableViewDataSource loadFeed];
-    
     [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Feed View"];
 }
 

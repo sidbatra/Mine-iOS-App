@@ -25,10 +25,13 @@
 @interface DWProfileViewController() {
     DWFollowButton  *_followButton;
     DWNavigationBarTitleView *_navTitleView;
+    
+    BOOL _isProfileLoaded;
 }
 
 @property (nonatomic,strong) DWFollowButton *followButton;
 @property (nonatomic,strong) DWNavigationBarTitleView *navTitleView;
+@property (nonatomic,assign) BOOL isProfileLoaded;
 
 @end
 
@@ -42,18 +45,16 @@
 @synthesize user            = _user;
 @synthesize followButton    = _followButton;
 @synthesize navTitleView    = _navTitleView;
+@synthesize isProfileLoaded = _isProfileLoaded;
 @synthesize delegate        = _delegate;
 
 //----------------------------------------------------------------------------------------------------
-- (id)initWithUser:(DWUser*)user {
+- (id)init {
     self = [super init];
     
     if(self) {        
-        
-        self.user = user;
-        
+    
         self.tableViewDataSource = [[DWProfileViewDataSource alloc] init];
-        ((DWProfileViewDataSource*)self.tableViewDataSource).userID = self.user.databaseID;
         
         [self addModelPresenterForClass:[DWUser class]
                               withStyle:kDefaultModelPresenter 
@@ -97,14 +98,10 @@
 - (void)viewDidLoad {
 	[super viewDidLoad];
     
-    if(![[DWSession sharedDWSession] isCurrentUser:self.user.databaseID]) {
-        
-        if(!self.followButton) {
-            self.followButton = [[DWFollowButton alloc] initWithFrame:CGRectMake(241, 7, 72, 30) followButtonStyle:kFollowButonStyleDark];
-            self.followButton.delegate = self;
-        }
-        
-        [(DWProfileViewDataSource*)self.tableViewDataSource loadFollowing];
+    if(!self.followButton) {
+        self.followButton = [[DWFollowButton alloc] initWithFrame:CGRectMake(241, 7, 72, 30) followButtonStyle:kFollowButonStyleDark];
+        self.followButton.delegate = self;
+        self.followButton.hidden = YES;
     }
     
     if(self.navigationController) {
@@ -115,6 +112,33 @@
             self.navTitleView =  [DWNavigationBarTitleView logoTitleView];
         }
     }
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)viewDidAppear:(BOOL)animated {
+    [self loadProfile];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)applyUser:(DWUser*)user {
+    self.user = user;
+    ((DWProfileViewDataSource*)self.tableViewDataSource).userID = self.user.databaseID;
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)loadProfile {
+    if(self.isProfileLoaded)
+        return;
+    
+    self.isProfileLoaded = YES;
+    
+    
+    if(![[DWSession sharedDWSession] isCurrentUser:self.user.databaseID]) {
+        self.followButton.hidden = NO;
+        [(DWProfileViewDataSource*)self.tableViewDataSource loadFollowing];
+    }
+    else
+        self.followButton.hidden = YES;
     
     [(DWProfileViewDataSource*)self.tableViewDataSource loadUser];
     [(DWProfileViewDataSource*)self.tableViewDataSource loadPurchases];
@@ -122,6 +146,7 @@
     
     [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"User View"];
 }
+
 
 
 //----------------------------------------------------------------------------------------------------

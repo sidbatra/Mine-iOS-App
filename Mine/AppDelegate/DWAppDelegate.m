@@ -99,7 +99,6 @@ static NSString* const kFacebookURLPrefix = @"fb";
         [self.tabBarController presentModalViewController:self.welcomeNavController
                                                  animated:NO];
     
-    
     [self registerForPushNotifications];
 }
 
