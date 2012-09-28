@@ -41,12 +41,12 @@ static NSString* const kImgBackground       = @"nav-concave-bg.png";
         progressLayer.contents          = (id)[UIImage imageNamed:kImgProgress].CGImage;
         [self.layer addSublayer:progressLayer];            
         
-        progressShadowLayer             = [CALayer layer];
-        progressShadowLayer.actions     = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                           [NSNull null], @"hidden",
-                                           nil];
-        progressShadowLayer.contents    = (id)[UIImage imageNamed:kImgProgressShadow].CGImage;
-        [self.layer addSublayer:progressShadowLayer];
+        //progressShadowLayer             = [CALayer layer];
+        //progressShadowLayer.actions     = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+        //                                   [NSNull null], @"hidden",
+        //                                   nil];
+        //progressShadowLayer.contents    = (id)[UIImage imageNamed:kImgProgressShadow].CGImage;
+        //[self.layer addSublayer:progressShadowLayer];
                                            
                                            
         
@@ -107,7 +107,7 @@ static NSString* const kImgBackground       = @"nav-concave-bg.png";
 					 forKey:kCATransactionAnimationDuration];
     
     progressLayer.frame = CGRectMake(0,0,self.frame.size.width*progress,self.frame.size.height);
-    progressShadowLayer.frame = CGRectMake(progressLayer.frame.size.width,0,5,self.frame.size.height);
+    //progressShadowLayer.frame = CGRectMake(progressLayer.frame.size.width,0,5,self.frame.size.height);
     
     [CATransaction commit];
 }
@@ -122,7 +122,7 @@ static NSString* const kImgBackground       = @"nav-concave-bg.png";
 		deleteButton.hidden		= YES;
 		retryButton.hidden		= YES;
 		progressLayer.hidden	= NO;
-        progressShadowLayer.hidden = NO;
+        //progressShadowLayer.hidden = NO;
 		
         [self updateProgressBar:totalProgress
                   withAnimation:YES];
@@ -140,7 +140,7 @@ static NSString* const kImgBackground       = @"nav-concave-bg.png";
         statusLabel.alpha       = 0.5;
 		statusLabel.text		= totalFailed == 1 ? @"Failed" : [NSString stringWithFormat:@"%d failed",totalFailed];
 		progressLayer.hidden	= YES;
-        progressShadowLayer.hidden = YES;
+        //progressShadowLayer.hidden = YES;
 		deleteButton.hidden		= NO;
 		retryButton.hidden		= NO;
 	}
@@ -162,7 +162,7 @@ static NSString* const kImgBackground       = @"nav-concave-bg.png";
 	deleteButton.hidden		= YES;
 	retryButton.hidden		= YES;
 	progressLayer.hidden	= NO;
-    progressShadowLayer.hidden = NO;
+    //progressShadowLayer.hidden = NO;
 	
 	[_delegate retryButtonPressed];
 }

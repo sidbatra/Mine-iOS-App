@@ -17,7 +17,7 @@
 	UIButton		*deleteButton;
 	UIButton		*retryButton;
     CALayer         *progressLayer;
-    CALayer         *progressShadowLayer;
+    //CALayer         *progressShadowLayer;
 	
 	id<DWQueueProgressViewDelegate> __unsafe_unretained _delegate;
 }
