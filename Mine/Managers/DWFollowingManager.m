@@ -12,6 +12,7 @@
 #import "DWUser.h"
 #import "DWUsersController.h"
 #import "DWSession.h"
+#import "DWAnalyticsManager.h"
 #import "DWConstants.h"
 
 #import "NSObject+Helpers.h"
@@ -124,6 +125,8 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWFollowingManager);
     
     [self modifyFollowingCountForUserID:[userID integerValue]
                                 byCount:1];
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Following Created"];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -138,6 +141,8 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWFollowingManager);
     
    [self modifyFollowingCountForUserID:[userID integerValue]
                                byCount:-1];
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Following Destroyed"];
 }
 
 @end

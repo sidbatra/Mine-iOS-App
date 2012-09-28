@@ -66,7 +66,7 @@ static NSString* const kImgLightActiveSpinning                   = @"list-btn-fo
         [self createUnderlayButton];
         [self createSpinner];
         
-        [self enterInactiveState];
+        [self enterActiveState];
         [self startSpinning];
     }
     return self;
