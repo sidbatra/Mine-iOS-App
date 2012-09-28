@@ -162,6 +162,10 @@
     }
     else {
         [self showOnboardingToUser:user];
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:kNOnboardingStarted
+                                                            object:nil];
+        
         [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"User Created"];
     }
 }

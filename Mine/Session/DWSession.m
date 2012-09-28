@@ -152,8 +152,6 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWSession);
 - (void)create:(DWUser*)user {
 	
     self.currentUser = user;
-    //self.currentUser.isNewUser      = YES;
-    //self.currentUser.isCurrentUser  = YES;
     
     [self write];
 }

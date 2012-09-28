@@ -63,6 +63,7 @@ extern NSString* const kNPaginationCellReached;
 extern NSString* const kNCommentAddedForPurchase;
 extern NSString* const kNRequestTabBarIndexChange;
 extern NSString* const kNRequestPurchaseDelete;
+extern NSString* const kNOnboardingStarted;
 
 /**
  * Grid view related constants

@@ -84,13 +84,8 @@ static NSString* const kImgSearchOn     = @"nav-btn-search-on.png";
 @synthesize isProgressBarActive         = _isProgressBarActive;
 
 //----------------------------------------------------------------------------------------------------
-- (void)awakeFromNib {
-	[super awakeFromNib];	
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self 
-                                             selector:@selector(backgroundQueueUpdated:) 
-                                                 name:kNBackgroundQueueUpdated
-                                               object:nil];
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 
@@ -126,6 +121,18 @@ static NSString* const kImgSearchOn     = @"nav-btn-search-on.png";
 //----------------------------------------------------------------------------------------------------
 - (void)viewDidLoad {
 	[super viewDidLoad];
+        
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(backgroundQueueUpdated:)
+                                                 name:kNBackgroundQueueUpdated
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(onboardingStarted:)
+                                                 name:kNOnboardingStarted
+                                               object:nil];
+    
+    
     
     self.navigationItem.title = @"";
     
@@ -174,6 +181,8 @@ static NSString* const kImgSearchOn     = @"nav-btn-search-on.png";
 //----------------------------------------------------------------------------------------------------
 - (void)viewDidUnload {
     [super viewDidUnload];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -218,6 +227,10 @@ static NSString* const kImgSearchOn     = @"nav-btn-search-on.png";
     }
 }
 
+//----------------------------------------------------------------------------------------------------
+- (void)onboardingStarted:(NSNotification*)notification {
+    [self.feedViewController viewDidAppear:NO];
+}
 
 
 //----------------------------------------------------------------------------------------------------

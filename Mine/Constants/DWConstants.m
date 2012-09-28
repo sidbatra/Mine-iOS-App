@@ -45,6 +45,7 @@ NSString* const kNPaginationCellReached     = @"NPaginationCellReached";
 NSString* const kNCommentAddedForPurchase   = @"NCommentAddedForPurchase";
 NSString* const kNRequestTabBarIndexChange  = @"NRequestTabBarIndexChange";
 NSString* const kNRequestPurchaseDelete     = @"NRequestPurchaseDelete";
+NSString* const kNOnboardingStarted         = @"NOnboardingStarted";
 
 //----------------------------------------------------------------------------------------------------
 NSInteger const kColumnsInProductsSearch        = 3;

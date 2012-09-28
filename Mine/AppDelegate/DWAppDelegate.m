@@ -108,7 +108,6 @@ static NSString* const kFacebookURLPrefix = @"fb";
     self.tabBarController = [[DWTabBarController alloc] init];
     self.tabBarController.delegate = self;
     
-    
     ((DWNavigationRootViewController*)self.welcomeNavController.topViewController).customTabBarController = self.tabBarController;
     ((DWNavigationRootViewController*)self.feedNavController.topViewController).customTabBarController = self.tabBarController;
     ((DWNavigationRootViewController*)self.profileNavController.topViewController).customTabBarController = self.tabBarController;
@@ -141,6 +140,10 @@ static NSString* const kFacebookURLPrefix = @"fb";
                              highlightedImageName:nil
                              isMappedToController:YES
                                        isSelected:NO];
+    
+    
+    id eagerLoadFromNib = (DWNavigationRootViewController*)self.feedNavController.topViewController.view;
+    eagerLoadFromNib = nil;
 }
 
 //----------------------------------------------------------------------------------------------------
