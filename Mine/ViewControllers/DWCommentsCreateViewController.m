@@ -177,6 +177,11 @@ static NSInteger const kBottomBarMargin = 44;
 }
 
 //----------------------------------------------------------------------------------------------------
+- (void)viewWillDisappear:(BOOL)animated {
+    [self.commentTextField resignFirstResponder];
+}
+
+//----------------------------------------------------------------------------------------------------
 - (void)viewDidUnload {
     [super viewDidUnload];
     
