@@ -39,7 +39,7 @@ static NSInteger const kSpinnerSize = 20;
                 reuseIdentifier:reuseIdentifier];
     
     if (self) {
-        self.contentView.backgroundColor = [UIColor whiteColor];
+        self.contentView.backgroundColor = [UIColor clearColor];
         
         [self createSpinner];
         
