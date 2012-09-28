@@ -707,13 +707,8 @@ static NSInteger const kUserImageSide           = 34;
     
     NSRange nameRange = NSMakeRange(0,userName.length);
     
-	NSMutableAttributedString* attrStr = [NSMutableAttributedString attributedStringWithString:commentText];
-    
-	[attrStr setFont:kCommentFont];
-	[attrStr setTextColor:[UIColor colorWithRed:0.333 green:0.333 blue:0.333 alpha:1.0]];
-    [attrStr setTextAlignment:UITextAlignmentLeft lineBreakMode:UILineBreakModeWordWrap lineHeight:2];
-    
-	[attrStr setTextBold:YES range:NSMakeRange(0,userName.length+1)];
+	NSMutableAttributedString* attrStr = [[self class] createCommentAttributedText:commentText
+                                                                         boldRange:NSMakeRange(0,userName.length+1)];
     
     commentMessageLabel.attributedText = attrStr;
     [commentMessageLabel sizeToFit];
@@ -742,6 +737,7 @@ static NSInteger const kUserImageSide           = 34;
 
 //----------------------------------------------------------------------------------------------------
 - (void)setAllCommentsButtonWithCount:(NSInteger)count {
+
     [allCommentsButton setTitle:[NSString stringWithFormat:@"View all %d comments",count]
                        forState:UIControlStateNormal];
     
@@ -782,6 +778,21 @@ static NSInteger const kUserImageSide           = 34;
 }
 
 //----------------------------------------------------------------------------------------------------
++ (NSMutableAttributedString*)createCommentAttributedText:(NSString*)text
+                                                boldRange:(NSRange)boldRange {
+    
+	NSMutableAttributedString* attrStr = [NSMutableAttributedString attributedStringWithString:text];
+    
+	[attrStr setFont:kCommentFont];
+	[attrStr setTextColor:[UIColor colorWithRed:0.333 green:0.333 blue:0.333 alpha:1.0]];
+    [attrStr setTextAlignment:UITextAlignmentLeft lineBreakMode:UILineBreakModeWordWrap lineHeight:2];
+    
+	[attrStr setTextBold:YES range:boldRange];
+    
+    return attrStr;
+}
+
+//----------------------------------------------------------------------------------------------------
 + (NSInteger)heightForCellWithLikesCount:(NSInteger)likesCount 
                                 comments:(NSMutableArray *)comments
                            isInteractive:(BOOL)isInteractive
@@ -811,23 +822,22 @@ static NSInteger const kUserImageSide           = 34;
         height += (likesCount > 0 ? 44 + 9 : 0); //9 is endorsement margin
         
         if(comments.count)
-            height += 5;
+            height += 4; //comments top margin
         
         for(NSInteger i=0 ; i<MIN(comments.count,kTotalComments) ; i++) {
             DWComment *comment = [comments objectAtIndex:i];
-            NSInteger textHeight = [[NSString stringWithFormat:@"%@: %@",comment.user.fullName,comment.message] sizeWithFont:kCommentFont 
-                                                                                                           constrainedToSize:CGSizeMake(kCommentWidth,1500)
-                                                                                                               lineBreakMode:UILineBreakModeWordWrap].height;
-            height += MAX(24,textHeight) + 10;
+            NSMutableAttributedString* attrStr = [self createCommentAttributedText:[NSString stringWithFormat:@"%@: %@",comment.user.fullName,comment.message]
+                                                                         boldRange:NSMakeRange(0,comment.user.fullName.length+1)];
+            height += MAX(24,[attrStr sizeConstrainedToSize:CGSizeMake(kCommentWidth,1500)].height-3) + 10; //-3 is for relative positining of comment label with comment image
         }
         
         if([comments count] > kTotalComments)
-            height += 34 + 9;
+            height += 17 + 9; //size of all comments button with one line + margin
     }
     
     height += 12; //info background margin at the end
     
-    height += 5; //extra white space
+    height += 3; //extra white space
     
     return  height;
 }
