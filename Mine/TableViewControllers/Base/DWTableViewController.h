@@ -57,6 +57,11 @@
 - (void)disablePullToRefresh;
 
 /**
+ * Returns if the table view is in a normal state and is displaying cells
+ */
+- (BOOL)isDisplayingCells;
+
+/**
  * Add a model presenter mapping.
  */
 - (void)addModelPresenterForClass:(Class)class 

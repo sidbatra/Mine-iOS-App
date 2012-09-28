@@ -118,7 +118,7 @@
 //----------------------------------------------------------------------------------------------------
 -(void)handleSwipeGesture:(UIGestureRecognizer *)gestureRecognizer {
     
-    if (gestureRecognizer.state == UIGestureRecognizerStateEnded) {
+    if ([self isDisplayingCells] && gestureRecognizer.state == UIGestureRecognizerStateEnded) {
         
         CGPoint swipeLocation           = [gestureRecognizer locationInView:self.tableView];
         NSIndexPath *swipedIndexPath    = [self.tableView indexPathForRowAtPoint:swipeLocation];

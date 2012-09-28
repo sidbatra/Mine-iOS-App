@@ -42,7 +42,6 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
 @property (nonatomic,strong) EGORefreshTableHeaderView *refreshHeaderView;
 
 
-
 /**
  * Enable scrolling & bouncing for the table view
  */
@@ -243,6 +242,11 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
     
     [self.refreshHeaderView removeFromSuperview];
     self.refreshHeaderView = nil;
+}
+
+//----------------------------------------------------------------------------------------------------
+- (BOOL)isDisplayingCells {
+    return self.errorView.hidden & self.loadingView.hidden;
 }
 
 //----------------------------------------------------------------------------------------------------
