@@ -141,6 +141,12 @@ static NSString* const kImgSearchOn     = @"nav-btn-search-on.png";
         self.usersSearchViewController = [[DWUsersSearchViewController alloc] init];
         self.usersSearchViewController.delegate = self;
         self.usersSearchViewController.view.hidden = YES;
+        
+        
+        UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                                            action:@selector(usersSearchViewControllerTapped)];
+        gestureRecognizer.cancelsTouchesInView = NO;
+        [self.usersSearchViewController.view addGestureRecognizer:gestureRecognizer];
     }
     
     [self.view addSubview:self.usersSearchViewController.view];
@@ -163,8 +169,6 @@ static NSString* const kImgSearchOn     = @"nav-btn-search-on.png";
     }
     
     [self loadSideButtons];
-    
-    
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -289,6 +293,18 @@ static NSString* const kImgSearchOn     = @"nav-btn-search-on.png";
 //----------------------------------------------------------------------------------------------------
 - (void)searchViewInviteFriendClicked {
     [self displayInvite];
+}
+
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark UITapGestureRecognizer
+
+//----------------------------------------------------------------------------------------------------
+- (void)usersSearchViewControllerTapped {
+    [self.searchBar hideKeyboard];
 }
 
 
