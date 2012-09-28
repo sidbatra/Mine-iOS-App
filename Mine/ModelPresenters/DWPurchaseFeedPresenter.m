@@ -107,7 +107,9 @@
                                                   comments:purchase.comments
                                              isInteractive:style != kPurchaseFeedPresenterStyleDisabled
                                                endorsement:purchase.endorsement
-                                                boughtText:[NSString stringWithFormat:@"%@ %@",[DWPurchasesHelper boughtTextForPurchase:purchase],[DWPurchasesHelper timestamp:purchase]]];
+                                                boughtText:[DWPurchasesHelper boughtTextForPurchase:purchase]
+                                                 timestamp:[DWPurchasesHelper timestamp:purchase]
+                                                  userName:purchase.user.fullName];
 }
 
 //----------------------------------------------------------------------------------------------------

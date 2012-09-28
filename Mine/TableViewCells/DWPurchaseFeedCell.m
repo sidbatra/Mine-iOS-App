@@ -30,7 +30,7 @@ static NSString* const kImgURLOn        = @"feed-btn-explore-on.png";
 static NSString* const kImgURLOff       = @"feed-btn-explore-off.png";
 static NSString* const kUserURLScheme   = @"user";
 
-static NSInteger const kPurchaseFeedCellHeight  = 224 + 16 + 16 + 11 + 8;
+static NSInteger const kPurchaseFeedCellHeight  = 224 + 16 + 16 + 11; //image, image y, info background margin, user image margin, endorsement margin
 static NSInteger const kEndorsementWidth        = 276;
 static NSInteger const kCommentWidth            = 244;
 static NSInteger const kBoughtTextWidth         = 228;
@@ -496,18 +496,11 @@ static NSInteger const kUserImageSide           = 34;
         withTimestamp:(NSString*)timestamp {
     
     NSRange userNameRange = NSMakeRange(0,userName.length);
-    NSRange timestampRange = NSMakeRange(boughtText.length+1,timestamp.length);
     
-	NSMutableAttributedString* attrStr = [NSMutableAttributedString attributedStringWithString:[NSString stringWithFormat:@"%@ %@",boughtText,timestamp]];
-	[attrStr setFont:kBoughtTextFont];
-	[attrStr setTextColor:[UIColor colorWithRed:0.333 green:0.333 blue:0.333 alpha:1.0]];
-    [attrStr setTextAlignment:UITextAlignmentLeft lineBreakMode:UILineBreakModeWordWrap lineHeight:2];
     
-    [attrStr setFont:[UIFont fontWithName:@"HelveticaNeue" size:10] range:timestampRange];
-    [attrStr setTextColor:[UIColor colorWithRed:0.6 green:0.6 blue:0.6 alpha:1.0] range:timestampRange];
-    
-	[attrStr setTextBold:YES range:userNameRange];
-
+	NSMutableAttributedString* attrStr = [[self class] createBoughtAttributedText:boughtText
+                                                                        timestamp:timestamp
+                                                                    userNameRange:userNameRange];
     
     CGRect frame = boughtLabel.frame;
     frame.size.width = kBoughtTextWidth;
@@ -529,7 +522,7 @@ static NSInteger const kUserImageSide           = 34;
 - (void)setEndorsement:(NSString*)endorsement {
     
     CGRect frame = endorsementLabel.frame;
-    frame.origin.y =  [self yValueOfBoughtArea] + 7;
+    frame.origin.y =  [self yValueOfBoughtArea] + (endorsement.length ? 7 : 0);
     frame.size.width = kEndorsementWidth;
     endorsementLabel.frame = frame;
     
@@ -570,7 +563,7 @@ static NSInteger const kUserImageSide           = 34;
         
         CGRect infoFrame = infoBackground.frame;
         infoFrame.size.height = [self yValueOfCellWithLastComment:NO
-                                            withAllCommentsButton:NO] - infoFrame.origin.y + 11;
+                                            withAllCommentsButton:NO] - infoFrame.origin.y + 12;
         infoBackground.frame = infoFrame;
     }
 }
@@ -598,7 +591,7 @@ static NSInteger const kUserImageSide           = 34;
     }
     
     CGRect frame = likesBackground.frame;
-    frame.origin.y =  endorsementLabel.frame.origin.y + endorsementLabel.frame.size.height + (endorsementLabel.text.length ?  9 : 3);
+    frame.origin.y =  endorsementLabel.frame.origin.y + endorsementLabel.frame.size.height + 9;
     likesBackground.frame = frame;
     
     frame = likesCountLabel.frame;
@@ -767,28 +760,55 @@ static NSInteger const kUserImageSide           = 34;
 #pragma mark -
 #pragma mark Static methods
 
+
+//----------------------------------------------------------------------------------------------------
++ (NSMutableAttributedString*)createBoughtAttributedText:(NSString*)boughtText
+                                               timestamp:(NSString*)timestamp
+                                           userNameRange:(NSRange)userNameRange {
+    
+    NSRange timestampRange = NSMakeRange(boughtText.length+1,timestamp.length);
+    
+    NSMutableAttributedString* attrStr = [NSMutableAttributedString attributedStringWithString:[NSString stringWithFormat:@"%@ %@",boughtText,timestamp]];
+	[attrStr setFont:kBoughtTextFont];
+	[attrStr setTextColor:[UIColor colorWithRed:0.333 green:0.333 blue:0.333 alpha:1.0]];
+    [attrStr setTextAlignment:UITextAlignmentLeft lineBreakMode:UILineBreakModeWordWrap lineHeight:2];
+    
+    [attrStr setFont:[UIFont fontWithName:@"HelveticaNeue" size:10] range:timestampRange];
+    [attrStr setTextColor:[UIColor colorWithRed:0.6 green:0.6 blue:0.6 alpha:1.0] range:timestampRange];
+    
+	[attrStr setTextBold:YES range:userNameRange];
+    
+    return attrStr;
+}
+
 //----------------------------------------------------------------------------------------------------
 + (NSInteger)heightForCellWithLikesCount:(NSInteger)likesCount 
                                 comments:(NSMutableArray *)comments
                            isInteractive:(BOOL)isInteractive
                              endorsement:(NSString *)endorsement
-                              boughtText:(NSString*)boughtText { 
+                              boughtText:(NSString*)boughtText
+                               timestamp:(NSString*)timestamp
+                                userName:(NSString*)userName {
     
     NSInteger height = kPurchaseFeedCellHeight;
     
-    height += MAX([boughtText sizeWithFont:kBoughtTextFont
-                     constrainedToSize:CGSizeMake(kBoughtTextWidth,1500)
-                         lineBreakMode:UILineBreakModeWordWrap].height,kUserImageSide);
+    
+	NSMutableAttributedString* attrStr = [self createBoughtAttributedText:boughtText
+                                                                timestamp:timestamp
+                                                            userNameRange:NSMakeRange(0,userName.length)];
+    height += MAX([attrStr sizeConstrainedToSize:CGSizeMake(kBoughtTextWidth,1500)].height,kUserImageSide);
+    
+    
     
     if(endorsement && endorsement.length)
         height += [endorsement sizeWithFont:kEndorsementFont
                           constrainedToSize:CGSizeMake(kEndorsementWidth,1500)
-                              lineBreakMode:UILineBreakModeWordWrap].height;
+                              lineBreakMode:UILineBreakModeWordWrap].height + 7;
 
     if(isInteractive) {
-        height += 24 + 10 + 11;
+        height += 25 + 10; //height of interactive buttons + their y margin on top
         
-        height += likesCount > 0 ? 44 + (endorsement.length ? 9 : 3) : 0;
+        height += (likesCount > 0 ? 44 + 9 : 0); //9 is endorsement margin
         
         if(comments.count)
             height += 5;
@@ -804,6 +824,10 @@ static NSInteger const kUserImageSide           = 34;
         if([comments count] > kTotalComments)
             height += 34 + 9;
     }
+    
+    height += 12; //info background margin at the end
+    
+    height += 5; //extra white space
     
     return  height;
 }

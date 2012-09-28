@@ -139,11 +139,13 @@ extern NSInteger const kTotalComments;
 /**
  * Compute the height of the cell based on the content.
  */
-+ (NSInteger)heightForCellWithLikesCount:(NSInteger)likesCount 
-                                comments:(NSMutableArray*)comments
++ (NSInteger)heightForCellWithLikesCount:(NSInteger)likesCount
+                                comments:(NSMutableArray *)comments
                            isInteractive:(BOOL)isInteractive
-                             endorsement:(NSString*)endorsement
-                              boughtText:(NSString*)boughtText;
+                             endorsement:(NSString *)endorsement
+                              boughtText:(NSString*)boughtText
+                               timestamp:(NSString*)timestamp
+                                userName:(NSString*)userName;
 
 @end
 
