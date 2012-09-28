@@ -88,7 +88,7 @@ static NSString* const kFacebookURLPrefix = @"fb";
     
     [self setupTabBarController];
     
-    [self.window addSubview:self.tabBarController.view];
+    [self.window setRootViewController:self.tabBarController];
     [self.window makeKeyAndVisible]; 
     
     
