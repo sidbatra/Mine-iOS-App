@@ -11,6 +11,9 @@
 
 static NSString* const kImgSaveOff  = @"nav-btn-save-off.png";
 static NSString* const kImgSaveOn   = @"nav-btn-save-on.png";
+static NSString* const kImgNextOff  = @"nav-btn-next-off.png";
+static NSString* const kImgNextOn   = @"nav-btn-next-on.png";
+
 
 
 
@@ -41,17 +44,16 @@ static NSString* const kImgSaveOn   = @"nav-btn-save-on.png";
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];    
     
     [button setBackgroundImage:[UIImage imageNamed:kImgDoneOff] 
-                      forState:UIControlStateNormal];    
+                      forState:UIControlStateNormal];
+    
     [button setBackgroundImage:[UIImage imageNamed:kImgDoneOn] 
                       forState:UIControlStateHighlighted];
-    [button setBackgroundImage:[UIImage imageNamed:kImgDoneOff] 
-                      forState:UIControlStateDisabled];    
     
 	[button addTarget:target
                action:@selector(doneButtonClicked)
      forControlEvents:UIControlEventTouchUpInside];
     
-	[button setFrame:CGRectMake(0,0,58,30)];
+	[button setFrame:CGRectMake(0,0,53,30)];
     
     return [[UIBarButtonItem alloc] initWithCustomView:button];
 }
@@ -73,6 +75,26 @@ static NSString* const kImgSaveOn   = @"nav-btn-save-on.png";
      forControlEvents:UIControlEventTouchUpInside];
     
 	[button setFrame:CGRectMake(0,0,58,30)];
+    
+    return [[UIBarButtonItem alloc] initWithCustomView:button];
+}
+
+//----------------------------------------------------------------------------------------------------
++ (UIBarButtonItem*)navBarNextButtonWithTarget:(id)target {
+    
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    
+    [button setBackgroundImage:[UIImage imageNamed:kImgNextOff]
+                      forState:UIControlStateNormal];
+    
+    [button setBackgroundImage:[UIImage imageNamed:kImgNextOn]
+                      forState:UIControlStateHighlighted];
+    
+	[button addTarget:target
+               action:@selector(nextButtonClicked)
+     forControlEvents:UIControlEventTouchUpInside];
+    
+	[button setFrame:CGRectMake(0,0,53,30)];
     
     return [[UIBarButtonItem alloc] initWithCustomView:button];
 }

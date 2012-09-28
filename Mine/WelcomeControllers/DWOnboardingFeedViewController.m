@@ -10,6 +10,7 @@
 #import "DWGlobalFeedViewController.h"
 #import "DWNavigationBarTitleView.h"
 #import "DWAnalyticsManager.h"
+#import "DWDevice.h"
 #import "DWConstants.h"
 
 static NSString* const kImgBottomDrawer         = @"bottom-drawer-trans.png";
@@ -75,9 +76,7 @@ static NSString* const kImgStartMineButtonOn    = @"btn-start-on.png";
     
     if(!self.navTitleView)
         self.navTitleView = [DWNavigationBarTitleView logoTitleView];
-    
-    self.globalFeedViewController.view.frame = CGRectMake(0,0,320,460);
-    
+        
     [self.view addSubview:self.globalFeedViewController.view];    
     
     
@@ -99,7 +98,10 @@ static NSString* const kImgStartMineButtonOn    = @"btn-start-on.png";
 
 //----------------------------------------------------------------------------------------------------
 - (void)createFooter {
-    UIImageView *footerImageView            = [[UIImageView alloc] initWithFrame:CGRectMake(0, 350, 320, 66)];
+    UIImageView *footerImageView            = [[UIImageView alloc] initWithFrame:CGRectMake(
+                                                                    0,self.view.frame.size.height - [DWDevice sharedDWDevice].navBarHeight - 66,
+                                                                    320,66)];
+    
     footerImageView.image                   = [UIImage imageNamed:kImgBottomDrawer];   
     footerImageView.userInteractionEnabled  = YES;
     

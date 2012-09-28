@@ -22,10 +22,12 @@
 + (UILabel*)navBarTitleViewWithText:(NSString*)text;
 
 /**
- * Custom done button used in the right side of the navigation bar
+ * Custom buttons used in the right side of the navigation bar
  */
 + (UIBarButtonItem*)navBarDoneButtonWithTarget:(id)target;
 
 + (UIBarButtonItem*)navBarSaveButtonWithTarget:(id)target;
+
++ (UIBarButtonItem*)navBarNextButtonWithTarget:(id)target;
 
 @end

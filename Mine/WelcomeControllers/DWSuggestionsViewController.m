@@ -20,17 +20,24 @@
 static NSInteger const kTotalSuggestions        = 4;
 static NSString* const kMessageTitle            = @"Pick a great item you bought recently:";
 static NSString* const kMessageSubtitle         = @"You'll choose how you share it.";
+static NSString* const kImgSuggestionDivider    = @"suggestion-divider.png";
 
 
 @interface DWSuggestionsViewController () {
+    NSMutableArray              *_imageViews;
     NSMutableArray              *_imageButtons;
-    NSMutableArray              *_titleLabels;    
+    NSMutableArray              *_titleLabels;
     
     DWSuggestionsController     *_suggestionsController;
     DWNavigationBarTitleView    *_navTitleView;
     
     UIView                      *_loadingView;
 }
+
+/**
+ * Suggestion image views
+ */
+@property (nonatomic,strong) NSMutableArray *imageViews;
 
 /**
  * Suggestion image buttons
@@ -66,6 +73,7 @@ static NSString* const kMessageSubtitle         = @"You'll choose how you share 
 //----------------------------------------------------------------------------------------------------
 @implementation DWSuggestionsViewController
 
+@synthesize imageViews                  = _imageViews;
 @synthesize imageButtons                = _imageButtons;
 @synthesize titleLabels                 = _titleLabels;
 @synthesize suggestionsController       = _suggestionsController;
@@ -82,6 +90,7 @@ static NSString* const kMessageSubtitle         = @"You'll choose how you share 
         self.suggestionsController = [[DWSuggestionsController alloc] init];
         self.suggestionsController.delegate = self;
 
+        self.imageViews     = [NSMutableArray arrayWithCapacity:kTotalSuggestions];
         self.imageButtons   = [NSMutableArray arrayWithCapacity:kTotalSuggestions];
         self.titleLabels    = [NSMutableArray arrayWithCapacity:kTotalSuggestions];
         
@@ -106,10 +115,13 @@ static NSString* const kMessageSubtitle         = @"You'll choose how you share 
     self.navigationItem.leftBarButtonItem   = [DWNavigationBarBackButton backButtonForNavigationController:self.navigationController];
     self.navigationItem.title               = @"";
     
+    self.view.backgroundColor = [UIColor colorWithRed:0.2235 green:0.2235 blue:0.2235 alpha:1.0];
+    
     if(!self.navTitleView)
         self.navTitleView = [DWNavigationBarTitleView logoTitleView];
 
     [self createMessageBox];
+    [self createDivider];
     [self createSuggestionImageButtons];
     [self createSuggestionTitleLabels];
     [self createLoadingView];
@@ -133,16 +145,14 @@ static NSString* const kMessageSubtitle         = @"You'll choose how you share 
 //----------------------------------------------------------------------------------------------------
 - (void)createMessageBox {
     
-    UIImageView *messageDrawer  = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 66)];
-    messageDrawer.image         = [UIImage imageNamed:kImgMessageDrawer];
+    UIView *messageDrawerView               = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 66)];
+    messageDrawerView.backgroundColor       = [UIColor colorWithRed:0.2235 green:0.2235 blue:0.2235 alpha:1.0];
     
-    [self.view addSubview:messageDrawer];
+    [self.view addSubview:messageDrawerView];
     
     
     UILabel *titleLabel                     = [[UILabel alloc] initWithFrame:CGRectMake(0, 13, 320, 18)];
     titleLabel.backgroundColor              = [UIColor clearColor];
-    titleLabel.shadowColor                  = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.48];
-    titleLabel.shadowOffset                 = CGSizeMake(0,1);    
     titleLabel.textColor                    = [UIColor whiteColor];
     titleLabel.textAlignment                = UITextAlignmentCenter;
     titleLabel.text                         = kMessageTitle;
@@ -153,8 +163,6 @@ static NSString* const kMessageSubtitle         = @"You'll choose how you share 
     
     UILabel *subtitleLabel                  = [[UILabel alloc] initWithFrame:CGRectMake(0, 34, 320, 18)];
     subtitleLabel.backgroundColor           = [UIColor clearColor]; 
-    subtitleLabel.shadowColor               = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.48];
-    subtitleLabel.shadowOffset              = CGSizeMake(0,1);
     subtitleLabel.textColor                 = [UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1.0];    
     subtitleLabel.textAlignment             = UITextAlignmentCenter;
     subtitleLabel.text                      = kMessageSubtitle;
@@ -164,13 +172,28 @@ static NSString* const kMessageSubtitle         = @"You'll choose how you share 
 }
 
 //----------------------------------------------------------------------------------------------------
+- (void)createDivider {
+    UIImageView *dividerImageView           = [[UIImageView alloc] initWithFrame:CGRectMake(11, 44, 298, 326)];
+    dividerImageView.image                  = [UIImage imageNamed:kImgSuggestionDivider];
+    
+    [self.view addSubview:dividerImageView];
+}
+
+//----------------------------------------------------------------------------------------------------
 - (void)createSuggestionImageButtons {
     
     for(NSInteger i=0 ; i<kTotalSuggestions/2 ; i++) {                
         for(NSInteger j=0 ; j<kTotalSuggestions/2 ; j++) {
             
+            UIImageView *imageView       = [[UIImageView alloc] initWithFrame:CGRectMake(160*j+35, 175*i+75, 90, 90)];
+            imageView.backgroundColor    = [UIColor clearColor];
+            
+            [self.imageViews addObject:imageView];
+            [self.view addSubview:imageView];
+            
+            
             UIButton *imageButton       = [[UIButton alloc] initWithFrame:CGRectMake(160*j, 175*i+66, 160, 175)];
-            imageButton.backgroundColor = [UIColor colorWithRed:0.266 green:0.266 blue:0.266 alpha:1.0];
+            imageButton.backgroundColor = [UIColor clearColor];
         
             [imageButton addTarget:self
                             action:@selector(didTapImageButton:)
@@ -188,7 +211,7 @@ static NSString* const kMessageSubtitle         = @"You'll choose how you share 
     for(NSInteger i=0 ; i<kTotalSuggestions/2 ; i++) {                
         for(NSInteger j=0 ; j<kTotalSuggestions/2 ; j++) {
             
-            UILabel *titleLabel         = [[UILabel alloc] initWithFrame:CGRectMake(160*j, 175*i+125, 160, 175)];        
+            UILabel *titleLabel         = [[UILabel alloc] initWithFrame:CGRectMake(160*j, 175*i+92, 160, 175)];
             
             titleLabel.backgroundColor  = [UIColor clearColor];
             titleLabel.shadowColor      = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:0.4];
@@ -208,7 +231,7 @@ static NSString* const kMessageSubtitle         = @"You'll choose how you share 
 - (void)createLoadingView {
     
     self.loadingView                        = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 320, 416)];
-    self.loadingView.backgroundColor        = [UIColor clearColor];
+    self.loadingView.backgroundColor        = [UIColor colorWithRed:0.2235 green:0.2235 blue:0.2235 alpha:1.0];
     
     UIActivityIndicatorView *spinnerView    = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
     spinnerView.frame                       = CGRectMake(150, 198, 20, 20);
@@ -234,12 +257,14 @@ static NSString* const kMessageSubtitle         = @"You'll choose how you share 
         UIButton *imageButton = [self.imageButtons objectAtIndex:i];
         imageButton.tag = suggestion.databaseID;
         
+        UIImageView *imageView = [self.imageViews objectAtIndex:i];
+        imageView.tag = suggestion.databaseID;
+        
         UILabel *titleLabel = [self.titleLabels objectAtIndex:i];
         titleLabel.text = suggestion.title;
         
         [suggestion downloadImage];
-        [imageButton setBackgroundImage:suggestion.image 
-                               forState:UIControlStateNormal];
+        imageView.image = suggestion.image;
     }
     
     self.loadingView.hidden = YES;
@@ -274,10 +299,9 @@ static NSString* const kMessageSubtitle         = @"You'll choose how you share 
     NSDictionary *userInfo  = [notification userInfo];
     NSInteger    resourceID = [[userInfo objectForKey:kKeyResourceID] integerValue];
     
-    for(UIButton *imageButton in self.imageButtons) {        
-        if(imageButton.tag == resourceID) {            
-            [imageButton setBackgroundImage:[userInfo objectForKey:kKeyImage] 
-                                   forState:UIControlStateNormal];
+    for(UIImageView *imageView in self.imageViews) {
+        if(imageView.tag == resourceID) {
+            imageView.image = [userInfo objectForKey:kKeyImage];
             break;
         }
     }

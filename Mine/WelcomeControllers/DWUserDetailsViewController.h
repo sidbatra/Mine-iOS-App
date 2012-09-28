@@ -19,6 +19,7 @@
     UITextField             *_emailTextField;
     UIButton                *_maleButton;
     UIButton                *_femaleButton;
+    UIView                  *_loadingView;
     
     __weak id<NSObject,DWUserDetailsViewControllerDelegate> _delegate;
 }
@@ -31,6 +32,7 @@
 @property (nonatomic) IBOutlet UITextField *emailTextField;
 @property (nonatomic) IBOutlet UIButton *maleButton;
 @property (nonatomic) IBOutlet UIButton *femaleButton;
+@property (nonatomic) IBOutlet UIView *loadingView;
 
 
 @property (nonatomic,weak) id<NSObject,DWUserDetailsViewControllerDelegate> delegate;

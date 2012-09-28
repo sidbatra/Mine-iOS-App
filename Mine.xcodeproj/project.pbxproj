@@ -34,6 +34,9 @@
 		262376B515BF6C0A00B3A037 /* FBFrictionlessRequestSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 262376AD15BF6C0A00B3A037 /* FBFrictionlessRequestSettings.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		262376B615BF6C0A00B3A037 /* FBLoginDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 262376AF15BF6C0A00B3A037 /* FBLoginDialog.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		262376B715BF6C0A00B3A037 /* FBRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 262376B115BF6C0A00B3A037 /* FBRequest.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		2642B7AD16162CE400065303 /* nav-btn-next-off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2642B7AB16162CE400065303 /* nav-btn-next-off@2x.png */; };
+		2642B7AE16162CE400065303 /* nav-btn-next-on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2642B7AC16162CE400065303 /* nav-btn-next-on@2x.png */; };
+		2642B7B11616459800065303 /* suggestion-divider@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2642B7B01616459800065303 /* suggestion-divider@2x.png */; };
 		26659339160D306700A2B716 /* invite-loading@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26659338160D306700A2B716 /* invite-loading@2x.png */; };
 		2676AA0215FE714B00B0B579 /* DWGUIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2676AA0115FE714B00B0B579 /* DWGUIManager.m */; };
 		26776BAA161285B3002EDE4E /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26776BA9161285B3002EDE4E /* Default@2x.png */; };
@@ -392,6 +395,9 @@
 		262376B015BF6C0A00B3A037 /* FBRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FBRequest.h; path = Facebook/FBRequest.h; sourceTree = "<group>"; };
 		262376B115BF6C0A00B3A037 /* FBRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FBRequest.m; path = Facebook/FBRequest.m; sourceTree = "<group>"; };
 		262376B815BF6CBA00B3A037 /* Facebook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Facebook.h; path = Facebook/Facebook.h; sourceTree = "<group>"; };
+		2642B7AB16162CE400065303 /* nav-btn-next-off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-btn-next-off@2x.png"; sourceTree = "<group>"; };
+		2642B7AC16162CE400065303 /* nav-btn-next-on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-btn-next-on@2x.png"; sourceTree = "<group>"; };
+		2642B7B01616459800065303 /* suggestion-divider@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "suggestion-divider@2x.png"; sourceTree = "<group>"; };
 		26659338160D306700A2B716 /* invite-loading@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "invite-loading@2x.png"; sourceTree = "<group>"; };
 		2676AA0015FE714B00B0B579 /* DWGUIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWGUIManager.h; sourceTree = "<group>"; };
 		2676AA0115FE714B00B0B579 /* DWGUIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWGUIManager.m; sourceTree = "<group>"; };
@@ -1053,6 +1059,9 @@
 			isa = PBXGroup;
 			children = (
 				BBCFB0251616495900FCB751 /* mine_intro_480x214.mp4 */,
+				2642B7B01616459800065303 /* suggestion-divider@2x.png */,
+				2642B7AB16162CE400065303 /* nav-btn-next-off@2x.png */,
+				2642B7AC16162CE400065303 /* nav-btn-next-on@2x.png */,
 				BB4C77D0161562B9009C3279 /* Default-568h@2x.png */,
 				BB4C77CE16155FBD009C3279 /* profile-userbox-gradient@2x.png */,
 				BB4C77CA16153A8E009C3279 /* comments-btn-send-off@2x.png */,
@@ -2014,6 +2023,9 @@
 				BB4C77CF16155FBD009C3279 /* profile-userbox-gradient@2x.png in Resources */,
 				BB4C77D1161562B9009C3279 /* Default-568h@2x.png in Resources */,
 				BBCFB0261616495900FCB751 /* mine_intro_480x214.mp4 in Resources */,
+				2642B7AD16162CE400065303 /* nav-btn-next-off@2x.png in Resources */,
+				2642B7AE16162CE400065303 /* nav-btn-next-on@2x.png in Resources */,
+				2642B7B11616459800065303 /* suggestion-divider@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
