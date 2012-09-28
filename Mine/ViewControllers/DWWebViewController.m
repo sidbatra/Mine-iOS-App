@@ -11,6 +11,7 @@
 #import "DWNavigationBarBackButton.h"
 #import "DWToolbar.h"
 #import "DWGUIManager.h"
+#import "DWDevice.h"
 #import "DWConstants.h"
 
 static NSString* const kImgBack     = @"tab-web-back.png";
@@ -115,7 +116,7 @@ static NSString* const kLoadingText = @"Loading...";
     
     
     if(!self.toolbar) {
-        self.toolbar = [[DWToolbar alloc] initWithFrame:CGRectMake(0,self.view.frame.size.height-kTabBarHeight,320,44)];
+        self.toolbar = [[DWToolbar alloc] initWithFrame:CGRectMake(0,[DWDevice sharedDWDevice].screenHeightMinusNav-kTabBarHeight,320,kTabBarHeight)];
         self.toolbar.items = [NSArray arrayWithObjects:
                               initialSpacer,
                               [[UIBarButtonItem alloc] initWithCustomView:self.backButton], 
@@ -131,7 +132,7 @@ static NSString* const kLoadingText = @"Loading...";
     
     if(!self.bottomShadowView) {
         self.bottomShadowView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:kImgBottomShadow]];
-        self.bottomShadowView.frame = CGRectMake(0,self.view.frame.size.height-kTabBarHeight-3,320,3);
+        self.bottomShadowView.frame = CGRectMake(0,[DWDevice sharedDWDevice].screenHeightMinusStatusBar-kTabBarHeight-3,320,3);
     }
     
     [self.view addSubview:self.bottomShadowView];

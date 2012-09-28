@@ -60,7 +60,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWDevice);
 
 //----------------------------------------------------------------------------------------------------
 - (CGFloat)screenHeightMinusNav {
-    return self.screenHeight - self.navBarHeight;
+    return self.screenHeightMinusStatusBar - self.navBarHeight;
 }
 
 
