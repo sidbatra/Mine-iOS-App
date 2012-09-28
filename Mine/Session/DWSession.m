@@ -201,8 +201,11 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWSession);
 
 //----------------------------------------------------------------------------------------------------
 - (void)applicationFinishedLaunching:(NSNotification*)notification {
+    
     if(![self isAuthenticated])
         return;
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"User Logged In"];
     
     if(!self.statusController) {
         self.statusController = [[DWStatusController alloc] init];

@@ -158,7 +158,7 @@
     
     if (user.purchasesCount) {
         [self endWelcomeNavigation];
-        [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"User Logged In"];
+        [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"User Returned"];
     }
     else {
         [self showOnboardingToUser:user];

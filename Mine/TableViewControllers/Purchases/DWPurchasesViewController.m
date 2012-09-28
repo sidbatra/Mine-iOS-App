@@ -11,6 +11,7 @@
 
 #import "DWPurchaseFeedPresenter.h"
 #import "DWPaginationPresenter.h"
+#import "DWAnalyticsManager.h"
 
 #import "DWPurchase.h"
 #import "DWUser.h"
@@ -184,6 +185,8 @@
     
     if(!purchase)
         return;
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Like Created"];
     
     [purchase replaceTempLikeWithMountedLike:like];
     [self reloadRowForPurchase:purchase];
