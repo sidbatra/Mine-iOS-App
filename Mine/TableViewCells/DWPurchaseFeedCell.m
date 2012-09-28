@@ -294,7 +294,7 @@ static NSInteger const kUserImageSide           = 34;
 //----------------------------------------------------------------------------------------------------
 - (void)createLikeButton {
     
-    likeButton = [[UIButton alloc] initWithFrame:CGRectMake(22,0,76,24)];
+    likeButton = [[UIButton alloc] initWithFrame:CGRectMake(22,0,76,25)];
     
     
     [likeButton setImage:[UIImage imageNamed:kImgLikeOff] 
@@ -317,7 +317,7 @@ static NSInteger const kUserImageSide           = 34;
 //----------------------------------------------------------------------------------------------------
 - (void)createCommentButton {
     
-    commentButton = [[UIButton alloc] initWithFrame:CGRectMake(104,0,76,24)];
+    commentButton = [[UIButton alloc] initWithFrame:CGRectMake(104,0,76,25)];
     
     [commentButton setImage:[UIImage imageNamed:kImgCommentOff]
                    forState:UIControlStateNormal];
@@ -336,7 +336,7 @@ static NSInteger const kUserImageSide           = 34;
 //----------------------------------------------------------------------------------------------------
 - (void)createURLButton {
     
-    urlButton = [[UIButton alloc] initWithFrame:CGRectMake(242,0,56,24)];
+    urlButton = [[UIButton alloc] initWithFrame:CGRectMake(222,0,76,25)];
     
     [urlButton setImage:[UIImage imageNamed:kImgURLOff]
                    forState:UIControlStateNormal];
@@ -543,7 +543,7 @@ static NSInteger const kUserImageSide           = 34;
         
         
         CGRect infoFrame = infoBackground.frame;
-        infoFrame.size.height = likeButton.frame.origin.y + likeButton.frame.size.height - infoFrame.origin.y + 11;
+        infoFrame.size.height = likeButton.frame.origin.y + likeButton.frame.size.height - infoFrame.origin.y + 12;
         infoBackground.frame = infoFrame;        
     }
     else {
