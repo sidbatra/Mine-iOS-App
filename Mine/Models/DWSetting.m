@@ -7,6 +7,7 @@
 //
 
 #import "DWSetting.h"
+#import "DWConstants.h"
 
 static NSString* const kEncodeKeyID                     = @"DWSetting_id";
 static NSString* const kEncodeKeyShareToFacebook        = @"DWSetting_shareToFacebook";
@@ -68,7 +69,7 @@ static NSString* const kKeyShareToTumblr                = @"share_to_tumblr";
 
 //----------------------------------------------------------------------------------------------------
 -(void)dealloc{
-	NSLog(@"Setting released %d",self.databaseID);
+	DWDebug(@"Setting released %d",self.databaseID);
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -91,7 +92,7 @@ static NSString* const kKeyShareToTumblr                = @"share_to_tumblr";
 
 //----------------------------------------------------------------------------------------------------
 - (void)debug {
-    NSLog(@"%d %d %d %d",self.databaseID,self.shareToFacebook,self.shareToTwitter,self.shareToTumblr);
+    DWDebug(@"%d %d %d %d",self.databaseID,self.shareToFacebook,self.shareToTwitter,self.shareToTumblr);
 }
 
 @end

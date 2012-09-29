@@ -15,6 +15,7 @@
 #import "DWConstants.h"
 #import "DWSession.h"
 
+
 NSString* const kNUserManualUpdated = @"NUserManualUpdated";
 
 
@@ -163,7 +164,7 @@ static NSString* const kNUserUpdateError        = @"NUserUpdateError";
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     
-    NSLog(@"Users controller released"); 
+    DWDebug(@"Users controller released");
 }
 
 

@@ -52,7 +52,7 @@ static NSString* const kNLikeCreateError    = @"NLikeCreateError";
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     
-    NSLog(@"Likes controller released");
+    DWDebug(@"Likes controller released");
 }
 
 //----------------------------------------------------------------------------------------------------

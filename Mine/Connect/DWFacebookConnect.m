@@ -39,7 +39,7 @@
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     
-    NSLog(@"Facebook Connect released");
+    DWDebug(@"Facebook Connect released");
 }
 
 //----------------------------------------------------------------------------------------------------

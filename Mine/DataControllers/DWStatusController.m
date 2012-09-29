@@ -52,7 +52,7 @@ static NSString* const kNStatusLoadError    = @"NStatusLoadError";
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     
-    NSLog(@"Status controller released");
+    DWDebug(@"Status controller released");
 }
 
 

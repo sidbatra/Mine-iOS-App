@@ -38,7 +38,7 @@
     
     [self.user destroy];
     
-	NSLog(@"Comment released %d",self.databaseID);
+	DWDebug(@"Comment released %d",self.databaseID);
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -65,7 +65,7 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)debug {
-    NSLog(@"%@",self.message);
+    DWDebug(@"%@",self.message);
     [self.user debug];
 }
 @end

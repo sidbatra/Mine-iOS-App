@@ -91,7 +91,7 @@ static NSString* const kNFollowingDestroyError  = @"NFollowingDestroyError";
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     
-    NSLog(@"Followings controller released");
+    DWDebug(@"Followings controller released");
 }
 
 //----------------------------------------------------------------------------------------------------

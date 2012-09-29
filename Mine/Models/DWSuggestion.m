@@ -8,6 +8,7 @@
 
 #import "DWSuggestion.h"
 #import "DWImageManager.h"
+#import "DWConstants.h"
 
 NSString* const kKeyImageURL                    = @"image_url";
 NSString* const kKeySmallImageURL               = @"small_image_url";
@@ -52,7 +53,7 @@ static NSString* const kKeyThing                = @"thing";
 -(void)dealloc{
     [self freeMemory];
     
-	NSLog(@"Suggestion released %d",self.databaseID);
+	DWDebug(@"Suggestion released %d",self.databaseID);
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -126,7 +127,7 @@ static NSString* const kKeyThing                = @"thing";
 
 //----------------------------------------------------------------------------------------------------
 - (void)debug {
-    NSLog(@"%@ %@ %@ %@ %@ %@",self.title,self.shortTitle,self.example,self.thing,self.imageURL,self.smallImageURL);
+    DWDebug(@"%@ %@ %@ %@ %@ %@",self.title,self.shortTitle,self.example,self.thing,self.imageURL,self.smallImageURL);
 }
 
 @end

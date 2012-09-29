@@ -139,7 +139,7 @@
         [self.delegate contactRemoved:self.contactToRemove];
     }
     else if(buttonIndex == 1) {
-        NSLog(@"contact deletion cancelled");
+        DWDebug(@"contact deletion cancelled");
     }
 }
 

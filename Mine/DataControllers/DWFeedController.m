@@ -63,7 +63,7 @@ static NSString* const kNGlobalFeedLoadError    = @"NGlobalFeedLoadError";
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     
-    NSLog(@"Feed controller released");
+    DWDebug(@"Feed controller released");
 }
 
 //----------------------------------------------------------------------------------------------------

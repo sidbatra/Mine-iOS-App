@@ -35,7 +35,7 @@ static NSString* const kContactsQuery   = @"email contains[cd] %@ OR fullName co
 
 //----------------------------------------------------------------------------------------------------
 - (void)dealloc {
-    NSLog(@"Contacts controller released");    
+    DWDebug(@"Contacts controller released");    
 }
 
 

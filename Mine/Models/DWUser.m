@@ -9,6 +9,7 @@
 #import "DWUser.h"
 #import "DWSetting.h"
 #import "DWImageManager.h"
+#import "DWConstants.h"
 
 NSString* const kKeySquareImageURL          = @"square_image_url";
 NSString* const kKeyLargeUserImageURL       = @"large_image_url";
@@ -172,7 +173,7 @@ static NSString* const kKeySetting                      = @"setting";
     
     [self.setting destroy];
     
-	NSLog(@"User released %d",self.databaseID);
+	DWDebug(@"User released %d",self.databaseID);
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -330,7 +331,7 @@ static NSString* const kKeySetting                      = @"setting";
 
 //----------------------------------------------------------------------------------------------------
 - (void)debug {
-    NSLog(@"%@ %@ %@ %@ %@ %@ %d %@  %@ %@  %@ %@  %@ %@  %d %d %d %@",
+    DWDebug(@"%@ %@ %@ %@ %@ %@ %d %@  %@ %@  %@ %@  %@ %@  %d %d %d %@",
           self.firstName,self.lastName,self.gender,self.handle,self.byline,self.email,self.age,
           self.facebookAccessToken,
           self.twitterAccessToken,self.twitterAccessTokenSecret,          

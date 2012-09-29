@@ -8,6 +8,7 @@
 
 #import "DWProduct.h"
 #import "DWImageManager.h"
+#import "DWConstants.h"
 
 NSString* const kKeyMediumImageURL              = @"medium_url";
 NSString* const kKeyLargeImageURL               = @"large_url";
@@ -49,7 +50,7 @@ static NSString* const kKeySourceURL            = @"source_url";
 -(void)dealloc{
     [self freeMemory];
     
-	NSLog(@"Product released %d",self.databaseID);
+	DWDebug(@"Product released %d",self.databaseID);
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -117,7 +118,7 @@ static NSString* const kKeySourceURL            = @"source_url";
 
 //----------------------------------------------------------------------------------------------------
 - (void)debug {
-   NSLog(@"%@ %@ %@ %@ %@",self.uniqueID,self.title,self.mediumImageURL,self.largeImageURL,self.sourceURL);    
+   DWDebug(@"%@ %@ %@ %@ %@",self.uniqueID,self.title,self.mediumImageURL,self.largeImageURL,self.sourceURL);    
 }
 
 @end

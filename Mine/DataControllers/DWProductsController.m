@@ -56,7 +56,7 @@ static NSInteger const kMaxProductsPerPage  = 100;
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     
-    NSLog(@"Products controller released");
+    DWDebug(@"Products controller released");
 }
 
 //----------------------------------------------------------------------------------------------------

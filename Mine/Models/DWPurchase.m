@@ -88,7 +88,7 @@ NSString* const kKeyProduct             = @"product";
     for(DWComment* comment in self.comments)
         [comment destroy];
         
-	NSLog(@"Purchase released %d",self.databaseID);
+	DWDebug(@"Purchase released %d",self.databaseID);
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -215,7 +215,7 @@ NSString* const kKeyProduct             = @"product";
 
 //----------------------------------------------------------------------------------------------------
 - (void)debug {
-    NSLog(@"%@ %@ %@ %@ %@ %@",self.title,self.endorsement,self.sourceURL,self.giantImageURL,self.fbObjectID,self.createdAt);
+    DWDebug(@"%@ %@ %@ %@ %@ %@",self.title,self.endorsement,self.sourceURL,self.giantImageURL,self.fbObjectID,self.createdAt);
     [self.user debug];
     [self.store debug];
 }

@@ -8,6 +8,7 @@
 
 #import "DWFollowing.h"
 #import "DWMemoryPool.h"
+#import "DWConstants.h"
 
 NSString* const kKeyUserID  = @"user_id";
 
@@ -22,7 +23,7 @@ NSString* const kKeyUserID  = @"user_id";
 
 //----------------------------------------------------------------------------------------------------
 -(void)dealloc{
-    NSLog(@"Following released - %d",self.databaseID);
+    DWDebug(@"Following released - %d",self.databaseID);
 }
 
 //----------------------------------------------------------------------------------------------------

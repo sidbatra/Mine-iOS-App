@@ -52,7 +52,7 @@ static NSString* const kNSuggestionsLoadError  = @"NSuggestionsLoadError";
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     
-    NSLog(@"Suggestions controller released");
+    DWDebug(@"Suggestions controller released");
 }
 
 //----------------------------------------------------------------------------------------------------

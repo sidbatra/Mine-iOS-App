@@ -7,6 +7,7 @@
 //
 
 #import "DWUnion.h"
+#import "DWConstants.h"
 
 
 
@@ -19,7 +20,7 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)dealloc {
-    NSLog(@"Union released");
+    DWDebug(@"Union released");
 }
 
 @end

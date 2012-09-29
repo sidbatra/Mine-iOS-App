@@ -17,6 +17,16 @@
 
 
 
+#if ENVIRONMENT == PRODUCTION
+#define DWDebug(format,...)
+#else
+#define DWDebug(format,...) NSLog((format),##__VA_ARGS__)
+#endif
+
+#define DWInfo(format,...) NSLog((format),##__VA_ARGS__)
+#define DWError(format,...) NSLog((format),##__VA_ARGS__)
+
+
 /*
  *  System Versioning Preprocessor Macros
  */

@@ -7,6 +7,7 @@
 //
 
 #import "DWStore.h"
+#import "DWConstants.h"
 
 
 static NSString* const kKeyName     = @"name";
@@ -37,7 +38,7 @@ static NSString* const kKeyDomain   = @"domain";
 -(void)dealloc{
 	[self freeMemory];
     
-	NSLog(@"Store released %d",self.databaseID);
+	DWDebug(@"Store released %d",self.databaseID);
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -60,6 +61,6 @@ static NSString* const kKeyDomain   = @"domain";
 
 //----------------------------------------------------------------------------------------------------
 - (void)debug {
-    NSLog(@"%@ %@",self.name,self.domain);
+    DWDebug(@"%@ %@",self.name,self.domain);
 }
 @end

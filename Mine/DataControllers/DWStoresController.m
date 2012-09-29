@@ -54,7 +54,7 @@ static NSString* const kNStoresLoadError        = @"NStoresLoadError";
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     
-    NSLog(@"Stores controller released");
+    DWDebug(@"Stores controller released");
 }
 
 //----------------------------------------------------------------------------------------------------

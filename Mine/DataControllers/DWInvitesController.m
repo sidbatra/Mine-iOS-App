@@ -49,7 +49,7 @@ static NSString* const kNInvitesCreateError     = @"NInvitesCreateError";
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     
-    NSLog(@"Invites controller released");    
+    DWDebug(@"Invites controller released");    
 }
 
 

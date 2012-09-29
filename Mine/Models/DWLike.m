@@ -37,7 +37,7 @@
     
     [self.user destroy];
     
-	NSLog(@"Like released %d",self.databaseID);
+	DWDebug(@"Like released %d",self.databaseID);
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -60,7 +60,7 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)debug {
-    NSLog(@"%d",self.databaseID);
+    DWDebug(@"%d",self.databaseID);
     [self.user debug];
 }
 

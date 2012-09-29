@@ -54,7 +54,7 @@ static NSString* const kNCommentCreateError    = @"NCommentCreateError";
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     
-    NSLog(@"Comments controller released");
+    DWDebug(@"Comments controller released");
 }
 
 //----------------------------------------------------------------------------------------------------

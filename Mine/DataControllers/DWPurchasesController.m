@@ -95,7 +95,7 @@ static NSString* const kNPurchaseDeleteError    = @"NPurchaseDeleteError";
 - (void)dealloc {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     
-    NSLog(@"Purchases controller released");
+    DWDebug(@"Purchases controller released");
 }
 
 //----------------------------------------------------------------------------------------------------
