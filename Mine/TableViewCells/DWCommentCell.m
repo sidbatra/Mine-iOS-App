@@ -115,13 +115,8 @@ static NSInteger const kUserImageSide = 32;
         
     NSRange nameRange = NSMakeRange(0,userName.length);
     
-	NSMutableAttributedString* attrStr = [NSMutableAttributedString attributedStringWithString:commentText];
-    
-	[attrStr setFont:kCommentFont];
-	[attrStr setTextColor:[UIColor colorWithRed:0.333 green:0.333 blue:0.333 alpha:1.0]];
-    [attrStr setTextAlignment:UITextAlignmentLeft lineBreakMode:UILineBreakModeWordWrap lineHeight:2];
-    
-	[attrStr setTextBold:YES range:NSMakeRange(0,userName.length+1)];
+	NSMutableAttributedString* attrStr = [[self class] createMessageAttributedText:commentText
+                                                                          userName:userName];
     
     CGRect frame = messageLabel.frame;
     frame.size.height = 0;
@@ -135,13 +130,34 @@ static NSInteger const kUserImageSide = 32;
                                inRange:nameRange];
 }
 
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark Static methods
+
+//----------------------------------------------------------------------------------------------------
++ (NSMutableAttributedString*)createMessageAttributedText:(NSString*)message userName:(NSString*)userName {
+    
+    NSMutableAttributedString* attrStr = [NSMutableAttributedString attributedStringWithString:message];
+    
+	[attrStr setFont:kCommentFont];
+	[attrStr setTextColor:[UIColor colorWithRed:0.333 green:0.333 blue:0.333 alpha:1.0]];
+    [attrStr setTextAlignment:UITextAlignmentLeft lineBreakMode:UILineBreakModeWordWrap lineHeight:2];
+    
+	[attrStr setTextBold:YES range:NSMakeRange(0,userName.length+1)];
+    
+    return attrStr;
+}
+
 //----------------------------------------------------------------------------------------------------
 + (NSInteger)heightForCellWithMessage:(NSString*)message userName:(NSString*)userName {
     
-    NSInteger textHeight = [[NSString stringWithFormat:@"%@: %@",userName,message] sizeWithFont:kCommentFont 
-                                                                                                   constrainedToSize:CGSizeMake(kCommentWidth,1500)
-                                                                                                       lineBreakMode:UILineBreakModeWordWrap].height;
+     NSMutableAttributedString* attrStr = [self createMessageAttributedText:[NSString stringWithFormat:@"%@: %@",userName,message]
+                                                                   userName:userName];
     
+    NSInteger textHeight = [attrStr sizeConstrainedToSize:CGSizeMake(kCommentWidth,1500)].height;
+
     return kCommentCellHeight +  MAX(kUserImageSide,textHeight);
 }
 
