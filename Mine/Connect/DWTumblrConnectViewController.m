@@ -43,6 +43,16 @@ static NSString* const kMsgError            = @"Incorrect email or password";
  */
 - (void)authorize;
 
+/**
+ * Show loading state
+ */
+- (void)showLoadingState;
+
+/**
+ * Hide loading state
+ */
+- (void)hideLoadingState;
+
 @end
 
 
@@ -53,6 +63,7 @@ static NSString* const kMsgError            = @"Incorrect email or password";
 
 @synthesize emailTextField              = _emailTextField;
 @synthesize passwordTextField           = _passwordTextField;
+@synthesize loadingView                 = _loadingView;
 @synthesize tumblrConnect               = _tumblrConnect;
 @synthesize usersController             = _usersController;
 @synthesize delegate                    = _delegate;
@@ -102,12 +113,22 @@ static NSString* const kMsgError            = @"Incorrect email or password";
 - (void)authorize {
     
     if(self.emailTextField.text.length && self.passwordTextField.text.length) {
+        [self showLoadingState];
         [self.tumblrConnect authorizeWithUsername:self.emailTextField.text 
                                       andPassword:self.passwordTextField.text];    
     }
-    else {
-        NSLog(@"incomplete fields");
-    }
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)showLoadingState {
+    self.navigationItem.rightBarButtonItem.enabled = NO;
+    self.loadingView.hidden = NO;
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)hideLoadingState {
+    self.navigationItem.rightBarButtonItem.enabled = YES;
+    self.loadingView.hidden = YES;
 }
 
 
@@ -158,6 +179,8 @@ static NSString* const kMsgError            = @"Incorrect email or password";
 
 //----------------------------------------------------------------------------------------------------
 - (void)tumblrAuthenticationFailed {
+    [self hideLoadingState];
+    
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:kMsgErrorTitle
                                                     message:kMsgError
                                                    delegate:nil
@@ -193,7 +216,7 @@ static NSString* const kMsgError            = @"Incorrect email or password";
 
 //----------------------------------------------------------------------------------------------------
 - (void)userUpdateError:(NSString *)error {
-    NSLog(@"Error in User Update - Show an alert");
+    [self hideLoadingState];
 }
 
 @end

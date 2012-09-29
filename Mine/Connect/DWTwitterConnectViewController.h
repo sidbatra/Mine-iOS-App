@@ -16,6 +16,7 @@
 @interface DWTwitterConnectViewController : UIViewController<UITextFieldDelegate,DWTwitterConnectDelegate,DWUsersControllerDelegate> {
     UITextField         *_usernameTextField;
     UITextField         *_passwordTextField;
+    UIView              *_loadingView;    
     
     BOOL                _updateCurrentUser;
     
@@ -27,7 +28,7 @@
  */
 @property (nonatomic) IBOutlet UITextField *usernameTextField;
 @property (nonatomic) IBOutlet UITextField *passwordTextField;
-
+@property (nonatomic) IBOutlet UIView *loadingView;
 
 /**
  * Update the current user locally & remotely with the freshly obtained token & secret.

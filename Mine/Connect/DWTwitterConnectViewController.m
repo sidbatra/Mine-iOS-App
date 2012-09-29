@@ -43,6 +43,16 @@ static NSString* const kMsgError            = @"Incorrect twitter username or pa
  */
 - (void)authorize;
 
+/**
+ * Show loading state
+ */
+- (void)showLoadingState;
+
+/**
+ * Hide loading state
+ */
+- (void)hideLoadingState;
+
 @end
 
 
@@ -54,6 +64,7 @@ static NSString* const kMsgError            = @"Incorrect twitter username or pa
 
 @synthesize usernameTextField           = _usernameTextField;
 @synthesize passwordTextField           = _passwordTextField;
+@synthesize loadingView                 = _loadingView;
 @synthesize twitterConnect              = _twitterConnect;
 @synthesize usersController             = _usersController;
 @synthesize updateCurrentUser           = _updateCurrentUser;
@@ -104,9 +115,23 @@ static NSString* const kMsgError            = @"Incorrect twitter username or pa
 //----------------------------------------------------------------------------------------------------
 - (void)authorize {
     
-    if (self.usernameTextField.text.length && self.passwordTextField.text.length)     
+    if (self.usernameTextField.text.length && self.passwordTextField.text.length) {
+        [self showLoadingState];
         [self.twitterConnect authorizeWithUsername:self.usernameTextField.text 
-                                       andPassword:self.passwordTextField.text];   
+                                       andPassword:self.passwordTextField.text];
+    }
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)showLoadingState {
+    self.navigationItem.rightBarButtonItem.enabled = NO;
+    self.loadingView.hidden = NO;
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)hideLoadingState {
+    self.navigationItem.rightBarButtonItem.enabled = YES;
+    self.loadingView.hidden = YES;
 }
 
 
@@ -167,6 +192,8 @@ static NSString* const kMsgError            = @"Incorrect twitter username or pa
 
 //----------------------------------------------------------------------------------------------------
 - (void)twAuthenticationFailed {
+    [self hideLoadingState];
+    
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:kMsgErrorTitle
                                                     message:kMsgError
                                                    delegate:nil
@@ -202,7 +229,7 @@ static NSString* const kMsgError            = @"Incorrect twitter username or pa
 
 //----------------------------------------------------------------------------------------------------
 - (void)userUpdateError:(NSString *)error {
-    NSLog(@"Error in User Update - Show an alert");
+    [self hideLoadingState];
 }
 
 @end

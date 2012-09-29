@@ -14,8 +14,6 @@
 #import "DWConstants.h"
 
 
-static NSString* const kDefaultMessageTitle             = @"To be decided";
-static NSString* const kDefaultMessageSubtitle          = @"To be decided";
 static NSString* const kSuggestionMessageTitle          = @"Let's find your exact %@";
 static NSString* const kSuggestionMessageSubtitle       = @"e.g. ‘%@’";
 
@@ -115,12 +113,15 @@ static NSString* const kSuggestionMessageSubtitle       = @"e.g. ‘%@’";
 //----------------------------------------------------------------------------------------------------
 @implementation DWCreationViewController
 
+@synthesize tipTitleLabel               = _tipTitleLabel;
+@synthesize tipSubtitleLabel            = _tipSubtitleLabel;
 @synthesize messageTitleLabel           = _messageTitleLabel;
 @synthesize messageSubtitleLabel        = _messageSubtitleLabel;
 @synthesize searchTextField             = _searchTextField;
 @synthesize productPreview              = _productPreview;
 @synthesize loadingView                 = _loadingView;
 @synthesize productImageView            = _productImageView;
+@synthesize arrowImageView              = _arrowImageView;
 @synthesize topShadowView               = _topShadowView;
 @synthesize productSelectButton         = _productSelectButton;
 @synthesize productRejectButton         = _productRejectButton;
@@ -172,14 +173,21 @@ static NSString* const kSuggestionMessageSubtitle       = @"e.g. ‘%@’";
         self.productsViewController = [[DWProductsViewController alloc] init];
     
     self.productsViewController.delegate    = self;
-    self.productsViewController.view.frame  = CGRectMake(0,44,320,416);
+    self.productsViewController.view.frame  = CGRectMake(0,44,320,self.view.frame.size.height - 44);
     self.productsViewController.view.hidden = YES;
     
     [self.view addSubview:self.productsViewController.view];
     
     if (self.suggestion) {
-        self.messageTitleLabel.text     = [NSString stringWithFormat:kSuggestionMessageTitle,self.suggestion.thing];
-        self.messageSubtitleLabel.text  = [NSString stringWithFormat:kSuggestionMessageSubtitle,self.suggestion.example];
+        self.tipTitleLabel.hidden           = YES;
+        self.tipSubtitleLabel.hidden        = YES;
+        
+        self.arrowImageView.hidden          = NO;
+        self.messageTitleLabel.hidden       = NO;
+        self.messageSubtitleLabel.hidden    = NO;
+        
+        self.messageTitleLabel.text         = [NSString stringWithFormat:kSuggestionMessageTitle,self.suggestion.thing];
+        self.messageSubtitleLabel.text      = [NSString stringWithFormat:kSuggestionMessageSubtitle,self.suggestion.example];
     }
     
     [self showKeyboard];

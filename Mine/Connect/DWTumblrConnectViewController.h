@@ -16,6 +16,7 @@
 @interface DWTumblrConnectViewController : UIViewController<UITextFieldDelegate,DWTumblrConnectDelegate,DWUsersControllerDelegate> {
     UITextField         *_emailTextField;
     UITextField         *_passwordTextField;
+    UIView              *_loadingView;       
     
     __weak id<DWTumblrConnectViewControllerDelegate,NSObject> _delegate;  
 }
@@ -25,6 +26,7 @@
  */
 @property (nonatomic) IBOutlet UITextField *emailTextField;
 @property (nonatomic) IBOutlet UITextField *passwordTextField;
+@property (nonatomic) IBOutlet UIView *loadingView;
 
 /**
  * Delegate

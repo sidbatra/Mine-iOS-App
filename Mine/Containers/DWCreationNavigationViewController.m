@@ -49,7 +49,7 @@
 //----------------------------------------------------------------------------------------------------
 - (void)viewDidLoad {
 	[super viewDidLoad];
-    
+
     [self.navigationController setValue:[[DWNavigationBar alloc] init] forKeyPath:@"navigationBar"];
     self.navigationController.navigationBarHidden = YES;
 
@@ -58,6 +58,7 @@
         self.creationViewController.delegate = self;
     }
     
+    self.creationViewController.view.frame = self.view.bounds;
     [self.view addSubview:self.creationViewController.view];
 }
 

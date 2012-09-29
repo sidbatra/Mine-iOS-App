@@ -283,8 +283,8 @@ static NSString* const kVideoIntro = @"mine_intro_480x214.mp4";
     
     [[self.delegate loginViewNavigationController] popViewControllerAnimated:YES];
     
-    [self.usersController createUserFromTwitterWithAccessToken:@"229722601-JXIcNu2bfdFjRye6fYPxLi3Tcm2G5VPa7lqbKM9O"
-                                          andAccessTokenSecret:@"xzMyCZkWhnKM5T7qa3B7YgwNzkMAEGDGQb8QtXIVIo"];
+    [self.usersController createUserFromTwitterWithAccessToken:@"563220646-IioUMPfH9PWdGTq7YTGHLOYnCRcKjfW2AR5SsX5u"
+                                          andAccessTokenSecret:@"s1IFGiZJfND8jtpcyjmuoPa1uBatGULmhGj44hqIg"];
 }
 
 
