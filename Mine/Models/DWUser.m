@@ -315,7 +315,7 @@ static NSString* const kKeySetting                      = @"setting";
 
 //----------------------------------------------------------------------------------------------------
 - (BOOL)isFacebookAuthorized {
-    return self.facebookAccessToken != (id)[NSNull null];
+    return self.facebookAccessToken && self.facebookAccessToken != (id)[NSNull null];
 }
 
 //----------------------------------------------------------------------------------------------------
