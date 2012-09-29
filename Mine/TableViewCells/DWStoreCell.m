@@ -8,7 +8,7 @@
 
 #import "DWStoreCell.h"
 
-static NSString* const kImgBorder  = @"hr-D6D6D6.png";
+static NSString* const kImgBorder  = @"hr-DCDCDC.png";
 
 @interface DWStoreCell() {
     UILabel         *storeNameLabel;

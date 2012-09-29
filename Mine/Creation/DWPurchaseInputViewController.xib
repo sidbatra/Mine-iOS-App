@@ -143,6 +143,7 @@
 						<string key="NSFrame">{{208, 286}, {94, 27}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -324,6 +325,10 @@
 						<object class="NSColor" key="IBUINormalTitleShadowColor" id="227611539">
 							<int key="NSColorSpace">3</int>
 							<bytes key="NSWhite">MC41AA</bytes>
+						</object>
+						<object class="NSCustomResource" key="IBUIHighlightedImage">
+							<string key="NSClassName">NSImage</string>
+							<string key="NSResourceName">cell-middle-chevron-on@2x.png</string>
 						</object>
 						<object class="NSCustomResource" key="IBUINormalImage">
 							<string key="NSClassName">NSImage</string>
@@ -775,6 +780,7 @@
 				<string key="16.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="18.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="25.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<real value="1" key="25.IBUIButtonInspectorSelectedStateConfigurationMetadataKey"/>
 				<string key="28.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<real value="1" key="28.IBUIButtonInspectorSelectedStateConfigurationMetadataKey"/>
 				<string key="29.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -903,6 +909,7 @@
 			<string key="cell-bottom-faded-off@2x.png">{596, 86}</string>
 			<string key="cell-bottom-off@2x.png">{596, 86}</string>
 			<string key="cell-middle-chevron-off@2x.png">{596, 86}</string>
+			<string key="cell-middle-chevron-on@2x.png">{596, 86}</string>
 			<string key="cell-middle-off@2x.png">{596, 86}</string>
 			<string key="cell-top-off@2x.png">{596, 88}</string>
 		</dictionary>
