@@ -68,10 +68,10 @@ static NSString* const kMsgSearchPlaceholder    = @"Search for people";
 
 //----------------------------------------------------------------------------------------------------
 - (void)createSearchField {
-    searchTextField                         = [[UITextField alloc] initWithFrame:CGRectMake(38,12,214,20)];
+    searchTextField                         = [[UITextField alloc] initWithFrame:CGRectMake(38,12,212,20)];
     searchTextField.delegate                = self;
     searchTextField.autocorrectionType      = UITextAutocorrectionTypeNo;
-    searchTextField.autocapitalizationType  = UITextAutocapitalizationTypeNone;
+    searchTextField.autocapitalizationType  = UITextAutocapitalizationTypeWords;
     searchTextField.font                    = [UIFont fontWithName:@"HelveticaNeue" size:14];	
 	searchTextField.textColor               = [UIColor colorWithRed:0.702 green:0.702 blue:0.702 alpha:1.0];
 	searchTextField.textAlignment           = UITextAlignmentLeft;
