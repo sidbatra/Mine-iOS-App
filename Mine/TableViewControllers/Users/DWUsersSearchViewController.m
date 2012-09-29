@@ -55,6 +55,8 @@
     [self reset];
     self.loadingView.hidden = NO;
     [(DWUsersSearchViewDataSource*)self.tableViewDataSource loadUsersForQuery:query];
+    
+    self.tableView.backgroundColor = [UIColor colorWithRed:0.933 green:0.933 blue:0.933 alpha:1.0];
 }
 
 

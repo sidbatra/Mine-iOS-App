@@ -86,6 +86,7 @@ NSInteger const kTabBarHeight       = 44;
 
 //----------------------------------------------------------------------------------------------------
 NSString* const kImgChevron         = @"chevron.png";
+NSString* const kImgChevronWhite    = @"chevron-white.png";
 NSString* const kImgDoneOff         = @"nav-btn-done-off.png";
 NSString* const kImgDoneOn          = @"nav-btn-done-on.png";
 NSString* const kImgMessageDrawer   = @"message-drawer-opaque.png";

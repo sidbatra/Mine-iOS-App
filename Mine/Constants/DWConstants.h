@@ -117,6 +117,7 @@ extern NSInteger const kTabBarHeight;
  * UI Related
  */
 extern NSString* const kImgChevron;
+extern NSString* const kImgChevronWhite;
 extern NSString* const kImgDoneOff;
 extern NSString* const kImgDoneOn;
 extern NSString* const kImgMessageDrawer;

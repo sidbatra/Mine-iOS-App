@@ -249,7 +249,6 @@ static NSString* const kImgSearchOn     = @"nav-btn-search-on.png";
 }
 
 
-
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
@@ -258,9 +257,10 @@ static NSString* const kImgSearchOn     = @"nav-btn-search-on.png";
 //----------------------------------------------------------------------------------------------------
 - (void)searchButtonClicked {
     
-    self.feedViewController.view.hidden             = YES;    
+    self.feedViewController.view.hidden             = YES;
     self.navTitleView.hidden                        = YES;
     self.queueProgressView.hidden                   = YES;
+    self.usersSearchViewController.tableView.backgroundColor = [UIColor colorWithRed:0.223 green:0.223 blue:0.223 alpha:1.0];
     self.usersSearchViewController.view.hidden      = NO;
     self.searchBar.hidden                           = NO;
     
