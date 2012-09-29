@@ -9,6 +9,7 @@
 #import "DWFacebookConnectViewController.h"
 #import "DWAnalyticsManager.h"
 #import "DWSession.h"
+#import "DWConstants.h"
 
 static NSString* const kMsgErrorTitle       = @"Error";
 static NSString* const kMsgCancelTitle      = @"OK";
@@ -130,7 +131,7 @@ static NSString* const kMsgError            = @"Error connecting with Facebook";
 
 //----------------------------------------------------------------------------------------------------
 - (void)userUpdateError:(NSString *)error {
-    NSLog(@"Error in User Update - Show an alert");
+    DWError(@"Error in User Update - Show an alert");
 }
 
 @end

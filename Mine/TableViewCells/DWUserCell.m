@@ -14,11 +14,17 @@ NSInteger const kUserCellHeight = 51;
 
 
 @interface DWUserCell() {
-    UIImageView     *userImageView;
-    UILabel         *userNameLabel;
+    UIImageView *userImageView;
+    UILabel  *userNameLabel;
     
-    DWFollowButton  *followButton;
+    UILabel *bottomBorder;
+    
+    DWFollowButton *followButton;
+    
+    BOOL _highlighted;
 }
+
+@property (nonatomic,assign) BOOL highlighted;
 
 @end
 
@@ -30,6 +36,7 @@ NSInteger const kUserCellHeight = 51;
 @implementation DWUserCell
 
 @synthesize userID      = _userID;
+@synthesize highlighted = _highlighted;
 @synthesize delegate    = _delegate;
 
 //----------------------------------------------------------------------------------------------------
@@ -77,7 +84,7 @@ NSInteger const kUserCellHeight = 51;
     //[self.contentView addSubview:topBorder];
     
     
-    UILabel *bottomBorder = [[UILabel alloc] initWithFrame:CGRectMake(0, kUserCellHeight-1, self.contentView.frame.size.width,1)];
+    bottomBorder = [[UILabel alloc] initWithFrame:CGRectMake(0, kUserCellHeight-1, self.contentView.frame.size.width,1)];
     bottomBorder.backgroundColor = [UIColor colorWithRed:0.862 green:0.862 blue:0.862 alpha:1.0];
     
     [self.contentView addSubview:bottomBorder];
@@ -131,6 +138,21 @@ NSInteger const kUserCellHeight = 51;
 //----------------------------------------------------------------------------------------------------
 - (void)hideFollowButton {
     followButton.hidden = YES;
+}
+
+
+//----------------------------------------------------------------------------------------------------
+- (void)setHighlighted:(BOOL)highlighted
+			  animated:(BOOL)animated {
+    [super setHighlighted:highlighted animated:animated];
+	
+     if(highlighted && !self.highlighted) {
+         self.highlighted = YES;
+         bottomBorder.backgroundColor = [UIColor colorWithRed:0.862 green:0.862 blue:0.862 alpha:1.0];
+     }
+     else if(!highlighted && self.highlighted) {
+         self.highlighted = NO;
+     }
 }
 
 
