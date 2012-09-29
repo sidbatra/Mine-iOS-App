@@ -256,6 +256,8 @@ static NSInteger const kBottomBarMargin = 44;
     
     [self.commentsController createCommentForPurchaseID:self.purchase.databaseID
                                             withMessage:message];
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Comment Created"];
 }
 
 
