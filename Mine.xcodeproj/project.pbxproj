@@ -401,6 +401,7 @@
 		BB3510D71617D1FA00531A80 /* tab-web-fwd@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB350FC61617D1FA00531A80 /* tab-web-fwd@2x.png */; };
 		BB3510D81617D1FA00531A80 /* tab-web-share.png in Resources */ = {isa = PBXBuildFile; fileRef = BB350FC71617D1FA00531A80 /* tab-web-share.png */; };
 		BB3510D91617D1FA00531A80 /* tab-web-share@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB350FC81617D1FA00531A80 /* tab-web-share@2x.png */; };
+		BB3510DB1617DA2400531A80 /* list-btn-following-white@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB3510DA1617DA2400531A80 /* list-btn-following-white@2x.png */; };
 		BB46140215CB3A5A00B38D71 /* DWUserPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = BB46140115CB3A5A00B38D71 /* DWUserPresenter.m */; };
 		BB46140615CB3A7500B38D71 /* DWUserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BB46140515CB3A7500B38D71 /* DWUserCell.m */; };
 		BB46142615CC6ABD00B38D71 /* DWModelSet.m in Sources */ = {isa = PBXBuildFile; fileRef = BB46142515CC6ABD00B38D71 /* DWModelSet.m */; };
@@ -986,6 +987,7 @@
 		BB350FC61617D1FA00531A80 /* tab-web-fwd@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab-web-fwd@2x.png"; sourceTree = "<group>"; };
 		BB350FC71617D1FA00531A80 /* tab-web-share.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab-web-share.png"; sourceTree = "<group>"; };
 		BB350FC81617D1FA00531A80 /* tab-web-share@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab-web-share@2x.png"; sourceTree = "<group>"; };
+		BB3510DA1617DA2400531A80 /* list-btn-following-white@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "list-btn-following-white@2x.png"; sourceTree = "<group>"; };
 		BB46140015CB3A5A00B38D71 /* DWUserPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWUserPresenter.h; sourceTree = "<group>"; };
 		BB46140115CB3A5A00B38D71 /* DWUserPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWUserPresenter.m; sourceTree = "<group>"; };
 		BB46140415CB3A7500B38D71 /* DWUserCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWUserCell.h; sourceTree = "<group>"; };
@@ -1545,6 +1547,7 @@
 		BB350EB71617D1FA00531A80 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				BB3510DA1617DA2400531A80 /* list-btn-following-white@2x.png */,
 				BB350EB81617D1FA00531A80 /* arrow-up.png */,
 				BB350EB91617D1FA00531A80 /* arrow-up@2x.png */,
 				BB350EBA1617D1FA00531A80 /* bottom-drawer-trans.png */,
@@ -2578,6 +2581,7 @@
 				BB3510D71617D1FA00531A80 /* tab-web-fwd@2x.png in Resources */,
 				BB3510D81617D1FA00531A80 /* tab-web-share.png in Resources */,
 				BB3510D91617D1FA00531A80 /* tab-web-share@2x.png in Resources */,
+				BB3510DB1617DA2400531A80 /* list-btn-following-white@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
