@@ -25,6 +25,7 @@ static NSString* const kImgMiniChevron = @"doink-up-8.png";
 static NSString* const kImgSpinnerBackground = @"delete-loading.png";
 
 #define kTitleFont [UIFont fontWithName:@"HelveticaNeue" size:10]
+#define kColorImageBackground [UIColor colorWithRed:0.862 green:0.862 blue:0.862 alpha:1.0]
 
 
 @interface DWPurchaseProfileCell() {
@@ -121,7 +122,7 @@ static NSString* const kImgSpinnerBackground = @"delete-loading.png";
         UIButton *imageButton = [[UIButton alloc] initWithFrame:CGRectMake((kPurchaseImageSide+10)*i + 11,11,kPurchaseImageSide,kPurchaseImageSide)];
         
         imageButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
-        imageButton.backgroundColor = [UIColor whiteColor];
+        imageButton.backgroundColor = kColorImageBackground;
         
          [imageButton addTarget:self
          action:@selector(didTapImageButton:)
@@ -267,6 +268,11 @@ static NSString* const kImgSpinnerBackground = @"delete-loading.png";
     
     [imageButton setImage:image
                  forState:UIControlStateHighlighted];
+    
+    if(image)
+        imageButton.backgroundColor = [UIColor whiteColor];
+    else
+        imageButton.backgroundColor = kColorImageBackground;
 }
 
 //----------------------------------------------------------------------------------------------------
