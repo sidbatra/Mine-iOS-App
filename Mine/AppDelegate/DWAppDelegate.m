@@ -150,6 +150,7 @@ static NSString* const kFacebookURLPrefix = @"fb";
 - (void)destroyApplication {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     
+    [self.tabBarController dismissModalViewControllerAnimated:NO];
     [self.tabBarController.view removeFromSuperview];
     
     [self.welcomeNavController popToRootViewControllerAnimated:NO];

@@ -10,6 +10,7 @@
 #import "DWGUIManager.h"
 #import "DWAnalyticsManager.h"
 #import "DWSession.h"
+#import "DWConstants.h"
 
 
 static NSString* const kExampleText = @"Example: '%@ bought %@ iPhone 5...'";
@@ -110,6 +111,7 @@ static NSString* const kExampleText = @"Example: '%@ bought %@ iPhone 5...'";
 }
 
 
+
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
@@ -183,7 +185,21 @@ static NSString* const kExampleText = @"Example: '%@ bought %@ iPhone 5...'";
     
     if (_isAwaitingResponse) {
         _isAwaitingResponse = NO;
-        [self.delegate userDetailsUpdated];
+        
+        
+        if([user.email isEqualToString:self.emailTextField.text]) {
+            [self.delegate userDetailsUpdated];
+        }
+        else {
+            [self hideLoadingState];
+            
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Sorry"
+                                                            message:@"That email address is used by another user. Did you accidently sign in with the wrong account and want to sign out?"
+                                                           delegate:self
+                                                  cancelButtonTitle:nil
+                                                  otherButtonTitles:@"Sign Out",@"No", nil];
+            [alert show];
+        }
     }
     
     [user destroy];
@@ -195,4 +211,17 @@ static NSString* const kExampleText = @"Example: '%@ bought %@ iPhone 5...'";
 }
 
 
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark UIAlertViewDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if(buttonIndex == 0) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:kNUserLoggedOut
+                                                            object:nil
+                                                          userInfo:nil];
+    }
+}
 @end

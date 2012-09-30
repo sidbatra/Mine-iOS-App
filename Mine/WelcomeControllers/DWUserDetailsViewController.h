@@ -13,7 +13,7 @@
 @protocol DWUserDetailsViewControllerDelegate;
 
 
-@interface DWUserDetailsViewController : UIViewController<DWUsersControllerDelegate> {
+@interface DWUserDetailsViewController : UIViewController<DWUsersControllerDelegate,UIAlertViewDelegate> {
     UILabel                 *_titleLabel;
     UILabel                 *_exampleLabel;
     UITextField             *_emailTextField;
