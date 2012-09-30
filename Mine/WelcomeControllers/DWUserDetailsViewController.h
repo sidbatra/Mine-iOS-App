@@ -9,11 +9,12 @@
 #import <UIKit/UIKit.h>
 
 #import "DWUsersController.h"
+#import "DWSessionController.h"
 
 @protocol DWUserDetailsViewControllerDelegate;
 
 
-@interface DWUserDetailsViewController : UIViewController<DWUsersControllerDelegate,UIAlertViewDelegate> {
+@interface DWUserDetailsViewController : UIViewController<DWUsersControllerDelegate,DWSessionControllerDelegate,UIAlertViewDelegate> {
     UILabel                 *_titleLabel;
     UILabel                 *_exampleLabel;
     UITextField             *_emailTextField;

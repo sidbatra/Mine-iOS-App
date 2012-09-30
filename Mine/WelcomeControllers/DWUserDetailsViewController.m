@@ -20,6 +20,7 @@ static NSString* const kExampleText = @"Example: '%@ bought %@ iPhone 5...'";
  */
 @interface DWUserDetailsViewController() {
     DWUsersController   *_usersController;
+    DWSessionController *_sessionController;
     
     NSInteger   _selectedButtonIndex;
     NSArray     *_genderDataSource;
@@ -27,10 +28,8 @@ static NSString* const kExampleText = @"Example: '%@ bought %@ iPhone 5...'";
     BOOL        _isAwaitingResponse;
 }
 
-/**
- * Users data controller.
- */
 @property (nonatomic,strong) DWUsersController *usersController;
+@property (nonatomic,strong) DWSessionController *sessionController;
 
 
 /**
@@ -64,6 +63,7 @@ static NSString* const kExampleText = @"Example: '%@ bought %@ iPhone 5...'";
 @implementation DWUserDetailsViewController
 
 @synthesize usersController         = _usersController;
+@synthesize sessionController       = _sessionController;
 @synthesize selectedButtonIndex     = _selectedButtonIndex;
 @synthesize genderDataSource        = _genderDataSource;
 @synthesize titleLabel              = _titleLabel;
@@ -127,6 +127,13 @@ static NSString* const kExampleText = @"Example: '%@ bought %@ iPhone 5...'";
 - (void)hideLoadingState {
     self.navigationItem.rightBarButtonItem.enabled = YES;
     self.loadingView.hidden = YES;
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)initiateLogout {
+    [[NSNotificationCenter defaultCenter] postNotificationName:kNUserLoggedOut
+                                                        object:nil
+                                                      userInfo:nil];
 }
 
 
@@ -193,11 +200,11 @@ static NSString* const kExampleText = @"Example: '%@ bought %@ iPhone 5...'";
         else {
             [self hideLoadingState];
             
-            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Sorry"
-                                                            message:@"That email address is used by another user. Did you accidently sign in with the wrong account and want to sign out?"
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                            message:@"Sorry, this email address is being used by another user. If you previously signed up with Facebook, sign out and sign in with Facebook."
                                                            delegate:self
                                                   cancelButtonTitle:nil
-                                                  otherButtonTitles:@"Sign Out",@"No", nil];
+                                                  otherButtonTitles:@"Sign Out",@"Cancel", nil];
             [alert show];
         }
     }
@@ -219,9 +226,33 @@ static NSString* const kExampleText = @"Example: '%@ bought %@ iPhone 5...'";
 //----------------------------------------------------------------------------------------------------
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
     if(buttonIndex == 0) {
-        [[NSNotificationCenter defaultCenter] postNotificationName:kNUserLoggedOut
-                                                            object:nil
-                                                          userInfo:nil];
+        [self showLoadingState];
+        
+        if(!self.sessionController) {
+            self.sessionController = [[DWSessionController alloc] init];
+            self.sessionController.delegate = self;
+        }
+        
+        [self.sessionController destroyForever];
     }
 }
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWSessionController 
+
+//----------------------------------------------------------------------------------------------------
+- (void)sessionDestroyed {
+    [self initiateLogout];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)sessionDestroyError:(NSString *)error {
+    [self initiateLogout];
+}
+
 @end
+
+
