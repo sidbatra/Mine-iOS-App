@@ -34,6 +34,8 @@
 		262376B515BF6C0A00B3A037 /* FBFrictionlessRequestSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 262376AD15BF6C0A00B3A037 /* FBFrictionlessRequestSettings.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		262376B615BF6C0A00B3A037 /* FBLoginDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 262376AF15BF6C0A00B3A037 /* FBLoginDialog.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		262376B715BF6C0A00B3A037 /* FBRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 262376B115BF6C0A00B3A037 /* FBRequest.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		2642B7DE1617DF1600065303 /* nav-btn-send-off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2642B7DC1617DF1600065303 /* nav-btn-send-off@2x.png */; };
+		2642B7DF1617DF1600065303 /* nav-btn-send-on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2642B7DD1617DF1600065303 /* nav-btn-send-on@2x.png */; };
 		2676AA0215FE714B00B0B579 /* DWGUIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2676AA0115FE714B00B0B579 /* DWGUIManager.m */; };
 		267B3FB915D42D0B0001AC64 /* DWStoresViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 267B3FB815D42D0B0001AC64 /* DWStoresViewController.m */; };
 		267B3FBD15D4322A0001AC64 /* DWStorePresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 267B3FBC15D4322A0001AC64 /* DWStorePresenter.m */; };
@@ -533,6 +535,8 @@
 		262376B015BF6C0A00B3A037 /* FBRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FBRequest.h; path = Facebook/FBRequest.h; sourceTree = "<group>"; };
 		262376B115BF6C0A00B3A037 /* FBRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FBRequest.m; path = Facebook/FBRequest.m; sourceTree = "<group>"; };
 		262376B815BF6CBA00B3A037 /* Facebook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Facebook.h; path = Facebook/Facebook.h; sourceTree = "<group>"; };
+		2642B7DC1617DF1600065303 /* nav-btn-send-off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-btn-send-off@2x.png"; sourceTree = "<group>"; };
+		2642B7DD1617DF1600065303 /* nav-btn-send-on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-btn-send-on@2x.png"; sourceTree = "<group>"; };
 		2676AA0015FE714B00B0B579 /* DWGUIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWGUIManager.h; sourceTree = "<group>"; };
 		2676AA0115FE714B00B0B579 /* DWGUIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWGUIManager.m; sourceTree = "<group>"; };
 		267B3FB715D42D0B0001AC64 /* DWStoresViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWStoresViewController.h; sourceTree = "<group>"; };
@@ -1545,6 +1549,8 @@
 		BB350EB71617D1FA00531A80 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				2642B7DC1617DF1600065303 /* nav-btn-send-off@2x.png */,
+				2642B7DD1617DF1600065303 /* nav-btn-send-on@2x.png */,
 				BB350EB81617D1FA00531A80 /* arrow-up.png */,
 				BB350EB91617D1FA00531A80 /* arrow-up@2x.png */,
 				BB350EBA1617D1FA00531A80 /* bottom-drawer-trans.png */,
@@ -2578,6 +2584,8 @@
 				BB3510D71617D1FA00531A80 /* tab-web-fwd@2x.png in Resources */,
 				BB3510D81617D1FA00531A80 /* tab-web-share.png in Resources */,
 				BB3510D91617D1FA00531A80 /* tab-web-share@2x.png in Resources */,
+				2642B7DE1617DF1600065303 /* nav-btn-send-off@2x.png in Resources */,
+				2642B7DF1617DF1600065303 /* nav-btn-send-on@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

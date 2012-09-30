@@ -13,7 +13,8 @@ static NSString* const kImgSaveOff  = @"nav-btn-save-off.png";
 static NSString* const kImgSaveOn   = @"nav-btn-save-on.png";
 static NSString* const kImgNextOff  = @"nav-btn-next-off.png";
 static NSString* const kImgNextOn   = @"nav-btn-next-on.png";
-
+static NSString* const kImgSendOff  = @"nav-btn-send-off.png";
+static NSString* const kImgSendOn   = @"nav-btn-send-on.png";
 
 
 
@@ -74,7 +75,7 @@ static NSString* const kImgNextOn   = @"nav-btn-next-on.png";
                action:@selector(saveButtonClicked)
      forControlEvents:UIControlEventTouchUpInside];
     
-	[button setFrame:CGRectMake(0,0,58,30)];
+	[button setFrame:CGRectMake(0,0,53,30)];
     
     return [[UIBarButtonItem alloc] initWithCustomView:button];
 }
@@ -92,6 +93,26 @@ static NSString* const kImgNextOn   = @"nav-btn-next-on.png";
     
 	[button addTarget:target
                action:@selector(nextButtonClicked)
+     forControlEvents:UIControlEventTouchUpInside];
+    
+	[button setFrame:CGRectMake(0,0,53,30)];
+    
+    return [[UIBarButtonItem alloc] initWithCustomView:button];
+}
+
+//----------------------------------------------------------------------------------------------------
++ (UIBarButtonItem*)navBarSendButtonWithTarget:(id)target {
+    
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    
+    [button setBackgroundImage:[UIImage imageNamed:kImgSendOff]
+                      forState:UIControlStateNormal];
+    
+    [button setBackgroundImage:[UIImage imageNamed:kImgSendOn]
+                      forState:UIControlStateHighlighted];
+    
+	[button addTarget:target
+               action:@selector(sendButtonClicked)
      forControlEvents:UIControlEventTouchUpInside];
     
 	[button setFrame:CGRectMake(0,0,53,30)];

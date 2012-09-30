@@ -122,7 +122,7 @@
     
     self.navigationItem.leftBarButtonItem           = [DWNavigationBarBackButton backButtonForNavigationController:self.navigationController];
     self.navigationItem.titleView                   = [DWGUIManager navBarTitleViewWithText:@"Invite Friends"];
-    self.navigationItem.rightBarButtonItem          = [DWGUIManager navBarDoneButtonWithTarget:self];    
+    self.navigationItem.rightBarButtonItem          = [DWGUIManager navBarSendButtonWithTarget:self];
            
     self.queryContactsViewController.view.frame     = CGRectMake(0,44,320,200);
     self.addedContactsViewController.view.frame     = CGRectMake(0,44,320,200);
@@ -160,7 +160,7 @@
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)doneButtonClicked {
+- (void)sendButtonClicked {
     [self createInvites];
 }
 

@@ -30,4 +30,6 @@
 
 + (UIBarButtonItem*)navBarNextButtonWithTarget:(id)target;
 
++ (UIBarButtonItem*)navBarSendButtonWithTarget:(id)target;
+
 @end
