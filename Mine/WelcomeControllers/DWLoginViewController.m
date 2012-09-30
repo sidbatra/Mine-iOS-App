@@ -295,8 +295,8 @@ static NSString* const kVideoIntro = @"mine_intro_480x214.mp4";
     
     [[self.delegate loginViewNavigationController] popViewControllerAnimated:YES];
     
-    [self.usersController createUserFromTwitterWithAccessToken:@"563220646-IioUMPfH9PWdGTq7YTGHLOYnCRcKjfW2AR5SsX5u"
-                                          andAccessTokenSecret:@"s1IFGiZJfND8jtpcyjmuoPa1uBatGULmhGj44hqIg"];
+    [self.usersController createUserFromTwitterWithAccessToken:accessToken
+                                          andAccessTokenSecret:accessTokenSecret];
 }
 
 
