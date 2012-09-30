@@ -227,12 +227,14 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)followingButtonClicked {
-    [self.delegate profileViewFollowingClickedForUser:self.user];
+    if(self.user.inverseFollowingsCount)
+        [self.delegate profileViewFollowingClickedForUser:self.user];
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)followersButtonClicked {
-    [self.delegate profileViewFollowersClickedForUser:self.user];
+    if(self.user.followingsCount)
+        [self.delegate profileViewFollowersClickedForUser:self.user];
 }
 
 
