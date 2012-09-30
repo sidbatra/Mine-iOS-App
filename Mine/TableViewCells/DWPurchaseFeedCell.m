@@ -344,7 +344,7 @@ static NSInteger const kUserImageSide           = 34;
 //----------------------------------------------------------------------------------------------------
 - (void)createURLButton {
     
-    urlButton = [[UIButton alloc] initWithFrame:CGRectMake(222,0,76,25)];
+    urlButton = [[UIButton alloc] initWithFrame:CGRectMake(248,0,50,25)];
     
     [urlButton setImage:[UIImage imageNamed:kImgURLOff]
                    forState:UIControlStateNormal];
