@@ -12,6 +12,11 @@
 #import "DWAnalyticsManager.h"
 #import "DWConstants.h"
 
+
+static NSString* const kImgInfoOn = @"nav-btn-info-on.png";
+static NSString* const kImgInfoOff = @"nav-btn-info-off.png";
+static NSString* const kInfoURL = @"/?web_view_mode=true";
+
 /**
  * Private declarations
  */
@@ -131,12 +136,44 @@
     
     if(!self.navTitleView) {
         self.navTitleView =  [DWNavigationBarTitleView logoTitleView];
-    }    
+    }
+    
+    
+    
+    
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    
+    [button setBackgroundImage:[UIImage imageNamed:kImgInfoOff]
+                      forState:UIControlStateNormal];
+    
+    [button setBackgroundImage:[UIImage imageNamed:kImgInfoOn]
+                      forState:UIControlStateHighlighted];
+    
+	[button addTarget:self
+               action:@selector(infoButtonClicked)
+     forControlEvents:UIControlEventTouchUpInside];
+    
+	[button setFrame:CGRectMake(0,0,40,30)];
+    
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)viewDidUnload {
     [super viewDidUnload];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark UI Events
+
+//----------------------------------------------------------------------------------------------------
+- (void)infoButtonClicked {
+    [self displayExternalURL:[NSString stringWithFormat:@"%@%@%@",kAppProtocol,kAppServer,kInfoURL]];
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Learn More View"];
 }
 
 

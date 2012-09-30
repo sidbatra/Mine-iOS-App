@@ -18,8 +18,6 @@ static NSString* const kVideoIntro = @"mine_intro_480x214.mp4";
 
 
 
-
-
 @interface DWMoviePlayerController : MPMoviePlayerViewController
 @end
 
@@ -151,7 +149,7 @@ static NSString* const kVideoIntro = @"mine_intro_480x214.mp4";
 //----------------------------------------------------------------------------------------------------
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+
     [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Home View"];
 }
 
