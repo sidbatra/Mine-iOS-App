@@ -420,7 +420,7 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
     NSIndexPath *indexPath  = [NSIndexPath indexPathForRow:index
                                                  inSection:0];
     
-    if(!indexPath || index >= [self.tableViewDataSource.objects count])
+    if(!indexPath)
         return;
     
     

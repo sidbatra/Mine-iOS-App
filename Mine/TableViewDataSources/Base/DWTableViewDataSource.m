@@ -125,11 +125,12 @@ static NSInteger const kDefaultSections = 1;
 //----------------------------------------------------------------------------------------------------
 - (void)removeObject:(id)object 
        withAnimation:(UITableViewRowAnimation)animation {
-    
+
     NSInteger index = [self indexForObject:object];
     
     if(index == NSNotFound)
         return;
+
     
     [self.objects removeObjectAtIndex:index];
     
