@@ -176,9 +176,7 @@
 		BB350FF41617D1FA00531A80 /* comments-btn-send-off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB350EE31617D1FA00531A80 /* comments-btn-send-off@2x.png */; };
 		BB350FF51617D1FA00531A80 /* comments-btn-send-on.png in Resources */ = {isa = PBXBuildFile; fileRef = BB350EE41617D1FA00531A80 /* comments-btn-send-on.png */; };
 		BB350FF61617D1FA00531A80 /* comments-btn-send-on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB350EE51617D1FA00531A80 /* comments-btn-send-on@2x.png */; };
-		BB350FF71617D1FA00531A80 /* Default-568h.png in Resources */ = {isa = PBXBuildFile; fileRef = BB350EE61617D1FA00531A80 /* Default-568h.png */; };
 		BB350FF81617D1FA00531A80 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB350EE71617D1FA00531A80 /* Default-568h@2x.png */; };
-		BB350FF91617D1FA00531A80 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = BB350EE81617D1FA00531A80 /* Default.png */; };
 		BB350FFA1617D1FA00531A80 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB350EE91617D1FA00531A80 /* Default@2x.png */; };
 		BB350FFB1617D1FA00531A80 /* delete-loading.png in Resources */ = {isa = PBXBuildFile; fileRef = BB350EEA1617D1FA00531A80 /* delete-loading.png */; };
 		BB350FFC1617D1FA00531A80 /* delete-loading@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB350EEB1617D1FA00531A80 /* delete-loading@2x.png */; };
@@ -768,9 +766,7 @@
 		BB350EE31617D1FA00531A80 /* comments-btn-send-off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "comments-btn-send-off@2x.png"; sourceTree = "<group>"; };
 		BB350EE41617D1FA00531A80 /* comments-btn-send-on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "comments-btn-send-on.png"; sourceTree = "<group>"; };
 		BB350EE51617D1FA00531A80 /* comments-btn-send-on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "comments-btn-send-on@2x.png"; sourceTree = "<group>"; };
-		BB350EE61617D1FA00531A80 /* Default-568h.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h.png"; sourceTree = "<group>"; };
 		BB350EE71617D1FA00531A80 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
-		BB350EE81617D1FA00531A80 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		BB350EE91617D1FA00531A80 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
 		BB350EEA1617D1FA00531A80 /* delete-loading.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "delete-loading.png"; sourceTree = "<group>"; };
 		BB350EEB1617D1FA00531A80 /* delete-loading@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "delete-loading@2x.png"; sourceTree = "<group>"; };
@@ -1614,9 +1610,7 @@
 				BB350EE31617D1FA00531A80 /* comments-btn-send-off@2x.png */,
 				BB350EE41617D1FA00531A80 /* comments-btn-send-on.png */,
 				BB350EE51617D1FA00531A80 /* comments-btn-send-on@2x.png */,
-				BB350EE61617D1FA00531A80 /* Default-568h.png */,
 				BB350EE71617D1FA00531A80 /* Default-568h@2x.png */,
-				BB350EE81617D1FA00531A80 /* Default.png */,
 				BB350EE91617D1FA00531A80 /* Default@2x.png */,
 				BB350EEA1617D1FA00531A80 /* delete-loading.png */,
 				BB350EEB1617D1FA00531A80 /* delete-loading@2x.png */,
@@ -2374,9 +2368,7 @@
 				BB350FF41617D1FA00531A80 /* comments-btn-send-off@2x.png in Resources */,
 				BB350FF51617D1FA00531A80 /* comments-btn-send-on.png in Resources */,
 				BB350FF61617D1FA00531A80 /* comments-btn-send-on@2x.png in Resources */,
-				BB350FF71617D1FA00531A80 /* Default-568h.png in Resources */,
 				BB350FF81617D1FA00531A80 /* Default-568h@2x.png in Resources */,
-				BB350FF91617D1FA00531A80 /* Default.png in Resources */,
 				BB350FFA1617D1FA00531A80 /* Default@2x.png in Resources */,
 				BB350FFB1617D1FA00531A80 /* delete-loading.png in Resources */,
 				BB350FFC1617D1FA00531A80 /* delete-loading@2x.png in Resources */,

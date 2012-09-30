@@ -72,6 +72,8 @@ static NSString* const kVideoIntro = @"mine_intro_480x214.mp4";
     DWTwitterConnectViewController  *_twitterConnectViewController;
     
     DWMoviePlayerController *_moviePlayerController;
+    
+    BOOL _isAwaitingResponse;
 }
 
 /**
@@ -131,6 +133,7 @@ static NSString* const kVideoIntro = @"mine_intro_480x214.mp4";
         self.twitterConnectViewController.updateCurrentUser = NO;
         self.twitterConnectViewController.delegate = self;
         
+        _isAwaitingResponse = NO;
         
         [[NSNotificationCenter defaultCenter] addObserver:self
 												 selector:@selector(playbackDidFinish:)
@@ -220,6 +223,7 @@ static NSString* const kVideoIntro = @"mine_intro_480x214.mp4";
 
 //----------------------------------------------------------------------------------------------------
 - (IBAction)loginWithFBButtonClicked:(id)sender {
+    _isAwaitingResponse = YES;
     [self.facebookConnect authorize];
     
     [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Facebook Signup Button Clicked"];
@@ -258,13 +262,23 @@ static NSString* const kVideoIntro = @"mine_intro_480x214.mp4";
 
 //----------------------------------------------------------------------------------------------------
 - (void)fbAuthenticatedWithToken:(NSString *)accessToken {
-    [self startLoadingFB];
-    [self.usersController createUserFromFacebookWithAccessToken:accessToken];
+    
+    if(_isAwaitingResponse) {
+        _isAwaitingResponse = NO;
+        
+        [self startLoadingFB];
+        [self.usersController createUserFromFacebookWithAccessToken:accessToken];
+    }
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)fbAuthenticationFailed {
-    [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Facebook Connect Failed"];
+    
+    if (_isAwaitingResponse) {
+        _isAwaitingResponse = NO;
+        
+        [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Facebook Connect Failed"];
+    }
 }
 
 
