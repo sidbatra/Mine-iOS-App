@@ -221,6 +221,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWSession);
 
 //----------------------------------------------------------------------------------------------------
 - (void)statusLoaded:(DWUser *)user {
+    [self update];
     [user debug];
     [user destroy];
 }

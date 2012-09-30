@@ -59,6 +59,7 @@ static NSString* const kKeyAge                          = @"age";
 static NSString* const kKeyPurchasesCount               = @"purchases_count";
 static NSString* const kKeyFollowingsCount              = @"followings_count";
 static NSString* const kKeyInverseFollowingsCount       = @"inverse_followings_count";
+static NSString* const kKeySensitive                    = @"sensitive";
 static NSString* const kKeySetting                      = @"setting";
 
 
@@ -208,6 +209,8 @@ static NSString* const kKeySetting                      = @"setting";
     NSString *followingsCount           = [user objectForKey:kKeyFollowingsCount];
     NSString *inverseFollowingsCount    = [user objectForKey:kKeyInverseFollowingsCount];
     
+    NSString *sensitive                 = [user objectForKey:kKeySensitive];
+    
     NSDictionary *setting               = [user objectForKey:kKeySetting];
     
     
@@ -232,22 +235,15 @@ static NSString* const kKeySetting                      = @"setting";
     if(iphoneDeviceToken && ![iphoneDeviceToken isKindOfClass:[NSNull class]] && ![self.iphoneDeviceToken isEqualToString:iphoneDeviceToken])
         self.iphoneDeviceToken = iphoneDeviceToken;
     
-    
-    if(facebookAccessToken  && ![facebookAccessToken isKindOfClass:[NSNull class]]  && ![self.facebookAccessToken isEqualToString:facebookAccessToken])
-        self.facebookAccessToken = facebookAccessToken;
-    
-    if(twitterAccessToken  && ![twitterAccessToken isKindOfClass:[NSNull class]] && ![self.twitterAccessToken isEqualToString:twitterAccessToken])
-        self.twitterAccessToken = twitterAccessToken;
-    
-    if(twitterAccessTokenSecret  && ![twitterAccessTokenSecret isKindOfClass:[NSNull class]] && ![self.twitterAccessTokenSecret isEqualToString:twitterAccessTokenSecret])
-        self.twitterAccessTokenSecret = twitterAccessTokenSecret;    
-    
-    if(tumblrAccessToken  && ![tumblrAccessToken isKindOfClass:[NSNull class]] && ![self.tumblrAccessToken isEqualToString:tumblrAccessToken])
-        self.tumblrAccessToken = tumblrAccessToken;
-    
-    if(tumblrAccessTokenSecret  && ![tumblrAccessTokenSecret isKindOfClass:[NSNull class]] && ![self.tumblrAccessTokenSecret isEqualToString:tumblrAccessTokenSecret])
-        self.tumblrAccessTokenSecret = tumblrAccessTokenSecret;    
 
+    if(sensitive) {
+        self.facebookAccessToken = facebookAccessToken;
+        self.twitterAccessToken = twitterAccessToken;
+        self.twitterAccessTokenSecret = twitterAccessTokenSecret;
+        self.tumblrAccessToken = tumblrAccessToken;
+        self.tumblrAccessTokenSecret = tumblrAccessTokenSecret;    
+    }
+    
     
     if(squareImageURL && ![self.squareImageURL isEqualToString:squareImageURL])
         self.squareImageURL = squareImageURL;
@@ -321,12 +317,14 @@ static NSString* const kKeySetting                      = @"setting";
 
 //----------------------------------------------------------------------------------------------------
 - (BOOL)isTwitterAuthorized {
-    return self.twitterAccessToken && self.twitterAccessTokenSecret;
+    return self.twitterAccessToken && self.twitterAccessToken != (id)[NSNull null] &&
+            self.twitterAccessTokenSecret && self.twitterAccessTokenSecret != (id)[NSNull null];
 }
 
 //----------------------------------------------------------------------------------------------------
 - (BOOL)isTumblrAuthorized {
-    return self.tumblrAccessToken && self.tumblrAccessTokenSecret;
+    return self.tumblrAccessToken && self.tumblrAccessToken != (id)[NSNull null] &&
+            self.tumblrAccessTokenSecret && self.tumblrAccessTokenSecret != (id)[NSNull null];
 }
 
 //----------------------------------------------------------------------------------------------------
