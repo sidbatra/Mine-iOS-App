@@ -51,7 +51,7 @@
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<object class="NSCustomResource" key="IBUIImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">nav-bg@2x.png</string>
+							<string key="NSResourceName">nav-bg.png</string>
 						</object>
 					</object>
 					<object class="IBUIImageView" id="10072157">
@@ -66,7 +66,7 @@
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<object class="NSCustomResource" key="IBUIImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">nav-field-creation@2x.png</string>
+							<string key="NSResourceName">nav-field-creation.png</string>
 						</object>
 					</object>
 					<object class="IBUITextField" id="420390281">
@@ -137,11 +137,11 @@
 						</object>
 						<object class="NSCustomResource" key="IBUIHighlightedBackgroundImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">nav-btn-cancel-on@2x.png</string>
+							<string key="NSResourceName">nav-btn-cancel-on.png</string>
 						</object>
 						<object class="NSCustomResource" key="IBUINormalBackgroundImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">nav-btn-cancel-off@2x.png</string>
+							<string key="NSResourceName">nav-btn-cancel-off.png</string>
 						</object>
 						<object class="IBUIFontDescription" key="IBUIFontDescription" id="780304646">
 							<int key="type">2</int>
@@ -286,7 +286,7 @@
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<object class="NSCustomResource" key="IBUIImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">arrow-up@2x.png</string>
+							<string key="NSResourceName">arrow-up.png</string>
 						</object>
 					</object>
 					<object class="IBUIImageView" id="526453664">
@@ -295,12 +295,13 @@
 						<string key="NSFrame">{{69, 121}, {182, 184}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<object class="NSCustomResource" key="IBUIImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">suggestion-stamp@2x.png</string>
+							<string key="NSResourceName">suggestion-stamp.png</string>
 						</object>
 					</object>
 					<object class="IBUIImageView" id="882579718">
@@ -315,7 +316,7 @@
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<object class="NSCustomResource" key="IBUIImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">nav-shadow@2x.png</string>
+							<string key="NSResourceName">nav-shadow.png</string>
 						</object>
 					</object>
 					<object class="IBUIView" id="961620765">
@@ -400,7 +401,7 @@
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<object class="NSCustomResource" key="IBUIImage">
 									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">nav-preview-bg@2x.png</string>
+									<string key="NSResourceName">nav-preview-bg.png</string>
 								</object>
 							</object>
 							<object class="IBUIImageView" id="834834684">
@@ -415,7 +416,7 @@
 								<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 								<object class="NSCustomResource" key="IBUIImage">
 									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">tab-preview-bg@2x.png</string>
+									<string key="NSResourceName">tab-preview-bg.png</string>
 								</object>
 							</object>
 							<object class="IBUIImageView" id="439832910">
@@ -482,7 +483,7 @@
 								<reference key="IBUINormalTitleShadowColor" ref="645807847"/>
 								<object class="NSCustomResource" key="IBUINormalBackgroundImage">
 									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">tab-preview-v@2x.png</string>
+									<string key="NSResourceName">tab-preview-v.png</string>
 								</object>
 								<reference key="IBUIFontDescription" ref="780304646"/>
 								<reference key="IBUIFont" ref="484121521"/>
@@ -508,7 +509,7 @@
 								<reference key="IBUINormalTitleShadowColor" ref="645807847"/>
 								<object class="NSCustomResource" key="IBUINormalBackgroundImage">
 									<string key="NSClassName">NSImage</string>
-									<string key="NSResourceName">tab-preview-x@2x.png</string>
+									<string key="NSResourceName">tab-preview-x.png</string>
 								</object>
 								<reference key="IBUIFontDescription" ref="780304646"/>
 								<reference key="IBUIFont" ref="484121521"/>
@@ -871,7 +872,7 @@
 				<string key="12.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<real value="0.0" key="12.IBUIButtonInspectorSelectedStateConfigurationMetadataKey"/>
 				<string key="17.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
-				<real value="1" key="17.IBUIButtonInspectorSelectedStateConfigurationMetadataKey"/>
+				<real value="0.0" key="17.IBUIButtonInspectorSelectedStateConfigurationMetadataKey"/>
 				<string key="20.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="21.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="23.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
@@ -1012,17 +1013,17 @@
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
-			<string key="arrow-up@2x.png">{56, 62}</string>
-			<string key="nav-bg@2x.png">{640, 88}</string>
-			<string key="nav-btn-cancel-off@2x.png">{126, 60}</string>
-			<string key="nav-btn-cancel-on@2x.png">{126, 60}</string>
-			<string key="nav-field-creation@2x.png">{500, 64}</string>
-			<string key="nav-preview-bg@2x.png">{640, 88}</string>
-			<string key="nav-shadow@2x.png">{640, 6}</string>
-			<string key="suggestion-stamp@2x.png">{364, 368}</string>
-			<string key="tab-preview-bg@2x.png">{640, 98}</string>
-			<string key="tab-preview-v@2x.png">{120, 98}</string>
-			<string key="tab-preview-x@2x.png">{120, 98}</string>
+			<string key="arrow-up.png">{28, 31}</string>
+			<string key="nav-bg.png">{320, 44}</string>
+			<string key="nav-btn-cancel-off.png">{63, 30}</string>
+			<string key="nav-btn-cancel-on.png">{63, 30}</string>
+			<string key="nav-field-creation.png">{250, 32}</string>
+			<string key="nav-preview-bg.png">{320, 44}</string>
+			<string key="nav-shadow.png">{320, 3}</string>
+			<string key="suggestion-stamp.png">{182, 184}</string>
+			<string key="tab-preview-bg.png">{320, 49}</string>
+			<string key="tab-preview-v.png">{60, 49}</string>
+			<string key="tab-preview-x.png">{60, 49}</string>
 		</dictionary>
 		<string key="IBCocoaTouchPluginVersion">1926</string>
 	</data>

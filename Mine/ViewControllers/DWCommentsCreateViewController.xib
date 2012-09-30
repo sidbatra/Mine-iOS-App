@@ -49,7 +49,7 @@
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 						<object class="NSCustomResource" key="IBUIImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">comments-bar@2x.png</string>
+							<string key="NSResourceName">comments-bar.png</string>
 						</object>
 					</object>
 					<object class="IBUITextField" id="293728979">
@@ -95,6 +95,7 @@
 						<string key="NSFrame">{{256, 379}, {57, 31}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<bool key="IBUIOpaque">NO</bool>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
@@ -114,11 +115,11 @@
 						</object>
 						<object class="NSCustomResource" key="IBUIHighlightedBackgroundImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">comments-btn-send-on@2x.png</string>
+							<string key="NSResourceName">comments-btn-send-on.png</string>
 						</object>
 						<object class="NSCustomResource" key="IBUINormalBackgroundImage">
 							<string key="NSClassName">NSImage</string>
-							<string key="NSResourceName">comments-btn-send-off@2x.png</string>
+							<string key="NSResourceName">comments-btn-send-off.png</string>
 						</object>
 						<object class="IBUIFontDescription" key="IBUIFontDescription">
 							<int key="type">2</int>
@@ -313,9 +314,9 @@
 		<bool key="IBDocument.PluginDeclaredDependenciesTrackSystemTargetVersion">YES</bool>
 		<int key="IBDocument.defaultPropertyAccessControl">3</int>
 		<dictionary class="NSMutableDictionary" key="IBDocument.LastKnownImageSizes">
-			<string key="comments-bar@2x.png">{640, 88}</string>
-			<string key="comments-btn-send-off@2x.png">{114, 62}</string>
-			<string key="comments-btn-send-on@2x.png">{114, 62}</string>
+			<string key="comments-bar.png">{320, 44}</string>
+			<string key="comments-btn-send-off.png">{57, 31}</string>
+			<string key="comments-btn-send-on.png">{57, 31}</string>
 		</dictionary>
 		<string key="IBCocoaTouchPluginVersion">1926</string>
 	</data>
