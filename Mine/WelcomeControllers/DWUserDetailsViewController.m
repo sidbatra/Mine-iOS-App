@@ -22,6 +22,8 @@ static NSString* const kExampleText = @"Example: '%@ bought %@ iPhone 5...'";
     
     NSInteger   _selectedButtonIndex;
     NSArray     *_genderDataSource;
+    
+    BOOL        _isAwaitingResponse;
 }
 
 /**
@@ -79,7 +81,8 @@ static NSString* const kExampleText = @"Example: '%@ bought %@ iPhone 5...'";
         self.usersController = [[DWUsersController alloc] init];
         self.usersController.delegate = self;
         
-        self.genderDataSource = [NSArray arrayWithObjects:@"male",@"female", nil];        
+        self.genderDataSource   = [NSArray arrayWithObjects:@"male",@"female", nil];
+        _isAwaitingResponse     = NO;        
     }
     
     return self;
@@ -161,6 +164,9 @@ static NSString* const kExampleText = @"Example: '%@ bought %@ iPhone 5...'";
         return;
     
     [self showLoadingState];
+    
+    _isAwaitingResponse = YES;
+    
     [self.usersController updateUserHavingID:[DWSession sharedDWSession].currentUser.databaseID
                                    withEmail:self.emailTextField.text
                                   withGender:[self.genderDataSource objectAtIndex:self.selectedButtonIndex]];
@@ -174,8 +180,13 @@ static NSString* const kExampleText = @"Example: '%@ bought %@ iPhone 5...'";
 
 //----------------------------------------------------------------------------------------------------
 - (void)userUpdated:(DWUser *)user {
+    
+    if (_isAwaitingResponse) {
+        _isAwaitingResponse = NO;
+        [self.delegate userDetailsUpdated];
+    }
+    
     [user destroy];
-    [self.delegate userDetailsUpdated];
 }
 
 //----------------------------------------------------------------------------------------------------
