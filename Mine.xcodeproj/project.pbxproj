@@ -404,6 +404,10 @@
 		BB3510D81617D1FA00531A80 /* tab-web-share.png in Resources */ = {isa = PBXBuildFile; fileRef = BB350FC71617D1FA00531A80 /* tab-web-share.png */; };
 		BB3510D91617D1FA00531A80 /* tab-web-share@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB350FC81617D1FA00531A80 /* tab-web-share@2x.png */; };
 		BB3510DE1617F90500531A80 /* DWSessionController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB3510DD1617F90500531A80 /* DWSessionController.m */; };
+		BB3510EB1618004500531A80 /* nav-btn-info-off.png in Resources */ = {isa = PBXBuildFile; fileRef = BB3510E71618004500531A80 /* nav-btn-info-off.png */; };
+		BB3510EC1618004500531A80 /* nav-btn-info-on.png in Resources */ = {isa = PBXBuildFile; fileRef = BB3510E81618004500531A80 /* nav-btn-info-on.png */; };
+		BB3510ED1618004500531A80 /* nav-btn-send-off.png in Resources */ = {isa = PBXBuildFile; fileRef = BB3510E91618004500531A80 /* nav-btn-send-off.png */; };
+		BB3510EE1618004500531A80 /* nav-btn-send-on.png in Resources */ = {isa = PBXBuildFile; fileRef = BB3510EA1618004500531A80 /* nav-btn-send-on.png */; };
 		BB46140215CB3A5A00B38D71 /* DWUserPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = BB46140115CB3A5A00B38D71 /* DWUserPresenter.m */; };
 		BB46140615CB3A7500B38D71 /* DWUserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BB46140515CB3A7500B38D71 /* DWUserCell.m */; };
 		BB46142615CC6ABD00B38D71 /* DWModelSet.m in Sources */ = {isa = PBXBuildFile; fileRef = BB46142515CC6ABD00B38D71 /* DWModelSet.m */; };
@@ -993,6 +997,10 @@
 		BB350FC81617D1FA00531A80 /* tab-web-share@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab-web-share@2x.png"; sourceTree = "<group>"; };
 		BB3510DC1617F90500531A80 /* DWSessionController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWSessionController.h; sourceTree = "<group>"; };
 		BB3510DD1617F90500531A80 /* DWSessionController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWSessionController.m; sourceTree = "<group>"; };
+		BB3510E71618004500531A80 /* nav-btn-info-off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-btn-info-off.png"; sourceTree = "<group>"; };
+		BB3510E81618004500531A80 /* nav-btn-info-on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-btn-info-on.png"; sourceTree = "<group>"; };
+		BB3510E91618004500531A80 /* nav-btn-send-off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-btn-send-off.png"; sourceTree = "<group>"; };
+		BB3510EA1618004500531A80 /* nav-btn-send-on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-btn-send-on.png"; sourceTree = "<group>"; };
 		BB46140015CB3A5A00B38D71 /* DWUserPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWUserPresenter.h; sourceTree = "<group>"; };
 		BB46140115CB3A5A00B38D71 /* DWUserPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWUserPresenter.m; sourceTree = "<group>"; };
 		BB46140415CB3A7500B38D71 /* DWUserCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWUserCell.h; sourceTree = "<group>"; };
@@ -1554,6 +1562,10 @@
 		BB350EB71617D1FA00531A80 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				BB3510E71618004500531A80 /* nav-btn-info-off.png */,
+				BB3510E81618004500531A80 /* nav-btn-info-on.png */,
+				BB3510E91618004500531A80 /* nav-btn-send-off.png */,
+				BB3510EA1618004500531A80 /* nav-btn-send-on.png */,
 				2642B7DC1617DF1600065303 /* nav-btn-send-off@2x.png */,
 				2642B7DD1617DF1600065303 /* nav-btn-send-on@2x.png */,
 				BB350EB81617D1FA00531A80 /* arrow-up.png */,
@@ -2591,6 +2603,10 @@
 				BB3510D91617D1FA00531A80 /* tab-web-share@2x.png in Resources */,
 				2642B7DE1617DF1600065303 /* nav-btn-send-off@2x.png in Resources */,
 				2642B7DF1617DF1600065303 /* nav-btn-send-on@2x.png in Resources */,
+				BB3510EB1618004500531A80 /* nav-btn-info-off.png in Resources */,
+				BB3510EC1618004500531A80 /* nav-btn-info-on.png in Resources */,
+				BB3510ED1618004500531A80 /* nav-btn-send-off.png in Resources */,
+				BB3510EE1618004500531A80 /* nav-btn-send-on.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
