@@ -8,6 +8,8 @@
 
 #import "DWFacebookConnectViewController.h"
 #import "DWAnalyticsManager.h"
+#import "DWNavigationBarBackButton.h"
+#import "DWGUIManager.h"
 #import "DWSession.h"
 #import "DWConstants.h"
 
@@ -67,6 +69,11 @@ static NSString* const kMsgError            = @"Error connecting with Facebook";
 //----------------------------------------------------------------------------------------------------
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.navigationItem.leftBarButtonItem   = [DWNavigationBarBackButton backButtonForNavigationController:self.navigationController];
+    self.navigationItem.titleView           = [DWGUIManager navBarTitleViewWithText:@"Facebook Login"];
+    
+    self.view.backgroundColor               = [UIColor colorWithRed:0.9333 green:0.9333 blue:0.9333 alpha:1.0];
     
     [self.facebookConnect authorize];
     
