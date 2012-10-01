@@ -118,15 +118,6 @@ static NSString* const kMsgCancelTitle          = @"Dismiss";
         
         self.storePickerViewController              = [[DWStorePickerViewController alloc] init];
         self.storePickerViewController.delegate     = self;
-        
-        self.facebookConnectViewController          = [[DWFacebookConnectViewController alloc] init];
-        self.facebookConnectViewController.delegate = self;
-        
-        self.twitterConnectViewController           = [[DWTwitterConnectViewController alloc] init];
-        self.twitterConnectViewController.delegate  = self;
-        
-        self.tumblrConnectViewController            = [[DWTumblrConnectViewController alloc] init];
-        self.tumblrConnectViewController.delegate   = self;
     }
     
     return self;
@@ -315,19 +306,31 @@ static NSString* const kMsgCancelTitle          = @"Dismiss";
 
 //----------------------------------------------------------------------------------------------------
 - (IBAction)facebookConfigureButtonClicked:(id)sender {
-    [self.navigationController pushViewController:self.facebookConnectViewController 
+    
+    self.facebookConnectViewController          = [[DWFacebookConnectViewController alloc] init];
+    self.facebookConnectViewController.delegate = self;
+    
+    [self.navigationController pushViewController:self.facebookConnectViewController
                                          animated:YES];
 }
 
 //----------------------------------------------------------------------------------------------------
-- (IBAction)twitterConfigureButtonClicked:(id)sender {    
-    [self.navigationController pushViewController:self.twitterConnectViewController 
+- (IBAction)twitterConfigureButtonClicked:(id)sender {
+    
+    self.twitterConnectViewController           = [[DWTwitterConnectViewController alloc] init];
+    self.twitterConnectViewController.delegate  = self;
+    
+    [self.navigationController pushViewController:self.twitterConnectViewController
                                          animated:YES];    
 }
 
 //----------------------------------------------------------------------------------------------------
 - (IBAction)tumblrConfigureButtonClicked:(id)sender {
-    [self.navigationController pushViewController:self.tumblrConnectViewController 
+
+    self.tumblrConnectViewController            = [[DWTumblrConnectViewController alloc] init];
+    self.tumblrConnectViewController.delegate   = self;
+    
+    [self.navigationController pushViewController:self.tumblrConnectViewController
                                          animated:YES];    
 }
 
