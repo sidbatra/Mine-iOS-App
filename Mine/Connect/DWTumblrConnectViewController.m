@@ -14,8 +14,8 @@
 
 
 static NSString* const kMsgErrorTitle       = @"Error";
-static NSString* const kMsgCancelTitle      = @"OK";
-static NSString* const kMsgError            = @"Incorrect email or password";
+static NSString* const kMsgCancelTitle      = @"Dismiss";
+static NSString* const kMsgError            = @"Please check your e-mail and password.";
 
 /**
  * Private declarations
@@ -217,6 +217,9 @@ static NSString* const kMsgError            = @"Incorrect email or password";
 //----------------------------------------------------------------------------------------------------
 - (void)userUpdateError:(NSString *)error {
     [self hideLoadingState];
+    
+    if (self.navigationController.topViewController == self)
+        [DWGUIManager connectionErrorAlertView];
 }
 
 @end

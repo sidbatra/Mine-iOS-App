@@ -13,7 +13,7 @@
 
 @protocol DWFacebookConnectViewControllerDelegate;
 
-@interface DWFacebookConnectViewController : UIViewController<DWFacebookConnectDelegate,DWUsersControllerDelegate> {
+@interface DWFacebookConnectViewController : UIViewController<UIAlertViewDelegate,DWFacebookConnectDelegate,DWUsersControllerDelegate> {
     __weak id<DWFacebookConnectViewControllerDelegate,NSObject> _delegate;    
 }
 

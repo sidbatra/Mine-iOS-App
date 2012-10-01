@@ -19,8 +19,8 @@
 
 
 static NSString* const kMsgIncompleteTitle      = @"Incomplete";
-static NSString* const kMsgIncomplete           = @"Please enter an item name";
-static NSString* const kMsgCancelTitle          = @"OK";
+static NSString* const kMsgIncomplete           = @"Add the name of your item.";
+static NSString* const kMsgCancelTitle          = @"Dismiss";
 
 
 /**

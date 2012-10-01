@@ -9,6 +9,10 @@
 #import "DWGUIManager.h"
 #import "DWConstants.h"
 
+static NSString* const kMsgErrorTitle       = @"Error";
+static NSString* const kMsgCancelTitle      = @"Dismiss";
+static NSString* const kMsgError            = @"Mine can't complete your request. Please try again later.";
+
 static NSString* const kImgSaveOff  = @"nav-btn-save-off.png";
 static NSString* const kImgSaveOn   = @"nav-btn-save-on.png";
 static NSString* const kImgNextOff  = @"nav-btn-next-off.png";
@@ -118,6 +122,22 @@ static NSString* const kImgSendOn   = @"nav-btn-send-on.png";
 	[button setFrame:CGRectMake(0,0,53,30)];
     
     return [[UIBarButtonItem alloc] initWithCustomView:button];
+}
+
+//----------------------------------------------------------------------------------------------------
++ (void)connectionErrorAlertView {
+    [self connectionErrorAlertViewWithDelegate:nil];
+}
+
+//----------------------------------------------------------------------------------------------------
++ (void)connectionErrorAlertViewWithDelegate:(id)delegate {
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:kMsgErrorTitle
+                                                    message:kMsgError
+                                                   delegate:delegate
+                                          cancelButtonTitle:kMsgCancelTitle
+                                          otherButtonTitles:nil];
+    [alert show];
 }
 
 @end

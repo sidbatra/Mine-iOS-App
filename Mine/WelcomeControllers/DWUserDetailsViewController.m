@@ -215,6 +215,9 @@ static NSString* const kExampleText = @"Example: '%@ bought %@ iPhone 5...'";
 //----------------------------------------------------------------------------------------------------
 - (void)userUpdateError:(NSString *)error {
     [self hideLoadingState];
+    
+    if (self.navigationController.topViewController == self)
+        [DWGUIManager connectionErrorAlertView];
 }
 
 

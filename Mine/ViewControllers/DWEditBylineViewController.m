@@ -128,6 +128,9 @@ static NSInteger const kMaxBylineLength = 160;
 - (void)userUpdateError:(NSString *)error {
     [self hideSpinner];
     [self.bylineTextView becomeFirstResponder];
+    
+    if (self.navigationController.topViewController == self)
+        [DWGUIManager connectionErrorAlertView];
 }
 
 

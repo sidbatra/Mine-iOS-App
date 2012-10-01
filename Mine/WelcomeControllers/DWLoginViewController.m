@@ -11,6 +11,7 @@
 #import <MediaPlayer/MediaPlayer.h>
 
 #import "DWAnalyticsManager.h"
+#import "DWGUIManager.h"
 #import "DWConstants.h"
 
 
@@ -252,6 +253,9 @@ static NSString* const kVideoIntro = @"mine_intro_480x214.mp4";
 - (void)userCreationError:(NSString*)error {
     [self stopLoadingFB];
     [self stopLoadingTW];
+    
+    if ([self.delegate loginViewNavigationController].topViewController == self)
+        [DWGUIManager connectionErrorAlertView];
 }
 
 

@@ -32,4 +32,10 @@
 
 + (UIBarButtonItem*)navBarSendButtonWithTarget:(id)target;
 
+/**
+ * Fallback error view for handling connection/server errors
+ */
++ (void)connectionErrorAlertView;
++ (void)connectionErrorAlertViewWithDelegate:(id)delegate;
+
 @end

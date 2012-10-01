@@ -14,8 +14,8 @@
 #import "DWConstants.h"
 
 static NSString* const kMsgErrorTitle       = @"Error";
-static NSString* const kMsgCancelTitle      = @"OK";
-static NSString* const kMsgError            = @"Error connecting with Facebook";
+static NSString* const kMsgCancelTitle      = @"Dismiss";
+static NSString* const kMsgError            = @"Mine needs to access your basic Facebook information to proceed. Please enable permissions and continue.";
 
 /**
  * Private declarations
@@ -103,7 +103,7 @@ static NSString* const kMsgError            = @"Error connecting with Facebook";
     
     UIAlertView *alert = [[UIAlertView alloc] initWithTitle:kMsgErrorTitle
                                                     message:kMsgError
-                                                   delegate:nil
+                                                   delegate:self
                                           cancelButtonTitle:kMsgCancelTitle
                                           otherButtonTitles:nil];
     [alert show];
@@ -136,7 +136,22 @@ static NSString* const kMsgError            = @"Error connecting with Facebook";
 
 //----------------------------------------------------------------------------------------------------
 - (void)userUpdateError:(NSString *)error {
-    DWError(@"Error in User Update - Show an alert");
+    
+    if (self.navigationController.topViewController == self)
+        [DWGUIManager connectionErrorAlertViewWithDelegate:self];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark UIAlertViewDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if(buttonIndex == 0) {
+        [self.navigationController popViewControllerAnimated:YES];
+    }
 }
 
 @end

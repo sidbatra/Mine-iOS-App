@@ -17,8 +17,8 @@
 
 
 static NSString* const kMsgErrorTitle       = @"Error";
-static NSString* const kMsgCancelTitle      = @"OK";
-static NSString* const kMsgError            = @"Mine needs access to your contacts for invites. You can update your settings. Setting -> Privacy -> Contacts";
+static NSString* const kMsgCancelTitle      = @"Dismiss";
+static NSString* const kMsgError            = @"Mine does not have access to your contacts. You can enable access in Privacy Settings.";
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------

@@ -14,8 +14,8 @@
 #import "DWConstants.h"
 
 static NSString* const kMsgErrorTitle       = @"Error";
-static NSString* const kMsgCancelTitle      = @"OK";
-static NSString* const kMsgError            = @"Incorrect twitter username or password";
+static NSString* const kMsgCancelTitle      = @"Dismiss";
+static NSString* const kMsgError            = @"Please check your username and password.";
 
 /**
  * Private declarations
@@ -230,6 +230,9 @@ static NSString* const kMsgError            = @"Incorrect twitter username or pa
 //----------------------------------------------------------------------------------------------------
 - (void)userUpdateError:(NSString *)error {
     [self hideLoadingState];
+    
+    if (self.navigationController.topViewController == self)
+        [DWGUIManager connectionErrorAlertView];
 }
 
 @end
