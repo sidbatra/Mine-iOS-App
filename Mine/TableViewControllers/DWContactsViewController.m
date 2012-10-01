@@ -56,22 +56,11 @@ static NSString* const kMsgError            = @"Mine needs access to your contac
 	[super viewDidLoad];
     
     self.view.backgroundColor   = [UIColor colorWithRed:0.933 green:0.933 blue:0.933 alpha:1.0];
-    self.loadingView.hidden     = YES;    
+    self.loadingView.hidden     = YES;
+    
+    [self adjustSupportingViewsY:106];
     
     [self disablePullToRefresh];
-}
-
-//----------------------------------------------------------------------------------------------------
-- (UIView*)tableLoadingView {
-    return [[DWLoadingView alloc] initWithFrame:CGRectMake(0,-44,320,339)];
-}
-
-//----------------------------------------------------------------------------------------------------
-- (UIView*)tableErrorView {
-    DWErrorView *errorView  = [[DWErrorView alloc] initWithFrame:CGRectMake(0,0,320,273)];
-    errorView.delegate      = self;
-    
-    return errorView;
 }
 
 

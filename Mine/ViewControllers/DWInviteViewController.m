@@ -120,6 +120,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.view.backgroundColor                       = [UIColor colorWithRed:0.933 green:0.933 blue:0.933 alpha:1.0];
+    
     self.navigationItem.leftBarButtonItem           = [DWNavigationBarBackButton backButtonForNavigationController:self.navigationController];
     self.navigationItem.titleView                   = [DWGUIManager navBarTitleViewWithText:@"Invite Friends"];
     self.navigationItem.rightBarButtonItem          = [DWGUIManager navBarSendButtonWithTarget:self];
