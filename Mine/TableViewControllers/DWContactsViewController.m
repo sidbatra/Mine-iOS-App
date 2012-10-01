@@ -11,9 +11,14 @@
 #import "DWContact.h"
 #import "DWContactPresenter.h"
 #import "DWLoadingView.h"
+#import "DWAnalyticsManager.h"
 #import "DWErrorView.h"
 #import "DWConstants.h"
 
+
+static NSString* const kMsgErrorTitle       = @"Error";
+static NSString* const kMsgCancelTitle      = @"OK";
+static NSString* const kMsgError            = @"Mine needs access to your contacts for invites. You can update your settings. Setting -> Privacy -> Contacts";
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
@@ -171,6 +176,20 @@
     [self performSelectorOnMainThread:@selector(reloadTableView) 
                            withObject:nil 
                         waitUntilDone:NO];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)contactsPermissionDenied {
+    self.loadingView.hidden = YES;
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:kMsgErrorTitle
+                                                    message:kMsgError
+                                                   delegate:nil
+                                          cancelButtonTitle:kMsgCancelTitle
+                                          otherButtonTitles:nil];
+    [alert show];
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Contacts Permission Denied"];
 }
 
 //----------------------------------------------------------------------------------------------------

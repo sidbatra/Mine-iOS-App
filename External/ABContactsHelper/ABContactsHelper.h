@@ -17,6 +17,7 @@
 
 // Address Book Contacts and Groups
 + (NSArray *) contacts; // people
++ (NSArray *) contactsFromAddressBook:(ABAddressBookRef) addressBook; //people from Address Book
 + (NSArray *) groups; // groups
 
 // Counting

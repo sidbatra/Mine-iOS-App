@@ -28,6 +28,16 @@
 	return array;
 }
 
++ (NSArray *) contactsFromAddressBook:(ABAddressBookRef) addressBook
+{
+	NSArray *thePeople = (NSArray *)ABAddressBookCopyArrayOfAllPeople(addressBook);
+	NSMutableArray *array = [NSMutableArray arrayWithCapacity:thePeople.count];
+	for (id person in thePeople)
+		[array addObject:[ABContact contactWithRecord:(ABRecordRef)person]];
+	[thePeople release];
+	return array;
+}
+
 + (int) contactsCount
 {
 	ABAddressBookRef addressBook = CFAutorelease(ABAddressBookCreate());

@@ -42,25 +42,19 @@ static NSString* const kContactsQuery   = @"email contains[cd] %@ OR fullName co
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
-#pragma mark Index
+#pragma mark Private Methods
 
 //----------------------------------------------------------------------------------------------------
-- (void)getAllContacts {
+- (NSMutableArray*)getContactsWithEmail:(NSArray*)contacts {
     
-    SEL sel = @selector(allContactsLoaded:);
-    
-    if(![self.delegate respondsToSelector:sel])
-        return;
-    
-    NSArray *contacts               = [ABContactsHelper contacts];
-    NSMutableArray  *dWContacts     = [NSMutableArray arrayWithCapacity:[contacts count]];    
+    NSMutableArray  *dWContacts     = [NSMutableArray array];
     
     for(id contact in contacts) {
         for(id email in [contact emailArray]) {
             DWContact *dWContact    = [[DWContact alloc] init];
             
             dWContact.firstName     = [[contact firstname] length] == 0         ?   @"" : [contact firstname] ;
-            dWContact.lastName      = [[contact lastname] length] == 0          ?   @"" : [contact lastname]; 
+            dWContact.lastName      = [[contact lastname] length] == 0          ?   @"" : [contact lastname];
             
             dWContact.fullName      = [NSString stringWithFormat:@"%@ %@",dWContact.firstName,dWContact.lastName];
             dWContact.email         = email;
@@ -69,25 +63,66 @@ static NSString* const kContactsQuery   = @"email contains[cd] %@ OR fullName co
         }
     }
     
-    [self.delegate performSelector:sel 
-                        withObject:dWContacts]; 
+    return dWContacts;
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)contactsPermissionAccepted:(ABAddressBookRef)addressBook {
+    
+    NSArray *contacts           = [ABContactsHelper contactsFromAddressBook:addressBook];
+    NSMutableArray *dWContacts  = [self getContactsWithEmail:contacts];
+    
+    [self.delegate allContactsLoaded:dWContacts];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)contactsPermissionDenied {
+    [self.delegate contactsPermissionDenied];
 }
 
 
 //----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark Index
+
+//----------------------------------------------------------------------------------------------------
+- (void)getAllContacts {
+    
+    if(SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"6.0")) {
+        
+        CFErrorRef error             = nil;
+        ABAddressBookRef addressBook = ABAddressBookCreateWithOptions(NULL,&error);
+        
+        ABAddressBookRequestAccessWithCompletion(addressBook, ^(bool granted, CFErrorRef error) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                if (error) {
+                    DWDebug(@"Error fetching contacts");
+                }
+                else if (!granted) {
+                    [self contactsPermissionDenied];
+                }
+                else {
+                    [self contactsPermissionAccepted:addressBook];
+                }
+            });
+        });
+    }    
+    else {
+        NSArray *contacts           = [ABContactsHelper contacts];
+        NSMutableArray *dWContacts  = [self getContactsWithEmail:contacts];
+        
+        [self.delegate allContactsLoaded:dWContacts];
+    }
+}
+
+//----------------------------------------------------------------------------------------------------
 - (void)getContactsForQuery:(NSString*)query withCache:(NSArray*)contacts {
-    
-    SEL sel = @selector(contactsLoaded:fromQuery:);
-    
-    if(![self.delegate respondsToSelector:sel])
-        return;
     
     NSPredicate *pred       = [NSPredicate predicateWithFormat:kContactsQuery,query,query];
 	NSMutableArray *results = [NSMutableArray arrayWithArray:[contacts filteredArrayUsingPredicate:pred]];
     
-    [self.delegate performSelector:sel
-                        withObject:results 
-                        withObject:query]; 
+    [self.delegate contactsLoaded:results fromQuery:query];
 }
 
 @end

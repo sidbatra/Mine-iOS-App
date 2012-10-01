@@ -46,7 +46,7 @@
  * Fired when all contacts are loaded from the 
  * address book
  */
-- (void)allContactsLoaded:(NSMutableArray*)contacts; 
+- (void)allContactsLoaded:(NSMutableArray*)contacts;
 
 /**
  * Fired when the contacts are loaded in the memory
@@ -55,5 +55,10 @@
  */
 - (void)contactsLoaded:(NSMutableArray*)contacts 
              fromQuery:(NSString*)query;
+
+/**
+ * Fired when the permission to access contacts is denied
+ */
+- (void)contactsPermissionDenied;
 
 @end

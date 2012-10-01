@@ -109,6 +109,11 @@
 - (void)contactsLoadedFromQuery;
 
 /**
+ * Fired when the contacts permission is denied
+ */
+- (void)contactsPermissionDenied;
+
+/**
  * Provide the fetched user object to the table view to update the UI
  */
 - (void)invitesCreated;
