@@ -73,8 +73,6 @@ static NSString* const kMsgError            = @"Error connecting with Facebook";
     self.navigationItem.leftBarButtonItem   = [DWNavigationBarBackButton backButtonForNavigationController:self.navigationController];
     self.navigationItem.titleView           = [DWGUIManager navBarTitleViewWithText:@"Facebook Login"];
     
-    self.view.backgroundColor               = [UIColor colorWithRed:0.9333 green:0.9333 blue:0.9333 alpha:1.0];
-    
     [self.facebookConnect authorize];
     
     [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Facebook Connect View"];
