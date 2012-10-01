@@ -202,13 +202,29 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
 #pragma mark Public interface
 
 //----------------------------------------------------------------------------------------------------
+- (void)adjustSupportingViewsY:(CGFloat)delta {
+    CGRect frame = self.loadingView.frame;
+    frame.origin.y -= delta;
+    frame.size.height += delta;
+    self.loadingView.frame = frame;
+    
+    frame = self.errorView.frame;
+    frame.origin.y -= delta;
+    frame.size.height += delta;
+    self.errorView.frame = frame;
+}
+
+//----------------------------------------------------------------------------------------------------
 - (UIView*)tableLoadingView {
-    return [[DWLoadingView alloc] initWithFrame:self.view.frame];
+    CGRect frame = self.view.frame;
+    return [[DWLoadingView alloc] initWithFrame:CGRectMake(0,0,frame.size.width,frame.size.height)];
 }
 
 //----------------------------------------------------------------------------------------------------
  - (UIView<DWErrorViewProtocol>*)tableErrorView {
-     DWErrorView *errorView  = [[DWErrorView alloc] initWithFrame:self.view.frame];
+     CGRect frame = self.view.frame;
+     
+     DWErrorView *errorView  = [[DWErrorView alloc] initWithFrame:CGRectMake(0,0,frame.size.width,frame.size.height)];
      errorView.delegate      = self;
  
      return errorView;

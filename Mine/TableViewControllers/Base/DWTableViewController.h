@@ -88,5 +88,10 @@
  */
 - (UIView<DWErrorViewProtocol>*)tableErrorView;
 
+/**
+ * Adjust Y positioning of the supporting views.
+ */
+- (void)adjustSupportingViewsY:(CGFloat)delta;
+
 @end
 

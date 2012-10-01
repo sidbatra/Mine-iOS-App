@@ -50,6 +50,7 @@
                                                   green:0.933 
                                                    blue:0.933 
                                                   alpha:1.0];
+    [self adjustSupportingViewsY:106];
     
     [self disablePullToRefresh];
     
