@@ -80,6 +80,7 @@ extern NSString* const kNOnboardingStarted;
  */
 extern NSInteger const kColumnsInProductsSearch;
 extern NSInteger const kColumnsInPurchaseSearch;
+extern NSInteger const kColumnsInGlobalFeed;
 
 
 /**
