@@ -44,6 +44,11 @@
 - (void)productsLoadedForQuery:(NSString*)query;
 
 /**
+ * Fired when there is an error in loading products
+ */
+- (void)productsLoadError;
+
+/**
  * Fired when a product is Clicked by the user
  */
 - (void)productClicked:(DWProduct*)product;

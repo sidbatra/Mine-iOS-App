@@ -337,6 +337,14 @@ static NSString* const kSuggestionMessageSubtitle       = @"e.g. ‘%@’";
 }
 
 //----------------------------------------------------------------------------------------------------
+- (void)productsLoadError {
+    [self showResults];
+    [self enableSearch];
+    [self hideLoadingView];
+    [self showNavBarShadow];
+}
+
+//----------------------------------------------------------------------------------------------------
 - (void)productClicked:(DWProduct *)product {
     self.product = product;
     

@@ -40,5 +40,10 @@
  */
 - (void)productsLoadedForQuery:(NSString*)query;
 
+/**
+ * Fired when there is an error in loading products
+ */
+- (void)productsLoadError;
+
 @end
 

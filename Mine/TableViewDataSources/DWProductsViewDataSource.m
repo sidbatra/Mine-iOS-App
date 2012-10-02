@@ -175,6 +175,8 @@
 - (void)productsLoadError:(NSString *)error {
     [self.delegate displayError:error
                   withRefreshUI:YES];
+    
+    [self.delegate productsLoadError];
 }
 
 @end
