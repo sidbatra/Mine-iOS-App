@@ -11,15 +11,18 @@
 #import <QuartzCore/QuartzCore.h>
 
 #import "DWPurchase.h"
+#import "DWUser.h"
 #import "DWConstants.h"
 
 
 
 static NSInteger const kPurchaseProfileCellHeight = 180;
 static NSInteger const kPurchaseImageSide = 144;
+static NSInteger const kUserImageSide = 25;
 static NSInteger const kSpinnerSide = 20;
 static NSInteger const kBackgroundBottomMargin = 12;
-static NSInteger const kMaxTitleLength = 45;
+static NSInteger const kMaxTitleLength = NSIntegerMax;
+static NSInteger const kMaxTitleLengthInUserMode = 29;
 
 static NSString* const kImgMiniChevron = @"doink-up-8.png";
 static NSString* const kImgSpinnerBackground = @"delete-loading.png";
@@ -30,6 +33,7 @@ static NSString* const kImgSpinnerBackground = @"delete-loading.png";
 
 @interface DWPurchaseProfileCell() {
     NSMutableArray  *_imageButtons;
+    NSMutableArray  *_userImageButtons;
     NSMutableArray  *_titleButtons;
     NSMutableArray  *_backgroundLayers;
     NSMutableArray  *_chevrons;
@@ -40,6 +44,7 @@ static NSString* const kImgSpinnerBackground = @"delete-loading.png";
 
 @property (nonatomic,strong) NSMutableArray *imageButtons;
 @property (nonatomic,strong) NSMutableArray *titleButtons;
+@property (nonatomic,strong) NSMutableArray *userImageButtons;
 @property (nonatomic,strong) NSMutableArray *backgroundLayers;
 @property (nonatomic,strong) NSMutableArray *chevrons;
 @property (nonatomic,strong) NSMutableArray *spinners;
@@ -54,7 +59,9 @@ static NSString* const kImgSpinnerBackground = @"delete-loading.png";
 //----------------------------------------------------------------------------------------------------
 @implementation DWPurchaseProfileCell
 
+@synthesize userMode            = _userMode;
 @synthesize imageButtons        = _imageButtons;
+@synthesize userImageButtons    = _userImageButtons;
 @synthesize titleButtons        = _titleButtons;
 @synthesize backgroundLayers    = _backgroundLayers;
 @synthesize chevrons            = _chevrons;
@@ -64,12 +71,15 @@ static NSString* const kImgSpinnerBackground = @"delete-loading.png";
 
 //----------------------------------------------------------------------------------------------------
 - (id)initWithStyle:(UITableViewCellStyle)style 
-	reuseIdentifier:(NSString *)reuseIdentifier {
+	reuseIdentifier:(NSString *)reuseIdentifier
+           userMode:(BOOL)userMode {
     
     self = [super initWithStyle:style
 				reuseIdentifier:reuseIdentifier];
 	
     if (self) {
+        self.userMode = userMode;
+        
         self.contentView.clipsToBounds = YES;
         self.imageButtons       = [NSMutableArray arrayWithCapacity:kColumnsInPurchaseSearch];
         self.titleButtons       = [NSMutableArray arrayWithCapacity:kColumnsInPurchaseSearch];
@@ -78,6 +88,12 @@ static NSString* const kImgSpinnerBackground = @"delete-loading.png";
         
         [self createImageButtons];
         [self createTitleButtons];
+        
+        if(self.userMode) {
+            self.userImageButtons = [NSMutableArray arrayWithCapacity:kColumnsInPurchaseSearch];
+            [self createUserImageButtons];
+        }
+        
         
         self.contentView.backgroundColor = [UIColor whiteColor];
 		
@@ -88,20 +104,47 @@ static NSString* const kImgSpinnerBackground = @"delete-loading.png";
 }
 
 //----------------------------------------------------------------------------------------------------
-+ (NSInteger)heightForCellWithPurchases:(NSMutableArray*)purchases {
++ (NSString*)fullTitleForPurchaseWithTitle:(NSString*)title
+                            andUserPronoun:(NSString*)pronoun
+                                inUserMode:(BOOL)userMode {
+    
+    NSString* fullTitle = nil;
+   // NSInteger maxLength = 0;
+    
+    if(userMode) {
+        fullTitle = [NSString stringWithFormat:@"bought %@ %@",pronoun,title];
+        //maxLength = kMaxTitleLengthInUserMode;
+    }
+    else {
+        fullTitle = title;
+        //maxLength = kMaxTitleLength;
+    }
+    
+    //if([fullTitle length] > maxLength)
+    //    fullTitle = [NSString stringWithFormat:@"%@...",[fullTitle substringToIndex:maxLength-3]];
+    
+    return fullTitle;
+}
+
+//----------------------------------------------------------------------------------------------------
++ (NSInteger)heightForCellWithPurchases:(NSMutableArray*)purchases
+                             inUserMode:(BOOL)userMode {
     
     NSInteger height = 0;
     
     for(DWPurchase *purchase in purchases) {
         
-        NSString *title = purchase.title;
-        
-        //if([title length] > kMaxTitleLength)
-        //    title = [NSString stringWithFormat:@"%@...",[title substringToIndex:kMaxTitleLength-3]];
+        NSString *title = [self fullTitleForPurchaseWithTitle:purchase.title
+                                               andUserPronoun:purchase.user.pronoun
+                                                   inUserMode:userMode];
         
         NSInteger newHeight = [title sizeWithFont:kTitleFont
-                                constrainedToSize:CGSizeMake(126,1000)
+                                constrainedToSize:CGSizeMake(userMode ? 95 : 126,1000)
                                     lineBreakMode:UILineBreakModeWordWrap].height;
+        
+        if(userMode)
+            newHeight = MAX(kUserImageSide,newHeight);
+        
         if(newHeight > height)
             height = newHeight;
     }
@@ -124,14 +167,38 @@ static NSString* const kImgSpinnerBackground = @"delete-loading.png";
         imageButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
         imageButton.backgroundColor = kColorImageBackground;
         
-         [imageButton addTarget:self
-         action:@selector(didTapImageButton:)
-         forControlEvents:UIControlEventTouchUpInside];
+        if(!self.userMode) {
+             [imageButton addTarget:self
+             action:@selector(didTapImageButton:)
+             forControlEvents:UIControlEventTouchUpInside];
+        }
         
         [self.imageButtons addObject:imageButton];
         
         [self.contentView addSubview:imageButton];
     }
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)createUserImageButtons {
+ 
+    for(NSInteger i=0 ; i<kColumnsInPurchaseSearch ; i++) {
+        UIButton *userImageButton = [[UIButton alloc] initWithFrame:CGRectMake((kPurchaseImageSide+10)*i + 11 + 9,11+kPurchaseImageSide+9+7,kUserImageSide,kUserImageSide)];
+        
+        userImageButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
+        userImageButton.imageView.layer.cornerRadius = 2;
+        //userImageButton.enabled = NO;
+        //userImageButton.adjustsImageWhenDisabled = NO;
+        
+        //[userImageButton addTarget:self
+        //                    action:@selector(didTapUserImageButton:)
+        //          forControlEvents:UIControlEventTouchUpInside];
+        
+        [self.userImageButtons addObject:userImageButton];
+        
+        [self.contentView addSubview:userImageButton];
+    }
+
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -159,9 +226,9 @@ static NSString* const kImgSpinnerBackground = @"delete-loading.png";
         UIButton *titleButton = [[UIButton alloc] init];
         
         CGRect frame = backgroundLayer.frame;
-        frame.origin.x += 9;
+        frame.origin.x += 9 + (self.userMode ? kUserImageSide + 6 : 0);
         frame.origin.y += 7;
-        frame.size.width -= 18;
+        frame.size.width -= 18 + (self.userMode ? kUserImageSide + 6 : 0);
         frame.size.height -= kBackgroundBottomMargin;
         
         titleButton.frame = frame;
@@ -177,9 +244,11 @@ static NSString* const kImgSpinnerBackground = @"delete-loading.png";
         [titleButton setTitleColor:[UIColor colorWithRed:0.333 green:0.333 blue:0.333 alpha:1.0]  
                           forState:UIControlStateNormal];
         
-        [titleButton addTarget:self
-                        action:@selector(didTapTitleButton:)
-              forControlEvents:UIControlEventTouchUpInside];
+        if(!self.userMode) {
+            [titleButton addTarget:self
+                            action:@selector(didTapTitleButton:)
+                  forControlEvents:UIControlEventTouchUpInside];
+        }
         
         [self.titleButtons addObject:titleButton];
         
@@ -233,6 +302,9 @@ static NSString* const kImgSpinnerBackground = @"delete-loading.png";
     for(UIButton *imageButton in self.imageButtons) 
         imageButton.hidden = YES;
     
+    for(UIButton *userImageButton in self.userImageButtons)
+        userImageButton.hidden = YES;
+    
     for(UIButton *titleButton in self.titleButtons)
         titleButton.hidden = YES;
     
@@ -276,8 +348,34 @@ static NSString* const kImgSpinnerBackground = @"delete-loading.png";
 }
 
 //----------------------------------------------------------------------------------------------------
+- (void)setUserImage:(UIImage*)image
+            forIndex:(NSInteger)index
+          withUserID:(NSInteger)userID {
+    
+    if(index >= [self.userImageButtons count])
+        return;
+    
+    UIButton *userImageButton = [self.userImageButtons objectAtIndex:index];
+    userImageButton.tag = userID;
+    userImageButton.hidden = NO;
+    
+    [userImageButton setImage:image
+                 forState:UIControlStateNormal];
+    
+    [userImageButton setImage:image
+                 forState:UIControlStateHighlighted];
+    
+    if(image)
+        userImageButton.backgroundColor = [UIColor whiteColor];
+    else
+        userImageButton.backgroundColor = kColorImageBackground;
+    
+}
+
+//----------------------------------------------------------------------------------------------------
 - (void)setPurchaseTitle:(NSString*)title
-                forIndex:(NSInteger)index 
+                forIndex:(NSInteger)index
+         withUserPronoun:(NSString*)pronoun
           withPurchaseID:(NSInteger)purchaseID {
     
     if(index >= [self.titleButtons count])
@@ -294,10 +392,12 @@ static NSString* const kImgSpinnerBackground = @"delete-loading.png";
     titleButton.tag = purchaseID;
     titleButton.hidden = NO;
     
-    //if([title length] > kMaxTitleLength)
-    //    title = [NSString stringWithFormat:@"%@...",[title substringToIndex:kMaxTitleLength-3]];
     
-    [titleButton setTitle:title 
+    NSString *fullTitle = [[self class] fullTitleForPurchaseWithTitle:title
+                                                       andUserPronoun:pronoun
+                                                           inUserMode:self.userMode];
+    
+    [titleButton setTitle:fullTitle
                  forState:UIControlStateNormal];
     
     CGRect frame = backgroundLayer.frame;

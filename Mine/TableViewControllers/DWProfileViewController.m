@@ -53,7 +53,7 @@
     self = [super init];
     
     if(self) {        
-    
+        
         self.tableViewDataSource = [[DWProfileViewDataSource alloc] init];
         
         [self addModelPresenterForClass:[DWUser class]

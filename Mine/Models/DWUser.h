@@ -136,6 +136,11 @@ extern NSString* const kNImgUserLargeLoadError;
  */
 @property (nonatomic,readonly) UIImage *largeImage;
 
+/**
+ * his or her.
+ */
+@property (nonatomic,readonly) NSString *pronoun;
+
 
 /**
  * Age.

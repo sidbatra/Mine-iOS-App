@@ -328,6 +328,11 @@ static NSString* const kKeySetting                      = @"setting";
 }
 
 //----------------------------------------------------------------------------------------------------
+- (NSString*)pronoun {
+    return [self.gender isEqualToString:@"female"] ? @"her" : @"his";
+}
+
+//----------------------------------------------------------------------------------------------------
 - (void)debug {
     DWDebug(@"%@ %@ %@ %@ %@ %@ %d %@  %@ %@  %@ %@  %@ %@  %d %d %d %@",
           self.firstName,self.lastName,self.gender,self.handle,self.byline,self.email,self.age,

@@ -10,6 +10,8 @@
 #import "DWModelSet.h"
 #import "DWPurchaseProfileCell.h"
 #import "DWPurchase.h"
+#import "DWUser.h"
+#import "DWConstants.h"
 
 
 
@@ -30,7 +32,8 @@
     
     if(!cell)
         cell = [[DWPurchaseProfileCell alloc] initWithStyle:UITableViewStylePlain 
-                                            reuseIdentifier:identifier];
+                                            reuseIdentifier:identifier
+                                                   userMode:style == kPurchaseProfilePresenterStyleWithUser];
     
     cell.delegate = delegate;
     
@@ -46,7 +49,15 @@
         
         [cell setPurchaseTitle:purchase.title
                       forIndex:i
+               withUserPronoun:purchase.user.pronoun
                 withPurchaseID:purchase.databaseID];
+        
+        if(style == kPurchaseProfilePresenterStyleWithUser) {
+            [purchase.user downloadSquareImage];
+            [cell setUserImage:purchase.user.squareImage
+                      forIndex:i
+                    withUserID:purchase.user.databaseID];
+        }
         
         if(purchase.isDestroying)
             [cell enterSpinningStateForIndex:i];
@@ -61,7 +72,8 @@
     
      DWModelSet *purchaseSet = object;
     
-    return [DWPurchaseProfileCell heightForCellWithPurchases:purchaseSet.models];
+    return [DWPurchaseProfileCell heightForCellWithPurchases:purchaseSet.models
+                                                  inUserMode:style == kPurchaseProfilePresenterStyleWithUser];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -87,6 +99,19 @@
                         withPurchaseID:purchase.databaseID];
             }
         }
+    }
+    
+    if(style == kPurchaseProfilePresenterStyleWithUser && [DWUser class] == objectClass && objectKey == kKeySquareImageURL) {
+        for(NSInteger i=0 ; i<purchaseSet.length ; i++) {
+            DWPurchase *purchase = [purchaseSet.models objectAtIndex:i];
+            
+            if(purchase.user.databaseID == objectID) {
+                [cell setUserImage:purchase.user.squareImage
+                          forIndex:i
+                        withUserID:purchase.user.databaseID];
+            }
+        }
+
     }
 }
 

@@ -191,5 +191,10 @@ typedef enum {
 } DWPurchaseFeedPresenterStyle;
 
 
+typedef enum {
+    kPurchaseProfilePresenterStyleWithUser = 1
+} DWPurchaseProfilePresenterStyle;
+
+
 @interface DWConstants : NSObject
 @end

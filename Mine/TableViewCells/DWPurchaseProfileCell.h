@@ -11,11 +11,18 @@
 @protocol DWPurchaseProfileCellDelegate;
 
 @interface DWPurchaseProfileCell : UITableViewCell {
+    BOOL _userMode;
+    
     __weak id<DWPurchaseProfileCellDelegate,NSObject> _delegate;
 }
 
+@property (nonatomic,assign) BOOL userMode;
 @property (nonatomic,weak) id<DWPurchaseProfileCellDelegate,NSObject> delegate;
 
+
+- (id)initWithStyle:(UITableViewCellStyle)style
+	reuseIdentifier:(NSString *)reuseIdentifier
+           userMode:(BOOL)userMode;
 
 /**
  * Reset UI
@@ -30,13 +37,17 @@
                 forIndex:(NSInteger)index 
           withPurchaseID:(NSInteger)purchaseID;
 
+- (void)setUserImage:(UIImage*)image
+            forIndex:(NSInteger)index
+          withUserID:(NSInteger)userID;
+
 /**
  * Apply a purchase title.
  */
 - (void)setPurchaseTitle:(NSString*)title
-                forIndex:(NSInteger)index 
+                forIndex:(NSInteger)index
+         withUserPronoun:(NSString*)pronoun
           withPurchaseID:(NSInteger)purchaseID;
-
 
 - (void)enterSpinningStateForIndex:(NSInteger)index;
 
@@ -44,7 +55,8 @@
 /**
  * Compute the height for the cell.
  */
-+ (NSInteger)heightForCellWithPurchases:(NSMutableArray*)purchases;
++ (NSInteger)heightForCellWithPurchases:(NSMutableArray*)purchases
+                             inUserMode:(BOOL)userMode ;
 
 @end
 
