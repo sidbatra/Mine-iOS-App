@@ -270,7 +270,6 @@
 		BB3510541617D1FA00531A80 /* login-strapline@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB350F431617D1FA00531A80 /* login-strapline@2x.png */; };
 		BB3510551617D1FA00531A80 /* message-drawer-opaque.png in Resources */ = {isa = PBXBuildFile; fileRef = BB350F441617D1FA00531A80 /* message-drawer-opaque.png */; };
 		BB3510561617D1FA00531A80 /* message-drawer-opaque@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB350F451617D1FA00531A80 /* message-drawer-opaque@2x.png */; };
-		BB3510571617D1FA00531A80 /* mine_intro_480x214.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = BB350F461617D1FA00531A80 /* mine_intro_480x214.mp4 */; };
 		BB3510581617D1FA00531A80 /* nav-bg.png in Resources */ = {isa = PBXBuildFile; fileRef = BB350F471617D1FA00531A80 /* nav-bg.png */; };
 		BB3510591617D1FA00531A80 /* nav-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB350F481617D1FA00531A80 /* nav-bg@2x.png */; };
 		BB35105A1617D1FA00531A80 /* nav-btn-back-off.png in Resources */ = {isa = PBXBuildFile; fileRef = BB350F491617D1FA00531A80 /* nav-btn-back-off.png */; };
@@ -415,6 +414,7 @@
 		BB351109161A143500531A80 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = BB351108161A143500531A80 /* iTunesArtwork */; };
 		BB35110C161A1DF400531A80 /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB35110A161A1DF400531A80 /* Icon-72@2x.png */; };
 		BB35110D161A1DF400531A80 /* Icon-Small-50@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB35110B161A1DF400531A80 /* Icon-Small-50@2x.png */; };
+		BB35110F161B61CE00531A80 /* mine_intro_640x280.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = BB35110E161B61CD00531A80 /* mine_intro_640x280.mp4 */; };
 		BB46140215CB3A5A00B38D71 /* DWUserPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = BB46140115CB3A5A00B38D71 /* DWUserPresenter.m */; };
 		BB46140615CB3A7500B38D71 /* DWUserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BB46140515CB3A7500B38D71 /* DWUserCell.m */; };
 		BB46142615CC6ABD00B38D71 /* DWModelSet.m in Sources */ = {isa = PBXBuildFile; fileRef = BB46142515CC6ABD00B38D71 /* DWModelSet.m */; };
@@ -869,7 +869,6 @@
 		BB350F431617D1FA00531A80 /* login-strapline@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login-strapline@2x.png"; sourceTree = "<group>"; };
 		BB350F441617D1FA00531A80 /* message-drawer-opaque.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "message-drawer-opaque.png"; sourceTree = "<group>"; };
 		BB350F451617D1FA00531A80 /* message-drawer-opaque@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "message-drawer-opaque@2x.png"; sourceTree = "<group>"; };
-		BB350F461617D1FA00531A80 /* mine_intro_480x214.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = mine_intro_480x214.mp4; sourceTree = "<group>"; };
 		BB350F471617D1FA00531A80 /* nav-bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-bg.png"; sourceTree = "<group>"; };
 		BB350F481617D1FA00531A80 /* nav-bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-bg@2x.png"; sourceTree = "<group>"; };
 		BB350F491617D1FA00531A80 /* nav-btn-back-off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-btn-back-off.png"; sourceTree = "<group>"; };
@@ -1015,6 +1014,7 @@
 		BB351108161A143500531A80 /* iTunesArtwork */ = {isa = PBXFileReference; lastKnownFileType = file; path = iTunesArtwork; sourceTree = "<group>"; };
 		BB35110A161A1DF400531A80 /* Icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72@2x.png"; sourceTree = "<group>"; };
 		BB35110B161A1DF400531A80 /* Icon-Small-50@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small-50@2x.png"; sourceTree = "<group>"; };
+		BB35110E161B61CD00531A80 /* mine_intro_640x280.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = mine_intro_640x280.mp4; sourceTree = "<group>"; };
 		BB46140015CB3A5A00B38D71 /* DWUserPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWUserPresenter.h; sourceTree = "<group>"; };
 		BB46140115CB3A5A00B38D71 /* DWUserPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWUserPresenter.m; sourceTree = "<group>"; };
 		BB46140415CB3A7500B38D71 /* DWUserCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWUserCell.h; sourceTree = "<group>"; };
@@ -1576,6 +1576,7 @@
 		BB350EB71617D1FA00531A80 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				BB35110E161B61CD00531A80 /* mine_intro_640x280.mp4 */,
 				BB35110A161A1DF400531A80 /* Icon-72@2x.png */,
 				BB35110B161A1DF400531A80 /* Icon-Small-50@2x.png */,
 				BB351108161A143500531A80 /* iTunesArtwork */,
@@ -1731,7 +1732,6 @@
 				BB350F431617D1FA00531A80 /* login-strapline@2x.png */,
 				BB350F441617D1FA00531A80 /* message-drawer-opaque.png */,
 				BB350F451617D1FA00531A80 /* message-drawer-opaque@2x.png */,
-				BB350F461617D1FA00531A80 /* mine_intro_480x214.mp4 */,
 				BB350F471617D1FA00531A80 /* nav-bg.png */,
 				BB350F481617D1FA00531A80 /* nav-bg@2x.png */,
 				BB350F491617D1FA00531A80 /* nav-btn-back-off.png */,
@@ -2489,7 +2489,6 @@
 				BB3510541617D1FA00531A80 /* login-strapline@2x.png in Resources */,
 				BB3510551617D1FA00531A80 /* message-drawer-opaque.png in Resources */,
 				BB3510561617D1FA00531A80 /* message-drawer-opaque@2x.png in Resources */,
-				BB3510571617D1FA00531A80 /* mine_intro_480x214.mp4 in Resources */,
 				BB3510581617D1FA00531A80 /* nav-bg.png in Resources */,
 				BB3510591617D1FA00531A80 /* nav-bg@2x.png in Resources */,
 				BB35105A1617D1FA00531A80 /* nav-btn-back-off.png in Resources */,
@@ -2635,6 +2634,7 @@
 				BB351109161A143500531A80 /* iTunesArtwork in Resources */,
 				BB35110C161A1DF400531A80 /* Icon-72@2x.png in Resources */,
 				BB35110D161A1DF400531A80 /* Icon-Small-50@2x.png in Resources */,
+				BB35110F161B61CE00531A80 /* mine_intro_640x280.mp4 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
