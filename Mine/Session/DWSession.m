@@ -154,6 +154,12 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWSession);
     self.currentUser = user;
     
     [self write];
+
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] trackUserWithEmail:self.currentUser.email
+                                                              withAge:self.currentUser.age
+                                                           withGender:self.currentUser.gender];
+
 }
 
 //----------------------------------------------------------------------------------------------------
