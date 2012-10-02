@@ -86,6 +86,7 @@ static NSInteger const kBottomBarMargin = 44;
 @synthesize commentBarView          = _commentBarView;
 @synthesize commentTextField        = _commentTextField;
 @synthesize sendButton              = _sendButton;
+@synthesize spinner                 = _spinner;
 @synthesize delegate                = _delegate;
 
 //----------------------------------------------------------------------------------------------------
@@ -189,6 +190,20 @@ static NSInteger const kBottomBarMargin = 44;
 }
 
 //----------------------------------------------------------------------------------------------------
+- (void)showSpinnner {
+    self.sendButton.enabled = NO;
+    self.spinner.hidden = NO;
+    [self.spinner startAnimating];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)hideSpinner {
+    self.sendButton.enabled = YES;
+    self.spinner.hidden = YES;
+    [self.spinner stopAnimating];
+}
+
+//----------------------------------------------------------------------------------------------------
 - (void)keyboardMovingUp:(BOOL)movingUp withNotification:(NSNotification*)notification {
     
     if(self.isKeyboardShown == movingUp)
@@ -217,6 +232,9 @@ static NSInteger const kBottomBarMargin = 44;
     CGRect buttonFrame = self.sendButton.frame;
     buttonFrame.origin.y += delta;
     
+    CGRect spinnerFrame = self.spinner.frame;
+    spinnerFrame.origin.y += delta;
+    
     CGRect tableViewFrame = self.commentsViewController.view.frame;
     tableViewFrame.size.height += delta;
     
@@ -230,6 +248,7 @@ static NSInteger const kBottomBarMargin = 44;
     [self.commentTextField setFrame:textFieldFrame];
     [self.commentBarView setFrame:barFrame];
     [self.sendButton setFrame:buttonFrame];
+    [self.spinner setFrame:spinnerFrame];
     
     [UIView commitAnimations];
     
@@ -245,7 +264,14 @@ static NSInteger const kBottomBarMargin = 44;
 
 //----------------------------------------------------------------------------------------------------
 - (void)createCommentWithMessage:(NSString*)message {
+    
+    if(!self.sendButton.enabled)
+        return;
+    
+    
     self.commentTextField.text = @"";
+    
+    [self showSpinnner];
 
     self.lastCommentMessage = message;
     
@@ -290,6 +316,8 @@ static NSInteger const kBottomBarMargin = 44;
     if(!purchase)
         return;
     
+    [self hideSpinner];
+    
     [comment incrementPointerCount];
     [comment.user incrementPointerCount];
     [purchase replaceTempCommentWithMountedComment:comment];
@@ -310,6 +338,7 @@ static NSInteger const kBottomBarMargin = 44;
     if(!purchase)
         return;
     
+    [self hideSpinner];
     
     [purchase removeTempCommentWithMessage:self.lastCommentMessage];
     

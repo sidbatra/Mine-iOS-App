@@ -20,6 +20,7 @@
     UIImageView     *_commentBarView;
     UITextField     *_commentTextField;
     UIButton        *_sendButton;
+    UIActivityIndicatorView *_spinner;
     
     __weak id<DWCommentsCreateViewControllerDelegate> _delegate;
 }
@@ -30,6 +31,7 @@
 @property (nonatomic) IBOutlet UIImageView *commentBarView;
 @property (nonatomic) IBOutlet UITextField *commentTextField;
 @property (nonatomic) IBOutlet UIButton *sendButton;
+@property (nonatomic) IBOutlet UIActivityIndicatorView *spinner;
 
 
 /**

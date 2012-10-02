@@ -386,6 +386,7 @@
 		BB35110C161A1DF400531A80 /* Icon-72@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB35110A161A1DF400531A80 /* Icon-72@2x.png */; };
 		BB35110D161A1DF400531A80 /* Icon-Small-50@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB35110B161A1DF400531A80 /* Icon-Small-50@2x.png */; };
 		BB35110F161B61CE00531A80 /* mine_intro_640x280.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = BB35110E161B61CD00531A80 /* mine_intro_640x280.mp4 */; };
+		BB351111161B6F9900531A80 /* comments-btn-send-loading@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB351110161B6F9800531A80 /* comments-btn-send-loading@2x.png */; };
 		BB46140215CB3A5A00B38D71 /* DWUserPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = BB46140115CB3A5A00B38D71 /* DWUserPresenter.m */; };
 		BB46140615CB3A7500B38D71 /* DWUserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BB46140515CB3A7500B38D71 /* DWUserCell.m */; };
 		BB46142615CC6ABD00B38D71 /* DWModelSet.m in Sources */ = {isa = PBXBuildFile; fileRef = BB46142515CC6ABD00B38D71 /* DWModelSet.m */; };
@@ -957,6 +958,7 @@
 		BB35110A161A1DF400531A80 /* Icon-72@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-72@2x.png"; sourceTree = "<group>"; };
 		BB35110B161A1DF400531A80 /* Icon-Small-50@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon-Small-50@2x.png"; sourceTree = "<group>"; };
 		BB35110E161B61CD00531A80 /* mine_intro_640x280.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = mine_intro_640x280.mp4; sourceTree = "<group>"; };
+		BB351110161B6F9800531A80 /* comments-btn-send-loading@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "comments-btn-send-loading@2x.png"; sourceTree = "<group>"; };
 		BB46140015CB3A5A00B38D71 /* DWUserPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWUserPresenter.h; sourceTree = "<group>"; };
 		BB46140115CB3A5A00B38D71 /* DWUserPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWUserPresenter.m; sourceTree = "<group>"; };
 		BB46140415CB3A7500B38D71 /* DWUserCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWUserCell.h; sourceTree = "<group>"; };
@@ -1518,6 +1520,7 @@
 		BB350EB71617D1FA00531A80 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				BB351110161B6F9800531A80 /* comments-btn-send-loading@2x.png */,
 				BB35110E161B61CD00531A80 /* mine_intro_640x280.mp4 */,
 				BB35110A161A1DF400531A80 /* Icon-72@2x.png */,
 				BB35110B161A1DF400531A80 /* Icon-Small-50@2x.png */,
@@ -2519,6 +2522,7 @@
 				BB35110C161A1DF400531A80 /* Icon-72@2x.png in Resources */,
 				BB35110D161A1DF400531A80 /* Icon-Small-50@2x.png in Resources */,
 				BB35110F161B61CE00531A80 /* mine_intro_640x280.mp4 in Resources */,
+				BB351111161B6F9900531A80 /* comments-btn-send-loading@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
