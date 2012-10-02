@@ -10,9 +10,10 @@
 
 #import "DWGlobalFeedViewDataSource.h"
 #import "DWPaginationPresenter.h"
-#import "DWPurchaseFeedPresenter.h"
+#import "DWPurchaseProfilePresenter.h"
 #import "DWPurchase.h"
 #import "DWPagination.h"
+#import "DWModelSet.h"
 #import "DWConstants.h"
 
 
@@ -49,9 +50,9 @@ static NSString* const kMessageSubtitle         = @"It's the ultimate way to dis
         
         self.tableViewDataSource = [[DWGlobalFeedViewDataSource alloc] init];
         
-        [self addModelPresenterForClass:[DWPurchase class]
-                              withStyle:kPurchaseFeedPresenterStyleDisabled 
-                          withPresenter:[DWPurchaseFeedPresenter class]];
+        [self addModelPresenterForClass:[DWModelSet class]
+                              withStyle:kPurchaseProfilePresenterStyleWithUser
+                          withPresenter:[DWPurchaseProfilePresenter class]];
         
         [self addModelPresenterForClass:[DWPagination class]
                               withStyle:kDefaultModelPresenter 

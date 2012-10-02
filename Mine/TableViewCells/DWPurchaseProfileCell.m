@@ -207,6 +207,14 @@ static NSString* const kImgSpinnerBackground = @"delete-loading.png";
     for(NSInteger i=0; i<kColumnsInPurchaseSearch; i++) {
         
         CALayer *backgroundLayer = [CALayer layer];
+        backgroundLayer.actions = [NSMutableDictionary dictionaryWithObjectsAndKeys:[NSNull null], @"onOrderIn",
+                                  [NSNull null], @"position",
+                                  [NSNull null], @"hidden",
+                                  [NSNull null], @"onOrderOut",
+                                  [NSNull null], @"sublayers",
+                                  [NSNull null], @"contents",
+                                  [NSNull null], @"bounds",
+                                  nil];
         backgroundLayer.cornerRadius = 4;
         backgroundLayer.backgroundColor = [UIColor colorWithRed:0.933 green:0.933 blue:0.933 alpha:1.0].CGColor;
         backgroundLayer.frame = CGRectMake((kPurchaseImageSide+10)*i + 11,11+kPurchaseImageSide+9,kPurchaseImageSide,42);
@@ -401,7 +409,12 @@ static NSString* const kImgSpinnerBackground = @"delete-loading.png";
                  forState:UIControlStateNormal];
     
     CGRect frame = backgroundLayer.frame;
-    frame.size.height = titleButton.titleLabel.frame.size.height + kBackgroundBottomMargin;
+    
+    if(self.userMode)
+        frame.size.height = MAX(kUserImageSide,titleButton.titleLabel.frame.size.height) + kBackgroundBottomMargin;
+    else
+        frame.size.height = titleButton.titleLabel.frame.size.height + kBackgroundBottomMargin;
+    
     backgroundLayer.frame = frame;
     
     frame = titleButton.frame;
