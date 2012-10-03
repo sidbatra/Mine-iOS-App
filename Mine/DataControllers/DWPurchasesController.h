@@ -25,7 +25,8 @@
  * Fetch purchases for a user before the given time
  */
 - (void)getPurchasesForUser:(NSInteger)userID 
-                     before:(NSInteger)before;
+                     before:(NSInteger)before
+                 withCaller:(NSObject*)caller;
 
 /**
  * Create a new purchase.
@@ -56,14 +57,12 @@
 /**
  * A user's purchases are loaded successfully.
  */
-- (void)purchasesLoaded:(NSMutableArray*)purchases 
-                forUser:(NSNumber*)userID;
+- (void)purchasesLoaded:(NSMutableArray*)purchases;
 
 /**
  * Error loading purchases.
  */
-- (void)purchasesLoadError:(NSString*)error 
-                   forUser:(NSNumber*)userID;
+- (void)purchasesLoadError:(NSString*)error;
 
 /**
  * Purchase successfully created.

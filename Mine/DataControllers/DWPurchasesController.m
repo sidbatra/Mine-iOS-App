@@ -111,7 +111,8 @@ static NSString* const kNPurchaseDeleteError    = @"NPurchaseDeleteError";
 
 //----------------------------------------------------------------------------------------------------
 - (void)getPurchasesForUser:(NSInteger)userID 
-                     before:(NSInteger)before {
+                     before:(NSInteger)before
+                 withCaller:(NSObject*)caller {
 
     NSMutableString *localURL = [NSMutableString stringWithFormat:kGetUserPurchasesURI,10,userID];
     
@@ -123,7 +124,7 @@ static NSString* const kNPurchaseDeleteError    = @"NPurchaseDeleteError";
                                               errorNotification:kNUserPurchasesLoadError
                                                   requestMethod:kGet
                                                    authenticate:YES
-                                                     resourceID:userID];
+                                                     callerID:caller.hash];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -194,42 +195,43 @@ static NSString* const kNPurchaseDeleteError    = @"NPurchaseDeleteError";
 
 //----------------------------------------------------------------------------------------------------
 - (void)userPurchasesLoaded:(NSNotification*)notification {
+
+    NSDictionary *info = [notification userInfo];
     
-    SEL sel = @selector(purchasesLoaded:forUser:);
     
-    if(![self.delegate respondsToSelector:sel])
+    SEL sel = @selector(purchasesLoaded:);
+    
+    if(!self.delegate || self.delegate.hash != [[info objectForKey:kKeyCallerID] integerValue] || ![self.delegate respondsToSelector:sel])
         return;
     
     
-    NSDictionary *info          = [notification userInfo];
-    NSArray *response           = [info objectForKey:kKeyResponse];
-    
-    NSMutableArray *purchases   = [NSMutableArray arrayWithCapacity:[response count]];
+    NSArray *response = [info objectForKey:kKeyResponse];
+    NSMutableArray *purchases = [NSMutableArray arrayWithCapacity:[response count]];
     
     for(NSDictionary *purchase in response) {
         [purchases addObject:[DWPurchase create:purchase]];
     }
     
     [self.delegate performSelector:sel
-                        withObject:purchases
-                        withObject:[info objectForKey:kKeyResourceID]];
+                        withObject:purchases];
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)userPurchasesLoadError:(NSNotification*)notification {
     
-    SEL sel = @selector(purchasesLoadError:forUser:);
+    NSDictionary *info = [notification userInfo];
+
+
+    SEL sel = @selector(purchasesLoadError:);
     
-    if(![self.delegate respondsToSelector:sel])
+    if(!self.delegate || self.delegate.hash != [[info objectForKey:kKeyCallerID] integerValue] || ![self.delegate respondsToSelector:sel])
         return;
     
         
-    NSDictionary *info      = [notification userInfo];
-    NSError *error          = [info objectForKey:kKeyError];
+    NSError *error = [info objectForKey:kKeyError];
     
     [self.delegate performSelector:sel
-                        withObject:[error localizedDescription]
-                        withObject:[info objectForKey:kKeyResourceID]];
+                        withObject:[error localizedDescription]];
 }
 
 //----------------------------------------------------------------------------------------------------

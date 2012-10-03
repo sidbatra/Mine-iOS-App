@@ -124,7 +124,8 @@
 //----------------------------------------------------------------------------------------------------
 - (void)loadPurchases {
     [self.purchasesController getPurchasesForUser:self.userID 
-                                           before:self.oldestTimestamp];
+                                           before:self.oldestTimestamp
+                                       withCaller:self];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -234,11 +235,7 @@
 #pragma mark DWPurchasesControllerDelegate
 
 //----------------------------------------------------------------------------------------------------
-- (void)purchasesLoaded:(NSMutableArray *)purchases 
-                forUser:(NSNumber *)userID {
-    
-    if(self.userID != [userID integerValue])
-        return;
+- (void)purchasesLoaded:(NSMutableArray *)purchases {
     
     self.purchases = purchases;
     
@@ -246,12 +243,8 @@
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)purchasesLoadError:(NSString *)error 
-                   forUser:(NSNumber*)userID {
+- (void)purchasesLoadError:(NSString *)error {
 
-    if(self.userID != [userID integerValue])
-        return;
-    
     [self.delegate displayError:error
                   withRefreshUI:YES];
 }
