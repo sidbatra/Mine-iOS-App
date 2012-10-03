@@ -14,7 +14,7 @@
 
 
 static NSString* const kDiskKeyCurrentUser = @"DWSession_currentUser";
-
+static NSTimeInterval const kMaxSessionLength = 60 * 60;
 
 /**
  * Private declarations
@@ -23,12 +23,15 @@ static NSString* const kDiskKeyCurrentUser = @"DWSession_currentUser";
     DWStatusController      *_statusController;
     DWUsersController       *_usersController;
     DWPurchasesController   *_purchasesController;
+    
+    NSTimeInterval          _sessionRenewedAt;
 }
 
 
 @property (nonatomic,strong) DWStatusController *statusController;
 @property (nonatomic,strong) DWUsersController *usersController;
 @property (nonatomic,strong) DWPurchasesController *purchasesController;
+@property (nonatomic,assign) NSTimeInterval sessionRenewedAt;
 
 
 /**
@@ -59,6 +62,7 @@ static NSString* const kDiskKeyCurrentUser = @"DWSession_currentUser";
 @synthesize statusController    = _statusController;
 @synthesize purchasesController = _purchasesController;
 @synthesize usersController     = _usersController;
+@synthesize sessionRenewedAt    = _sessionRenewedAt;
 
 SYNTHESIZE_SINGLETON_FOR_CLASS(DWSession);
 
@@ -74,7 +78,12 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWSession);
                                                  selector:@selector(applicationFinishedLaunching:) 
                                                      name:UIApplicationDidFinishLaunchingNotification
                                                    object:nil];
-                
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(applicationWillEnterForeground:)
+                                                     name:UIApplicationWillEnterForegroundNotification
+                                                   object:nil];
+        
         
         if([self isAuthenticated])
             [[DWAnalyticsManager sharedDWAnalyticsManager] trackUserWithEmail:self.currentUser.email
@@ -149,6 +158,11 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWSession);
 #pragma mark Creation, Destruction, Management
 
 //----------------------------------------------------------------------------------------------------
+- (void)renewSession {
+    self.sessionRenewedAt = [[NSDate date] timeIntervalSince1970];
+}
+
+//----------------------------------------------------------------------------------------------------
 - (void)create:(DWUser*)user {
 	
     self.currentUser = user;
@@ -206,6 +220,9 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWSession);
 //----------------------------------------------------------------------------------------------------
 - (void)applicationFinishedLaunching:(NSNotification*)notification {
     
+    [self renewSession];
+    
+    
     if(![self isAuthenticated])
         return;
     
@@ -217,6 +234,19 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWSession);
     }
     
     [self.statusController getStatus];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)applicationWillEnterForeground:(NSNotification*)notification {
+
+    if(![self isAuthenticated])
+        return;
+    
+    if([[NSDate date] timeIntervalSince1970] - self.sessionRenewedAt > kMaxSessionLength) {
+        [self renewSession];
+        [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"User Logged In"];
+    }
+
 }
 
 
