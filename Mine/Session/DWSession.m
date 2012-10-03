@@ -24,14 +24,14 @@ static NSTimeInterval const kMaxSessionLength = 60 * 60;
     DWUsersController       *_usersController;
     DWPurchasesController   *_purchasesController;
     
-    NSTimeInterval          _sessionRenewedAt;
+    NSTimeInterval          _wentIntoBackgroundAt;
 }
 
 
 @property (nonatomic,strong) DWStatusController *statusController;
 @property (nonatomic,strong) DWUsersController *usersController;
 @property (nonatomic,strong) DWPurchasesController *purchasesController;
-@property (nonatomic,assign) NSTimeInterval sessionRenewedAt;
+@property (nonatomic,assign) NSTimeInterval wentIntoBackgroundAt;
 
 
 /**
@@ -58,11 +58,11 @@ static NSTimeInterval const kMaxSessionLength = 60 * 60;
 //----------------------------------------------------------------------------------------------------
 @implementation DWSession
 
-@synthesize currentUser         = _currentUser;
-@synthesize statusController    = _statusController;
-@synthesize purchasesController = _purchasesController;
-@synthesize usersController     = _usersController;
-@synthesize sessionRenewedAt    = _sessionRenewedAt;
+@synthesize currentUser             = _currentUser;
+@synthesize statusController        = _statusController;
+@synthesize purchasesController     = _purchasesController;
+@synthesize usersController         = _usersController;
+@synthesize wentIntoBackgroundAt    = _wentIntoBackgroundAt;
 
 SYNTHESIZE_SINGLETON_FOR_CLASS(DWSession);
 
@@ -80,9 +80,15 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWSession);
                                                    object:nil];
         
         [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(applicationDidEnterBackground:)
+                                                     name:UIApplicationDidEnterBackgroundNotification
+                                                   object:nil];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(applicationWillEnterForeground:)
                                                      name:UIApplicationWillEnterForegroundNotification
                                                    object:nil];
+        
         
         
         if([self isAuthenticated])
@@ -158,11 +164,6 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWSession);
 #pragma mark Creation, Destruction, Management
 
 //----------------------------------------------------------------------------------------------------
-- (void)renewSession {
-    self.sessionRenewedAt = [[NSDate date] timeIntervalSince1970];
-}
-
-//----------------------------------------------------------------------------------------------------
 - (void)create:(DWUser*)user {
 	
     self.currentUser = user;
@@ -220,9 +221,6 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWSession);
 //----------------------------------------------------------------------------------------------------
 - (void)applicationFinishedLaunching:(NSNotification*)notification {
     
-    [self renewSession];
-    
-    
     if(![self isAuthenticated])
         return;
     
@@ -237,13 +235,22 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWSession);
 }
 
 //----------------------------------------------------------------------------------------------------
+- (void)applicationDidEnterBackground:(NSNotification*)notification {
+    self.wentIntoBackgroundAt = [[NSDate date] timeIntervalSince1970];
+}
+
+//----------------------------------------------------------------------------------------------------
 - (void)applicationWillEnterForeground:(NSNotification*)notification {
 
     if(![self isAuthenticated])
         return;
     
-    if([[NSDate date] timeIntervalSince1970] - self.sessionRenewedAt > kMaxSessionLength) {
-        [self renewSession];
+    
+    if([[NSDate date] timeIntervalSince1970] - self.wentIntoBackgroundAt > kMaxSessionLength) {
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:kNSessionRenewed
+                                                            object:nil];
+        
         [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"User Logged In"];
     }
 

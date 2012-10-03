@@ -46,9 +46,20 @@
         [self addModelPresenterForClass:[DWPagination class]
                               withStyle:kDefaultModelPresenter 
                           withPresenter:[DWPaginationPresenter class]];
+        
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(sessionRenewed:)
+                                                     name:kNSessionRenewed
+                                                   object:nil];
     }
     
     return self;
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -72,6 +83,15 @@
     [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Feed View"];
 }
 
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark Notifications
+
+//----------------------------------------------------------------------------------------------------
+- (void)sessionRenewed:(NSNotification*)notification {
+    [(DWFeedViewDataSource*)self.tableViewDataSource refreshInitiated];
+}
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------

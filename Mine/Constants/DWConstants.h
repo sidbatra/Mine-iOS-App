@@ -76,6 +76,7 @@ extern NSString* const kNCommentAddedForPurchase;
 extern NSString* const kNRequestTabBarIndexChange;
 extern NSString* const kNRequestPurchaseDelete;
 extern NSString* const kNOnboardingStarted;
+extern NSString* const kNSessionRenewed;
 
 /**
  * Grid view related constants
