@@ -24,6 +24,8 @@ static NSString* const kInfoURL = @"/?web_view_mode=true";
     DWLoginViewController   *_loginViewController;
     
     DWNavigationBarTitleView *_navTitleView;
+    
+    BOOL _onboardingAnnounced;
 }
 
 /**
@@ -33,6 +35,7 @@ static NSString* const kInfoURL = @"/?web_view_mode=true";
 
 @property (nonatomic,strong) DWNavigationBarTitleView *navTitleView;
 
+@property (nonatomic,assign) BOOL onboardingAnnounced;
 
 
 /**
@@ -68,6 +71,7 @@ static NSString* const kInfoURL = @"/?web_view_mode=true";
 
 @synthesize loginViewController = _loginViewController;
 @synthesize navTitleView = _navTitleView;
+@synthesize onboardingAnnounced = _onboardingAnnounced;
 
 //----------------------------------------------------------------------------------------------------
 - (void)awakeFromNib {
@@ -163,6 +167,17 @@ static NSString* const kInfoURL = @"/?web_view_mode=true";
     [super viewDidUnload];
 }
 
+//----------------------------------------------------------------------------------------------------
+- (void)announceOnboarding {
+    if(self.onboardingAnnounced)
+        return;
+    
+    self.onboardingAnnounced = YES;
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:kNOnboardingStarted
+                                                        object:nil];
+}
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
@@ -199,9 +214,6 @@ static NSString* const kInfoURL = @"/?web_view_mode=true";
     }
     else {
         [self showOnboardingToUser:user];
-        
-        [[NSNotificationCenter defaultCenter] postNotificationName:kNOnboardingStarted
-                                                            object:nil];
         
         [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"User Created"];
     }
@@ -248,6 +260,10 @@ static NSString* const kInfoURL = @"/?web_view_mode=true";
     
     [self.navigationController pushViewController:creationViewController 
                                          animated:YES];
+    
+    [self performSelector:@selector(announceOnboarding)
+               withObject:nil
+               afterDelay:7];
 }
 
 
