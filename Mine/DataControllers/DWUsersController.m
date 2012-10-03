@@ -444,6 +444,8 @@ static NSString* const kNUserUpdateError        = @"NUserUpdateError";
     NSDictionary *info      = [notification userInfo];
     DWUser *user            = (DWUser*)[info objectForKey:kKeyUser];
     
+    [user incrementPointerCount];
+    
     [self.delegate performSelector:sel
                         withObject:user];
 }
