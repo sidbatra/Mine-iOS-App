@@ -77,6 +77,7 @@ extern NSString* const kNRequestTabBarIndexChange;
 extern NSString* const kNRequestPurchaseDelete;
 extern NSString* const kNOnboardingStarted;
 extern NSString* const kNSessionRenewed;
+extern NSString* const kNUpdateNotificationsCount;
 
 /**
  * Grid view related constants
@@ -113,6 +114,7 @@ extern NSString* const kKeyFollowingCreated;
 extern NSString* const kKeyFollowingDestroyed;
 extern NSString* const kKeyTabIndex;
 extern NSString* const kKeyResetType;
+extern NSString* const kKeyCount;
 
 /**
  * Misc

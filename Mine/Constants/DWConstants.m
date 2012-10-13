@@ -47,6 +47,7 @@ NSString* const kNRequestTabBarIndexChange  = @"NRequestTabBarIndexChange";
 NSString* const kNRequestPurchaseDelete     = @"NRequestPurchaseDelete";
 NSString* const kNOnboardingStarted         = @"NOnboardingStarted";
 NSString* const kNSessionRenewed            = @"NSessionRenewed";
+NSString* const kNUpdateNotificationsCount  = @"NUpdateNotificationsCount";
 
 
 //----------------------------------------------------------------------------------------------------
@@ -78,6 +79,8 @@ NSString* const kKeyFollowingCreated    = @"following_created";
 NSString* const kKeyFollowingDestroyed  = @"following_destroyed";
 NSString* const kKeyTabIndex            = @"tabIndex";
 NSString* const kKeyResetType           = @"reset_type";
+NSString* const kKeyCount               = @"count";
+
 
 //----------------------------------------------------------------------------------------------------
 NSString* const kRailsDateTimeFormat = @"yyyy-MM-dd HH:mm:ss ZZZ";

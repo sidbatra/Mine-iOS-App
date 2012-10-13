@@ -213,6 +213,18 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWSession);
 }
 
 //----------------------------------------------------------------------------------------------------
+- (void)launchUpdateNotificationsNotification {
+    
+    NSDictionary *info = [NSDictionary dictionaryWithObjectsAndKeys:
+                          [NSNumber numberWithInteger:self.currentUser.unreadNotificationsCount], kKeyCount,
+                          nil];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:kNUpdateNotificationsCount
+                                                        object:nil
+                                                      userInfo:info];
+}
+
+//----------------------------------------------------------------------------------------------------
 - (void)fetchStatus {
     
     if(!self.statusController) {
@@ -275,6 +287,8 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWSession);
     [self update];
     [user debug];
     [user destroy];
+    
+    [self launchUpdateNotificationsNotification];
 }
 
 
@@ -287,6 +301,8 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWSession);
 - (void)userUpdated:(DWUser *)user {
     [self update];
     [user destroy];
+    
+    [self launchUpdateNotificationsNotification];
 }
 
 

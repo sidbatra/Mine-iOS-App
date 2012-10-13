@@ -132,6 +132,11 @@ static NSString* const kImgSearchOn     = @"nav-btn-search-on.png";
                                                  name:kNOnboardingStarted
                                                object:nil];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(updateNotificationsCount:)
+                                                 name:kNUpdateNotificationsCount
+                                               object:nil];
+    
     
     
     self.navigationItem.title = @"";
@@ -231,6 +236,14 @@ static NSString* const kImgSearchOn     = @"nav-btn-search-on.png";
 - (void)onboardingStarted:(NSNotification*)notification {
     [self.feedViewController viewDidAppear:NO];
 }
+
+//----------------------------------------------------------------------------------------------------
+- (void)updateNotificationsCount:(NSNotification*)notification {
+    NSDictionary *info = [notification userInfo];
+
+    NSLog(@"new count - %d",[[info objectForKey:kKeyCount] integerValue]);
+}
+
 
 
 //----------------------------------------------------------------------------------------------------
