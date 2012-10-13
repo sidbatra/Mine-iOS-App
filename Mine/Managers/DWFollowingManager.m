@@ -47,13 +47,20 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWFollowingManager);
 	if(self) {
         self.followingsController = [[DWFollowingsController alloc] init];
         self.followingsController.delegate = self;
+        
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(sessionRenewed:)
+                                                     name:kNSessionRenewed
+                                                   object:nil];
 	}
 	
 	return self;
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)dealloc {	
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -143,6 +150,17 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWFollowingManager);
                                byCount:-1];
     
     [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Following Destroyed"];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark Notifications
+
+//----------------------------------------------------------------------------------------------------
+- (void)sessionRenewed:(NSNotification*)notification {
+    self.areBulkFollowingsLoaded = NO;
 }
 
 @end

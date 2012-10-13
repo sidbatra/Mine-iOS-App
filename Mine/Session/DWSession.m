@@ -212,6 +212,17 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWSession);
                                                       userInfo:info];
 }
 
+//----------------------------------------------------------------------------------------------------
+- (void)fetchStatus {
+    
+    if(!self.statusController) {
+        self.statusController = [[DWStatusController alloc] init];
+        self.statusController.delegate = self;
+    }
+    
+    [self.statusController getStatus];
+}
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
@@ -226,12 +237,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWSession);
     
     [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"User Logged In"];
     
-    if(!self.statusController) {
-        self.statusController = [[DWStatusController alloc] init];
-        self.statusController.delegate = self;
-    }
-    
-    [self.statusController getStatus];
+    [self fetchStatus];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -250,6 +256,8 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWSession);
         
         [[NSNotificationCenter defaultCenter] postNotificationName:kNSessionRenewed
                                                             object:nil];
+        
+        [self fetchStatus];
         
         [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"User Logged In"];
     }
@@ -277,7 +285,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWSession);
 
 //----------------------------------------------------------------------------------------------------
 - (void)userUpdated:(DWUser *)user {
-    [[DWSession sharedDWSession] update];
+    [self update];
     [user destroy];
 }
 
