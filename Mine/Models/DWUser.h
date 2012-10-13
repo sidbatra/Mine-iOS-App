@@ -47,6 +47,7 @@ extern NSString* const kNImgUserLargeLoadError;
     NSInteger       _purchasesCount;
     NSInteger       _followingsCount;
     NSInteger       _inverseFollowingsCount;
+    NSInteger       _unreadNotificationsCount;
     
     DWSetting       *_setting;
 }
@@ -161,6 +162,9 @@ extern NSString* const kNImgUserLargeLoadError;
  * Total users followed.
  */
 @property (nonatomic,assign) NSInteger inverseFollowingsCount;
+
+
+@property (nonatomic,assign) NSInteger unreadNotificationsCount;
 
 
 

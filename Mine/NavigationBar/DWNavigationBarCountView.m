@@ -4,6 +4,8 @@
 //
 
 #import "DWNavigationBarCountView.h"
+#import <QuartzCore/QuartzCore.h>
+
 
 //static NSString* const kImgBackground       = @"button_notifications";
 static NSString* const kDefaultText         = @"0";

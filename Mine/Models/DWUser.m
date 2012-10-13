@@ -59,6 +59,7 @@ static NSString* const kKeyAge                          = @"age";
 static NSString* const kKeyPurchasesCount               = @"purchases_count";
 static NSString* const kKeyFollowingsCount              = @"followings_count";
 static NSString* const kKeyInverseFollowingsCount       = @"inverse_followings_count";
+static NSString* const kKeyUnreadNotificationsCount     = @"unread_notifications_count";
 static NSString* const kKeySensitive                    = @"sensitive";
 static NSString* const kKeySetting                      = @"setting";
 
@@ -87,6 +88,7 @@ static NSString* const kKeySetting                      = @"setting";
 @synthesize purchasesCount              = _purchasesCount;
 @synthesize followingsCount             = _followingsCount;
 @synthesize inverseFollowingsCount      = _inverseFollowingsCount;
+@synthesize unreadNotificationsCount    = _unreadNotificationsCount;
 @synthesize setting                     = _setting;
 
 //----------------------------------------------------------------------------------------------------
@@ -208,6 +210,7 @@ static NSString* const kKeySetting                      = @"setting";
     NSString *purchasesCount            = [user objectForKey:kKeyPurchasesCount];
     NSString *followingsCount           = [user objectForKey:kKeyFollowingsCount];
     NSString *inverseFollowingsCount    = [user objectForKey:kKeyInverseFollowingsCount];
+    NSString *unreadNotificationsCount  = [user objectForKey:kKeyUnreadNotificationsCount];
     
     NSString *sensitive                 = [user objectForKey:kKeySensitive];
     
@@ -263,6 +266,9 @@ static NSString* const kKeySetting                      = @"setting";
     
     if(inverseFollowingsCount)
         self.inverseFollowingsCount = [inverseFollowingsCount integerValue];
+    
+    if(unreadNotificationsCount)
+        self.unreadNotificationsCount = [unreadNotificationsCount integerValue];
     
     
     if(setting) {
@@ -334,7 +340,7 @@ static NSString* const kKeySetting                      = @"setting";
 
 //----------------------------------------------------------------------------------------------------
 - (void)debug {
-    DWDebug(@"%@ %@ %@ %@ %@ %@ %d %@  %@ %@  %@ %@  %@ %@  %d %d %d %@",
+    DWDebug(@"%@ %@ %@ %@ %@ %@ %d %@  %@ %@  %@ %@  %@ %@  %d %d %d %d %@",
           self.firstName,self.lastName,self.gender,self.handle,self.byline,self.email,self.age,
           self.facebookAccessToken,
           self.twitterAccessToken,self.twitterAccessTokenSecret,          
@@ -343,6 +349,7 @@ static NSString* const kKeySetting                      = @"setting";
           self.purchasesCount,
           self.followingsCount,
           self.inverseFollowingsCount,
+          self.unreadNotificationsCount,
           self.iphoneDeviceToken);
     
     [self.setting debug];
