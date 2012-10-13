@@ -27,6 +27,6 @@
 
 @protocol DWNavigationBarCountViewDelegate
 
-- (void)countButtonClicked;
+- (void)navBarCountViewButtonClicked;
 
 @end

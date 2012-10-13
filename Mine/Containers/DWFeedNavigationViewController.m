@@ -33,6 +33,7 @@ static NSString* const kImgSearchOn     = @"nav-btn-search-on.png";
     DWNavigationBarTitleView    *_navTitleView;
     DWQueueProgressView         *_queueProgressView;
     DWSearchBar                 *_searchBar;
+    DWNavigationBarCountView    *_navNotificationsView;
     
     BOOL    _isProgressBarActive;
 }
@@ -62,6 +63,8 @@ static NSString* const kImgSearchOn     = @"nav-btn-search-on.png";
  */
 @property (nonatomic,strong) DWSearchBar *searchBar;
 
+@property (nonatomic,strong) DWNavigationBarCountView *navNotificationsView;
+
 /**
  * Status of the background progress queue.
  */
@@ -81,6 +84,7 @@ static NSString* const kImgSearchOn     = @"nav-btn-search-on.png";
 @synthesize navTitleView                = _navTitleView;
 @synthesize queueProgressView           = _queueProgressView;
 @synthesize searchBar                   = _searchBar;
+@synthesize navNotificationsView        = _navNotificationsView;
 @synthesize isProgressBarActive         = _isProgressBarActive;
 
 //----------------------------------------------------------------------------------------------------
@@ -96,7 +100,20 @@ static NSString* const kImgSearchOn     = @"nav-btn-search-on.png";
 
 //----------------------------------------------------------------------------------------------------
 - (void)loadSideButtons {
-    UIButton *button =  [UIButton buttonWithType:UIButtonTypeCustom];    
+    
+    if(!self.navNotificationsView) {
+        self.navNotificationsView = [[DWNavigationBarCountView alloc] initWithFrame:CGRectMake(0,0,55,44)];
+        self.navNotificationsView.delegate = self;
+    }
+    
+    UIBarButtonItem *barButtonitem          = [[UIBarButtonItem alloc] initWithCustomView:self.navNotificationsView];
+    self.navigationItem.leftBarButtonItem   = barButtonitem;
+    
+    
+    
+    
+    
+    UIButton *button =  [UIButton buttonWithType:UIButtonTypeCustom];
 
     [button setBackgroundImage:[UIImage imageNamed:kImgSearchOff] 
                       forState:UIControlStateNormal];
@@ -115,6 +132,7 @@ static NSString* const kImgSearchOn     = @"nav-btn-search-on.png";
 
 //----------------------------------------------------------------------------------------------------
 - (void)removeSideButtons {
+    self.navigationItem.leftBarButtonItem = nil;
     self.navigationItem.rightBarButtonItem = nil;
 }
 
@@ -180,6 +198,7 @@ static NSString* const kImgSearchOn     = @"nav-btn-search-on.png";
         self.searchBar.hidden               = YES;
     }
     
+    
     [self loadSideButtons];
 }
 
@@ -241,7 +260,7 @@ static NSString* const kImgSearchOn     = @"nav-btn-search-on.png";
 - (void)updateNotificationsCount:(NSNotification*)notification {
     NSDictionary *info = [notification userInfo];
 
-    NSLog(@"new count - %d",[[info objectForKey:kKeyCount] integerValue]);
+    [self.navNotificationsView setCount:[[info objectForKey:kKeyCount] integerValue]];
 }
 
 
@@ -313,6 +332,17 @@ static NSString* const kImgSearchOn     = @"nav-btn-search-on.png";
     [(DWUsersSearchViewController*)self.usersSearchViewController loadUsersForQuery:query];
     
     [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Users Searched"];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWNavigationBarCountViewDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)navBarCountViewButtonClicked {
+    NSLog(@"DISPLAY NOTIFICATIONS");
 }
 
 

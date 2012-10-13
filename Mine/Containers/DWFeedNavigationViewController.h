@@ -12,9 +12,10 @@
 #import "DWUsersSearchViewController.h"
 #import "DWQueueProgressView.h"
 #import "DWSearchBar.h"
+#import "DWNavigationBarCountView.h"
 
 
 
-@interface DWFeedNavigationViewController : DWNavigationRootViewController<DWFeedViewControllerDelegate,DWUsersSearcViewControllerDelegate,DWQueueProgressViewDelegate,DWSearchBarDelegate>
+@interface DWFeedNavigationViewController : DWNavigationRootViewController<DWFeedViewControllerDelegate,DWUsersSearcViewControllerDelegate,DWQueueProgressViewDelegate,DWSearchBarDelegate,DWNavigationBarCountViewDelegate>
 
 @end

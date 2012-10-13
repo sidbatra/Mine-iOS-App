@@ -133,7 +133,7 @@ static CGFloat   const kDisabledOpacity     = 0.5;
 - (void)didTapBackgroundButton:(id)sender 
                          event:(id)event {
     
-    [self.delegate countButtonClicked];
+    [self.delegate navBarCountViewButtonClicked];
 }
 
 @end
