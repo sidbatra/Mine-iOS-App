@@ -98,6 +98,8 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)notificationClicked:(DWNotification*)notification {
+    notification.unread = NO;
+    //[self reloadRowAtIndex:[self.tableViewDataSource indexForObject:notification]];
     [self.delegate notificationsViewNotificationClicked:notification];
 }
 

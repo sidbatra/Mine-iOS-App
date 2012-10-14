@@ -13,6 +13,7 @@
 
 - (void)setNotificationImage:(UIImage*)image;
 - (void)setEvent:(NSString*)event entity:(NSString*)entity;
+- (void)setDarkMode;
 
 
 + (NSInteger)heightForCellWithEvent:(NSString*)event entity:(NSString*)entity;

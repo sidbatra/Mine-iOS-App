@@ -38,6 +38,9 @@
     [cell setNotificationImage:notification.image];
     [cell setEvent:notification.event entity:notification.entity];
     
+    if(notification.unread)
+        [cell setDarkMode];
+    
     return cell;
 }
 

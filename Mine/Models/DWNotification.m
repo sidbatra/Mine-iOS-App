@@ -71,6 +71,7 @@ static NSString* const kKeyUnread       = @"unread";
     NSString *event         = [notification objectForKey:kKeyEvent];
     NSString *resourceType  = [notification objectForKey:kKeyResourceType];
     NSString *imageURL      = [notification objectForKey:kKeyImageURL];
+    NSString *unread        = [notification objectForKey:kKeyUnread];
     NSDictionary *user      = [notification objectForKey:kKeyUser];
     NSDictionary *purchase  = [notification objectForKey:kKeyPurchase];
     
@@ -92,6 +93,9 @@ static NSString* const kKeyUnread       = @"unread";
     
     if(imageURL && ![self.imageURL isEqualToString:imageURL])
         self.imageURL = imageURL;
+    
+    if(unread)
+        self.unread = [unread boolValue];
 
     
     if(user) {
