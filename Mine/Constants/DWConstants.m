@@ -80,6 +80,8 @@ NSString* const kKeyFollowingDestroyed  = @"following_destroyed";
 NSString* const kKeyTabIndex            = @"tabIndex";
 NSString* const kKeyResetType           = @"reset_type";
 NSString* const kKeyCount               = @"count";
+NSString* const kKeyCreatedAt           = @"created_at";
+NSString* const kKeyImageURL            = @"image_url";
 
 
 //----------------------------------------------------------------------------------------------------

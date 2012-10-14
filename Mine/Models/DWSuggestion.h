@@ -13,7 +13,6 @@
 /**
  *
  */
-extern NSString* const kKeyImageURL;
 extern NSString* const kKeySmallImageURL;
 
 extern NSString* const kNImgSuggestionLoaded;

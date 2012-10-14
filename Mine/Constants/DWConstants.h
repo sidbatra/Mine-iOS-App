@@ -115,6 +115,8 @@ extern NSString* const kKeyFollowingDestroyed;
 extern NSString* const kKeyTabIndex;
 extern NSString* const kKeyResetType;
 extern NSString* const kKeyCount;
+extern NSString* const kKeyCreatedAt;
+extern NSString* const kKeyImageURL;
 
 /**
  * Misc

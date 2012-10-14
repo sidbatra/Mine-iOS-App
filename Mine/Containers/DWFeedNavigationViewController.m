@@ -342,7 +342,22 @@ static NSString* const kImgSearchOn     = @"nav-btn-search-on.png";
 
 //----------------------------------------------------------------------------------------------------
 - (void)navBarCountViewButtonClicked {
-    NSLog(@"DISPLAY NOTIFICATIONS");
+    DWNotificationsViewController *notificationsViewController = [[DWNotificationsViewController alloc] init];
+    notificationsViewController.delegate = self;
+    
+    [self.navigationController pushViewController:notificationsViewController
+                                         animated:NO];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWNotificationsViewControllerDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)notificationsViewNotificationClicked:(DWNotification *)notification {
+    NSLog(@"Notification clicked");
 }
 
 
