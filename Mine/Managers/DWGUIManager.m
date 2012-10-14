@@ -44,85 +44,74 @@ static NSString* const kImgSendOn   = @"nav-btn-send-on.png";
 }
 
 //----------------------------------------------------------------------------------------------------
-+ (UIBarButtonItem*)navBarDoneButtonWithTarget:(id)target {
++ (UIBarButtonItem*)navBarButtonWithTarget:(id)target
+                                  selector:(SEL)selector
+                                   onImage:(NSString*)onImage
+                                  offImage:(NSString*)offImage {
     
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];    
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     
-    [button setBackgroundImage:[UIImage imageNamed:kImgDoneOff] 
+    [button setBackgroundImage:[UIImage imageNamed:offImage]
                       forState:UIControlStateNormal];
     
-    [button setBackgroundImage:[UIImage imageNamed:kImgDoneOn] 
+    [button setBackgroundImage:[UIImage imageNamed:onImage]
                       forState:UIControlStateHighlighted];
     
 	[button addTarget:target
-               action:@selector(doneButtonClicked)
+               action:selector
      forControlEvents:UIControlEventTouchUpInside];
     
 	[button setFrame:CGRectMake(0,0,53,30)];
     
     return [[UIBarButtonItem alloc] initWithCustomView:button];
+}
+
+//----------------------------------------------------------------------------------------------------
++ (UIBarButtonItem*)navBarDoneButtonWithTarget:(id)target {
+    
+    return [self navBarButtonWithTarget:target
+                               selector:@selector(doneButtonClicked)
+                                onImage:kImgDoneOn
+                               offImage:kImgDoneOff];
 }
 
 
 //----------------------------------------------------------------------------------------------------
 + (UIBarButtonItem*)navBarSaveButtonWithTarget:(id)target {
-    
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];    
-    
-    [button setBackgroundImage:[UIImage imageNamed:kImgSaveOff] 
-                      forState:UIControlStateNormal];
-    
-    [button setBackgroundImage:[UIImage imageNamed:kImgSaveOn] 
-                      forState:UIControlStateHighlighted];
-    
-	[button addTarget:target
-               action:@selector(saveButtonClicked)
-     forControlEvents:UIControlEventTouchUpInside];
-    
-	[button setFrame:CGRectMake(0,0,53,30)];
-    
-    return [[UIBarButtonItem alloc] initWithCustomView:button];
+
+    return [self navBarButtonWithTarget:target
+                               selector:@selector(saveButtonClicked)
+                                onImage:kImgSaveOn
+                               offImage:kImgSaveOff];
 }
 
 //----------------------------------------------------------------------------------------------------
 + (UIBarButtonItem*)navBarNextButtonWithTarget:(id)target {
     
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    
-    [button setBackgroundImage:[UIImage imageNamed:kImgNextOff]
-                      forState:UIControlStateNormal];
-    
-    [button setBackgroundImage:[UIImage imageNamed:kImgNextOn]
-                      forState:UIControlStateHighlighted];
-    
-	[button addTarget:target
-               action:@selector(nextButtonClicked)
-     forControlEvents:UIControlEventTouchUpInside];
-    
-	[button setFrame:CGRectMake(0,0,53,30)];
-    
-    return [[UIBarButtonItem alloc] initWithCustomView:button];
+    return [self navBarButtonWithTarget:target
+                               selector:@selector(nextButtonClicked)
+                                onImage:kImgNextOn
+                               offImage:kImgNextOff];
 }
 
 //----------------------------------------------------------------------------------------------------
 + (UIBarButtonItem*)navBarSendButtonWithTarget:(id)target {
     
-    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-    
-    [button setBackgroundImage:[UIImage imageNamed:kImgSendOff]
-                      forState:UIControlStateNormal];
-    
-    [button setBackgroundImage:[UIImage imageNamed:kImgSendOn]
-                      forState:UIControlStateHighlighted];
-    
-	[button addTarget:target
-               action:@selector(sendButtonClicked)
-     forControlEvents:UIControlEventTouchUpInside];
-    
-	[button setFrame:CGRectMake(0,0,53,30)];
-    
-    return [[UIBarButtonItem alloc] initWithCustomView:button];
+    return [self navBarButtonWithTarget:target
+                               selector:@selector(sendButtonClicked)
+                                onImage:kImgSendOn
+                               offImage:kImgSendOff];
 }
+
+//----------------------------------------------------------------------------------------------------
++ (UIBarButtonItem*)navBarCloseButtonWithTarget:(id)target {
+    
+    return [self navBarButtonWithTarget:target
+                               selector:@selector(closeButtonClicked)
+                                onImage:kImgDoneOn
+                               offImage:kImgDoneOff];
+}
+
 
 //----------------------------------------------------------------------------------------------------
 + (void)connectionErrorAlertView {

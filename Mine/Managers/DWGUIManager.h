@@ -24,6 +24,11 @@
 /**
  * Custom buttons used in the right side of the navigation bar
  */
++ (UIBarButtonItem*)navBarButtonWithTarget:(id)target
+                                  selector:(SEL)selector
+                                   onImage:(NSString*)onImage
+                                  offImage:(NSString*)offImage;
+
 + (UIBarButtonItem*)navBarDoneButtonWithTarget:(id)target;
 
 + (UIBarButtonItem*)navBarSaveButtonWithTarget:(id)target;
@@ -31,6 +36,8 @@
 + (UIBarButtonItem*)navBarNextButtonWithTarget:(id)target;
 
 + (UIBarButtonItem*)navBarSendButtonWithTarget:(id)target;
+
++ (UIBarButtonItem*)navBarCloseButtonWithTarget:(id)target;
 
 /**
  * Fallback error view for handling connection/server errors

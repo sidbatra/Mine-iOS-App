@@ -10,6 +10,7 @@
 #import "DWNotificationsDataSource.h"
 #import "DWNotificationPresenter.h"
 #import "DWNotification.h"
+#import "DWGUIManager.h"
 #import "DWConstants.h"
 
 
@@ -57,7 +58,21 @@
 - (void)viewDidLoad {
 	[super viewDidLoad];
     
+    self.navigationItem.leftBarButtonItem = [DWGUIManager navBarCloseButtonWithTarget:self];
+
+    
      [(DWNotificationsDataSource*)self.tableViewDataSource loadNotifications];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark UI Events
+
+//----------------------------------------------------------------------------------------------------
+- (void)closeButtonClicked {
+    [self.navigationController popViewControllerAnimated:NO];
 }
 
 
