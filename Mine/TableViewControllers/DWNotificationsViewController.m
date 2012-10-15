@@ -99,8 +99,22 @@
 //----------------------------------------------------------------------------------------------------
 - (void)notificationClicked:(DWNotification*)notification {
     notification.unread = NO;
-    //[self reloadRowAtIndex:[self.tableViewDataSource indexForObject:notification]];
-    [self.delegate notificationsViewNotificationClicked:notification];
+    
+    [self provideResourceToVisibleCells:[DWNotification class]
+                               objectID:notification.databaseID
+                              objectKey:kKeyUnread];
+    
+    switch(notification.identifier) {
+        case DWNotificationIdentifierLike:
+            [self.delegate notificationsViewDisplayLikersFor:notification.purchase];
+        break;
+        case DWNotificationIdentifierComment:
+            [self.delegate notificationsViewDisplayCommentorsFor:notification.purchase];
+        break;
+        case DWNotificationIdentifierFollowing:
+            [self.delegate notificationsViewDisplayUser:notification.user];
+        break;
+    }
 }
 
 @end

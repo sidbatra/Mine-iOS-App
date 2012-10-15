@@ -11,8 +11,10 @@
 @interface DWNotificationCell : UITableViewCell {
 }
 
+- (void)resetUI;
 - (void)setNotificationImage:(UIImage*)image;
 - (void)setEvent:(NSString*)event entity:(NSString*)entity;
+- (void)resetDarkMode;
 - (void)setDarkMode;
 
 

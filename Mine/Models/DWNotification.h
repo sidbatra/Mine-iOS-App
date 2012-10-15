@@ -13,6 +13,16 @@
 
 extern NSString* const kNImgNotificationLoaded;
 extern NSString* const kNImgNotificationLoadError;
+extern NSString* const kKeyUnread;
+
+
+
+typedef enum {
+    DWNotificationIdentifierLike        = 0,
+    DWNotificationIdentifierComment     = 1,
+    DWNotificationIdentifierFollowing   = 2
+} DWNotificationIdentifier;
+
 
 
 @interface DWNotification : DWPoolObject {
@@ -22,6 +32,7 @@ extern NSString* const kNImgNotificationLoadError;
     NSString    *_resourceType;
     NSString    *_imageURL;
     
+    DWNotificationIdentifier _identifier;
     BOOL        _unread;
     
     DWUser      *_user;
@@ -36,6 +47,7 @@ extern NSString* const kNImgNotificationLoadError;
 
 @property (nonatomic,readonly) UIImage* image;
 
+@property (nonatomic,assign) DWNotificationIdentifier identifier;
 @property (nonatomic,assign) BOOL unread;
 
 @property (nonatomic,strong) DWUser *user;

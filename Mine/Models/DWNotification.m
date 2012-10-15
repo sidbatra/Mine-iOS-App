@@ -13,14 +13,16 @@
 #import "DWConstants.h"
 
 
-NSString* const kNImgNotificationLoaded    = @"NImgNotificationLoaded";
-NSString* const kNImgNotificationLoadError = @"NImgNotificationLoadError";
-
+NSString* const kNImgNotificationLoaded     = @"NImgNotificationLoaded";
+NSString* const kNImgNotificationLoadError  = @"NImgNotificationLoadError";
+NSString* const kKeyUnread                  = @"unread";
 
 static NSString* const kKeyEntity       = @"entity";
 static NSString* const kKeyEvent        = @"event";
 static NSString* const kKeyResourceType = @"resource_type";
-static NSString* const kKeyUnread       = @"unread";
+
+static NSString* const kKeyIdentifier   = @"identifier";
+
 
 
 
@@ -34,6 +36,8 @@ static NSString* const kKeyUnread       = @"unread";
 @synthesize event           = _event;
 @synthesize resourceType    = _resourceType;
 @synthesize imageURL        = _imageURL;
+@synthesize unread          = _unread;
+@synthesize identifier      = _identifier;
 @synthesize user            = _user;
 @synthesize purchase        = _purchase;
 
@@ -72,6 +76,7 @@ static NSString* const kKeyUnread       = @"unread";
     NSString *resourceType  = [notification objectForKey:kKeyResourceType];
     NSString *imageURL      = [notification objectForKey:kKeyImageURL];
     NSString *unread        = [notification objectForKey:kKeyUnread];
+    NSString *identifier    = [notification objectForKey:kKeyIdentifier];
     NSDictionary *user      = [notification objectForKey:kKeyUser];
     NSDictionary *purchase  = [notification objectForKey:kKeyPurchase];
     
@@ -96,6 +101,9 @@ static NSString* const kKeyUnread       = @"unread";
     
     if(unread)
         self.unread = [unread boolValue];
+    
+    if(identifier)
+        self.identifier = [identifier integerValue];
 
     
     if(user) {
@@ -131,7 +139,7 @@ static NSString* const kKeyUnread       = @"unread";
 
 //----------------------------------------------------------------------------------------------------
 - (void)debug {
-    DWDebug(@"%d %@ %@ %@ %@ %@",self.databaseID,self.createdAt,self.entity,self.event,self.resourceType,self.imageURL);
+    DWDebug(@"%d %@ %@ %@ %@ %@ %d",self.databaseID,self.createdAt,self.entity,self.event,self.resourceType,self.imageURL,self.identifier);
     [self.user debug];
     [self.purchase debug];
 }

@@ -8,7 +8,8 @@
 
 #import "DWTableViewController.h"
 
-@class DWNotification;
+@class DWPurchase;
+@class DWUser;
 @protocol DWNotificationsViewControllerDelegate;
 
 
@@ -25,6 +26,8 @@
 
 @required
 
-- (void)notificationsViewNotificationClicked:(DWNotification*)notification;
+- (void)notificationsViewDisplayLikersFor:(DWPurchase*)purchase;
+- (void)notificationsViewDisplayCommentorsFor:(DWPurchase*)purchase;
+- (void)notificationsViewDisplayUser:(DWUser*)user;
 
 @end

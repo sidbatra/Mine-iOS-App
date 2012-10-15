@@ -356,8 +356,16 @@ static NSString* const kImgSearchOn     = @"nav-btn-search-on.png";
 #pragma mark DWNotificationsViewControllerDelegate
 
 //----------------------------------------------------------------------------------------------------
-- (void)notificationsViewNotificationClicked:(DWNotification *)notification {
-    NSLog(@"Notification clicked");
+- (void)notificationsViewDisplayLikersFor:(DWPurchase *)purchase {
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)notificationsViewDisplayCommentorsFor:(DWPurchase *)purchase {
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)notificationsViewDisplayUser:(DWUser *)user {
+    [self displayUserProfile:user];
 }
 
 

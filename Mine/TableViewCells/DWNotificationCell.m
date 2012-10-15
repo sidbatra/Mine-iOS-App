@@ -16,6 +16,7 @@ static NSInteger const kNotificationCellHeight = 20;
 static NSInteger const kTextWidth = 250;
 static NSInteger const kNotificationImageSide = 32;
 
+#define kBackgroundColor [UIColor clearColor];
 #define kNotificationFont [UIFont fontWithName:@"HelveticaNeue" size:14]
 
 
@@ -42,13 +43,12 @@ static NSInteger const kNotificationImageSide = 32;
 				reuseIdentifier:reuseIdentifier];
 	
     if (self) {
-        self.contentView.backgroundColor = [UIColor clearColor];
         self.contentView.clipsToBounds = YES;
         
         [self createNotificationImage];
         [self createTextLabel];
-        
-		self.selectionStyle = UITableViewCellSelectionStyleBlue;
+    
+		self.selectionStyle = UITableViewCellSelectionStyleNone;
 	}
 	
     return self;
@@ -79,6 +79,11 @@ static NSInteger const kNotificationImageSide = 32;
 }
 
 //----------------------------------------------------------------------------------------------------
+- (void)resetUI {
+    [self resetDarkMode];
+}
+
+//----------------------------------------------------------------------------------------------------
 - (void)setNotificationImage:(UIImage*)image {
     notificationImage.image = image;
     notificationImage.highlightedImage = image;
@@ -99,6 +104,11 @@ static NSInteger const kNotificationImageSide = 32;
     
     textLabel.attributedText = attrStr;
     [textLabel sizeToFit];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)resetDarkMode {
+    self.contentView.backgroundColor = kBackgroundColor;
 }
 
 //----------------------------------------------------------------------------------------------------

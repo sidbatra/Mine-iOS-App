@@ -35,6 +35,7 @@
     
     [notification downloadImage];
     
+    [cell resetUI];
     [cell setNotificationImage:notification.image];
     [cell setEvent:notification.event entity:notification.entity];
     
@@ -65,8 +66,12 @@
     DWNotification *notification = object;
     DWNotificationCell *cell     = base;
     
-    if([notification class] == objectClass && objectKey == kKeyImageURL && notification.databaseID == objectID) {
-        [cell setNotificationImage:notification.image];
+    if([notification class] == objectClass && notification.databaseID == objectID) {
+         if(objectKey == kKeyImageURL)
+             [cell setNotificationImage:notification.image];
+         else if(objectKey == kKeyUnread) {
+            [cell resetDarkMode];
+         }
     }
 }
 
