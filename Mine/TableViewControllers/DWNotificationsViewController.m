@@ -10,7 +10,6 @@
 #import "DWNotificationsDataSource.h"
 #import "DWNotificationPresenter.h"
 #import "DWNotification.h"
-#import "DWSession.h"
 #import "DWGUIManager.h"
 #import "DWAnalyticsManager.h"
 #import "DWConstants.h"
@@ -63,10 +62,9 @@
     self.navigationItem.leftBarButtonItem = [DWGUIManager navBarCloseButtonWithTarget:self];
     self.navigationItem.titleView = [DWGUIManager navBarTitleViewWithText:@"Notifications"];
     
-    [(DWNotificationsDataSource*)self.tableViewDataSource loadNotifications];
+     [(DWNotificationsDataSource*)self.tableViewDataSource loadNotifications];
     
-    [[DWSession sharedDWSession] resetUnreadNotificationsCount];
-    
+
     [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Notifications View"];
 }
 

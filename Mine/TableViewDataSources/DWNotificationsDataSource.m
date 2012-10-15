@@ -7,6 +7,9 @@
 //
 
 #import "DWNotificationsDataSource.h"
+#import "DWNotification.h"
+#import "DWSession.h"
+
 
 @interface DWNotificationsDataSource() {
     DWNotificationsController   *_notificationsController;
@@ -47,6 +50,18 @@
     [self loadNotifications];
 }
 
+//----------------------------------------------------------------------------------------------------
+- (NSMutableArray*)unreadNotificationIDs {
+    NSMutableArray *notificationIDs = [NSMutableArray array];
+    
+    for(DWNotification *notification in self.objects) {
+        if(notification.unread)
+            [notificationIDs addObject:[NSNumber numberWithInteger:notification.databaseID]];
+    }
+    
+    return notificationIDs;
+}
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
@@ -57,6 +72,14 @@
 - (void)notificationsLoaded:(NSMutableArray *)notifications {
     self.objects = notifications;
     [self.delegate reloadTableView];
+    
+    NSMutableArray *notificationIDs = [self unreadNotificationIDs];
+    
+    if(notificationIDs.count) {
+        [self.notificationsController markNotificationsAsRead:notificationIDs];
+    }
+    
+   [[DWSession sharedDWSession] resetUnreadNotificationsCount];
 }
 
 //----------------------------------------------------------------------------------------------------

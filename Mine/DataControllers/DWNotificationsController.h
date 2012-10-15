@@ -19,6 +19,7 @@
 
 
 - (void)getNotifications;
+- (void)markNotificationsAsRead:(NSMutableArray*)notificationIDs;
 
 @end
 

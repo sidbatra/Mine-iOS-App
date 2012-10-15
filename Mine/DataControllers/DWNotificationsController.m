@@ -15,9 +15,12 @@
 
 
 static NSString* const kGetURI = @"/notifications.json?";
+static NSString* const kUpdateURI = @"/notifications/0.json?unread_ids=%@";
 
 static NSString* const kNNotificationsLoaded       = @"NNotificationsLoaded";
 static NSString* const kNNotificationsLoadError    = @"NNotificationsLoadError";
+static NSString* const kNNotificationsUpdated      = @"NNotificationsUpdated";
+static NSString* const kNNotificationsUpdateError  = @"NNotificationsUpdateError";
 
 
 
@@ -43,6 +46,16 @@ static NSString* const kNNotificationsLoadError    = @"NNotificationsLoadError";
 												 selector:@selector(notificationsLoadError:)
 													 name:kNNotificationsLoadError
 												   object:nil];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self
+												 selector:@selector(notificationsUpdated:)
+													 name:kNNotificationsUpdated
+												   object:nil];
+		
+		[[NSNotificationCenter defaultCenter] addObserver:self
+												 selector:@selector(notificationsUpdateError:)
+													 name:kNNotificationsUpdateError
+												   object:nil];
     }
     
     return self;
@@ -62,6 +75,18 @@ static NSString* const kNNotificationsLoadError    = @"NNotificationsLoadError";
                                             successNotification:kNNotificationsLoaded
                                               errorNotification:kNNotificationsLoadError
                                                   requestMethod:kGet
+                                                   authenticate:YES];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)markNotificationsAsRead:(NSMutableArray*)notificationIDs {
+    
+    NSMutableString *localURL = [NSMutableString stringWithFormat:kUpdateURI,[notificationIDs componentsJoinedByString:@","]];
+    
+    [[DWRequestManager sharedDWRequestManager] createAppRequest:localURL
+                                            successNotification:kNNotificationsUpdated
+                                              errorNotification:kNNotificationsUpdateError
+                                                  requestMethod:kPut
                                                    authenticate:YES];
 }
 
@@ -106,6 +131,14 @@ static NSString* const kNNotificationsLoadError    = @"NNotificationsLoadError";
     
     [self.delegate performSelector:sel
                         withObject:[error localizedDescription]];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)notificationsUpdated:(NSNotification*)notification {
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)notificationsUpdateError:(NSNotification*)notification {
 }
 
 @end
