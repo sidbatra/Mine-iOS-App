@@ -363,6 +363,9 @@ static NSString* const kImgSearchOn     = @"nav-btn-search-on.png";
 
 //----------------------------------------------------------------------------------------------------
 - (void)notificationsViewDisplayCommentorsFor:(DWPurchase *)purchase {
+    [self displayCommentsCreateViewForPurchase:purchase
+                            withCreationIntent:NO
+                                  loadRemotely:YES];
 }
 
 //----------------------------------------------------------------------------------------------------

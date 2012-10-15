@@ -31,6 +31,7 @@ static NSInteger const kBottomBarMargin = 44;
     DWCommentsViewController *_commentsViewController;
     
     BOOL    _isKeyboardShown;
+    BOOL    _loadRemotely;
 }
 
 /**
@@ -62,6 +63,11 @@ static NSInteger const kBottomBarMargin = 44;
  */
 @property (nonatomic,assign) BOOL isKeyboardShown;
 
+/**
+ * Flag if comments are available locally or are to be loaded remotely.
+ */
+@property (nonatomic,assign) BOOL loadRemotely;
+
 
 /**
  * Create am optimistic comment with the given message.
@@ -83,6 +89,7 @@ static NSInteger const kBottomBarMargin = 44;
 @synthesize lastCommentMessage      = _lastCommentMessage;
 @synthesize commentsViewController  = _commentsViewController;
 @synthesize isKeyboardShown         = _isKeyboardShown;
+@synthesize loadRemotely            = _loadRemotely;
 @synthesize commentBarView          = _commentBarView;
 @synthesize commentTextField        = _commentTextField;
 @synthesize sendButton              = _sendButton;
@@ -91,13 +98,15 @@ static NSInteger const kBottomBarMargin = 44;
 
 //----------------------------------------------------------------------------------------------------
 - (id)initWithPurchase:(DWPurchase*)purchase 
-    withCreationIntent:(BOOL)creationIntent {
+    withCreationIntent:(BOOL)creationIntent
+          loadRemotely:(BOOL)loadRemotely {
     
     self = [super init];
     
     if (self) {
         self.purchase       = purchase;
         self.creationIntent = creationIntent;
+        self.loadRemotely   = loadRemotely;
         
         self.commentsController = [[DWCommentsController alloc] init];
         self.commentsController.delegate = self;
@@ -141,7 +150,8 @@ static NSInteger const kBottomBarMargin = 44;
     self.navigationItem.titleView  = [DWGUIManager navBarTitleViewWithText:@"Comments"];
     
     if(!self.commentsViewController) {
-        self.commentsViewController = [[DWCommentsViewController alloc] initWithComments:self.purchase.comments];
+        self.commentsViewController = [[DWCommentsViewController alloc] initWithPurchaseID:self.purchase.databaseID
+                                                                              loadRemotely:self.loadRemotely];
         self.commentsViewController.delegate = self;
         self.commentsViewController.view.frame = CGRectMake(0,
                                                             0, 
@@ -156,7 +166,7 @@ static NSInteger const kBottomBarMargin = 44;
     
     [self.view insertSubview:self.commentsViewController.view
                 belowSubview:self.commentBarView];
-    
+
     
     [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Comments View"
                                           withProperties:[NSMutableDictionary dictionaryWithObjectsAndKeys:

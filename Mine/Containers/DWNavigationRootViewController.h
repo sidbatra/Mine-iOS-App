@@ -60,6 +60,7 @@
  * Push a comments view onto the nav stack.
  */
 - (void)displayCommentsCreateViewForPurchase:(DWPurchase*)purchase
-                          withCreationIntent:(BOOL)creationIntent;
+                          withCreationIntent:(BOOL)creationIntent
+                                loadRemotely:(BOOL)loadRemotely;
 
 @end

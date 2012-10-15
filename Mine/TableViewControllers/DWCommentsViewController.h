@@ -19,10 +19,8 @@
 @property (nonatomic,weak) id<DWCommentsViewControllerDelegate> delegate;
 
 
-/**
- * Init with comments to be displayed.
- */ 
-- (id)initWithComments:(NSMutableArray*)comments;
+- (id)initWithPurchaseID:(NSInteger)purchaseID
+            loadRemotely:(BOOL)loadRemotely;
 
 /**
  * Update UI after a new comment has been added.

@@ -85,10 +85,12 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)displayCommentsCreateViewForPurchase:(DWPurchase*)purchase 
-                          withCreationIntent:(BOOL)creationIntent {
+                          withCreationIntent:(BOOL)creationIntent
+                                loadRemotely:(BOOL)loadRemotely {
     
     DWCommentsCreateViewController *commentsViewController = [[DWCommentsCreateViewController alloc] initWithPurchase:purchase
-                                                                                                   withCreationIntent:creationIntent];
+                                                                                                   withCreationIntent:creationIntent
+                                                                                                         loadRemotely:loadRemotely];
     commentsViewController.delegate = self;
     
     [self.navigationController pushViewController:commentsViewController 
@@ -207,7 +209,8 @@
                             withCreationIntent:(NSNumber *)creationIntent {
     
     [self displayCommentsCreateViewForPurchase:purchase
-                            withCreationIntent:[creationIntent boolValue]];
+                            withCreationIntent:[creationIntent boolValue]
+                                  loadRemotely:NO];
 }
 
 //----------------------------------------------------------------------------------------------------

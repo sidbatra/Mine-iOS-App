@@ -7,7 +7,14 @@
 //
 
 #import "DWTableViewDataSource.h"
+#import "DWCommentsController.h"
 
-@interface DWCommentsViewDataSource : DWTableViewDataSource
+
+@interface DWCommentsViewDataSource : DWTableViewDataSource<DWCommentsControllerDelegate>
+
+- (id)initWithPurchaseID:(NSInteger)purchaseID
+            loadRemotely:(BOOL)loadRemotely;
+
+- (void)loadComments;
 
 @end
