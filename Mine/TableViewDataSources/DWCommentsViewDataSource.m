@@ -90,7 +90,13 @@
     if([purchaseID integerValue] != self.purchaseID)
         return;
 
-    self.objects = comments;
+    DWPurchase *purchase = [DWPurchase fetch:self.purchaseID];
+    
+    self.objects = purchase.comments;
+    
+    
+    for(DWComment *comment in comments)
+        [comment destroy];
     
     [self.delegate reloadTableView];
 }

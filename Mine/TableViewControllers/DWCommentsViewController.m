@@ -82,7 +82,7 @@
 #pragma mark Comment helpers
 
 //----------------------------------------------------------------------------------------------------
-- (void)newCommentAdded{
+- (void)newCommentAdded {
     [self reloadTableView];
     [self scrollToBottomWithAnimation:YES];
 }
