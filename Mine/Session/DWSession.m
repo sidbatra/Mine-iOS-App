@@ -201,6 +201,12 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWSession);
 }
 
 //----------------------------------------------------------------------------------------------------
+- (void)resetUnreadNotificationsCount {
+    self.currentUser.unreadNotificationsCount = 0;
+    [self launchUpdateNotificationsNotification];
+}
+
+//----------------------------------------------------------------------------------------------------
 - (void)launchUserUpdateNotification {
     
     NSDictionary *info = [NSDictionary dictionaryWithObjectsAndKeys:

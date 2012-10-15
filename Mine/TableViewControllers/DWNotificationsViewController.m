@@ -10,6 +10,7 @@
 #import "DWNotificationsDataSource.h"
 #import "DWNotificationPresenter.h"
 #import "DWNotification.h"
+#import "DWSession.h"
 #import "DWGUIManager.h"
 #import "DWAnalyticsManager.h"
 #import "DWConstants.h"
@@ -64,6 +65,7 @@
     
     [(DWNotificationsDataSource*)self.tableViewDataSource loadNotifications];
     
+    [[DWSession sharedDWSession] resetUnreadNotificationsCount];
     
     [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Notifications View"];
 }

@@ -54,4 +54,10 @@
  */
 - (BOOL)isCurrentUser:(NSInteger)userID;
 
+/**
+ * Reset the current users unread notification count to user and
+ * fire notifications to update UI.
+ */
+- (void)resetUnreadNotificationsCount;
+
 @end
