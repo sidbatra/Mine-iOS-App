@@ -54,7 +54,7 @@
 /**
  * Display a list of users who've liked the given purchase.
  */
-- (void)displayAllLikesForPurchase:(DWPurchase*)purchase;
+- (void)displayAllLikesForPurchase:(DWPurchase*)purchase loadRemotely:(BOOL)loadRemotely;
 
 /**
  * Push a comments view onto the nav stack.

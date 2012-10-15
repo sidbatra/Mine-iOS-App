@@ -11,6 +11,7 @@
 #import "DWNotificationPresenter.h"
 #import "DWNotification.h"
 #import "DWGUIManager.h"
+#import "DWAnalyticsManager.h"
 #import "DWConstants.h"
 
 
@@ -59,9 +60,12 @@
 	[super viewDidLoad];
     
     self.navigationItem.leftBarButtonItem = [DWGUIManager navBarCloseButtonWithTarget:self];
-
+    self.navigationItem.titleView = [DWGUIManager navBarTitleViewWithText:@"Notifications"];
     
-     [(DWNotificationsDataSource*)self.tableViewDataSource loadNotifications];
+    [(DWNotificationsDataSource*)self.tableViewDataSource loadNotifications];
+    
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Notifications View"];
 }
 
 

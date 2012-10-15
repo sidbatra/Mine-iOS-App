@@ -74,8 +74,9 @@
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)displayAllLikesForPurchase:(DWPurchase*)purchase {
-    DWLikersViewController *likersViewController = [[DWLikersViewController alloc] initWithPurhcase:purchase];
+- (void)displayAllLikesForPurchase:(DWPurchase*)purchase loadRemotely:(BOOL)loadRemotely {
+    DWLikersViewController *likersViewController = [[DWLikersViewController alloc] initWithPurhcase:purchase
+                                                                                       loadRemotely:loadRemotely];
     likersViewController.delegate = self;
     
     [self.navigationController pushViewController:likersViewController
@@ -197,7 +198,8 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)purchasesViewAllLikesClickedForPurchase:(DWPurchase *)purchase {
-    [self displayAllLikesForPurchase:purchase];
+    [self displayAllLikesForPurchase:purchase
+                        loadRemotely:NO];
 }
 
 //----------------------------------------------------------------------------------------------------

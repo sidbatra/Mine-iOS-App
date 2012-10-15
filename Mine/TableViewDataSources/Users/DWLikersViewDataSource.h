@@ -10,11 +10,11 @@
 
 @interface DWLikersViewDataSource : DWUsersViewDataSource {
     NSInteger _purchaseID;
+    BOOL _loadRemotely;
 }
 
-/**
- * Purchase id for which the likers are being displayed.
- */
+
 @property (nonatomic,assign) NSInteger purchaseID;
+@property (nonatomic,assign) BOOL loadRemotely;
 
 @end
