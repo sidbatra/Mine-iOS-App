@@ -591,6 +591,9 @@ static NSString* const kNUserUpdateError            = @"NUserUpdateError";
     else if([notification.name isEqualToString:kNIFollowersLoadError]) {
         sel = @selector(ifollowersLoadError:forUserID:);
     }
+    else if([notification.name isEqualToString:kNUserSuggestionsLoadError]) {
+        sel = @selector(userSuggestionsLoadError:forUserID:);
+    }
     else if([notification.name isEqualToString:kNUsersLoadError]) {
         sel = @selector(usersLoadError:forResourceID:);
     }
