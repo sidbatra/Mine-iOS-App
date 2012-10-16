@@ -44,7 +44,7 @@
 @synthesize navTitleView    = _navTitleView;
 
 //----------------------------------------------------------------------------------------------------
-- (id)initWithPurhcase:(DWPurchase*)purchase {
+- (id)initWithPurhcase:(DWPurchase*)purchase loadRemotely:(BOOL)loadRemotely {
     self = [super init];
     
     if(self) {        
@@ -52,6 +52,7 @@
         self.purchase = purchase;
         
         self.tableViewDataSource = [[DWPurchaseViewDataSource alloc] init];
+        ((DWPurchaseViewDataSource*)self.tableViewDataSource).loadRemotely = loadRemotely;
         ((DWPurchaseViewDataSource*)self.tableViewDataSource).purchaseID = self.purchase.databaseID;
     }
     

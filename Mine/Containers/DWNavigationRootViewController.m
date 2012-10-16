@@ -98,9 +98,11 @@
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)displayPurchaseViewForPurchase:(DWPurchase*)purchase {
+- (void)displayPurchaseViewForPurchase:(DWPurchase*)purchase
+                          loadRemotely:(BOOL)loadRemotely {
     
-    DWPurchaseViewController *purchaseViewController = [[DWPurchaseViewController alloc] initWithPurhcase:purchase];
+    DWPurchaseViewController *purchaseViewController = [[DWPurchaseViewController alloc] initWithPurhcase:purchase
+                                                                                             loadRemotely:loadRemotely];
     purchaseViewController.delegate = self;
     
     [self.navigationController pushViewController:purchaseViewController 
@@ -153,7 +155,8 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)profileViewPurchaseClicked:(DWPurchase *)purchase {
-    [self displayPurchaseViewForPurchase:purchase];
+    [self displayPurchaseViewForPurchase:purchase
+                            loadRemotely:NO];
 }
 
 //----------------------------------------------------------------------------------------------------

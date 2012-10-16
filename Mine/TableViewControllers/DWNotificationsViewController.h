@@ -26,8 +26,7 @@
 
 @required
 
-- (void)notificationsViewDisplayLikersFor:(DWPurchase*)purchase;
-- (void)notificationsViewDisplayCommentorsFor:(DWPurchase*)purchase;
+- (void)notificationsViewDisplayPurchase:(DWPurchase*)purchase;
 - (void)notificationsViewDisplayUser:(DWUser*)user;
 
 @end

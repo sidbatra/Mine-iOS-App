@@ -35,6 +35,7 @@
 
 @synthesize purchasesController     = _purchasesController;
 @synthesize purchaseID              = _purchaseID;
+@synthesize loadRemotely            = _loadRemotely;
 
 //----------------------------------------------------------------------------------------------------
 - (id)init {
@@ -50,12 +51,23 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)loadPurchase {
-    DWPurchase *purchase = [DWPurchase fetch:self.purchaseID];
-    [purchase incrementPointerCount];
-
-    self.objects = [NSArray arrayWithObject:purchase];
     
-    [self.delegate reloadTableView];
+    if(self.loadRemotely) {
+        [self.purchasesController getPurchase:self.purchaseID];
+    }
+    else {
+        DWPurchase *purchase = [DWPurchase fetch:self.purchaseID];
+        [purchase incrementPointerCount];
+
+        self.objects = [NSArray arrayWithObject:purchase];
+        
+        [self.delegate reloadTableView];
+    }
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)refreshInitiated {
+    [self loadPurchase];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -73,6 +85,28 @@
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
 #pragma mark DWPurchasesControllerDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)purchaseLoaded:(DWPurchase *)purchase
+        withResourceID:(NSNumber *)resourceID {
+    
+    if(self.purchaseID != [resourceID integerValue])
+        return;
+    
+    self.objects = [NSArray arrayWithObject:purchase];
+    [self.delegate reloadTableView];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)purchaseLoadError:(NSString *)message
+           withResourceID:(NSNumber *)resourceID {
+    
+    if(self.purchaseID != [resourceID integerValue])
+        return;
+    
+    [self.delegate displayError:message
+                  withRefreshUI:YES];
+}
 
 //----------------------------------------------------------------------------------------------------
 - (void)purchaseDeleted:(NSNumber *)purchaseID {

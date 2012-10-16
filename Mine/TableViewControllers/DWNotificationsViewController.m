@@ -108,16 +108,12 @@
                                objectID:notification.databaseID
                               objectKey:kKeyUnread];
     
-    switch(notification.identifier) {
-        case DWNotificationIdentifierLike:
-            [self.delegate notificationsViewDisplayLikersFor:notification.purchase];
-        break;
-        case DWNotificationIdentifierComment:
-            [self.delegate notificationsViewDisplayCommentorsFor:notification.purchase];
-        break;
-        case DWNotificationIdentifierFollowing:
-            [self.delegate notificationsViewDisplayUser:notification.user];
-        break;
+    if([notification.resourceType isEqualToString:@"User"]) {
+        [self.delegate notificationsViewDisplayUser:notification.user];
+    }
+    else if([notification.resourceType isEqualToString:@"Purchase"]) {
+        [self.delegate notificationsViewDisplayPurchase:notification.purchase];
+        
     }
 }
 

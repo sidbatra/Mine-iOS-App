@@ -63,4 +63,10 @@
                           withCreationIntent:(BOOL)creationIntent
                                 loadRemotely:(BOOL)loadRemotely;
 
+/**
+ * Display purchase view with an option to remote the purchase remotely.
+ */
+- (void)displayPurchaseViewForPurchase:(DWPurchase*)purchase
+                          loadRemotely:(BOOL)loadRemotely;
+
 @end

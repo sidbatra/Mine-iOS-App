@@ -356,17 +356,11 @@ static NSString* const kImgSearchOn     = @"nav-btn-search-on.png";
 #pragma mark DWNotificationsViewControllerDelegate
 
 //----------------------------------------------------------------------------------------------------
-- (void)notificationsViewDisplayLikersFor:(DWPurchase *)purchase {
-    [self displayAllLikesForPurchase:purchase
-                        loadRemotely:YES];
+- (void)notificationsViewDisplayPurchase:(DWPurchase*)purchase {
+    [self displayPurchaseViewForPurchase:purchase
+                            loadRemotely:YES];
 }
 
-//----------------------------------------------------------------------------------------------------
-- (void)notificationsViewDisplayCommentorsFor:(DWPurchase *)purchase {
-    [self displayCommentsCreateViewForPurchase:purchase
-                            withCreationIntent:NO
-                                  loadRemotely:YES];
-}
 
 //----------------------------------------------------------------------------------------------------
 - (void)notificationsViewDisplayUser:(DWUser *)user {
