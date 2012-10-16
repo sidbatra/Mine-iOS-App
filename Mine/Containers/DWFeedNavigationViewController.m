@@ -102,14 +102,12 @@ static NSString* const kImgSearchOn     = @"nav-btn-search-on.png";
 - (void)loadSideButtons {
     
     if(!self.navNotificationsView) {
-        self.navNotificationsView = [[DWNavigationBarCountView alloc] initWithFrame:CGRectMake(0,0,55,44)];
+        self.navNotificationsView = [[DWNavigationBarCountView alloc] initWithFrame:CGRectMake(0,0,40,30)];
         self.navNotificationsView.delegate = self;
     }
     
     UIBarButtonItem *barButtonitem          = [[UIBarButtonItem alloc] initWithCustomView:self.navNotificationsView];
     self.navigationItem.leftBarButtonItem   = barButtonitem;
-    
-    
     
     
     

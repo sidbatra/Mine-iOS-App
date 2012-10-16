@@ -102,7 +102,7 @@ static NSInteger const kNotificationImageSide   = 50;
 - (void)createTextLabel {
     
     textLabel =  [[OHAttributedLabel alloc] initWithFrame:CGRectMake(notificationImage.frame.origin.x + notificationImage.frame.size.width + 10,
-                                                                        10,
+                                                                        7,
                                                                         kTextWidth,
                                                                         34)];
     textLabel.backgroundColor = [UIColor clearColor];
@@ -146,7 +146,7 @@ static NSInteger const kNotificationImageSide   = 50;
 
 //----------------------------------------------------------------------------------------------------
 - (void)setDarkMode {
-    self.contentView.backgroundColor = [UIColor redColor];
+    self.contentView.backgroundColor = [UIColor whiteColor];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -160,6 +160,7 @@ static NSInteger const kNotificationImageSide   = 50;
     }
     else if(!highlighted && self.highlighted) {
         self.highlighted = NO;
+        [self resetDarkMode];
     }
 }
 
