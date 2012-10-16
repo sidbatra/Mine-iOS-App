@@ -147,6 +147,7 @@
     
     id lastObject   = [self.objects lastObject];
     BOOL paginate   = NO;
+    BOOL scroll     = NO;
     
     if([lastObject isKindOfClass:[DWPagination class]]) {
         paginate = !((DWPagination*)lastObject).isDisabled;
@@ -155,6 +156,7 @@
     if(!paginate) {
         [self clean];
         self.objects = [NSMutableArray arrayWithArray:self.users];
+        scroll = YES;
     }
     else {
         [self.objects removeLastObject];
@@ -174,7 +176,9 @@
     self.purchases = nil;
     
     [self.delegate reloadTableView];
-    [self.delegate scrollToRowAtIndex:[self.users count]];
+    
+    if (scroll)
+        [self.delegate scrollToRowAtIndex:[self.users count]];
 }
 
 
