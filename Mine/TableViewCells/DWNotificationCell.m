@@ -146,7 +146,7 @@ static NSInteger const kNotificationImageSide   = 50;
 
 //----------------------------------------------------------------------------------------------------
 - (void)setDarkMode {
-    self.contentView.backgroundColor = [UIColor redColor];
+    self.contentView.backgroundColor = [UIColor whiteColor];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -160,6 +160,7 @@ static NSInteger const kNotificationImageSide   = 50;
     }
     else if(!highlighted && self.highlighted) {
         self.highlighted = NO;
+        [self resetDarkMode];
     }
 }
 

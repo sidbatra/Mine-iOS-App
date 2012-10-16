@@ -70,7 +70,7 @@
          if(objectKey == kKeyImageURL)
              [cell setNotificationImage:notification.image];
          else if(objectKey == kKeyUnread) {
-            [cell resetDarkMode];
+             [cell resetDarkMode];
          }
     }
 }
