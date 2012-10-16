@@ -267,8 +267,6 @@
         }
     }
     
-    //TODO - update current user's purchase count in session
-    
     self.objects = nil;
     [self displayPurchasesAndUser];
 }
@@ -293,8 +291,6 @@
             }
         }
     }  
-    
-    //TODO - update current user's purchase count in session
     
     self.objects = nil;       
     [self displayPurchasesAndUser];

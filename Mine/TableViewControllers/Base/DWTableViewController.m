@@ -462,6 +462,20 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
                           withRowAnimation:UITableViewRowAnimationNone];
 }
 
+//----------------------------------------------------------------------------------------------------
+- (void)scrollToRowAtIndex:(NSInteger)index {
+    
+    NSIndexPath *indexPath  = [NSIndexPath indexPathForRow:index
+                                                 inSection:0];
+    
+    if(!indexPath || index >= [self.tableViewDataSource.objects count])
+        return;
+    
+    [self.tableView scrollToRowAtIndexPath:indexPath
+                          atScrollPosition:UITableViewScrollPositionTop 
+                                  animated:NO];
+}
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------

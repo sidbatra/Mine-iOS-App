@@ -10,6 +10,7 @@
 
 #import "DWFeedViewDataSource.h"
 #import "DWPaginationPresenter.h"
+#import "DWUserPresenter.h"
 
 #import "DWPagination.h"
 #import "DWConstants.h"
@@ -42,6 +43,10 @@
     if(self) {        
         
         self.tableViewDataSource = [[DWFeedViewDataSource alloc] init];
+        
+        [self addModelPresenterForClass:[DWUser class]
+                              withStyle:kDefaultModelPresenter
+                          withPresenter:[DWUserPresenter class]];
         
         [self addModelPresenterForClass:[DWPagination class]
                               withStyle:kDefaultModelPresenter 
@@ -81,6 +86,8 @@
     self.isFeedLoaded = YES;
     
     [(DWFeedViewDataSource*)self.tableViewDataSource loadFeed];
+    [(DWFeedViewDataSource*)self.tableViewDataSource loadUserSuggestions];
+    
     [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Feed View"];
 }
 

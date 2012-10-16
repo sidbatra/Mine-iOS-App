@@ -7,11 +7,17 @@
 //
 
 #import "DWTableViewDataSource.h"
+#import "DWUsersController.h"
 #import "DWFeedController.h"
 #import "DWPurchasesController.h"
 
 
-@interface DWFeedViewDataSource : DWTableViewDataSource<DWFeedControllerDelegate,DWPurchasesControllerDelegate>
+@interface DWFeedViewDataSource : DWTableViewDataSource<DWFeedControllerDelegate,DWPurchasesControllerDelegate,DWUsersControllerDelegate>
+
+/**
+ * Load user suggestions for who to follow
+ */
+- (void)loadUserSuggestions;
 
 /**
  * Load the feed items and start the infinite pagination loop.

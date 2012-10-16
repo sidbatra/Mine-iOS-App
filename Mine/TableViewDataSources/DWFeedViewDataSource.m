@@ -16,8 +16,12 @@
  */
 @interface DWFeedViewDataSource() {
         
-    DWFeedController *_feedController;
+    DWFeedController        *_feedController;
     DWPurchasesController   *_purchasesController;
+    DWUsersController       *_usersController;
+    
+    NSMutableArray          *_users;
+    NSMutableArray          *_purchases;
     
     NSInteger _oldestTimestamp;
 }
@@ -31,6 +35,24 @@
  * Data controller for the purchases model.
  */
 @property (nonatomic,strong) DWPurchasesController *purchasesController;
+
+/**
+ * Data controller for the users model.
+ */
+@property (nonatomic,strong) DWUsersController *usersController;
+
+/**
+ * Users suggested for who to follow
+ */
+@property (nonatomic,strong) NSMutableArray *users;
+
+/**
+ * Holds the last page of purchases loaded from the server to break deadlocks
+ * in displaying the feed since the users cell and purchases cells must be
+ * displayed together.
+ */
+@property (nonatomic,strong) NSMutableArray *purchases;
+
 
 /**
  * Timestamp of the last item in the feed. Used to fetch more items.
@@ -48,6 +70,10 @@
 
 @synthesize feedController      = _feedController;
 @synthesize purchasesController = _purchasesController;
+@synthesize usersController     = _usersController;
+
+@synthesize users               = _users;
+@synthesize purchases           = _purchases;
 @synthesize oldestTimestamp     = _oldestTimestamp;
 
 //----------------------------------------------------------------------------------------------------
@@ -60,6 +86,9 @@
         
         self.purchasesController = [[DWPurchasesController alloc] init];
         self.purchasesController.delegate = self;
+        
+        self.usersController = [[DWUsersController alloc] init];
+        self.usersController.delegate = self;
     }
     
     return self;
@@ -68,6 +97,11 @@
 //----------------------------------------------------------------------------------------------------
 - (void)loadFeed {
     [self.feedController getPurchasesBefore:self.oldestTimestamp];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)loadUserSuggestions {
+    [self.usersController getUserSuggestions];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -94,6 +128,9 @@
         ((DWPagination*)lastObject).isDisabled = YES;
     }
     
+    self.users = nil;
+    
+    [self loadUserSuggestions];
     [self loadFeed];
 }
 
@@ -102,14 +139,11 @@
     [self loadFeed];
 }
 
-
 //----------------------------------------------------------------------------------------------------
-//----------------------------------------------------------------------------------------------------
-#pragma mark -
-#pragma mark DWFeedControllerDelegate
-
-//----------------------------------------------------------------------------------------------------
-- (void)feedLoaded:(NSMutableArray *)purchases {
+- (void)displayFeedAndUserSuggestions {
+    
+    if(!self.purchases || !self.users)
+        return;
     
     id lastObject   = [self.objects lastObject];
     BOOL paginate   = NO;
@@ -120,28 +154,61 @@
     
     if(!paginate) {
         [self clean];
-        self.objects = purchases;
+        self.objects = [NSMutableArray arrayWithArray:self.users];
     }
     else {
         [self.objects removeLastObject];
-        [self.objects addObjectsFromArray:purchases];
     }
     
-    if([purchases count]) {
+    [self.objects addObjectsFromArray:self.purchases];
+    
+    if([self.purchases count]) {
         
-        self.oldestTimestamp        = [((DWPurchase*)[purchases lastObject]).createdAt timeIntervalSince1970];
+        self.oldestTimestamp        = [((DWPurchase*)[self.purchases lastObject]).createdAt timeIntervalSince1970];
         
         DWPagination *pagination    = [[DWPagination alloc] init];
         pagination.owner            = self;
         [self.objects addObject:pagination];
     }
     
+    self.purchases = nil;
     
     [self.delegate reloadTableView];
+    [self.delegate scrollToRowAtIndex:[self.users count]];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWFeedControllerDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)feedLoaded:(NSMutableArray *)purchases {
+    self.purchases = purchases;
+    [self displayFeedAndUserSuggestions];
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)feedLoadError:(NSString *)error {
+    [self.delegate displayError:error
+                  withRefreshUI:YES];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWUsersControllerDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)userSuggestionsLoaded:(NSMutableArray *)users forUserID:(NSNumber *)userID {
+    self.users = users;
+    [self displayFeedAndUserSuggestions];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)userSuggestionsLoadError:(NSString *)error forUserID:(NSNumber *)userID {
     [self.delegate displayError:error
                   withRefreshUI:YES];
 }
@@ -155,15 +222,13 @@
 //----------------------------------------------------------------------------------------------------
 - (void)purchaseCreated:(DWPurchase *)purchase 
          fromResourceID:(NSNumber *)resourceID {
-    
     [self addObject:purchase
-            atIndex:0
+            atIndex:[self.users count]
       withAnimation:UITableViewRowAnimationTop];
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)purchaseDeleted:(NSNumber *)purchaseID {
-    
     [self removeObject:[DWPurchase fetch:[purchaseID integerValue]] 
          withAnimation:UITableViewRowAnimationBottom];
 }
