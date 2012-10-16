@@ -9,6 +9,8 @@
 #import "DWFeedViewDataSource.h"
 
 #import "DWPurchase.h"
+#import "DWFollowing.h"
+#import "DWFollowingManager.h"
 #import "DWPagination.h"
 
 /**
@@ -19,6 +21,7 @@
     DWFeedController        *_feedController;
     DWPurchasesController   *_purchasesController;
     DWUsersController       *_usersController;
+    DWFollowingsController  *_followingsController;
     
     NSMutableArray          *_users;
     NSMutableArray          *_purchases;
@@ -40,6 +43,11 @@
  * Data controller for the users model.
  */
 @property (nonatomic,strong) DWUsersController *usersController;
+
+/**
+ * Data controller for the followings model.
+ */
+@property (nonatomic,strong) DWFollowingsController *followingsController;
 
 /**
  * Users suggested for who to follow
@@ -68,13 +76,16 @@
 //----------------------------------------------------------------------------------------------------
 @implementation DWFeedViewDataSource
 
-@synthesize feedController      = _feedController;
-@synthesize purchasesController = _purchasesController;
-@synthesize usersController     = _usersController;
+@synthesize feedController          = _feedController;
+@synthesize purchasesController     = _purchasesController;
+@synthesize usersController         = _usersController;
+@synthesize followingsController    = _followingsController;
 
-@synthesize users               = _users;
-@synthesize purchases           = _purchases;
-@synthesize oldestTimestamp     = _oldestTimestamp;
+@synthesize users                   = _users;
+@synthesize purchases               = _purchases;
+@synthesize oldestTimestamp         = _oldestTimestamp;
+
+@dynamic delegate;
 
 //----------------------------------------------------------------------------------------------------
 - (id)init {
@@ -89,6 +100,9 @@
         
         self.usersController = [[DWUsersController alloc] init];
         self.usersController.delegate = self;
+        
+        self.followingsController = [[DWFollowingsController alloc] init];
+        self.followingsController.delegate = self;
     }
     
     return self;
@@ -117,6 +131,25 @@
     [self removeObject:purchase
          withAnimation:UITableViewRowAnimationBottom];
 }
+
+//----------------------------------------------------------------------------------------------------
+- (void)toggleFollowForUserID:(NSInteger)userID {
+    DWFollowing *following = [[DWFollowingManager sharedDWFollowingManager] followingForUserID:userID];
+    
+    if(following) {
+        [self.followingsController destroyFollowing:following.databaseID
+                                          ForUserID:userID];
+    }
+    else {
+        [self.followingsController createFollowingForUserID:userID];
+    }
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark Private Methods
 
 //----------------------------------------------------------------------------------------------------
 - (void)refreshInitiated {
@@ -235,6 +268,32 @@
 - (void)purchaseDeleted:(NSNumber *)purchaseID {
     [self removeObject:[DWPurchase fetch:[purchaseID integerValue]] 
          withAnimation:UITableViewRowAnimationBottom];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWFollowingsControllerDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)followingCreated:(DWFollowing *)following forUserID:(NSNumber *)userID {    
+    [self.delegate followingModifiedForUserID:[userID integerValue] toStatus:YES];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)followingCreateError:(NSString *)message forUserID:(NSNumber *)userID {
+    
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)followingDestroyed:(DWFollowing *)following forUserID:(NSNumber *)userID {
+    [self.delegate followingModifiedForUserID:[userID integerValue] toStatus:NO];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)followingDestroyError:(NSString *)message forUserID:(NSNumber *)userID {
+    
 }
 
 

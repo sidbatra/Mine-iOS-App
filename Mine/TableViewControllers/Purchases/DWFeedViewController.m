@@ -45,7 +45,7 @@
         self.tableViewDataSource = [[DWFeedViewDataSource alloc] init];
         
         [self addModelPresenterForClass:[DWUser class]
-                              withStyle:kDefaultModelPresenter
+                              withStyle:kUserPresenterStyleSuggested
                           withPresenter:[DWUserPresenter class]];
         
         [self addModelPresenterForClass:[DWPagination class]
@@ -91,6 +91,42 @@
     [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Feed View"];
 }
 
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWUserCellDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)userCellFollowClickedForUserID:(NSInteger)userID {
+    [(DWFeedViewDataSource*)self.tableViewDataSource toggleFollowForUserID:userID];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWFeedViewDataSourceDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)followingModifiedForUserID:(NSInteger)userID toStatus:(BOOL)isActive {
+    [self provideResourceToVisibleCells:[DWUser class]
+                               objectID:userID
+                              objectKey:isActive ? kKeyFollowingCreated : kKeyFollowingDestroyed];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark User presenter events
+
+//----------------------------------------------------------------------------------------------------
+- (void)userPresenterUserSelected:(DWUser*)user {
+    [self.delegate feedViewUserClicked:user];
+}
+
+
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
@@ -100,6 +136,7 @@
 - (void)sessionRenewed:(NSNotification*)notification {
     [(DWFeedViewDataSource*)self.tableViewDataSource refreshInitiated];
 }
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------

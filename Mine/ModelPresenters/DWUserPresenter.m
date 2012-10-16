@@ -50,7 +50,7 @@
     
     
     if(![[DWSession sharedDWSession] isCurrentUser:user.databaseID]) {
-        if([DWFollowingManager sharedDWFollowingManager].areBulkFollowingsLoaded) {
+        if([DWFollowingManager sharedDWFollowingManager].areBulkFollowingsLoaded || style == kUserPresenterStyleSuggested) {
             if([[DWFollowingManager sharedDWFollowingManager] followingForUserID:user.databaseID])
                 [cell displayActiveFollowing];
             else
@@ -60,7 +60,7 @@
     else {
         [cell hideFollowButton];
     }
-    
+
     return cell;
 }
 

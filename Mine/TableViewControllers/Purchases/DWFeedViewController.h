@@ -28,7 +28,11 @@
  */
 @protocol DWFeedViewControllerDelegate
 
-@optional
+@required
 
+/**
+ * A suggested user element is clicked.
+ */
+- (void)feedViewUserClicked:(DWUser*)user;
 
 @end
