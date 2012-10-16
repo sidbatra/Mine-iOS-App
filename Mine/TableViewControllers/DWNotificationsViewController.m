@@ -59,7 +59,7 @@
 - (void)viewDidLoad {
 	[super viewDidLoad];
     
-    self.navigationItem.leftBarButtonItem = [DWGUIManager navBarCloseButtonWithTarget:self];
+    self.navigationItem.rightBarButtonItem = [DWGUIManager navBarCloseButtonWithTarget:self];
     self.navigationItem.titleView = [DWGUIManager navBarTitleViewWithText:@"Notifications"];
     
      [(DWNotificationsDataSource*)self.tableViewDataSource loadNotifications];

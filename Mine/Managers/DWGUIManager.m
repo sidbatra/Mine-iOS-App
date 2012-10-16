@@ -19,6 +19,8 @@ static NSString* const kImgNextOff  = @"nav-btn-next-off.png";
 static NSString* const kImgNextOn   = @"nav-btn-next-on.png";
 static NSString* const kImgSendOff  = @"nav-btn-send-off.png";
 static NSString* const kImgSendOn   = @"nav-btn-send-on.png";
+static NSString* const kImgCloseOff = @"nav-btn-close-off.png";
+static NSString* const kImgCloseOn  = @"nav-btn-close-on.png";
 
 
 
@@ -108,8 +110,8 @@ static NSString* const kImgSendOn   = @"nav-btn-send-on.png";
     
     return [self navBarButtonWithTarget:target
                                selector:@selector(closeButtonClicked)
-                                onImage:kImgDoneOn
-                               offImage:kImgDoneOff];
+                                onImage:kImgCloseOn
+                               offImage:kImgCloseOff];
 }
 
 
