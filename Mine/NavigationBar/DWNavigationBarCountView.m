@@ -7,14 +7,14 @@
 #import <QuartzCore/QuartzCore.h>
 
 
-//static NSString* const kImgBackground       = @"button_notifications";
+static NSString* const kImgNonZeroOff       = @"nav-notifications-notzero-off.png";
+static NSString* const kImgNonZeroOn        = @"nav-notifications-notzero-on.png";
+static NSString* const kImgZeroOff          = @"nav-notifications-zero-off.png";
+static NSString* const kImgZeroOn           = @"nav-notifications-zero-on.png";
 static NSString* const kDefaultText         = @"0";
-static CGFloat   const kDisabledOpacity     = 0.5;
 
 #define kColorTextDisabled  [UIColor colorWithRed:0.2 green:0.2 blue:0.2 alpha:1.0]
-#define kColorBgDisabled    [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:0.5]
 #define kColorTextEnabled   [UIColor whiteColor]
-#define kColorBgEnabled     [UIColor colorWithRed:0.8 green:0.2 blue:0.2 alpha:1.0]
 
 
 
@@ -59,6 +59,7 @@ static CGFloat   const kDisabledOpacity     = 0.5;
     if (self) {       
         [self createBackgroundButton];
         [self createCountLabel];
+        [self displayInactiveUI];
     }
     
     return self;
@@ -67,11 +68,7 @@ static CGFloat   const kDisabledOpacity     = 0.5;
 //----------------------------------------------------------------------------------------------------
 - (void)createBackgroundButton {
     backgroundButton                = [UIButton buttonWithType:UIButtonTypeCustom];
-    backgroundButton.alpha          = kDisabledOpacity;
     backgroundButton.frame          = CGRectMake(0,0,self.frame.size.width,self.frame.size.height);
-    
-    //[backgroundButton setBackgroundImage:[UIImage imageNamed:kImgBackground]
-    //                            forState:UIControlStateNormal];
     
     [backgroundButton addTarget:self 
                          action:@selector(didTapBackgroundButton:event:) 
@@ -83,16 +80,20 @@ static CGFloat   const kDisabledOpacity     = 0.5;
 
 //----------------------------------------------------------------------------------------------------
 - (void)createCountLabel {
-    countLabel                        = [[UILabel alloc] initWithFrame:CGRectMake(12,11,25,22)];
+    countLabel                        = [[UILabel alloc] initWithFrame:CGRectMake(1,0,self.frame.size.width+1,self.frame.size.height+1)];
+    countLabel.backgroundColor        = [UIColor clearColor];
+    countLabel.textColor              = kColorTextEnabled;
     countLabel.userInteractionEnabled = NO;
-    countLabel.layer.cornerRadius     = 2.5;
     countLabel.text                   = kDefaultText;  
     countLabel.textAlignment          = UITextAlignmentCenter;
-    countLabel.font                   = [UIFont fontWithName:@"HelveticaNeue-Bold" 
-                                                        size:13];
+    countLabel.layer.shadowColor      = [UIColor colorWithRed:0.0 green:0.0 blue:0.0 alpha:1.0].CGColor;
+    countLabel.layer.shadowOffset     = CGSizeMake(0,1);
+    countLabel.layer.shadowRadius     = 0;
+    countLabel.layer.shadowOpacity    = 0.28;
+    countLabel.font                   = [UIFont fontWithName:@"HelveticaNeue-Bold"
+                                                        size:16];
     
     [self addSubview:countLabel];
-    [self displayInactiveUI];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -103,14 +104,20 @@ static CGFloat   const kDisabledOpacity     = 0.5;
 
 //----------------------------------------------------------------------------------------------------
 - (void)displayActiveUI {
-    countLabel.textColor        = kColorTextEnabled;        
-    countLabel.backgroundColor  = kColorBgEnabled;
+    [backgroundButton setBackgroundImage:[UIImage imageNamed:kImgNonZeroOff]
+                                forState:UIControlStateNormal];
+    
+    [backgroundButton setBackgroundImage:[UIImage imageNamed:kImgNonZeroOn]
+                                forState:UIControlStateHighlighted];
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)displayInactiveUI {
-    countLabel.textColor        = kColorTextDisabled;        
-    countLabel.backgroundColor  = kColorBgDisabled;
+    [backgroundButton setBackgroundImage:[UIImage imageNamed:kImgZeroOff]
+                                forState:UIControlStateNormal];
+    
+    [backgroundButton setBackgroundImage:[UIImage imageNamed:kImgZeroOn]
+                                forState:UIControlStateHighlighted];
 }
 
 //----------------------------------------------------------------------------------------------------
