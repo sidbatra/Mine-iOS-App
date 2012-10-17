@@ -41,6 +41,12 @@
  */
 - (void)setUserName:(NSString*)userName;
 
+/**
+ * Set the user name and message in the cell
+ */
+- (void)setUserName:(NSString*)userName
+         andMessage:(NSString*)message;
+
 
 /**
  * Return the height of the cell.
