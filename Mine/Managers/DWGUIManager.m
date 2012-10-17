@@ -51,6 +51,20 @@ static NSString* const kImgCloseOn  = @"nav-btn-close-on.png";
                                    onImage:(NSString*)onImage
                                   offImage:(NSString*)offImage {
     
+    return [self navBarButtonWithTarget:target
+                               selector:selector
+                                onImage:onImage
+                               offImage:offImage
+                                  frame:CGRectMake(0,0,53,30)];
+}
+
+//----------------------------------------------------------------------------------------------------
++ (UIBarButtonItem*)navBarButtonWithTarget:(id)target
+                                  selector:(SEL)selector
+                                   onImage:(NSString*)onImage
+                                  offImage:(NSString*)offImage
+                                     frame:(CGRect)frame {
+    
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     
     [button setBackgroundImage:[UIImage imageNamed:offImage]
@@ -63,9 +77,9 @@ static NSString* const kImgCloseOn  = @"nav-btn-close-on.png";
                action:selector
      forControlEvents:UIControlEventTouchUpInside];
     
-	[button setFrame:CGRectMake(0,0,53,30)];
+	[button setFrame:frame];
     
-    return [[UIBarButtonItem alloc] initWithCustomView:button];
+    return [[UIBarButtonItem alloc] initWithCustomView:button];    
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -111,7 +125,8 @@ static NSString* const kImgCloseOn  = @"nav-btn-close-on.png";
     return [self navBarButtonWithTarget:target
                                selector:@selector(closeButtonClicked)
                                 onImage:kImgCloseOn
-                               offImage:kImgCloseOff];
+                               offImage:kImgCloseOff
+                                  frame:CGRectMake(0, 0, 58, 30)];
 }
 
 

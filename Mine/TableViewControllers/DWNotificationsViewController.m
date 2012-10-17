@@ -61,7 +61,7 @@
     
     self.view.backgroundColor = [UIColor colorWithRed:0.933 green:0.933 blue:0.933 alpha:1.0];
     
-    self.navigationItem.rightBarButtonItem = [DWGUIManager navBarCloseButtonWithTarget:self];
+    self.navigationItem.leftBarButtonItem = [DWGUIManager navBarCloseButtonWithTarget:self];
     self.navigationItem.titleView = [DWGUIManager navBarTitleViewWithText:@"Notifications"];
     
      [(DWNotificationsDataSource*)self.tableViewDataSource loadNotifications];
