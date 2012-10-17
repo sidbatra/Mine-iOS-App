@@ -25,7 +25,7 @@ static NSString* const kNewUserTWURI                    = @"/users.json?using=tw
 static NSString* const kGetUserURI                      = @"/users/%@.json?";
 
 static NSString* const kSearchURI                       = @"/users.json?aspect=search&q=%@";
-static NSString* const kUserSuggestionsURI              = @"/users.json?aspect=suggestions";
+static NSString* const kUserSuggestionsURI              = @"/users.json?aspect=suggestions&mobile=true";
 static NSString* const kGetLikersURI                    = @"/users.json?aspect=likers&purchase_id=%d";
 static NSString* const kGetFollowersURI                 = @"/users.json?aspect=followers&user_id=%d";
 static NSString* const kGetIFollowersURI                = @"/users.json?aspect=ifollowers&user_id=%d";
