@@ -33,6 +33,7 @@ static NSString* const kImgSearchOn     = @"nav-btn-search-on.png";
     DWNavigationBarTitleView    *_navTitleView;
     DWQueueProgressView         *_queueProgressView;
     DWSearchBar                 *_searchBar;
+    DWNavigationBarCountView    *_navNotificationsView;
     
     BOOL    _isProgressBarActive;
 }
@@ -62,6 +63,8 @@ static NSString* const kImgSearchOn     = @"nav-btn-search-on.png";
  */
 @property (nonatomic,strong) DWSearchBar *searchBar;
 
+@property (nonatomic,strong) DWNavigationBarCountView *navNotificationsView;
+
 /**
  * Status of the background progress queue.
  */
@@ -81,6 +84,7 @@ static NSString* const kImgSearchOn     = @"nav-btn-search-on.png";
 @synthesize navTitleView                = _navTitleView;
 @synthesize queueProgressView           = _queueProgressView;
 @synthesize searchBar                   = _searchBar;
+@synthesize navNotificationsView        = _navNotificationsView;
 @synthesize isProgressBarActive         = _isProgressBarActive;
 
 //----------------------------------------------------------------------------------------------------
@@ -96,7 +100,18 @@ static NSString* const kImgSearchOn     = @"nav-btn-search-on.png";
 
 //----------------------------------------------------------------------------------------------------
 - (void)loadSideButtons {
-    UIButton *button =  [UIButton buttonWithType:UIButtonTypeCustom];    
+    
+    if(!self.navNotificationsView) {
+        self.navNotificationsView = [[DWNavigationBarCountView alloc] initWithFrame:CGRectMake(0,0,40,30)];
+        self.navNotificationsView.delegate = self;
+    }
+    
+    UIBarButtonItem *barButtonitem          = [[UIBarButtonItem alloc] initWithCustomView:self.navNotificationsView];
+    self.navigationItem.leftBarButtonItem   = barButtonitem;
+    
+    
+    
+    UIButton *button =  [UIButton buttonWithType:UIButtonTypeCustom];
 
     [button setBackgroundImage:[UIImage imageNamed:kImgSearchOff] 
                       forState:UIControlStateNormal];
@@ -115,6 +130,7 @@ static NSString* const kImgSearchOn     = @"nav-btn-search-on.png";
 
 //----------------------------------------------------------------------------------------------------
 - (void)removeSideButtons {
+    self.navigationItem.leftBarButtonItem = nil;
     self.navigationItem.rightBarButtonItem = nil;
 }
 
@@ -130,6 +146,11 @@ static NSString* const kImgSearchOn     = @"nav-btn-search-on.png";
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(onboardingStarted:)
                                                  name:kNOnboardingStarted
+                                               object:nil];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(updateNotificationsCount:)
+                                                 name:kNUpdateNotificationsCount
                                                object:nil];
     
     
@@ -174,6 +195,7 @@ static NSString* const kImgSearchOn     = @"nav-btn-search-on.png";
         self.searchBar.delegate             = self;
         self.searchBar.hidden               = YES;
     }
+    
     
     [self loadSideButtons];
 }
@@ -231,6 +253,14 @@ static NSString* const kImgSearchOn     = @"nav-btn-search-on.png";
 - (void)onboardingStarted:(NSNotification*)notification {
     [self.feedViewController viewDidAppear:NO];
 }
+
+//----------------------------------------------------------------------------------------------------
+- (void)updateNotificationsCount:(NSNotification*)notification {
+    NSDictionary *info = [notification userInfo];
+
+    [self.navNotificationsView setCount:[[info objectForKey:kKeyCount] integerValue]];
+}
+
 
 
 //----------------------------------------------------------------------------------------------------
@@ -306,6 +336,39 @@ static NSString* const kImgSearchOn     = @"nav-btn-search-on.png";
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
+#pragma mark DWNavigationBarCountViewDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)navBarCountViewButtonClicked {
+    DWNotificationsViewController *notificationsViewController = [[DWNotificationsViewController alloc] init];
+    notificationsViewController.delegate = self;
+    
+    [self.navigationController pushViewController:notificationsViewController
+                                         animated:NO];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWNotificationsViewControllerDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)notificationsViewDisplayPurchase:(DWPurchase*)purchase {
+    [self displayPurchaseViewForPurchase:purchase
+                            loadRemotely:YES];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+- (void)notificationsViewDisplayUser:(DWUser *)user {
+    [self displayUserProfile:user];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
 #pragma mark DWUsersSearchViewControllerDelegate
 
 //----------------------------------------------------------------------------------------------------
@@ -313,6 +376,16 @@ static NSString* const kImgSearchOn     = @"nav-btn-search-on.png";
     [self displayInvite];
 }
 
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWFeedViewControllerDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)feedViewUserClicked:(DWUser *)user {
+    [self displayUserProfile:user];
+}
 
 
 //----------------------------------------------------------------------------------------------------

@@ -16,6 +16,7 @@ NSInteger const kUserCellHeight = 51;
 @interface DWUserCell() {
     UIImageView *userImageView;
     UILabel  *userNameLabel;
+    UILabel  *userMessageLabel;
     
     UILabel *bottomBorder;
     
@@ -52,6 +53,7 @@ NSInteger const kUserCellHeight = 51;
         [self createBorders];
         [self createUserImageView];
         [self createUserNameLabel];
+        [self createUserMessageLabel];
         [self createFollowButton];
         
 		self.selectionStyle = UITableViewCellSelectionStyleBlue;	
@@ -118,6 +120,20 @@ NSInteger const kUserCellHeight = 51;
 }
 
 //----------------------------------------------------------------------------------------------------
+- (void)createUserMessageLabel {
+    userMessageLabel  = [[UILabel alloc] initWithFrame:CGRectMake(60,22,158,24)];
+    
+    userMessageLabel.backgroundColor        = [UIColor clearColor];
+    userMessageLabel.font                   = [UIFont fontWithName:@"HelveticaNeue" size:11];
+    userMessageLabel.textColor              = [UIColor colorWithRed:0.5372 green:0.5372 blue:0.5372 alpha:1.0];
+    userMessageLabel.highlightedTextColor   = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0];
+    userMessageLabel.textAlignment          = UITextAlignmentLeft;    
+    userMessageLabel.hidden                 = YES;
+    
+    [self.contentView addSubview:userMessageLabel];
+}
+
+//----------------------------------------------------------------------------------------------------
 - (void)createFollowButton {
     followButton = [[DWFollowButton alloc] initWithFrame:CGRectMake(224,12,83,25) followButtonStyle:kFollowButonStyleLight];
     followButton.delegate = self;
@@ -133,6 +149,18 @@ NSInteger const kUserCellHeight = 51;
 //----------------------------------------------------------------------------------------------------
 - (void)setUserName:(NSString*)userName {
     userNameLabel.text = userName;
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)setUserName:(NSString*)userName
+         andMessage:(NSString*)message {
+    
+    userNameLabel.frame     = CGRectMake(60,02,158,30);
+    userNameLabel.font      = [UIFont fontWithName:@"HelveticaNeue-Bold" size:15];
+    userNameLabel.text      = userName;
+    
+    userMessageLabel.text   = message;
+    userMessageLabel.hidden = NO;
 }
 
 //----------------------------------------------------------------------------------------------------

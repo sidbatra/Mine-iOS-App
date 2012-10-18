@@ -24,7 +24,6 @@ NSString* const kKeyTitle            	= @"title";
 NSString* const kKeyEndorsement         = @"endorsement";
 NSString* const kKeySourceURL           = @"source_url";
 NSString* const kKeyFbObjectID          = @"fb_object_id";
-NSString* const kKeyCreatedAt           = @"created_at";
 NSString* const kKeyStore               = @"store";
 NSString* const kKeyLikes               = @"likes";
 NSString* const kKeyComments            = @"comments";

@@ -11,12 +11,16 @@
 #import "DWPurchase.h"
 #import "DWProduct.h"
 #import "DWStore.h"
+#import "DWCryptography.h"
 #import "DWConstants.h"
 
+static NSString* const kGetPurchaseURI      = @"/p/%@.json?";
 static NSString* const kGetUserPurchasesURI = @"/purchases.json?per_page=%d&user_id=%d";
 static NSString* const kCreateURI           = @"/purchases.json?";
 static NSString* const kDeleteURI           = @"/purchases/%d.json?";
 
+static NSString* const kNPurchaseLoaded         = @"NPurchaseLoaded";
+static NSString* const kNPurchaseLoadError      = @"NPurchaseLoadError";
 static NSString* const kNUserPurchasesLoaded    = @"NUserPurchasesLoaded";
 static NSString* const kNUserPurchasesLoadError = @"NUserPurchasesLoadError";
 static NSString* const kNPurchaseCreated        = @"NPurchaseCreated";
@@ -57,7 +61,17 @@ static NSString* const kNPurchaseDeleteError    = @"NPurchaseDeleteError";
     
     if(self) {
         
-        [[NSNotificationCenter defaultCenter] addObserver:self 
+        [[NSNotificationCenter defaultCenter] addObserver:self
+												 selector:@selector(purchaseLoaded:)
+													 name:kNPurchaseLoaded
+												   object:nil];
+		
+		[[NSNotificationCenter defaultCenter] addObserver:self
+												 selector:@selector(purchaseLoadError:)
+													 name:kNPurchaseLoadError
+												   object:nil];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self
 												 selector:@selector(userPurchasesLoaded:) 
 													 name:kNUserPurchasesLoaded
 												   object:nil];
@@ -107,6 +121,18 @@ static NSString* const kNPurchaseDeleteError    = @"NPurchaseDeleteError";
 - (NSString*)purchasePostSubParam:(NSString*)subParam
                     withParamName:(NSString*)name {
     return [NSString stringWithFormat:@"%@[%@]",[self purchasePostParam:subParam],name];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)getPurchase:(NSInteger)purchaseID {
+    NSMutableString *localURL = [NSMutableString stringWithFormat:kGetPurchaseURI,[DWCryptography obfuscate:purchaseID]];
+    
+    [[DWRequestManager sharedDWRequestManager] createAppRequest:localURL
+                                            successNotification:kNPurchaseLoaded
+                                              errorNotification:kNPurchaseLoadError
+                                                  requestMethod:kGet
+                                                   authenticate:YES
+                                                     resourceID:purchaseID];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -192,6 +218,42 @@ static NSString* const kNPurchaseDeleteError    = @"NPurchaseDeleteError";
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
 #pragma mark Notifications
+
+//----------------------------------------------------------------------------------------------------
+- (void)purchaseLoaded:(NSNotification*)notification {
+    
+    SEL sel = @selector(purchaseLoaded:withResourceID:);
+    
+    if(![self.delegate respondsToSelector:sel])
+        return;
+    
+    
+    NSDictionary *info          = [notification userInfo];
+    NSDictionary *response      = [info objectForKey:kKeyResponse];
+    
+    DWPurchase *purchase        = [DWPurchase create:response];
+    
+    [self.delegate performSelector:sel
+                        withObject:purchase
+                        withObject:[info objectForKey:kKeyResourceID]];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)purchaseLoadError:(NSNotification*)notification {
+    
+    SEL sel = @selector(purchaseLoadError:withResourceID:);
+    
+    if(![self.delegate respondsToSelector:sel])
+        return;
+    
+    
+    NSDictionary *info      = [notification userInfo];
+    NSError *error          = [info objectForKey:kKeyError];
+    
+    [self.delegate performSelector:sel
+                        withObject:[error localizedDescription]
+                        withObject:[info objectForKey:kKeyResourceID]];
+}
 
 //----------------------------------------------------------------------------------------------------
 - (void)userPurchasesLoaded:(NSNotification*)notification {

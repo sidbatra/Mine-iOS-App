@@ -54,12 +54,19 @@
 /**
  * Display a list of users who've liked the given purchase.
  */
-- (void)displayAllLikesForPurchase:(DWPurchase*)purchase;
+- (void)displayAllLikesForPurchase:(DWPurchase*)purchase loadRemotely:(BOOL)loadRemotely;
 
 /**
  * Push a comments view onto the nav stack.
  */
 - (void)displayCommentsCreateViewForPurchase:(DWPurchase*)purchase
-                          withCreationIntent:(BOOL)creationIntent;
+                          withCreationIntent:(BOOL)creationIntent
+                                loadRemotely:(BOOL)loadRemotely;
+
+/**
+ * Display purchase view with an option to remote the purchase remotely.
+ */
+- (void)displayPurchaseViewForPurchase:(DWPurchase*)purchase
+                          loadRemotely:(BOOL)loadRemotely;
 
 @end

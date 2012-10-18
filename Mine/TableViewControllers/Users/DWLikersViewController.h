@@ -15,6 +15,7 @@
 /**
  * Init with purchase whose likers are to be displayed.
  */
-- (id)initWithPurhcase:(DWPurchase*)purchase;
+- (id)initWithPurhcase:(DWPurchase*)purchase
+          loadRemotely:(BOOL)loadRemotely;
 
 @end

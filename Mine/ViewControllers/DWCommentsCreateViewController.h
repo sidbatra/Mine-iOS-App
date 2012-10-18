@@ -38,7 +38,9 @@
  * Init with purchase whose comments are being displayed & created.
  */
 - (id)initWithPurchase:(DWPurchase*)purchase 
-    withCreationIntent:(BOOL)creationIntent;
+    withCreationIntent:(BOOL)creationIntent
+          loadRemotely:(BOOL)loadRemotely;
+
 
 - (IBAction)sendButtonClicked:(id)sender;
 

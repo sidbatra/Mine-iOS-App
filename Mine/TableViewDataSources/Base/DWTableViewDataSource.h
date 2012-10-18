@@ -124,6 +124,11 @@
 - (void)reloadRowAtIndex:(NSInteger)index;
 
 /**
+ * Scroll the table view to a given index
+ */
+- (void)scrollToRowAtIndex:(NSInteger)index;
+
+/**
  * Display an error message with an option for display a retry 
  * / refresh UI.
  */

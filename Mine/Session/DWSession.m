@@ -201,6 +201,12 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWSession);
 }
 
 //----------------------------------------------------------------------------------------------------
+- (void)resetUnreadNotificationsCount {
+    self.currentUser.unreadNotificationsCount = 0;
+    [self launchUpdateNotificationsNotification];
+}
+
+//----------------------------------------------------------------------------------------------------
 - (void)launchUserUpdateNotification {
     
     NSDictionary *info = [NSDictionary dictionaryWithObjectsAndKeys:
@@ -210,6 +216,29 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWSession);
     [[NSNotificationCenter defaultCenter] postNotificationName:kNUserManualUpdated
                                                         object:nil
                                                       userInfo:info];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)launchUpdateNotificationsNotification {
+    
+    NSDictionary *info = [NSDictionary dictionaryWithObjectsAndKeys:
+                          [NSNumber numberWithInteger:self.currentUser.unreadNotificationsCount], kKeyCount,
+                          nil];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:kNUpdateNotificationsCount
+                                                        object:nil
+                                                      userInfo:info];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)fetchStatus {
+    
+    if(!self.statusController) {
+        self.statusController = [[DWStatusController alloc] init];
+        self.statusController.delegate = self;
+    }
+    
+    [self.statusController getStatus];
 }
 
 
@@ -226,12 +255,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWSession);
     
     [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"User Logged In"];
     
-    if(!self.statusController) {
-        self.statusController = [[DWStatusController alloc] init];
-        self.statusController.delegate = self;
-    }
-    
-    [self.statusController getStatus];
+    [self fetchStatus];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -251,6 +275,8 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWSession);
         [[NSNotificationCenter defaultCenter] postNotificationName:kNSessionRenewed
                                                             object:nil];
         
+        [self fetchStatus];
+        
         [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"User Logged In"];
     }
 
@@ -267,6 +293,8 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWSession);
     [self update];
     [user debug];
     [user destroy];
+    
+    [self launchUpdateNotificationsNotification];
 }
 
 
@@ -277,8 +305,10 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWSession);
 
 //----------------------------------------------------------------------------------------------------
 - (void)userUpdated:(DWUser *)user {
-    [[DWSession sharedDWSession] update];
+    [self update];
     [user destroy];
+    
+    [self launchUpdateNotificationsNotification];
 }
 
 

@@ -32,6 +32,7 @@ extern NSString* const kNImgUserLargeLoadError;
     NSString        *_handle;
     NSString        *_byline;
     NSString        *_email;
+    NSString        *_message;
     
     NSString        *_iphoneDeviceToken;
     NSString        *_facebookAccessToken;
@@ -47,6 +48,7 @@ extern NSString* const kNImgUserLargeLoadError;
     NSInteger       _purchasesCount;
     NSInteger       _followingsCount;
     NSInteger       _inverseFollowingsCount;
+    NSInteger       _unreadNotificationsCount;
     
     DWSetting       *_setting;
 }
@@ -85,6 +87,11 @@ extern NSString* const kNImgUserLargeLoadError;
  * Email
  */
 @property (nonatomic,copy) NSString *email;
+
+/**
+ * Message for suggested users
+ */
+@property (nonatomic,copy) NSString *message;
 
 /**
  * iPhone device ID for push notifications.
@@ -161,6 +168,9 @@ extern NSString* const kNImgUserLargeLoadError;
  * Total users followed.
  */
 @property (nonatomic,assign) NSInteger inverseFollowingsCount;
+
+
+@property (nonatomic,assign) NSInteger unreadNotificationsCount;
 
 
 

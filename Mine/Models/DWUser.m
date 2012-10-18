@@ -27,6 +27,7 @@ static NSString* const kEncodeKeyGender                     = @"DWUser_gender";
 static NSString* const kEncodeKeyHandle                     = @"DWUser_handle";
 static NSString* const kEncodeKeyByline                     = @"DWUser_byline";
 static NSString* const kEncodeKeyEmail                      = @"DWUser_email";
+static NSString* const kEncodeKeyUserMessage                = @"DWUser_message";
 static NSString* const kEncodeKeyiphoneDeviceToken          = @"DWUser_iphoneDeviceToken";
 static NSString* const kEncodeKeyFacebookAccessToken        = @"DWUser_facebookAccessToken";
 static NSString* const kEncodeKeyTwitterAccessToken         = @"DWUser_twitterAccessToken";
@@ -49,6 +50,7 @@ static NSString* const kKeyGender                       = @"gender";
 static NSString* const kKeyHandle                       = @"handle";
 static NSString* const kKeyByline                       = @"byline";
 static NSString* const kKeyEmail                        = @"email";
+static NSString* const kKeyUserMessage                  = @"message";
 static NSString* const kKeyiphoneDeviceToken            = @"iphone_device_token";
 static NSString* const kKeyFacebookAccessToken          = @"access_token";
 static NSString* const kKeyTwitterAccessToken           = @"tw_access_token";
@@ -59,6 +61,7 @@ static NSString* const kKeyAge                          = @"age";
 static NSString* const kKeyPurchasesCount               = @"purchases_count";
 static NSString* const kKeyFollowingsCount              = @"followings_count";
 static NSString* const kKeyInverseFollowingsCount       = @"inverse_followings_count";
+static NSString* const kKeyUnreadNotificationsCount     = @"unread_notifications_count";
 static NSString* const kKeySensitive                    = @"sensitive";
 static NSString* const kKeySetting                      = @"setting";
 
@@ -75,6 +78,7 @@ static NSString* const kKeySetting                      = @"setting";
 @synthesize handle                      = _handle;
 @synthesize byline                      = _byline;
 @synthesize email                       = _email;
+@synthesize message                     = _message;
 @synthesize iphoneDeviceToken           = _iphoneDeviceToken;
 @synthesize facebookAccessToken         = _facebookAccessToken;
 @synthesize twitterAccessToken          = _twitterAccessToken;
@@ -87,6 +91,7 @@ static NSString* const kKeySetting                      = @"setting";
 @synthesize purchasesCount              = _purchasesCount;
 @synthesize followingsCount             = _followingsCount;
 @synthesize inverseFollowingsCount      = _inverseFollowingsCount;
+@synthesize unreadNotificationsCount    = _unreadNotificationsCount;
 @synthesize setting                     = _setting;
 
 //----------------------------------------------------------------------------------------------------
@@ -101,6 +106,7 @@ static NSString* const kKeySetting                      = @"setting";
         self.handle                     = [coder decodeObjectForKey:kEncodeKeyHandle];
         self.byline                     = [coder decodeObjectForKey:kEncodeKeyByline];
         self.email                      = [coder decodeObjectForKey:kEncodeKeyEmail];
+        self.message                    = [coder decodeObjectForKey:kEncodeKeyUserMessage];
         self.iphoneDeviceToken          = [coder decodeObjectForKey:kEncodeKeyiphoneDeviceToken];
 
         self.facebookAccessToken        = [coder decodeObjectForKey:kEncodeKeyFacebookAccessToken];
@@ -139,6 +145,7 @@ static NSString* const kKeySetting                      = @"setting";
     [coder encodeObject:self.handle                                     forKey:kEncodeKeyHandle];
     [coder encodeObject:self.byline                                     forKey:kEncodeKeyByline];
     [coder encodeObject:self.email                                      forKey:kEncodeKeyEmail];
+    [coder encodeObject:self.message                                    forKey:kEncodeKeyUserMessage];
     [coder encodeObject:self.iphoneDeviceToken                          forKey:kEncodeKeyiphoneDeviceToken];
 
     [coder encodeObject:self.facebookAccessToken                        forKey:kEncodeKeyFacebookAccessToken];
@@ -193,6 +200,7 @@ static NSString* const kKeySetting                      = @"setting";
     NSString *handle                    = [user objectForKey:kKeyHandle];
     NSString *byline                    = [user objectForKey:kKeyByline];
     NSString *email                     = [user objectForKey:kKeyEmail];
+    NSString *message                   = [user objectForKey:kKeyUserMessage];
     NSString *iphoneDeviceToken         = [user objectForKey:kKeyiphoneDeviceToken];
 
     NSString *facebookAccessToken       = [user objectForKey:kKeyFacebookAccessToken];
@@ -208,6 +216,7 @@ static NSString* const kKeySetting                      = @"setting";
     NSString *purchasesCount            = [user objectForKey:kKeyPurchasesCount];
     NSString *followingsCount           = [user objectForKey:kKeyFollowingsCount];
     NSString *inverseFollowingsCount    = [user objectForKey:kKeyInverseFollowingsCount];
+    NSString *unreadNotificationsCount  = [user objectForKey:kKeyUnreadNotificationsCount];
     
     NSString *sensitive                 = [user objectForKey:kKeySensitive];
     
@@ -231,6 +240,9 @@ static NSString* const kKeySetting                      = @"setting";
     
     if(email && ![email isKindOfClass:[NSNull class]] && ![self.email isEqualToString:email])
         self.email = email;
+    
+    if(message && ![self.message isEqualToString:message])
+        self.message = message;
     
     if(iphoneDeviceToken && ![iphoneDeviceToken isKindOfClass:[NSNull class]] && ![self.iphoneDeviceToken isEqualToString:iphoneDeviceToken])
         self.iphoneDeviceToken = iphoneDeviceToken;
@@ -263,6 +275,9 @@ static NSString* const kKeySetting                      = @"setting";
     
     if(inverseFollowingsCount)
         self.inverseFollowingsCount = [inverseFollowingsCount integerValue];
+    
+    if(unreadNotificationsCount)
+        self.unreadNotificationsCount = [unreadNotificationsCount integerValue];
     
     
     if(setting) {
@@ -334,7 +349,7 @@ static NSString* const kKeySetting                      = @"setting";
 
 //----------------------------------------------------------------------------------------------------
 - (void)debug {
-    DWDebug(@"%@ %@ %@ %@ %@ %@ %d %@  %@ %@  %@ %@  %@ %@  %d %d %d %@",
+    DWDebug(@"%@ %@ %@ %@ %@ %@ %d %@  %@ %@  %@ %@  %@ %@  %d %d %d %d %@",
           self.firstName,self.lastName,self.gender,self.handle,self.byline,self.email,self.age,
           self.facebookAccessToken,
           self.twitterAccessToken,self.twitterAccessTokenSecret,          
@@ -343,6 +358,7 @@ static NSString* const kKeySetting                      = @"setting";
           self.purchasesCount,
           self.followingsCount,
           self.inverseFollowingsCount,
+          self.unreadNotificationsCount,
           self.iphoneDeviceToken);
     
     [self.setting debug];

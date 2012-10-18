@@ -61,6 +61,11 @@ extern NSString* const kNUserManualUpdated;
 - (void)getIFollowersForUserID:(NSInteger)userID;
 
 /**
+ * Fetch the user suggestions for who to follow
+ */
+- (NSInteger)getUserSuggestions;
+
+/**
  * Search for users matching the given query.
  */
 - (NSInteger)getUsersForQuery:(NSString*)query;
@@ -176,7 +181,7 @@ extern NSString* const kNUserManualUpdated;
 /**
  * IFollowers of a user loaded.
  */
-- (void)ifollowersLoaded:(NSMutableArray*)users 
+- (void)ifollowersLoaded:(NSMutableArray*)users
                forUserID:(NSNumber*)userID;
 
 /**
@@ -184,6 +189,19 @@ extern NSString* const kNUserManualUpdated;
  */
 - (void)ifollowersLoadError:(NSString*)error 
                   forUserID:(NSNumber*)userID;
+
+/**
+ * User suggestions loaded
+ */
+- (void)userSuggestionsLoaded:(NSMutableArray*)users
+                    forUserID:(NSNumber*)userID;
+
+/**
+ * Error loading user suggestions
+ */
+- (void)userSuggestionsLoadError:(NSString*)error
+                       forUserID:(NSNumber*)userID;
+
 
 /**
  * Users loaded for the given query.

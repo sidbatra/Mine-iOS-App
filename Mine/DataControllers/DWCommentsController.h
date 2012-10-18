@@ -22,6 +22,8 @@
 @property (nonatomic,weak) id<DWCommentsControllerDelegate,NSObject> delegate;
 
 
+- (void)getCommentsForPurchaseID:(NSInteger)purchaseID;
+
 /**
  * Create a new comment.
  */
@@ -38,7 +40,13 @@
  */
 @protocol DWCommentsControllerDelegate
 
-@required
+@optional
+
+- (void)commentsLoaded:(NSMutableArray*)comments
+         forPurchaseID:(NSNumber*)purchaseID;
+
+- (void)commentsLoadError:(NSString*)error
+            forPurchaseID:(NSNumber*)purchaseID;
 
 /**
  * Comment successfully created

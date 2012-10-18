@@ -21,6 +21,9 @@
  */
 @property (nonatomic,weak) id<DWPurchasesControllerDelegate,NSObject> delegate;
 
+
+- (void)getPurchase:(NSInteger)purchaseID;
+
 /**
  * Fetch purchases for a user before the given time
  */
@@ -53,6 +56,18 @@
 @protocol DWPurchasesControllerDelegate
 
 @optional
+
+/**
+ * A purchase is loaded successfully.
+ */
+- (void)purchaseLoaded:(DWPurchase*)purchase
+        withResourceID:(NSNumber*)resourceID;
+
+/**
+ * Error loading a purchase.
+ */
+- (void)purchaseLoadError:(NSString*)message
+           withResourceID:(NSNumber*)resourceID;
 
 /**
  * A user's purchases are loaded successfully.

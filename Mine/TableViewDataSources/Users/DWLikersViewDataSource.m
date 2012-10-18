@@ -19,26 +19,29 @@
 @implementation DWLikersViewDataSource
 
 @synthesize purchaseID = _purchaseID;
+@synthesize loadRemotely = _loadRemotely;
 
 //----------------------------------------------------------------------------------------------------
 - (void)loadUsers {
     [super loadUsers];
     
-    DWPurchase *purchase = [DWPurchase fetch:self.purchaseID];
-    
-    NSMutableArray *users = [NSMutableArray arrayWithCapacity:[purchase.likes count]];
-    
-    for(DWLike *like in purchase.likes) {
-        [users addObject:like.user];
-        [like.user incrementPointerCount];
+    if(self.loadRemotely) {
+        [self.usersController getLikersForPurchaseID:self.purchaseID];    
     }
-    
-    self.objects = users;
-    
-    [self.delegate reloadTableView];
-    
-    
-    //[self.usersController getLikersForPurchaseID:self.purchaseID];
+    else {
+        DWPurchase *purchase = [DWPurchase fetch:self.purchaseID];
+        
+        NSMutableArray *users = [NSMutableArray arrayWithCapacity:[purchase.likes count]];
+        
+        for(DWLike *like in purchase.likes) {
+            [users addObject:like.user];
+            [like.user incrementPointerCount];
+        }
+        
+        self.objects = users;
+        
+        [self.delegate reloadTableView];
+    }
 }
 
 

@@ -11,12 +11,18 @@
 
 @interface DWPurchaseViewDataSource : DWTableViewDataSource<DWPurchasesControllerDelegate> {
     NSInteger   _purchaseID;
+    BOOL        _loadRemotely;
 }
 
 /**
  * The id of the purchase being displayed.
  */
 @property (nonatomic,assign) NSInteger purchaseID;
+
+/**
+ * Flag indicating if the purchase is available locally or has to be fetched remotely.
+ */
+@property (nonatomic,assign) BOOL loadRemotely;
 
 
 /**

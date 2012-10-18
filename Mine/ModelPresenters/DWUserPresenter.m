@@ -46,11 +46,15 @@
     [user downloadSquareImage];
     
     [cell setUserImage:user.squareImage];
-    [cell setUserName:user.fullName];
     
-    
+    if (style == kDefaultModelPresenter)
+        [cell setUserName:user.fullName];
+    else
+        [cell setUserName:user.fullName
+               andMessage:user.message];
+        
     if(![[DWSession sharedDWSession] isCurrentUser:user.databaseID]) {
-        if([DWFollowingManager sharedDWFollowingManager].areBulkFollowingsLoaded) {
+        if([DWFollowingManager sharedDWFollowingManager].areBulkFollowingsLoaded || style == kUserPresenterStyleSuggested) {
             if([[DWFollowingManager sharedDWFollowingManager] followingForUserID:user.databaseID])
                 [cell displayActiveFollowing];
             else
@@ -60,7 +64,7 @@
     else {
         [cell hideFollowButton];
     }
-    
+
     return cell;
 }
 

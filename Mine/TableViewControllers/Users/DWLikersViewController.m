@@ -36,7 +36,9 @@
 @synthesize purchase = _purchase;
 
 //----------------------------------------------------------------------------------------------------
-- (id)initWithPurhcase:(DWPurchase*)purchase {
+- (id)initWithPurhcase:(DWPurchase*)purchase
+          loadRemotely:(BOOL)loadRemotely {
+    
     self = [super init];
     
     if(self) {        
@@ -45,6 +47,7 @@
         
         self.tableViewDataSource = [[DWLikersViewDataSource alloc] init];
         ((DWLikersViewDataSource*)self.tableViewDataSource).purchaseID = self.purchase.databaseID;
+        ((DWLikersViewDataSource*)self.tableViewDataSource).loadRemotely = loadRemotely;
     }
     
     return self;

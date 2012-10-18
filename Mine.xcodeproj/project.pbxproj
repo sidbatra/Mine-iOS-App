@@ -399,6 +399,19 @@
 		BB59B4DD15F1F1F8000756EE /* DWUsersHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BB59B4DC15F1F1F8000756EE /* DWUsersHelper.m */; };
 		BB59B4E015F1F2AB000756EE /* DWPurchasesHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = BB59B4DF15F1F2AB000756EE /* DWPurchasesHelper.m */; };
 		BB5BE3B316121C00006EA2C4 /* ASIDataCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = BB5BE3B216121C00006EA2C4 /* ASIDataCompressor.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		BB67732C162A252A00C3A1E1 /* DWNavigationBarCountView.m in Sources */ = {isa = PBXBuildFile; fileRef = BB67732B162A252A00C3A1E1 /* DWNavigationBarCountView.m */; };
+		BB67732F162B536800C3A1E1 /* DWNotificationsController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB67732E162B536800C3A1E1 /* DWNotificationsController.m */; };
+		BB677332162B550000C3A1E1 /* DWNotification.m in Sources */ = {isa = PBXBuildFile; fileRef = BB677331162B550000C3A1E1 /* DWNotification.m */; };
+		BB677335162B63B700C3A1E1 /* DWNotificationsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = BB677334162B63B700C3A1E1 /* DWNotificationsDataSource.m */; };
+		BB677338162B668700C3A1E1 /* DWNotificationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BB677337162B668700C3A1E1 /* DWNotificationCell.m */; };
+		BB67733B162B6A7400C3A1E1 /* DWNotificationPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = BB67733A162B6A7400C3A1E1 /* DWNotificationPresenter.m */; };
+		BB67733E162B6CEC00C3A1E1 /* DWNotificationsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB67733D162B6CEC00C3A1E1 /* DWNotificationsViewController.m */; };
+		BB677341162DCA5600C3A1E1 /* nav-btn-close-off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB67733F162DCA5600C3A1E1 /* nav-btn-close-off@2x.png */; };
+		BB677342162DCA5600C3A1E1 /* nav-btn-close-on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB677340162DCA5600C3A1E1 /* nav-btn-close-on@2x.png */; };
+		BB677358162E136100C3A1E1 /* nav-notifications-notzero-off.png in Resources */ = {isa = PBXBuildFile; fileRef = BB677354162E136100C3A1E1 /* nav-notifications-notzero-off.png */; };
+		BB677359162E136100C3A1E1 /* nav-notifications-notzero-on.png in Resources */ = {isa = PBXBuildFile; fileRef = BB677355162E136100C3A1E1 /* nav-notifications-notzero-on.png */; };
+		BB67735A162E136100C3A1E1 /* nav-notifications-zero-off.png in Resources */ = {isa = PBXBuildFile; fileRef = BB677356162E136100C3A1E1 /* nav-notifications-zero-off.png */; };
+		BB67735B162E136100C3A1E1 /* nav-notifications-zero-on.png in Resources */ = {isa = PBXBuildFile; fileRef = BB677357162E136100C3A1E1 /* nav-notifications-zero-on.png */; };
 		BB9F313F15F609FF009C1385 /* DWFollowButton.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9F313E15F609FF009C1385 /* DWFollowButton.m */; };
 		BB9F314815F62BC2009C1385 /* DWNavigationBarBackButton.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9F314715F62BC2009C1385 /* DWNavigationBarBackButton.m */; };
 		BB9F314F15F645C5009C1385 /* DWUserProfileCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9F314E15F645C5009C1385 /* DWUserProfileCell.m */; };
@@ -982,6 +995,26 @@
 		BB59B4DF15F1F2AB000756EE /* DWPurchasesHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWPurchasesHelper.m; sourceTree = "<group>"; };
 		BB5BE3B116121C00006EA2C4 /* ASIDataCompressor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ASIDataCompressor.h; sourceTree = "<group>"; };
 		BB5BE3B216121C00006EA2C4 /* ASIDataCompressor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ASIDataCompressor.m; sourceTree = "<group>"; };
+		BB67732A162A252A00C3A1E1 /* DWNavigationBarCountView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWNavigationBarCountView.h; sourceTree = "<group>"; };
+		BB67732B162A252A00C3A1E1 /* DWNavigationBarCountView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWNavigationBarCountView.m; sourceTree = "<group>"; };
+		BB67732D162B536800C3A1E1 /* DWNotificationsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWNotificationsController.h; sourceTree = "<group>"; };
+		BB67732E162B536800C3A1E1 /* DWNotificationsController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWNotificationsController.m; sourceTree = "<group>"; };
+		BB677330162B550000C3A1E1 /* DWNotification.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWNotification.h; sourceTree = "<group>"; };
+		BB677331162B550000C3A1E1 /* DWNotification.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWNotification.m; sourceTree = "<group>"; };
+		BB677333162B63B700C3A1E1 /* DWNotificationsDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWNotificationsDataSource.h; sourceTree = "<group>"; };
+		BB677334162B63B700C3A1E1 /* DWNotificationsDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWNotificationsDataSource.m; sourceTree = "<group>"; };
+		BB677336162B668700C3A1E1 /* DWNotificationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWNotificationCell.h; sourceTree = "<group>"; };
+		BB677337162B668700C3A1E1 /* DWNotificationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWNotificationCell.m; sourceTree = "<group>"; };
+		BB677339162B6A7400C3A1E1 /* DWNotificationPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWNotificationPresenter.h; sourceTree = "<group>"; };
+		BB67733A162B6A7400C3A1E1 /* DWNotificationPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWNotificationPresenter.m; sourceTree = "<group>"; };
+		BB67733C162B6CEC00C3A1E1 /* DWNotificationsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWNotificationsViewController.h; sourceTree = "<group>"; };
+		BB67733D162B6CEC00C3A1E1 /* DWNotificationsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWNotificationsViewController.m; sourceTree = "<group>"; };
+		BB67733F162DCA5600C3A1E1 /* nav-btn-close-off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-btn-close-off@2x.png"; sourceTree = "<group>"; };
+		BB677340162DCA5600C3A1E1 /* nav-btn-close-on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-btn-close-on@2x.png"; sourceTree = "<group>"; };
+		BB677354162E136100C3A1E1 /* nav-notifications-notzero-off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-notifications-notzero-off.png"; sourceTree = "<group>"; };
+		BB677355162E136100C3A1E1 /* nav-notifications-notzero-on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-notifications-notzero-on.png"; sourceTree = "<group>"; };
+		BB677356162E136100C3A1E1 /* nav-notifications-zero-off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-notifications-zero-off.png"; sourceTree = "<group>"; };
+		BB677357162E136100C3A1E1 /* nav-notifications-zero-on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-notifications-zero-on.png"; sourceTree = "<group>"; };
 		BB9F313D15F609FF009C1385 /* DWFollowButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWFollowButton.h; sourceTree = "<group>"; };
 		BB9F313E15F609FF009C1385 /* DWFollowButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWFollowButton.m; sourceTree = "<group>"; };
 		BB9F314615F62BC2009C1385 /* DWNavigationBarBackButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWNavigationBarBackButton.h; sourceTree = "<group>"; };
@@ -1338,6 +1371,8 @@
 				2622006515C71421003DC1DF /* DWInvitesController.m */,
 				BB26988115BBA75B00037453 /* DWFeedController.h */,
 				BB26988215BBA75B00037453 /* DWFeedController.m */,
+				BB67732D162B536800C3A1E1 /* DWNotificationsController.h */,
+				BB67732E162B536800C3A1E1 /* DWNotificationsController.m */,
 				262200A815C76A18003DC1DF /* DWProductsController.h */,
 				262200A915C76A18003DC1DF /* DWProductsController.m */,
 				BB06366A15C1E04B001F26E1 /* DWPurchasesController.h */,
@@ -1520,6 +1555,12 @@
 		BB350EB71617D1FA00531A80 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				BB677354162E136100C3A1E1 /* nav-notifications-notzero-off.png */,
+				BB677355162E136100C3A1E1 /* nav-notifications-notzero-on.png */,
+				BB677356162E136100C3A1E1 /* nav-notifications-zero-off.png */,
+				BB677357162E136100C3A1E1 /* nav-notifications-zero-on.png */,
+				BB67733F162DCA5600C3A1E1 /* nav-btn-close-off@2x.png */,
+				BB677340162DCA5600C3A1E1 /* nav-btn-close-on@2x.png */,
 				BB351110161B6F9800531A80 /* comments-btn-send-loading@2x.png */,
 				BB35110E161B61CD00531A80 /* mine_intro_640x280.mp4 */,
 				BB35110A161A1DF400531A80 /* Icon-72@2x.png */,
@@ -1789,6 +1830,8 @@
 				BB59B4BA15EE500E000756EE /* DWNavigationBar.m */,
 				BB9F314615F62BC2009C1385 /* DWNavigationBarBackButton.h */,
 				BB9F314715F62BC2009C1385 /* DWNavigationBarBackButton.m */,
+				BB67732A162A252A00C3A1E1 /* DWNavigationBarCountView.h */,
+				BB67732B162A252A00C3A1E1 /* DWNavigationBarCountView.m */,
 				BB59B4C815EF3B65000756EE /* DWNavigationBarTitleView.h */,
 				BB59B4C915EF3B65000756EE /* DWNavigationBarTitleView.m */,
 			);
@@ -1913,6 +1956,8 @@
 				BBC0607515C493A9000D3480 /* DWLike.m */,
 				BB46142415CC6ABD00B38D71 /* DWModelSet.h */,
 				BB46142515CC6ABD00B38D71 /* DWModelSet.m */,
+				BB677330162B550000C3A1E1 /* DWNotification.h */,
+				BB677331162B550000C3A1E1 /* DWNotification.m */,
 				BB06367A15C3195B001F26E1 /* DWPagination.h */,
 				BB06367B15C3195B001F26E1 /* DWPagination.m */,
 				262200A115C769EF003DC1DF /* DWProduct.h */,
@@ -2063,6 +2108,8 @@
 				BBC0608A15C74243000D3480 /* DWCommentsViewController.m */,
 				2622005915C713B4003DC1DF /* DWContactsViewController.h */,
 				2622005A15C713B4003DC1DF /* DWContactsViewController.m */,
+				BB67733C162B6CEC00C3A1E1 /* DWNotificationsViewController.h */,
+				BB67733D162B6CEC00C3A1E1 /* DWNotificationsViewController.m */,
 				262200AE15C76A4E003DC1DF /* DWProductsViewController.h */,
 				262200AF15C76A4E003DC1DF /* DWProductsViewController.m */,
 				BB06367115C1F593001F26E1 /* DWProfileViewController.h */,
@@ -2093,6 +2140,10 @@
 				2622005115C71393003DC1DF /* DWContactsDataSource.m */,
 				BBE42F5015BDBBFC000F6AE1 /* DWFeedViewDataSource.h */,
 				BBE42F5115BDBBFC000F6AE1 /* DWFeedViewDataSource.m */,
+				26D699D715DDA4E5003AFAFA /* DWGlobalFeedViewDataSource.h */,
+				26D699D815DDA4E5003AFAFA /* DWGlobalFeedViewDataSource.m */,
+				BB677333162B63B700C3A1E1 /* DWNotificationsDataSource.h */,
+				BB677334162B63B700C3A1E1 /* DWNotificationsDataSource.m */,
 				262200B115C76A61003DC1DF /* DWProductsViewDataSource.h */,
 				262200B215C76A61003DC1DF /* DWProductsViewDataSource.m */,
 				BB06367415C1F733001F26E1 /* DWProfileViewDataSource.h */,
@@ -2101,8 +2152,6 @@
 				BB2BC02115CDC4B800CCC4BB /* DWPurchaseViewDataSource.m */,
 				26B3237615D31C4A00F1E28F /* DWStoresViewDataSource.h */,
 				26B3237715D31C4A00F1E28F /* DWStoresViewDataSource.m */,
-				26D699D715DDA4E5003AFAFA /* DWGlobalFeedViewDataSource.h */,
-				26D699D815DDA4E5003AFAFA /* DWGlobalFeedViewDataSource.m */,
 			);
 			path = TableViewDataSources;
 			sourceTree = "<group>";
@@ -2125,6 +2174,8 @@
 				2622005D15C713DE003DC1DF /* DWContactPresenter.m */,
 				BB9F317515FCAB46009C1385 /* DWInviteFriendPresenter.h */,
 				BB9F317615FCAB47009C1385 /* DWInviteFriendPresenter.m */,
+				BB677339162B6A7400C3A1E1 /* DWNotificationPresenter.h */,
+				BB67733A162B6A7400C3A1E1 /* DWNotificationPresenter.m */,
 				BB06367D15C31968001F26E1 /* DWPaginationPresenter.h */,
 				BB06367E15C31968001F26E1 /* DWPaginationPresenter.m */,
 				262200AB15C76A39003DC1DF /* DWProductPresenter.h */,
@@ -2152,6 +2203,8 @@
 				2622006015C713EE003DC1DF /* DWDoubleLineCell.m */,
 				BB9F317215FCA9BD009C1385 /* DWInviteFriendCell.h */,
 				BB9F317315FCA9BE009C1385 /* DWInviteFriendCell.m */,
+				BB677336162B668700C3A1E1 /* DWNotificationCell.h */,
+				BB677337162B668700C3A1E1 /* DWNotificationCell.m */,
 				BB06368015C31973001F26E1 /* DWPaginationCell.h */,
 				BB06368115C31973001F26E1 /* DWPaginationCell.m */,
 				BBE42F4715BCCA52000F6AE1 /* DWPurchaseFeedCell.h */,
@@ -2523,6 +2576,12 @@
 				BB35110D161A1DF400531A80 /* Icon-Small-50@2x.png in Resources */,
 				BB35110F161B61CE00531A80 /* mine_intro_640x280.mp4 in Resources */,
 				BB351111161B6F9900531A80 /* comments-btn-send-loading@2x.png in Resources */,
+				BB677341162DCA5600C3A1E1 /* nav-btn-close-off@2x.png in Resources */,
+				BB677342162DCA5600C3A1E1 /* nav-btn-close-on@2x.png in Resources */,
+				BB677358162E136100C3A1E1 /* nav-notifications-notzero-off.png in Resources */,
+				BB677359162E136100C3A1E1 /* nav-notifications-notzero-on.png in Resources */,
+				BB67735A162E136100C3A1E1 /* nav-notifications-zero-off.png in Resources */,
+				BB67735B162E136100C3A1E1 /* nav-notifications-zero-on.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2706,6 +2765,13 @@
 				BB5BE3B316121C00006EA2C4 /* ASIDataCompressor.m in Sources */,
 				BB4C77BE161520AB009C3279 /* DWDevice.m in Sources */,
 				BB3510DE1617F90500531A80 /* DWSessionController.m in Sources */,
+				BB67732C162A252A00C3A1E1 /* DWNavigationBarCountView.m in Sources */,
+				BB67732F162B536800C3A1E1 /* DWNotificationsController.m in Sources */,
+				BB677332162B550000C3A1E1 /* DWNotification.m in Sources */,
+				BB677335162B63B700C3A1E1 /* DWNotificationsDataSource.m in Sources */,
+				BB677338162B668700C3A1E1 /* DWNotificationCell.m in Sources */,
+				BB67733B162B6A7400C3A1E1 /* DWNotificationPresenter.m in Sources */,
+				BB67733E162B6CEC00C3A1E1 /* DWNotificationsViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2740,8 +2806,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
-				PROVISIONING_PROFILE = "0A770D8E-7065-4890-AE6B-19DB947CDF97";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "0A770D8E-7065-4890-AE6B-19DB947CDF97";
+				PROVISIONING_PROFILE = "8111CA6B-389A-4555-9DD1-EB6DF472D38F";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "8111CA6B-389A-4555-9DD1-EB6DF472D38F";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};

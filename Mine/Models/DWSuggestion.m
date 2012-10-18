@@ -10,7 +10,6 @@
 #import "DWImageManager.h"
 #import "DWConstants.h"
 
-NSString* const kKeyImageURL                    = @"image_url";
 NSString* const kKeySmallImageURL               = @"small_image_url";
 
 NSString* const kNImgSuggestionLoaded           = @"NImgSuggestionLoaded";

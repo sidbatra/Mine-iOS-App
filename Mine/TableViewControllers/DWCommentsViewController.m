@@ -30,19 +30,16 @@
 
 @synthesize delegate = _delegate;
 
-
 //----------------------------------------------------------------------------------------------------
-- (id)initWithComments:(NSMutableArray*)comments {
+- (id)initWithPurchaseID:(NSInteger)purchaseID
+            loadRemotely:(BOOL)loadRemotely {
+    
     self = [super init];
     
     if(self) {        
                 
-        self.tableViewDataSource = [[DWCommentsViewDataSource alloc] init];
-        
-        for(DWComment *comment in comments)
-            [comment incrementPointerCount];
-        
-        self.tableViewDataSource.objects = comments;
+        self.tableViewDataSource = [[DWCommentsViewDataSource alloc] initWithPurchaseID:purchaseID
+                                                                           loadRemotely:loadRemotely];
         
         [self addModelPresenterForClass:[DWComment class]
                               withStyle:kDefaultModelPresenter 
@@ -74,8 +71,8 @@
 	[super viewDidLoad];
     
     [self disablePullToRefresh];
-    
-    [self reloadTableView];
+        
+    [(DWCommentsViewDataSource*)self.tableViewDataSource loadComments];
 }
 
 
@@ -85,7 +82,7 @@
 #pragma mark Comment helpers
 
 //----------------------------------------------------------------------------------------------------
-- (void)newCommentAdded{
+- (void)newCommentAdded {
     [self reloadTableView];
     [self scrollToBottomWithAnimation:YES];
 }

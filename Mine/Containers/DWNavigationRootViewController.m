@@ -74,8 +74,9 @@
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)displayAllLikesForPurchase:(DWPurchase*)purchase {
-    DWLikersViewController *likersViewController = [[DWLikersViewController alloc] initWithPurhcase:purchase];
+- (void)displayAllLikesForPurchase:(DWPurchase*)purchase loadRemotely:(BOOL)loadRemotely {
+    DWLikersViewController *likersViewController = [[DWLikersViewController alloc] initWithPurhcase:purchase
+                                                                                       loadRemotely:loadRemotely];
     likersViewController.delegate = self;
     
     [self.navigationController pushViewController:likersViewController
@@ -84,10 +85,12 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)displayCommentsCreateViewForPurchase:(DWPurchase*)purchase 
-                          withCreationIntent:(BOOL)creationIntent {
+                          withCreationIntent:(BOOL)creationIntent
+                                loadRemotely:(BOOL)loadRemotely {
     
     DWCommentsCreateViewController *commentsViewController = [[DWCommentsCreateViewController alloc] initWithPurchase:purchase
-                                                                                                   withCreationIntent:creationIntent];
+                                                                                                   withCreationIntent:creationIntent
+                                                                                                         loadRemotely:loadRemotely];
     commentsViewController.delegate = self;
     
     [self.navigationController pushViewController:commentsViewController 
@@ -95,9 +98,11 @@
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)displayPurchaseViewForPurchase:(DWPurchase*)purchase {
+- (void)displayPurchaseViewForPurchase:(DWPurchase*)purchase
+                          loadRemotely:(BOOL)loadRemotely {
     
-    DWPurchaseViewController *purchaseViewController = [[DWPurchaseViewController alloc] initWithPurhcase:purchase];
+    DWPurchaseViewController *purchaseViewController = [[DWPurchaseViewController alloc] initWithPurhcase:purchase
+                                                                                             loadRemotely:loadRemotely];
     purchaseViewController.delegate = self;
     
     [self.navigationController pushViewController:purchaseViewController 
@@ -150,7 +155,8 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)profileViewPurchaseClicked:(DWPurchase *)purchase {
-    [self displayPurchaseViewForPurchase:purchase];
+    [self displayPurchaseViewForPurchase:purchase
+                            loadRemotely:NO];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -197,7 +203,8 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)purchasesViewAllLikesClickedForPurchase:(DWPurchase *)purchase {
-    [self displayAllLikesForPurchase:purchase];
+    [self displayAllLikesForPurchase:purchase
+                        loadRemotely:NO];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -205,7 +212,8 @@
                             withCreationIntent:(NSNumber *)creationIntent {
     
     [self displayCommentsCreateViewForPurchase:purchase
-                            withCreationIntent:[creationIntent boolValue]];
+                            withCreationIntent:[creationIntent boolValue]
+                                  loadRemotely:NO];
 }
 
 //----------------------------------------------------------------------------------------------------

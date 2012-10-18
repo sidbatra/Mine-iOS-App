@@ -289,4 +289,5 @@
 - (void)requiresFullScreenMode {
     
 }
+
 @end
