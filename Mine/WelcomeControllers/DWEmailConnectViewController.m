@@ -7,6 +7,7 @@
 //
 
 #import "DWEmailConnectViewController.h"
+#import "DWAnalyticsManager.h"
 
 @interface DWEmailConnectViewController ()
 
@@ -52,6 +53,8 @@
 //----------------------------------------------------------------------------------------------------
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Welcome Connect"];
 }
 
 
@@ -62,11 +65,15 @@
 
 //----------------------------------------------------------------------------------------------------
 - (IBAction)googleButtonClicked:(id)sender {
+    [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Google Auth Initiated"];
+    
     [self.delegate emailConnectGoogleAuthInitiated];
 }
 
 //----------------------------------------------------------------------------------------------------
 - (IBAction)yahooButtonClicked:(id)sender {
+    [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Yahoo Auth Initiated"];
+    
     [self.delegate emailConnectYahooAuthInitiated];
 }
 

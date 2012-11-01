@@ -8,6 +8,7 @@
 
 #import "DWYahooAuthViewController.h"
 #import "DWRequestManager.h"
+#import "DWAnalyticsManager.h"
 #import "DWConstants.h"
 
 static NSString* const kYahooAuthURI       = @"/auth/yahoo?web_view_mode=true";
@@ -65,9 +66,13 @@ static NSString* const kYahooRejectedURI   = @"/rejected";
         
         if ([path isEqual:kYahooApprovedURI]) {
             [self.delegate yahooAuthAccepted];
+            
+            [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Yahoo Auth Accepted"];
         }
         else if([path isEqualToString:kYahooRejectedURI]) {
             [self.delegate yahooAuthRejected];
+            
+            [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Yahoo Auth Rejected"];
         }
         
         return NO;

@@ -8,6 +8,7 @@
 
 #import "DWGoogleAuthViewController.h"
 #import "DWRequestManager.h"
+#import "DWAnalyticsManager.h"
 #import "DWConstants.h"
 
 static NSString* const kGoogleAuthURI       = @"/auth/google?web_view_mode=true";
@@ -64,9 +65,13 @@ static NSString* const kGoogleRejectedURI   = @"/rejected";
         NSString *path = [request.URL path];
          
         if ([path isEqual:kGoogleApprovedURI]) {
+            [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Google Auth Accepted"];
+            
             [self.delegate googleAuthAccepted];
         }
         else if([path isEqualToString:kGoogleRejectedURI]) {
+            [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Google Auth Rejected"];
+            
             [self.delegate googleAuthRejected];
         }
          
