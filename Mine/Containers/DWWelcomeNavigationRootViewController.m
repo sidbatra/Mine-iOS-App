@@ -99,6 +99,16 @@ static NSString* const kInfoURL = @"/?web_view_mode=true";
 }
 
 //----------------------------------------------------------------------------------------------------
+- (void)showEmailConnectView {
+    
+    DWEmailConnectViewController *emailConnectViewController = [[DWEmailConnectViewController alloc] init];
+    emailConnectViewController.delegate = self;
+    
+    [self.navigationController pushViewController:emailConnectViewController
+                                         animated:YES];
+}
+
+//----------------------------------------------------------------------------------------------------
 - (void)showGlobalFeedView {
     
     DWOnboardingFeedViewController *onboardingFeedViewController = [[DWOnboardingFeedViewController alloc] init];
@@ -245,6 +255,49 @@ static NSString* const kInfoURL = @"/?web_view_mode=true";
     [self.navigationController pushViewController:suggestionsViewController
                                          animated:YES];    
 }
+
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWEmailConnectViewControllerDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)emailConnectGoogleAuthInitiated {
+    [self displayGoogleAuth];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)emailConnectYahooAuthInitiated {
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWGoogleAuthViewControllerDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)googleAuthAccepted {
+    [self.navigationController popViewControllerAnimated:NO];
+    
+    NSLog(@"ACCEPTED");
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)googleAuthRejected {
+    [self.navigationController popViewControllerAnimated:NO];
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                    message:@"Google connect is required to import your purchases."
+                                                   delegate:nil
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
+    [alert show];
+}
+
+
 
 
 //----------------------------------------------------------------------------------------------------

@@ -146,6 +146,16 @@
     [self.navigationController pushViewController:inviteViewController
                                          animated:YES];
 }
+//----------------------------------------------------------------------------------------------------
+- (void)displayGoogleAuth {
+    
+    DWGoogleAuthViewController *googleAuthViewController = [[DWGoogleAuthViewController alloc] init];
+    
+    googleAuthViewController.delegate = self;
+    
+    [self.navigationController pushViewController:googleAuthViewController
+                                         animated:NO];
+}
 
 
 //----------------------------------------------------------------------------------------------------
@@ -282,6 +292,20 @@
 //----------------------------------------------------------------------------------------------------
 - (void)commentsCreateViewUserClicked:(DWUser *)user {
     [self displayUserProfile:user];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWGoogleAuthViewControllerDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)googleAuthAccepted {
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)googleAuthRejected {
 }
 
 

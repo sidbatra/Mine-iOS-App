@@ -13,7 +13,7 @@
 #define STAGING     1
 #define PRODUCTION  2
 
-#define ENVIRONMENT PRODUCTION
+#define ENVIRONMENT DEVELOPMENT
 
 
 
@@ -54,6 +54,7 @@ extern NSString* const kAppProtocol;
 extern NSString* const kAppServer;
 extern NSString* const kClientName;
 extern NSString* const kUserAgent;
+extern NSString* const kInternalAppScheme;
 
 /**
  * Encryption related

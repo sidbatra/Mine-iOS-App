@@ -16,7 +16,7 @@
 #import "DWInviteViewController.h"
 #import "DWTabBarController.h"
 #import "DWCommentsCreateViewController.h"
-
+#import "DWGoogleAuthViewController.h"
 
 
 @class DWUser;
@@ -26,7 +26,7 @@
  * Base class for navigation root view controllers which are used as
  * sub controllers of the custom tab bar controller.
  */
-@interface DWNavigationRootViewController : UIViewController<UINavigationControllerDelegate,DWProfileViewControllerDelegate,DWUsersViewControllerDelegate,DWPurchasesViewControllerDelegate,DWCreationViewControllerDelegate,DWPurchaseInputViewControllerDelegate,DWCommentsCreateViewControllerDelegate> {
+@interface DWNavigationRootViewController : UIViewController<UINavigationControllerDelegate,DWProfileViewControllerDelegate,DWUsersViewControllerDelegate,DWPurchasesViewControllerDelegate,DWCreationViewControllerDelegate,DWPurchaseInputViewControllerDelegate,DWCommentsCreateViewControllerDelegate,DWGoogleAuthViewControllerDelegate> {
     
     __weak DWTabBarController *_customTabBarController;
 }
@@ -68,5 +68,10 @@
  */
 - (void)displayPurchaseViewForPurchase:(DWPurchase*)purchase
                           loadRemotely:(BOOL)loadRemotely;
+
+/**
+ * Display view to initiate google auth process.
+ */
+- (void)displayGoogleAuth;
 
 @end

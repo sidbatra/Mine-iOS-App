@@ -119,7 +119,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWSession);
 
 //----------------------------------------------------------------------------------------------------
 - (void)write {
-    
+
     NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
 	
 	if (standardUserDefaults) {

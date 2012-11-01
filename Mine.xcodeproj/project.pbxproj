@@ -412,6 +412,10 @@
 		BB677359162E136100C3A1E1 /* nav-notifications-notzero-on.png in Resources */ = {isa = PBXBuildFile; fileRef = BB677355162E136100C3A1E1 /* nav-notifications-notzero-on.png */; };
 		BB67735A162E136100C3A1E1 /* nav-notifications-zero-off.png in Resources */ = {isa = PBXBuildFile; fileRef = BB677356162E136100C3A1E1 /* nav-notifications-zero-off.png */; };
 		BB67735B162E136100C3A1E1 /* nav-notifications-zero-on.png in Resources */ = {isa = PBXBuildFile; fileRef = BB677357162E136100C3A1E1 /* nav-notifications-zero-on.png */; };
+		BB6773681641C29400C3A1E1 /* DWEmailConnectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB6773661641C29400C3A1E1 /* DWEmailConnectViewController.m */; };
+		BB6773691641C29400C3A1E1 /* DWEmailConnectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB6773671641C29400C3A1E1 /* DWEmailConnectViewController.xib */; };
+		BB6773831641F84300C3A1E1 /* DWGoogleAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB6773811641F84200C3A1E1 /* DWGoogleAuthViewController.m */; };
+		BB6773841641F84300C3A1E1 /* DWGoogleAuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB6773821641F84200C3A1E1 /* DWGoogleAuthViewController.xib */; };
 		BB9F313F15F609FF009C1385 /* DWFollowButton.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9F313E15F609FF009C1385 /* DWFollowButton.m */; };
 		BB9F314815F62BC2009C1385 /* DWNavigationBarBackButton.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9F314715F62BC2009C1385 /* DWNavigationBarBackButton.m */; };
 		BB9F314F15F645C5009C1385 /* DWUserProfileCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9F314E15F645C5009C1385 /* DWUserProfileCell.m */; };
@@ -1015,6 +1019,12 @@
 		BB677355162E136100C3A1E1 /* nav-notifications-notzero-on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-notifications-notzero-on.png"; sourceTree = "<group>"; };
 		BB677356162E136100C3A1E1 /* nav-notifications-zero-off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-notifications-zero-off.png"; sourceTree = "<group>"; };
 		BB677357162E136100C3A1E1 /* nav-notifications-zero-on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-notifications-zero-on.png"; sourceTree = "<group>"; };
+		BB6773651641C29400C3A1E1 /* DWEmailConnectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWEmailConnectViewController.h; sourceTree = "<group>"; };
+		BB6773661641C29400C3A1E1 /* DWEmailConnectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWEmailConnectViewController.m; sourceTree = "<group>"; };
+		BB6773671641C29400C3A1E1 /* DWEmailConnectViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DWEmailConnectViewController.xib; sourceTree = "<group>"; };
+		BB6773801641F84100C3A1E1 /* DWGoogleAuthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWGoogleAuthViewController.h; sourceTree = "<group>"; };
+		BB6773811641F84200C3A1E1 /* DWGoogleAuthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWGoogleAuthViewController.m; sourceTree = "<group>"; };
+		BB6773821641F84200C3A1E1 /* DWGoogleAuthViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DWGoogleAuthViewController.xib; sourceTree = "<group>"; };
 		BB9F313D15F609FF009C1385 /* DWFollowButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWFollowButton.h; sourceTree = "<group>"; };
 		BB9F313E15F609FF009C1385 /* DWFollowButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWFollowButton.m; sourceTree = "<group>"; };
 		BB9F314615F62BC2009C1385 /* DWNavigationBarBackButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWNavigationBarBackButton.h; sourceTree = "<group>"; };
@@ -1323,6 +1333,9 @@
 		BB06365D15C0A127001F26E1 /* WelcomeControllers */ = {
 			isa = PBXGroup;
 			children = (
+				BB6773651641C29400C3A1E1 /* DWEmailConnectViewController.h */,
+				BB6773661641C29400C3A1E1 /* DWEmailConnectViewController.m */,
+				BB6773671641C29400C3A1E1 /* DWEmailConnectViewController.xib */,
 				BB06365E15C0A147001F26E1 /* DWLoginViewController.h */,
 				BB06365F15C0A147001F26E1 /* DWLoginViewController.m */,
 				BB06366015C0A147001F26E1 /* DWLoginViewController.xib */,
@@ -1409,6 +1422,9 @@
 				BB31FC22160BFA750049B6BF /* DWEditBylineViewController.h */,
 				BB31FC23160BFA750049B6BF /* DWEditBylineViewController.m */,
 				BB31FC24160BFA750049B6BF /* DWEditBylineViewController.xib */,
+				BB6773801641F84100C3A1E1 /* DWGoogleAuthViewController.h */,
+				BB6773811641F84200C3A1E1 /* DWGoogleAuthViewController.m */,
+				BB6773821641F84200C3A1E1 /* DWGoogleAuthViewController.xib */,
 				2622005415C713A7003DC1DF /* DWInviteViewController.h */,
 				2622005515C713A7003DC1DF /* DWInviteViewController.m */,
 				2622005615C713A7003DC1DF /* DWInviteViewController.xib */,
@@ -2582,6 +2598,8 @@
 				BB677359162E136100C3A1E1 /* nav-notifications-notzero-on.png in Resources */,
 				BB67735A162E136100C3A1E1 /* nav-notifications-zero-off.png in Resources */,
 				BB67735B162E136100C3A1E1 /* nav-notifications-zero-on.png in Resources */,
+				BB6773691641C29400C3A1E1 /* DWEmailConnectViewController.xib in Resources */,
+				BB6773841641F84300C3A1E1 /* DWGoogleAuthViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2772,6 +2790,8 @@
 				BB677338162B668700C3A1E1 /* DWNotificationCell.m in Sources */,
 				BB67733B162B6A7400C3A1E1 /* DWNotificationPresenter.m in Sources */,
 				BB67733E162B6CEC00C3A1E1 /* DWNotificationsViewController.m in Sources */,
+				BB6773681641C29400C3A1E1 /* DWEmailConnectViewController.m in Sources */,
+				BB6773831641F84300C3A1E1 /* DWGoogleAuthViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

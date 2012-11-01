@@ -18,6 +18,12 @@
  */
 + (DWRequestManager *)sharedDWRequestManager;
 
+/**
+ * Form the complete URL with or without authentication to send
+ * a request to the app server
+ */
+- (NSString*)createAppRequestURL:(NSString*)localRequestURL
+                    authenticate:(BOOL)authenticate;
 
 /**
  * Create a post request to be sent to the app server. The post params are sent
