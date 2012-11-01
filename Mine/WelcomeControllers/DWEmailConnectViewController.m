@@ -67,7 +67,7 @@
 
 //----------------------------------------------------------------------------------------------------
 - (IBAction)yahooButtonClicked:(id)sender {
-    NSLog(@"Yahoo");
+    [self.delegate emailConnectYahooAuthInitiated];
 }
 
 @end

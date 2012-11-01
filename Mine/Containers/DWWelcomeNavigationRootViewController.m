@@ -270,6 +270,7 @@ static NSString* const kInfoURL = @"/?web_view_mode=true";
 
 //----------------------------------------------------------------------------------------------------
 - (void)emailConnectYahooAuthInitiated {
+    [self displayYahooAuth];
 }
 
 
@@ -282,7 +283,7 @@ static NSString* const kInfoURL = @"/?web_view_mode=true";
 - (void)googleAuthAccepted {
     [self.navigationController popViewControllerAnimated:NO];
     
-    NSLog(@"ACCEPTED");
+    NSLog(@"GOOGLE ACCEPTED");
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -298,6 +299,29 @@ static NSString* const kInfoURL = @"/?web_view_mode=true";
 }
 
 
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWYahooAuthViewControllerDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)yahooAuthAccepted {
+    [self.navigationController popViewControllerAnimated:NO];
+    
+    NSLog(@"YAHOO ACCEPTED");
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)yahooAuthRejected {
+    [self.navigationController popViewControllerAnimated:NO];
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                    message:@"Yahoo connect is required to import your purchases."
+                                                   delegate:nil
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
+    [alert show];
+}
 
 
 //----------------------------------------------------------------------------------------------------
