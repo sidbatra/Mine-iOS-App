@@ -49,6 +49,9 @@
                           withShareToTB:(BOOL)shareToTB 
                          uploadDelegate:(id)uploadDelegate;
 
+- (void)approveMultiplePurchases:(NSMutableArray*)selectedIDs
+                     rejectedIDs:(NSMutableArray*)rejectedIDs;
+
 /** 
  * Delete a purchase
  */
@@ -89,6 +92,7 @@
 
 
 - (void)unapprovedPurchasesLoaded:(NSMutableArray*)purchases;
+
 - (void)unapprovedPurchasesLoadError:(NSString*)error;
 
 /**
@@ -102,6 +106,10 @@
  */
 - (void)purchaseCreateError:(NSString*)error
              fromResourceID:(NSNumber*)resourceID;
+
+- (void)multiplePurchasesUpdated;
+
+- (void)multiplePurchasesUpdateError:(NSString*)error;
 
 /**
  * Purchase successfully deleted.
