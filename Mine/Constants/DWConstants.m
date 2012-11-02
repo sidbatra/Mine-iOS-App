@@ -55,6 +55,8 @@ NSString* const kNUpdateNotificationsCount  = @"NUpdateNotificationsCount";
 NSInteger const kColumnsInProductsSearch        = 3;
 NSInteger const kColumnsInPurchaseSearch        = 2;
 NSInteger const kColumnsInGlobalFeed            = 2;
+NSInteger const kColumnsInUnapprovedPurchases   = 2;
+
 
 //----------------------------------------------------------------------------------------------------
 NSString* const kFacebookAppID                  = @"245230762190915";

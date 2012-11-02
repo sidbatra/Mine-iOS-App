@@ -18,6 +18,7 @@
 #import "DWCommentsCreateViewController.h"
 #import "DWGoogleAuthViewController.h"
 #import "DWYahooAuthViewController.h"
+#import "DWUnapprovedPurchasesViewController.h"
 
 
 @class DWUser;
@@ -72,6 +73,9 @@
 
 
 - (void)displayGoogleAuth;
+
 - (void)displayYahooAuth;
+
+- (void)displayUnapprovedPurchases:(BOOL)isLive;
 
 @end

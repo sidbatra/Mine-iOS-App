@@ -86,6 +86,7 @@ extern NSString* const kNUpdateNotificationsCount;
 extern NSInteger const kColumnsInProductsSearch;
 extern NSInteger const kColumnsInPurchaseSearch;
 extern NSInteger const kColumnsInGlobalFeed;
+extern NSInteger const kColumnsInUnapprovedPurchases;
 
 
 /**

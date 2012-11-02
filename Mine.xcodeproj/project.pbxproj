@@ -392,6 +392,9 @@
 		BB46142615CC6ABD00B38D71 /* DWModelSet.m in Sources */ = {isa = PBXBuildFile; fileRef = BB46142515CC6ABD00B38D71 /* DWModelSet.m */; };
 		BB4AC3291642EAA500B0512A /* DWYahooAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB4AC3271642EAA500B0512A /* DWYahooAuthViewController.m */; };
 		BB4AC32A1642EAA500B0512A /* DWYahooAuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB4AC3281642EAA500B0512A /* DWYahooAuthViewController.xib */; };
+		BB4AC3311644432B00B0512A /* DWUnapprovedPurchasesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB4AC3301644432B00B0512A /* DWUnapprovedPurchasesViewController.m */; };
+		BB4AC33816446D1400B0512A /* DWStalePurchasesViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = BB4AC33716446D1400B0512A /* DWStalePurchasesViewDataSource.m */; };
+		BB4AC33B16446D2F00B0512A /* DWUnapprovedPurchasesViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = BB4AC33A16446D2F00B0512A /* DWUnapprovedPurchasesViewDataSource.m */; };
 		BB4C77BE161520AB009C3279 /* DWDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = BB4C77BD161520AB009C3279 /* DWDevice.m */; };
 		BB59B4BB15EE500E000756EE /* DWNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BB59B4BA15EE500E000756EE /* DWNavigationBar.m */; };
 		BB59B4CA15EF3B65000756EE /* DWNavigationBarTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = BB59B4C915EF3B65000756EE /* DWNavigationBarTitleView.m */; };
@@ -987,6 +990,12 @@
 		BB4AC3261642EAA500B0512A /* DWYahooAuthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWYahooAuthViewController.h; sourceTree = "<group>"; };
 		BB4AC3271642EAA500B0512A /* DWYahooAuthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWYahooAuthViewController.m; sourceTree = "<group>"; };
 		BB4AC3281642EAA500B0512A /* DWYahooAuthViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DWYahooAuthViewController.xib; sourceTree = "<group>"; };
+		BB4AC32F1644432B00B0512A /* DWUnapprovedPurchasesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWUnapprovedPurchasesViewController.h; sourceTree = "<group>"; };
+		BB4AC3301644432B00B0512A /* DWUnapprovedPurchasesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWUnapprovedPurchasesViewController.m; sourceTree = "<group>"; };
+		BB4AC33616446D1400B0512A /* DWStalePurchasesViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWStalePurchasesViewDataSource.h; sourceTree = "<group>"; };
+		BB4AC33716446D1400B0512A /* DWStalePurchasesViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWStalePurchasesViewDataSource.m; sourceTree = "<group>"; };
+		BB4AC33916446D2F00B0512A /* DWUnapprovedPurchasesViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWUnapprovedPurchasesViewDataSource.h; sourceTree = "<group>"; };
+		BB4AC33A16446D2F00B0512A /* DWUnapprovedPurchasesViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWUnapprovedPurchasesViewDataSource.m; sourceTree = "<group>"; };
 		BB4C77BC161520AB009C3279 /* DWDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWDevice.h; sourceTree = "<group>"; };
 		BB4C77BD161520AB009C3279 /* DWDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWDevice.m; sourceTree = "<group>"; };
 		BB59B4B915EE500E000756EE /* DWNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWNavigationBar.h; sourceTree = "<group>"; };
@@ -1507,6 +1516,8 @@
 				BB2BC04A15CDE13900CCC4BB /* DWPurchaseViewController.m */,
 				26D699DB15DDA7C7003AFAFA /* DWGlobalFeedViewController.h */,
 				26D699DC15DDA7C7003AFAFA /* DWGlobalFeedViewController.m */,
+				BB4AC32F1644432B00B0512A /* DWUnapprovedPurchasesViewController.h */,
+				BB4AC3301644432B00B0512A /* DWUnapprovedPurchasesViewController.m */,
 			);
 			path = Purchases;
 			sourceTree = "<group>";
@@ -1847,6 +1858,17 @@
 			path = Assets;
 			sourceTree = "<group>";
 		};
+		BB4AC33516446D1400B0512A /* Purchases */ = {
+			isa = PBXGroup;
+			children = (
+				BB4AC33616446D1400B0512A /* DWStalePurchasesViewDataSource.h */,
+				BB4AC33716446D1400B0512A /* DWStalePurchasesViewDataSource.m */,
+				BB4AC33916446D2F00B0512A /* DWUnapprovedPurchasesViewDataSource.h */,
+				BB4AC33A16446D2F00B0512A /* DWUnapprovedPurchasesViewDataSource.m */,
+			);
+			path = Purchases;
+			sourceTree = "<group>";
+		};
 		BB59B4B715EE4FD2000756EE /* NavigationBar */ = {
 			isa = PBXGroup;
 			children = (
@@ -2157,6 +2179,7 @@
 			isa = PBXGroup;
 			children = (
 				BBE42F3B15BCAD9E000F6AE1 /* Base */,
+				BB4AC33516446D1400B0512A /* Purchases */,
 				BB2BC03415CDD5A700CCC4BB /* Users */,
 				BBC0608615C741FC000D3480 /* DWCommentsViewDataSource.h */,
 				BBC0608715C741FC000D3480 /* DWCommentsViewDataSource.m */,
@@ -2802,6 +2825,9 @@
 				BB6773681641C29400C3A1E1 /* DWEmailConnectViewController.m in Sources */,
 				BB6773831641F84300C3A1E1 /* DWGoogleAuthViewController.m in Sources */,
 				BB4AC3291642EAA500B0512A /* DWYahooAuthViewController.m in Sources */,
+				BB4AC3311644432B00B0512A /* DWUnapprovedPurchasesViewController.m in Sources */,
+				BB4AC33816446D1400B0512A /* DWStalePurchasesViewDataSource.m in Sources */,
+				BB4AC33B16446D2F00B0512A /* DWUnapprovedPurchasesViewDataSource.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

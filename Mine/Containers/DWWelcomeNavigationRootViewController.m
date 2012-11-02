@@ -99,12 +99,11 @@ static NSString* const kInfoURL = @"/?web_view_mode=true";
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)showEmailConnectView {
+- (void)showUserDetailsView {
+    DWUserDetailsViewController *userDetailsViewController = [[DWUserDetailsViewController alloc] init];
+    userDetailsViewController.delegate = self;
     
-    DWEmailConnectViewController *emailConnectViewController = [[DWEmailConnectViewController alloc] init];
-    emailConnectViewController.delegate = self;
-    
-    [self.navigationController pushViewController:emailConnectViewController
+    [self.navigationController pushViewController:userDetailsViewController
                                          animated:YES];
 }
 
@@ -114,16 +113,17 @@ static NSString* const kInfoURL = @"/?web_view_mode=true";
     DWOnboardingFeedViewController *onboardingFeedViewController = [[DWOnboardingFeedViewController alloc] init];
     onboardingFeedViewController.delegate = self;
     
-    [self.navigationController pushViewController:onboardingFeedViewController 
+    [self.navigationController pushViewController:onboardingFeedViewController
                                          animated:YES];
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)showUserDetailsView {
-    DWUserDetailsViewController *userDetailsViewController = [[DWUserDetailsViewController alloc] init];
-    userDetailsViewController.delegate = self;
+- (void)showEmailConnectView {
     
-    [self.navigationController pushViewController:userDetailsViewController
+    DWEmailConnectViewController *emailConnectViewController = [[DWEmailConnectViewController alloc] init];
+    emailConnectViewController.delegate = self;
+    
+    [self.navigationController pushViewController:emailConnectViewController
                                          animated:YES];
 }
 

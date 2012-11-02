@@ -168,6 +168,14 @@
                                          animated:NO];
 }
 
+//----------------------------------------------------------------------------------------------------
+- (void)displayUnapprovedPurchases:(BOOL)isLive {
+    DWUnapprovedPurchasesViewController *unapprovedPurchasesViewController = [[DWUnapprovedPurchasesViewController alloc] init];
+    
+    [self.navigationController pushViewController:unapprovedPurchasesViewController
+                                         animated:YES];
+}
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
