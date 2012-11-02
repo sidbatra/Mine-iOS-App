@@ -117,9 +117,7 @@
     if([purchases count]) {        
         DWPagination *pagination    = [[DWPagination alloc] init];
         pagination.owner            = self;
-        [self.objects addObject:pagination];
-        
-        [self loadPurchases];
+        [self.objects addObject:pagination];        
     }
     
     

@@ -63,12 +63,12 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)unapprovedPurchasesLoaded:(NSMutableArray *)purchases {
+    [super unapprovedPurchasesLoaded:purchases];
     
     if([purchases count]) {
         self.oldestTimestamp  = [((DWPurchase*)[purchases lastObject]).createdAt timeIntervalSince1970];
+        [self loadPurchases];
     }
-
-    [super unapprovedPurchasesLoaded:purchases];
 }
 
 @end

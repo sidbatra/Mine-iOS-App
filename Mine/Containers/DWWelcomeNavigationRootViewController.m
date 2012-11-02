@@ -283,7 +283,7 @@ static NSString* const kInfoURL = @"/?web_view_mode=true";
 - (void)googleAuthAccepted {
     [self.navigationController popViewControllerAnimated:NO];
     
-    NSLog(@"GOOGLE ACCEPTED");
+    [self displayUnapprovedPurchases:YES];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -308,7 +308,7 @@ static NSString* const kInfoURL = @"/?web_view_mode=true";
 - (void)yahooAuthAccepted {
     [self.navigationController popViewControllerAnimated:NO];
     
-    NSLog(@"YAHOO ACCEPTED");
+    [self displayUnapprovedPurchases:YES];
 }
 
 //----------------------------------------------------------------------------------------------------
