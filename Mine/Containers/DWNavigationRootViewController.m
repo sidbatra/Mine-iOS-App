@@ -170,7 +170,7 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)displayUnapprovedPurchases:(BOOL)isLive {
-    DWUnapprovedPurchasesViewController *unapprovedPurchasesViewController = [[DWUnapprovedPurchasesViewController alloc] init];
+    DWUnapprovedPurchasesViewController *unapprovedPurchasesViewController = [[DWUnapprovedPurchasesViewController alloc] initWithModeIsLive:isLive];
     
     [self.navigationController pushViewController:unapprovedPurchasesViewController
                                          animated:YES];

@@ -11,4 +11,6 @@
 
 @interface DWUnapprovedPurchasesViewController : DWPurchasesViewController
 
+- (id)initWithModeIsLive:(BOOL)isLive;
+
 @end

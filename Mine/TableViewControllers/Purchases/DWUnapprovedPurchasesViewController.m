@@ -8,6 +8,7 @@
 
 #import "DWUnapprovedPurchasesViewController.h"
 #import "DWStalePurchasesViewDataSource.h"
+#import "DWLivePurchasesViewDataSource.h"
 #import "DWModelSet.h"
 #import "DWPagination.h"
 #import "DWPurchaseProfilePresenter.h"
@@ -27,12 +28,12 @@
 @implementation DWUnapprovedPurchasesViewController
 
 //----------------------------------------------------------------------------------------------------
-- (id)init {
+- (id)initWithModeIsLive:(BOOL)isLive {
     self = [super init];
     
     if(self) {
         
-        self.tableViewDataSource = [[DWStalePurchasesViewDataSource alloc] init];
+        self.tableViewDataSource = isLive ? [[DWLivePurchasesViewDataSource alloc] init] : [[DWStalePurchasesViewDataSource alloc] init];
         
         [self addModelPresenterForClass:[DWModelSet class]
                               withStyle:kPurchaseProfilePresenterStyleWithUser

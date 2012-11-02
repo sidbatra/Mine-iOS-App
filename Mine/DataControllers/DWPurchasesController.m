@@ -195,7 +195,7 @@ static NSString* const kNPurchaseDeleteError            = @"NPurchaseDeleteError
 - (void)getUnapprovedLivePurchasesAtOffset:(NSInteger)offset
                                    perPage:(NSInteger)perPage {
     
-    NSMutableString *localURL = [NSMutableString stringWithFormat:kGetUnapprovedLivePurchasesURI,offset,perPage];
+    NSMutableString *localURL = [NSMutableString stringWithFormat:kGetUnapprovedLivePurchasesURI,perPage,offset];
     
     [[DWRequestManager sharedDWRequestManager] createAppRequest:localURL
                                             successNotification:kNUnapprovedPurchasesLoaded
