@@ -31,6 +31,14 @@
                      before:(NSInteger)before
                  withCaller:(NSObject*)caller;
 
+
+- (void)getUnapprovedStalePurchasesBefore:(NSInteger)before
+                                  perPage:(NSInteger)perPage;
+
+
+- (void)getUnapprovedLivePurchasesAtOffset:(NSInteger)offset
+                                   perPage:(NSInteger)perPage;
+
 /**
  * Create a new purchase.
  */
@@ -78,6 +86,10 @@
  * Error loading purchases.
  */
 - (void)purchasesLoadError:(NSString*)error;
+
+
+- (void)unapprovedPurchasesLoaded:(NSMutableArray*)purchases;
+- (void)unapprovedPurchasesLoadError:(NSString*)error;
 
 /**
  * Purchase successfully created.
