@@ -69,6 +69,9 @@
         self.oldestTimestamp  = [((DWPurchase*)[purchases lastObject]).createdAt timeIntervalSince1970];
         [self loadPurchases];
     }
+    else {
+        [self.delegate unapprovedPurchasesFinished];
+    }
 }
 
 @end

@@ -9,13 +9,26 @@
 #import "DWTableViewDataSource.h"
 #import "DWPurchasesController.h"
 
+
+@protocol DWUnapprovedPurchasesViewDataSourceDelegate;
+
 @interface DWUnapprovedPurchasesViewDataSource : DWTableViewDataSource<DWPurchasesControllerDelegate> {
     DWPurchasesController *_purchasesController;
 }
 
 @property (nonatomic,strong) DWPurchasesController *purchasesController;
+@property (nonatomic,weak) id<DWTableViewDataSourceDelegate,DWUnapprovedPurchasesViewDataSourceDelegate,NSObject> delegate;
 
 
 - (void)loadPurchases;
+
+@end
+
+
+@protocol DWUnapprovedPurchasesViewDataSourceDelegate
+
+@required
+
+- (void)unapprovedPurchasesFinished;
 
 @end

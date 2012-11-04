@@ -24,6 +24,8 @@
 
 @synthesize purchasesController = _purchasesController;
 
+@synthesize delegate;
+
 //----------------------------------------------------------------------------------------------------
 - (id)init {
     self = [super init];

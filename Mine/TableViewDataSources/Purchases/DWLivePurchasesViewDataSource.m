@@ -105,6 +105,8 @@ static NSInteger const kMaxTries = 3;
     }
     else {
         [super unapprovedPurchasesLoaded:purchases];
+        
+        [self.delegate unapprovedPurchasesFinished];
     }
 }
 
