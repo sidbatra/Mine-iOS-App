@@ -54,7 +54,7 @@
     
     [cell setPurchaseImage:purchase.giantImage];
     [cell setUserImage:purchase.user.squareImage];
-    
+
     [cell setBoughtText:[DWPurchasesHelper boughtTextForPurchase:purchase]
            withUserName:purchase.user.fullName
           withTimestamp:[DWPurchasesHelper timestamp:purchase]];

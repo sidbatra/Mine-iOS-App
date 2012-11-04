@@ -45,6 +45,7 @@
  * Apply a purchase title.
  */
 - (void)setPurchaseTitle:(NSString*)title
+                   store:(NSString*)store
                 forIndex:(NSInteger)index
          withUserPronoun:(NSString*)pronoun
           withPurchaseID:(NSInteger)purchaseID;

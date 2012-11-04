@@ -11,6 +11,7 @@
 #import <QuartzCore/QuartzCore.h>
 
 #import "DWPurchase.h"
+#import "DWStore.h"
 #import "DWUser.h"
 #import "DWConstants.h"
 
@@ -105,20 +106,25 @@ static NSString* const kImgSpinnerBackground = @"delete-loading.png";
 
 //----------------------------------------------------------------------------------------------------
 + (NSString*)fullTitleForPurchaseWithTitle:(NSString*)title
+                                     store:(NSString*)store
                             andUserPronoun:(NSString*)pronoun
                                 inUserMode:(BOOL)userMode {
     
-    NSString* fullTitle = nil;
+    NSMutableString* fullTitle = nil;
+
    // NSInteger maxLength = 0;
     
     if(userMode) {
-        fullTitle = [NSString stringWithFormat:@"bought %@ %@",pronoun,title];
+        fullTitle = [NSMutableString stringWithFormat:@"bought %@ %@",pronoun,title];
         //maxLength = kMaxTitleLengthInUserMode;
     }
     else {
-        fullTitle = title;
+        fullTitle = [NSMutableString stringWithString:title];
         //maxLength = kMaxTitleLength;
     }
+    
+    if(store)
+        [fullTitle appendFormat:@" from %@",store];
     
     //if([fullTitle length] > maxLength)
     //    fullTitle = [NSString stringWithFormat:@"%@...",[fullTitle substringToIndex:maxLength-3]];
@@ -135,6 +141,7 @@ static NSString* const kImgSpinnerBackground = @"delete-loading.png";
     for(DWPurchase *purchase in purchases) {
         
         NSString *title = [self fullTitleForPurchaseWithTitle:purchase.title
+                                                        store:purchase.store ? purchase.store.name : nil
                                                andUserPronoun:purchase.user.pronoun
                                                    inUserMode:userMode];
         
@@ -382,6 +389,7 @@ static NSString* const kImgSpinnerBackground = @"delete-loading.png";
 
 //----------------------------------------------------------------------------------------------------
 - (void)setPurchaseTitle:(NSString*)title
+                   store:(NSString*)store
                 forIndex:(NSInteger)index
          withUserPronoun:(NSString*)pronoun
           withPurchaseID:(NSInteger)purchaseID {
@@ -402,6 +410,7 @@ static NSString* const kImgSpinnerBackground = @"delete-loading.png";
     
     
     NSString *fullTitle = [[self class] fullTitleForPurchaseWithTitle:title
+                                                                store:store
                                                        andUserPronoun:pronoun
                                                            inUserMode:self.userMode];
     
