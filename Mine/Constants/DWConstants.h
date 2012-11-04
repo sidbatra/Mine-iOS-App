@@ -201,7 +201,8 @@ typedef enum {
 
 
 typedef enum {
-    kPurchaseProfilePresenterStyleWithUser = 1
+    kPurchaseProfilePresenterStyleWithUser = 1,
+    kPurchaseProfilePresenterStyleUnapproved = 2
 } DWPurchaseProfilePresenterStyle;
 
 typedef enum {

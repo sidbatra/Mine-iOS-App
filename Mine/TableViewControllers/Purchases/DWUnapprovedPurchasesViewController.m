@@ -36,7 +36,7 @@
         self.tableViewDataSource = isLive ? [[DWLivePurchasesViewDataSource alloc] init] : [[DWStalePurchasesViewDataSource alloc] init];
         
         [self addModelPresenterForClass:[DWModelSet class]
-                              withStyle:kPurchaseProfilePresenterStyleWithUser
+                              withStyle:kPurchaseProfilePresenterStyleUnapproved
                           withPresenter:[DWPurchaseProfilePresenter class]];
         
         [self addModelPresenterForClass:[DWPagination class]
