@@ -7,6 +7,8 @@
 //
 
 #import "DWEmailConnectViewController.h"
+#import "DWNavigationBarBackButton.h"
+#import "DWGUIManager.h"
 #import "DWAnalyticsManager.h"
 
 @interface DWEmailConnectViewController ()
@@ -54,6 +56,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.navigationItem.leftBarButtonItem   = [DWNavigationBarBackButton backButtonForNavigationController:self.navigationController];
+    self.navigationItem.titleView           = [DWGUIManager navBarTitleViewWithText:@"Start your Mine"];
+    
     [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Welcome Connect"];
 }
 
@@ -75,6 +80,13 @@
     [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Yahoo Auth Initiated"];
     
     [self.delegate emailConnectYahooAuthInitiated];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (IBAction)skipButtonClicked:(id)sender {
+    [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Email Connect Skipped"];
+    
+    [self.delegate emailConnectSkipped];
 }
 
 @end

@@ -26,6 +26,7 @@
 
 - (IBAction)googleButtonClicked:(id)sender;
 - (IBAction)yahooButtonClicked:(id)sender;
+- (IBAction)skipButtonClicked:(id)sender;
 
 @end
 
@@ -37,5 +38,6 @@
 
 - (void)emailConnectGoogleAuthInitiated;
 - (void)emailConnectYahooAuthInitiated;
+- (void)emailConnectSkipped;
 
 @end
