@@ -20,7 +20,8 @@ extern NSString* const kKeyUnread;
 typedef enum {
     DWNotificationIdentifierLike        = 0,
     DWNotificationIdentifierComment     = 1,
-    DWNotificationIdentifierFollowing   = 2
+    DWNotificationIdentifierFollowing   = 2,
+    DWNotificationIdentifierUnapprovedPurchases = 3
 } DWNotificationIdentifier;
 
 

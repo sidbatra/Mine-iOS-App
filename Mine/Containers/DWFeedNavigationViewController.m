@@ -359,10 +359,14 @@ static NSString* const kImgSearchOn     = @"nav-btn-search-on.png";
                             loadRemotely:YES];
 }
 
-
 //----------------------------------------------------------------------------------------------------
 - (void)notificationsViewDisplayUser:(DWUser *)user {
     [self displayUserProfile:user];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)notificationsViewDisplayUnapprovedPurchases {
+    [self displayUnapprovedPurchases:NO];
 }
 
 
