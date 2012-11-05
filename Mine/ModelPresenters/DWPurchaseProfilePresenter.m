@@ -60,6 +60,9 @@
                       forIndex:i
                     withUserID:purchase.user.databaseID];
         }
+        else if(style == kPurchaseProfilePresenterStyleUnapproved) {
+            [cell displayCrossButtonForIndex:i];
+        }
         
         if(purchase.isDestroying)
             [cell enterSpinningStateForIndex:i];

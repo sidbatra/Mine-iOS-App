@@ -396,6 +396,12 @@
 		BB4AC33816446D1400B0512A /* DWStalePurchasesViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = BB4AC33716446D1400B0512A /* DWStalePurchasesViewDataSource.m */; };
 		BB4AC33B16446D2F00B0512A /* DWUnapprovedPurchasesViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = BB4AC33A16446D2F00B0512A /* DWUnapprovedPurchasesViewDataSource.m */; };
 		BB4AC33E1644756000B0512A /* DWLivePurchasesViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = BB4AC33D1644756000B0512A /* DWLivePurchasesViewDataSource.m */; };
+		BB4AC34516475F2B00B0512A /* feed-btn-x-off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB4AC33F16475F2B00B0512A /* feed-btn-x-off@2x.png */; };
+		BB4AC34616475F2B00B0512A /* feed-btn-x-on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB4AC34016475F2B00B0512A /* feed-btn-x-on@2x.png */; };
+		BB4AC34716475F2B00B0512A /* nav-btn-import-disabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB4AC34116475F2B00B0512A /* nav-btn-import-disabled@2x.png */; };
+		BB4AC34816475F2B00B0512A /* nav-btn-import-loading@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB4AC34216475F2B00B0512A /* nav-btn-import-loading@2x.png */; };
+		BB4AC34916475F2B00B0512A /* nav-btn-import-off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB4AC34316475F2B00B0512A /* nav-btn-import-off@2x.png */; };
+		BB4AC34A16475F2B00B0512A /* nav-btn-import-on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB4AC34416475F2B00B0512A /* nav-btn-import-on@2x.png */; };
 		BB4C77BE161520AB009C3279 /* DWDevice.m in Sources */ = {isa = PBXBuildFile; fileRef = BB4C77BD161520AB009C3279 /* DWDevice.m */; };
 		BB59B4BB15EE500E000756EE /* DWNavigationBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BB59B4BA15EE500E000756EE /* DWNavigationBar.m */; };
 		BB59B4CA15EF3B65000756EE /* DWNavigationBarTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = BB59B4C915EF3B65000756EE /* DWNavigationBarTitleView.m */; };
@@ -999,6 +1005,12 @@
 		BB4AC33A16446D2F00B0512A /* DWUnapprovedPurchasesViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWUnapprovedPurchasesViewDataSource.m; sourceTree = "<group>"; };
 		BB4AC33C1644756000B0512A /* DWLivePurchasesViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWLivePurchasesViewDataSource.h; sourceTree = "<group>"; };
 		BB4AC33D1644756000B0512A /* DWLivePurchasesViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWLivePurchasesViewDataSource.m; sourceTree = "<group>"; };
+		BB4AC33F16475F2B00B0512A /* feed-btn-x-off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "feed-btn-x-off@2x.png"; sourceTree = "<group>"; };
+		BB4AC34016475F2B00B0512A /* feed-btn-x-on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "feed-btn-x-on@2x.png"; sourceTree = "<group>"; };
+		BB4AC34116475F2B00B0512A /* nav-btn-import-disabled@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-btn-import-disabled@2x.png"; sourceTree = "<group>"; };
+		BB4AC34216475F2B00B0512A /* nav-btn-import-loading@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-btn-import-loading@2x.png"; sourceTree = "<group>"; };
+		BB4AC34316475F2B00B0512A /* nav-btn-import-off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-btn-import-off@2x.png"; sourceTree = "<group>"; };
+		BB4AC34416475F2B00B0512A /* nav-btn-import-on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-btn-import-on@2x.png"; sourceTree = "<group>"; };
 		BB4C77BC161520AB009C3279 /* DWDevice.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWDevice.h; sourceTree = "<group>"; };
 		BB4C77BD161520AB009C3279 /* DWDevice.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWDevice.m; sourceTree = "<group>"; };
 		BB59B4B915EE500E000756EE /* DWNavigationBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWNavigationBar.h; sourceTree = "<group>"; };
@@ -1593,6 +1605,12 @@
 		BB350EB71617D1FA00531A80 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				BB4AC33F16475F2B00B0512A /* feed-btn-x-off@2x.png */,
+				BB4AC34016475F2B00B0512A /* feed-btn-x-on@2x.png */,
+				BB4AC34116475F2B00B0512A /* nav-btn-import-disabled@2x.png */,
+				BB4AC34216475F2B00B0512A /* nav-btn-import-loading@2x.png */,
+				BB4AC34316475F2B00B0512A /* nav-btn-import-off@2x.png */,
+				BB4AC34416475F2B00B0512A /* nav-btn-import-on@2x.png */,
 				BB677354162E136100C3A1E1 /* nav-notifications-notzero-off.png */,
 				BB677355162E136100C3A1E1 /* nav-notifications-notzero-on.png */,
 				BB677356162E136100C3A1E1 /* nav-notifications-zero-off.png */,
@@ -2637,6 +2655,12 @@
 				BB6773691641C29400C3A1E1 /* DWEmailConnectViewController.xib in Resources */,
 				BB6773841641F84300C3A1E1 /* DWGoogleAuthViewController.xib in Resources */,
 				BB4AC32A1642EAA500B0512A /* DWYahooAuthViewController.xib in Resources */,
+				BB4AC34516475F2B00B0512A /* feed-btn-x-off@2x.png in Resources */,
+				BB4AC34616475F2B00B0512A /* feed-btn-x-on@2x.png in Resources */,
+				BB4AC34716475F2B00B0512A /* nav-btn-import-disabled@2x.png in Resources */,
+				BB4AC34816475F2B00B0512A /* nav-btn-import-loading@2x.png in Resources */,
+				BB4AC34916475F2B00B0512A /* nav-btn-import-off@2x.png in Resources */,
+				BB4AC34A16475F2B00B0512A /* nav-btn-import-on@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

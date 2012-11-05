@@ -27,6 +27,8 @@ static NSInteger const kMaxTitleLengthInUserMode = 29;
 
 static NSString* const kImgMiniChevron = @"doink-up-8.png";
 static NSString* const kImgSpinnerBackground = @"delete-loading.png";
+static NSString* const kImgCrossButtonOn = @"feed-btn-x-on.png";
+static NSString* const kImgCrossButtonOff = @"feed-btn-x-off.png";
 
 #define kTitleFont [UIFont fontWithName:@"HelveticaNeue" size:10]
 #define kColorImageBackground [UIColor colorWithRed:0.862 green:0.862 blue:0.862 alpha:1.0]
@@ -40,6 +42,7 @@ static NSString* const kImgSpinnerBackground = @"delete-loading.png";
     NSMutableArray  *_chevrons;
     NSMutableArray  *_spinners;
     NSMutableArray  *_spinnerBackgrounds;
+    NSMutableArray  *_crossButtons;
 }
 
 
@@ -50,6 +53,7 @@ static NSString* const kImgSpinnerBackground = @"delete-loading.png";
 @property (nonatomic,strong) NSMutableArray *chevrons;
 @property (nonatomic,strong) NSMutableArray *spinners;
 @property (nonatomic,strong) NSMutableArray *spinnerBackgrounds;
+@property (nonatomic,strong) NSMutableArray *crossButtons;
 
 @end
 
@@ -68,6 +72,7 @@ static NSString* const kImgSpinnerBackground = @"delete-loading.png";
 @synthesize chevrons            = _chevrons;
 @synthesize spinners            = _spinners;
 @synthesize spinnerBackgrounds  = _spinnerBackgrounds;
+@synthesize crossButtons        = _crossButtons;
 @synthesize delegate            = _delegate;
 
 //----------------------------------------------------------------------------------------------------
@@ -305,6 +310,34 @@ static NSString* const kImgSpinnerBackground = @"delete-loading.png";
     }
 }
 
+//----------------------------------------------------------------------------------------------------
+- (void)createCrossButtons {
+        
+    self.crossButtons = [NSMutableArray arrayWithCapacity:kColumnsInPurchaseSearch];
+    
+    for(NSInteger i=0 ; i<kColumnsInPurchaseSearch; i++) {
+        UIButton *imageButton = [self.imageButtons objectAtIndex:i];
+        
+        UIButton *crossButton = [[UIButton alloc] initWithFrame:CGRectMake(imageButton.frame.origin.x+imageButton.frame.size.width-30, imageButton.frame.origin.y, 25, 25)];
+        
+        crossButton.hidden = YES;
+
+        [crossButton setImage:[UIImage imageNamed:kImgCrossButtonOff]
+                     forState:UIControlStateNormal];
+        
+        [crossButton setImage:[UIImage imageNamed:kImgCrossButtonOn]
+                     forState:UIControlStateHighlighted];
+        
+        [crossButton addTarget:self
+                        action:@selector(didTapCrossButton:)
+              forControlEvents:UIControlEventTouchUpInside];
+        
+        [self.crossButtons addObject:crossButton];
+        
+        [self.contentView addSubview:crossButton];
+    }
+}
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
@@ -445,6 +478,15 @@ static NSString* const kImgSpinnerBackground = @"delete-loading.png";
     spinnerBackground.hidden = NO;
 }
 
+//----------------------------------------------------------------------------------------------------
+- (void)displayCrossButtonForIndex:(NSInteger)index {
+    if(!self.crossButtons)
+        [self createCrossButtons];
+    
+    UIButton *crossButton = [self.crossButtons objectAtIndex:index];
+    crossButton.hidden = NO;
+}
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
@@ -460,6 +502,11 @@ static NSString* const kImgSpinnerBackground = @"delete-loading.png";
 - (void)didTapTitleButton:(UIButton*)button {
     [self.delegate purchaseClicked:button.tag];
     //[self.delegate purchaseURLClicked:button.tag];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)didTapCrossButton:(UIButton*)button {
+    NSLog(@"cross buton clicked");
 }
 
 @end

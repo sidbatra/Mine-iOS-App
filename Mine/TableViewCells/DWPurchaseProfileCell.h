@@ -52,6 +52,8 @@
 
 - (void)enterSpinningStateForIndex:(NSInteger)index;
 
+- (void)displayCrossButtonForIndex:(NSInteger)index;
+
 
 /**
  * Compute the height for the cell.
