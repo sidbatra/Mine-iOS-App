@@ -14,13 +14,16 @@
 
 @interface DWUnapprovedPurchasesViewDataSource : DWTableViewDataSource<DWPurchasesControllerDelegate> {
     DWPurchasesController *_purchasesController;
+    BOOL _arePurchasesFinished;
 }
 
 @property (nonatomic,strong) DWPurchasesController *purchasesController;
+@property (nonatomic,assign) BOOL arePurchasesFinished;
 @property (nonatomic,weak) id<DWTableViewDataSourceDelegate,DWUnapprovedPurchasesViewDataSourceDelegate,NSObject> delegate;
 
 
 - (void)loadPurchases;
+- (void)removePurchase:(NSInteger)purchaseID;
 
 @end
 

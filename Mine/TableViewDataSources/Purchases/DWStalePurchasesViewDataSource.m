@@ -70,6 +70,7 @@
         [self loadPurchases];
     }
     else {
+        self.arePurchasesFinished = YES;
         [self.delegate unapprovedPurchasesFinished];
     }
 }

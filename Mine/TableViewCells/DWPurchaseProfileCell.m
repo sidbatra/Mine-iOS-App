@@ -367,6 +367,9 @@ static NSString* const kImgCrossButtonOff = @"feed-btn-x-off.png";
     
     for(UIImageView *spinnerBackground in self.spinnerBackgrounds)
         spinnerBackground.hidden = YES;
+    
+    for(UIButton *crossButton in self.crossButtons)
+        crossButton.hidden = YES;
 }
 
 //----------------------------------------------------------------------------------------------------

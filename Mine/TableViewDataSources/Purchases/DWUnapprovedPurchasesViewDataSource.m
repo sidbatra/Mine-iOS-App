@@ -23,6 +23,7 @@
 @implementation DWUnapprovedPurchasesViewDataSource
 
 @synthesize purchasesController = _purchasesController;
+@synthesize arePurchasesFinished = _arePurchasesFinished;
 
 @synthesize delegate;
 
@@ -49,6 +50,7 @@
     if([lastObject isKindOfClass:[DWPagination class]]) {
         ((DWPagination*)lastObject).isDisabled = YES;
     }
+    
     
     [self loadPurchases];
 }
@@ -77,15 +79,27 @@
     }
 }
 
-
 //----------------------------------------------------------------------------------------------------
-//----------------------------------------------------------------------------------------------------
-#pragma mark -
-#pragma mark DWPurchasesControllerDelegate
-
-//----------------------------------------------------------------------------------------------------
-- (void)unapprovedPurchasesLoaded:(NSMutableArray *)purchases {
+- (void)removePurchase:(NSInteger)purchaseID {
     
+    NSMutableArray *purchases = [NSMutableArray array];
+    
+    for(id object in self.objects) {
+        if([object isKindOfClass:[DWModelSet class]]) {
+            for(DWPurchase* purchase in [(DWModelSet*)object models]) {
+                
+                if ([purchase databaseID] != purchaseID)
+                    [purchases addObject:purchase];
+            }
+        }
+    }
+    
+    self.objects = nil;
+    [self populatePurchases:purchases];
+}
+
+//---------------------------------------------------------------------------------------------------
+- (void)populatePurchases:(NSMutableArray*)purchases {
     id lastObject               = [self.objects lastObject];
     BOOL paginate               = NO;
     NSInteger startingIndex     = 0;
@@ -116,14 +130,25 @@
                 withStartingIndex:startingIndex];
     
     
-    if([purchases count]) {        
+    if([purchases count] && !self.arePurchasesFinished) {
         DWPagination *pagination    = [[DWPagination alloc] init];
         pagination.owner            = self;
-        [self.objects addObject:pagination];        
+        [self.objects addObject:pagination];
     }
     
     
     [self.delegate reloadTableView];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWPurchasesControllerDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)unapprovedPurchasesLoaded:(NSMutableArray *)purchases {
+    [self populatePurchases:purchases];
 }
 
 //----------------------------------------------------------------------------------------------------

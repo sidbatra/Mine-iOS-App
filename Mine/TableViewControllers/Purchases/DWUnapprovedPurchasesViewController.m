@@ -75,7 +75,7 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)purchaseCrossClicked:(NSInteger)purchaseID {
-    NSLog(@"purchase cross clicked - %d",purchaseID);
+    [(DWUnapprovedPurchasesViewDataSource*)self.tableViewDataSource removePurchase:purchaseID];
 }
 
 @end
