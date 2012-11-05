@@ -179,11 +179,10 @@ static NSString* const kImgCrossButtonOff = @"feed-btn-x-off.png";
         imageButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
         imageButton.backgroundColor = kColorImageBackground;
         
-        if(!self.userMode) {
-             [imageButton addTarget:self
-             action:@selector(didTapImageButton:)
-             forControlEvents:UIControlEventTouchUpInside];
-        }
+        [imageButton addTarget:self
+                        action:@selector(didTapImageButton:)
+              forControlEvents:UIControlEventTouchUpInside];
+
         
         [self.imageButtons addObject:imageButton];
         
@@ -264,11 +263,10 @@ static NSString* const kImgCrossButtonOff = @"feed-btn-x-off.png";
         [titleButton setTitleColor:[UIColor colorWithRed:0.333 green:0.333 blue:0.333 alpha:1.0]  
                           forState:UIControlStateNormal];
         
-        if(!self.userMode) {
-            [titleButton addTarget:self
-                            action:@selector(didTapTitleButton:)
-                  forControlEvents:UIControlEventTouchUpInside];
-        }
+        [titleButton addTarget:self
+                        action:@selector(didTapTitleButton:)
+              forControlEvents:UIControlEventTouchUpInside];
+        
         
         [self.titleButtons addObject:titleButton];
         
@@ -479,11 +477,14 @@ static NSString* const kImgCrossButtonOff = @"feed-btn-x-off.png";
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)displayCrossButtonForIndex:(NSInteger)index {
+- (void)displayCrossButtonForIndex:(NSInteger)index
+                    withPurchaseID:(NSInteger)purchaseID {
+    
     if(!self.crossButtons)
         [self createCrossButtons];
     
     UIButton *crossButton = [self.crossButtons objectAtIndex:index];
+    crossButton.tag = purchaseID;
     crossButton.hidden = NO;
 }
 
@@ -495,18 +496,34 @@ static NSString* const kImgCrossButtonOff = @"feed-btn-x-off.png";
 
 //----------------------------------------------------------------------------------------------------
 - (void)didTapImageButton:(UIButton*)button {
+    SEL sel = @selector(purchaseClicked:);
+    
+    if(![self.delegate respondsToSelector:sel])
+        return;
+    
     [self.delegate purchaseClicked:button.tag];
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)didTapTitleButton:(UIButton*)button {
+    SEL sel = @selector(purchaseClicked:);
+    
+    if(![self.delegate respondsToSelector:sel])
+        return;
+    
     [self.delegate purchaseClicked:button.tag];
     //[self.delegate purchaseURLClicked:button.tag];
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)didTapCrossButton:(UIButton*)button {
-    NSLog(@"cross buton clicked");
+    SEL sel = @selector(purchaseCrossClicked:);
+    
+    if(![self.delegate respondsToSelector:sel])
+        return;
+    
+    
+    [self.delegate purchaseCrossClicked:button.tag];
 }
 
 @end

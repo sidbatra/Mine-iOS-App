@@ -61,7 +61,8 @@
                     withUserID:purchase.user.databaseID];
         }
         else if(style == kPurchaseProfilePresenterStyleUnapproved) {
-            [cell displayCrossButtonForIndex:i];
+            [cell displayCrossButtonForIndex:i
+                              withPurchaseID:purchase.databaseID];
         }
         
         if(purchase.isDestroying)
