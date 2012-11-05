@@ -9,6 +9,7 @@
 #import "ABContactsHelper.h"
 #import "DWNavigationBarBackButton.h"
 #import "DWGUIManager.h"
+#import "DWAnalyticsManager.h"
 #import "DWConstants.h"
 
 
@@ -98,7 +99,9 @@
     
     if ([self.addedContactsViewController.tableView numberOfRowsInSection:0]) {
         [self freezeUI];
-        [self.addedContactsViewController triggerInvites];            
+        [self.addedContactsViewController triggerInvites];
+        
+        [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Invites Sent"];
     }
     else {
         [self displayInviteAlert];
@@ -135,6 +138,8 @@
     [self displayQueriedContacts];
     [self performSelectorInBackground:@selector(loadAllContacts) 
                            withObject:nil];
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Invite View"];
 }
 
 //----------------------------------------------------------------------------------------------------
