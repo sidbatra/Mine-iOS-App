@@ -71,7 +71,7 @@
     }
     else {
         self.arePurchasesFinished = YES;
-        [self.delegate unapprovedPurchasesFinished];
+        [self.delegate unapprovedPurchasesFinished:self.selectedIDs.count+self.rejectedIDs.count];
     }
 }
 

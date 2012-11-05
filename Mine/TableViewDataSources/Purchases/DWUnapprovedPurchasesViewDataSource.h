@@ -19,6 +19,10 @@
 
 @property (nonatomic,strong) DWPurchasesController *purchasesController;
 @property (nonatomic,assign) BOOL arePurchasesFinished;
+
+@property (nonatomic,strong) NSMutableArray *rejectedIDs;
+@property (nonatomic,readonly) NSMutableArray *selectedIDs;
+
 @property (nonatomic,weak) id<DWTableViewDataSourceDelegate,DWUnapprovedPurchasesViewDataSourceDelegate,NSObject> delegate;
 
 
@@ -33,6 +37,9 @@
 
 @required
 
-- (void)unapprovedPurchasesFinished;
+- (void)unapprovedPurchasesFinished:(NSInteger)count;
+
+- (void)unapprovedPurchasesApprovedWithCount:(NSInteger)count;
+- (void)unapprovedPurchasesApproveError;
 
 @end

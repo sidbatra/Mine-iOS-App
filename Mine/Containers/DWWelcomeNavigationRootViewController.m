@@ -248,12 +248,14 @@ static NSString* const kInfoURL = @"/?web_view_mode=true";
 
 //----------------------------------------------------------------------------------------------------
 - (void)showScreenAfterGlobalFeed {
-    
+    [self showEmailConnectView];
+    /*
     DWSuggestionsViewController *suggestionsViewController = [[DWSuggestionsViewController alloc] init];
     suggestionsViewController.delegate = self;
 
     [self.navigationController pushViewController:suggestionsViewController
                                          animated:YES];    
+     */
 }
 
 
@@ -321,6 +323,30 @@ static NSString* const kInfoURL = @"/?web_view_mode=true";
                                           cancelButtonTitle:@"OK"
                                           otherButtonTitles:nil];
     [alert show];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWUnapprovedPurchasesViewControllerDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)unapprovedPurchasesSuccessfullyApproved {
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:kNRequestTabBarIndexChange
+                                                        object:nil
+                                                      userInfo:[NSDictionary dictionaryWithObjectsAndKeys:
+                                                                [NSNumber numberWithInteger:kProfileTabIndex],kKeyTabIndex,
+                                                                [NSNumber numberWithInteger:DWTabBarResetTypeNone],kKeyResetType,
+                                                                nil]];
+    
+    [self endWelcomeNavigation];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)unapprovedPurchasesNoPurchasesApproved {
+    [self endWelcomeNavigation];
 }
 
 

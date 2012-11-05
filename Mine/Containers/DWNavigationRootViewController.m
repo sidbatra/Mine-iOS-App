@@ -172,6 +172,8 @@
 - (void)displayUnapprovedPurchases:(BOOL)isLive {
     DWUnapprovedPurchasesViewController *unapprovedPurchasesViewController = [[DWUnapprovedPurchasesViewController alloc] initWithModeIsLive:isLive];
     
+    unapprovedPurchasesViewController.delegate = self;
+    
     [self.navigationController pushViewController:unapprovedPurchasesViewController
                                          animated:YES];
 }
@@ -339,6 +341,20 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)yahooAuthRejected {
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWUnapprovedPurchasesViewControllerDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)unapprovedPurchasesSuccessfullyApproved {
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)unapprovedPurchasesNoPurchasesApproved {
 }
 
 

@@ -7,10 +7,25 @@
 //
 
 #import "DWTableViewController.h"
-#import "DWPurchasesViewController.h"
 
-@interface DWUnapprovedPurchasesViewController : DWPurchasesViewController
+@protocol DWUnapprovedPurchasesViewControllerDelegate;
+
+@interface DWUnapprovedPurchasesViewController : DWTableViewController {
+    __weak id<DWUnapprovedPurchasesViewControllerDelegate> _delegate;
+}
+
+@property (nonatomic,weak) id<DWUnapprovedPurchasesViewControllerDelegate> delegate;
 
 - (id)initWithModeIsLive:(BOOL)isLive;
+
+@end
+
+
+@protocol DWUnapprovedPurchasesViewControllerDelegate
+
+@required
+
+- (void)unapprovedPurchasesSuccessfullyApproved;
+- (void)unapprovedPurchasesNoPurchasesApproved;
 
 @end

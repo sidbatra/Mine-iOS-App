@@ -16,9 +16,6 @@
     NSMutableArray *_rejectedIDs;
 }
 
-@property (nonatomic,strong) NSMutableArray *rejectedIDs;
-@property (nonatomic,readonly) NSMutableArray *selectedIDs;
-
 @end
 
 
@@ -182,12 +179,12 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)multiplePurchasesUpdated {
-    NSLog(@"cycle finished - %d",self.selectedIDs.count);
+    [self.delegate unapprovedPurchasesApprovedWithCount:self.selectedIDs.count];
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)multiplePurchasesUpdateError:(NSString *)error {
-    NSLog(@"ERROR - %@",error);
+    [self.delegate unapprovedPurchasesApproveError];
 }
 
 //----------------------------------------------------------------------------------------------------
