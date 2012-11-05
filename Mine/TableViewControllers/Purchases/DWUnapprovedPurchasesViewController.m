@@ -13,6 +13,8 @@
 #import "DWPagination.h"
 #import "DWPurchaseProfilePresenter.h"
 #import "DWPaginationPresenter.h"
+#import "DWNavigationBarBackButton.h"
+#import "DWGUIManager.h"
 #import "DWConstants.h"
 
 
@@ -53,7 +55,23 @@
         
     [self disablePullToRefresh];
     
+    self.navigationItem.leftBarButtonItem = [DWNavigationBarBackButton backButtonForNavigationController:self.navigationController];
+    self.navigationItem.rightBarButtonItem = [DWGUIManager navBarSaveButtonWithTarget:self];
+    
     [(DWUnapprovedPurchasesViewDataSource*)self.tableViewDataSource loadPurchases];
+    
+    
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark UI Events
+
+//----------------------------------------------------------------------------------------------------
+- (void)saveButtonClicked {
+    [(DWUnapprovedPurchasesViewDataSource*)self.tableViewDataSource approveSelectedPurchases];
 }
 
 

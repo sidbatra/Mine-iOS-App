@@ -12,7 +12,13 @@
 #import "DWPagination.h"
 #import "DWConstants.h"
 
-@interface DWUnapprovedPurchasesViewDataSource()
+@interface DWUnapprovedPurchasesViewDataSource() {
+    NSMutableArray *_rejectedIDs;
+}
+
+@property (nonatomic,strong) NSMutableArray *rejectedIDs;
+@property (nonatomic,readonly) NSMutableArray *selectedIDs;
+
 @end
 
 
@@ -24,6 +30,7 @@
 
 @synthesize purchasesController = _purchasesController;
 @synthesize arePurchasesFinished = _arePurchasesFinished;
+@synthesize rejectedIDs = _rejectedIDs;
 
 @synthesize delegate;
 
@@ -34,6 +41,8 @@
     if(self) {
         self.purchasesController = [[DWPurchasesController alloc] init];
         self.purchasesController.delegate = self;
+        
+        self.rejectedIDs = [NSMutableArray array];
     }
     
     return self;
@@ -81,6 +90,9 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)removePurchase:(NSInteger)purchaseID {
+    
+    [self.rejectedIDs addObject:[NSNumber numberWithInteger:purchaseID]];
+    
     
     NSMutableArray *purchases = [NSMutableArray array];
     
@@ -140,11 +152,43 @@
     [self.delegate reloadTableView];
 }
 
+//----------------------------------------------------------------------------------------------------
+- (NSMutableArray*)selectedIDs {
+    
+    NSMutableArray *ids = [NSMutableArray array];
+    
+    for(id object in self.objects) {
+        if([object isKindOfClass:[DWModelSet class]]) {
+            for(DWPurchase* purchase in [(DWModelSet*)object models]) {
+                [ids addObject:[NSNumber numberWithInteger:purchase.databaseID]];
+            }
+        }
+    }
+    
+    return ids;
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)approveSelectedPurchases {
+    [self.purchasesController approveMultiplePurchases:self.selectedIDs
+                                           rejectedIDs:self.rejectedIDs];
+}
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
 #pragma mark DWPurchasesControllerDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)multiplePurchasesUpdated {
+    NSLog(@"cycle finished - %d",self.selectedIDs.count);
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)multiplePurchasesUpdateError:(NSString *)error {
+    NSLog(@"ERROR - %@",error);
+}
 
 //----------------------------------------------------------------------------------------------------
 - (void)unapprovedPurchasesLoaded:(NSMutableArray *)purchases {

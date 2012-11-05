@@ -24,6 +24,7 @@
 
 - (void)loadPurchases;
 - (void)removePurchase:(NSInteger)purchaseID;
+- (void)approveSelectedPurchases;
 
 @end
 
