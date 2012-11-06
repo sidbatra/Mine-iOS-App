@@ -15,11 +15,16 @@
 #import "DWPurchaseProfilePresenter.h"
 #import "DWPaginationPresenter.h"
 #import "DWNavigationBarBackButton.h"
+#import "DWNavigationBarTitleView.h"
 #import "DWGUIManager.h"
 #import "DWConstants.h"
 
 
-@interface DWUnapprovedPurchasesViewController ()
+@interface DWUnapprovedPurchasesViewController () {
+    DWNavigationBarTitleView *_navTitleView;
+}
+
+@property (nonatomic,strong) DWNavigationBarTitleView *navTitleView;
 
 @end
 
@@ -30,6 +35,7 @@
 //----------------------------------------------------------------------------------------------------
 @implementation DWUnapprovedPurchasesViewController
 
+@synthesize navTitleView = _navTitleView;
 @synthesize delegate = _delegate;
 
 //----------------------------------------------------------------------------------------------------
@@ -72,6 +78,12 @@
     self.navigationItem.leftBarButtonItem = [DWNavigationBarBackButton backButtonForNavigationController:self.navigationController];
     self.navigationItem.rightBarButtonItem = [DWGUIManager navBarSaveButtonWithTarget:self];
     
+    if(!self.navTitleView) {
+        self.navTitleView = [[DWNavigationBarTitleView alloc] initWithFrame:CGRectMake(79,0,125,44)
+                                                                      title:@"Loading..."
+                                                                 andSpinner:YES];
+    }
+    
     [(DWUnapprovedPurchasesViewDataSource*)self.tableViewDataSource loadPurchases];
     
     
@@ -96,10 +108,7 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)unapprovedPurchasesFinished:(NSInteger)count {
-    if(count) {
-        NSLog(@"finished in here");
-    }
-    else {
+    if(!count) {
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Sorry"
                                                             message:@"Mine couldn't find any of your e-receipts at this time."
                                                            delegate:self
@@ -108,6 +117,8 @@
         alertView.tag = 0;
         [alertView show];
     }
+    
+    self.navTitleView.hidden = YES;
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -189,6 +200,11 @@
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
 #pragma mark Nav Stack Selectors
+
+//----------------------------------------------------------------------------------------------------
+- (void)willShowOnNav {
+    [self.navigationController.navigationBar addSubview:self.navTitleView];
+}
 
 //----------------------------------------------------------------------------------------------------
 - (void)requiresFullScreenMode {
