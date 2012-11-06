@@ -7,10 +7,11 @@
 //
 
 #import "DWTableViewController.h"
+#import "DWImportButton.h"
 
 @protocol DWUnapprovedPurchasesViewControllerDelegate;
 
-@interface DWUnapprovedPurchasesViewController : DWTableViewController {
+@interface DWUnapprovedPurchasesViewController : DWTableViewController<DWImportButtonDelegate> {
     __weak id<DWUnapprovedPurchasesViewControllerDelegate> _delegate;
 }
 

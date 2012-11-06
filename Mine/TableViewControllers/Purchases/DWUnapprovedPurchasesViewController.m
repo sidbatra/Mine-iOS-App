@@ -22,9 +22,11 @@
 
 @interface DWUnapprovedPurchasesViewController () {
     DWNavigationBarTitleView *_navTitleView;
+    DWImportButton *_importButton;
 }
 
 @property (nonatomic,strong) DWNavigationBarTitleView *navTitleView;
+@property (nonatomic,strong) DWImportButton *importButton;
 
 @end
 
@@ -36,6 +38,7 @@
 @implementation DWUnapprovedPurchasesViewController
 
 @synthesize navTitleView = _navTitleView;
+@synthesize importButton = _importButton;
 @synthesize delegate = _delegate;
 
 //----------------------------------------------------------------------------------------------------
@@ -76,7 +79,6 @@
     [self disablePullToRefresh];
     
     self.navigationItem.leftBarButtonItem = [DWNavigationBarBackButton backButtonForNavigationController:self.navigationController];
-    self.navigationItem.rightBarButtonItem = [DWGUIManager navBarSaveButtonWithTarget:self];
     
     if(!self.navTitleView) {
         self.navTitleView = [[DWNavigationBarTitleView alloc] initWithFrame:CGRectMake(79,0,125,44)
@@ -84,19 +86,22 @@
                                                                  andSpinner:YES];
     }
     
+    if(!self.importButton) {
+        self.importButton = [[DWImportButton alloc] initWithFrame:CGRectMake(221, 7, 92, 30)];
+        self.importButton.delegate = self;
+    }
+    
     [(DWUnapprovedPurchasesViewDataSource*)self.tableViewDataSource loadPurchases];
-    
-    
 }
 
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
-#pragma mark UI Events
+#pragma mark DWImportButtonDelegate
 
 //----------------------------------------------------------------------------------------------------
-- (void)saveButtonClicked {
+- (void)importButtonClicked {
     [(DWUnapprovedPurchasesViewDataSource*)self.tableViewDataSource approveSelectedPurchases];
 }
 
@@ -108,7 +113,10 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)unapprovedPurchasesFinished:(NSInteger)count {
-    if(!count) {
+    if(count) {
+        [self.importButton enterActiveState];
+    }
+    else {
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Sorry"
                                                             message:@"Mine couldn't find any of your e-receipts at this time."
                                                            delegate:self
@@ -118,11 +126,15 @@
         [alertView show];
     }
     
+    
     self.navTitleView.hidden = YES;
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)unapprovedPurchasesApprovedWithCount:(NSInteger)count {
+    
+    [self.importButton enterInactiveState];
+    
     if(count) {
         
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Import Successful"
@@ -147,6 +159,7 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)unapprovedPurchasesApproveError {
+    [self.importButton enterActiveState];
     [DWGUIManager connectionErrorAlertView];
 }
 
@@ -204,6 +217,7 @@
 //----------------------------------------------------------------------------------------------------
 - (void)willShowOnNav {
     [self.navigationController.navigationBar addSubview:self.navTitleView];
+    [self.navigationController.navigationBar addSubview:self.importButton];
 }
 
 //----------------------------------------------------------------------------------------------------
