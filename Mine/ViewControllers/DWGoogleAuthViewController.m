@@ -8,6 +8,7 @@
 
 #import "DWGoogleAuthViewController.h"
 #import "DWRequestManager.h"
+#import "DWNavigationBarBackButton.h"
 #import "DWAnalyticsManager.h"
 #import "DWConstants.h"
 
@@ -45,6 +46,8 @@ static NSString* const kGoogleRejectedURI   = @"/rejected";
 //----------------------------------------------------------------------------------------------------
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.navigationItem.leftBarButtonItem = [DWNavigationBarBackButton backButtonForNavigationController:self.navigationController];    
     
     NSURL *url = [NSURL URLWithString:[[DWRequestManager sharedDWRequestManager] createAppRequestURL:kGoogleAuthURI
                                                                                         authenticate:YES]];
