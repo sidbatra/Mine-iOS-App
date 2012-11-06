@@ -16,6 +16,7 @@
 #import "DWPaginationPresenter.h"
 #import "DWNavigationBarBackButton.h"
 #import "DWNavigationBarTitleView.h"
+#import "DWUnapprovedPurchasesLoadingView.h"
 #import "DWGUIManager.h"
 #import "DWConstants.h"
 
@@ -92,6 +93,12 @@
     }
     
     [(DWUnapprovedPurchasesViewDataSource*)self.tableViewDataSource loadPurchases];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (UIView*)tableLoadingView {
+    CGRect frame = self.view.frame;
+    return [[DWUnapprovedPurchasesLoadingView alloc] initWithFrame:CGRectMake(0,0,frame.size.width,frame.size.height)];
 }
 
 
