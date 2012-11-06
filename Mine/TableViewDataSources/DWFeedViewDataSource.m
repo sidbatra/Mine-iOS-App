@@ -10,6 +10,7 @@
 
 #import "DWPurchase.h"
 #import "DWFollowing.h"
+#import "DWUnion.h"
 #import "DWFollowingManager.h"
 #import "DWPagination.h"
 
@@ -241,6 +242,16 @@
 //----------------------------------------------------------------------------------------------------
 - (void)userSuggestionsLoaded:(NSMutableArray *)users forUserID:(NSNumber *)userID {
     self.users = users;
+    
+    if(true) {
+        DWUnion *uni = [[DWUnion alloc] init];
+        
+        uni.title       = @"Import recent purchases";
+        uni.subtitle    = @"Connect to preview your items";
+        
+        [self.users insertObject:uni atIndex:0];
+    }
+    
     [self displayFeedAndUserSuggestions];
 }
 

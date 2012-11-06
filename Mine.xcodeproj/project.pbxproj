@@ -34,6 +34,12 @@
 		262376B515BF6C0A00B3A037 /* FBFrictionlessRequestSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 262376AD15BF6C0A00B3A037 /* FBFrictionlessRequestSettings.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		262376B615BF6C0A00B3A037 /* FBLoginDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 262376AF15BF6C0A00B3A037 /* FBLoginDialog.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		262376B715BF6C0A00B3A037 /* FBRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 262376B115BF6C0A00B3A037 /* FBRequest.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		262625E41649A130004CFB1E /* DWEmailConnectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 262625E31649A12F004CFB1E /* DWEmailConnectCell.m */; };
+		262625EA1649AC57004CFB1E /* feed-btn-yahoo-on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 262625E61649AC57004CFB1E /* feed-btn-yahoo-on@2x.png */; };
+		262625EB1649AC57004CFB1E /* feed-btn-gmail-off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 262625E71649AC57004CFB1E /* feed-btn-gmail-off@2x.png */; };
+		262625EC1649AC57004CFB1E /* feed-btn-gmail-on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 262625E81649AC57004CFB1E /* feed-btn-gmail-on@2x.png */; };
+		262625ED1649AC57004CFB1E /* feed-btn-yahoo-off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 262625E91649AC57004CFB1E /* feed-btn-yahoo-off@2x.png */; };
+		262625F01649B751004CFB1E /* DWEmailConnectPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 262625EF1649B751004CFB1E /* DWEmailConnectPresenter.m */; };
 		2642B7DE1617DF1600065303 /* nav-btn-send-off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2642B7DC1617DF1600065303 /* nav-btn-send-off@2x.png */; };
 		2642B7DF1617DF1600065303 /* nav-btn-send-on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2642B7DD1617DF1600065303 /* nav-btn-send-on@2x.png */; };
 		2676AA0215FE714B00B0B579 /* DWGUIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 2676AA0115FE714B00B0B579 /* DWGUIManager.m */; };
@@ -554,6 +560,14 @@
 		262376B015BF6C0A00B3A037 /* FBRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FBRequest.h; path = Facebook/FBRequest.h; sourceTree = "<group>"; };
 		262376B115BF6C0A00B3A037 /* FBRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FBRequest.m; path = Facebook/FBRequest.m; sourceTree = "<group>"; };
 		262376B815BF6CBA00B3A037 /* Facebook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Facebook.h; path = Facebook/Facebook.h; sourceTree = "<group>"; };
+		262625E21649A12F004CFB1E /* DWEmailConnectCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWEmailConnectCell.h; sourceTree = "<group>"; };
+		262625E31649A12F004CFB1E /* DWEmailConnectCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWEmailConnectCell.m; sourceTree = "<group>"; };
+		262625E61649AC57004CFB1E /* feed-btn-yahoo-on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "feed-btn-yahoo-on@2x.png"; sourceTree = "<group>"; };
+		262625E71649AC57004CFB1E /* feed-btn-gmail-off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "feed-btn-gmail-off@2x.png"; sourceTree = "<group>"; };
+		262625E81649AC57004CFB1E /* feed-btn-gmail-on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "feed-btn-gmail-on@2x.png"; sourceTree = "<group>"; };
+		262625E91649AC57004CFB1E /* feed-btn-yahoo-off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "feed-btn-yahoo-off@2x.png"; sourceTree = "<group>"; };
+		262625EE1649B751004CFB1E /* DWEmailConnectPresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWEmailConnectPresenter.h; sourceTree = "<group>"; };
+		262625EF1649B751004CFB1E /* DWEmailConnectPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWEmailConnectPresenter.m; sourceTree = "<group>"; };
 		2642B7DC1617DF1600065303 /* nav-btn-send-off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-btn-send-off@2x.png"; sourceTree = "<group>"; };
 		2642B7DD1617DF1600065303 /* nav-btn-send-on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-btn-send-on@2x.png"; sourceTree = "<group>"; };
 		2676AA0015FE714B00B0B579 /* DWGUIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWGUIManager.h; sourceTree = "<group>"; };
@@ -1618,6 +1632,10 @@
 		BB350EB71617D1FA00531A80 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				262625E61649AC57004CFB1E /* feed-btn-yahoo-on@2x.png */,
+				262625E71649AC57004CFB1E /* feed-btn-gmail-off@2x.png */,
+				262625E81649AC57004CFB1E /* feed-btn-gmail-on@2x.png */,
+				262625E91649AC57004CFB1E /* feed-btn-yahoo-off@2x.png */,
 				26AA997316488D83001F91F2 /* connect-txt-pick@2x.png */,
 				26AA996A16488529001F91F2 /* connect-btn-gmail-off@2x.png */,
 				26AA996B16488529001F91F2 /* connect-btn-gmail-on@2x.png */,
@@ -2278,6 +2296,8 @@
 				BB9F315215F64750009C1385 /* DWUserProfilePresenter.m */,
 				267B3FBB15D4322A0001AC64 /* DWStorePresenter.h */,
 				267B3FBC15D4322A0001AC64 /* DWStorePresenter.m */,
+				262625EE1649B751004CFB1E /* DWEmailConnectPresenter.h */,
+				262625EF1649B751004CFB1E /* DWEmailConnectPresenter.m */,
 			);
 			path = ModelPresenters;
 			sourceTree = "<group>";
@@ -2307,6 +2327,8 @@
 				BB9F314E15F645C5009C1385 /* DWUserProfileCell.m */,
 				2618C0FC15FEAE9500CA41B9 /* DWStoreCell.h */,
 				2618C0FD15FEAE9500CA41B9 /* DWStoreCell.m */,
+				262625E21649A12F004CFB1E /* DWEmailConnectCell.h */,
+				262625E31649A12F004CFB1E /* DWEmailConnectCell.m */,
 			);
 			path = TableViewCells;
 			sourceTree = "<group>";
@@ -2686,6 +2708,10 @@
 				26AA997016488529001F91F2 /* connect-btn-yahoo-off@2x.png in Resources */,
 				26AA997116488529001F91F2 /* connect-btn-yahoo-on@2x.png in Resources */,
 				26AA997416488D83001F91F2 /* connect-txt-pick@2x.png in Resources */,
+				262625EA1649AC57004CFB1E /* feed-btn-yahoo-on@2x.png in Resources */,
+				262625EB1649AC57004CFB1E /* feed-btn-gmail-off@2x.png in Resources */,
+				262625EC1649AC57004CFB1E /* feed-btn-gmail-on@2x.png in Resources */,
+				262625ED1649AC57004CFB1E /* feed-btn-yahoo-off@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2884,6 +2910,8 @@
 				BB4AC33B16446D2F00B0512A /* DWUnapprovedPurchasesViewDataSource.m in Sources */,
 				BB4AC33E1644756000B0512A /* DWLivePurchasesViewDataSource.m in Sources */,
 				BB4AC3551648C31800B0512A /* DWImportButton.m in Sources */,
+				262625E41649A130004CFB1E /* DWEmailConnectCell.m in Sources */,
+				262625F01649B751004CFB1E /* DWEmailConnectPresenter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

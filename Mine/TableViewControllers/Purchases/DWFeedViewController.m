@@ -11,7 +11,9 @@
 #import "DWFeedViewDataSource.h"
 #import "DWPaginationPresenter.h"
 #import "DWUserPresenter.h"
+#import "DWEmailConnectPresenter.h"
 
+#import "DWUnion.h"
 #import "DWPagination.h"
 #import "DWConstants.h"
 
@@ -47,6 +49,10 @@
         [self addModelPresenterForClass:[DWUser class]
                               withStyle:kUserPresenterStyleSuggested
                           withPresenter:[DWUserPresenter class]];
+        
+        [self addModelPresenterForClass:[DWUnion class]
+                              withStyle:kDefaultModelPresenter
+                          withPresenter:[DWEmailConnectPresenter class]];
         
         [self addModelPresenterForClass:[DWPagination class]
                               withStyle:kDefaultModelPresenter 
@@ -100,6 +106,22 @@
 //----------------------------------------------------------------------------------------------------
 - (void)userCellFollowClickedForUserID:(NSInteger)userID {
     [(DWFeedViewDataSource*)self.tableViewDataSource toggleFollowForUserID:userID];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWEmailConnectCellDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)googleConnectClicked {
+    [self.delegate googleConnectInitiated];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)yahooConnectClicked {
+    [self.delegate yahooConnectInitiated];
 }
 
 
