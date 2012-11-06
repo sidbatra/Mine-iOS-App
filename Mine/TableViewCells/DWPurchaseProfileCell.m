@@ -316,7 +316,7 @@ static NSString* const kImgCrossButtonOff = @"feed-btn-x-off.png";
     for(NSInteger i=0 ; i<kColumnsInPurchaseSearch; i++) {
         UIButton *imageButton = [self.imageButtons objectAtIndex:i];
         
-        UIButton *crossButton = [[UIButton alloc] initWithFrame:CGRectMake(imageButton.frame.origin.x+imageButton.frame.size.width-30, imageButton.frame.origin.y, 25, 25)];
+        UIButton *crossButton = [[UIButton alloc] initWithFrame:CGRectMake(imageButton.frame.origin.x+114, imageButton.frame.origin.y+5, 25, 25)];
         
         crossButton.hidden = YES;
 
