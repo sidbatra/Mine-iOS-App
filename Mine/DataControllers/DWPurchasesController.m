@@ -18,7 +18,7 @@ static NSString* const kGetPurchaseURI                  = @"/p/%@.json?";
 static NSString* const kGetUserPurchasesURI             = @"/purchases.json?per_page=%d&user_id=%d";
 static NSString* const kGetUnapprovedStalePurchasesURI  = @"/purchases.json?aspect=unapproved&per_page=%d";
 static NSString* const kGetUnapprovedLivePurchasesURI   = @"/purchases.json?aspect=unapproved&per_page=%d&offset=%d&by_created_at=true";
-static NSString* const kGetUnapprovedPurchaseMineURI    = @"/purchases.json?aspect=unapproved_ui";
+static NSString* const kGetUnapprovedPurchaseMineURI    = @"/purchases.json?aspect=unapproved_ui&mode=live";
 static NSString* const kCreateURI                       = @"/purchases.json?";
 static NSString* const kPutApproveMultiplePurchasesURI  = @"/purchases/update_multiple.json?aspect=approval&selected_ids=%@&rejected_ids=%@";
 static NSString* const kDeleteURI                       = @"/purchases/%d.json?";

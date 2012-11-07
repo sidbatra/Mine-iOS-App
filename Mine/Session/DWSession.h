@@ -55,6 +55,11 @@
 - (BOOL)isCurrentUser:(NSInteger)userID;
 
 /**
+ * Updates the session once the email has been authorized
+ */
+- (void)emailAuthorized;
+
+/**
  * Reset the current users unread notification count to user and
  * fire notifications to update UI.
  */

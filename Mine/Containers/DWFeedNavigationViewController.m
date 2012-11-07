@@ -405,6 +405,24 @@ static NSString* const kImgSearchOn     = @"nav-btn-search-on.png";
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
+#pragma mark DWUnapprovedPurchasesViewControllerDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)unapprovedPurchasesSuccessfullyApproved {
+    [self.feedViewController forceRefresh];
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)unapprovedPurchasesNoPurchasesApproved {
+    [self.feedViewController forceRefresh];    
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
 #pragma mark UITapGestureRecognizer
 
 //----------------------------------------------------------------------------------------------------

@@ -284,56 +284,6 @@ static NSString* const kInfoURL = @"/?web_view_mode=true";
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
-#pragma mark DWGoogleAuthViewControllerDelegate
-
-//----------------------------------------------------------------------------------------------------
-- (void)googleAuthAccepted {
-    [self.navigationController popViewControllerAnimated:NO];
-    
-    [self displayUnapprovedPurchases:YES];
-}
-
-//----------------------------------------------------------------------------------------------------
-- (void)googleAuthRejected {
-    [self.navigationController popViewControllerAnimated:NO];
-    
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
-                                                    message:@"Google connect is required to import your purchases."
-                                                   delegate:nil
-                                          cancelButtonTitle:@"OK"
-                                          otherButtonTitles:nil];
-    [alert show];
-}
-
-
-//----------------------------------------------------------------------------------------------------
-//----------------------------------------------------------------------------------------------------
-#pragma mark -
-#pragma mark DWYahooAuthViewControllerDelegate
-
-//----------------------------------------------------------------------------------------------------
-- (void)yahooAuthAccepted {
-    [self.navigationController popViewControllerAnimated:NO];
-    
-    [self displayUnapprovedPurchases:YES];
-}
-
-//----------------------------------------------------------------------------------------------------
-- (void)yahooAuthRejected {
-    [self.navigationController popViewControllerAnimated:NO];
-    
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
-                                                    message:@"Yahoo connect is required to import your purchases."
-                                                   delegate:nil
-                                          cancelButtonTitle:@"OK"
-                                          otherButtonTitles:nil];
-    [alert show];
-}
-
-
-//----------------------------------------------------------------------------------------------------
-//----------------------------------------------------------------------------------------------------
-#pragma mark -
 #pragma mark DWUnapprovedPurchasesViewControllerDelegate
 
 //----------------------------------------------------------------------------------------------------

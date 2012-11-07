@@ -316,6 +316,7 @@
 }
 
 
+
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
@@ -323,10 +324,22 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)googleAuthAccepted {
+    [self.navigationController popViewControllerAnimated:NO];
+    
+    [self displayUnapprovedPurchases:YES];
+    [[DWSession sharedDWSession] emailAuthorized];    
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)googleAuthRejected {
+    [self.navigationController popViewControllerAnimated:NO];
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                    message:@"Google connect is required to import your purchases."
+                                                   delegate:nil
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
+    [alert show];
 }
 
 
@@ -337,10 +350,22 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)yahooAuthAccepted {
+    [self.navigationController popViewControllerAnimated:NO];
+    
+    [self displayUnapprovedPurchases:YES];
+    [[DWSession sharedDWSession] emailAuthorized];
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)yahooAuthRejected {
+    [self.navigationController popViewControllerAnimated:NO];
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                    message:@"Yahoo connect is required to import your purchases."
+                                                   delegate:nil
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
+    [alert show];
 }
 
 
@@ -354,7 +379,7 @@
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)unapprovedPurchasesNoPurchasesApproved {
+- (void)unapprovedPurchasesNoPurchasesApproved { 
 }
 
 
