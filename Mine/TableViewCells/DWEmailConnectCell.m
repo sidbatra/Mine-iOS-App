@@ -91,7 +91,7 @@ static NSString* const kImgYahooOn      = @"feed-btn-yahoo-on.png";
 
 //----------------------------------------------------------------------------------------------------
 - (void)createConnectButtons {
-    googleButton = [[UIButton alloc] initWithFrame:CGRectMake(196,12,56,25)];
+    googleButton = [[UIButton alloc] initWithFrame:CGRectMake(196,0,56,50)];
     
     [googleButton setBackgroundImage:[UIImage imageNamed:kImgGoogleOff]
                             forState:UIControlStateNormal];
@@ -107,7 +107,7 @@ static NSString* const kImgYahooOn      = @"feed-btn-yahoo-on.png";
     
     
     
-    yahooButton = [[UIButton alloc] initWithFrame:CGRectMake(252,12,55,25)];
+    yahooButton = [[UIButton alloc] initWithFrame:CGRectMake(252,0,55,50)];
     
     [yahooButton setBackgroundImage:[UIImage imageNamed:kImgYahooOff]
                             forState:UIControlStateNormal];
