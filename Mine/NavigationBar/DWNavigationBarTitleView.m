@@ -60,7 +60,7 @@ static NSString* const kNavBarMineLogo = @"nav-mine-logo.png";
     if (self) {
         
         self.spinnerView = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
-        self.spinnerView.frame	= CGRectMake(0,14,20,20);
+        self.spinnerView.frame	= CGRectMake(0,12,20,20);
         
         [self.spinnerView startAnimating];
         

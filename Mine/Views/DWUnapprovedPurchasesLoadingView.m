@@ -43,7 +43,7 @@ static NSInteger const kSpinnerSize = 20;
 - (void)createImageView {
 
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(40,
-                                                                           ([DWDevice sharedDWDevice].screenHeightMinusStatusBar - 135) / 2 - [DWDevice sharedDWDevice].navBarHeight - 6,
+                                                                           ([DWDevice sharedDWDevice].screenHeightMinusStatusBar - 135) / 2 - [DWDevice sharedDWDevice].navBarHeight - 21,
                                                                            240,
                                                                            135)];
     
@@ -56,6 +56,8 @@ static NSInteger const kSpinnerSize = 20;
     imageView.animationImages = frames;
     imageView.animationDuration = 0;
     
+    [imageView startAnimating];
+    
 	[self addSubview:imageView];
 }
 
@@ -63,12 +65,12 @@ static NSInteger const kSpinnerSize = 20;
 - (void)createText {
     
     UILabel *messageLabel			= [[UILabel alloc]
-                                       initWithFrame:CGRectMake(138.5,[DWDevice sharedDWDevice].screenHeightMinusStatusBar / 2 - [DWDevice sharedDWDevice].navBarHeight - 10 - 6,150,20)];
+                                       initWithFrame:CGRectMake(0,[DWDevice sharedDWDevice].screenHeightMinusStatusBar / 2 - [DWDevice sharedDWDevice].navBarHeight - 10 + 68,self.frame.size.width,20)];
 	messageLabel.backgroundColor	= [UIColor clearColor];
 	messageLabel.font				= [UIFont fontWithName:@"HelveticaNeue" size:17];
 	messageLabel.textColor			= [UIColor colorWithRed:0.454 green:0.454 blue:0.454 alpha:1.0];
 	messageLabel.textAlignment		= UITextAlignmentCenter;
-	messageLabel.text				= @"We'll only be a moment.";
+	messageLabel.text				= @"We'll only be a moment...";
     
 	[self addSubview:messageLabel];
 }
