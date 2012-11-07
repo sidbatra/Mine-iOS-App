@@ -165,7 +165,7 @@ static NSString* const kKeySetting                      = @"setting";
     [coder encodeObject:[NSNumber numberWithInt:self.purchasesCount]            forKey:kEncodeKeyPurchasesCount];
     [coder encodeObject:[NSNumber numberWithInt:self.followingsCount]           forKey:kEncodeKeyFollowingsCount];
     [coder encodeObject:[NSNumber numberWithInt:self.inverseFollowingsCount]    forKey:kEncodeKeyInverseFollowingsCount];
-    [coder encodeObject:[NSNumber numberWithInt:self.isEmailAuthorized]         forKey:kEncodeKeyIsEmailAuthorized];
+    [coder encodeObject:[NSNumber numberWithBool:self.isEmailAuthorized]         forKey:kEncodeKeyIsEmailAuthorized];
     
     [coder encodeObject:self.setting                                    forKey:kEncodeKeySetting];
 }
