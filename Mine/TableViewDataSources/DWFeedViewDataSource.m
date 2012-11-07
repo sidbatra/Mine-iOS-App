@@ -11,6 +11,7 @@
 #import "DWPurchase.h"
 #import "DWFollowing.h"
 #import "DWUnion.h"
+#import "DWSession.h"
 #import "DWFollowingManager.h"
 #import "DWPagination.h"
 
@@ -243,7 +244,7 @@
 - (void)userSuggestionsLoaded:(NSMutableArray *)users forUserID:(NSNumber *)userID {
     self.users = users;
     
-    if(true) {
+    if(![DWSession sharedDWSession].currentUser.isEmailAuthorized) {
         DWUnion *uni = [[DWUnion alloc] init];
         
         uni.title       = @"Import recent purchases";

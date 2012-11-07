@@ -40,6 +40,7 @@ static NSString* const kEncodeKeyAge                        = @"DWUser_age";
 static NSString* const kEncodeKeyPurchasesCount             = @"DWUser_purchasesCount";
 static NSString* const kEncodeKeyFollowingsCount            = @"DWUser_followingsCount";
 static NSString* const kEncodeKeyInverseFollowingsCount     = @"DWUser_inverseFollowingsCount";
+static NSString* const kEncodeKeyIsEmailAuthorized          = @"DWUser_isEmailAuthorized";
 static NSString* const kEncodeKeySetting                    = @"DWUser_setting";
 
 
@@ -62,6 +63,7 @@ static NSString* const kKeyPurchasesCount               = @"purchases_count";
 static NSString* const kKeyFollowingsCount              = @"followings_count";
 static NSString* const kKeyInverseFollowingsCount       = @"inverse_followings_count";
 static NSString* const kKeyUnreadNotificationsCount     = @"unread_notifications_count";
+static NSString* const kKeyIsEmailAuthorized            = @"is_email_authorized";
 static NSString* const kKeySensitive                    = @"sensitive";
 static NSString* const kKeySetting                      = @"setting";
 
@@ -92,6 +94,7 @@ static NSString* const kKeySetting                      = @"setting";
 @synthesize followingsCount             = _followingsCount;
 @synthesize inverseFollowingsCount      = _inverseFollowingsCount;
 @synthesize unreadNotificationsCount    = _unreadNotificationsCount;
+@synthesize isEmailAuthorized           = _isEmailAuthorized;
 @synthesize setting                     = _setting;
 
 //----------------------------------------------------------------------------------------------------
@@ -122,6 +125,7 @@ static NSString* const kKeySetting                      = @"setting";
         self.purchasesCount             = [[coder decodeObjectForKey:kEncodeKeyPurchasesCount] integerValue];
         self.followingsCount            = [[coder decodeObjectForKey:kEncodeKeyFollowingsCount] integerValue];
         self.inverseFollowingsCount     = [[coder decodeObjectForKey:kEncodeKeyInverseFollowingsCount] integerValue];
+        self.isEmailAuthorized          = [[coder decodeObjectForKey:kEncodeKeyIsEmailAuthorized] boolValue];
         
         self.setting                    = [coder decodeObjectForKey:kEncodeKeySetting];
     }
@@ -157,10 +161,11 @@ static NSString* const kKeySetting                      = @"setting";
     [coder encodeObject:self.squareImageURL                             forKey:kEncodeKeySquareImageURL];
     [coder encodeObject:self.largeImageURL                              forKey:kEncodeKeyLargeImageURL];
     
-    [coder encodeObject:[NSNumber numberWithInt:self.age]               forKey:kEncodeKeyAge];
-    [coder encodeObject:[NSNumber numberWithInt:self.purchasesCount]    forKey:kEncodeKeyPurchasesCount];
-    [coder encodeObject:[NSNumber numberWithInt:self.followingsCount]    forKey:kEncodeKeyFollowingsCount];
+    [coder encodeObject:[NSNumber numberWithInt:self.age]                       forKey:kEncodeKeyAge];
+    [coder encodeObject:[NSNumber numberWithInt:self.purchasesCount]            forKey:kEncodeKeyPurchasesCount];
+    [coder encodeObject:[NSNumber numberWithInt:self.followingsCount]           forKey:kEncodeKeyFollowingsCount];
     [coder encodeObject:[NSNumber numberWithInt:self.inverseFollowingsCount]    forKey:kEncodeKeyInverseFollowingsCount];
+    [coder encodeObject:[NSNumber numberWithInt:self.isEmailAuthorized]         forKey:kEncodeKeyIsEmailAuthorized];
     
     [coder encodeObject:self.setting                                    forKey:kEncodeKeySetting];
 }
@@ -217,6 +222,7 @@ static NSString* const kKeySetting                      = @"setting";
     NSString *followingsCount           = [user objectForKey:kKeyFollowingsCount];
     NSString *inverseFollowingsCount    = [user objectForKey:kKeyInverseFollowingsCount];
     NSString *unreadNotificationsCount  = [user objectForKey:kKeyUnreadNotificationsCount];
+    NSString *isEmailAuthorized         = [user objectForKey:kKeyIsEmailAuthorized];
     
     NSString *sensitive                 = [user objectForKey:kKeySensitive];
     
@@ -278,6 +284,9 @@ static NSString* const kKeySetting                      = @"setting";
     
     if(unreadNotificationsCount)
         self.unreadNotificationsCount = [unreadNotificationsCount integerValue];
+
+    if(isEmailAuthorized)
+        self.isEmailAuthorized = [isEmailAuthorized boolValue];
     
     
     if(setting) {
