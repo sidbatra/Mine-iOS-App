@@ -39,6 +39,8 @@
 - (void)getUnapprovedLivePurchasesAtOffset:(NSInteger)offset
                                    perPage:(NSInteger)perPage;
 
+- (void)getUnapprovedPurchasesMiningStarted;
+
 /**
  * Create a new purchase.
  */
@@ -94,6 +96,11 @@
 - (void)unapprovedPurchasesLoaded:(NSMutableArray*)purchases;
 
 - (void)unapprovedPurchasesLoadError:(NSString*)error;
+
+
+- (void)unapprovedPurchasesMiningStarted;
+
+- (void)unapprovedPurchasesMiningStartError:(NSString*)error;
 
 /**
  * Purchase successfully created.

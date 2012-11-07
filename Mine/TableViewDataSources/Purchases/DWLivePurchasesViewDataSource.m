@@ -58,12 +58,17 @@ static NSInteger const kMaxTries = 3;
 
 //----------------------------------------------------------------------------------------------------
 - (void)loadPurchases {
-        
-    [self performSelector:@selector(loadDelayedPurchases)
-               withObject:nil
-               afterDelay:self.isInitialTry ? kInitialRetryInterval : self.retryInterval];
     
-    self.isInitialTry = NO;
+    if(self.isInitialTry) {
+        [self.purchasesController getUnapprovedPurchasesMiningStarted];
+        
+        self.isInitialTry = NO;
+    }
+    else {
+        [self performSelector:@selector(loadDelayedPurchases)
+                   withObject:nil
+                   afterDelay:self.retryInterval];
+    }
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -71,7 +76,7 @@ static NSInteger const kMaxTries = 3;
     self.isInitialTry = YES;
     self.offset = 0;
     self.tries = 0;
-    self.retryInterval = kInitialRetryInterval;
+    self.retryInterval = kDefaultRetryInterval;
     
     [super refreshInitiated];
 }
@@ -85,6 +90,19 @@ static NSInteger const kMaxTries = 3;
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
 #pragma mark DWPurchasesControllerDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)unapprovedPurchasesMiningStarted {
+    [self performSelector:@selector(loadDelayedPurchases)
+               withObject:nil
+               afterDelay:kInitialRetryInterval];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)unapprovedPurchasesMiningStartError:(NSString *)error {
+    [self.delegate displayError:error
+                  withRefreshUI:YES];
+}
 
 //----------------------------------------------------------------------------------------------------
 - (void)unapprovedPurchasesLoaded:(NSMutableArray *)purchases {
