@@ -233,6 +233,7 @@ static NSString* const kMsgNetworkError             = @"No connection; pull to r
 //----------------------------------------------------------------------------------------------------
 - (void)forceRefresh {
     [self.errorView hide];
+    [self scrollToTop];
     self.loadingView.hidden = NO;
     
     [self disableScrolling];

@@ -409,7 +409,16 @@ static NSString* const kImgSearchOn     = @"nav-btn-search-on.png";
 
 //----------------------------------------------------------------------------------------------------
 - (void)unapprovedPurchasesSuccessfullyApproved {
+    [self.navigationController popToRootViewControllerAnimated:NO];
     [self.feedViewController forceRefresh];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:kNRequestTabBarIndexChange
+                                                        object:nil
+                                                      userInfo:[NSDictionary dictionaryWithObjectsAndKeys:
+                                                                [NSNumber numberWithInteger:kProfileTabIndex],kKeyTabIndex,
+                                                                [NSNumber numberWithInteger:DWTabBarResetTypeRefresh],kKeyResetType,
+                                                                nil]];
+    
     [self.navigationController popViewControllerAnimated:YES];
 }
 

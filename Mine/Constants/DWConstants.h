@@ -152,7 +152,8 @@ extern NSString* const kImgBottomShadow;
 typedef enum {
     DWTabBarResetTypeNone    = -1,
     DWTabBarResetTypeHard    = 0,
-    DWTabBarResetTypeSoft    = 1
+    DWTabBarResetTypeSoft    = 1,
+    DWTabBarResetTypeRefresh = 2
 } DWTabBarResetType;
 
 
