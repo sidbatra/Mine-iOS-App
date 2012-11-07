@@ -80,6 +80,8 @@
 		26C4470515CB3E0900E9A50B /* DWTwitterConnect.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C4470415CB3E0900E9A50B /* DWTwitterConnect.m */; };
 		26D699D915DDA4E5003AFAFA /* DWGlobalFeedViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 26D699D815DDA4E5003AFAFA /* DWGlobalFeedViewDataSource.m */; };
 		26D699DD15DDA7C7003AFAFA /* DWGlobalFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26D699DC15DDA7C7003AFAFA /* DWGlobalFeedViewController.m */; };
+		26E292E6164AF5DC0081E385 /* nav-btn-cancel-spadding-off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26E292E4164AF5DC0081E385 /* nav-btn-cancel-spadding-off@2x.png */; };
+		26E292E7164AF5DC0081E385 /* nav-btn-cancel-spadding-on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26E292E5164AF5DC0081E385 /* nav-btn-cancel-spadding-on@2x.png */; };
 		BB06360C15BF726D001F26E1 /* DWErrorView.m in Sources */ = {isa = PBXBuildFile; fileRef = BB06360B15BF726D001F26E1 /* DWErrorView.m */; };
 		BB06361215BF7DB2001F26E1 /* DWTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BB06360F15BF7DB2001F26E1 /* DWTabBar.m */; };
 		BB06361315BF7DB2001F26E1 /* DWTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB06361115BF7DB2001F26E1 /* DWTabBarController.m */; };
@@ -655,6 +657,8 @@
 		26D699D815DDA4E5003AFAFA /* DWGlobalFeedViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWGlobalFeedViewDataSource.m; sourceTree = "<group>"; };
 		26D699DB15DDA7C7003AFAFA /* DWGlobalFeedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWGlobalFeedViewController.h; sourceTree = "<group>"; };
 		26D699DC15DDA7C7003AFAFA /* DWGlobalFeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWGlobalFeedViewController.m; sourceTree = "<group>"; };
+		26E292E4164AF5DC0081E385 /* nav-btn-cancel-spadding-off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-btn-cancel-spadding-off@2x.png"; sourceTree = "<group>"; };
+		26E292E5164AF5DC0081E385 /* nav-btn-cancel-spadding-on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-btn-cancel-spadding-on@2x.png"; sourceTree = "<group>"; };
 		BB06360615BF7258001F26E1 /* DWErrorViewProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWErrorViewProtocol.h; sourceTree = "<group>"; };
 		BB06360715BF7258001F26E1 /* DWModelPresenterProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWModelPresenterProtocol.h; sourceTree = "<group>"; };
 		BB06360A15BF726D001F26E1 /* DWErrorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWErrorView.h; sourceTree = "<group>"; };
@@ -1673,6 +1677,8 @@
 		BB350EB71617D1FA00531A80 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				26E292E4164AF5DC0081E385 /* nav-btn-cancel-spadding-off@2x.png */,
+				26E292E5164AF5DC0081E385 /* nav-btn-cancel-spadding-on@2x.png */,
 				262625E61649AC57004CFB1E /* feed-btn-yahoo-on@2x.png */,
 				262625E71649AC57004CFB1E /* feed-btn-gmail-off@2x.png */,
 				262625E81649AC57004CFB1E /* feed-btn-gmail-on@2x.png */,
@@ -2793,6 +2799,8 @@
 				BB4AC37D1649A8BB00B0512A /* cat-wait-17.jpg in Resources */,
 				BB4AC37E1649A8BB00B0512A /* cat-wait-18.jpg in Resources */,
 				BB4AC37F1649A8BB00B0512A /* cat-wait-19.jpg in Resources */,
+				26E292E6164AF5DC0081E385 /* nav-btn-cancel-spadding-off@2x.png in Resources */,
+				26E292E7164AF5DC0081E385 /* nav-btn-cancel-spadding-on@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

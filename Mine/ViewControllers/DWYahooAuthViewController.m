@@ -8,8 +8,8 @@
 
 #import "DWYahooAuthViewController.h"
 #import "DWRequestManager.h"
-#import "DWNavigationBarBackButton.h"
 #import "DWAnalyticsManager.h"
+#import "DWGUIManager.h"
 #import "DWConstants.h"
 
 static NSString* const kYahooAuthURI       = @"/auth/yahoo?web_view_mode=true";
@@ -47,7 +47,9 @@ static NSString* const kYahooRejectedURI   = @"/rejected";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navigationItem.leftBarButtonItem = [DWNavigationBarBackButton backButtonForNavigationController:self.navigationController];
+    self.navigationItem.hidesBackButton     = YES;
+    self.navigationItem.rightBarButtonItem  = [DWGUIManager navBarCancelButtonWithTarget:self];
+    self.navigationItem.titleView           = [DWGUIManager navBarTitleViewWithText:@"Connect"];
     
     NSURL *url = [NSURL URLWithString:[[DWRequestManager sharedDWRequestManager] createAppRequestURL:kYahooAuthURI
                                                                                         authenticate:YES]];
@@ -82,6 +84,17 @@ static NSString* const kYahooRejectedURI   = @"/rejected";
     }
     
     return YES;
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark UI Events
+
+//----------------------------------------------------------------------------------------------------
+- (void)cancelButtonClicked {
+    [self.navigationController popViewControllerAnimated:NO];
 }
 
 
