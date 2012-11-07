@@ -49,7 +49,7 @@ static NSString* const kYahooRejectedURI   = @"/rejected";
     
     self.navigationItem.hidesBackButton     = YES;
     self.navigationItem.rightBarButtonItem  = [DWGUIManager navBarCancelButtonWithTarget:self];
-    self.navigationItem.titleView           = [DWGUIManager navBarTitleViewWithText:@"Connect"];
+    self.navigationItem.titleView           = [DWGUIManager navBarTitleViewWithText:@"Loading..."];
     
     NSURL *url = [NSURL URLWithString:[[DWRequestManager sharedDWRequestManager] createAppRequestURL:kYahooAuthURI
                                                                                         authenticate:YES]];
@@ -61,6 +61,11 @@ static NSString* const kYahooRejectedURI   = @"/rejected";
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
 #pragma mark UIWebViewDelegate
+
+//----------------------------------------------------------------------------------------------------
+-(void)webViewDidFinishLoad:(UIWebView *)webView {
+    self.navigationItem.titleView = [DWGUIManager navBarTitleViewWithText:@"Connect"];
+}
 
 //----------------------------------------------------------------------------------------------------
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {

@@ -21,7 +21,7 @@ NSString* const kUserAgent          = @"Mozilla/5.0 (X11; U; Linux i686; en-US; 
 NSString* const kInternalAppScheme  = @"mine-internal";
 
 #if ENVIRONMENT == DEVELOPMENT
-NSString* const kAppServer      = @"drao.getmine.com";
+NSString* const kAppServer      = @"sbat.getmine.com";
 #elif ENVIRONMENT == STAGING
 NSString* const kAppServer	= @"staging.getmine.com";
 #elif ENVIRONMENT == PRODUCTION
