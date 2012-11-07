@@ -2770,12 +2770,10 @@
 				26AA997016488529001F91F2 /* connect-btn-yahoo-off@2x.png in Resources */,
 				26AA997116488529001F91F2 /* connect-btn-yahoo-on@2x.png in Resources */,
 				26AA997416488D83001F91F2 /* connect-txt-pick@2x.png in Resources */,
-<<<<<<< HEAD
 				262625EA1649AC57004CFB1E /* feed-btn-yahoo-on@2x.png in Resources */,
 				262625EB1649AC57004CFB1E /* feed-btn-gmail-off@2x.png in Resources */,
 				262625EC1649AC57004CFB1E /* feed-btn-gmail-on@2x.png in Resources */,
 				262625ED1649AC57004CFB1E /* feed-btn-yahoo-off@2x.png in Resources */,
-=======
 				BB4AC36D1649A8BB00B0512A /* cat-wait-1.jpg in Resources */,
 				BB4AC36E1649A8BB00B0512A /* cat-wait-2.jpg in Resources */,
 				BB4AC36F1649A8BB00B0512A /* cat-wait-3.jpg in Resources */,
@@ -2795,7 +2793,6 @@
 				BB4AC37D1649A8BB00B0512A /* cat-wait-17.jpg in Resources */,
 				BB4AC37E1649A8BB00B0512A /* cat-wait-18.jpg in Resources */,
 				BB4AC37F1649A8BB00B0512A /* cat-wait-19.jpg in Resources */,
->>>>>>> cat loading view, untested.
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2994,12 +2991,9 @@
 				BB4AC33B16446D2F00B0512A /* DWUnapprovedPurchasesViewDataSource.m in Sources */,
 				BB4AC33E1644756000B0512A /* DWLivePurchasesViewDataSource.m in Sources */,
 				BB4AC3551648C31800B0512A /* DWImportButton.m in Sources */,
-<<<<<<< HEAD
 				262625E41649A130004CFB1E /* DWEmailConnectCell.m in Sources */,
 				262625F01649B751004CFB1E /* DWEmailConnectPresenter.m in Sources */,
-=======
 				BB4AC3591649A16400B0512A /* DWUnapprovedPurchasesLoadingView.m in Sources */,
->>>>>>> cat loading view, untested.
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
