@@ -114,6 +114,7 @@
 						<string key="NSFrame">{{117, 416}, {87, 44}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<object class="NSColor" key="IBUIBackgroundColor" id="138073127">
 							<int key="NSColorSpace">3</int>
@@ -127,7 +128,7 @@
 						<reference key="IBUIHighlightedTitleColor" ref="327134963"/>
 						<object class="NSColor" key="IBUINormalTitleColor">
 							<int key="NSColorSpace">1</int>
-							<bytes key="NSRGB">MC44IDAuOCAwLjgAA</bytes>
+							<bytes key="NSRGB">MC44IDAuOCAwLjggMC41AA</bytes>
 						</object>
 						<reference key="IBUINormalTitleShadowColor" ref="1043273569"/>
 						<object class="IBUIFontDescription" key="IBUIFontDescription" id="451357552">
