@@ -10,7 +10,7 @@ SIZED = "-sized"
 Dir.glob("#{BASE_FOLDER}*").each do |file|
 
 next unless file.match(TWO_X)
-next if file.match(SIZED) || file.match("Default")
+next if file.match(SIZED) || file.match("Default") || file.match("Icon")
 
 puts file
 
