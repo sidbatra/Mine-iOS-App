@@ -143,14 +143,7 @@
     [self.importButton enterInactiveState];
     
     if(count) {
-        
-        UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Import Successful"
-                                                            message:@"Mine will notify you when you have new items."
-                                                           delegate:self
-                                                  cancelButtonTitle:@"OK"
-                                                  otherButtonTitles:nil];
-        alertView.tag = count;
-        [alertView show];
+        [self.delegate unapprovedPurchasesSuccessfullyApproved];
     }
     else {
         
