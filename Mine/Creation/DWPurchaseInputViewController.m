@@ -133,7 +133,8 @@ static NSString* const kMsgCancelTitle          = @"Dismiss";
     
     self.navigationController.navigationBarHidden = NO;
 
-    self.nameTextField.text = [self.purchase.query capitalizedString];
+    if(![self.purchase.query hasPrefix:@"http://"])
+        self.nameTextField.text = [self.purchase.query capitalizedString];
     
     [self setupSharingUI];
     
