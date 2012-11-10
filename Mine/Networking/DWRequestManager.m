@@ -24,13 +24,6 @@
  */
 @interface DWRequestManager()
 
-/**
- * Form the complete URL with or without authentication to send
- * a request to the app server
- */
-- (NSString*)createAppRequestURL:(NSString*)localRequestURL 
-                    authenticate:(BOOL)authenticate;
-
 @end
 
 

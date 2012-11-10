@@ -50,6 +50,8 @@ extern NSString* const kNImgUserLargeLoadError;
     NSInteger       _inverseFollowingsCount;
     NSInteger       _unreadNotificationsCount;
     
+    BOOL            _isEmailAuthorized;
+    
     DWSetting       *_setting;
 }
 
@@ -171,7 +173,7 @@ extern NSString* const kNImgUserLargeLoadError;
 
 
 @property (nonatomic,assign) NSInteger unreadNotificationsCount;
-
+@property (nonatomic,assign) BOOL isEmailAuthorized;
 
 
 /**

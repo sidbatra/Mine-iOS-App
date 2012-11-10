@@ -146,6 +146,37 @@
     [self.navigationController pushViewController:inviteViewController
                                          animated:YES];
 }
+//----------------------------------------------------------------------------------------------------
+- (void)displayGoogleAuth {
+    
+    DWGoogleAuthViewController *googleAuthViewController = [[DWGoogleAuthViewController alloc] init];
+    
+    googleAuthViewController.delegate = self;
+    
+    [self.navigationController pushViewController:googleAuthViewController
+                                         animated:NO];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)displayYahooAuth {
+    
+    DWYahooAuthViewController *yahooAuthViewController = [[DWYahooAuthViewController alloc] init];
+    
+    yahooAuthViewController.delegate = self;
+    
+    [self.navigationController pushViewController:yahooAuthViewController
+                                         animated:NO];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)displayUnapprovedPurchases:(BOOL)isLive {
+    DWUnapprovedPurchasesViewController *unapprovedPurchasesViewController = [[DWUnapprovedPurchasesViewController alloc] initWithModeIsLive:isLive];
+    
+    unapprovedPurchasesViewController.delegate = self;
+    
+    [self.navigationController pushViewController:unapprovedPurchasesViewController
+                                         animated:YES];
+}
 
 
 //----------------------------------------------------------------------------------------------------
@@ -282,6 +313,73 @@
 //----------------------------------------------------------------------------------------------------
 - (void)commentsCreateViewUserClicked:(DWUser *)user {
     [self displayUserProfile:user];
+}
+
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWGoogleAuthViewControllerDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)googleAuthAccepted {
+    [self.navigationController popViewControllerAnimated:NO];
+    
+    [self displayUnapprovedPurchases:YES];
+    [[DWSession sharedDWSession] emailAuthorized];    
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)googleAuthRejected {
+    [self.navigationController popViewControllerAnimated:NO];
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                    message:@"Google connect is required to import your purchases."
+                                                   delegate:nil
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
+    [alert show];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWYahooAuthViewControllerDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)yahooAuthAccepted {
+    [self.navigationController popViewControllerAnimated:NO];
+    
+    [self displayUnapprovedPurchases:YES];
+    [[DWSession sharedDWSession] emailAuthorized];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)yahooAuthRejected {
+    [self.navigationController popViewControllerAnimated:NO];
+    
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
+                                                    message:@"Yahoo connect is required to import your purchases."
+                                                   delegate:nil
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
+    [alert show];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWUnapprovedPurchasesViewControllerDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)unapprovedPurchasesSuccessfullyApproved {
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)unapprovedPurchasesNoPurchasesApproved { 
 }
 
 

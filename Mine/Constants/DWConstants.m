@@ -10,7 +10,7 @@
 
 
 //----------------------------------------------------------------------------------------------------
-NSString* const kVersion            = @"1.1.0";
+NSString* const kVersion            = @"1.2.0";
 NSString* const kGet				= @"GET";
 NSString* const kPost               = @"POST";
 NSString* const kPut				= @"PUT";
@@ -18,6 +18,7 @@ NSString* const kDelete				= @"DELETE";
 NSString* const kAppProtocol        = @"http://";
 NSString* const kClientName         = @"iphone";
 NSString* const kUserAgent          = @"Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.8.1.6) Gecko/20070802 SeaMonkey/1.1.4";
+NSString* const kInternalAppScheme  = @"mine-internal";
 
 #if ENVIRONMENT == DEVELOPMENT
 NSString* const kAppServer      = @"sbat.getmine.com";
@@ -54,6 +55,8 @@ NSString* const kNUpdateNotificationsCount  = @"NUpdateNotificationsCount";
 NSInteger const kColumnsInProductsSearch        = 3;
 NSInteger const kColumnsInPurchaseSearch        = 2;
 NSInteger const kColumnsInGlobalFeed            = 2;
+NSInteger const kColumnsInUnapprovedPurchases   = 2;
+
 
 //----------------------------------------------------------------------------------------------------
 NSString* const kFacebookAppID                  = @"245230762190915";
@@ -90,6 +93,7 @@ NSString* const kRailsDateTimeFormat = @"yyyy-MM-dd HH:mm:ss ZZZ";
 //----------------------------------------------------------------------------------------------------
 NSInteger const kFeedTabIndex       = 0;
 NSInteger const kCreateTabIndex     = 1;
+NSInteger const kProfileTabIndex    = 2;
 NSInteger const kTabBarHeight       = 44;
 
 //----------------------------------------------------------------------------------------------------

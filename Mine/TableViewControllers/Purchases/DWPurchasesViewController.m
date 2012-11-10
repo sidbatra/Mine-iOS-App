@@ -126,7 +126,7 @@
         DWPurchase *purchase            = [self.tableViewDataSource objectAtIndex:swipedIndexPath.row 
                                                                        forSection:0];
         
-        if (purchase.user.databaseID == [DWSession sharedDWSession].currentUser.databaseID) {
+        if ([purchase isKindOfClass:[DWPurchase class]] && purchase.user.databaseID == [DWSession sharedDWSession].currentUser.databaseID) {
             
             UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil 
                                                                      delegate:self 

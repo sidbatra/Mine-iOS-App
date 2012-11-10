@@ -11,11 +11,12 @@
 @interface DWNavigationBarTitleView : UIView
 
 
-/**
- * Init with frame in image only mode.
- */
 - (id)initWithFrame:(CGRect)frame 
        andImageName:(NSString*)imageName;
+
+- (id)initWithFrame:(CGRect)frame
+              title:(NSString*)title
+         andSpinner:(BOOL)isSpinner;
 
 /**
  * Factory method for generating the mine logo title view.

@@ -359,10 +359,14 @@ static NSString* const kImgSearchOn     = @"nav-btn-search-on.png";
                             loadRemotely:YES];
 }
 
-
 //----------------------------------------------------------------------------------------------------
 - (void)notificationsViewDisplayUser:(DWUser *)user {
     [self displayUserProfile:user];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)notificationsViewDisplayUnapprovedPurchases {
+    [self displayUnapprovedPurchases:NO];
 }
 
 
@@ -385,6 +389,43 @@ static NSString* const kImgSearchOn     = @"nav-btn-search-on.png";
 //----------------------------------------------------------------------------------------------------
 - (void)feedViewUserClicked:(DWUser *)user {
     [self displayUserProfile:user];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)googleConnectInitiated {
+    [self displayGoogleAuth];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)yahooConnectInitiated {
+    [self displayYahooAuth];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWUnapprovedPurchasesViewControllerDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)unapprovedPurchasesSuccessfullyApproved {
+    [self.navigationController popToRootViewControllerAnimated:NO];
+    [self.feedViewController forceRefresh];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:kNRequestTabBarIndexChange
+                                                        object:nil
+                                                      userInfo:[NSDictionary dictionaryWithObjectsAndKeys:
+                                                                [NSNumber numberWithInteger:kProfileTabIndex],kKeyTabIndex,
+                                                                [NSNumber numberWithInteger:DWTabBarResetTypeRefresh],kKeyResetType,
+                                                                nil]];
+    
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)unapprovedPurchasesNoPurchasesApproved {
+    [self.feedViewController forceRefresh];    
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 

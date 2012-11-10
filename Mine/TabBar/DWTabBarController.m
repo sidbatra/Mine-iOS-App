@@ -184,16 +184,15 @@
  */
 
  //----------------------------------------------------------------------------------------------------
- - (void)hideTopShadowView {
+- (void)hideTopShadowView {
  self.topShadowView.hidden = YES;
- }
+}
  
  //----------------------------------------------------------------------------------------------------
- - (void)showTopShadowView {
+- (void)showTopShadowView {
  self.topShadowView.hidden = NO;
- }
+}
  
-
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
@@ -225,6 +224,14 @@
             
             if([[navController topViewController] respondsToSelector:scrollToTop])
                 [[navController topViewController] performSelector:scrollToTop];
+        }
+        else if(resetType == DWTabBarResetTypeRefresh) {
+            [navController popToRootViewControllerAnimated:YES];
+            
+            SEL forceRefresh = @selector(forceRefresh);
+            
+            if([[navController topViewController] respondsToSelector:forceRefresh])
+                [[navController topViewController] performSelector:forceRefresh];
         }
     }
     

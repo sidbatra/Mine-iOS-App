@@ -54,6 +54,7 @@ extern NSString* const kAppProtocol;
 extern NSString* const kAppServer;
 extern NSString* const kClientName;
 extern NSString* const kUserAgent;
+extern NSString* const kInternalAppScheme;
 
 /**
  * Encryption related
@@ -85,6 +86,7 @@ extern NSString* const kNUpdateNotificationsCount;
 extern NSInteger const kColumnsInProductsSearch;
 extern NSInteger const kColumnsInPurchaseSearch;
 extern NSInteger const kColumnsInGlobalFeed;
+extern NSInteger const kColumnsInUnapprovedPurchases;
 
 
 /**
@@ -128,6 +130,7 @@ extern NSString* const kRailsDateTimeFormat;
  */ 
 extern NSInteger const kFeedTabIndex;
 extern NSInteger const kCreateTabIndex;
+extern NSInteger const kProfileTabIndex;
 extern NSInteger const kTabBarHeight;
 
 
@@ -149,7 +152,8 @@ extern NSString* const kImgBottomShadow;
 typedef enum {
     DWTabBarResetTypeNone    = -1,
     DWTabBarResetTypeHard    = 0,
-    DWTabBarResetTypeSoft    = 1
+    DWTabBarResetTypeSoft    = 1,
+    DWTabBarResetTypeRefresh = 2
 } DWTabBarResetType;
 
 
@@ -199,7 +203,8 @@ typedef enum {
 
 
 typedef enum {
-    kPurchaseProfilePresenterStyleWithUser = 1
+    kPurchaseProfilePresenterStyleWithUser = 1,
+    kPurchaseProfilePresenterStyleUnapproved = 2
 } DWPurchaseProfilePresenterStyle;
 
 typedef enum {

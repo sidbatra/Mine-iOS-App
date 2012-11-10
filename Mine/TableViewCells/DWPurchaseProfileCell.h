@@ -45,11 +45,15 @@
  * Apply a purchase title.
  */
 - (void)setPurchaseTitle:(NSString*)title
+                   store:(NSString*)store
                 forIndex:(NSInteger)index
          withUserPronoun:(NSString*)pronoun
           withPurchaseID:(NSInteger)purchaseID;
 
 - (void)enterSpinningStateForIndex:(NSInteger)index;
+
+- (void)displayCrossButtonForIndex:(NSInteger)index
+                    withPurchaseID:(NSInteger)purchaseID;
 
 
 /**
@@ -66,7 +70,7 @@
  */
 @protocol DWPurchaseProfileCellDelegate
 
-@required
+@optional
 
 /**
  * An element pointing to a purhcase is clicked
@@ -77,5 +81,7 @@
  * An element pointing to the purchase source url is clicked.
  */
 - (void)purchaseURLClicked:(NSInteger)purchaseID;
+
+- (void)purchaseCrossClicked:(NSInteger)purchaseID;
 
 @end

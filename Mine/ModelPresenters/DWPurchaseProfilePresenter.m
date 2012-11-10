@@ -10,6 +10,7 @@
 #import "DWModelSet.h"
 #import "DWPurchaseProfileCell.h"
 #import "DWPurchase.h"
+#import "DWStore.h"
 #import "DWUser.h"
 #import "DWConstants.h"
 
@@ -48,6 +49,7 @@
                 withPurchaseID:purchase.databaseID];
         
         [cell setPurchaseTitle:purchase.title
+                         store:purchase.store ? purchase.store.name : nil
                       forIndex:i
                withUserPronoun:purchase.user.pronoun
                 withPurchaseID:purchase.databaseID];
@@ -57,6 +59,10 @@
             [cell setUserImage:purchase.user.squareImage
                       forIndex:i
                     withUserID:purchase.user.databaseID];
+        }
+        else if(style == kPurchaseProfilePresenterStyleUnapproved) {
+            [cell displayCrossButtonForIndex:i
+                              withPurchaseID:purchase.databaseID];
         }
         
         if(purchase.isDestroying)

@@ -42,6 +42,11 @@
 
 
 /**
+ * Forces the data source to initiate a refresh
+ */
+- (void)forceRefresh;
+
+/**
  * Scroll the table view to the top
  */
 - (void)scrollToTop;

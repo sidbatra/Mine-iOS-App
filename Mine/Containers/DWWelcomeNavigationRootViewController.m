@@ -99,21 +99,31 @@ static NSString* const kInfoURL = @"/?web_view_mode=true";
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)showGlobalFeedView {
-    
-    DWOnboardingFeedViewController *onboardingFeedViewController = [[DWOnboardingFeedViewController alloc] init];
-    onboardingFeedViewController.delegate = self;
-    
-    [self.navigationController pushViewController:onboardingFeedViewController 
-                                         animated:YES];
-}
-
-//----------------------------------------------------------------------------------------------------
 - (void)showUserDetailsView {
     DWUserDetailsViewController *userDetailsViewController = [[DWUserDetailsViewController alloc] init];
     userDetailsViewController.delegate = self;
     
     [self.navigationController pushViewController:userDetailsViewController
+                                         animated:YES];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)showGlobalFeedView {
+    
+    DWOnboardingFeedViewController *onboardingFeedViewController = [[DWOnboardingFeedViewController alloc] init];
+    onboardingFeedViewController.delegate = self;
+    
+    [self.navigationController pushViewController:onboardingFeedViewController
+                                         animated:YES];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)showEmailConnectView {
+    
+    DWEmailConnectViewController *emailConnectViewController = [[DWEmailConnectViewController alloc] init];
+    emailConnectViewController.delegate = self;
+    
+    [self.navigationController pushViewController:emailConnectViewController
                                          animated:YES];
 }
 
@@ -238,12 +248,60 @@ static NSString* const kInfoURL = @"/?web_view_mode=true";
 
 //----------------------------------------------------------------------------------------------------
 - (void)showScreenAfterGlobalFeed {
-    
+    [self showEmailConnectView];
+    /*
     DWSuggestionsViewController *suggestionsViewController = [[DWSuggestionsViewController alloc] init];
     suggestionsViewController.delegate = self;
 
     [self.navigationController pushViewController:suggestionsViewController
                                          animated:YES];    
+     */
+}
+
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWEmailConnectViewControllerDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)emailConnectGoogleAuthInitiated {
+    [self displayGoogleAuth];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)emailConnectYahooAuthInitiated {
+    [self displayYahooAuth];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)emailConnectSkipped {
+    [self endWelcomeNavigation];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWUnapprovedPurchasesViewControllerDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)unapprovedPurchasesSuccessfullyApproved {
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:kNRequestTabBarIndexChange
+                                                        object:nil
+                                                      userInfo:[NSDictionary dictionaryWithObjectsAndKeys:
+                                                                [NSNumber numberWithInteger:kProfileTabIndex],kKeyTabIndex,
+                                                                [NSNumber numberWithInteger:DWTabBarResetTypeNone],kKeyResetType,
+                                                                nil]];
+    
+    [self endWelcomeNavigation];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)unapprovedPurchasesNoPurchasesApproved {
+    [self endWelcomeNavigation];
 }
 
 

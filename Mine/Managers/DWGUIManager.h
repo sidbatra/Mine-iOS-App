@@ -39,6 +39,8 @@
 
 + (UIBarButtonItem*)navBarCloseButtonWithTarget:(id)target;
 
++ (UIBarButtonItem*)navBarCancelButtonWithTarget:(id)target;
+
 /**
  * Fallback error view for handling connection/server errors
  */

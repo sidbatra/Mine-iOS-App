@@ -15,8 +15,10 @@
  */
 @interface DWUnion : NSObject {
     NSString    *_title;
+    NSString    *_subtitle;
 }
 
 @property (nonatomic,strong) NSString *title;
+@property (nonatomic,strong) NSString *subtitle;
 
 @end

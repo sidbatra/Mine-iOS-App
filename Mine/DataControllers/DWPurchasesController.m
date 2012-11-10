@@ -14,19 +14,29 @@
 #import "DWCryptography.h"
 #import "DWConstants.h"
 
-static NSString* const kGetPurchaseURI      = @"/p/%@.json?";
-static NSString* const kGetUserPurchasesURI = @"/purchases.json?per_page=%d&user_id=%d";
-static NSString* const kCreateURI           = @"/purchases.json?";
-static NSString* const kDeleteURI           = @"/purchases/%d.json?";
+static NSString* const kGetPurchaseURI                  = @"/p/%@.json?";
+static NSString* const kGetUserPurchasesURI             = @"/purchases.json?per_page=%d&user_id=%d";
+static NSString* const kGetUnapprovedStalePurchasesURI  = @"/purchases.json?aspect=unapproved&per_page=%d";
+static NSString* const kGetUnapprovedLivePurchasesURI   = @"/purchases.json?aspect=unapproved&per_page=%d&offset=%d&by_created_at=true";
+static NSString* const kGetUnapprovedPurchaseMineURI    = @"/purchases.json?aspect=unapproved_ui&mode=live";
+static NSString* const kCreateURI                       = @"/purchases.json?";
+static NSString* const kPutApproveMultiplePurchasesURI  = @"/purchases/update_multiple.json?aspect=approval&selected_ids=%@&rejected_ids=%@";
+static NSString* const kDeleteURI                       = @"/purchases/%d.json?";
 
-static NSString* const kNPurchaseLoaded         = @"NPurchaseLoaded";
-static NSString* const kNPurchaseLoadError      = @"NPurchaseLoadError";
-static NSString* const kNUserPurchasesLoaded    = @"NUserPurchasesLoaded";
-static NSString* const kNUserPurchasesLoadError = @"NUserPurchasesLoadError";
-static NSString* const kNPurchaseCreated        = @"NPurchaseCreated";
-static NSString* const kNPurchaseCreateError    = @"NPurchaseCreateError";
-static NSString* const kNPurchaseDeleted        = @"NPurchaseDeleted";
-static NSString* const kNPurchaseDeleteError    = @"NPurchaseDeleteError";
+static NSString* const kNPurchaseLoaded                         = @"NPurchaseLoaded";
+static NSString* const kNPurchaseLoadError                      = @"NPurchaseLoadError";
+static NSString* const kNUserPurchasesLoaded                    = @"NUserPurchasesLoaded";
+static NSString* const kNUserPurchasesLoadError                 = @"NUserPurchasesLoadError";
+static NSString* const kNUnapprovedPurchasesLoaded              = @"NUnapprovedPurchasesLoaded";
+static NSString* const kNUnapprovedPurchasesLoadError           = @"NUnapprovedPurchasesLoadError";
+static NSString* const kNUnapprovedPurchasesMiningStarted       = @"NUnapprovedPurchasesMiningStarted";
+static NSString* const kNUnapprovedPurchasesMiningStartError    = @"NUnapprovedPurchasesMiningStartError";
+static NSString* const kNPurchaseCreated                        = @"NPurchaseCreated";
+static NSString* const kNPurchaseCreateError                    = @"NPurchaseCreateError";
+static NSString* const kNMultiplePurchasesUpdated               = @"NMultiplePurchasesUpdated";
+static NSString* const kNMultiplePurchasesUpdateError           = @"NMultiplePurchasesUpdateError";
+static NSString* const kNPurchaseDeleted                        = @"NPurchaseDeleted";
+static NSString* const kNPurchaseDeleteError                    = @"NPurchaseDeleteError";
 
 
 @interface DWPurchasesController() {
@@ -81,6 +91,26 @@ static NSString* const kNPurchaseDeleteError    = @"NPurchaseDeleteError";
 													 name:kNUserPurchasesLoadError
 												   object:nil];
         
+        [[NSNotificationCenter defaultCenter] addObserver:self
+												 selector:@selector(unapprovedPurchasesLoaded:)
+													 name:kNUnapprovedPurchasesLoaded
+												   object:nil];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self
+												 selector:@selector(unapprovedPurchasesMiningStarted:)
+													 name:kNUnapprovedPurchasesMiningStarted
+												   object:nil];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self
+												 selector:@selector(unapprovedPurchasesMiningStartError:)
+													 name:kNUnapprovedPurchasesMiningStartError
+												   object:nil];
+		
+		[[NSNotificationCenter defaultCenter] addObserver:self
+												 selector:@selector(unapprovedPurchasesLoadError:)
+													 name:kNUnapprovedPurchasesLoadError
+												   object:nil];
+        
         [[NSNotificationCenter defaultCenter] addObserver:self 
 												 selector:@selector(purchaseCreated:) 
 													 name:kNPurchaseCreated
@@ -91,7 +121,17 @@ static NSString* const kNPurchaseDeleteError    = @"NPurchaseDeleteError";
 													 name:kNPurchaseCreateError
 												   object:nil];
         
-        [[NSNotificationCenter defaultCenter] addObserver:self 
+        [[NSNotificationCenter defaultCenter] addObserver:self
+												 selector:@selector(multiplePurchasesUpdated:)
+													 name:kNMultiplePurchasesUpdated
+												   object:nil];
+		
+        [[NSNotificationCenter defaultCenter] addObserver:self
+												 selector:@selector(multiplePurchasesUpdateError:)
+													 name:kNMultiplePurchasesUpdateError
+												   object:nil];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self
 												 selector:@selector(purchaseDeleted:) 
 													 name:kNPurchaseDeleted
 												   object:nil];
@@ -112,16 +152,11 @@ static NSString* const kNPurchaseDeleteError    = @"NPurchaseDeleteError";
     DWDebug(@"Purchases controller released");
 }
 
-//----------------------------------------------------------------------------------------------------
-- (NSString*)purchasePostParam:(NSString*)name {
-    return [NSString stringWithFormat:@"purchase[%@]",name];
-}
 
 //----------------------------------------------------------------------------------------------------
-- (NSString*)purchasePostSubParam:(NSString*)subParam
-                    withParamName:(NSString*)name {
-    return [NSString stringWithFormat:@"%@[%@]",[self purchasePostParam:subParam],name];
-}
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark Get
 
 //----------------------------------------------------------------------------------------------------
 - (void)getPurchase:(NSInteger)purchaseID {
@@ -151,6 +186,62 @@ static NSString* const kNPurchaseDeleteError    = @"NPurchaseDeleteError";
                                                   requestMethod:kGet
                                                    authenticate:YES
                                                      callerID:caller.hash];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)getUnapprovedStalePurchasesBefore:(NSInteger)before
+                                  perPage:(NSInteger)perPage {
+    
+    NSMutableString *localURL = [NSMutableString stringWithFormat:kGetUnapprovedStalePurchasesURI,perPage];
+    
+    if(before != 0)
+        [localURL appendFormat:@"&before=%d",before];
+    
+    [[DWRequestManager sharedDWRequestManager] createAppRequest:localURL
+                                            successNotification:kNUnapprovedPurchasesLoaded
+                                              errorNotification:kNUnapprovedPurchasesLoadError
+                                                  requestMethod:kGet
+                                                   authenticate:YES];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)getUnapprovedLivePurchasesAtOffset:(NSInteger)offset
+                                   perPage:(NSInteger)perPage {
+    
+    NSMutableString *localURL = [NSMutableString stringWithFormat:kGetUnapprovedLivePurchasesURI,perPage,offset];
+    
+    [[DWRequestManager sharedDWRequestManager] createAppRequest:localURL
+                                            successNotification:kNUnapprovedPurchasesLoaded
+                                              errorNotification:kNUnapprovedPurchasesLoadError
+                                                  requestMethod:kGet
+                                                   authenticate:YES];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)getUnapprovedPurchasesMiningStarted {
+    
+    [[DWRequestManager sharedDWRequestManager] createAppRequest:kGetUnapprovedPurchaseMineURI
+                                            successNotification:kNUnapprovedPurchasesMiningStarted
+                                              errorNotification:kNUnapprovedPurchasesMiningStartError
+                                                  requestMethod:kGet
+                                                   authenticate:YES];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark Post
+
+//----------------------------------------------------------------------------------------------------
+- (NSString*)purchasePostParam:(NSString*)name {
+    return [NSString stringWithFormat:@"purchase[%@]",name];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (NSString*)purchasePostSubParam:(NSString*)subParam
+                    withParamName:(NSString*)name {
+    return [NSString stringWithFormat:@"%@[%@]",[self purchasePostParam:subParam],name];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -199,6 +290,32 @@ static NSString* const kNPurchaseDeleteError    = @"NPurchaseDeleteError";
                                                                        authenticate:YES
                                                                      uploadDelegate:uploadDelegate];
 }
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark Put
+
+//----------------------------------------------------------------------------------------------------
+- (void)approveMultiplePurchases:(NSMutableArray*)selectedIDs rejectedIDs:(NSMutableArray*)rejectedIDs {
+    
+    NSMutableString *localURL = [NSMutableString stringWithFormat:kPutApproveMultiplePurchasesURI,
+                                 [selectedIDs componentsJoinedByString:@","],
+                                 [rejectedIDs componentsJoinedByString:@","]];
+    
+    [[DWRequestManager sharedDWRequestManager] createAppRequest:localURL
+                                            successNotification:kNMultiplePurchasesUpdated
+                                              errorNotification:kNMultiplePurchasesUpdateError
+                                                  requestMethod:kPut
+                                                   authenticate:YES];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark Delete
 
 //----------------------------------------------------------------------------------------------------
 - (void)deletePurchaseWithID:(NSInteger)purchaseID {
@@ -297,6 +414,41 @@ static NSString* const kNPurchaseDeleteError    = @"NPurchaseDeleteError";
 }
 
 //----------------------------------------------------------------------------------------------------
+- (void)unapprovedPurchasesLoaded:(NSNotification*)notification {
+    
+    SEL sel = @selector(unapprovedPurchasesLoaded:);
+    
+    if(![self.delegate respondsToSelector:sel])
+        return;
+    
+    
+    NSArray *response = [[notification userInfo] objectForKey:kKeyResponse];
+    NSMutableArray *purchases = [NSMutableArray arrayWithCapacity:[response count]];
+    
+    for(NSDictionary *purchase in response) {
+        [purchases addObject:[DWPurchase create:purchase]];
+    }
+    
+    [self.delegate performSelector:sel
+                        withObject:purchases];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)unapprovedPurchasesLoadError:(NSNotification*)notification {
+    
+    SEL sel = @selector(unapprovedPurchasesLoadError:);
+    
+    if(![self.delegate respondsToSelector:sel])
+        return;
+    
+    
+    NSError *error = [[notification userInfo] objectForKey:kKeyError];
+    
+    [self.delegate performSelector:sel
+                        withObject:[error localizedDescription]];
+}
+
+//----------------------------------------------------------------------------------------------------
 - (void)purchaseCreated:(NSNotification*)notification {
     
     SEL sel = @selector(purchaseCreated:fromResourceID:);
@@ -316,9 +468,65 @@ static NSString* const kNPurchaseDeleteError    = @"NPurchaseDeleteError";
 }
 
 //----------------------------------------------------------------------------------------------------
+- (void)unapprovedPurchasesMiningStarted:(NSNotification*)notification {
+    
+    SEL sel = @selector(unapprovedPurchasesMiningStarted);
+    
+    if(![self.delegate respondsToSelector:sel])
+        return;
+    
+    
+    [self.delegate performSelector:sel];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)unapprovedPurchasesMiningStartError:(NSNotification*)notification {
+    
+    SEL sel = @selector(unapprovedPurchasesMiningStartError:);
+    
+    if(![self.delegate respondsToSelector:sel])
+        return;
+    
+    
+    NSError *error = [[notification userInfo] objectForKey:kKeyError];
+    
+    [self.delegate performSelector:sel
+                        withObject:[error localizedDescription]];
+}
+
+//----------------------------------------------------------------------------------------------------
 - (void)purchaseCreateError:(NSNotification*)notification {
     
     SEL sel = @selector(purchaseCreateError:fromResourceID:);
+    
+    if(![self.delegate respondsToSelector:sel])
+        return;
+    
+    
+    NSDictionary *info      = [notification userInfo];
+    NSError *error          = [info objectForKey:kKeyError];
+    
+    [self.delegate performSelector:sel
+                        withObject:[error localizedDescription]
+                        withObject:[info objectForKey:kKeyResourceID]];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)multiplePurchasesUpdated:(NSNotification*)notification {
+    
+    SEL sel = @selector(multiplePurchasesUpdated);
+    
+    if(![self.delegate respondsToSelector:sel])
+        return;
+    
+    
+    [self.delegate performSelector:sel];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)multiplePurchasesUpdateError:(NSNotification*)notification {
+    
+    SEL sel = @selector(multiplePurchasesUpdateError:);
     
     if(![self.delegate respondsToSelector:sel])
         return;

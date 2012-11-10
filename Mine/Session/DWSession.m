@@ -119,7 +119,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWSession);
 
 //----------------------------------------------------------------------------------------------------
 - (void)write {
-    
+
     NSUserDefaults *standardUserDefaults = [NSUserDefaults standardUserDefaults];
 	
 	if (standardUserDefaults) {
@@ -198,6 +198,12 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWSession);
 //----------------------------------------------------------------------------------------------------
 - (BOOL)isCurrentUser:(NSInteger)userID {
     return [self isAuthenticated] && self.currentUser.databaseID == userID;
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)emailAuthorized {
+    self.currentUser.isEmailAuthorized = YES;
+    [self update];
 }
 
 //----------------------------------------------------------------------------------------------------

@@ -28,5 +28,6 @@
 
 - (void)notificationsViewDisplayPurchase:(DWPurchase*)purchase;
 - (void)notificationsViewDisplayUser:(DWUser*)user;
+- (void)notificationsViewDisplayUnapprovedPurchases;
 
 @end

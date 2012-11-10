@@ -11,6 +11,7 @@
 #import <QuartzCore/QuartzCore.h>
 
 #import "DWPurchase.h"
+#import "DWStore.h"
 #import "DWUser.h"
 #import "DWConstants.h"
 
@@ -26,6 +27,8 @@ static NSInteger const kMaxTitleLengthInUserMode = 29;
 
 static NSString* const kImgMiniChevron = @"doink-up-8.png";
 static NSString* const kImgSpinnerBackground = @"delete-loading.png";
+static NSString* const kImgCrossButtonOn = @"feed-btn-x-on.png";
+static NSString* const kImgCrossButtonOff = @"feed-btn-x-off.png";
 
 #define kTitleFont [UIFont fontWithName:@"HelveticaNeue" size:10]
 #define kColorImageBackground [UIColor colorWithRed:0.862 green:0.862 blue:0.862 alpha:1.0]
@@ -39,6 +42,7 @@ static NSString* const kImgSpinnerBackground = @"delete-loading.png";
     NSMutableArray  *_chevrons;
     NSMutableArray  *_spinners;
     NSMutableArray  *_spinnerBackgrounds;
+    NSMutableArray  *_crossButtons;
 }
 
 
@@ -49,6 +53,7 @@ static NSString* const kImgSpinnerBackground = @"delete-loading.png";
 @property (nonatomic,strong) NSMutableArray *chevrons;
 @property (nonatomic,strong) NSMutableArray *spinners;
 @property (nonatomic,strong) NSMutableArray *spinnerBackgrounds;
+@property (nonatomic,strong) NSMutableArray *crossButtons;
 
 @end
 
@@ -67,6 +72,7 @@ static NSString* const kImgSpinnerBackground = @"delete-loading.png";
 @synthesize chevrons            = _chevrons;
 @synthesize spinners            = _spinners;
 @synthesize spinnerBackgrounds  = _spinnerBackgrounds;
+@synthesize crossButtons        = _crossButtons;
 @synthesize delegate            = _delegate;
 
 //----------------------------------------------------------------------------------------------------
@@ -105,20 +111,25 @@ static NSString* const kImgSpinnerBackground = @"delete-loading.png";
 
 //----------------------------------------------------------------------------------------------------
 + (NSString*)fullTitleForPurchaseWithTitle:(NSString*)title
+                                     store:(NSString*)store
                             andUserPronoun:(NSString*)pronoun
                                 inUserMode:(BOOL)userMode {
     
-    NSString* fullTitle = nil;
+    NSMutableString* fullTitle = nil;
+
    // NSInteger maxLength = 0;
     
     if(userMode) {
-        fullTitle = [NSString stringWithFormat:@"bought %@ %@",pronoun,title];
+        fullTitle = [NSMutableString stringWithFormat:@"bought %@ %@",pronoun,title];
         //maxLength = kMaxTitleLengthInUserMode;
     }
     else {
-        fullTitle = title;
+        fullTitle = [NSMutableString stringWithString:title];
         //maxLength = kMaxTitleLength;
     }
+    
+    if(store)
+        [fullTitle appendFormat:@" from %@",store];
     
     //if([fullTitle length] > maxLength)
     //    fullTitle = [NSString stringWithFormat:@"%@...",[fullTitle substringToIndex:maxLength-3]];
@@ -135,6 +146,7 @@ static NSString* const kImgSpinnerBackground = @"delete-loading.png";
     for(DWPurchase *purchase in purchases) {
         
         NSString *title = [self fullTitleForPurchaseWithTitle:purchase.title
+                                                        store:purchase.store ? purchase.store.name : nil
                                                andUserPronoun:purchase.user.pronoun
                                                    inUserMode:userMode];
         
@@ -167,11 +179,10 @@ static NSString* const kImgSpinnerBackground = @"delete-loading.png";
         imageButton.imageView.contentMode = UIViewContentModeScaleAspectFit;
         imageButton.backgroundColor = kColorImageBackground;
         
-        if(!self.userMode) {
-             [imageButton addTarget:self
-             action:@selector(didTapImageButton:)
-             forControlEvents:UIControlEventTouchUpInside];
-        }
+        [imageButton addTarget:self
+                        action:@selector(didTapImageButton:)
+              forControlEvents:UIControlEventTouchUpInside];
+
         
         [self.imageButtons addObject:imageButton];
         
@@ -252,11 +263,10 @@ static NSString* const kImgSpinnerBackground = @"delete-loading.png";
         [titleButton setTitleColor:[UIColor colorWithRed:0.333 green:0.333 blue:0.333 alpha:1.0]  
                           forState:UIControlStateNormal];
         
-        if(!self.userMode) {
-            [titleButton addTarget:self
-                            action:@selector(didTapTitleButton:)
-                  forControlEvents:UIControlEventTouchUpInside];
-        }
+        [titleButton addTarget:self
+                        action:@selector(didTapTitleButton:)
+              forControlEvents:UIControlEventTouchUpInside];
+        
         
         [self.titleButtons addObject:titleButton];
         
@@ -298,6 +308,34 @@ static NSString* const kImgSpinnerBackground = @"delete-loading.png";
     }
 }
 
+//----------------------------------------------------------------------------------------------------
+- (void)createCrossButtons {
+        
+    self.crossButtons = [NSMutableArray arrayWithCapacity:kColumnsInPurchaseSearch];
+    
+    for(NSInteger i=0 ; i<kColumnsInPurchaseSearch; i++) {
+        UIButton *imageButton = [self.imageButtons objectAtIndex:i];
+        
+        UIButton *crossButton = [[UIButton alloc] initWithFrame:CGRectMake(imageButton.frame.origin.x+114, imageButton.frame.origin.y+10, 25, 25)];
+        
+        crossButton.hidden = YES;
+
+        [crossButton setImage:[UIImage imageNamed:kImgCrossButtonOff]
+                     forState:UIControlStateNormal];
+        
+        [crossButton setImage:[UIImage imageNamed:kImgCrossButtonOn]
+                     forState:UIControlStateHighlighted];
+        
+        [crossButton addTarget:self
+                        action:@selector(didTapCrossButton:)
+              forControlEvents:UIControlEventTouchUpInside];
+        
+        [self.crossButtons addObject:crossButton];
+        
+        [self.contentView addSubview:crossButton];
+    }
+}
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
@@ -329,6 +367,9 @@ static NSString* const kImgSpinnerBackground = @"delete-loading.png";
     
     for(UIImageView *spinnerBackground in self.spinnerBackgrounds)
         spinnerBackground.hidden = YES;
+    
+    for(UIButton *crossButton in self.crossButtons)
+        crossButton.hidden = YES;
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -382,6 +423,7 @@ static NSString* const kImgSpinnerBackground = @"delete-loading.png";
 
 //----------------------------------------------------------------------------------------------------
 - (void)setPurchaseTitle:(NSString*)title
+                   store:(NSString*)store
                 forIndex:(NSInteger)index
          withUserPronoun:(NSString*)pronoun
           withPurchaseID:(NSInteger)purchaseID {
@@ -402,6 +444,7 @@ static NSString* const kImgSpinnerBackground = @"delete-loading.png";
     
     
     NSString *fullTitle = [[self class] fullTitleForPurchaseWithTitle:title
+                                                                store:store
                                                        andUserPronoun:pronoun
                                                            inUserMode:self.userMode];
     
@@ -436,6 +479,18 @@ static NSString* const kImgSpinnerBackground = @"delete-loading.png";
     spinnerBackground.hidden = NO;
 }
 
+//----------------------------------------------------------------------------------------------------
+- (void)displayCrossButtonForIndex:(NSInteger)index
+                    withPurchaseID:(NSInteger)purchaseID {
+    
+    if(!self.crossButtons)
+        [self createCrossButtons];
+    
+    UIButton *crossButton = [self.crossButtons objectAtIndex:index];
+    crossButton.tag = purchaseID;
+    crossButton.hidden = NO;
+}
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
@@ -444,13 +499,34 @@ static NSString* const kImgSpinnerBackground = @"delete-loading.png";
 
 //----------------------------------------------------------------------------------------------------
 - (void)didTapImageButton:(UIButton*)button {
+    SEL sel = @selector(purchaseClicked:);
+    
+    if(![self.delegate respondsToSelector:sel])
+        return;
+    
     [self.delegate purchaseClicked:button.tag];
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)didTapTitleButton:(UIButton*)button {
+    SEL sel = @selector(purchaseClicked:);
+    
+    if(![self.delegate respondsToSelector:sel])
+        return;
+    
     [self.delegate purchaseClicked:button.tag];
     //[self.delegate purchaseURLClicked:button.tag];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)didTapCrossButton:(UIButton*)button {
+    SEL sel = @selector(purchaseCrossClicked:);
+    
+    if(![self.delegate respondsToSelector:sel])
+        return;
+    
+    
+    [self.delegate purchaseCrossClicked:button.tag];
 }
 
 @end

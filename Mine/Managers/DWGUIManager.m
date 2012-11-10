@@ -13,14 +13,16 @@ static NSString* const kMsgErrorTitle       = @"Error";
 static NSString* const kMsgCancelTitle      = @"Dismiss";
 static NSString* const kMsgError            = @"Mine can't complete your request. Please try again later.";
 
-static NSString* const kImgSaveOff  = @"nav-btn-save-off.png";
-static NSString* const kImgSaveOn   = @"nav-btn-save-on.png";
-static NSString* const kImgNextOff  = @"nav-btn-next-off.png";
-static NSString* const kImgNextOn   = @"nav-btn-next-on.png";
-static NSString* const kImgSendOff  = @"nav-btn-send-off.png";
-static NSString* const kImgSendOn   = @"nav-btn-send-on.png";
-static NSString* const kImgCloseOff = @"nav-btn-close-off.png";
-static NSString* const kImgCloseOn  = @"nav-btn-close-on.png";
+static NSString* const kImgSaveOff      = @"nav-btn-save-off.png";
+static NSString* const kImgSaveOn       = @"nav-btn-save-on.png";
+static NSString* const kImgNextOff      = @"nav-btn-next-off.png";
+static NSString* const kImgNextOn       = @"nav-btn-next-on.png";
+static NSString* const kImgSendOff      = @"nav-btn-send-off.png";
+static NSString* const kImgSendOn       = @"nav-btn-send-on.png";
+static NSString* const kImgCloseOff     = @"nav-btn-close-off.png";
+static NSString* const kImgCloseOn      = @"nav-btn-close-on.png";
+static NSString* const kImgCancelOff 	= @"nav-btn-cancel-spadding-off.png";
+static NSString* const kImgCancelOn  	= @"nav-btn-cancel-spadding-on.png";
 
 
 
@@ -126,6 +128,16 @@ static NSString* const kImgCloseOn  = @"nav-btn-close-on.png";
                                selector:@selector(closeButtonClicked)
                                 onImage:kImgCloseOn
                                offImage:kImgCloseOff
+                                  frame:CGRectMake(0, 0, 58, 30)];
+}
+
+//----------------------------------------------------------------------------------------------------
++ (UIBarButtonItem*)navBarCancelButtonWithTarget:(id)target {
+    
+    return [self navBarButtonWithTarget:target
+                               selector:@selector(cancelButtonClicked)
+                                onImage:kImgCancelOn
+                               offImage:kImgCancelOff
                                   frame:CGRectMake(0, 0, 58, 30)];
 }
 

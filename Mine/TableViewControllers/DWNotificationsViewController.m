@@ -110,15 +110,16 @@
                                objectID:notification.databaseID
                               objectKey:kKeyUnread];
     
-    if([notification.resourceType isEqualToString:@"User"]) {
+    if(notification.identifier == DWNotificationIdentifierFollowing) {
         [self.delegate notificationsViewDisplayUser:notification.user];
     }
-    else if([notification.resourceType isEqualToString:@"Purchase"]) {
+    else if(notification.identifier == DWNotificationIdentifierLike || notification.identifier == DWNotificationIdentifierComment) {
         [self.delegate notificationsViewDisplayPurchase:notification.purchase];
-        
+    }
+    else if(notification.identifier == DWNotificationIdentifierUnapprovedPurchases) {
+        [self.delegate notificationsViewDisplayUnapprovedPurchases];
     }
 }
-
 
 
 //----------------------------------------------------------------------------------------------------

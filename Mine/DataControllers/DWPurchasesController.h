@@ -31,6 +31,16 @@
                      before:(NSInteger)before
                  withCaller:(NSObject*)caller;
 
+
+- (void)getUnapprovedStalePurchasesBefore:(NSInteger)before
+                                  perPage:(NSInteger)perPage;
+
+
+- (void)getUnapprovedLivePurchasesAtOffset:(NSInteger)offset
+                                   perPage:(NSInteger)perPage;
+
+- (void)getUnapprovedPurchasesMiningStarted;
+
 /**
  * Create a new purchase.
  */
@@ -40,6 +50,9 @@
                           withShareToTW:(BOOL)shareToTW
                           withShareToTB:(BOOL)shareToTB 
                          uploadDelegate:(id)uploadDelegate;
+
+- (void)approveMultiplePurchases:(NSMutableArray*)selectedIDs
+                     rejectedIDs:(NSMutableArray*)rejectedIDs;
 
 /** 
  * Delete a purchase
@@ -79,6 +92,16 @@
  */
 - (void)purchasesLoadError:(NSString*)error;
 
+
+- (void)unapprovedPurchasesLoaded:(NSMutableArray*)purchases;
+
+- (void)unapprovedPurchasesLoadError:(NSString*)error;
+
+
+- (void)unapprovedPurchasesMiningStarted;
+
+- (void)unapprovedPurchasesMiningStartError:(NSString*)error;
+
 /**
  * Purchase successfully created.
  */
@@ -90,6 +113,10 @@
  */
 - (void)purchaseCreateError:(NSString*)error
              fromResourceID:(NSNumber*)resourceID;
+
+- (void)multiplePurchasesUpdated;
+
+- (void)multiplePurchasesUpdateError:(NSString*)error;
 
 /**
  * Purchase successfully deleted.

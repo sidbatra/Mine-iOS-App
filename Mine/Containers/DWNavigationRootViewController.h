@@ -16,7 +16,9 @@
 #import "DWInviteViewController.h"
 #import "DWTabBarController.h"
 #import "DWCommentsCreateViewController.h"
-
+#import "DWGoogleAuthViewController.h"
+#import "DWYahooAuthViewController.h"
+#import "DWUnapprovedPurchasesViewController.h"
 
 
 @class DWUser;
@@ -26,7 +28,7 @@
  * Base class for navigation root view controllers which are used as
  * sub controllers of the custom tab bar controller.
  */
-@interface DWNavigationRootViewController : UIViewController<UINavigationControllerDelegate,DWProfileViewControllerDelegate,DWUsersViewControllerDelegate,DWPurchasesViewControllerDelegate,DWCreationViewControllerDelegate,DWPurchaseInputViewControllerDelegate,DWCommentsCreateViewControllerDelegate> {
+@interface DWNavigationRootViewController : UIViewController<UINavigationControllerDelegate,DWProfileViewControllerDelegate,DWUsersViewControllerDelegate,DWPurchasesViewControllerDelegate,DWCreationViewControllerDelegate,DWPurchaseInputViewControllerDelegate,DWCommentsCreateViewControllerDelegate,DWGoogleAuthViewControllerDelegate,DWYahooAuthViewControllerDelegate,DWUnapprovedPurchasesViewControllerDelegate> {
     
     __weak DWTabBarController *_customTabBarController;
 }
@@ -68,5 +70,12 @@
  */
 - (void)displayPurchaseViewForPurchase:(DWPurchase*)purchase
                           loadRemotely:(BOOL)loadRemotely;
+
+
+- (void)displayGoogleAuth;
+
+- (void)displayYahooAuth;
+
+- (void)displayUnapprovedPurchases:(BOOL)isLive;
 
 @end
