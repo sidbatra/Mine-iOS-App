@@ -20,7 +20,7 @@
 NSInteger const kTotalLikeUserImages = 6;
 NSInteger const kTotalComments = 3;
 
-static NSString* const kImgDoinkUp      = @"doink-up-16.png";
+static NSString* const kImgDoinkUp      = @"doink-up-24.png";
 static NSString* const kImgLikeOn       = @"feed-btn-like-on.png";
 static NSString* const kImgLikeOff      = @"feed-btn-like-off.png";
 static NSString* const kImgLikePushed   = @"feed-btn-like-pushed.png";
@@ -231,7 +231,7 @@ static NSInteger const kUserImageSide           = 34;
 
 //----------------------------------------------------------------------------------------------------
 - (void)createDoinkImageView {
-    UIImageView *doinkImageView = [[UIImageView alloc] initWithFrame:CGRectMake(31,infoBackground.frame.origin.y-7,16,8)];
+    UIImageView *doinkImageView = [[UIImageView alloc] initWithFrame:CGRectMake(27,infoBackground.frame.origin.y-11,24,12)];
     doinkImageView.image = [UIImage imageNamed:kImgDoinkUp];
     
     [self.contentView addSubview:doinkImageView];
