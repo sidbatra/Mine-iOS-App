@@ -18,6 +18,8 @@
 #import "DWDevice.h"
 #import "DWConstants.h"
 
+#import "TapjoyConnect.h"
+
 
 static NSString* const kFacebookURLPrefix = @"fb";
 
@@ -250,6 +252,8 @@ static NSString* const kFacebookURLPrefix = @"fb";
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     [self setupApplication];
+    [TapjoyConnect requestTapjoyConnect:kTapjoyAppID secretKey:kTapjoyAppSecret];
+    
     return YES;
 }
 

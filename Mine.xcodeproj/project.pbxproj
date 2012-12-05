@@ -68,6 +68,9 @@
 		26AA997416488D83001F91F2 /* connect-txt-pick@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26AA997316488D83001F91F2 /* connect-txt-pick@2x.png */; };
 		26B1DA96166EE13B00894D59 /* doink-up-24.png in Resources */ = {isa = PBXBuildFile; fileRef = 26B1DA94166EE13B00894D59 /* doink-up-24.png */; };
 		26B1DA97166EE13B00894D59 /* doink-up-24@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26B1DA95166EE13B00894D59 /* doink-up-24@2x.png */; };
+		26B1DAA6166EE8B700894D59 /* TapjoyAdvertiserLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 26B1DAA3166EE8B700894D59 /* TapjoyAdvertiserLibrary.a */; };
+		26B1DAA9166EE99700894D59 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26B1DAA8166EE99700894D59 /* CoreTelephony.framework */; };
+		26B1DAAB166EE9FE00894D59 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26B1DAAA166EE9FE00894D59 /* AdSupport.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		26B3237815D31C4A00F1E28F /* DWStoresViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B3237715D31C4A00F1E28F /* DWStoresViewDataSource.m */; };
 		26C4467715C8BA4400E9A50B /* DWProductCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C4467615C8BA4400E9A50B /* DWProductCell.m */; };
 		26C446A615C9D02700E9A50B /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C446A315C9D02700E9A50B /* NSData+Base64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -682,6 +685,11 @@
 		26AA997316488D83001F91F2 /* connect-txt-pick@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "connect-txt-pick@2x.png"; sourceTree = "<group>"; };
 		26B1DA94166EE13B00894D59 /* doink-up-24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "doink-up-24.png"; sourceTree = "<group>"; };
 		26B1DA95166EE13B00894D59 /* doink-up-24@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "doink-up-24@2x.png"; sourceTree = "<group>"; };
+		26B1DAA3166EE8B700894D59 /* TapjoyAdvertiserLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = TapjoyAdvertiserLibrary.a; sourceTree = "<group>"; };
+		26B1DAA4166EE8B700894D59 /* TapjoyConnect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TapjoyConnect.h; sourceTree = "<group>"; };
+		26B1DAA5166EE8B700894D59 /* TapjoyConnectConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TapjoyConnectConstants.h; sourceTree = "<group>"; };
+		26B1DAA8166EE99700894D59 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		26B1DAAA166EE9FE00894D59 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		26B3237615D31C4A00F1E28F /* DWStoresViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWStoresViewDataSource.h; sourceTree = "<group>"; };
 		26B3237715D31C4A00F1E28F /* DWStoresViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWStoresViewDataSource.m; sourceTree = "<group>"; };
 		26C4467515C8BA4400E9A50B /* DWProductCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWProductCell.h; sourceTree = "<group>"; };
@@ -1362,17 +1370,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26B1DAAB166EE9FE00894D59 /* AdSupport.framework in Frameworks */,
 				BB125085160BA2A600AA2521 /* MediaPlayer.framework in Frameworks */,
 				BB59B4D915F1EB7D000756EE /* CoreText.framework in Frameworks */,
 				2622008615C715B6003DC1DF /* AddressBook.framework in Frameworks */,
 				BBE42F5C15BE18DF000F6AE1 /* QuartzCore.framework in Frameworks */,
 				BB9F70B215B9E6630099C80A /* libz.dylib in Frameworks */,
+				26B1DAA9166EE99700894D59 /* CoreTelephony.framework in Frameworks */,
 				BB9F70B015B9E6450099C80A /* MobileCoreServices.framework in Frameworks */,
 				BB9F70AE15B9E6400099C80A /* SystemConfiguration.framework in Frameworks */,
 				BB9F70AB15B9E62F0099C80A /* CFNetwork.framework in Frameworks */,
 				BBC8A09515B9D26D00DF58F6 /* UIKit.framework in Frameworks */,
 				BBC8A09715B9D26D00DF58F6 /* Foundation.framework in Frameworks */,
 				BBC8A09915B9D26D00DF58F6 /* CoreGraphics.framework in Frameworks */,
+				26B1DAA6166EE8B700894D59 /* TapjoyAdvertiserLibrary.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1464,6 +1475,16 @@
 				267E551415D1CA4300A3A8C0 /* DWFacebookConnectViewController.xib */,
 			);
 			name = Controllers;
+			sourceTree = "<group>";
+		};
+		26B1DAA2166EE8B700894D59 /* TapjoyAdvertiserLibrary */ = {
+			isa = PBXGroup;
+			children = (
+				26B1DAA3166EE8B700894D59 /* TapjoyAdvertiserLibrary.a */,
+				26B1DAA4166EE8B700894D59 /* TapjoyConnect.h */,
+				26B1DAA5166EE8B700894D59 /* TapjoyConnectConstants.h */,
+			);
+			path = TapjoyAdvertiserLibrary;
 			sourceTree = "<group>";
 		};
 		26C446A115C9D02700E9A50B /* Tumblr */ = {
@@ -2198,6 +2219,7 @@
 				262376A615BF6BE700B3A037 /* Facebook */,
 				26C446A115C9D02700E9A50B /* Tumblr */,
 				26C446EF15CB3DEF00E9A50B /* Twitter */,
+				26B1DAA2166EE8B700894D59 /* TapjoyAdvertiserLibrary */,
 			);
 			path = External;
 			sourceTree = "<group>";
@@ -2362,6 +2384,8 @@
 		BBC8A09315B9D26D00DF58F6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				26B1DAAA166EE9FE00894D59 /* AdSupport.framework */,
+				26B1DAA8166EE99700894D59 /* CoreTelephony.framework */,
 				BB125084160BA2A600AA2521 /* MediaPlayer.framework */,
 				2622008515C715B6003DC1DF /* AddressBook.framework */,
 				BB9F70B115B9E6630099C80A /* libz.dylib */,
@@ -3240,6 +3264,10 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-ObjC",
+				);
 				PROVISIONING_PROFILE = "8111CA6B-389A-4555-9DD1-EB6DF472D38F";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "8111CA6B-389A-4555-9DD1-EB6DF472D38F";
 				SDKROOT = iphoneos;
@@ -3254,6 +3282,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Mine/Mine-Prefix.pch";
 				INFOPLIST_FILE = "Mine/Mine-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/External/TapjoyAdvertiserLibrary\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				"WARNING_CFLAGS[arch=*]" = "-Wno-arc-performSelector-leaks";
@@ -3285,6 +3317,10 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-ObjC",
+				);
 				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 			};
@@ -3307,6 +3343,10 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 5.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-ObjC",
+				);
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
@@ -3321,6 +3361,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Mine/Mine-Prefix.pch";
 				INFOPLIST_FILE = "Mine/Mine-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/External/TapjoyAdvertiserLibrary\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				"WARNING_CFLAGS[arch=*]" = "-Wno-arc-performSelector-leaks";
@@ -3335,6 +3379,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Mine/Mine-Prefix.pch";
 				INFOPLIST_FILE = "Mine/Mine-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/External/TapjoyAdvertiserLibrary\"",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				"WARNING_CFLAGS[arch=*]" = "-Wno-arc-performSelector-leaks";
