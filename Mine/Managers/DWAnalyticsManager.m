@@ -8,7 +8,7 @@
 
 #import "DWAnalyticsManager.h"
 
-#import "MixpanelAPI.h"
+#import "Mixpanel.h"
 #import "SynthesizeSingleton.h"
 
 #import "DWConstants.h"
@@ -43,7 +43,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWAnalyticsManager);
 	self = [super init];
 	
 	if(self) {
-        [MixpanelAPI sharedAPIWithToken:kMixpanepAPIToken];
+        [Mixpanel sharedInstanceWithToken:kMixpanepAPIToken];
 	}
 	
 	return self;
@@ -57,9 +57,9 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWAnalyticsManager);
 - (void)track:(NSString*)name withProperties:(NSMutableDictionary*)properties {
     
     if(properties)
-        [[MixpanelAPI sharedAPI] track:name properties:properties];
+        [[Mixpanel sharedInstance] track:name properties:properties];
     else
-        [[MixpanelAPI sharedAPI] track:name];
+        [[Mixpanel sharedInstance] track:name];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -72,7 +72,7 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWAnalyticsManager);
                    withAge:(NSInteger)integer
                 withGender:(NSString*)gender {
     
-    MixpanelAPI *mixpanel = [MixpanelAPI sharedAPI];
+    Mixpanel *mixpanel = [Mixpanel sharedInstance];
     
     mixpanel.nameTag = email;
     

@@ -136,12 +136,6 @@
 		BB2BC07315D09FA100CCC4BB /* DWCreatePurchaseBackgroundQueueItem.m in Sources */ = {isa = PBXBuildFile; fileRef = BB2BC07215D09FA100CCC4BB /* DWCreatePurchaseBackgroundQueueItem.m */; };
 		BB2BC07715D0B95600CCC4BB /* DWQueueProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = BB2BC07615D0B95600CCC4BB /* DWQueueProgressView.m */; };
 		BB2BC08C15D1909600CCC4BB /* DWAnalyticsManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BB2BC08B15D1909600CCC4BB /* DWAnalyticsManager.m */; };
-		BB2BC09F15D198B200CCC4BB /* MPCJSONDataSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = BB2BC09215D198B200CCC4BB /* MPCJSONDataSerializer.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		BB2BC0A015D198B200CCC4BB /* MPCJSONSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = BB2BC09415D198B200CCC4BB /* MPCJSONSerializer.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		BB2BC0A115D198B200CCC4BB /* MPCSerializedJSONData.m in Sources */ = {isa = PBXBuildFile; fileRef = BB2BC09615D198B200CCC4BB /* MPCSerializedJSONData.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		BB2BC0A215D198B200CCC4BB /* NSData+MPBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = BB2BC09915D198B200CCC4BB /* NSData+MPBase64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		BB2BC0A315D198B200CCC4BB /* MixpanelAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = BB2BC09B15D198B200CCC4BB /* MixpanelAPI.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		BB2BC0A415D198B200CCC4BB /* MixpanelEvent.m in Sources */ = {isa = PBXBuildFile; fileRef = BB2BC09E15D198B200CCC4BB /* MixpanelEvent.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		BB2BC0AF15D1DCA000CCC4BB /* DWSetting.m in Sources */ = {isa = PBXBuildFile; fileRef = BB2BC0AE15D1DCA000CCC4BB /* DWSetting.m */; };
 		BB2BC0B315D1E74800CCC4BB /* DWStatusController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB2BC0B215D1E74800CCC4BB /* DWStatusController.m */; };
 		BB2D167615CC7C2E005F571F /* DWPurchaseProfileCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BB2D167515CC7C2E005F571F /* DWPurchaseProfileCell.m */; };
@@ -575,6 +569,11 @@
 		BBE42F5615BE0F58000F6AE1 /* DWLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = BBE42F5515BE0F58000F6AE1 /* DWLoadingView.m */; };
 		BBE42F5A15BE188C000F6AE1 /* EGORefreshTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = BBE42F5915BE188C000F6AE1 /* EGORefreshTableHeaderView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		BBE42F5C15BE18DF000F6AE1 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBE42F5B15BE18DF000F6AE1 /* QuartzCore.framework */; };
+		BBECDDC41673CFEE00FEE875 /* MPCJSONDataSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = BBECDDBA1673CFEE00FEE875 /* MPCJSONDataSerializer.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		BBECDDC51673CFEE00FEE875 /* MPCJSONSerializer.m in Sources */ = {isa = PBXBuildFile; fileRef = BBECDDBC1673CFEE00FEE875 /* MPCJSONSerializer.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		BBECDDC61673CFEE00FEE875 /* MPCSerializedJSONData.m in Sources */ = {isa = PBXBuildFile; fileRef = BBECDDBE1673CFEE00FEE875 /* MPCSerializedJSONData.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		BBECDDC71673CFEE00FEE875 /* NSData+MPBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = BBECDDC11673CFEE00FEE875 /* NSData+MPBase64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		BBECDDC81673CFEE00FEE875 /* Mixpanel.m in Sources */ = {isa = PBXBuildFile; fileRef = BBECDDC31673CFEE00FEE875 /* Mixpanel.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		BBEDD2FE15D30798007F862F /* DWNotificationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BBEDD2FD15D30798007F862F /* DWNotificationManager.m */; };
 		BBEDD31C15E4FFF1007F862F /* DWUsersSearchViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = BBEDD31B15E4FFF1007F862F /* DWUsersSearchViewDataSource.m */; };
 		BBEDD31F15E50191007F862F /* DWUsersSearchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBEDD31E15E50190007F862F /* DWUsersSearchViewController.m */; };
@@ -816,19 +815,6 @@
 		BB2BC07615D0B95600CCC4BB /* DWQueueProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWQueueProgressView.m; sourceTree = "<group>"; };
 		BB2BC08A15D1909600CCC4BB /* DWAnalyticsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWAnalyticsManager.h; sourceTree = "<group>"; };
 		BB2BC08B15D1909600CCC4BB /* DWAnalyticsManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWAnalyticsManager.m; sourceTree = "<group>"; };
-		BB2BC09115D198B200CCC4BB /* MPCJSONDataSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPCJSONDataSerializer.h; sourceTree = "<group>"; };
-		BB2BC09215D198B200CCC4BB /* MPCJSONDataSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPCJSONDataSerializer.m; sourceTree = "<group>"; };
-		BB2BC09315D198B200CCC4BB /* MPCJSONSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPCJSONSerializer.h; sourceTree = "<group>"; };
-		BB2BC09415D198B200CCC4BB /* MPCJSONSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPCJSONSerializer.m; sourceTree = "<group>"; };
-		BB2BC09515D198B200CCC4BB /* MPCSerializedJSONData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPCSerializedJSONData.h; sourceTree = "<group>"; };
-		BB2BC09615D198B200CCC4BB /* MPCSerializedJSONData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPCSerializedJSONData.m; sourceTree = "<group>"; };
-		BB2BC09815D198B200CCC4BB /* NSData+MPBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+MPBase64.h"; sourceTree = "<group>"; };
-		BB2BC09915D198B200CCC4BB /* NSData+MPBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+MPBase64.m"; sourceTree = "<group>"; };
-		BB2BC09A15D198B200CCC4BB /* MixpanelAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MixpanelAPI.h; sourceTree = "<group>"; };
-		BB2BC09B15D198B200CCC4BB /* MixpanelAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MixpanelAPI.m; sourceTree = "<group>"; };
-		BB2BC09C15D198B200CCC4BB /* MixpanelAPI_Private.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MixpanelAPI_Private.h; sourceTree = "<group>"; };
-		BB2BC09D15D198B200CCC4BB /* MixpanelEvent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MixpanelEvent.h; sourceTree = "<group>"; };
-		BB2BC09E15D198B200CCC4BB /* MixpanelEvent.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MixpanelEvent.m; sourceTree = "<group>"; };
 		BB2BC0AD15D1DCA000CCC4BB /* DWSetting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWSetting.h; sourceTree = "<group>"; };
 		BB2BC0AE15D1DCA000CCC4BB /* DWSetting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWSetting.m; sourceTree = "<group>"; };
 		BB2BC0B115D1E74800CCC4BB /* DWStatusController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWStatusController.h; sourceTree = "<group>"; };
@@ -1352,6 +1338,16 @@
 		BBE42F5815BE188C000F6AE1 /* EGORefreshTableHeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EGORefreshTableHeaderView.h; sourceTree = "<group>"; };
 		BBE42F5915BE188C000F6AE1 /* EGORefreshTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EGORefreshTableHeaderView.m; sourceTree = "<group>"; };
 		BBE42F5B15BE18DF000F6AE1 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		BBECDDB91673CFEE00FEE875 /* MPCJSONDataSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPCJSONDataSerializer.h; sourceTree = "<group>"; };
+		BBECDDBA1673CFEE00FEE875 /* MPCJSONDataSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPCJSONDataSerializer.m; sourceTree = "<group>"; };
+		BBECDDBB1673CFEE00FEE875 /* MPCJSONSerializer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPCJSONSerializer.h; sourceTree = "<group>"; };
+		BBECDDBC1673CFEE00FEE875 /* MPCJSONSerializer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPCJSONSerializer.m; sourceTree = "<group>"; };
+		BBECDDBD1673CFEE00FEE875 /* MPCSerializedJSONData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MPCSerializedJSONData.h; sourceTree = "<group>"; };
+		BBECDDBE1673CFEE00FEE875 /* MPCSerializedJSONData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MPCSerializedJSONData.m; sourceTree = "<group>"; };
+		BBECDDC01673CFEE00FEE875 /* NSData+MPBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+MPBase64.h"; sourceTree = "<group>"; };
+		BBECDDC11673CFEE00FEE875 /* NSData+MPBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+MPBase64.m"; sourceTree = "<group>"; };
+		BBECDDC21673CFEE00FEE875 /* Mixpanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mixpanel.h; sourceTree = "<group>"; };
+		BBECDDC31673CFEE00FEE875 /* Mixpanel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Mixpanel.m; sourceTree = "<group>"; };
 		BBEDD2FC15D30798007F862F /* DWNotificationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWNotificationManager.h; sourceTree = "<group>"; };
 		BBEDD2FD15D30798007F862F /* DWNotificationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWNotificationManager.m; sourceTree = "<group>"; };
 		BBEDD31A15E4FFF1007F862F /* DWUsersSearchViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWUsersSearchViewDataSource.h; sourceTree = "<group>"; };
@@ -1748,53 +1744,11 @@
 		BB2BC08D15D198B200CCC4BB /* Mixpanel */ = {
 			isa = PBXGroup;
 			children = (
-				BB2BC08E15D198B200CCC4BB /* MPLib */,
+				BBECDDB71673CFEE00FEE875 /* Library */,
+				BBECDDC21673CFEE00FEE875 /* Mixpanel.h */,
+				BBECDDC31673CFEE00FEE875 /* Mixpanel.m */,
 			);
 			path = Mixpanel;
-			sourceTree = "<group>";
-		};
-		BB2BC08E15D198B200CCC4BB /* MPLib */ = {
-			isa = PBXGroup;
-			children = (
-				BB2BC08F15D198B200CCC4BB /* lib */,
-				BB2BC09A15D198B200CCC4BB /* MixpanelAPI.h */,
-				BB2BC09B15D198B200CCC4BB /* MixpanelAPI.m */,
-				BB2BC09C15D198B200CCC4BB /* MixpanelAPI_Private.h */,
-				BB2BC09D15D198B200CCC4BB /* MixpanelEvent.h */,
-				BB2BC09E15D198B200CCC4BB /* MixpanelEvent.m */,
-			);
-			path = MPLib;
-			sourceTree = "<group>";
-		};
-		BB2BC08F15D198B200CCC4BB /* lib */ = {
-			isa = PBXGroup;
-			children = (
-				BB2BC09015D198B200CCC4BB /* JSON */,
-				BB2BC09715D198B200CCC4BB /* NSData_Base64 */,
-			);
-			path = lib;
-			sourceTree = "<group>";
-		};
-		BB2BC09015D198B200CCC4BB /* JSON */ = {
-			isa = PBXGroup;
-			children = (
-				BB2BC09115D198B200CCC4BB /* MPCJSONDataSerializer.h */,
-				BB2BC09215D198B200CCC4BB /* MPCJSONDataSerializer.m */,
-				BB2BC09315D198B200CCC4BB /* MPCJSONSerializer.h */,
-				BB2BC09415D198B200CCC4BB /* MPCJSONSerializer.m */,
-				BB2BC09515D198B200CCC4BB /* MPCSerializedJSONData.h */,
-				BB2BC09615D198B200CCC4BB /* MPCSerializedJSONData.m */,
-			);
-			path = JSON;
-			sourceTree = "<group>";
-		};
-		BB2BC09715D198B200CCC4BB /* NSData_Base64 */ = {
-			isa = PBXGroup;
-			children = (
-				BB2BC09815D198B200CCC4BB /* NSData+MPBase64.h */,
-				BB2BC09915D198B200CCC4BB /* NSData+MPBase64.m */,
-			);
-			path = NSData_Base64;
 			sourceTree = "<group>";
 		};
 		BB350EB71617D1FA00531A80 /* Assets */ = {
@@ -2608,6 +2562,37 @@
 			path = EGOTableViewPullRefresh;
 			sourceTree = "<group>";
 		};
+		BBECDDB71673CFEE00FEE875 /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				BBECDDB81673CFEE00FEE875 /* JSON */,
+				BBECDDBF1673CFEE00FEE875 /* NSData_Base64 */,
+			);
+			path = Library;
+			sourceTree = "<group>";
+		};
+		BBECDDB81673CFEE00FEE875 /* JSON */ = {
+			isa = PBXGroup;
+			children = (
+				BBECDDB91673CFEE00FEE875 /* MPCJSONDataSerializer.h */,
+				BBECDDBA1673CFEE00FEE875 /* MPCJSONDataSerializer.m */,
+				BBECDDBB1673CFEE00FEE875 /* MPCJSONSerializer.h */,
+				BBECDDBC1673CFEE00FEE875 /* MPCJSONSerializer.m */,
+				BBECDDBD1673CFEE00FEE875 /* MPCSerializedJSONData.h */,
+				BBECDDBE1673CFEE00FEE875 /* MPCSerializedJSONData.m */,
+			);
+			path = JSON;
+			sourceTree = "<group>";
+		};
+		BBECDDBF1673CFEE00FEE875 /* NSData_Base64 */ = {
+			isa = PBXGroup;
+			children = (
+				BBECDDC01673CFEE00FEE875 /* NSData+MPBase64.h */,
+				BBECDDC11673CFEE00FEE875 /* NSData+MPBase64.m */,
+			);
+			path = NSData_Base64;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -3167,12 +3152,6 @@
 				267D572C15D095DA00DD4AB1 /* DWTwitterConnectViewController.m in Sources */,
 				267E550C15D1B4E900A3A8C0 /* DWTumblrConnectViewController.m in Sources */,
 				BB2BC08C15D1909600CCC4BB /* DWAnalyticsManager.m in Sources */,
-				BB2BC09F15D198B200CCC4BB /* MPCJSONDataSerializer.m in Sources */,
-				BB2BC0A015D198B200CCC4BB /* MPCJSONSerializer.m in Sources */,
-				BB2BC0A115D198B200CCC4BB /* MPCSerializedJSONData.m in Sources */,
-				BB2BC0A215D198B200CCC4BB /* NSData+MPBase64.m in Sources */,
-				BB2BC0A315D198B200CCC4BB /* MixpanelAPI.m in Sources */,
-				BB2BC0A415D198B200CCC4BB /* MixpanelEvent.m in Sources */,
 				267E551515D1CA4300A3A8C0 /* DWFacebookConnectViewController.m in Sources */,
 				BB2BC0AF15D1DCA000CCC4BB /* DWSetting.m in Sources */,
 				BB2BC0B315D1E74800CCC4BB /* DWStatusController.m in Sources */,
@@ -3230,6 +3209,11 @@
 				262625E41649A130004CFB1E /* DWEmailConnectCell.m in Sources */,
 				262625F01649B751004CFB1E /* DWEmailConnectPresenter.m in Sources */,
 				BB4AC3591649A16400B0512A /* DWUnapprovedPurchasesLoadingView.m in Sources */,
+				BBECDDC41673CFEE00FEE875 /* MPCJSONDataSerializer.m in Sources */,
+				BBECDDC51673CFEE00FEE875 /* MPCJSONSerializer.m in Sources */,
+				BBECDDC61673CFEE00FEE875 /* MPCSerializedJSONData.m in Sources */,
+				BBECDDC71673CFEE00FEE875 /* NSData+MPBase64.m in Sources */,
+				BBECDDC81673CFEE00FEE875 /* Mixpanel.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

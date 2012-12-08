@@ -13,7 +13,7 @@
 #define STAGING     1
 #define PRODUCTION  2
 
-#define ENVIRONMENT PRODUCTION
+#define ENVIRONMENT DEVELOPMENT
 
 
 
