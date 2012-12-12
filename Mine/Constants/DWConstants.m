@@ -10,7 +10,7 @@
 
 
 //----------------------------------------------------------------------------------------------------
-NSString* const kVersion            = @"1.2.0";
+NSString* const kVersion            = @"1.2.1";
 NSString* const kGet				= @"GET";
 NSString* const kPost               = @"POST";
 NSString* const kPut				= @"PUT";
@@ -64,6 +64,8 @@ NSString* const kTumblrConsumerKey              = @"89jCI6WNG1Ym9wYLkJ1FfDVTZCsM
 NSString* const kTumblrConsumerSecret           = @"L7BbVCPlAYq0ewzxEEEiJyIzgY8Ihj9YxALq9Ol0ueLnStNBwM";
 NSString* const kTwitterOAuthConsumerKey        = @"Y8wcijb0orzZSbkd3fQ4g";
 NSString* const kTwitterOAuthConsumerSecret     = @"i7Oqqpy1I1ZycqRpJOSsBMylURsFlC2Qo7pQc0YbUzk";
+NSString* const kTapjoyAppID                    = @"a489fa1d-2290-4519-898e-3ff4c0b0f526";
+NSString* const kTapjoyAppSecret                = @"Q2fOpUjit0WFLkGBG6w8";
 
 
 //----------------------------------------------------------------------------------------------------

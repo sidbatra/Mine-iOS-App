@@ -13,7 +13,7 @@
 #define STAGING     1
 #define PRODUCTION  2
 
-#define ENVIRONMENT PRODUCTION
+#define ENVIRONMENT DEVELOPMENT
 
 
 
@@ -97,6 +97,8 @@ extern NSString* const kTumblrConsumerKey;
 extern NSString* const kTumblrConsumerSecret;
 extern NSString* const kTwitterOAuthConsumerKey;
 extern NSString* const kTwitterOAuthConsumerSecret;
+extern NSString* const kTapjoyAppID;
+extern NSString* const kTapjoyAppSecret;
 
 /**
  * JSON key names
