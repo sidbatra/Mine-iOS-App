@@ -64,6 +64,7 @@ static NSString* const kKeyFollowingsCount              = @"followings_count";
 static NSString* const kKeyInverseFollowingsCount       = @"inverse_followings_count";
 static NSString* const kKeyUnreadNotificationsCount     = @"unread_notifications_count";
 static NSString* const kKeyIsEmailAuthorized            = @"is_email_authorized";
+static NSString* const kKeyIsMiningPurchases            = @"is_mining_purchases";
 static NSString* const kKeySensitive                    = @"sensitive";
 static NSString* const kKeySetting                      = @"setting";
 
@@ -95,6 +96,7 @@ static NSString* const kKeySetting                      = @"setting";
 @synthesize inverseFollowingsCount      = _inverseFollowingsCount;
 @synthesize unreadNotificationsCount    = _unreadNotificationsCount;
 @synthesize isEmailAuthorized           = _isEmailAuthorized;
+@synthesize isMiningPurchases           = _isMiningPurchases;
 @synthesize setting                     = _setting;
 
 //----------------------------------------------------------------------------------------------------
@@ -223,6 +225,7 @@ static NSString* const kKeySetting                      = @"setting";
     NSString *inverseFollowingsCount    = [user objectForKey:kKeyInverseFollowingsCount];
     NSString *unreadNotificationsCount  = [user objectForKey:kKeyUnreadNotificationsCount];
     NSString *isEmailAuthorized         = [user objectForKey:kKeyIsEmailAuthorized];
+    NSString *isMiningPurchases         = [user objectForKey:kKeyIsMiningPurchases];
     
     NSString *sensitive                 = [user objectForKey:kKeySensitive];
     
@@ -287,6 +290,9 @@ static NSString* const kKeySetting                      = @"setting";
 
     if(isEmailAuthorized)
         self.isEmailAuthorized = [isEmailAuthorized boolValue];
+    
+    if(isMiningPurchases)
+        self.isMiningPurchases = [isMiningPurchases boolValue];
     
     
     if(setting) {
@@ -358,7 +364,7 @@ static NSString* const kKeySetting                      = @"setting";
 
 //----------------------------------------------------------------------------------------------------
 - (void)debug {
-    DWDebug(@"%@ %@ %@ %@ %@ %@ %d %@  %@ %@  %@ %@  %@ %@  %d %d %d %d %@",
+    DWDebug(@"%@ %@ %@ %@ %@ %@ %d %@  %@ %@  %@ %@  %@ %@  %d %d %d %d %@ %d",
           self.firstName,self.lastName,self.gender,self.handle,self.byline,self.email,self.age,
           self.facebookAccessToken,
           self.twitterAccessToken,self.twitterAccessTokenSecret,          
@@ -368,7 +374,8 @@ static NSString* const kKeySetting                      = @"setting";
           self.followingsCount,
           self.inverseFollowingsCount,
           self.unreadNotificationsCount,
-          self.iphoneDeviceToken);
+          self.iphoneDeviceToken,
+          self.isMiningPurchases);
     
     [self.setting debug];
 }
