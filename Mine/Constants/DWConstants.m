@@ -87,6 +87,7 @@ NSString* const kKeyResetType           = @"reset_type";
 NSString* const kKeyCount               = @"count";
 NSString* const kKeyCreatedAt           = @"created_at";
 NSString* const kKeyImageURL            = @"image_url";
+NSString* const kKeyStatus              = @"status";
 
 
 //----------------------------------------------------------------------------------------------------

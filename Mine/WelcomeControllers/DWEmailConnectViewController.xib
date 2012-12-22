@@ -97,14 +97,36 @@
 							<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
 						</object>
 						<reference key="IBUINormalTitleShadowColor" ref="1043273569"/>
-						<object class="NSCustomResource" key="IBUIHighlightedBackgroundImage">
+						<object class="NSCustomResource" key="IBUIHighlightedBackgroundImage" id="607334509">
 							<string key="NSClassName">NSImage</string>
 							<string key="NSResourceName">connect-btn-yahoo-on.png</string>
 						</object>
-						<object class="NSCustomResource" key="IBUINormalBackgroundImage">
+						<object class="NSCustomResource" key="IBUINormalBackgroundImage" id="381130148">
 							<string key="NSClassName">NSImage</string>
 							<string key="NSResourceName">connect-btn-yahoo-off.png</string>
 						</object>
+						<reference key="IBUIFontDescription" ref="439895325"/>
+						<reference key="IBUIFont" ref="866947567"/>
+					</object>
+					<object class="IBUIButton" id="175074544">
+						<reference key="NSNextResponder" ref="191373211"/>
+						<int key="NSvFlags">292</int>
+						<string key="NSFrame">{{8, 264}, {304, 51}}</string>
+						<reference key="NSSuperview" ref="191373211"/>
+						<reference key="NSWindow"/>
+						<string key="NSReuseIdentifierKey">_NS:9</string>
+						<bool key="IBUIOpaque">NO</bool>
+						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+						<int key="IBUIContentHorizontalAlignment">0</int>
+						<int key="IBUIContentVerticalAlignment">0</int>
+						<reference key="IBUIHighlightedTitleColor" ref="327134963"/>
+						<object class="NSColor" key="IBUINormalTitleColor">
+							<int key="NSColorSpace">1</int>
+							<bytes key="NSRGB">MC4xOTYwNzg0MzQ2IDAuMzA5ODAzOTMyOSAwLjUyMTU2ODY1NgA</bytes>
+						</object>
+						<reference key="IBUINormalTitleShadowColor" ref="1043273569"/>
+						<reference key="IBUIHighlightedBackgroundImage" ref="607334509"/>
+						<reference key="IBUINormalBackgroundImage" ref="381130148"/>
 						<reference key="IBUIFontDescription" ref="439895325"/>
 						<reference key="IBUIFont" ref="866947567"/>
 					</object>
@@ -114,7 +136,6 @@
 						<string key="NSFrame">{{117, 416}, {87, 44}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
 						<string key="NSReuseIdentifierKey">_NS:9</string>
 						<object class="NSColor" key="IBUIBackgroundColor" id="138073127">
 							<int key="NSColorSpace">3</int>
@@ -193,7 +214,7 @@
 					<object class="IBUILabel" id="397330910">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
-						<string key="NSFrame">{{0, 264}, {320, 18}}</string>
+						<string key="NSFrame">{{0, 324}, {320, 18}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
 						<reference key="NSNextKeyView" ref="442912438"/>
@@ -256,6 +277,14 @@
 					<int key="connectionID">15</int>
 				</object>
 				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">hotmailButton</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="175074544"/>
+					</object>
+					<int key="connectionID">140</int>
+				</object>
+				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
 						<string key="label">googleButtonClicked:</string>
 						<reference key="source" ref="585747631"/>
@@ -282,6 +311,15 @@
 					</object>
 					<int key="connectionID">39</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchEventConnection" key="connection">
+						<string key="label">hotmailButtonClicked:</string>
+						<reference key="source" ref="175074544"/>
+						<reference key="destination" ref="372490531"/>
+						<int key="IBEventType">7</int>
+					</object>
+					<int key="connectionID">139</int>
+				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<array key="orderedObjects">
@@ -301,6 +339,7 @@
 							<reference ref="12487308"/>
 							<reference ref="105291605"/>
 							<reference ref="397330910"/>
+							<reference ref="175074544"/>
 						</array>
 						<reference key="parent" ref="0"/>
 					</object>
@@ -351,6 +390,11 @@
 						<array class="NSMutableArray" key="children"/>
 						<reference key="parent" ref="191373211"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">137</int>
+						<reference key="object" ref="175074544"/>
+						<reference key="parent" ref="191373211"/>
+					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -360,6 +404,8 @@
 				<string key="-2.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="1.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="108.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="137.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<real value="1" key="137.IBUIButtonInspectorSelectedStateConfigurationMetadataKey"/>
 				<string key="18.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="4.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<real value="1" key="4.IBUIButtonInspectorSelectedStateConfigurationMetadataKey"/>
@@ -372,7 +418,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">136</int>
+			<int key="maxID">140</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -381,12 +427,17 @@
 					<string key="superclassName">UIViewController</string>
 					<dictionary class="NSMutableDictionary" key="actions">
 						<string key="googleButtonClicked:">id</string>
+						<string key="hotmailButtonClicked:">id</string>
 						<string key="skipButtonClicked:">id</string>
 						<string key="yahooButtonClicked:">id</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="actionInfosByName">
 						<object class="IBActionInfo" key="googleButtonClicked:">
 							<string key="name">googleButtonClicked:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="hotmailButtonClicked:">
+							<string key="name">hotmailButtonClicked:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 						<object class="IBActionInfo" key="skipButtonClicked:">
@@ -400,11 +451,16 @@
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="googleButton">UIButton</string>
+						<string key="hotmailButton">UIButton</string>
 						<string key="yahooButton">UIButton</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
 						<object class="IBToOneOutletInfo" key="googleButton">
 							<string key="name">googleButton</string>
+							<string key="candidateClassName">UIButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="hotmailButton">
+							<string key="name">hotmailButton</string>
 							<string key="candidateClassName">UIButton</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="yahooButton">

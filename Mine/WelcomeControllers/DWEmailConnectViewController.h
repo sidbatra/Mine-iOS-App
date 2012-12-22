@@ -14,6 +14,7 @@
 @interface DWEmailConnectViewController : UIViewController<UIWebViewDelegate> {
     UIButton    *_googleButton;
     UIButton    *_yahooButton;
+    UIButton    *_hotmailButton;
     
     __weak id<DWEmailConnectViewControllerDelegate> _delegate;
 }
@@ -23,9 +24,11 @@
 
 @property (nonatomic) IBOutlet UIButton *googleButton;
 @property (nonatomic) IBOutlet UIButton *yahooButton;
+@property (nonatomic) IBOutlet UIButton *hotmailButton;
 
 - (IBAction)googleButtonClicked:(id)sender;
 - (IBAction)yahooButtonClicked:(id)sender;
+- (IBAction)hotmailButtonClicked:(id)sender;
 - (IBAction)skipButtonClicked:(id)sender;
 
 @end
@@ -38,6 +41,7 @@
 
 - (void)emailConnectGoogleAuthInitiated;
 - (void)emailConnectYahooAuthInitiated;
+- (void)emailConnectHotmailAuthInitiated;
 - (void)emailConnectSkipped;
 
 @end

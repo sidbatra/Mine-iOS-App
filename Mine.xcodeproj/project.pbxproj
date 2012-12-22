@@ -580,6 +580,9 @@
 		BBEDD32215E5087B007F862F /* DWSearchBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BBEDD32115E5087B007F862F /* DWSearchBar.m */; };
 		BBEDD33615EB3D6D007F862F /* DWUserDetailsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBEDD33415EB3D6D007F862F /* DWUserDetailsViewController.m */; };
 		BBEDD33715EB3D6D007F862F /* DWUserDetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBEDD33515EB3D6D007F862F /* DWUserDetailsViewController.xib */; };
+		BBF0856A16854BC500EC3AE1 /* DWHotmailAuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBF0856816854BC500EC3AE1 /* DWHotmailAuthViewController.m */; };
+		BBF0856E16854C5D00EC3AE1 /* DWHotmailAuthViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBF0856D16854C5D00EC3AE1 /* DWHotmailAuthViewController.xib */; };
+		BBF0857116854F9100EC3AE1 /* DWHotmailController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBF0857016854F9100EC3AE1 /* DWHotmailController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -1359,6 +1362,11 @@
 		BBEDD33315EB3D6D007F862F /* DWUserDetailsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWUserDetailsViewController.h; sourceTree = "<group>"; };
 		BBEDD33415EB3D6D007F862F /* DWUserDetailsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWUserDetailsViewController.m; sourceTree = "<group>"; };
 		BBEDD33515EB3D6D007F862F /* DWUserDetailsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DWUserDetailsViewController.xib; sourceTree = "<group>"; };
+		BBF0856716854BC500EC3AE1 /* DWHotmailAuthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWHotmailAuthViewController.h; sourceTree = "<group>"; };
+		BBF0856816854BC500EC3AE1 /* DWHotmailAuthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWHotmailAuthViewController.m; sourceTree = "<group>"; };
+		BBF0856D16854C5D00EC3AE1 /* DWHotmailAuthViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DWHotmailAuthViewController.xib; sourceTree = "<group>"; };
+		BBF0856F16854F9100EC3AE1 /* DWHotmailController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWHotmailController.h; sourceTree = "<group>"; };
+		BBF0857016854F9100EC3AE1 /* DWHotmailController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWHotmailController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1600,6 +1608,8 @@
 				2622006315C71421003DC1DF /* DWContactsController.m */,
 				BB2BC04E15CDECC900CCC4BB /* DWFollowingsController.h */,
 				BB2BC04F15CDECC900CCC4BB /* DWFollowingsController.m */,
+				BBF0856F16854F9100EC3AE1 /* DWHotmailController.h */,
+				BBF0857016854F9100EC3AE1 /* DWHotmailController.m */,
 				2622006415C71421003DC1DF /* DWInvitesController.h */,
 				2622006515C71421003DC1DF /* DWInvitesController.m */,
 				BB26988115BBA75B00037453 /* DWFeedController.h */,
@@ -1645,6 +1655,9 @@
 				BB6773801641F84100C3A1E1 /* DWGoogleAuthViewController.h */,
 				BB6773811641F84200C3A1E1 /* DWGoogleAuthViewController.m */,
 				BB6773821641F84200C3A1E1 /* DWGoogleAuthViewController.xib */,
+				BBF0856716854BC500EC3AE1 /* DWHotmailAuthViewController.h */,
+				BBF0856816854BC500EC3AE1 /* DWHotmailAuthViewController.m */,
+				BBF0856D16854C5D00EC3AE1 /* DWHotmailAuthViewController.xib */,
 				2622005415C713A7003DC1DF /* DWInviteViewController.h */,
 				2622005515C713A7003DC1DF /* DWInviteViewController.m */,
 				2622005615C713A7003DC1DF /* DWInviteViewController.xib */,
@@ -3014,6 +3027,7 @@
 				BB4AC3F1164B52B400B0512A /* stamp-inset-144.png in Resources */,
 				26B1DA96166EE13B00894D59 /* doink-up-24.png in Resources */,
 				26B1DA97166EE13B00894D59 /* doink-up-24@2x.png in Resources */,
+				BBF0856E16854C5D00EC3AE1 /* DWHotmailAuthViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3214,6 +3228,8 @@
 				BBECDDC61673CFEE00FEE875 /* MPCSerializedJSONData.m in Sources */,
 				BBECDDC71673CFEE00FEE875 /* NSData+MPBase64.m in Sources */,
 				BBECDDC81673CFEE00FEE875 /* Mixpanel.m in Sources */,
+				BBF0856A16854BC500EC3AE1 /* DWHotmailAuthViewController.m in Sources */,
+				BBF0857116854F9100EC3AE1 /* DWHotmailController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

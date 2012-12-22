@@ -121,6 +121,8 @@ extern NSString* const kKeyResetType;
 extern NSString* const kKeyCount;
 extern NSString* const kKeyCreatedAt;
 extern NSString* const kKeyImageURL;
+extern NSString* const kKeyStatus;
+
 
 /**
  * Misc

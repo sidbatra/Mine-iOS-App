@@ -276,6 +276,11 @@ static NSString* const kInfoURL = @"/?web_view_mode=true";
 }
 
 //----------------------------------------------------------------------------------------------------
+- (void)emailConnectHotmailAuthInitiated {
+    [self displayHotmailAuth];
+}
+
+//----------------------------------------------------------------------------------------------------
 - (void)emailConnectSkipped {
     [self endWelcomeNavigation];
 }

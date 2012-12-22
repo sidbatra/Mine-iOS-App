@@ -169,6 +169,18 @@
 }
 
 //----------------------------------------------------------------------------------------------------
+- (void)displayHotmailAuth {
+    
+    DWHotmailAuthViewController *hotmailAuthViewController = [[DWHotmailAuthViewController alloc] init];
+    
+    hotmailAuthViewController.delegate = self;
+    
+    [self.navigationController pushViewController:hotmailAuthViewController
+                                         animated:YES];
+    
+}
+
+//----------------------------------------------------------------------------------------------------
 - (void)displayUnapprovedPurchases:(BOOL)isLive {
     DWUnapprovedPurchasesViewController *unapprovedPurchasesViewController = [[DWUnapprovedPurchasesViewController alloc] initWithModeIsLive:isLive];
     
@@ -366,6 +378,24 @@
                                           cancelButtonTitle:@"OK"
                                           otherButtonTitles:nil];
     [alert show];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWHotmailAuthViewControllerDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)hotmailAuthAccepted {
+    [self.navigationController popViewControllerAnimated:NO];
+    
+    [self displayUnapprovedPurchases:YES];
+    [[DWSession sharedDWSession] emailAuthorized];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)hotmailAuthRejected {
 }
 
 

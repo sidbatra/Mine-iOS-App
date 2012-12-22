@@ -25,6 +25,7 @@
 @synthesize delegate = _delegate;
 @synthesize googleButton = _googleButton;
 @synthesize yahooButton = _yahooButton;
+@synthesize hotmailButton = _hotmailButton;
 
 //----------------------------------------------------------------------------------------------------
 - (id)init {
@@ -80,6 +81,13 @@
     [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Yahoo Auth Initiated"];
     
     [self.delegate emailConnectYahooAuthInitiated];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (IBAction)hotmailButtonClicked:(id)sender {
+    [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Hotmail Auth Initiated"];
+    
+    [self.delegate emailConnectHotmailAuthInitiated];
 }
 
 //----------------------------------------------------------------------------------------------------
