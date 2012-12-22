@@ -36,5 +36,6 @@
 
 - (void)googleConnectClicked;
 - (void)yahooConnectClicked;
+- (void)hotmailConnectClicked;
 
 @end

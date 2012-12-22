@@ -35,14 +35,9 @@
  */
 - (void)feedViewUserClicked:(DWUser*)user;
 
-/**
- * Google connect initiated for email import
- */
-- (void)googleConnectInitiated;
 
-/**
- * Yahoo connect initiated for email import
- */
+- (void)googleConnectInitiated;
 - (void)yahooConnectInitiated;
+- (void)hotmailConnectInitiated;
 
 @end

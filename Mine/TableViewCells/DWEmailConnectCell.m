@@ -16,6 +16,8 @@ static NSString* const kImgGoogleOff    = @"feed-btn-gmail-off.png";
 static NSString* const kImgGoogleOn     = @"feed-btn-gmail-on.png";
 static NSString* const kImgYahooOff     = @"feed-btn-yahoo-off.png";
 static NSString* const kImgYahooOn      = @"feed-btn-yahoo-on.png";
+static NSString* const kImgHotmailOff   = @"feed-btn-yahoo-off.png";
+static NSString* const kImgHotmailOn    = @"feed-btn-yahoo-on.png";
 
 
 @interface DWEmailConnectCell() {
@@ -23,6 +25,7 @@ static NSString* const kImgYahooOn      = @"feed-btn-yahoo-on.png";
     UILabel     *subtitleLabel;
     UIButton    *googleButton;
     UIButton    *yahooButton;
+    UIButton    *hotmailButton;
 }
 @end
 
@@ -119,7 +122,23 @@ static NSString* const kImgYahooOn      = @"feed-btn-yahoo-on.png";
                     action:@selector(didTapYahooButton:)
            forControlEvents:UIControlEventTouchUpInside];
     
-    [self.contentView addSubview:yahooButton];    
+    [self.contentView addSubview:yahooButton];
+    
+    
+    
+    hotmailButton = [[UIButton alloc] initWithFrame:CGRectMake(307,0,55,50)];
+    
+    [hotmailButton setBackgroundImage:[UIImage imageNamed:kImgHotmailOff]
+                           forState:UIControlStateNormal];
+    
+    [hotmailButton setBackgroundImage:[UIImage imageNamed:kImgHotmailOn]
+                           forState:UIControlStateHighlighted];
+    
+    [hotmailButton addTarget:self
+                    action:@selector(didTapHotmailButton:)
+          forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.contentView addSubview:hotmailButton];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -148,6 +167,13 @@ static NSString* const kImgYahooOn      = @"feed-btn-yahoo-on.png";
     [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Yahoo Auth Initiated"];
     
     [self.delegate yahooConnectClicked];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)didTapHotmailButton:(UIButton*)button {
+    [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Hotmail Auth Initiated"];
+    
+    [self.delegate hotmailConnectClicked];
 }
 
 
