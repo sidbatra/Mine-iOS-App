@@ -57,7 +57,7 @@ static NSInteger const kUserRetryInterval = 7;
 //----------------------------------------------------------------------------------------------------
 - (void)loadDelayedPurchases {
     [self.purchasesController getUnapprovedLivePurchasesAtOffset:self.offset
-                                                         perPage:10];
+                                                         perPage:50];
 }
 
 //----------------------------------------------------------------------------------------------------
