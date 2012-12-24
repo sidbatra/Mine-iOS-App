@@ -66,8 +66,8 @@
     DWNotification *notification = object;
     DWNotificationCell *cell     = base;
     
-    if([notification class] == objectClass && notification.databaseID == objectID) {
-         if(objectKey == kKeyImageURL)
+    if([notification class] == objectClass && (notification.databaseID == objectID || !objectID)) {
+         if([objectKey isEqualToString:notification.imageURL])
              [cell setNotificationImage:notification.image];
          else if(objectKey == kKeyUnread) {
              [cell resetDarkMode];

@@ -92,8 +92,8 @@
     NSDictionary *userInfo = [notification userInfo];
     
     [self provideResourceToVisibleCells:[DWNotification class]
-                               objectID:[[userInfo objectForKey:kKeyResourceID] integerValue]
-                              objectKey:kKeyImageURL];
+                               objectID:0
+                              objectKey:[userInfo objectForKey:kKeyImageURL]];
 }
 
 
