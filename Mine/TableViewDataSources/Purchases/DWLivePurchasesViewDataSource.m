@@ -15,7 +15,7 @@
 #import "SBJsonParser.h"
 
 static NSInteger const kInitialPurchasesRetryInterval = 5;
-static NSInteger const kInitialUserRetryInterval = 3;
+static NSInteger const kInitialUserRetryInterval = 5;
 static NSInteger const kPurchasesRetryInterval = 5;
 static NSInteger const kUserRetryInterval = 3;
 
@@ -129,9 +129,9 @@ static NSInteger const kUserRetryInterval = 3;
             if(metadata) {
                 CGFloat progress = [[metadata objectForKey:kKeyProgress] floatValue];
                 DWStore *store = [DWStore create:[metadata objectForKey:kKeyStore]];
-                [store debug];
                 
-                NSLog(@"PROGRESS - %f",progress);
+                [self.delegate unapprovedPurchasesStatus:store
+                                                progress:progress];
             }
                 
         }
@@ -139,6 +139,9 @@ static NSInteger const kUserRetryInterval = 3;
         [self loadUser];
     }
     else {
+        [self.delegate unapprovedPurchasesStatus:nil
+                                        progress:1.0];
+        
         [super unapprovedPurchasesLoaded:[NSArray array]];
         
         self.usersController = nil;

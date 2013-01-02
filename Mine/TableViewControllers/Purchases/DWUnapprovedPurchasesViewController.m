@@ -47,7 +47,7 @@
     self = [super init];
     
     if(self) {
-
+        
         self.tableViewDataSource = isLive ? [[DWLivePurchasesViewDataSource alloc] init] : [[DWStalePurchasesViewDataSource alloc] init];
         
         [self addModelPresenterForClass:[DWModelSet class]
@@ -117,6 +117,15 @@
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
 #pragma mark DWUnapprovedPurchasesViewDataSourceDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)unapprovedPurchasesStatus:(DWStore*)store
+                         progress:(CGFloat)progress {
+    if(store)
+        [store debug];
+    
+    NSLog(@"PROGRESS - %f",progress);
+}
 
 //----------------------------------------------------------------------------------------------------
 - (void)unapprovedPurchasesFinished:(NSInteger)count {
