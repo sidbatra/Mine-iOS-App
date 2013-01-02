@@ -15,7 +15,7 @@
 #import "SBJsonParser.h"
 
 static NSInteger const kInitialPurchasesRetryInterval = 5;
-static NSInteger const kInitialUserRetryInterval = 5;
+static NSInteger const kInitialUserRetryInterval = 3;
 static NSInteger const kPurchasesRetryInterval = 5;
 static NSInteger const kUserRetryInterval = 3;
 

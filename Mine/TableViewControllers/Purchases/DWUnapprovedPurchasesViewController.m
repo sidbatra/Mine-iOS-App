@@ -63,6 +63,11 @@
                                                  selector:@selector(purchaseGiantImageLoaded:)
                                                      name:kNImgPurchaseGiantLoaded
                                                    object:nil];
+        
+        [[NSNotificationCenter defaultCenter] addObserver:self
+                                                 selector:@selector(storeMediumImageLoaded:)
+                                                     name:kNImgStoreMediumLoaded
+                                                   object:nil];
     }
     
     return self;
@@ -121,8 +126,10 @@
 //----------------------------------------------------------------------------------------------------
 - (void)unapprovedPurchasesStatus:(DWStore*)store
                          progress:(CGFloat)progress {
-    if(store)
+    if(store) {
         [store debug];
+        [store downloadMediumImage];
+    }
     
     NSLog(@"PROGRESS - %f",progress);
 }
@@ -217,6 +224,12 @@
                               objectKey:kKeyGiantImageURL];
 }
 
+//----------------------------------------------------------------------------------------------------
+- (void)storeMediumImageLoaded:(NSNotification*)notification {
+    NSDictionary *userInfo = [notification userInfo];
+    
+    NSLog(@"Store image downloaded - %d",[[userInfo objectForKey:kKeyResourceID] integerValue]);
+}
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------

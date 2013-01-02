@@ -7,11 +7,14 @@
 //
 
 #import "DWStore.h"
+#import "DWImageManager.h"
 #import "DWConstants.h"
 
+NSString* const kNImgStoreMediumLoaded        = @"NImgStoreMediumLoaded";
+NSString* const kNImgStoreMediumLoadError     = @"NImgStoreMediumLoadError";
 
-static NSString* const kKeyName     = @"name";
-static NSString* const kKeyDomain   = @"domain";
+static NSString* const kKeyName = @"name";
+static NSString* const kKeyMediumImageURL = @"medium_url";
 
 
 
@@ -21,7 +24,7 @@ static NSString* const kKeyDomain   = @"domain";
 @implementation DWStore
 
 @synthesize name     = _name;
-@synthesize domain   = _domain;
+@synthesize mediumImageURL = _mediumImageURL;
 
 
 //----------------------------------------------------------------------------------------------------
@@ -50,17 +53,34 @@ static NSString* const kKeyDomain   = @"domain";
     [super update:store];
 	
     NSString *name      = [store objectForKey:kKeyName];
-    NSString *domain    = [store objectForKey:kKeyDomain];
+    NSString *mediumImageURL = [store objectForKey:kKeyMediumImageURL];
 
     if(name && ![self.name isEqualToString:name])
         self.name = name;
         
-    if(domain && ![domain isKindOfClass:[NSNull class]] && ![self.domain isEqualToString:domain])
-        self.domain = domain;
+    if(mediumImageURL && ![self.mediumImageURL isEqualToString:mediumImageURL])
+        self.mediumImageURL = mediumImageURL;
 }
 
 //----------------------------------------------------------------------------------------------------
+- (UIImage*)mediumImage {
+    return [[DWImageManager sharedDWImageManager] fetch:self.mediumImageURL];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)downloadMediumImage {
+    if(!self.mediumImageURL)
+        return;
+    
+    [[DWImageManager sharedDWImageManager] downloadImageAtURL:self.mediumImageURL
+                                               withResourceID:self.databaseID
+                                          successNotification:kNImgStoreMediumLoaded
+                                            errorNotification:kNImgStoreMediumLoadError];
+}
+
+
+//----------------------------------------------------------------------------------------------------
 - (void)debug {
-    DWDebug(@"%@ %@",self.name,self.domain);
+    DWDebug(@"%@ %@",self.name,self.mediumImageURL);
 }
 @end
