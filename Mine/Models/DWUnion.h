@@ -21,4 +21,7 @@
 @property (nonatomic,strong) NSString *title;
 @property (nonatomic,strong) NSString *subtitle;
 
+- (void)setCustomKeyValue:(NSString*)key value:(id)value;
+- (id)customValueforKey:(NSString*)key;
+
 @end

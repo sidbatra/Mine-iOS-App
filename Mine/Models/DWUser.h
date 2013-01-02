@@ -17,6 +17,11 @@
  */
 extern NSString* const kKeySquareImageURL;
 extern NSString* const kKeyLargeUserImageURL;
+
+extern NSString* const kKeyIsGoogleAuthorized;
+extern NSString* const kKeyIsYahooAuthorized;
+extern NSString* const kKeyIsHotmailAuthorized;
+
 extern NSString* const kNImgUserSquareLoaded;
 extern NSString* const kNImgUserSquareLoadError;
 extern NSString* const kNImgUserLargeLoaded;

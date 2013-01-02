@@ -244,9 +244,10 @@
 - (void)userSuggestionsLoaded:(NSMutableArray *)users forUserID:(NSNumber *)userID {
     self.users = users;
     
+    DWUser *user = [DWSession sharedDWSession].currentUser;
     DWUnion *uni = [[DWUnion alloc] init];
     
-    if([DWSession sharedDWSession].currentUser.isEmailAuthorized) {
+    if(user.isEmailAuthorized) {
         
         NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
         [dateFormatter setDateFormat:@"e"];
@@ -263,6 +264,11 @@
         uni.title       = @"Import recent purchases";
         uni.subtitle    = @"Connect to preview your items";
     }
+    
+    [uni setCustomKeyValue:kKeyIsGoogleAuthorized value:[NSNumber numberWithBool:user.isGoogleAuthorized]];
+    [uni setCustomKeyValue:kKeyIsYahooAuthorized value:[NSNumber numberWithBool:user.isYahooAuthorized]];
+    [uni setCustomKeyValue:kKeyIsHotmailAuthorized value:[NSNumber numberWithBool:user.isHotmailAuthorized]];
+    
     
     [self.users insertObject:uni atIndex:0];
     

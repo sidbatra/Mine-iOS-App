@@ -8,6 +8,7 @@
 
 #import "DWEmailConnectPresenter.h"
 #import "DWUnion.h"
+#import "DWUser.h"
 #import "DWEmailConnectCell.h"
 
 
@@ -32,6 +33,11 @@
                                          reuseIdentifier:identifier];
     
     cell.delegate = delegate;
+    
+    NSLog(@"AUTH VALUES - %d %d %d",
+          [[uni customValueforKey:kKeyIsGoogleAuthorized] boolValue],
+          [[uni customValueforKey:kKeyIsYahooAuthorized] boolValue],
+          [[uni customValueforKey:kKeyIsHotmailAuthorized] boolValue]);
     
     [cell setTitle:uni.title
        andSubtitle:uni.subtitle];

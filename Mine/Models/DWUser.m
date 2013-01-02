@@ -13,6 +13,10 @@
 
 NSString* const kKeySquareImageURL          = @"square_image_url";
 NSString* const kKeyLargeUserImageURL       = @"large_image_url";
+NSString* const kKeyIsGoogleAuthorized      = @"is_google_authorized";
+NSString* const kKeyIsYahooAuthorized       = @"is_yahoo_authorized";
+NSString* const kKeyIsHotmailAuthorized     = @"is_hotmail_authorized";
+
 NSString* const kNImgUserSquareLoaded       = @"NImgUserSquareLoaded";
 NSString* const kNImgUserSquareLoadError    = @"NImgUserSquareLoadError";
 NSString* const kNImgUserLargeLoaded        = @"NImgUserLargeLoaded";
@@ -65,9 +69,6 @@ static NSString* const kKeyPurchasesCount               = @"purchases_count";
 static NSString* const kKeyFollowingsCount              = @"followings_count";
 static NSString* const kKeyInverseFollowingsCount       = @"inverse_followings_count";
 static NSString* const kKeyUnreadNotificationsCount     = @"unread_notifications_count";
-static NSString* const kKeyIsGoogleAuthorized           = @"is_google_authorized";
-static NSString* const kKeyIsYahooAuthorized            = @"is_yahoo_authorized";
-static NSString* const kKeyIsHotmailAuthorized          = @"is_hotmail_authorized";
 static NSString* const kKeyIsMiningPurchases            = @"is_mining_purchases";
 static NSString* const kKeyEmailMiningMetadata          = @"email_mining_metadata";
 static NSString* const kKeySensitive                    = @"sensitive";
