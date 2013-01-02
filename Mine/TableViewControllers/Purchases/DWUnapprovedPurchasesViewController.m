@@ -47,7 +47,7 @@
     self = [super init];
     
     if(self) {
-        
+
         self.tableViewDataSource = isLive ? [[DWLivePurchasesViewDataSource alloc] init] : [[DWStalePurchasesViewDataSource alloc] init];
         
         [self addModelPresenterForClass:[DWModelSet class]

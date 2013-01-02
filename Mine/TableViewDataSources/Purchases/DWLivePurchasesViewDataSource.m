@@ -7,12 +7,17 @@
 //
 
 #import "DWLivePurchasesViewDataSource.h"
+#import "DWStore.h"
 #import "DWSession.h"
+#import "DWPurchase.h"
+#import "DWConstants.h"
 
-static NSInteger const kInitialPurchasesRetryInterval = 10;
-static NSInteger const kInitialUserRetryInterval = 15;
+#import "SBJsonParser.h"
+
+static NSInteger const kInitialPurchasesRetryInterval = 5;
+static NSInteger const kInitialUserRetryInterval = 3;
 static NSInteger const kPurchasesRetryInterval = 5;
-static NSInteger const kUserRetryInterval = 7;
+static NSInteger const kUserRetryInterval = 3;
 
 
 @interface DWLivePurchasesViewDataSource() {
@@ -109,12 +114,28 @@ static NSInteger const kUserRetryInterval = 7;
 #pragma mark DWUsersControllerDelegate 
 
 //----------------------------------------------------------------------------------------------------
-- (void)userLoaded:(DWUser *)user withUserID:(NSNumber *)userID {
+- (void)userLoaded:(DWUser *)user
+        withUserID:(NSNumber *)userID {
     
     if([DWSession sharedDWSession].currentUser.databaseID != [userID integerValue])
         return;
     
-    if([DWSession sharedDWSession].currentUser.isMiningPurchases) {
+    if(user.isMiningPurchases) {
+        
+        if(user.emailMiningMetadata) {
+            SBJsonParser* parser = [[SBJsonParser alloc] init];
+            NSDictionary* metadata = [parser objectWithString:user.emailMiningMetadata];
+            
+            if(metadata) {
+                CGFloat progress = [[metadata objectForKey:kKeyProgress] floatValue];
+                DWStore *store = [DWStore create:[metadata objectForKey:kKeyStore]];
+                [store debug];
+                
+                NSLog(@"PROGRESS - %f",progress);
+            }
+                
+        }
+        
         [self loadUser];
     }
     else {

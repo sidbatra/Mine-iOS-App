@@ -122,6 +122,8 @@ extern NSString* const kKeyCount;
 extern NSString* const kKeyCreatedAt;
 extern NSString* const kKeyImageURL;
 extern NSString* const kKeyStatus;
+extern NSString* const kKeyProgress;
+
 
 
 /**
