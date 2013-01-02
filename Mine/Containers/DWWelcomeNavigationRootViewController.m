@@ -95,7 +95,7 @@ static NSString* const kInfoURL = @"/?web_view_mode=true";
     if(!user.email || ![user.email length] || !user.gender || ![user.gender length])
         [self showUserDetailsView];
     else
-        [self showGlobalFeedView];
+        [self showEmailConnectView];
 }
 
 //----------------------------------------------------------------------------------------------------
