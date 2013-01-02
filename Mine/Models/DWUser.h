@@ -52,7 +52,9 @@ extern NSString* const kNImgUserLargeLoadError;
     NSInteger       _inverseFollowingsCount;
     NSInteger       _unreadNotificationsCount;
     
-    BOOL            _isEmailAuthorized;
+    BOOL            _isGoogleAuthorized;
+    BOOL            _isYahooAuthorized;
+    BOOL            _isHotmailAuthorized;
     BOOL            _isMiningPurchases;
     
     DWSetting       *_setting;
@@ -155,6 +157,8 @@ extern NSString* const kNImgUserLargeLoadError;
  */
 @property (nonatomic,readonly) NSString *pronoun;
 
+@property (nonatomic,readonly) BOOL isEmailAuthorized;
+
 
 /**
  * Age.
@@ -178,7 +182,9 @@ extern NSString* const kNImgUserLargeLoadError;
 
 
 @property (nonatomic,assign) NSInteger unreadNotificationsCount;
-@property (nonatomic,assign) BOOL isEmailAuthorized;
+@property (nonatomic,assign) BOOL isGoogleAuthorized;
+@property (nonatomic,assign) BOOL isYahooAuthorized;
+@property (nonatomic,assign) BOOL isHotmailAuthorized;
 @property (nonatomic,assign) BOOL isMiningPurchases;
 
 

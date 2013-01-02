@@ -339,7 +339,8 @@
     [self.navigationController popViewControllerAnimated:NO];
     
     [self displayUnapprovedPurchases:YES];
-    [[DWSession sharedDWSession] emailAuthorized];    
+    [DWSession sharedDWSession].currentUser.isGoogleAuthorized = YES;
+    [[DWSession sharedDWSession] update];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -365,7 +366,8 @@
     [self.navigationController popViewControllerAnimated:NO];
     
     [self displayUnapprovedPurchases:YES];
-    [[DWSession sharedDWSession] emailAuthorized];
+    [DWSession sharedDWSession].currentUser.isYahooAuthorized = YES;
+    [[DWSession sharedDWSession] update];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -391,7 +393,8 @@
     [self.navigationController popViewControllerAnimated:NO];
     
     [self displayUnapprovedPurchases:YES];
-    [[DWSession sharedDWSession] emailAuthorized];
+    [DWSession sharedDWSession].currentUser.isHotmailAuthorized = YES;
+    [[DWSession sharedDWSession] update];
 }
 
 //----------------------------------------------------------------------------------------------------

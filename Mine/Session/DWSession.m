@@ -201,12 +201,6 @@ SYNTHESIZE_SINGLETON_FOR_CLASS(DWSession);
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)emailAuthorized {
-    self.currentUser.isEmailAuthorized = YES;
-    [self update];
-}
-
-//----------------------------------------------------------------------------------------------------
 - (void)resetUnreadNotificationsCount {
     self.currentUser.unreadNotificationsCount = 0;
     [self launchUpdateNotificationsNotification];

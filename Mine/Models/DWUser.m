@@ -40,7 +40,9 @@ static NSString* const kEncodeKeyAge                        = @"DWUser_age";
 static NSString* const kEncodeKeyPurchasesCount             = @"DWUser_purchasesCount";
 static NSString* const kEncodeKeyFollowingsCount            = @"DWUser_followingsCount";
 static NSString* const kEncodeKeyInverseFollowingsCount     = @"DWUser_inverseFollowingsCount";
-static NSString* const kEncodeKeyIsEmailAuthorized          = @"DWUser_isEmailAuthorized";
+static NSString* const kEncodeKeyIsGoogleAuthorized         = @"DWUser_isGoogleAuthorized";
+static NSString* const kEncodeKeyIsYahooAuthorized          = @"DWUser_isYahooAuthorized";
+static NSString* const kEncodeKeyIsHotmailAuthorized        = @"DWUser_isHotmailAuthorized";
 static NSString* const kEncodeKeySetting                    = @"DWUser_setting";
 
 
@@ -63,7 +65,9 @@ static NSString* const kKeyPurchasesCount               = @"purchases_count";
 static NSString* const kKeyFollowingsCount              = @"followings_count";
 static NSString* const kKeyInverseFollowingsCount       = @"inverse_followings_count";
 static NSString* const kKeyUnreadNotificationsCount     = @"unread_notifications_count";
-static NSString* const kKeyIsEmailAuthorized            = @"is_email_authorized";
+static NSString* const kKeyIsGoogleAuthorized           = @"is_google_authorized";
+static NSString* const kKeyIsYahooAuthorized            = @"is_yahoo_authorized";
+static NSString* const kKeyIsHotmailAuthorized          = @"is_hotmail_authorized";
 static NSString* const kKeyIsMiningPurchases            = @"is_mining_purchases";
 static NSString* const kKeyEmailMiningMetadata          = @"email_mining_metadata";
 static NSString* const kKeySensitive                    = @"sensitive";
@@ -97,7 +101,9 @@ static NSString* const kKeySetting                      = @"setting";
 @synthesize followingsCount             = _followingsCount;
 @synthesize inverseFollowingsCount      = _inverseFollowingsCount;
 @synthesize unreadNotificationsCount    = _unreadNotificationsCount;
-@synthesize isEmailAuthorized           = _isEmailAuthorized;
+@synthesize isGoogleAuthorized          = _isGoogleAuthorized;
+@synthesize isYahooAuthorized           = _isYahooAuthorized;
+@synthesize isHotmailAuthorized         = _isHotmailAuthorized;
 @synthesize isMiningPurchases           = _isMiningPurchases;
 @synthesize setting                     = _setting;
 
@@ -129,7 +135,9 @@ static NSString* const kKeySetting                      = @"setting";
         self.purchasesCount             = [[coder decodeObjectForKey:kEncodeKeyPurchasesCount] integerValue];
         self.followingsCount            = [[coder decodeObjectForKey:kEncodeKeyFollowingsCount] integerValue];
         self.inverseFollowingsCount     = [[coder decodeObjectForKey:kEncodeKeyInverseFollowingsCount] integerValue];
-        self.isEmailAuthorized          = [[coder decodeObjectForKey:kEncodeKeyIsEmailAuthorized] boolValue];
+        self.isGoogleAuthorized         = [[coder decodeObjectForKey:kEncodeKeyIsGoogleAuthorized] boolValue];
+        self.isYahooAuthorized          = [[coder decodeObjectForKey:kEncodeKeyIsYahooAuthorized] boolValue];
+        self.isHotmailAuthorized        = [[coder decodeObjectForKey:kEncodeKeyIsHotmailAuthorized] boolValue];
         
         self.setting                    = [coder decodeObjectForKey:kEncodeKeySetting];
     }
@@ -169,7 +177,9 @@ static NSString* const kKeySetting                      = @"setting";
     [coder encodeObject:[NSNumber numberWithInt:self.purchasesCount]            forKey:kEncodeKeyPurchasesCount];
     [coder encodeObject:[NSNumber numberWithInt:self.followingsCount]           forKey:kEncodeKeyFollowingsCount];
     [coder encodeObject:[NSNumber numberWithInt:self.inverseFollowingsCount]    forKey:kEncodeKeyInverseFollowingsCount];
-    [coder encodeObject:[NSNumber numberWithBool:self.isEmailAuthorized]         forKey:kEncodeKeyIsEmailAuthorized];
+    [coder encodeObject:[NSNumber numberWithBool:self.isGoogleAuthorized]       forKey:kEncodeKeyIsGoogleAuthorized];
+    [coder encodeObject:[NSNumber numberWithBool:self.isYahooAuthorized]        forKey:kEncodeKeyIsYahooAuthorized];
+    [coder encodeObject:[NSNumber numberWithBool:self.isHotmailAuthorized]      forKey:kEncodeKeyIsHotmailAuthorized];
     
     [coder encodeObject:self.setting                                    forKey:kEncodeKeySetting];
 }
@@ -228,7 +238,9 @@ static NSString* const kKeySetting                      = @"setting";
     NSString *followingsCount           = [user objectForKey:kKeyFollowingsCount];
     NSString *inverseFollowingsCount    = [user objectForKey:kKeyInverseFollowingsCount];
     NSString *unreadNotificationsCount  = [user objectForKey:kKeyUnreadNotificationsCount];
-    NSString *isEmailAuthorized         = [user objectForKey:kKeyIsEmailAuthorized];
+    NSString *isGoogleAuthorized        = [user objectForKey:kKeyIsGoogleAuthorized];
+    NSString *isYahooAuthorized         = [user objectForKey:kKeyIsYahooAuthorized];
+    NSString *isHotmailAuthorized       = [user objectForKey:kKeyIsHotmailAuthorized];
     NSString *isMiningPurchases         = [user objectForKey:kKeyIsMiningPurchases];
     
     NSString *sensitive                 = [user objectForKey:kKeySensitive];
@@ -296,8 +308,14 @@ static NSString* const kKeySetting                      = @"setting";
     if(unreadNotificationsCount)
         self.unreadNotificationsCount = [unreadNotificationsCount integerValue];
 
-    if(isEmailAuthorized)
-        self.isEmailAuthorized = [isEmailAuthorized boolValue];
+    if(isGoogleAuthorized)
+        self.isGoogleAuthorized = [isGoogleAuthorized boolValue];
+    
+    if(isYahooAuthorized)
+        self.isYahooAuthorized = [isYahooAuthorized boolValue];
+    
+    if(isHotmailAuthorized)
+        self.isHotmailAuthorized = [isHotmailAuthorized boolValue];
     
     if(isMiningPurchases)
         self.isMiningPurchases = [isMiningPurchases boolValue];
@@ -368,13 +386,18 @@ static NSString* const kKeySetting                      = @"setting";
 }
 
 //----------------------------------------------------------------------------------------------------
+- (BOOL)isEmailAuthorized {
+    return self.isGoogleAuthorized || self.isYahooAuthorized || self.isHotmailAuthorized;
+}
+
+//----------------------------------------------------------------------------------------------------
 - (NSString*)pronoun {
     return [self.gender isEqualToString:@"female"] ? @"her" : @"his";
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)debug {
-    DWDebug(@"%@ %@ %@ %@ %@ %@ %d %@  %@ %@  %@ %@  %@ %@  %d %d %d %d %@ %d %@",
+    DWDebug(@"%@ %@ %@ %@ %@ %@ %d %@  %@ %@  %@ %@  %@ %@  %d %d %d %d %@ %d %@ | %d %d %d",
           self.firstName,self.lastName,self.gender,self.handle,self.byline,self.email,self.age,
           self.facebookAccessToken,
           self.twitterAccessToken,self.twitterAccessTokenSecret,          
@@ -386,7 +409,8 @@ static NSString* const kKeySetting                      = @"setting";
           self.unreadNotificationsCount,
           self.iphoneDeviceToken,
           self.isMiningPurchases,
-          self.emailMiningMetadata);
+          self.emailMiningMetadata,
+          self.isGoogleAuthorized,self.isYahooAuthorized,self.isHotmailAuthorized);
     
     [self.setting debug];
 }
