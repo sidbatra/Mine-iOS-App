@@ -244,14 +244,27 @@
 - (void)userSuggestionsLoaded:(NSMutableArray *)users forUserID:(NSNumber *)userID {
     self.users = users;
     
-    if(![DWSession sharedDWSession].currentUser.isEmailAuthorized) {
-        DWUnion *uni = [[DWUnion alloc] init];
+    DWUnion *uni = [[DWUnion alloc] init];
+    
+    if([DWSession sharedDWSession].currentUser.isEmailAuthorized) {
         
+        NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"e"];
+        
+        NSInteger days = (7 - [[dateFormatter stringFromDate:[NSDate date]] integerValue]  + 4) % 7;
+        
+        if(days == 0)
+            days = 7;
+        
+        uni.title       = @"Great, you're connected";
+        uni.subtitle    = [NSString stringWithFormat:@"Checking again in: %d %@",days,(days == 1 ? @"day" : @"days")];
+    }
+    else {
         uni.title       = @"Import recent purchases";
         uni.subtitle    = @"Connect to preview your items";
-        
-        [self.users insertObject:uni atIndex:0];
     }
+    
+    [self.users insertObject:uni atIndex:0];
     
     [self displayFeedAndUserSuggestions];
 }
