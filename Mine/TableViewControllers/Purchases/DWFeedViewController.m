@@ -14,6 +14,7 @@
 #import "DWEmailConnectPresenter.h"
 
 #import "DWUnion.h"
+#import "DWUser.h"
 #import "DWPagination.h"
 #import "DWConstants.h"
 
@@ -92,20 +93,8 @@
     self.isFeedLoaded = YES;
     
     [(DWFeedViewDataSource*)self.tableViewDataSource loadFeed];
-    [(DWFeedViewDataSource*)self.tableViewDataSource loadUserSuggestions];
     
     [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Feed View"];
-}
-
-
-//----------------------------------------------------------------------------------------------------
-//----------------------------------------------------------------------------------------------------
-#pragma mark -
-#pragma mark DWUserCellDelegate
-
-//----------------------------------------------------------------------------------------------------
-- (void)userCellFollowClickedForUserID:(NSInteger)userID {
-    [(DWFeedViewDataSource*)self.tableViewDataSource toggleFollowForUserID:userID];
 }
 
 
@@ -127,19 +116,6 @@
 //----------------------------------------------------------------------------------------------------
 - (void)hotmailConnectClicked {
     [self.delegate hotmailConnectInitiated];
-}
-
-
-//----------------------------------------------------------------------------------------------------
-//----------------------------------------------------------------------------------------------------
-#pragma mark -
-#pragma mark DWFeedViewDataSourceDelegate
-
-//----------------------------------------------------------------------------------------------------
-- (void)followingModifiedForUserID:(NSInteger)userID toStatus:(BOOL)isActive {
-    [self provideResourceToVisibleCells:[DWUser class]
-                               objectID:userID
-                              objectKey:isActive ? kKeyFollowingCreated : kKeyFollowingDestroyed];
 }
 
 
