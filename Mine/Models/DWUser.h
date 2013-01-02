@@ -44,6 +44,8 @@ extern NSString* const kNImgUserLargeLoadError;
     NSString        *_squareImageURL;
     NSString        *_largeImageURL;
     
+    NSString        *_emailMiningMetadata;
+    
     NSInteger       _age;
     NSInteger       _purchasesCount;
     NSInteger       _followingsCount;
@@ -135,6 +137,8 @@ extern NSString* const kNImgUserLargeLoadError;
  * Image URL for a large rectangle user image.
  */
 @property (nonatomic,copy) NSString *largeImageURL;
+
+@property (nonatomic,copy) NSString *emailMiningMetadata;
 
 /**
  * Returns the square UIImage if it has been downloaded or nil.

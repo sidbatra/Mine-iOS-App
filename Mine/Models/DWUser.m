@@ -65,6 +65,7 @@ static NSString* const kKeyInverseFollowingsCount       = @"inverse_followings_c
 static NSString* const kKeyUnreadNotificationsCount     = @"unread_notifications_count";
 static NSString* const kKeyIsEmailAuthorized            = @"is_email_authorized";
 static NSString* const kKeyIsMiningPurchases            = @"is_mining_purchases";
+static NSString* const kKeyEmailMiningMetadata          = @"email_mining_metadata";
 static NSString* const kKeySensitive                    = @"sensitive";
 static NSString* const kKeySetting                      = @"setting";
 
@@ -90,6 +91,7 @@ static NSString* const kKeySetting                      = @"setting";
 @synthesize tumblrAccessTokenSecret     = _tumblrAccessTokenSecret;
 @synthesize squareImageURL          	= _squareImageURL;
 @synthesize largeImageURL               = _largeImageURL;
+@synthesize emailMiningMetadata         = _emailMiningMetadata;
 @synthesize age                         = _age;
 @synthesize purchasesCount              = _purchasesCount;
 @synthesize followingsCount             = _followingsCount;
@@ -219,6 +221,8 @@ static NSString* const kKeySetting                      = @"setting";
     NSString *squareImageURL            = [user objectForKey:kKeySquareImageURL];
     NSString *largeImageURL             = [user objectForKey:kKeyLargeUserImageURL];
     
+    NSString *emailMiningMetadata       = [user objectForKey:kKeyEmailMiningMetadata];
+    
     NSString *age                       = [user objectForKey:kKeyAge];
     NSString *purchasesCount            = [user objectForKey:kKeyPurchasesCount];
     NSString *followingsCount           = [user objectForKey:kKeyFollowingsCount];
@@ -272,6 +276,10 @@ static NSString* const kKeySetting                      = @"setting";
     if(largeImageURL && ![self.largeImageURL isEqualToString:largeImageURL])
         self.largeImageURL = largeImageURL;
     
+    if(emailMiningMetadata && ![emailMiningMetadata isKindOfClass:[NSNull class]]) {
+        self.emailMiningMetadata = emailMiningMetadata;
+    }
+    
     
     if(age)
         self.age = [age integerValue];
@@ -293,6 +301,8 @@ static NSString* const kKeySetting                      = @"setting";
     
     if(isMiningPurchases)
         self.isMiningPurchases = [isMiningPurchases boolValue];
+    
+    
     
     
     if(setting) {
@@ -364,7 +374,7 @@ static NSString* const kKeySetting                      = @"setting";
 
 //----------------------------------------------------------------------------------------------------
 - (void)debug {
-    DWDebug(@"%@ %@ %@ %@ %@ %@ %d %@  %@ %@  %@ %@  %@ %@  %d %d %d %d %@ %d",
+    DWDebug(@"%@ %@ %@ %@ %@ %@ %d %@  %@ %@  %@ %@  %@ %@  %d %d %d %d %@ %d %@",
           self.firstName,self.lastName,self.gender,self.handle,self.byline,self.email,self.age,
           self.facebookAccessToken,
           self.twitterAccessToken,self.twitterAccessTokenSecret,          
@@ -375,7 +385,8 @@ static NSString* const kKeySetting                      = @"setting";
           self.inverseFollowingsCount,
           self.unreadNotificationsCount,
           self.iphoneDeviceToken,
-          self.isMiningPurchases);
+          self.isMiningPurchases,
+          self.emailMiningMetadata);
     
     [self.setting debug];
 }
