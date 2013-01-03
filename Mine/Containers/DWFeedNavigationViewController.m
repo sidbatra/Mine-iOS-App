@@ -21,8 +21,8 @@
 #import "DWConstants.h"
 
 
-static NSString* const kImgSearchOff    = @"nav-btn-search-off.png";
-static NSString* const kImgSearchOn     = @"nav-btn-search-on.png";
+static NSString* const kImgCreationOff    = @"nav-btn-search-off.png";
+static NSString* const kImgCreationOn     = @"nav-btn-search-on.png";
 
 
 
@@ -99,14 +99,14 @@ static NSString* const kImgSearchOn     = @"nav-btn-search-on.png";
     
     UIButton *button =  [UIButton buttonWithType:UIButtonTypeCustom];
 
-    [button setBackgroundImage:[UIImage imageNamed:kImgSearchOff] 
+    [button setBackgroundImage:[UIImage imageNamed:kImgCreationOff]
                       forState:UIControlStateNormal];
     
-    [button setBackgroundImage:[UIImage imageNamed:kImgSearchOn] 
+    [button setBackgroundImage:[UIImage imageNamed:kImgCreationOn]
                       forState:UIControlStateHighlighted];
     
 	[button addTarget:self
-               action:@selector(searchButtonClicked)
+               action:@selector(createButtonClicked)
      forControlEvents:UIControlEventTouchUpInside];
     
 	[button setFrame:CGRectMake(0, 0,40,30)];
@@ -249,7 +249,7 @@ static NSString* const kImgSearchOn     = @"nav-btn-search-on.png";
 #pragma mark UI Events
 
 //----------------------------------------------------------------------------------------------------
-- (void)searchButtonClicked {
+- (void)createButtonClicked {
     
     DWCreationNavigationViewController *creationRootViewController = [[DWCreationNavigationViewController alloc] init];
     creationRootViewController.delegate = self;
