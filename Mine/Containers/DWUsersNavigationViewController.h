@@ -8,6 +8,7 @@
 
 #import "DWNavigationRootViewController.h"
 #import "DWUsersSearchViewController.h"
+#import "DWSuggestedUsersViewController.h"
 
 #import "DWSearchBar.h"
 

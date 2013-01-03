@@ -25,7 +25,7 @@ static NSString* const kNewUserTWURI                    = @"/users.json?using=tw
 static NSString* const kGetUserURI                      = @"/users/%@.json?";
 
 static NSString* const kSearchURI                       = @"/users.json?aspect=search&q=%@";
-static NSString* const kUserSuggestionsURI              = @"/users.json?aspect=suggestions&mobile=true";
+static NSString* const kUserSuggestionsURI              = @"/users.json?aspect=suggestions&per_page=%d&mobile=true";
 static NSString* const kGetLikersURI                    = @"/users.json?aspect=likers&purchase_id=%d";
 static NSString* const kGetFollowersURI                 = @"/users.json?aspect=followers&user_id=%d";
 static NSString* const kGetIFollowersURI                = @"/users.json?aspect=ifollowers&user_id=%d";
@@ -275,8 +275,8 @@ static NSString* const kNUserUpdateError            = @"NUserUpdateError";
 }
 
 //----------------------------------------------------------------------------------------------------
-- (NSInteger)getUserSuggestions {
-    NSString *localURL = [NSString stringWithFormat:kUserSuggestionsURI];
+- (NSInteger)getUserSuggestions:(NSInteger)perPage {
+    NSString *localURL = [NSString stringWithFormat:kUserSuggestionsURI,perPage];
     
     return [[DWRequestManager sharedDWRequestManager] createAppRequest:localURL
                                                    successNotification:kNUserSuggestionsLoaded

@@ -15,14 +15,13 @@
 
 @interface DWUsersNavigationViewController () {
     DWUsersViewController       *_usersSearchViewController;
+    DWSuggestedUsersViewController *_suggestedUsersViewController;
 
     DWSearchBar                 *_searchBar;
 }
 
-/**
- * Table view for displaying search results.
- */
 @property (nonatomic,strong) DWUsersViewController *usersSearchViewController;
+@property (nonatomic,strong) DWUsersViewController *suggestedUsersViewController;
 
 /**
  * Nav bar search input field for searching users.
@@ -38,9 +37,10 @@
 //----------------------------------------------------------------------------------------------------
 @implementation DWUsersNavigationViewController
 
-@synthesize usersSearchViewController   = _usersSearchViewController;
-@synthesize searchBar                   = _searchBar;
-@synthesize delegate                    = _delegate;
+@synthesize usersSearchViewController       = _usersSearchViewController;
+@synthesize suggestedUsersViewController    = _suggestedUsersViewController;
+@synthesize searchBar                       = _searchBar;
+@synthesize delegate                        = _delegate;
 
 //----------------------------------------------------------------------------------------------------
 - (void)dealloc {
@@ -61,11 +61,11 @@
     
     self.navigationItem.title = @"";
     
+    
     if(!self.usersSearchViewController) {
         self.usersSearchViewController = [[DWUsersSearchViewController alloc] init];
         self.usersSearchViewController.delegate = self;
-        self.usersSearchViewController.view.hidden = NO;
-        self.usersSearchViewController.tableView.backgroundColor = [UIColor colorWithRed:0.223 green:0.223 blue:0.223 alpha:1.0];
+        self.usersSearchViewController.view.hidden = YES;
 
         
         UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self
@@ -77,11 +77,27 @@
     [self.view addSubview:self.usersSearchViewController.view];
     
     
+    if(!self.suggestedUsersViewController) {
+        self.suggestedUsersViewController = [[DWSuggestedUsersViewController alloc] init];
+        self.suggestedUsersViewController.delegate = self;
+        self.suggestedUsersViewController.view.hidden = NO;
+        
+        UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                                            action:@selector(suggestedUsersViewControllerTapped)];
+        gestureRecognizer.cancelsTouchesInView = NO;
+        [self.suggestedUsersViewController.view addGestureRecognizer:gestureRecognizer];
+    }
+    
+    [self.view addSubview:self.suggestedUsersViewController.view];
+    
+    
     if(!self.searchBar) {
         self.searchBar                      = [[DWSearchBar alloc] initWithFrame:CGRectMake(0,0,320,44)];
         self.searchBar.minimumQueryLength   = 1;
         self.searchBar.delegate             = self;
     }
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Suggested Users View"];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -95,6 +111,7 @@
 - (void)viewDidAppear:(BOOL)animated {
 }
 
+
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
@@ -107,6 +124,9 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)searchWithQuery:(NSString*)query {
+    self.suggestedUsersViewController.view.hidden = YES;
+    self.usersSearchViewController.view.hidden = NO;
+    
     [(DWUsersSearchViewController*)self.usersSearchViewController loadUsersForQuery:query];
     
     [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Users Searched"];
@@ -134,6 +154,11 @@
     [self.searchBar hideKeyboard];
 }
 
+//----------------------------------------------------------------------------------------------------
+- (void)suggestedUsersViewControllerTapped {
+    [self.searchBar hideKeyboard];
+}
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
@@ -145,7 +170,7 @@
 	  willShowViewController:(UIViewController *)viewController
 					animated:(BOOL)animated {
     
-    self.searchBar.hidden = viewController != self || self.usersSearchViewController.view.hidden;
+    self.searchBar.hidden = viewController != self;
     
     [super navigationController:navigationController
          willShowViewController:viewController
