@@ -545,6 +545,7 @@
 		BB9F711D15BA14F40099C80A /* NSString+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9F711B15BA14F40099C80A /* NSString+Helpers.m */; };
 		BB9F712A15BA1A580099C80A /* DWImageRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9F712215BA1A580099C80A /* DWImageRequest.m */; };
 		BB9F712B15BA1A580099C80A /* DWRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9F712415BA1A580099C80A /* DWRequest.m */; };
+		BBAE150F16952E1A003B91D9 /* DWUsersNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBAE150E16952E1A003B91D9 /* DWUsersNavigationViewController.m */; };
 		BBC0607615C493A9000D3480 /* DWLike.m in Sources */ = {isa = PBXBuildFile; fileRef = BBC0607515C493A9000D3480 /* DWLike.m */; };
 		BBC0607A15C49671000D3480 /* DWComment.m in Sources */ = {isa = PBXBuildFile; fileRef = BBC0607915C49671000D3480 /* DWComment.m */; };
 		BBC0608515C727F5000D3480 /* DWLikesController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBC0608415C727F5000D3480 /* DWLikesController.m */; };
@@ -1297,6 +1298,8 @@
 		BB9F712215BA1A580099C80A /* DWImageRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWImageRequest.m; sourceTree = "<group>"; };
 		BB9F712315BA1A580099C80A /* DWRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWRequest.h; sourceTree = "<group>"; };
 		BB9F712415BA1A580099C80A /* DWRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWRequest.m; sourceTree = "<group>"; };
+		BBAE150D16952E1A003B91D9 /* DWUsersNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWUsersNavigationViewController.h; sourceTree = "<group>"; };
+		BBAE150E16952E1A003B91D9 /* DWUsersNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWUsersNavigationViewController.m; sourceTree = "<group>"; };
 		BBC0607415C493A9000D3480 /* DWLike.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWLike.h; sourceTree = "<group>"; };
 		BBC0607515C493A9000D3480 /* DWLike.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWLike.m; sourceTree = "<group>"; };
 		BBC0607815C49671000D3480 /* DWComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWComment.h; sourceTree = "<group>"; };
@@ -1554,6 +1557,8 @@
 				BB06365B15C09FF7001F26E1 /* DWWelcomeNavigationRootViewController.m */,
 				262200B415C76AC7003DC1DF /* DWCreationNavigationViewController.h */,
 				262200B515C76AC7003DC1DF /* DWCreationNavigationViewController.m */,
+				BBAE150D16952E1A003B91D9 /* DWUsersNavigationViewController.h */,
+				BBAE150E16952E1A003B91D9 /* DWUsersNavigationViewController.m */,
 			);
 			path = Containers;
 			sourceTree = "<group>";
@@ -3230,6 +3235,7 @@
 				BBECDDC81673CFEE00FEE875 /* Mixpanel.m in Sources */,
 				BBF0856A16854BC500EC3AE1 /* DWHotmailAuthViewController.m in Sources */,
 				BBF0857116854F9100EC3AE1 /* DWHotmailController.m in Sources */,
+				BBAE150F16952E1A003B91D9 /* DWUsersNavigationViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
