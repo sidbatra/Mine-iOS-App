@@ -548,6 +548,7 @@
 		BBAE150F16952E1A003B91D9 /* DWUsersNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBAE150E16952E1A003B91D9 /* DWUsersNavigationViewController.m */; };
 		BBAE151316953A10003B91D9 /* DWSuggestedUsersViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = BBAE151216953A10003B91D9 /* DWSuggestedUsersViewDataSource.m */; };
 		BBAE151616953B17003B91D9 /* DWSuggestedUsersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBAE151516953B17003B91D9 /* DWSuggestedUsersViewController.m */; };
+		BBAE15181696155A003B91D9 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBAE151716961559003B91D9 /* Twitter.framework */; };
 		BBC0607615C493A9000D3480 /* DWLike.m in Sources */ = {isa = PBXBuildFile; fileRef = BBC0607515C493A9000D3480 /* DWLike.m */; };
 		BBC0607A15C49671000D3480 /* DWComment.m in Sources */ = {isa = PBXBuildFile; fileRef = BBC0607915C49671000D3480 /* DWComment.m */; };
 		BBC0608515C727F5000D3480 /* DWLikesController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBC0608415C727F5000D3480 /* DWLikesController.m */; };
@@ -1306,6 +1307,7 @@
 		BBAE151216953A10003B91D9 /* DWSuggestedUsersViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWSuggestedUsersViewDataSource.m; sourceTree = "<group>"; };
 		BBAE151416953B17003B91D9 /* DWSuggestedUsersViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWSuggestedUsersViewController.h; sourceTree = "<group>"; };
 		BBAE151516953B17003B91D9 /* DWSuggestedUsersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWSuggestedUsersViewController.m; sourceTree = "<group>"; };
+		BBAE151716961559003B91D9 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
 		BBC0607415C493A9000D3480 /* DWLike.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWLike.h; sourceTree = "<group>"; };
 		BBC0607515C493A9000D3480 /* DWLike.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWLike.m; sourceTree = "<group>"; };
 		BBC0607815C49671000D3480 /* DWComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWComment.h; sourceTree = "<group>"; };
@@ -1383,6 +1385,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BBAE15181696155A003B91D9 /* Twitter.framework in Frameworks */,
 				26B1DAAB166EE9FE00894D59 /* AdSupport.framework in Frameworks */,
 				BB125085160BA2A600AA2521 /* MediaPlayer.framework in Frameworks */,
 				BB59B4D915F1EB7D000756EE /* CoreText.framework in Frameworks */,
@@ -2348,6 +2351,7 @@
 		BBC8A08515B9D26C00DF58F6 = {
 			isa = PBXGroup;
 			children = (
+				BBAE151716961559003B91D9 /* Twitter.framework */,
 				BB9F70B315B9E6A60099C80A /* External */,
 				BBC8A09A15B9D26D00DF58F6 /* Mine */,
 				BBC8A09315B9D26D00DF58F6 /* Frameworks */,
