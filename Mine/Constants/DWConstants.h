@@ -135,7 +135,7 @@ extern NSString* const kRailsDateTimeFormat;
  * Tab bar
  */ 
 extern NSInteger const kFeedTabIndex;
-extern NSInteger const kCreateTabIndex;
+extern NSInteger const kUsersTabIndex;
 extern NSInteger const kProfileTabIndex;
 extern NSInteger const kTabBarHeight;
 

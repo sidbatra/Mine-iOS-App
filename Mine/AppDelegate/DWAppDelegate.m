@@ -193,7 +193,7 @@ static NSString* const kFacebookURLPrefix = @"fb";
 - (void)selectedTabModifiedFrom:(NSInteger)oldSelectedIndex 
                              to:(NSInteger)newSelectedIndex {
     
-    if(newSelectedIndex == kCreateTabIndex) {
+    if(newSelectedIndex == kUsersTabIndex) {
         
         DWUsersNavigationViewController *usersRootViewController = [[DWUsersNavigationViewController alloc] init];
         usersRootViewController.delegate = self;
