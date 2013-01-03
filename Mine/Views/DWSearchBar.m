@@ -138,6 +138,21 @@ static NSString* const kMsgSearchPlaceholder    = @"Search for people";
     return YES;
 }
 
+//----------------------------------------------------------------------------------------------------
+-(BOOL)textFieldShouldClear:(UITextField *)textField {
+    [self.delegate searchQueryCleared];
+    return YES;
+}
+
+//----------------------------------------------------------------------------------------------------
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    if (NSEqualRanges(range, NSMakeRange(0,[textField.text length])) && [string length] == 0) {
+        [self.delegate searchQueryCleared];
+    }
+
+    return YES;
+}
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------

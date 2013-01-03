@@ -123,6 +123,12 @@
 }
 
 //----------------------------------------------------------------------------------------------------
+- (void)searchQueryCleared {
+    self.suggestedUsersViewController.view.hidden = NO;
+    self.usersSearchViewController.view.hidden = YES;
+}
+
+//----------------------------------------------------------------------------------------------------
 - (void)searchWithQuery:(NSString*)query {
     self.suggestedUsersViewController.view.hidden = YES;
     self.usersSearchViewController.view.hidden = NO;
