@@ -8,6 +8,23 @@
 
 #import "DWUsersViewController.h"
 
-@interface DWSuggestedUsersViewController : DWUsersViewController
+@protocol DWSuggestedUsersViewControllerDelegate;
+
+
+@interface DWSuggestedUsersViewController : DWUsersViewController {
+    
+}
+
+@property (nonatomic,weak) id<DWSuggestedUsersViewControllerDelegate,DWUsersViewControllerDelegate,NSObject> delegate;
+
+@end
+
+
+
+@protocol DWSuggestedUsersViewControllerDelegate<DWUsersViewControllerDelegate>
+
+@required
+
+- (void)suggestedUsersInviteFriendClicked;
 
 @end

@@ -8,6 +8,10 @@
 
 #import "DWSuggestedUsersViewController.h"
 #import "DWSuggestedUsersViewDataSource.h"
+#import "DWUnion.h"
+#import "DWInviteFriendPresenter.h"
+#import "DWConstants.h"
+
 
 @interface DWSuggestedUsersViewController ()
 
@@ -20,6 +24,8 @@
 //----------------------------------------------------------------------------------------------------
 @implementation DWSuggestedUsersViewController
 
+@dynamic delegate;
+
 //----------------------------------------------------------------------------------------------------
 - (id)init {
     self = [super init];
@@ -27,9 +33,9 @@
     if(self) {
         self.tableViewDataSource = [[DWSuggestedUsersViewDataSource alloc] init];
         
-        //[self addModelPresenterForClass:[DWUnion class]
-        //                      withStyle:kDefaultModelPresenter
-        //                  withPresenter:[DWInviteFriendPresenter class]];
+        [self addModelPresenterForClass:[DWUnion class]
+                              withStyle:kDefaultModelPresenter
+                          withPresenter:[DWInviteFriendPresenter class]];
     }
     
     return self;
@@ -40,5 +46,15 @@
     [super viewDidLoad];
 }
 
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWIniteFriendCellDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)inviteFriendClicked {
+    [self.delegate performSelector:@selector(searchViewInviteFriendClicked)];
+}
 
 @end

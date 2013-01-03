@@ -7,7 +7,7 @@
 //
 
 #import "DWSuggestedUsersViewDataSource.h"
-
+#import "DWUnion.h"
 
 
 //----------------------------------------------------------------------------------------------------
@@ -33,6 +33,11 @@
                     forUserID:(NSNumber *)userID {
     
     self.objects = users;
+    
+    DWUnion *uni = [[DWUnion alloc] init];
+    uni.title = @"Invite a friend";
+    
+    [self.objects addObject:uni];
     
     [self.delegate reloadTableView];
 }
