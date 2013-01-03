@@ -194,26 +194,7 @@ static NSString* const kFacebookURLPrefix = @"fb";
                              to:(NSInteger)newSelectedIndex {
     
     if(newSelectedIndex == kCreateTabIndex) {
-        
-        DWCreationNavigationViewController *creationRootViewController = [[DWCreationNavigationViewController alloc] init];        
-        creationRootViewController.delegate = self;
-        
-        UINavigationController *creationNavController =  [[UINavigationController alloc] initWithRootViewController:creationRootViewController];
-
-        [self.tabBarController presentModalViewController:creationNavController
-                                                 animated:NO];
     }        
-}
-
-
-//----------------------------------------------------------------------------------------------------
-//----------------------------------------------------------------------------------------------------
-#pragma mark -
-#pragma mark DWCreationNavigationViewControllerDelegate
-
-//----------------------------------------------------------------------------------------------------
-- (void)dismissCreateView {
-    [self.tabBarController dismissModalViewControllerAnimated:YES];
 }
 
 

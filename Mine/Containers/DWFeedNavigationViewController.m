@@ -286,6 +286,8 @@ static NSString* const kImgSearchOn     = @"nav-btn-search-on.png";
 
 //----------------------------------------------------------------------------------------------------
 - (void)searchButtonClicked {
+    [self displayCreateView];
+    return;
     
     self.feedViewController.view.hidden             = YES;
     self.navTitleView.hidden                        = YES;
@@ -331,6 +333,37 @@ static NSString* const kImgSearchOn     = @"nav-btn-search-on.png";
     
     [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Users Searched"];
 }
+
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark 
+
+//----------------------------------------------------------------------------------------------------
+- (void)displayCreateView {
+    
+    DWCreationNavigationViewController *creationRootViewController = [[DWCreationNavigationViewController alloc] init];
+    creationRootViewController.delegate = self;
+    
+    UINavigationController *creationNavController = [[UINavigationController alloc] initWithRootViewController:creationRootViewController];
+    
+    [self.customTabBarController presentModalViewController:creationNavController
+                                                   animated:NO];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWCreationNavigationViewControllerDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)dismissCreateView {
+    [self.customTabBarController dismissModalViewControllerAnimated:YES];
+}
+
 
 
 //----------------------------------------------------------------------------------------------------

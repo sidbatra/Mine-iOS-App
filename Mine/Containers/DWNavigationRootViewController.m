@@ -328,7 +328,7 @@ static NSString* const kItunesURLPrefix = @"https://itunes.apple.com";
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
-#pragma mark DWCreationViewControllerDelegate
+#pragma mark DWCommentsCreationViewControllerDelegate
 
 //----------------------------------------------------------------------------------------------------
 - (void)commentsCreateViewUserClicked:(DWUser *)user {

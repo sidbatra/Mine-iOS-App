@@ -21,7 +21,6 @@
 #import "DWHotmailAuthViewController.h"
 #import "DWUnapprovedPurchasesViewController.h"
 
-
 @class DWUser;
 @class DWPurchase;
 
