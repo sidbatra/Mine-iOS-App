@@ -20,6 +20,9 @@
 #import "DWSetting.h"
 #import "DWSession.h"
 
+static NSString* const kItunesURLPrefix = @"https://itunes.apple.com";
+
+
 /**
  * Private declarations
  */
@@ -112,10 +115,15 @@
 //----------------------------------------------------------------------------------------------------
 - (void)displayExternalURL:(NSString*)url {
 
-    DWWebViewController *webViewController = [[DWWebViewController alloc] initWithURL:url];
+    if([url hasPrefix:kItunesURLPrefix]) {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
+    }
+    else {
+        DWWebViewController *webViewController = [[DWWebViewController alloc] initWithURL:url];
     
-    [self.navigationController pushViewController:webViewController
-                                         animated:YES];
+        [self.navigationController pushViewController:webViewController
+                                             animated:YES];
+    }
 }
 
 //----------------------------------------------------------------------------------------------------
