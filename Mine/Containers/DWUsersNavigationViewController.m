@@ -57,7 +57,7 @@
 - (void)viewDidLoad {
 	[super viewDidLoad];
     
-    [self.navigationController setValue:[[DWNavigationBar alloc] init] forKeyPath:@"navigationBar"];
+    [self.navigationController setValue:[[DWNavigationBar alloc] init] forKeyPath:kKeyNavigationBar];
     
     self.navigationItem.title = @"";
     
