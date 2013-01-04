@@ -14,10 +14,10 @@
 
 
 @interface DWTwitterIOSConnect : NSObject<UIActionSheetDelegate> {
-    __weak id<DWTwitterIOSConnectDelegate> _delegate;
+    __weak id<DWTwitterIOSConnectDelegate,NSObject> _delegate;
 }
 
-@property (nonatomic,weak) id<DWTwitterIOSConnectDelegate> delegate;
+@property (nonatomic,weak) id<DWTwitterIOSConnectDelegate,NSObject> delegate;
 
 - (void)seekPermission;
 - (void)startReverseAuth:(UIView*)targetView;

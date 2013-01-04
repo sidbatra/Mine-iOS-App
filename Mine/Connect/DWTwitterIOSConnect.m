@@ -111,13 +111,20 @@
                      NSString *token = tokenParts[1];
                      NSString *secret = secretParts[1];
                      
-                     [self.delegate twitterIOSSuccessfulWithToken:token
-                                                        andSecret:secret];
+                     SEL sel = @selector(twitterIOSSuccessfulWithToken:andSecret:);
+                     
+                     if([self.delegate respondsToSelector:sel])
+                         [self.delegate performSelector:sel
+                                             withObject:token
+                                             withObject:secret];
                  } //oauth parts
             } //response parts
          }
          else {
-             [self.delegate twitterIOSFailed];
+             SEL sel = @selector(twitterIOSFailed);
+             
+             if([self.delegate respondsToSelector:sel])
+                 [self.delegate performSelector:sel];
          }
      }];
 }
