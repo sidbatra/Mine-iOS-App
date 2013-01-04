@@ -18,7 +18,7 @@
 //----------------------------------------------------------------------------------------------------
 @implementation DWFacebookConnect
 
-@synthesize delegate        = _delegate;
+@synthesize delegate = _delegate;
 
 //----------------------------------------------------------------------------------------------------
 - (id)init {
@@ -71,6 +71,11 @@
                                                    [self sessionWriteStateChanged:session
                                                                             error:error];
                                                 }];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (BOOL)hasWritePermission {
+    return [[[FBSession activeSession] permissions] indexOfObject:@"publish_actions"] != NSNotFound;
 }
 
 //----------------------------------------------------------------------------------------------------

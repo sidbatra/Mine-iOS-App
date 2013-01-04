@@ -14,6 +14,7 @@
 #import "DWPurchase.h"
 #import "DWSetting.h"
 #import "DWSession.h"
+#import "DWFacebookConnect.h"
 #import "DWAnalyticsManager.h"
 #import "DWConstants.h"
 
@@ -163,9 +164,12 @@ static NSString* const kMsgCancelTitle          = @"Dismiss";
 #pragma mark Private Methods
 
 //----------------------------------------------------------------------------------------------------
-- (void)setupSharingUI {    
+- (void)setupSharingUI {
     
-    if([[DWSession sharedDWSession].currentUser isFacebookAuthorized]) {
+    DWFacebookConnect *fbConnect = [[DWFacebookConnect alloc] init];
+    
+    
+    if([[DWSession sharedDWSession].currentUser isFacebookAuthorized] && [fbConnect hasWritePermission]) {
         self.facebookConfigureButton.hidden = YES;
         
         self.facebookSwitch.hidden  = NO; 

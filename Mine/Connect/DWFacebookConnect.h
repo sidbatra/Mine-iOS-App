@@ -23,6 +23,8 @@
 - (void)authorizeRead;
 - (void)authorizeWrite;
 
+- (BOOL)hasWritePermission;
+
 @end
 
 
