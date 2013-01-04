@@ -55,12 +55,9 @@
                 else {
                     [self.delegate twitterIOSNoAccountsFound];
                 }
-                
-                NSLog(@"permission granted %d",self.accounts.count);
             }
             else {
                 [self.delegate twitterIOSPermissionDenied];
-                NSLog(@"You were not granted access to the Twitter accounts.");
             }
         });
     }];
@@ -103,25 +100,24 @@
                                       initWithData:responseData
                                       encoding:NSUTF8StringEncoding];
              
-             NSLog(@"%@",responseStr);
-             
              NSArray *parts = [responseStr
                                componentsSeparatedByString:@"&"];
              
-             NSString *lined = [parts componentsJoinedByString:@"\n"];
-             
-             dispatch_async(dispatch_get_main_queue(), ^{
-                 UIAlertView *alert = [[UIAlertView alloc]
-                                       initWithTitle:@"Success!"
-                                       message:lined
-                                       delegate:nil
-                                       cancelButtonTitle:@"OK"
-                                       otherButtonTitles:nil];
-                 [alert show];
-             });
+             if(parts.count >= 2) {
+                 NSArray *tokenParts = [parts[0] componentsSeparatedByString:@"="];
+                 NSArray *secretParts = [parts[1] componentsSeparatedByString:@"="];
+                 
+                 if([tokenParts[0] isEqualToString:@"oauth_token"] && [secretParts[0] isEqualToString:@"oauth_token_secret"]) {
+                     NSString *token = tokenParts[1];
+                     NSString *secret = secretParts[1];
+                     
+                     [self.delegate twitterIOSSuccessfulWithToken:token
+                                                        andSecret:secret];
+                 } //oauth parts
+            } //response parts
          }
          else {
-             NSLog(@"Error!\n%@", [error localizedDescription]);
+             [self.delegate twitterIOSFailed];
          }
      }];
 }

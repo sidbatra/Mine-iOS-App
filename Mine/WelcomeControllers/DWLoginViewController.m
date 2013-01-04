@@ -300,7 +300,10 @@ static NSString* const kVideoIntro = @"mine_intro_640x280.mp4";
 
 //----------------------------------------------------------------------------------------------------
 - (void)twitterIOSPermissionGranted {
+    [self startLoadingTW];
+    
     [self.twitterIOSConnect startReverseAuth:[self.delegate loginViewNavigationController].view];
+    
     [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Twitter IOS Accepted"];
 }
 
@@ -313,6 +316,19 @@ static NSString* const kVideoIntro = @"mine_intro_640x280.mp4";
 //----------------------------------------------------------------------------------------------------
 - (void)twitterIOSPermissionDenied {
     [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Twitter IOS Denied"];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)twitterIOSSuccessfulWithToken:(NSString*)accessToken
+                            andSecret:(NSString*)accessTokenSecret {
+    
+    [self.usersController createUserFromTwitterWithAccessToken:accessToken
+                                          andAccessTokenSecret:accessTokenSecret];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)twitterIOSFailed {
+    [self stopLoadingTW];
 }
 
 

@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+//#import "DWUsersController.h"
+
 @protocol DWTwitterIOSConnectDelegate;
 
 
@@ -30,5 +32,14 @@
 - (void)twitterIOSPermissionGranted;
 - (void)twitterIOSNoAccountsFound;
 - (void)twitterIOSPermissionDenied;
+
+@optional
+
+- (void)twitterIOSSuccessfulWithToken:(NSString*)accessToken
+                            andSecret:(NSString*)accessTokenSecret;
+
+- (void)twitterIOSFailed;
+
+- (void)twitterIOSConfigured;
 
 @end
