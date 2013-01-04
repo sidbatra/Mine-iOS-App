@@ -272,7 +272,7 @@ static NSString* const kVideoIntro = @"mine_intro_640x280.mp4";
 #pragma mark DWFacebookConnectDelegate
 
 //----------------------------------------------------------------------------------------------------
-- (void)fbAuthenticatedWithToken:(NSString *)accessToken {
+- (void)fbReadAuthenticatedWithToken:(NSString *)accessToken {
     
     if(_isAwaitingResponse) {
         _isAwaitingResponse = NO;

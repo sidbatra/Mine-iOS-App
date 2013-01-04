@@ -56,21 +56,33 @@
                                   completionHandler:^(FBSession *session,
                                                          FBSessionState state,
                                                          NSError *error) {
-                                         [self sessionStateChanged:session
-                                                             state:state
-                                                             error:error];}];
+                                         [self sessionReadStateChanged:session
+                                                                 state:state
+                                                                 error:error];}];
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)sessionStateChanged:(FBSession *)session
-                      state:(FBSessionState) state
-                      error:(NSError *)error {
+- (void)authorizeWrite {
+    NSArray *permissions = [[NSArray alloc] initWithObjects:@"publish_actions",nil];
+     
+    [[FBSession activeSession] reauthorizeWithPublishPermissions:permissions
+                                                 defaultAudience:FBSessionDefaultAudienceFriends
+                                               completionHandler:^(FBSession *session, NSError *error) {
+                                                   [self sessionWriteStateChanged:session
+                                                                            error:error];
+                                                }];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)sessionReadStateChanged:(FBSession *)session
+                          state:(FBSessionState) state
+                          error:(NSError *)error {
     
     switch (state) {
         case FBSessionStateOpen:
             
             if (!error) {
-                SEL sel = @selector(fbAuthenticatedWithToken:);
+                SEL sel = @selector(fbReadAuthenticatedWithToken:);
                 
                 if([_delegate respondsToSelector:sel])
                     [_delegate performSelector:sel
@@ -93,7 +105,27 @@
     }
     
     if (error)
-        NSLog(@"FB Error: %@",error.localizedDescription);
+        NSLog(@"FB Read Error: %@",error.localizedDescription);
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)sessionWriteStateChanged:(FBSession*)session error:(NSError*)error {
+    
+    if(!error) {
+        SEL sel = @selector(fbWriteAuthenticatedWithToken:);
+        
+        if([_delegate respondsToSelector:sel])
+            [_delegate performSelector:sel
+                            withObject:session.accessToken];
+    }
+    else {
+        SEL sel = @selector(fbAuthenticationFailed);
+        
+        if([_delegate respondsToSelector:sel])
+            [_delegate performSelector:sel];
+        
+        NSLog(@"FB Read Error: %@",error.localizedDescription);
+    }
 }
 
 

@@ -21,6 +21,7 @@
 @property (nonatomic,weak) id<DWFacebookConnectDelegate,NSObject> delegate;
 
 - (void)authorizeRead;
+- (void)authorizeWrite;
 
 @end
 
@@ -30,7 +31,8 @@
 
 @optional
 
-- (void)fbAuthenticatedWithToken:(NSString*)accessToken;
+- (void)fbReadAuthenticatedWithToken:(NSString*)accessToken;
+- (void)fbWriteAuthenticatedWithToken:(NSString*)accessToken;
 - (void)fbAuthenticationFailed;
 
 @end
