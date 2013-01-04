@@ -8,14 +8,18 @@
 
 #import <Foundation/Foundation.h>
 
-//#import "DWUsersController.h"
+#import "DWUsersController.h"
 
 @protocol DWTwitterIOSConnectDelegate;
 
 
-@interface DWTwitterIOSConnect : NSObject<UIActionSheetDelegate> {
+@interface DWTwitterIOSConnect : NSObject<DWUsersControllerDelegate,UIActionSheetDelegate> {
+    BOOL _updateCurrentUser;
+    
     __weak id<DWTwitterIOSConnectDelegate,NSObject> _delegate;
 }
+
+@property (nonatomic,assign) BOOL updateCurrentUser;
 
 @property (nonatomic,weak) id<DWTwitterIOSConnectDelegate,NSObject> delegate;
 

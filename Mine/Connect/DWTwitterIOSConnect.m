@@ -8,6 +8,9 @@
 
 #import "DWTwitterIOSConnect.h"
 
+#import "DWSession.h"
+#import "DWGUIManager.h"
+
 #import <Accounts/Accounts.h>
 #import <Twitter/Twitter.h>
 #import "OAuth+Additions.h"
@@ -15,9 +18,12 @@
 #import "TWSignedRequest.h"
 
 @interface DWTwitterIOSConnect() {
+    DWUsersController *_usersController;
     
+    BOOL _isAwaitingResponse;
 }
 
+@property (nonatomic,strong) DWUsersController *usersController;
 @property (nonatomic, strong) ACAccountStore *accountStore;
 @property (nonatomic, strong) TWAPIManager *apiManager;
 @property (nonatomic, strong) NSArray *accounts;
@@ -27,6 +33,8 @@
 
 @implementation DWTwitterIOSConnect
 
+@synthesize usersController = _usersController;
+@synthesize updateCurrentUser = _updateCurrentUser;
 @synthesize delegate = _delegate;
 
 
@@ -117,6 +125,14 @@
                          [self.delegate performSelector:sel
                                              withObject:token
                                              withObject:secret];
+                     
+                     if(self.updateCurrentUser) {
+                         _isAwaitingResponse = YES;
+                         
+                         [self.usersController updateUserHavingID:[DWSession sharedDWSession].currentUser.databaseID
+                                                 withTwitterToken:token
+                                                 andTwitterSecret:secret];
+                     }
                  } //oauth parts
             } //response parts
          }
@@ -170,6 +186,33 @@
     if (buttonIndex != (actionSheet.numberOfButtons - 1)) {
         [self performReverseAuthWithAccount:self.accounts[buttonIndex]];
     }
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWUsersControllerDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)userUpdated:(DWUser *)user {
+    
+    if(_isAwaitingResponse) {
+        
+        SEL sel = @selector(twitterIOSConfigured);
+        
+        if([self.delegate respondsToSelector:sel])
+            [self.delegate performSelector:sel];
+        
+        _isAwaitingResponse = NO;
+    }
+    
+    [user destroy];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)userUpdateError:(NSString *)error {
+    [DWGUIManager connectionErrorAlertView];
 }
 
 @end
