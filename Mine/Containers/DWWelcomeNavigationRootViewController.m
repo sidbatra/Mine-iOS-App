@@ -237,7 +237,7 @@ static NSString* const kInfoURL = @"/?web_view_mode=true";
 
 //----------------------------------------------------------------------------------------------------
 - (void)userDetailsUpdated {
-    [self showGlobalFeedView];
+    [self showEmailConnectView];
 }
 
 

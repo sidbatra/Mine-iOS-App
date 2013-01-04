@@ -129,6 +129,9 @@
                      if(self.updateCurrentUser) {
                          _isAwaitingResponse = YES;
                          
+                         self.usersController = [[DWUsersController alloc] init];
+                         self.usersController.delegate = self;
+                         
                          [self.usersController updateUserHavingID:[DWSession sharedDWSession].currentUser.databaseID
                                                  withTwitterToken:token
                                                  andTwitterSecret:secret];
