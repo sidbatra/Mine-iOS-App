@@ -233,7 +233,7 @@ static NSString* const kVideoIntro = @"mine_intro_640x280.mp4";
 //----------------------------------------------------------------------------------------------------
 - (IBAction)loginWithFBButtonClicked:(id)sender {
     _isAwaitingResponse = YES;
-    [self.facebookConnect authorize];
+    [self.facebookConnect authorizeRead];
     
     [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Facebook Signup Button Clicked"];
 }

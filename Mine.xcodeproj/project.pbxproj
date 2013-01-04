@@ -27,13 +27,6 @@
 		262200B015C76A4E003DC1DF /* DWProductsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 262200AF15C76A4E003DC1DF /* DWProductsViewController.m */; };
 		262200B315C76A61003DC1DF /* DWProductsViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 262200B215C76A61003DC1DF /* DWProductsViewDataSource.m */; };
 		262200B615C76AC7003DC1DF /* DWCreationNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 262200B515C76AC7003DC1DF /* DWCreationNavigationViewController.m */; };
-		262376A515BF6B9600B3A037 /* DWFacebookConnect.m in Sources */ = {isa = PBXBuildFile; fileRef = 262376A315BF6B9600B3A037 /* DWFacebookConnect.m */; };
-		262376B215BF6C0A00B3A037 /* Facebook.m in Sources */ = {isa = PBXBuildFile; fileRef = 262376A715BF6C0A00B3A037 /* Facebook.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		262376B315BF6C0A00B3A037 /* FBDialog.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 262376A915BF6C0A00B3A037 /* FBDialog.bundle */; };
-		262376B415BF6C0A00B3A037 /* FBDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 262376AB15BF6C0A00B3A037 /* FBDialog.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		262376B515BF6C0A00B3A037 /* FBFrictionlessRequestSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 262376AD15BF6C0A00B3A037 /* FBFrictionlessRequestSettings.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		262376B615BF6C0A00B3A037 /* FBLoginDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 262376AF15BF6C0A00B3A037 /* FBLoginDialog.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		262376B715BF6C0A00B3A037 /* FBRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 262376B115BF6C0A00B3A037 /* FBRequest.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		262625E41649A130004CFB1E /* DWEmailConnectCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 262625E31649A12F004CFB1E /* DWEmailConnectCell.m */; };
 		262625EA1649AC57004CFB1E /* feed-btn-yahoo-on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 262625E61649AC57004CFB1E /* feed-btn-yahoo-on@2x.png */; };
 		262625EB1649AC57004CFB1E /* feed-btn-gmail-off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 262625E71649AC57004CFB1E /* feed-btn-gmail-off@2x.png */; };
@@ -86,6 +79,7 @@
 		26D699DD15DDA7C7003AFAFA /* DWGlobalFeedViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 26D699DC15DDA7C7003AFAFA /* DWGlobalFeedViewController.m */; };
 		26E292E6164AF5DC0081E385 /* nav-btn-cancel-spadding-off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26E292E4164AF5DC0081E385 /* nav-btn-cancel-spadding-off@2x.png */; };
 		26E292E7164AF5DC0081E385 /* nav-btn-cancel-spadding-on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26E292E5164AF5DC0081E385 /* nav-btn-cancel-spadding-on@2x.png */; };
+		BB0211D11697672200A659E3 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB0211D01697672200A659E3 /* FacebookSDK.framework */; };
 		BB06360C15BF726D001F26E1 /* DWErrorView.m in Sources */ = {isa = PBXBuildFile; fileRef = BB06360B15BF726D001F26E1 /* DWErrorView.m */; };
 		BB06361215BF7DB2001F26E1 /* DWTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BB06360F15BF7DB2001F26E1 /* DWTabBar.m */; };
 		BB06361315BF7DB2001F26E1 /* DWTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB06361115BF7DB2001F26E1 /* DWTabBarController.m */; };
@@ -550,13 +544,14 @@
 		BBAE15181696155A003B91D9 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBAE151716961559003B91D9 /* Twitter.framework */; };
 		BBAE151A16961908003B91D9 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBAE151916961907003B91D9 /* Social.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		BBAE153716963D29003B91D9 /* DWTwitterIOSConnect.m in Sources */ = {isa = PBXBuildFile; fileRef = BBAE153616963D29003B91D9 /* DWTwitterIOSConnect.m */; };
-		BBAE153916963F50003B91D9 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBAE153816963F4F003B91D9 /* Accounts.framework */; };
+		BBAE153916963F50003B91D9 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBAE153816963F4F003B91D9 /* Accounts.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		BBAE1572169665F3003B91D9 /* NSData+ABOBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = BBAE1569169665F3003B91D9 /* NSData+ABOBase64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		BBAE1573169665F3003B91D9 /* OAuth+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = BBAE156B169665F3003B91D9 /* OAuth+Additions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		BBAE1574169665F3003B91D9 /* OAuthCore.m in Sources */ = {isa = PBXBuildFile; fileRef = BBAE156D169665F3003B91D9 /* OAuthCore.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		BBAE1575169665F3003B91D9 /* TWAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BBAE156F169665F3003B91D9 /* TWAPIManager.m */; };
 		BBAE1576169665F3003B91D9 /* TWSignedRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = BBAE1571169665F3003B91D9 /* TWSignedRequest.m */; };
 		BBAE157916966623003B91D9 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = BBAE157816966623003B91D9 /* NSData+Base64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		BBAE158E16968704003B91D9 /* DWFacebookConnect.m in Sources */ = {isa = PBXBuildFile; fileRef = BBAE158D16968704003B91D9 /* DWFacebookConnect.m */; };
 		BBC0607615C493A9000D3480 /* DWLike.m in Sources */ = {isa = PBXBuildFile; fileRef = BBC0607515C493A9000D3480 /* DWLike.m */; };
 		BBC0607A15C49671000D3480 /* DWComment.m in Sources */ = {isa = PBXBuildFile; fileRef = BBC0607915C49671000D3480 /* DWComment.m */; };
 		BBC0608515C727F5000D3480 /* DWLikesController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBC0608415C727F5000D3480 /* DWLikesController.m */; };
@@ -636,20 +631,6 @@
 		262200B215C76A61003DC1DF /* DWProductsViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWProductsViewDataSource.m; sourceTree = "<group>"; };
 		262200B415C76AC7003DC1DF /* DWCreationNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWCreationNavigationViewController.h; sourceTree = "<group>"; };
 		262200B515C76AC7003DC1DF /* DWCreationNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWCreationNavigationViewController.m; sourceTree = "<group>"; };
-		262376A315BF6B9600B3A037 /* DWFacebookConnect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWFacebookConnect.m; path = Connect/DWFacebookConnect.m; sourceTree = "<group>"; };
-		262376A415BF6B9600B3A037 /* DWFacebookConnect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWFacebookConnect.h; path = Connect/DWFacebookConnect.h; sourceTree = "<group>"; };
-		262376A715BF6C0A00B3A037 /* Facebook.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Facebook.m; path = Facebook/Facebook.m; sourceTree = "<group>"; };
-		262376A815BF6C0A00B3A037 /* FBConnect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FBConnect.h; path = Facebook/FBConnect.h; sourceTree = "<group>"; };
-		262376A915BF6C0A00B3A037 /* FBDialog.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = FBDialog.bundle; path = Facebook/FBDialog.bundle; sourceTree = "<group>"; };
-		262376AA15BF6C0A00B3A037 /* FBDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FBDialog.h; path = Facebook/FBDialog.h; sourceTree = "<group>"; };
-		262376AB15BF6C0A00B3A037 /* FBDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FBDialog.m; path = Facebook/FBDialog.m; sourceTree = "<group>"; };
-		262376AC15BF6C0A00B3A037 /* FBFrictionlessRequestSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FBFrictionlessRequestSettings.h; path = Facebook/FBFrictionlessRequestSettings.h; sourceTree = "<group>"; };
-		262376AD15BF6C0A00B3A037 /* FBFrictionlessRequestSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FBFrictionlessRequestSettings.m; path = Facebook/FBFrictionlessRequestSettings.m; sourceTree = "<group>"; };
-		262376AE15BF6C0A00B3A037 /* FBLoginDialog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FBLoginDialog.h; path = Facebook/FBLoginDialog.h; sourceTree = "<group>"; };
-		262376AF15BF6C0A00B3A037 /* FBLoginDialog.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FBLoginDialog.m; path = Facebook/FBLoginDialog.m; sourceTree = "<group>"; };
-		262376B015BF6C0A00B3A037 /* FBRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FBRequest.h; path = Facebook/FBRequest.h; sourceTree = "<group>"; };
-		262376B115BF6C0A00B3A037 /* FBRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FBRequest.m; path = Facebook/FBRequest.m; sourceTree = "<group>"; };
-		262376B815BF6CBA00B3A037 /* Facebook.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Facebook.h; path = Facebook/Facebook.h; sourceTree = "<group>"; };
 		262625E21649A12F004CFB1E /* DWEmailConnectCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWEmailConnectCell.h; sourceTree = "<group>"; };
 		262625E31649A12F004CFB1E /* DWEmailConnectCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWEmailConnectCell.m; sourceTree = "<group>"; };
 		262625E61649AC57004CFB1E /* feed-btn-yahoo-on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "feed-btn-yahoo-on@2x.png"; sourceTree = "<group>"; };
@@ -732,6 +713,7 @@
 		26D699DC15DDA7C7003AFAFA /* DWGlobalFeedViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWGlobalFeedViewController.m; sourceTree = "<group>"; };
 		26E292E4164AF5DC0081E385 /* nav-btn-cancel-spadding-off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-btn-cancel-spadding-off@2x.png"; sourceTree = "<group>"; };
 		26E292E5164AF5DC0081E385 /* nav-btn-cancel-spadding-on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-btn-cancel-spadding-on@2x.png"; sourceTree = "<group>"; };
+		BB0211D01697672200A659E3 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = External/Facebook/FacebookSDK.framework; sourceTree = "<group>"; };
 		BB06360615BF7258001F26E1 /* DWErrorViewProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWErrorViewProtocol.h; sourceTree = "<group>"; };
 		BB06360715BF7258001F26E1 /* DWModelPresenterProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWModelPresenterProtocol.h; sourceTree = "<group>"; };
 		BB06360A15BF726D001F26E1 /* DWErrorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWErrorView.h; sourceTree = "<group>"; };
@@ -1330,6 +1312,8 @@
 		BBAE1571169665F3003B91D9 /* TWSignedRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWSignedRequest.m; sourceTree = "<group>"; };
 		BBAE157716966623003B91D9 /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
 		BBAE157816966623003B91D9 /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64.m"; sourceTree = "<group>"; };
+		BBAE158C16968703003B91D9 /* DWFacebookConnect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWFacebookConnect.h; path = Connect/DWFacebookConnect.h; sourceTree = "<group>"; };
+		BBAE158D16968704003B91D9 /* DWFacebookConnect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWFacebookConnect.m; path = Connect/DWFacebookConnect.m; sourceTree = "<group>"; };
 		BBC0607415C493A9000D3480 /* DWLike.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWLike.h; sourceTree = "<group>"; };
 		BBC0607515C493A9000D3480 /* DWLike.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWLike.m; sourceTree = "<group>"; };
 		BBC0607815C49671000D3480 /* DWComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWComment.h; sourceTree = "<group>"; };
@@ -1424,6 +1408,7 @@
 				BBC8A09715B9D26D00DF58F6 /* Foundation.framework in Frameworks */,
 				BBC8A09915B9D26D00DF58F6 /* CoreGraphics.framework in Frameworks */,
 				26B1DAA6166EE8B700894D59 /* TapjoyAdvertiserLibrary.a in Frameworks */,
+				BB0211D11697672200A659E3 /* FacebookSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1455,18 +1440,6 @@
 		262376A615BF6BE700B3A037 /* Facebook */ = {
 			isa = PBXGroup;
 			children = (
-				262376B815BF6CBA00B3A037 /* Facebook.h */,
-				262376A715BF6C0A00B3A037 /* Facebook.m */,
-				262376A815BF6C0A00B3A037 /* FBConnect.h */,
-				262376A915BF6C0A00B3A037 /* FBDialog.bundle */,
-				262376AA15BF6C0A00B3A037 /* FBDialog.h */,
-				262376AB15BF6C0A00B3A037 /* FBDialog.m */,
-				262376AC15BF6C0A00B3A037 /* FBFrictionlessRequestSettings.h */,
-				262376AD15BF6C0A00B3A037 /* FBFrictionlessRequestSettings.m */,
-				262376AE15BF6C0A00B3A037 /* FBLoginDialog.h */,
-				262376AF15BF6C0A00B3A037 /* FBLoginDialog.m */,
-				262376B015BF6C0A00B3A037 /* FBRequest.h */,
-				262376B115BF6C0A00B3A037 /* FBRequest.m */,
 			);
 			name = Facebook;
 			sourceTree = "<group>";
@@ -1491,8 +1464,8 @@
 		267D572E15D0997D00DD4AB1 /* Wrappers */ = {
 			isa = PBXGroup;
 			children = (
-				262376A415BF6B9600B3A037 /* DWFacebookConnect.h */,
-				262376A315BF6B9600B3A037 /* DWFacebookConnect.m */,
+				BBAE158C16968703003B91D9 /* DWFacebookConnect.h */,
+				BBAE158D16968704003B91D9 /* DWFacebookConnect.m */,
 				26C446AA15C9D05400E9A50B /* DWTumblrConnect.h */,
 				26C446A915C9D05400E9A50B /* DWTumblrConnect.m */,
 				26C4470315CB3E0900E9A50B /* DWTwitterConnect.h */,
@@ -2421,6 +2394,7 @@
 		BBC8A09315B9D26D00DF58F6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BB0211D01697672200A659E3 /* FacebookSDK.framework */,
 				BBAE153816963F4F003B91D9 /* Accounts.framework */,
 				BBAE151916961907003B91D9 /* Social.framework */,
 				BBAE151716961559003B91D9 /* Twitter.framework */,
@@ -2732,7 +2706,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				BBC8A09F15B9D26D00DF58F6 /* InfoPlist.strings in Resources */,
-				262376B315BF6C0A00B3A037 /* FBDialog.bundle in Resources */,
 				BB06365515C08D2E001F26E1 /* Window.xib in Resources */,
 				BB06366215C0A147001F26E1 /* DWLoginViewController.xib in Resources */,
 				2622005815C713A7003DC1DF /* DWInviteViewController.xib in Resources */,
@@ -3152,12 +3125,6 @@
 				BBE42F5215BDBBFC000F6AE1 /* DWFeedViewDataSource.m in Sources */,
 				BBE42F5615BE0F58000F6AE1 /* DWLoadingView.m in Sources */,
 				BBE42F5A15BE188C000F6AE1 /* EGORefreshTableHeaderView.m in Sources */,
-				262376A515BF6B9600B3A037 /* DWFacebookConnect.m in Sources */,
-				262376B215BF6C0A00B3A037 /* Facebook.m in Sources */,
-				262376B415BF6C0A00B3A037 /* FBDialog.m in Sources */,
-				262376B515BF6C0A00B3A037 /* FBFrictionlessRequestSettings.m in Sources */,
-				262376B615BF6C0A00B3A037 /* FBLoginDialog.m in Sources */,
-				262376B715BF6C0A00B3A037 /* FBRequest.m in Sources */,
 				BB06360C15BF726D001F26E1 /* DWErrorView.m in Sources */,
 				BB06361215BF7DB2001F26E1 /* DWTabBar.m in Sources */,
 				BB06361315BF7DB2001F26E1 /* DWTabBarController.m in Sources */,
@@ -3312,6 +3279,7 @@
 				BBAE1575169665F3003B91D9 /* TWAPIManager.m in Sources */,
 				BBAE1576169665F3003B91D9 /* TWSignedRequest.m in Sources */,
 				BBAE157916966623003B91D9 /* NSData+Base64.m in Sources */,
+				BBAE158E16968704003B91D9 /* DWFacebookConnect.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3361,12 +3329,22 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/External/Facebook\"",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Mine/Mine-Prefix.pch";
 				INFOPLIST_FILE = "Mine/Mine-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/External/TapjoyAdvertiserLibrary\"",
+				);
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-ObjC",
+					"-lsqlite3.0",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -3440,12 +3418,22 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/External/Facebook\"",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Mine/Mine-Prefix.pch";
 				INFOPLIST_FILE = "Mine/Mine-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/External/TapjoyAdvertiserLibrary\"",
+				);
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-ObjC",
+					"-lsqlite3.0",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -3458,12 +3446,22 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/External/Facebook\"",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Mine/Mine-Prefix.pch";
 				INFOPLIST_FILE = "Mine/Mine-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/External/TapjoyAdvertiserLibrary\"",
+				);
+				OTHER_LDFLAGS = (
+					"-all_load",
+					"-ObjC",
+					"-lsqlite3.0",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

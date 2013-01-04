@@ -8,41 +8,24 @@
 
 #import <Foundation/Foundation.h>
 
-#import "FBConnect.h"
 
 @protocol DWFacebookConnectDelegate;
 
 /**
  * Wrapper over the Facebook iOS SDK
  */
-@interface DWFacebookConnect : NSObject<FBSessionDelegate> {
-    Facebook *_facebook; 
-    
+@interface DWFacebookConnect : NSObject {    
     __weak id<DWFacebookConnectDelegate,NSObject> _delegate;
 }
 
-/**
- * Facebook iOS SDK interface instance
- */
-@property (nonatomic,strong) Facebook *facebook;
-
-/**
- * DWFacebookConnectDelegate
- */
 @property (nonatomic,weak) id<DWFacebookConnectDelegate,NSObject> delegate;
 
-
-/**
- * Redirect to facebook authorization dialog
- */
-- (void)authorize;
+- (void)authorizeRead;
 
 @end
 
 
-/**
- * Protocol to fire events about the fbSharing lifecycle
- */
+
 @protocol DWFacebookConnectDelegate 
 
 @optional

@@ -31,6 +31,8 @@
 	<string>com.getmine.mine</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
+	<key>FacebookAppID</key>
+	<string>245230762190915</string>
 	<key>CFBundleName</key>
 	<string>${PRODUCT_NAME}</string>
 	<key>CFBundlePackageType</key>

@@ -73,7 +73,7 @@ static NSString* const kMsgError            = @"Mine needs to access your basic 
     self.navigationItem.leftBarButtonItem   = [DWNavigationBarBackButton backButtonForNavigationController:self.navigationController];
     self.navigationItem.titleView           = [DWGUIManager navBarTitleViewWithText:@"Facebook Login"];
     
-    [self.facebookConnect authorize];
+    [self.facebookConnect authorizeRead];
     
     [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Facebook Connect View"];
 }

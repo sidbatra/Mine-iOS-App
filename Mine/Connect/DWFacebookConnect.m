@@ -9,12 +9,15 @@
 #import "DWFacebookConnect.h"
 #import "DWConstants.h"
 
+#import <FacebookSDK/FacebookSDK.h>
+
+
+
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 @implementation DWFacebookConnect
 
-@synthesize facebook    	= _facebook;
 @synthesize delegate        = _delegate;
 
 //----------------------------------------------------------------------------------------------------
@@ -23,9 +26,6 @@
     self = [super init];
     
     if(self) {
-        self.facebook = [[Facebook alloc] initWithAppId:kFacebookAppID 
-                                            andDelegate:self];
-        
         [[NSNotificationCenter defaultCenter] addObserver:self 
 												 selector:@selector(facebookURLOpened:) 
 													 name:kNFacebookURLOpened
@@ -43,38 +43,57 @@
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)authorize {
+- (void)authorizeRead {
+    [FBSession.activeSession closeAndClearTokenInformation];
+    
     NSArray *permissions = [[NSArray alloc] initWithObjects:
                             @"email",
-                            @"user_likes", 
+                            @"user_likes",
                             @"user_birthday",
-                            @"publish_actions",
                             nil];
-    
-    [self.facebook authorize:permissions];
-}
-
-
-//----------------------------------------------------------------------------------------------------
-//----------------------------------------------------------------------------------------------------
-#pragma mark -
-#pragma mark FBSessionDelegate
-
-//----------------------------------------------------------------------------------------------------
-- (void)fbDidLogin {
-    SEL sel = @selector(fbAuthenticatedWithToken:);
-    
-    if([_delegate respondsToSelector:sel])
-        [_delegate performSelector:sel 
-                        withObject:self.facebook.accessToken];
+    [FBSession openActiveSessionWithReadPermissions:permissions
+                                       allowLoginUI:YES
+                                  completionHandler:^(FBSession *session,
+                                                         FBSessionState state,
+                                                         NSError *error) {
+                                         [self sessionStateChanged:session
+                                                             state:state
+                                                             error:error];}];
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)fbDidNotLogin:(BOOL)cancelled {
-    SEL sel = @selector(fbAuthenticationFailed);
+- (void)sessionStateChanged:(FBSession *)session
+                      state:(FBSessionState) state
+                      error:(NSError *)error {
     
-    if([_delegate respondsToSelector:sel])
-        [_delegate performSelector:sel];
+    switch (state) {
+        case FBSessionStateOpen:
+            
+            if (!error) {
+                SEL sel = @selector(fbAuthenticatedWithToken:);
+                
+                if([_delegate respondsToSelector:sel])
+                    [_delegate performSelector:sel
+                                    withObject:session.accessToken];
+            }
+            
+            break;
+        case FBSessionStateClosed:
+        case FBSessionStateClosedLoginFailed:
+            [FBSession.activeSession closeAndClearTokenInformation];
+            
+            SEL sel = @selector(fbAuthenticationFailed);
+            
+            if([_delegate respondsToSelector:sel])
+                [_delegate performSelector:sel];
+            
+            break;
+        default:
+            break;
+    }
+    
+    if (error)
+        NSLog(@"FB Error: %@",error.localizedDescription);
 }
 
 
@@ -85,7 +104,7 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)facebookURLOpened:(NSNotification*)notification {
-    [self.facebook handleOpenURL:(NSURL*)[notification object]];
+    [FBSession.activeSession handleOpenURL:(NSURL*)[notification object]];
 }
 
 @end
