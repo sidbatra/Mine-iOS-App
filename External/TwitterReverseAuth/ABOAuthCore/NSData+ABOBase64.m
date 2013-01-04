@@ -62,7 +62,7 @@
  */
 
 #import <Foundation/Foundation.h>
-#import "NSData+Base64.h"
+#import "NSData+ABOBase64.h"
 
 // implementation for base64 comes from OmniFoundation. A (much less verbose)
 //  alternative would be to use OpenSSL's base64 BIO routines, but that would

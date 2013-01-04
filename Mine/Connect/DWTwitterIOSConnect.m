@@ -67,6 +67,66 @@
 }
 
 //----------------------------------------------------------------------------------------------------
+- (void)startReverseAuth:(UIView*)targetView {
+    
+    if (![TWAPIManager isLocalTwitterAccountAvailable])
+        return;
+    
+    if(self.accounts.count == 1) {
+        [self performReverseAuthWithAccount:self.accounts[0]];
+    }
+    else {
+        UIActionSheet *sheet = [[UIActionSheet alloc]
+                                initWithTitle:@"Select an Account"
+                                delegate:self
+                                cancelButtonTitle:nil
+                                destructiveButtonTitle:nil
+                                otherButtonTitles:nil];
+        
+        for (ACAccount *acct in self.accounts) {
+            [sheet addButtonWithTitle:acct.username];
+        }
+        
+        [sheet addButtonWithTitle:@"Cancel"];
+        [sheet setDestructiveButtonIndex:[self.accounts count]];
+        [sheet showInView:targetView];
+    }
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)performReverseAuthWithAccount:(ACAccount*)account {
+    [_apiManager
+     performReverseAuthForAccount:account
+     withHandler:^(NSData *responseData, NSError *error) {
+         if (responseData) {
+             NSString *responseStr = [[NSString alloc]
+                                      initWithData:responseData
+                                      encoding:NSUTF8StringEncoding];
+             
+             NSLog(@"%@",responseStr);
+             
+             NSArray *parts = [responseStr
+                               componentsSeparatedByString:@"&"];
+             
+             NSString *lined = [parts componentsJoinedByString:@"\n"];
+             
+             dispatch_async(dispatch_get_main_queue(), ^{
+                 UIAlertView *alert = [[UIAlertView alloc]
+                                       initWithTitle:@"Success!"
+                                       message:lined
+                                       delegate:nil
+                                       cancelButtonTitle:@"OK"
+                                       otherButtonTitles:nil];
+                 [alert show];
+             });
+         }
+         else {
+             NSLog(@"Error!\n%@", [error localizedDescription]);
+         }
+     }];
+}
+
+//----------------------------------------------------------------------------------------------------
 - (void)obtainAccessToAccountsWithBlock:(void (^)(BOOL))block {
     ACAccountType *twitterType = [_accountStore accountTypeWithAccountTypeIdentifier:ACAccountTypeIdentifierTwitter];
     
@@ -96,5 +156,17 @@
     }
 }
 
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark UIActionSheetDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex != (actionSheet.numberOfButtons - 1)) {
+        [self performReverseAuthWithAccount:self.accounts[buttonIndex]];
+    }
+}
 
 @end

@@ -26,14 +26,13 @@
 
 #import "OAuthCore.h"
 #import "TWSignedRequest.h"
+#import "DWConstants.h"
 
 #define TW_HTTP_METHOD_GET @"GET"
 #define TW_HTTP_METHOD_POST @"POST"
 #define TW_HTTP_METHOD_DELETE @"DELETE"
 #define TW_HTTP_HEADER_AUTHORIZATION @"Authorization"
 
-#define kTWConsumerKey TWITTER_CONSUMER_KEY
-#define kTWConsumerSecret TWITTER_CONSUMER_SECRET
 
 @interface TWSignedRequest()
 {
@@ -124,21 +123,13 @@
 }
 
 // OBFUSCATE YOUR KEYS!
-+ (NSString *)consumerKey
-{
-    //NSAssert([kTWConsumerKey length] > 0,
-    //         @"You must enter your consumer key in Build Settings.");
-    //return kTWConsumerKey;
-    return @"";
++ (NSString *)consumerKey {
+    return kTwitterOAuthConsumerKey;
 }
 
 // OBFUSCATE YOUR KEYS!
-+ (NSString *)consumerSecret
-{
-    return @"";
-    //NSAssert([kTWConsumerSecret length] > 0,
-    //         @"You must enter your consumer secret in Build Settings.");
-    //return kTWConsumerSecret;
++ (NSString *)consumerSecret {
+    return kTwitterOAuthConsumerSecret;
 }
 
 @end

@@ -300,6 +300,7 @@ static NSString* const kVideoIntro = @"mine_intro_640x280.mp4";
 
 //----------------------------------------------------------------------------------------------------
 - (void)twitterIOSPermissionGranted {
+    [self.twitterIOSConnect startReverseAuth:[self.delegate loginViewNavigationController].view];
     [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Twitter IOS Accepted"];
 }
 

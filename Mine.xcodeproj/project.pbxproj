@@ -73,7 +73,6 @@
 		26B1DAAB166EE9FE00894D59 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 26B1DAAA166EE9FE00894D59 /* AdSupport.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		26B3237815D31C4A00F1E28F /* DWStoresViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = 26B3237715D31C4A00F1E28F /* DWStoresViewDataSource.m */; };
 		26C4467715C8BA4400E9A50B /* DWProductCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C4467615C8BA4400E9A50B /* DWProductCell.m */; };
-		26C446A615C9D02700E9A50B /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C446A315C9D02700E9A50B /* NSData+Base64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		26C446A715C9D02700E9A50B /* TumblrXAuth.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C446A515C9D02700E9A50B /* TumblrXAuth.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		26C446AB15C9D05400E9A50B /* DWTumblrConnect.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C446A915C9D05400E9A50B /* DWTumblrConnect.m */; };
 		26C446FC15CB3DEF00E9A50B /* TwitterAuthenticator.m in Sources */ = {isa = PBXBuildFile; fileRef = 26C446F115CB3DEF00E9A50B /* TwitterAuthenticator.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
@@ -550,13 +549,14 @@
 		BBAE151616953B17003B91D9 /* DWSuggestedUsersViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBAE151516953B17003B91D9 /* DWSuggestedUsersViewController.m */; };
 		BBAE15181696155A003B91D9 /* Twitter.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBAE151716961559003B91D9 /* Twitter.framework */; };
 		BBAE151A16961908003B91D9 /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBAE151916961907003B91D9 /* Social.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		BBAE153016963844003B91D9 /* NSData+ABOBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = BBAE152716963844003B91D9 /* NSData+ABOBase64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		BBAE153116963844003B91D9 /* OAuth+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = BBAE152916963844003B91D9 /* OAuth+Additions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		BBAE153216963844003B91D9 /* OAuthCore.m in Sources */ = {isa = PBXBuildFile; fileRef = BBAE152B16963844003B91D9 /* OAuthCore.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		BBAE153316963844003B91D9 /* TWAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BBAE152D16963844003B91D9 /* TWAPIManager.m */; };
-		BBAE153416963844003B91D9 /* TWSignedRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = BBAE152F16963844003B91D9 /* TWSignedRequest.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		BBAE153716963D29003B91D9 /* DWTwitterIOSConnect.m in Sources */ = {isa = PBXBuildFile; fileRef = BBAE153616963D29003B91D9 /* DWTwitterIOSConnect.m */; };
 		BBAE153916963F50003B91D9 /* Accounts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BBAE153816963F4F003B91D9 /* Accounts.framework */; };
+		BBAE1572169665F3003B91D9 /* NSData+ABOBase64.m in Sources */ = {isa = PBXBuildFile; fileRef = BBAE1569169665F3003B91D9 /* NSData+ABOBase64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		BBAE1573169665F3003B91D9 /* OAuth+Additions.m in Sources */ = {isa = PBXBuildFile; fileRef = BBAE156B169665F3003B91D9 /* OAuth+Additions.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		BBAE1574169665F3003B91D9 /* OAuthCore.m in Sources */ = {isa = PBXBuildFile; fileRef = BBAE156D169665F3003B91D9 /* OAuthCore.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		BBAE1575169665F3003B91D9 /* TWAPIManager.m in Sources */ = {isa = PBXBuildFile; fileRef = BBAE156F169665F3003B91D9 /* TWAPIManager.m */; };
+		BBAE1576169665F3003B91D9 /* TWSignedRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = BBAE1571169665F3003B91D9 /* TWSignedRequest.m */; };
+		BBAE157916966623003B91D9 /* NSData+Base64.m in Sources */ = {isa = PBXBuildFile; fileRef = BBAE157816966623003B91D9 /* NSData+Base64.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		BBC0607615C493A9000D3480 /* DWLike.m in Sources */ = {isa = PBXBuildFile; fileRef = BBC0607515C493A9000D3480 /* DWLike.m */; };
 		BBC0607A15C49671000D3480 /* DWComment.m in Sources */ = {isa = PBXBuildFile; fileRef = BBC0607915C49671000D3480 /* DWComment.m */; };
 		BBC0608515C727F5000D3480 /* DWLikesController.m in Sources */ = {isa = PBXBuildFile; fileRef = BBC0608415C727F5000D3480 /* DWLikesController.m */; };
@@ -708,8 +708,6 @@
 		26B3237715D31C4A00F1E28F /* DWStoresViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWStoresViewDataSource.m; sourceTree = "<group>"; };
 		26C4467515C8BA4400E9A50B /* DWProductCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWProductCell.h; sourceTree = "<group>"; };
 		26C4467615C8BA4400E9A50B /* DWProductCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWProductCell.m; sourceTree = "<group>"; };
-		26C446A215C9D02700E9A50B /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
-		26C446A315C9D02700E9A50B /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64.m"; sourceTree = "<group>"; };
 		26C446A415C9D02700E9A50B /* TumblrXAuth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TumblrXAuth.h; sourceTree = "<group>"; };
 		26C446A515C9D02700E9A50B /* TumblrXAuth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TumblrXAuth.m; sourceTree = "<group>"; };
 		26C446A915C9D05400E9A50B /* DWTumblrConnect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWTumblrConnect.m; path = Connect/DWTumblrConnect.m; sourceTree = "<group>"; };
@@ -1317,19 +1315,21 @@
 		BBAE151516953B17003B91D9 /* DWSuggestedUsersViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWSuggestedUsersViewController.m; sourceTree = "<group>"; };
 		BBAE151716961559003B91D9 /* Twitter.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Twitter.framework; path = System/Library/Frameworks/Twitter.framework; sourceTree = SDKROOT; };
 		BBAE151916961907003B91D9 /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
-		BBAE152616963844003B91D9 /* NSData+ABOBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+ABOBase64.h"; sourceTree = "<group>"; };
-		BBAE152716963844003B91D9 /* NSData+ABOBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+ABOBase64.m"; sourceTree = "<group>"; };
-		BBAE152816963844003B91D9 /* OAuth+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OAuth+Additions.h"; sourceTree = "<group>"; };
-		BBAE152916963844003B91D9 /* OAuth+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "OAuth+Additions.m"; sourceTree = "<group>"; };
-		BBAE152A16963844003B91D9 /* OAuthCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAuthCore.h; sourceTree = "<group>"; };
-		BBAE152B16963844003B91D9 /* OAuthCore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OAuthCore.m; sourceTree = "<group>"; };
-		BBAE152C16963844003B91D9 /* TWAPIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWAPIManager.h; sourceTree = "<group>"; };
-		BBAE152D16963844003B91D9 /* TWAPIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWAPIManager.m; sourceTree = "<group>"; };
-		BBAE152E16963844003B91D9 /* TWSignedRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWSignedRequest.h; sourceTree = "<group>"; };
-		BBAE152F16963844003B91D9 /* TWSignedRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWSignedRequest.m; sourceTree = "<group>"; };
 		BBAE153516963D29003B91D9 /* DWTwitterIOSConnect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DWTwitterIOSConnect.h; path = Connect/DWTwitterIOSConnect.h; sourceTree = "<group>"; };
 		BBAE153616963D29003B91D9 /* DWTwitterIOSConnect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DWTwitterIOSConnect.m; path = Connect/DWTwitterIOSConnect.m; sourceTree = "<group>"; };
 		BBAE153816963F4F003B91D9 /* Accounts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accounts.framework; path = System/Library/Frameworks/Accounts.framework; sourceTree = SDKROOT; };
+		BBAE1568169665F3003B91D9 /* NSData+ABOBase64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+ABOBase64.h"; sourceTree = "<group>"; };
+		BBAE1569169665F3003B91D9 /* NSData+ABOBase64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+ABOBase64.m"; sourceTree = "<group>"; };
+		BBAE156A169665F3003B91D9 /* OAuth+Additions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "OAuth+Additions.h"; sourceTree = "<group>"; };
+		BBAE156B169665F3003B91D9 /* OAuth+Additions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "OAuth+Additions.m"; sourceTree = "<group>"; };
+		BBAE156C169665F3003B91D9 /* OAuthCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OAuthCore.h; sourceTree = "<group>"; };
+		BBAE156D169665F3003B91D9 /* OAuthCore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OAuthCore.m; sourceTree = "<group>"; };
+		BBAE156E169665F3003B91D9 /* TWAPIManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWAPIManager.h; sourceTree = "<group>"; };
+		BBAE156F169665F3003B91D9 /* TWAPIManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWAPIManager.m; sourceTree = "<group>"; };
+		BBAE1570169665F3003B91D9 /* TWSignedRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWSignedRequest.h; sourceTree = "<group>"; };
+		BBAE1571169665F3003B91D9 /* TWSignedRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWSignedRequest.m; sourceTree = "<group>"; };
+		BBAE157716966623003B91D9 /* NSData+Base64.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Base64.h"; sourceTree = "<group>"; };
+		BBAE157816966623003B91D9 /* NSData+Base64.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Base64.m"; sourceTree = "<group>"; };
 		BBC0607415C493A9000D3480 /* DWLike.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWLike.h; sourceTree = "<group>"; };
 		BBC0607515C493A9000D3480 /* DWLike.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWLike.m; sourceTree = "<group>"; };
 		BBC0607815C49671000D3480 /* DWComment.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWComment.h; sourceTree = "<group>"; };
@@ -1532,8 +1532,8 @@
 		26C446A115C9D02700E9A50B /* Tumblr */ = {
 			isa = PBXGroup;
 			children = (
-				26C446A215C9D02700E9A50B /* NSData+Base64.h */,
-				26C446A315C9D02700E9A50B /* NSData+Base64.m */,
+				BBAE157716966623003B91D9 /* NSData+Base64.h */,
+				BBAE157816966623003B91D9 /* NSData+Base64.m */,
 				26C446A415C9D02700E9A50B /* TumblrXAuth.h */,
 				26C446A515C9D02700E9A50B /* TumblrXAuth.m */,
 			);
@@ -2230,7 +2230,7 @@
 				262376A615BF6BE700B3A037 /* Facebook */,
 				26C446A115C9D02700E9A50B /* Tumblr */,
 				26C446EF15CB3DEF00E9A50B /* Twitter */,
-				BBAE152416963844003B91D9 /* TwitterReverseAuth */,
+				BBAE1566169665F3003B91D9 /* TwitterReverseAuth */,
 				26B1DAA2166EE8B700894D59 /* TapjoyAdvertiserLibrary */,
 			);
 			path = External;
@@ -2375,27 +2375,27 @@
 			path = Networking;
 			sourceTree = "<group>";
 		};
-		BBAE152416963844003B91D9 /* TwitterReverseAuth */ = {
+		BBAE1566169665F3003B91D9 /* TwitterReverseAuth */ = {
 			isa = PBXGroup;
 			children = (
-				BBAE152516963844003B91D9 /* ABOAuthCore */,
-				BBAE152C16963844003B91D9 /* TWAPIManager.h */,
-				BBAE152D16963844003B91D9 /* TWAPIManager.m */,
-				BBAE152E16963844003B91D9 /* TWSignedRequest.h */,
-				BBAE152F16963844003B91D9 /* TWSignedRequest.m */,
+				BBAE1567169665F3003B91D9 /* ABOAuthCore */,
+				BBAE156E169665F3003B91D9 /* TWAPIManager.h */,
+				BBAE156F169665F3003B91D9 /* TWAPIManager.m */,
+				BBAE1570169665F3003B91D9 /* TWSignedRequest.h */,
+				BBAE1571169665F3003B91D9 /* TWSignedRequest.m */,
 			);
 			path = TwitterReverseAuth;
 			sourceTree = "<group>";
 		};
-		BBAE152516963844003B91D9 /* ABOAuthCore */ = {
+		BBAE1567169665F3003B91D9 /* ABOAuthCore */ = {
 			isa = PBXGroup;
 			children = (
-				BBAE152616963844003B91D9 /* NSData+ABOBase64.h */,
-				BBAE152716963844003B91D9 /* NSData+ABOBase64.m */,
-				BBAE152816963844003B91D9 /* OAuth+Additions.h */,
-				BBAE152916963844003B91D9 /* OAuth+Additions.m */,
-				BBAE152A16963844003B91D9 /* OAuthCore.h */,
-				BBAE152B16963844003B91D9 /* OAuthCore.m */,
+				BBAE1568169665F3003B91D9 /* NSData+ABOBase64.h */,
+				BBAE1569169665F3003B91D9 /* NSData+ABOBase64.m */,
+				BBAE156A169665F3003B91D9 /* OAuth+Additions.h */,
+				BBAE156B169665F3003B91D9 /* OAuth+Additions.m */,
+				BBAE156C169665F3003B91D9 /* OAuthCore.h */,
+				BBAE156D169665F3003B91D9 /* OAuthCore.m */,
 			);
 			path = ABOAuthCore;
 			sourceTree = "<group>";
@@ -3199,7 +3199,6 @@
 				BBC060A215C76D57000D3480 /* DWCommentsCreateViewController.m in Sources */,
 				BBC060A715C85F28000D3480 /* DWCommentsController.m in Sources */,
 				26C4467715C8BA4400E9A50B /* DWProductCell.m in Sources */,
-				26C446A615C9D02700E9A50B /* NSData+Base64.m in Sources */,
 				26C446A715C9D02700E9A50B /* TumblrXAuth.m in Sources */,
 				26C446AB15C9D05400E9A50B /* DWTumblrConnect.m in Sources */,
 				BBC060BB15C9FF66000D3480 /* DWStoresController.m in Sources */,
@@ -3306,12 +3305,13 @@
 				BBAE150F16952E1A003B91D9 /* DWUsersNavigationViewController.m in Sources */,
 				BBAE151316953A10003B91D9 /* DWSuggestedUsersViewDataSource.m in Sources */,
 				BBAE151616953B17003B91D9 /* DWSuggestedUsersViewController.m in Sources */,
-				BBAE153016963844003B91D9 /* NSData+ABOBase64.m in Sources */,
-				BBAE153116963844003B91D9 /* OAuth+Additions.m in Sources */,
-				BBAE153216963844003B91D9 /* OAuthCore.m in Sources */,
-				BBAE153316963844003B91D9 /* TWAPIManager.m in Sources */,
-				BBAE153416963844003B91D9 /* TWSignedRequest.m in Sources */,
 				BBAE153716963D29003B91D9 /* DWTwitterIOSConnect.m in Sources */,
+				BBAE1572169665F3003B91D9 /* NSData+ABOBase64.m in Sources */,
+				BBAE1573169665F3003B91D9 /* OAuth+Additions.m in Sources */,
+				BBAE1574169665F3003B91D9 /* OAuthCore.m in Sources */,
+				BBAE1575169665F3003B91D9 /* TWAPIManager.m in Sources */,
+				BBAE1576169665F3003B91D9 /* TWSignedRequest.m in Sources */,
+				BBAE157916966623003B91D9 /* NSData+Base64.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
