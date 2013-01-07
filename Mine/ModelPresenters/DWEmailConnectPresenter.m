@@ -34,10 +34,9 @@
     
     cell.delegate = delegate;
     
-    NSLog(@"AUTH VALUES - %d %d %d",
-          [[uni customValueforKey:kKeyIsGoogleAuthorized] boolValue],
-          [[uni customValueforKey:kKeyIsYahooAuthorized] boolValue],
-          [[uni customValueforKey:kKeyIsHotmailAuthorized] boolValue]);
+    [cell updateConnectStatusForGoogle:[[uni customValueforKey:kKeyIsGoogleAuthorized] boolValue]
+                                 yahoo:[[uni customValueforKey:kKeyIsYahooAuthorized] boolValue]
+                               hotmail:[[uni customValueforKey:kKeyIsHotmailAuthorized] boolValue]];
     
     [cell setTitle:uni.title
        andSubtitle:uni.subtitle];

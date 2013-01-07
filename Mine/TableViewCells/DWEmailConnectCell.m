@@ -12,12 +12,15 @@
 
 static NSInteger const kEmailConnectCellHeight = 51;
 
-static NSString* const kImgGoogleOff    = @"feed-btn-gmail-off.png";
-static NSString* const kImgGoogleOn     = @"feed-btn-gmail-on.png";
-static NSString* const kImgYahooOff     = @"feed-btn-yahoo-off.png";
-static NSString* const kImgYahooOn      = @"feed-btn-yahoo-on.png";
-static NSString* const kImgHotmailOff   = @"feed-btn-yahoo-off.png";
-static NSString* const kImgHotmailOn    = @"feed-btn-yahoo-on.png";
+static NSString* const kImgGoogleOff        = @"feed-btn-gmail-off.png";
+static NSString* const kImgGoogleOn         = @"feed-btn-gmail-on.png";
+static NSString* const kImgGoogleDisabled   = @"feed-btn-gmail-checked.png";
+static NSString* const kImgYahooOff         = @"feed-btn-yahoo-off.png";
+static NSString* const kImgYahooOn          = @"feed-btn-yahoo-on.png";
+static NSString* const kImgYahooDisabled    = @"feed-btn-yahoo-checked.png";
+static NSString* const kImgHotmailOff       = @"feed-btn-hotmail-off.png";
+static NSString* const kImgHotmailOn        = @"feed-btn-hotmail-on.png";
+static NSString* const kImgHotmailDisabled  = @"feed-btn-hotmail-checked.png";
 
 
 @interface DWEmailConnectCell() {
@@ -94,13 +97,16 @@ static NSString* const kImgHotmailOn    = @"feed-btn-yahoo-on.png";
 
 //----------------------------------------------------------------------------------------------------
 - (void)createConnectButtons {
-    googleButton = [[UIButton alloc] initWithFrame:CGRectMake(196,0,56,50)];
+    googleButton = [[UIButton alloc] initWithFrame:CGRectMake(131,0,60,50)];
     
     [googleButton setBackgroundImage:[UIImage imageNamed:kImgGoogleOff]
                             forState:UIControlStateNormal];
     
     [googleButton setBackgroundImage:[UIImage imageNamed:kImgGoogleOn]
                             forState:UIControlStateHighlighted];
+    
+    [googleButton setBackgroundImage:[UIImage imageNamed:kImgGoogleDisabled]
+                            forState:UIControlStateDisabled];
     
     [googleButton addTarget:self
                      action:@selector(didTapGoogleButton:)
@@ -110,13 +116,16 @@ static NSString* const kImgHotmailOn    = @"feed-btn-yahoo-on.png";
     
     
     
-    yahooButton = [[UIButton alloc] initWithFrame:CGRectMake(252,0,55,50)];
+    yahooButton = [[UIButton alloc] initWithFrame:CGRectMake(250,0,59,50)];
     
     [yahooButton setBackgroundImage:[UIImage imageNamed:kImgYahooOff]
                             forState:UIControlStateNormal];
     
     [yahooButton setBackgroundImage:[UIImage imageNamed:kImgYahooOn]
                             forState:UIControlStateHighlighted];
+    
+    [yahooButton setBackgroundImage:[UIImage imageNamed:kImgYahooDisabled]
+                           forState:UIControlStateDisabled];
     
     [yahooButton addTarget:self
                     action:@selector(didTapYahooButton:)
@@ -126,13 +135,16 @@ static NSString* const kImgHotmailOn    = @"feed-btn-yahoo-on.png";
     
     
     
-    hotmailButton = [[UIButton alloc] initWithFrame:CGRectMake(307,0,55,50)];
+    hotmailButton = [[UIButton alloc] initWithFrame:CGRectMake(191,0,59,50)];
     
     [hotmailButton setBackgroundImage:[UIImage imageNamed:kImgHotmailOff]
                            forState:UIControlStateNormal];
     
     [hotmailButton setBackgroundImage:[UIImage imageNamed:kImgHotmailOn]
                            forState:UIControlStateHighlighted];
+    
+    [hotmailButton setBackgroundImage:[UIImage imageNamed:kImgHotmailDisabled]
+                             forState:UIControlStateDisabled];
     
     [hotmailButton addTarget:self
                     action:@selector(didTapHotmailButton:)
@@ -147,6 +159,16 @@ static NSString* const kImgHotmailOn    = @"feed-btn-yahoo-on.png";
     
     titleLabel.text     = title;
     subtitleLabel.text  = subtitle;    
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)updateConnectStatusForGoogle:(BOOL)google
+                               yahoo:(BOOL)yahoo
+                             hotmail:(BOOL)hotmail {
+    
+    googleButton.enabled = !google;
+    yahooButton.enabled = !yahoo;
+    hotmailButton.enabled = !hotmail;
 }
 
 

@@ -191,12 +191,12 @@ static NSInteger const kEmailConnectIndex = 0;
         if(days == 0)
             days = 7;
         
-        uni.title       = @"Great, you're connected";
-        uni.subtitle    = [NSString stringWithFormat:@"Checking again in: %d %@",days,(days == 1 ? @"day" : @"days")];
+        uni.title       = @"Connected";
+        uni.subtitle    = [NSString stringWithFormat:@"Next check: %d %@",days,(days == 1 ? @"day" : @"days")];
     }
     else {
-        uni.title       = @"Import recent purchases";
-        uni.subtitle    = @"Connect to preview your items";
+        uni.title       = @"Start your Mine";
+        uni.subtitle    = @"Connect an email";
     }
     
     [uni setCustomKeyValue:kKeyIsGoogleAuthorized value:[NSNumber numberWithBool:user.isGoogleAuthorized]];
