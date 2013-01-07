@@ -189,6 +189,9 @@
     if (buttonIndex != (actionSheet.numberOfButtons - 1)) {
         [self performReverseAuthWithAccount:self.accounts[buttonIndex]];
     }
+    else {
+        [self.delegate twitterIOSPermissionCancelled];
+    }
 }
 
 

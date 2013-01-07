@@ -281,6 +281,10 @@ static NSString* const kMsgCancelTitle          = @"Dismiss";
 }
 
 //----------------------------------------------------------------------------------------------------
+- (void)twitterIOSPermissionCancelled {
+}
+
+//----------------------------------------------------------------------------------------------------
 - (void)twitterIOSNoAccountsFound {
     self.twitterConnectViewController           = [[DWTwitterConnectViewController alloc] init];
     self.twitterConnectViewController.delegate  = self;

@@ -214,6 +214,8 @@ static NSString* const kInfoURL = @"/?web_view_mode=true";
 
 //----------------------------------------------------------------------------------------------------
 - (void)userLoggedIn:(DWUser*)user {
+    [[UIApplication sharedApplication] setStatusBarHidden:NO];
+    
     [[NSNotificationCenter defaultCenter] postNotificationName:kNUserLoggedIn
                                                         object:nil
                                                       userInfo:[NSDictionary dictionaryWithObjectsAndKeys:user,kKeyUser,nil]];

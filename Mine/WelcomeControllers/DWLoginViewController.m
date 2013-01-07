@@ -161,6 +161,10 @@ static NSString* const kVideoIntro = @"mine_intro_640x280.mp4";
 //----------------------------------------------------------------------------------------------------
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [[UIApplication sharedApplication] setStatusBarHidden:YES];
+    
+    [self.delegate loginViewNavigationController].navigationBar.hidden = YES;
 
     [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Home View"];
 }
@@ -305,6 +309,11 @@ static NSString* const kVideoIntro = @"mine_intro_640x280.mp4";
     [self.twitterIOSConnect startReverseAuth:[self.delegate loginViewNavigationController].view];
     
     [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Twitter IOS Accepted"];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)twitterIOSPermissionCancelled {
+    [self stopLoadingTW];
 }
 
 //----------------------------------------------------------------------------------------------------

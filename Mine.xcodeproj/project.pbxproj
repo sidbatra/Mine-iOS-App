@@ -84,6 +84,8 @@
 		BB0211D7169B633300A659E3 /* nav-btn-add-to-mine-on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB0211D3169B633300A659E3 /* nav-btn-add-to-mine-on@2x.png */; };
 		BB0211D8169B633300A659E3 /* nav-btn-create-mine-off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB0211D4169B633300A659E3 /* nav-btn-create-mine-off@2x.png */; };
 		BB0211D9169B633300A659E3 /* nav-btn-create-mine-on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB0211D5169B633300A659E3 /* nav-btn-create-mine-on@2x.png */; };
+		BB0211DC169B74B400A659E3 /* login-bg-hulu@2x.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BB0211DA169B74B400A659E3 /* login-bg-hulu@2x.jpg */; };
+		BB0211DD169B74B400A659E3 /* login-logo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB0211DB169B74B400A659E3 /* login-logo@2x.png */; };
 		BB06360C15BF726D001F26E1 /* DWErrorView.m in Sources */ = {isa = PBXBuildFile; fileRef = BB06360B15BF726D001F26E1 /* DWErrorView.m */; };
 		BB06361215BF7DB2001F26E1 /* DWTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BB06360F15BF7DB2001F26E1 /* DWTabBar.m */; };
 		BB06361315BF7DB2001F26E1 /* DWTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB06361115BF7DB2001F26E1 /* DWTabBarController.m */; };
@@ -722,6 +724,8 @@
 		BB0211D3169B633300A659E3 /* nav-btn-add-to-mine-on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-btn-add-to-mine-on@2x.png"; sourceTree = "<group>"; };
 		BB0211D4169B633300A659E3 /* nav-btn-create-mine-off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-btn-create-mine-off@2x.png"; sourceTree = "<group>"; };
 		BB0211D5169B633300A659E3 /* nav-btn-create-mine-on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-btn-create-mine-on@2x.png"; sourceTree = "<group>"; };
+		BB0211DA169B74B400A659E3 /* login-bg-hulu@2x.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "login-bg-hulu@2x.jpg"; sourceTree = "<group>"; };
+		BB0211DB169B74B400A659E3 /* login-logo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login-logo@2x.png"; sourceTree = "<group>"; };
 		BB06360615BF7258001F26E1 /* DWErrorViewProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWErrorViewProtocol.h; sourceTree = "<group>"; };
 		BB06360715BF7258001F26E1 /* DWModelPresenterProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWModelPresenterProtocol.h; sourceTree = "<group>"; };
 		BB06360A15BF726D001F26E1 /* DWErrorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWErrorView.h; sourceTree = "<group>"; };
@@ -1792,6 +1796,8 @@
 		BB350EB71617D1FA00531A80 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				BB0211DA169B74B400A659E3 /* login-bg-hulu@2x.jpg */,
+				BB0211DB169B74B400A659E3 /* login-logo@2x.png */,
 				BB0211D2169B633300A659E3 /* nav-btn-add-to-mine-off@2x.png */,
 				BB0211D3169B633300A659E3 /* nav-btn-add-to-mine-on@2x.png */,
 				BB0211D4169B633300A659E3 /* nav-btn-create-mine-off@2x.png */,
@@ -3090,6 +3096,8 @@
 				BB0211D7169B633300A659E3 /* nav-btn-add-to-mine-on@2x.png in Resources */,
 				BB0211D8169B633300A659E3 /* nav-btn-create-mine-off@2x.png in Resources */,
 				BB0211D9169B633300A659E3 /* nav-btn-create-mine-on@2x.png in Resources */,
+				BB0211DC169B74B400A659E3 /* login-bg-hulu@2x.jpg in Resources */,
+				BB0211DD169B74B400A659E3 /* login-logo@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

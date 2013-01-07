@@ -34,6 +34,7 @@
 @required
 
 - (void)twitterIOSPermissionGranted;
+- (void)twitterIOSPermissionCancelled;
 - (void)twitterIOSNoAccountsFound;
 - (void)twitterIOSPermissionDenied;
 
