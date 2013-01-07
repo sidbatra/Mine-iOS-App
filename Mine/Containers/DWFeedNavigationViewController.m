@@ -230,7 +230,7 @@ static NSString* const kImgCreationOn     = @"nav-btn-search-on.png";
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
-#pragma mark DWPostProgressViewDelegate
+#pragma mark DWQueueProgressView
 
 //----------------------------------------------------------------------------------------------------
 - (void)deleteButtonPressed {

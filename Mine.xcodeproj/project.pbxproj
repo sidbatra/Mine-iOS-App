@@ -80,6 +80,10 @@
 		26E292E6164AF5DC0081E385 /* nav-btn-cancel-spadding-off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26E292E4164AF5DC0081E385 /* nav-btn-cancel-spadding-off@2x.png */; };
 		26E292E7164AF5DC0081E385 /* nav-btn-cancel-spadding-on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 26E292E5164AF5DC0081E385 /* nav-btn-cancel-spadding-on@2x.png */; };
 		BB0211D11697672200A659E3 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB0211D01697672200A659E3 /* FacebookSDK.framework */; };
+		BB0211D6169B633300A659E3 /* nav-btn-add-to-mine-off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB0211D2169B633300A659E3 /* nav-btn-add-to-mine-off@2x.png */; };
+		BB0211D7169B633300A659E3 /* nav-btn-add-to-mine-on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB0211D3169B633300A659E3 /* nav-btn-add-to-mine-on@2x.png */; };
+		BB0211D8169B633300A659E3 /* nav-btn-create-mine-off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB0211D4169B633300A659E3 /* nav-btn-create-mine-off@2x.png */; };
+		BB0211D9169B633300A659E3 /* nav-btn-create-mine-on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB0211D5169B633300A659E3 /* nav-btn-create-mine-on@2x.png */; };
 		BB06360C15BF726D001F26E1 /* DWErrorView.m in Sources */ = {isa = PBXBuildFile; fileRef = BB06360B15BF726D001F26E1 /* DWErrorView.m */; };
 		BB06361215BF7DB2001F26E1 /* DWTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BB06360F15BF7DB2001F26E1 /* DWTabBar.m */; };
 		BB06361315BF7DB2001F26E1 /* DWTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB06361115BF7DB2001F26E1 /* DWTabBarController.m */; };
@@ -714,6 +718,10 @@
 		26E292E4164AF5DC0081E385 /* nav-btn-cancel-spadding-off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-btn-cancel-spadding-off@2x.png"; sourceTree = "<group>"; };
 		26E292E5164AF5DC0081E385 /* nav-btn-cancel-spadding-on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-btn-cancel-spadding-on@2x.png"; sourceTree = "<group>"; };
 		BB0211D01697672200A659E3 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = External/Facebook/FacebookSDK.framework; sourceTree = "<group>"; };
+		BB0211D2169B633300A659E3 /* nav-btn-add-to-mine-off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-btn-add-to-mine-off@2x.png"; sourceTree = "<group>"; };
+		BB0211D3169B633300A659E3 /* nav-btn-add-to-mine-on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-btn-add-to-mine-on@2x.png"; sourceTree = "<group>"; };
+		BB0211D4169B633300A659E3 /* nav-btn-create-mine-off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-btn-create-mine-off@2x.png"; sourceTree = "<group>"; };
+		BB0211D5169B633300A659E3 /* nav-btn-create-mine-on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-btn-create-mine-on@2x.png"; sourceTree = "<group>"; };
 		BB06360615BF7258001F26E1 /* DWErrorViewProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWErrorViewProtocol.h; sourceTree = "<group>"; };
 		BB06360715BF7258001F26E1 /* DWModelPresenterProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWModelPresenterProtocol.h; sourceTree = "<group>"; };
 		BB06360A15BF726D001F26E1 /* DWErrorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWErrorView.h; sourceTree = "<group>"; };
@@ -1784,6 +1792,10 @@
 		BB350EB71617D1FA00531A80 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				BB0211D2169B633300A659E3 /* nav-btn-add-to-mine-off@2x.png */,
+				BB0211D3169B633300A659E3 /* nav-btn-add-to-mine-on@2x.png */,
+				BB0211D4169B633300A659E3 /* nav-btn-create-mine-off@2x.png */,
+				BB0211D5169B633300A659E3 /* nav-btn-create-mine-on@2x.png */,
 				26B1DA94166EE13B00894D59 /* doink-up-24.png */,
 				26B1DA95166EE13B00894D59 /* doink-up-24@2x.png */,
 				BB4AC390164B52B400B0512A /* btn-action-bg.png */,
@@ -3074,6 +3086,10 @@
 				26B1DA96166EE13B00894D59 /* doink-up-24.png in Resources */,
 				26B1DA97166EE13B00894D59 /* doink-up-24@2x.png in Resources */,
 				BBF0856E16854C5D00EC3AE1 /* DWHotmailAuthViewController.xib in Resources */,
+				BB0211D6169B633300A659E3 /* nav-btn-add-to-mine-off@2x.png in Resources */,
+				BB0211D7169B633300A659E3 /* nav-btn-add-to-mine-on@2x.png in Resources */,
+				BB0211D8169B633300A659E3 /* nav-btn-create-mine-off@2x.png in Resources */,
+				BB0211D9169B633300A659E3 /* nav-btn-create-mine-on@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

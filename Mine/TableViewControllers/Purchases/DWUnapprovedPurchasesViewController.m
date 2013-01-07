@@ -22,12 +22,19 @@
 
 
 @interface DWUnapprovedPurchasesViewController () {
-    DWNavigationBarTitleView *_navTitleView;
+    DWQueueProgressView  *_progressView;
     DWImportButton *_importButton;
+    UIActivityIndicatorView *_spinner;
+    UIImageView *_storeLogo;
+    
+    BOOL _isLive;
 }
 
-@property (nonatomic,strong) DWNavigationBarTitleView *navTitleView;
+@property (nonatomic,strong) DWQueueProgressView *progressView;
 @property (nonatomic,strong) DWImportButton *importButton;
+@property (nonatomic,strong) UIActivityIndicatorView *spinner;
+@property (nonatomic,strong) UIImageView *storeLogo;
+@property (nonatomic,assign) BOOL isLive;
 
 @end
 
@@ -38,8 +45,11 @@
 //----------------------------------------------------------------------------------------------------
 @implementation DWUnapprovedPurchasesViewController
 
-@synthesize navTitleView = _navTitleView;
+@synthesize progressView = _progressView;
 @synthesize importButton = _importButton;
+@synthesize spinner = _spinner;
+@synthesize storeLogo = _storeLogo;
+@synthesize isLive = _isLive;
 @synthesize delegate = _delegate;
 
 //----------------------------------------------------------------------------------------------------
@@ -48,7 +58,9 @@
     
     if(self) {
         
-        self.tableViewDataSource = isLive ? [[DWLivePurchasesViewDataSource alloc] init] : [[DWStalePurchasesViewDataSource alloc] init];
+        self.isLive = isLive;
+        
+        self.tableViewDataSource = self.isLive ? [[DWLivePurchasesViewDataSource alloc] init] : [[DWStalePurchasesViewDataSource alloc] init];
         
         [self addModelPresenterForClass:[DWModelSet class]
                               withStyle:kPurchaseProfilePresenterStyleUnapproved
@@ -68,6 +80,7 @@
                                                  selector:@selector(storeMediumImageLoaded:)
                                                      name:kNImgStoreMediumLoaded
                                                    object:nil];
+        
     }
     
     return self;
@@ -86,15 +99,29 @@
     
     self.navigationItem.leftBarButtonItem = [DWNavigationBarBackButton backButtonForNavigationController:self.navigationController];
     
-    if(!self.navTitleView) {
-        self.navTitleView = [[DWNavigationBarTitleView alloc] initWithFrame:CGRectMake(79,0,125,44)
-                                                                      title:@"Loading..."
-                                                                 andSpinner:YES];
+    if(!self.progressView) {
+        self.progressView = [[DWQueueProgressView alloc] initWithFrame:CGRectMake(60,0,200,44)];
+        self.progressView.delegate	= self;
+        [self.progressView removeInteractiveElements];
+        
+        [self.progressView updateDisplayWithTotalActive:1 totalFailed:0 totalProgress:0.0];
+    }
+    
+    if(!self.spinner) {
+        self.spinner = [[UIActivityIndicatorView alloc] initWithFrame:CGRectMake(280,12,20,20)];
+        self.spinner.hidesWhenStopped = YES;
+        [self.spinner startAnimating];
+    }
+    
+    if(!self.storeLogo) {
+        self.storeLogo = [[UIImageView alloc] initWithFrame:CGRectMake(125,6,71,16)];
+        self.storeLogo.hidden = YES;
     }
     
     if(!self.importButton) {
-        self.importButton = [[DWImportButton alloc] initWithFrame:CGRectMake(221, 7, 92, 30)];
+        self.importButton = [[DWImportButton alloc] initWithFrame:self.isLive ? CGRectMake(193,7,120,30) : CGRectMake(223, 7, 90, 30)];
         self.importButton.delegate = self;
+        self.importButton.hidden = YES;
     }
     
     [(DWUnapprovedPurchasesViewDataSource*)self.tableViewDataSource loadPurchases];
@@ -104,6 +131,18 @@
 - (UIView*)tableLoadingView {
     CGRect frame = self.view.frame;
     return [[DWUnapprovedPurchasesLoadingView alloc] initWithFrame:CGRectMake(0,0,frame.size.width,frame.size.height)];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)displayImportButton {
+    [self.spinner stopAnimating];
+    
+    if(self.isLive)
+        [self.importButton enterCreateState];
+    else
+        [self.importButton enterAddState];
+    
+    self.importButton.hidden = NO;
 }
 
 
@@ -131,13 +170,17 @@
         [store downloadMediumImage];
     }
     
-    NSLog(@"PROGRESS - %f",progress);
+    [self.progressView updateDisplayWithTotalActive:1 totalFailed:0 totalProgress:progress];
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)unapprovedPurchasesFinished:(NSInteger)count {
+    
+    self.storeLogo.hidden = YES;
+    [self.progressView updateDisplayWithTotalActive:1 totalFailed:0 totalProgress:1.0];
+    
     if(count) {
-        [self.importButton enterActiveState];
+        [self performSelector:@selector(displayImportButton) withObject:nil afterDelay:0.5];
     }
     else {
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Sorry"
@@ -148,15 +191,10 @@
         alertView.tag = 0;
         [alertView show];
     }
-    
-    
-    self.navTitleView.hidden = YES;
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)unapprovedPurchasesApprovedWithCount:(NSInteger)count {
-    
-    [self.importButton enterInactiveState];
     
     if(count) {
         [self.delegate unapprovedPurchasesSuccessfullyApproved];
@@ -175,7 +213,7 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)unapprovedPurchasesApproveError {
-    [self.importButton enterActiveState];
+    [self displayImportButton];
     [DWGUIManager connectionErrorAlertView];
 }
 
@@ -228,6 +266,13 @@
 - (void)storeMediumImageLoaded:(NSNotification*)notification {
     NSDictionary *userInfo = [notification userInfo];
     
+    DWStore *store = [DWStore fetch:[[userInfo objectForKey:kKeyResourceID] integerValue]];
+    
+    if(store) {
+        self.storeLogo.image = store.mediumImage;
+        self.storeLogo.hidden = NO;
+    }
+    
     NSLog(@"Store image downloaded - %d",[[userInfo objectForKey:kKeyResourceID] integerValue]);
 }
 
@@ -236,10 +281,19 @@
 #pragma mark -
 #pragma mark Nav Stack Selectors
 
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark Nav Stack Selectors
+
 //----------------------------------------------------------------------------------------------------
 - (void)willShowOnNav {
-    [self.navigationController.navigationBar addSubview:self.navTitleView];
+    [self.navigationController.navigationBar addSubview:self.progressView];
+    [self.navigationController.navigationBar addSubview:self.spinner];
+    [self.navigationController.navigationBar addSubview:self.storeLogo];
     [self.navigationController.navigationBar addSubview:self.importButton];
+    
 }
 
 //----------------------------------------------------------------------------------------------------

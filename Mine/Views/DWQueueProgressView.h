@@ -27,6 +27,8 @@
  */
 @property (nonatomic,unsafe_unretained) id<DWQueueProgressViewDelegate> delegate;
 
+- (void)removeInteractiveElements;
+
 /**
  * Update the progress view with new creation queue info
  */
@@ -42,6 +44,9 @@
  * button touches
  */ 
 @protocol DWQueueProgressViewDelegate
+
+@optional
+
 - (void)deleteButtonPressed;
 - (void)retryButtonPressed;
 @end

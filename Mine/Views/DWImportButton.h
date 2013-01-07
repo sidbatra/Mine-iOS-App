@@ -20,8 +20,8 @@
 
 @property (nonatomic,weak) id<DWImportButtonDelegate> delegate;
 
-- (void)enterActiveState;
-- (void)enterInactiveState;
+- (void)enterAddState;
+- (void)enterCreateState;
 - (void)enterLoadingState;
 
 @end
