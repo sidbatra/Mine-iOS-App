@@ -96,8 +96,8 @@ NSString* const kRailsDateTimeFormat = @"yyyy-MM-dd HH:mm:ss ZZZ";
 
 //----------------------------------------------------------------------------------------------------
 NSInteger const kFeedTabIndex       = 0;
-NSInteger const kUsersTabIndex      = 1;
-NSInteger const kProfileTabIndex    = 2;
+NSInteger const kProfileTabIndex    = 1;
+NSInteger const kUsersTabIndex      = 2;
 NSInteger const kTabBarHeight       = 44;
 
 //----------------------------------------------------------------------------------------------------

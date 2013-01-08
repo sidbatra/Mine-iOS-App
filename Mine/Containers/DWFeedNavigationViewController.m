@@ -21,8 +21,8 @@
 #import "DWConstants.h"
 
 
-static NSString* const kImgCreationOff    = @"nav-btn-search-off.png";
-static NSString* const kImgCreationOn     = @"nav-btn-search-on.png";
+static NSString* const kImgCreationOff    = @"nav-btn-add-off.png";
+static NSString* const kImgCreationOn     = @"nav-btn-add-on.png";
 
 
 

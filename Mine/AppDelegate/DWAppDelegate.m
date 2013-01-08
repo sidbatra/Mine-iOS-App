@@ -116,8 +116,8 @@ static NSString* const kFacebookURLPrefix = @"fb";
 
     
     [self.tabBarController addSubController:self.feedNavController];
-    [self.tabBarController addSubController:[[UIViewController alloc] init]];
     [self.tabBarController addSubController:self.profileNavController];
+    [self.tabBarController addSubController:[[UIViewController alloc] init]];
     
     
     self.tabBarController.tabBar.frame = CGRectMake(0, [DWDevice sharedDWDevice].screenHeightMinusStatusBar - kTabBarHeight, 320, kTabBarHeight);
@@ -130,17 +130,17 @@ static NSString* const kFacebookURLPrefix = @"fb";
                                        isSelected:YES];
     
     [self.tabBarController.tabBar addTabWithWidth:92
-                                  normalImageName:@"tab-center-add-off.png"
-                                selectedImageName:@"tab-center-add-off.png"
+                                  normalImageName:@"tab-center-profile-off.png"
+                                selectedImageName:@"tab-center-profile-on.png"
                              highlightedImageName:nil
-                             isMappedToController:NO
+                             isMappedToController:YES
                                        isSelected:NO];
     
     [self.tabBarController.tabBar addTabWithWidth:114
-                                  normalImageName:@"tab-right-profile-off.png"
-                                selectedImageName:@"tab-right-profile-on.png"
+                                  normalImageName:@"tab-right-people-off.png"
+                                selectedImageName:@"tab-right-people-on.png"
                              highlightedImageName:nil
-                             isMappedToController:YES
+                             isMappedToController:NO
                                        isSelected:NO];
     
     
