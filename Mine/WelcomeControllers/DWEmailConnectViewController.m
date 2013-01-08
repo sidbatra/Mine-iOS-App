@@ -11,7 +11,15 @@
 #import "DWGUIManager.h"
 #import "DWAnalyticsManager.h"
 
-@interface DWEmailConnectViewController ()
+
+static NSString* const kImgHeader = @"connect-steps.png";
+
+
+@interface DWEmailConnectViewController () {
+    UIImageView *_headerView;
+}
+
+@property (nonatomic,strong) UIImageView *headerView;
 
 @end
 
@@ -23,6 +31,7 @@
 @implementation DWEmailConnectViewController
 
 @synthesize delegate = _delegate;
+@synthesize headerView = _headerView;
 @synthesize googleButton = _googleButton;
 @synthesize yahooButton = _yahooButton;
 @synthesize hotmailButton = _hotmailButton;
@@ -57,8 +66,10 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navigationItem.leftBarButtonItem   = [DWNavigationBarBackButton backButtonForNavigationController:self.navigationController];
-    self.navigationItem.titleView           = [DWGUIManager navBarTitleViewWithText:@"Start your Mine"];
+    if(!self.headerView) {
+        self.headerView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
+        self.headerView.image = [UIImage imageNamed:kImgHeader];
+    }
     
     [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Welcome Connect"];
 }
@@ -96,5 +107,17 @@
     
     [self.delegate emailConnectSkipped];
 }
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark Nav Stack Selectors
+
+//----------------------------------------------------------------------------------------------------
+- (void)willShowOnNav {
+    [self.navigationController.navigationBar addSubview:self.headerView];
+}
+
 
 @end

@@ -91,6 +91,15 @@
 		BB0211E5169B917900A659E3 /* feed-btn-hotmail-off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB0211E0169B917800A659E3 /* feed-btn-hotmail-off@2x.png */; };
 		BB0211E6169B917900A659E3 /* feed-btn-hotmail-on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB0211E1169B917800A659E3 /* feed-btn-hotmail-on@2x.png */; };
 		BB0211E7169B917900A659E3 /* feed-btn-yahoo-checked@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB0211E2169B917800A659E3 /* feed-btn-yahoo-checked@2x.png */; };
+		BB0211F0169B9C9B00A659E3 /* connect-gmail-off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB0211E8169B9C7100A659E3 /* connect-gmail-off@2x.png */; };
+		BB0211F1169B9C9B00A659E3 /* connect-gmail-on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB0211E9169B9C7200A659E3 /* connect-gmail-on@2x.png */; };
+		BB0211F2169B9C9B00A659E3 /* connect-hotmail-off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB0211EA169B9C7400A659E3 /* connect-hotmail-off@2x.png */; };
+		BB0211F3169B9C9B00A659E3 /* connect-hotmail-on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB0211EB169B9C7800A659E3 /* connect-hotmail-on@2x.png */; };
+		BB0211F4169B9C9B00A659E3 /* connect-star@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB0211EC169B9C7E00A659E3 /* connect-star@2x.png */; };
+		BB0211F5169B9C9B00A659E3 /* connect-steps@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB0211ED169B9C8300A659E3 /* connect-steps@2x.png */; };
+		BB0211F6169B9C9B00A659E3 /* connect-yahoo-off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB0211EE169B9C8B00A659E3 /* connect-yahoo-off@2x.png */; };
+		BB0211F7169B9C9B00A659E3 /* connect-yahoo-on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB0211EF169B9C9100A659E3 /* connect-yahoo-on@2x.png */; };
+		BB0211FA169BABB500A659E3 /* UIImageView+NavStackSelectors.m in Sources */ = {isa = PBXBuildFile; fileRef = BB0211F9169BABB500A659E3 /* UIImageView+NavStackSelectors.m */; };
 		BB06360C15BF726D001F26E1 /* DWErrorView.m in Sources */ = {isa = PBXBuildFile; fileRef = BB06360B15BF726D001F26E1 /* DWErrorView.m */; };
 		BB06361215BF7DB2001F26E1 /* DWTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BB06360F15BF7DB2001F26E1 /* DWTabBar.m */; };
 		BB06361315BF7DB2001F26E1 /* DWTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB06361115BF7DB2001F26E1 /* DWTabBarController.m */; };
@@ -439,10 +448,6 @@
 		BB4AC3C3164B52B400B0512A /* cell-off.png in Resources */ = {isa = PBXBuildFile; fileRef = BB4AC392164B52B400B0512A /* cell-off.png */; };
 		BB4AC3C4164B52B400B0512A /* cell-trans-4-off.png in Resources */ = {isa = PBXBuildFile; fileRef = BB4AC393164B52B400B0512A /* cell-trans-4-off.png */; };
 		BB4AC3C5164B52B400B0512A /* comments-btn-send-loading.png in Resources */ = {isa = PBXBuildFile; fileRef = BB4AC394164B52B400B0512A /* comments-btn-send-loading.png */; };
-		BB4AC3C6164B52B400B0512A /* connect-btn-gmail-off.png in Resources */ = {isa = PBXBuildFile; fileRef = BB4AC395164B52B400B0512A /* connect-btn-gmail-off.png */; };
-		BB4AC3C7164B52B400B0512A /* connect-btn-gmail-on.png in Resources */ = {isa = PBXBuildFile; fileRef = BB4AC396164B52B400B0512A /* connect-btn-gmail-on.png */; };
-		BB4AC3C8164B52B400B0512A /* connect-btn-yahoo-off.png in Resources */ = {isa = PBXBuildFile; fileRef = BB4AC397164B52B400B0512A /* connect-btn-yahoo-off.png */; };
-		BB4AC3C9164B52B400B0512A /* connect-btn-yahoo-on.png in Resources */ = {isa = PBXBuildFile; fileRef = BB4AC398164B52B400B0512A /* connect-btn-yahoo-on.png */; };
 		BB4AC3CA164B52B400B0512A /* connect-txt-pick.png in Resources */ = {isa = PBXBuildFile; fileRef = BB4AC399164B52B400B0512A /* connect-txt-pick.png */; };
 		BB4AC3CB164B52B400B0512A /* doink-up-14.png in Resources */ = {isa = PBXBuildFile; fileRef = BB4AC39A164B52B400B0512A /* doink-up-14.png */; };
 		BB4AC3CC164B52B400B0512A /* feed-btn-gmail-off.png in Resources */ = {isa = PBXBuildFile; fileRef = BB4AC39B164B52B400B0512A /* feed-btn-gmail-off.png */; };
@@ -731,6 +736,16 @@
 		BB0211E0169B917800A659E3 /* feed-btn-hotmail-off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "feed-btn-hotmail-off@2x.png"; sourceTree = "<group>"; };
 		BB0211E1169B917800A659E3 /* feed-btn-hotmail-on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "feed-btn-hotmail-on@2x.png"; sourceTree = "<group>"; };
 		BB0211E2169B917800A659E3 /* feed-btn-yahoo-checked@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "feed-btn-yahoo-checked@2x.png"; sourceTree = "<group>"; };
+		BB0211E8169B9C7100A659E3 /* connect-gmail-off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "connect-gmail-off@2x.png"; sourceTree = "<group>"; };
+		BB0211E9169B9C7200A659E3 /* connect-gmail-on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "connect-gmail-on@2x.png"; sourceTree = "<group>"; };
+		BB0211EA169B9C7400A659E3 /* connect-hotmail-off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "connect-hotmail-off@2x.png"; sourceTree = "<group>"; };
+		BB0211EB169B9C7800A659E3 /* connect-hotmail-on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "connect-hotmail-on@2x.png"; sourceTree = "<group>"; };
+		BB0211EC169B9C7E00A659E3 /* connect-star@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "connect-star@2x.png"; sourceTree = "<group>"; };
+		BB0211ED169B9C8300A659E3 /* connect-steps@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "connect-steps@2x.png"; sourceTree = "<group>"; };
+		BB0211EE169B9C8B00A659E3 /* connect-yahoo-off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "connect-yahoo-off@2x.png"; sourceTree = "<group>"; };
+		BB0211EF169B9C9100A659E3 /* connect-yahoo-on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "connect-yahoo-on@2x.png"; sourceTree = "<group>"; };
+		BB0211F8169BABB500A659E3 /* UIImageView+NavStackSelectors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+NavStackSelectors.h"; sourceTree = "<group>"; };
+		BB0211F9169BABB500A659E3 /* UIImageView+NavStackSelectors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+NavStackSelectors.m"; sourceTree = "<group>"; };
 		BB06360615BF7258001F26E1 /* DWErrorViewProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWErrorViewProtocol.h; sourceTree = "<group>"; };
 		BB06360715BF7258001F26E1 /* DWModelPresenterProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWModelPresenterProtocol.h; sourceTree = "<group>"; };
 		BB06360A15BF726D001F26E1 /* DWErrorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWErrorView.h; sourceTree = "<group>"; };
@@ -1142,10 +1157,6 @@
 		BB4AC392164B52B400B0512A /* cell-off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cell-off.png"; sourceTree = "<group>"; };
 		BB4AC393164B52B400B0512A /* cell-trans-4-off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cell-trans-4-off.png"; sourceTree = "<group>"; };
 		BB4AC394164B52B400B0512A /* comments-btn-send-loading.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "comments-btn-send-loading.png"; sourceTree = "<group>"; };
-		BB4AC395164B52B400B0512A /* connect-btn-gmail-off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "connect-btn-gmail-off.png"; sourceTree = "<group>"; };
-		BB4AC396164B52B400B0512A /* connect-btn-gmail-on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "connect-btn-gmail-on.png"; sourceTree = "<group>"; };
-		BB4AC397164B52B400B0512A /* connect-btn-yahoo-off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "connect-btn-yahoo-off.png"; sourceTree = "<group>"; };
-		BB4AC398164B52B400B0512A /* connect-btn-yahoo-on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "connect-btn-yahoo-on.png"; sourceTree = "<group>"; };
 		BB4AC399164B52B400B0512A /* connect-txt-pick.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "connect-txt-pick.png"; sourceTree = "<group>"; };
 		BB4AC39A164B52B400B0512A /* doink-up-14.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "doink-up-14.png"; sourceTree = "<group>"; };
 		BB4AC39B164B52B400B0512A /* feed-btn-gmail-off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "feed-btn-gmail-off.png"; sourceTree = "<group>"; };
@@ -1796,6 +1807,14 @@
 		BB350EB71617D1FA00531A80 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				BB0211E8169B9C7100A659E3 /* connect-gmail-off@2x.png */,
+				BB0211E9169B9C7200A659E3 /* connect-gmail-on@2x.png */,
+				BB0211EA169B9C7400A659E3 /* connect-hotmail-off@2x.png */,
+				BB0211EB169B9C7800A659E3 /* connect-hotmail-on@2x.png */,
+				BB0211EC169B9C7E00A659E3 /* connect-star@2x.png */,
+				BB0211ED169B9C8300A659E3 /* connect-steps@2x.png */,
+				BB0211EE169B9C8B00A659E3 /* connect-yahoo-off@2x.png */,
+				BB0211EF169B9C9100A659E3 /* connect-yahoo-on@2x.png */,
 				BB0211DE169B917700A659E3 /* feed-btn-gmail-checked@2x.png */,
 				BB0211DF169B917700A659E3 /* feed-btn-hotmail-checked@2x.png */,
 				BB0211E0169B917800A659E3 /* feed-btn-hotmail-off@2x.png */,
@@ -1814,10 +1833,6 @@
 				BB4AC392164B52B400B0512A /* cell-off.png */,
 				BB4AC393164B52B400B0512A /* cell-trans-4-off.png */,
 				BB4AC394164B52B400B0512A /* comments-btn-send-loading.png */,
-				BB4AC395164B52B400B0512A /* connect-btn-gmail-off.png */,
-				BB4AC396164B52B400B0512A /* connect-btn-gmail-on.png */,
-				BB4AC397164B52B400B0512A /* connect-btn-yahoo-off.png */,
-				BB4AC398164B52B400B0512A /* connect-btn-yahoo-on.png */,
 				BB4AC399164B52B400B0512A /* connect-txt-pick.png */,
 				BB4AC39A164B52B400B0512A /* doink-up-14.png */,
 				BB4AC39B164B52B400B0512A /* feed-btn-gmail-off.png */,
@@ -2347,6 +2362,8 @@
 				BB9F711315BA033D0099C80A /* NSObject+Helpers.m */,
 				BB9F711A15BA14F40099C80A /* NSString+Helpers.h */,
 				BB9F711B15BA14F40099C80A /* NSString+Helpers.m */,
+				BB0211F8169BABB500A659E3 /* UIImageView+NavStackSelectors.h */,
+				BB0211F9169BABB500A659E3 /* UIImageView+NavStackSelectors.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -3040,10 +3057,6 @@
 				BB4AC3C3164B52B400B0512A /* cell-off.png in Resources */,
 				BB4AC3C4164B52B400B0512A /* cell-trans-4-off.png in Resources */,
 				BB4AC3C5164B52B400B0512A /* comments-btn-send-loading.png in Resources */,
-				BB4AC3C6164B52B400B0512A /* connect-btn-gmail-off.png in Resources */,
-				BB4AC3C7164B52B400B0512A /* connect-btn-gmail-on.png in Resources */,
-				BB4AC3C8164B52B400B0512A /* connect-btn-yahoo-off.png in Resources */,
-				BB4AC3C9164B52B400B0512A /* connect-btn-yahoo-on.png in Resources */,
 				BB4AC3CA164B52B400B0512A /* connect-txt-pick.png in Resources */,
 				BB4AC3CB164B52B400B0512A /* doink-up-14.png in Resources */,
 				BB4AC3CC164B52B400B0512A /* feed-btn-gmail-off.png in Resources */,
@@ -3098,6 +3111,14 @@
 				BB0211E5169B917900A659E3 /* feed-btn-hotmail-off@2x.png in Resources */,
 				BB0211E6169B917900A659E3 /* feed-btn-hotmail-on@2x.png in Resources */,
 				BB0211E7169B917900A659E3 /* feed-btn-yahoo-checked@2x.png in Resources */,
+				BB0211F0169B9C9B00A659E3 /* connect-gmail-off@2x.png in Resources */,
+				BB0211F1169B9C9B00A659E3 /* connect-gmail-on@2x.png in Resources */,
+				BB0211F2169B9C9B00A659E3 /* connect-hotmail-off@2x.png in Resources */,
+				BB0211F3169B9C9B00A659E3 /* connect-hotmail-on@2x.png in Resources */,
+				BB0211F4169B9C9B00A659E3 /* connect-star@2x.png in Resources */,
+				BB0211F5169B9C9B00A659E3 /* connect-steps@2x.png in Resources */,
+				BB0211F6169B9C9B00A659E3 /* connect-yahoo-off@2x.png in Resources */,
+				BB0211F7169B9C9B00A659E3 /* connect-yahoo-on@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3304,6 +3325,7 @@
 				BBAE1576169665F3003B91D9 /* TWSignedRequest.m in Sources */,
 				BBAE157916966623003B91D9 /* NSData+Base64.m in Sources */,
 				BBAE158E16968704003B91D9 /* DWFacebookConnect.m in Sources */,
+				BB0211FA169BABB500A659E3 /* UIImageView+NavStackSelectors.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
