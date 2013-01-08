@@ -127,6 +127,21 @@ static NSString* const kInfoURL = @"/?web_view_mode=true";
                                          animated:YES];
 }
 
+//----------------------------------------------------------------------------------------------------
+- (void)showShareProfileView {
+    
+    DWShareProfileViewController *shareProfileViewController = [[DWShareProfileViewController alloc] init];
+    shareProfileViewController.delegate = self;
+    
+    if(shareProfileViewController.isAnyConnectAvailable) {
+        [self.navigationController pushViewController:shareProfileViewController
+                                             animated:YES];
+    }
+    else {
+        [self endWelcomeNavigation];
+    }
+}
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
@@ -285,6 +300,17 @@ static NSString* const kInfoURL = @"/?web_view_mode=true";
 
 //----------------------------------------------------------------------------------------------------
 - (void)emailConnectSkipped {
+    [self endWelcomeNavigation];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWShareProfileViewControllerDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)shareProfileViewControllerFinished {
     [self endWelcomeNavigation];
 }
 

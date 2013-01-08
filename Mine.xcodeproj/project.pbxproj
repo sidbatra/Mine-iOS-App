@@ -100,6 +100,13 @@
 		BB0211F6169B9C9B00A659E3 /* connect-yahoo-off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB0211EE169B9C8B00A659E3 /* connect-yahoo-off@2x.png */; };
 		BB0211F7169B9C9B00A659E3 /* connect-yahoo-on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB0211EF169B9C9100A659E3 /* connect-yahoo-on@2x.png */; };
 		BB0211FA169BABB500A659E3 /* UIImageView+NavStackSelectors.m in Sources */ = {isa = PBXBuildFile; fileRef = BB0211F9169BABB500A659E3 /* UIImageView+NavStackSelectors.m */; };
+		BB0211FE169BB7BA00A659E3 /* DWShareProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB0211FC169BB7BA00A659E3 /* DWShareProfileViewController.m */; };
+		BB0211FF169BB7BA00A659E3 /* DWShareProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB0211FD169BB7BA00A659E3 /* DWShareProfileViewController.xib */; };
+		BB021205169BBAAD00A659E3 /* share-btn-facebook-off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB021200169BBAAB00A659E3 /* share-btn-facebook-off@2x.png */; };
+		BB021206169BBAAD00A659E3 /* share-btn-facebook-on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB021201169BBAAC00A659E3 /* share-btn-facebook-on@2x.png */; };
+		BB021207169BBAAD00A659E3 /* share-btn-twitter-off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB021202169BBAAC00A659E3 /* share-btn-twitter-off@2x.png */; };
+		BB021208169BBAAD00A659E3 /* share-btn-twitter-on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB021203169BBAAC00A659E3 /* share-btn-twitter-on@2x.png */; };
+		BB021209169BBAAD00A659E3 /* share-star@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB021204169BBAAD00A659E3 /* share-star@2x.png */; };
 		BB06360C15BF726D001F26E1 /* DWErrorView.m in Sources */ = {isa = PBXBuildFile; fileRef = BB06360B15BF726D001F26E1 /* DWErrorView.m */; };
 		BB06361215BF7DB2001F26E1 /* DWTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BB06360F15BF7DB2001F26E1 /* DWTabBar.m */; };
 		BB06361315BF7DB2001F26E1 /* DWTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB06361115BF7DB2001F26E1 /* DWTabBarController.m */; };
@@ -746,6 +753,14 @@
 		BB0211EF169B9C9100A659E3 /* connect-yahoo-on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "connect-yahoo-on@2x.png"; sourceTree = "<group>"; };
 		BB0211F8169BABB500A659E3 /* UIImageView+NavStackSelectors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+NavStackSelectors.h"; sourceTree = "<group>"; };
 		BB0211F9169BABB500A659E3 /* UIImageView+NavStackSelectors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+NavStackSelectors.m"; sourceTree = "<group>"; };
+		BB0211FB169BB7BA00A659E3 /* DWShareProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWShareProfileViewController.h; sourceTree = "<group>"; };
+		BB0211FC169BB7BA00A659E3 /* DWShareProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWShareProfileViewController.m; sourceTree = "<group>"; };
+		BB0211FD169BB7BA00A659E3 /* DWShareProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DWShareProfileViewController.xib; sourceTree = "<group>"; };
+		BB021200169BBAAB00A659E3 /* share-btn-facebook-off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "share-btn-facebook-off@2x.png"; sourceTree = "<group>"; };
+		BB021201169BBAAC00A659E3 /* share-btn-facebook-on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "share-btn-facebook-on@2x.png"; sourceTree = "<group>"; };
+		BB021202169BBAAC00A659E3 /* share-btn-twitter-off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "share-btn-twitter-off@2x.png"; sourceTree = "<group>"; };
+		BB021203169BBAAC00A659E3 /* share-btn-twitter-on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "share-btn-twitter-on@2x.png"; sourceTree = "<group>"; };
+		BB021204169BBAAD00A659E3 /* share-star@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "share-star@2x.png"; sourceTree = "<group>"; };
 		BB06360615BF7258001F26E1 /* DWErrorViewProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWErrorViewProtocol.h; sourceTree = "<group>"; };
 		BB06360715BF7258001F26E1 /* DWModelPresenterProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWModelPresenterProtocol.h; sourceTree = "<group>"; };
 		BB06360A15BF726D001F26E1 /* DWErrorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWErrorView.h; sourceTree = "<group>"; };
@@ -1603,13 +1618,16 @@
 				BB06365E15C0A147001F26E1 /* DWLoginViewController.h */,
 				BB06365F15C0A147001F26E1 /* DWLoginViewController.m */,
 				BB06366015C0A147001F26E1 /* DWLoginViewController.xib */,
+				267F27261602CEA50061ACEF /* DWOnboardingFeedViewController.h */,
+				267F271F1602C2B10061ACEF /* DWOnboardingFeedViewController.m */,
+				BB0211FB169BB7BA00A659E3 /* DWShareProfileViewController.h */,
+				BB0211FC169BB7BA00A659E3 /* DWShareProfileViewController.m */,
+				BB0211FD169BB7BA00A659E3 /* DWShareProfileViewController.xib */,
 				2681C4F015DC323D003046F1 /* DWSuggestionsViewController.h */,
 				2681C4F115DC323D003046F1 /* DWSuggestionsViewController.m */,
 				BBEDD33315EB3D6D007F862F /* DWUserDetailsViewController.h */,
 				BBEDD33415EB3D6D007F862F /* DWUserDetailsViewController.m */,
 				BBEDD33515EB3D6D007F862F /* DWUserDetailsViewController.xib */,
-				267F27261602CEA50061ACEF /* DWOnboardingFeedViewController.h */,
-				267F271F1602C2B10061ACEF /* DWOnboardingFeedViewController.m */,
 			);
 			path = WelcomeControllers;
 			sourceTree = "<group>";
@@ -1807,6 +1825,11 @@
 		BB350EB71617D1FA00531A80 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				BB021200169BBAAB00A659E3 /* share-btn-facebook-off@2x.png */,
+				BB021201169BBAAC00A659E3 /* share-btn-facebook-on@2x.png */,
+				BB021202169BBAAC00A659E3 /* share-btn-twitter-off@2x.png */,
+				BB021203169BBAAC00A659E3 /* share-btn-twitter-on@2x.png */,
+				BB021204169BBAAD00A659E3 /* share-star@2x.png */,
 				BB0211E8169B9C7100A659E3 /* connect-gmail-off@2x.png */,
 				BB0211E9169B9C7200A659E3 /* connect-gmail-on@2x.png */,
 				BB0211EA169B9C7400A659E3 /* connect-hotmail-off@2x.png */,
@@ -3119,6 +3142,12 @@
 				BB0211F5169B9C9B00A659E3 /* connect-steps@2x.png in Resources */,
 				BB0211F6169B9C9B00A659E3 /* connect-yahoo-off@2x.png in Resources */,
 				BB0211F7169B9C9B00A659E3 /* connect-yahoo-on@2x.png in Resources */,
+				BB0211FF169BB7BA00A659E3 /* DWShareProfileViewController.xib in Resources */,
+				BB021205169BBAAD00A659E3 /* share-btn-facebook-off@2x.png in Resources */,
+				BB021206169BBAAD00A659E3 /* share-btn-facebook-on@2x.png in Resources */,
+				BB021207169BBAAD00A659E3 /* share-btn-twitter-off@2x.png in Resources */,
+				BB021208169BBAAD00A659E3 /* share-btn-twitter-on@2x.png in Resources */,
+				BB021209169BBAAD00A659E3 /* share-star@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3326,6 +3355,7 @@
 				BBAE157916966623003B91D9 /* NSData+Base64.m in Sources */,
 				BBAE158E16968704003B91D9 /* DWFacebookConnect.m in Sources */,
 				BB0211FA169BABB500A659E3 /* UIImageView+NavStackSelectors.m in Sources */,
+				BB0211FE169BB7BA00A659E3 /* DWShareProfileViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
