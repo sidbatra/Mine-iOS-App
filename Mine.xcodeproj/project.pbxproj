@@ -114,6 +114,7 @@
 		BB021218169D1BB500A659E3 /* UIActivityIndicatorView+NavStackSelectors.m in Sources */ = {isa = PBXBuildFile; fileRef = BB021217169D1BB500A659E3 /* UIActivityIndicatorView+NavStackSelectors.m */; };
 		BB02121C169E06FE00A659E3 /* DWShareProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB02121A169E06FE00A659E3 /* DWShareProfileViewController.m */; };
 		BB02121D169E06FE00A659E3 /* DWShareProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB02121B169E06FE00A659E3 /* DWShareProfileViewController.xib */; };
+		BB021223169E2AD800A659E3 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB021222169E2AD600A659E3 /* MessageUI.framework */; };
 		BB06360C15BF726D001F26E1 /* DWErrorView.m in Sources */ = {isa = PBXBuildFile; fileRef = BB06360B15BF726D001F26E1 /* DWErrorView.m */; };
 		BB06361215BF7DB2001F26E1 /* DWTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BB06360F15BF7DB2001F26E1 /* DWTabBar.m */; };
 		BB06361315BF7DB2001F26E1 /* DWTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB06361115BF7DB2001F26E1 /* DWTabBarController.m */; };
@@ -772,6 +773,7 @@
 		BB021219169E06FE00A659E3 /* DWShareProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWShareProfileViewController.h; sourceTree = "<group>"; };
 		BB02121A169E06FE00A659E3 /* DWShareProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWShareProfileViewController.m; sourceTree = "<group>"; };
 		BB02121B169E06FE00A659E3 /* DWShareProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DWShareProfileViewController.xib; sourceTree = "<group>"; };
+		BB021222169E2AD600A659E3 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
 		BB06360615BF7258001F26E1 /* DWErrorViewProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWErrorViewProtocol.h; sourceTree = "<group>"; };
 		BB06360715BF7258001F26E1 /* DWModelPresenterProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWModelPresenterProtocol.h; sourceTree = "<group>"; };
 		BB06360A15BF726D001F26E1 /* DWErrorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWErrorView.h; sourceTree = "<group>"; };
@@ -1436,6 +1438,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB021223169E2AD800A659E3 /* MessageUI.framework in Frameworks */,
 				BBAE153916963F50003B91D9 /* Accounts.framework in Frameworks */,
 				BBAE151A16961908003B91D9 /* Social.framework in Frameworks */,
 				BBAE15181696155A003B91D9 /* Twitter.framework in Frameworks */,
@@ -2463,6 +2466,7 @@
 		BBC8A09315B9D26D00DF58F6 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BB021222169E2AD600A659E3 /* MessageUI.framework */,
 				BB0211D01697672200A659E3 /* FacebookSDK.framework */,
 				BBAE153816963F4F003B91D9 /* Accounts.framework */,
 				BBAE151916961907003B91D9 /* Social.framework */,

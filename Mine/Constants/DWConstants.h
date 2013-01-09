@@ -55,6 +55,7 @@ extern NSString* const kAppServer;
 extern NSString* const kClientName;
 extern NSString* const kUserAgent;
 extern NSString* const kInternalAppScheme;
+extern NSString* const kContactEmail;
 
 /**
  * Encryption related

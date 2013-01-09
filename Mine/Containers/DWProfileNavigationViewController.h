@@ -8,6 +8,9 @@
 
 #import "DWNavigationRootViewController.h"
 
-@interface DWProfileNavigationViewController : DWNavigationRootViewController<UIActionSheetDelegate>
+#import <MessageUI/MFMailComposeViewController.h>
+
+
+@interface DWProfileNavigationViewController : DWNavigationRootViewController<UIActionSheetDelegate,MFMailComposeViewControllerDelegate>
 
 @end
