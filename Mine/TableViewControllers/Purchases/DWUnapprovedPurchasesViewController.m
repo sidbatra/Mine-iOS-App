@@ -114,7 +114,8 @@
     }
     
     if(!self.storeLogo) {
-        self.storeLogo = [[UIImageView alloc] initWithFrame:CGRectMake(125,6,71,16)];
+        self.storeLogo = [[UIImageView alloc] initWithFrame:CGRectMake(99+10,6,122,32)];
+        self.storeLogo.contentMode = UIViewContentModeScaleAspectFit;
         self.storeLogo.hidden = YES;
     }
     
@@ -269,11 +270,15 @@
     DWStore *store = [DWStore fetch:[[userInfo objectForKey:kKeyResourceID] integerValue]];
     
     if(store) {
+        CGRect frame = self.storeLogo.frame;
+        frame.size.width =  (frame.size.height / store.mediumImage.size.height) * store.mediumImage.size.width;
+        frame.origin.x = 160 - frame.size.width / 2 + 10;
+        
+        
+        self.storeLogo.frame = frame;
         self.storeLogo.image = store.mediumImage;
         self.storeLogo.hidden = NO;
     }
-    
-    NSLog(@"Store image downloaded - %d",[[userInfo objectForKey:kKeyResourceID] integerValue]);
 }
 
 
