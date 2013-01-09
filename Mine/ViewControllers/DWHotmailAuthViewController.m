@@ -16,7 +16,7 @@
 
 static NSString* const kMsgErrorTitle       = @"Error";
 static NSString* const kMsgCancelTitle      = @"Dismiss";
-static NSString* const kMsgError            = @"Please check your e-mail and password.";
+static NSString* const kMsgError            = @"Invalid email or password.";
 
 
 
