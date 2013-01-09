@@ -113,6 +113,7 @@
 		BB021213169CDE9C00A659E3 /* tab-center-profile-on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB02120D169CDE9A00A659E3 /* tab-center-profile-on@2x.png */; };
 		BB021214169CDE9C00A659E3 /* tab-right-people-off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB02120E169CDE9A00A659E3 /* tab-right-people-off@2x.png */; };
 		BB021215169CDE9C00A659E3 /* tab-right-people-on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB02120F169CDE9B00A659E3 /* tab-right-people-on@2x.png */; };
+		BB021218169D1BB500A659E3 /* UIActivityIndicatorView+NavStackSelectors.m in Sources */ = {isa = PBXBuildFile; fileRef = BB021217169D1BB500A659E3 /* UIActivityIndicatorView+NavStackSelectors.m */; };
 		BB06360C15BF726D001F26E1 /* DWErrorView.m in Sources */ = {isa = PBXBuildFile; fileRef = BB06360B15BF726D001F26E1 /* DWErrorView.m */; };
 		BB06361215BF7DB2001F26E1 /* DWTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BB06360F15BF7DB2001F26E1 /* DWTabBar.m */; };
 		BB06361315BF7DB2001F26E1 /* DWTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB06361115BF7DB2001F26E1 /* DWTabBarController.m */; };
@@ -769,6 +770,8 @@
 		BB02120D169CDE9A00A659E3 /* tab-center-profile-on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab-center-profile-on@2x.png"; sourceTree = "<group>"; };
 		BB02120E169CDE9A00A659E3 /* tab-right-people-off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab-right-people-off@2x.png"; sourceTree = "<group>"; };
 		BB02120F169CDE9B00A659E3 /* tab-right-people-on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab-right-people-on@2x.png"; sourceTree = "<group>"; };
+		BB021216169D1BB500A659E3 /* UIActivityIndicatorView+NavStackSelectors.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIActivityIndicatorView+NavStackSelectors.h"; sourceTree = "<group>"; };
+		BB021217169D1BB500A659E3 /* UIActivityIndicatorView+NavStackSelectors.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIActivityIndicatorView+NavStackSelectors.m"; sourceTree = "<group>"; };
 		BB06360615BF7258001F26E1 /* DWErrorViewProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWErrorViewProtocol.h; sourceTree = "<group>"; };
 		BB06360715BF7258001F26E1 /* DWModelPresenterProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWModelPresenterProtocol.h; sourceTree = "<group>"; };
 		BB06360A15BF726D001F26E1 /* DWErrorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWErrorView.h; sourceTree = "<group>"; };
@@ -2391,6 +2394,8 @@
 				BB9F711315BA033D0099C80A /* NSObject+Helpers.m */,
 				BB9F711A15BA14F40099C80A /* NSString+Helpers.h */,
 				BB9F711B15BA14F40099C80A /* NSString+Helpers.m */,
+				BB021216169D1BB500A659E3 /* UIActivityIndicatorView+NavStackSelectors.h */,
+				BB021217169D1BB500A659E3 /* UIActivityIndicatorView+NavStackSelectors.m */,
 				BB0211F8169BABB500A659E3 /* UIImageView+NavStackSelectors.h */,
 				BB0211F9169BABB500A659E3 /* UIImageView+NavStackSelectors.m */,
 			);
@@ -3364,6 +3369,7 @@
 				BBAE158E16968704003B91D9 /* DWFacebookConnect.m in Sources */,
 				BB0211FA169BABB500A659E3 /* UIImageView+NavStackSelectors.m in Sources */,
 				BB0211FE169BB7BA00A659E3 /* DWShareProfileViewController.m in Sources */,
+				BB021218169D1BB500A659E3 /* UIActivityIndicatorView+NavStackSelectors.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
