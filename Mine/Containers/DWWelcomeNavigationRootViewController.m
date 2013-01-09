@@ -127,21 +127,6 @@ static NSString* const kInfoURL = @"/?web_view_mode=true";
                                          animated:YES];
 }
 
-//----------------------------------------------------------------------------------------------------
-- (void)showShareProfileView {
-    
-    DWShareProfileViewController *shareProfileViewController = [[DWShareProfileViewController alloc] init];
-    shareProfileViewController.delegate = self;
-    
-    if(shareProfileViewController.isAnyConnectAvailable) {
-        [self.navigationController pushViewController:shareProfileViewController
-                                             animated:YES];
-    }
-    else {
-        [self endWelcomeNavigation];
-    }
-}
-
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
@@ -307,10 +292,15 @@ static NSString* const kInfoURL = @"/?web_view_mode=true";
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
-#pragma mark DWShareProfileViewControllerDelegate
+#pragma mark DWUnapprovedPurchasesViewControllerDelegate
 
 //----------------------------------------------------------------------------------------------------
-- (void)shareProfileViewControllerFinished {
+- (void)unapprovedPurchasesSuccessfullyApproved {
+    [self displayShareProfileView:YES];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)unapprovedPurchasesNoPurchasesApproved {
     [self endWelcomeNavigation];
 }
 
@@ -318,11 +308,10 @@ static NSString* const kInfoURL = @"/?web_view_mode=true";
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
-#pragma mark DWUnapprovedPurchasesViewControllerDelegate
+#pragma mark DWShareProfileViewControllerDelegate
 
 //----------------------------------------------------------------------------------------------------
-- (void)unapprovedPurchasesSuccessfullyApproved {
-    
+- (void)shareProfileViewControllerFinished {
     [[NSNotificationCenter defaultCenter] postNotificationName:kNRequestTabBarIndexChange
                                                         object:nil
                                                       userInfo:[NSDictionary dictionaryWithObjectsAndKeys:
@@ -330,11 +319,6 @@ static NSString* const kInfoURL = @"/?web_view_mode=true";
                                                                 [NSNumber numberWithInteger:DWTabBarResetTypeNone],kKeyResetType,
                                                                 nil]];
     
-    [self endWelcomeNavigation];
-}
-
-//----------------------------------------------------------------------------------------------------
-- (void)unapprovedPurchasesNoPurchasesApproved {
     [self endWelcomeNavigation];
 }
 

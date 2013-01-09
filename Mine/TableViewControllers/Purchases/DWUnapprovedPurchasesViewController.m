@@ -18,6 +18,7 @@
 #import "DWNavigationBarTitleView.h"
 #import "DWUnapprovedPurchasesLoadingView.h"
 #import "DWGUIManager.h"
+#import "DWAnalyticsManager.h"
 #import "DWConstants.h"
 
 
@@ -146,6 +147,21 @@
     self.importButton.hidden = NO;
 }
 
+//----------------------------------------------------------------------------------------------------
+- (void)applyStoreLogo:(DWStore*)store {
+    if(!store.mediumImage)
+        return;
+    
+    CGRect frame = self.storeLogo.frame;
+    frame.size.width =  (frame.size.height / store.mediumImage.size.height) * store.mediumImage.size.width;
+    frame.origin.x = 160 - frame.size.width / 2 + 10;
+    
+    
+    self.storeLogo.frame = frame;
+    self.storeLogo.image = store.mediumImage;
+    self.storeLogo.hidden = NO;
+}
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
@@ -167,8 +183,8 @@
 - (void)unapprovedPurchasesStatus:(DWStore*)store
                          progress:(CGFloat)progress {
     if(store) {
-        [store debug];
         [store downloadMediumImage];
+        [self applyStoreLogo:store];
     }
     
     [self.progressView updateDisplayWithTotalActive:1 totalFailed:0 totalProgress:progress];
@@ -184,6 +200,8 @@
         [self performSelector:@selector(displayImportButton) withObject:nil afterDelay:0.5];
     }
     else {
+        [self.spinner stopAnimating];
+        
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Sorry"
                                                             message:@"Mine couldn't find any of your e-receipts at this time."
                                                            delegate:self
@@ -199,6 +217,8 @@
     
     if(count) {
         [self.delegate unapprovedPurchasesSuccessfullyApproved];
+        
+        [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Import Purchases Clicked"];
     }
     else {
         
@@ -269,16 +289,8 @@
     
     DWStore *store = [DWStore fetch:[[userInfo objectForKey:kKeyResourceID] integerValue]];
     
-    if(store) {
-        CGRect frame = self.storeLogo.frame;
-        frame.size.width =  (frame.size.height / store.mediumImage.size.height) * store.mediumImage.size.width;
-        frame.origin.x = 160 - frame.size.width / 2 + 10;
-        
-        
-        self.storeLogo.frame = frame;
-        self.storeLogo.image = store.mediumImage;
-        self.storeLogo.hidden = NO;
-    }
+    if(store)
+        [self applyStoreLogo:store];
 }
 
 

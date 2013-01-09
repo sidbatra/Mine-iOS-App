@@ -16,7 +16,10 @@
     UIButton *_facebookButton;
     UIButton *_twitterButton;
     
+    UILabel *_mainMessageLabel;
     UILabel *_bottomMessageLabel;
+    
+    BOOL _isOnboarding;
     
     __weak id <DWShareProfileViewControllerDelegate> _delegate;
 }
@@ -25,7 +28,10 @@
 
 @property (nonatomic) IBOutlet UIButton *facebookButton;
 @property (nonatomic) IBOutlet UIButton *twitterButton;
+@property (nonatomic) IBOutlet UILabel *mainMessageLabel;
 @property (nonatomic) IBOutlet UILabel *bottomMessageLabel;
+
+@property (nonatomic,assign) BOOL isOnboarding;
 
 @property (nonatomic,readonly) BOOL isFacebookConnectAvailable;
 @property (nonatomic,readonly) BOOL isTwitterConnectAvailable;

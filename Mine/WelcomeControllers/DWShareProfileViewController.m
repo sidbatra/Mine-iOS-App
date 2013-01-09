@@ -31,7 +31,9 @@
 
 @synthesize facebookButton = _facebookButton;
 @synthesize twitterButton = _twitterButton;
+@synthesize mainMessageLabel = _mainMessageLabel;
 @synthesize bottomMessageLabel = _bottomMessageLabel;
+@synthesize isOnboarding = _isOnboarding;
 @synthesize delegate = _delegate;
 
 //----------------------------------------------------------------------------------------------------
@@ -74,7 +76,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navigationItem.titleView  = [DWGUIManager navBarTitleViewWithText:@"3. Success"];
+    self.navigationItem.hidesBackButton = YES;
+    self.navigationItem.titleView  = [DWGUIManager navBarTitleViewWithText:(self.isOnboarding ? @"3. Success" : @"You're all set")];
     self.navigationItem.rightBarButtonItem = [DWGUIManager navBarDoneButtonWithTarget:self];
     
     CGRect sourceFrame = self.twitterButton.frame;
@@ -93,7 +96,13 @@
     frame.origin.y = sourceFrame.origin.y  + sourceFrame.size.height + 10;
     self.bottomMessageLabel.frame = frame;
     
-    [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Welcome Share"];
+    if(!self.isOnboarding)
+        self.mainMessageLabel.text = @"Your Mine is up to date.";
+    
+    if(self.isOnboarding)
+        [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Welcome Share View"];
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Share Profile View"];
 }
 
 
@@ -110,22 +119,24 @@
             case SLComposeViewControllerResultCancelled:
             default:
             {
-                NSLog(@"Cancelled.....");
+                [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Profile Not Shared to FB"];
                 
             }
             break;
             case SLComposeViewControllerResultDone:
             {
-                NSLog(@"Posted....");
+                [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Profile Shared to FB"];
             }
             break;
         }};
     
     NSString *url = [NSString stringWithFormat:@"http://%@/%@",kAppServer,[DWSession sharedDWSession].currentUser.handle];
     
+    NSString *baseText = self.isOnboarding ? @"Some things I've bought recently"  : @"My Mine has a few new items";
+    
     SLComposeViewController *facebookView  = [SLComposeViewController composeViewControllerForServiceType:SLServiceTypeFacebook];
     facebookView.completionHandler = completionHandler;
-    [facebookView setInitialText:[NSString stringWithFormat:@"I just added some new items to my Mine. %@",url]];
+    [facebookView setInitialText:[NSString stringWithFormat:@"%@ %@",baseText,url]];
     [facebookView addURL:[NSURL URLWithString:url]];
     
     [self.navigationController presentModalViewController:facebookView animated:YES];
@@ -138,10 +149,10 @@
     tweetView.completionHandler = ^(SLComposeViewControllerResult result) {
         switch(result) {
             case SLComposeViewControllerResultCancelled:
-                NSLog(@"CANCEL");
+                [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Profile Not Shared to TW"];
                 break;
             case SLComposeViewControllerResultDone:
-                NSLog(@"DONE");
+                [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Profile Shared to TW"];
                 break;
         }
         
@@ -150,7 +161,8 @@
         });
     };
     
-    [tweetView setInitialText:[NSString stringWithFormat:@"I just added some new items to my @getmine profile: http://getmine.com/%@",[DWSession sharedDWSession].currentUser.handle]];
+    NSString *baseText = self.isOnboarding ? @"Some things I've bought recently:"  : @"Added a few new items to my Mine:";
+    [tweetView setInitialText:[NSString stringWithFormat:@"%@ http://getmine.com/%@",baseText,[DWSession sharedDWSession].currentUser.handle]];
     [self.navigationController presentModalViewController:tweetView animated:YES];
 }
 

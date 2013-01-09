@@ -198,6 +198,22 @@ static NSString* const kItunesURLPrefix = @"https://itunes.apple.com";
                                          animated:YES];
 }
 
+//----------------------------------------------------------------------------------------------------
+- (void)displayShareProfileView:(BOOL)isOnboarding {
+    
+    DWShareProfileViewController *shareProfileViewController = [[DWShareProfileViewController alloc] init];
+    shareProfileViewController.isOnboarding = isOnboarding;
+    shareProfileViewController.delegate = self;
+    
+    if(shareProfileViewController.isAnyConnectAvailable) {
+        [self.navigationController pushViewController:shareProfileViewController
+                                             animated:YES];
+    }
+    else {
+        [shareProfileViewController.delegate shareProfileViewControllerFinished];
+    }
+}
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
@@ -421,6 +437,16 @@ static NSString* const kItunesURLPrefix = @"https://itunes.apple.com";
 
 //----------------------------------------------------------------------------------------------------
 - (void)unapprovedPurchasesNoPurchasesApproved { 
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWShareProfileViewControllerDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)shareProfileViewControllerFinished {
 }
 
 
