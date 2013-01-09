@@ -342,6 +342,23 @@ static NSString* const kImgCreationOn     = @"nav-btn-add-on.png";
 
 //----------------------------------------------------------------------------------------------------
 - (void)unapprovedPurchasesSuccessfullyApproved {
+    [self displayShareProfileView:NO];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)unapprovedPurchasesNoPurchasesApproved {
+    [self.feedViewController forceRefresh];    
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWShareProfileViewControllerDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)shareProfileViewControllerFinished {
     [self.navigationController popToRootViewControllerAnimated:NO];
     [self.feedViewController forceRefresh];
     
@@ -352,12 +369,6 @@ static NSString* const kImgCreationOn     = @"nav-btn-add-on.png";
                                                                 [NSNumber numberWithInteger:DWTabBarResetTypeRefresh],kKeyResetType,
                                                                 nil]];
     
-    [self.navigationController popViewControllerAnimated:YES];
-}
-
-//----------------------------------------------------------------------------------------------------
-- (void)unapprovedPurchasesNoPurchasesApproved {
-    [self.feedViewController forceRefresh];    
     [self.navigationController popViewControllerAnimated:YES];
 }
 
