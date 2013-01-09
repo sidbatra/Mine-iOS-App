@@ -11,6 +11,7 @@
 #import "DWPurchase.h"
 #import "DWFollowing.h"
 #import "DWUnion.h"
+#import "DWMessage.h"
 #import "DWSession.h"
 #import "DWFollowingManager.h"
 #import "DWPagination.h"
@@ -166,6 +167,9 @@ static NSInteger const kEmailConnectIndex = 0;
         pagination.owner            = self;
         [self.objects addObject:pagination];
     }
+    else {
+        [self addEmptyMessageObject];
+    }
     
     self.purchases = nil;
     
@@ -206,6 +210,14 @@ static NSInteger const kEmailConnectIndex = 0;
     
     [self.objects insertObject:uni
                        atIndex:kEmailConnectIndex];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)addEmptyMessageObject {
+    DWMessage *message = [[DWMessage alloc] init];
+    message.title = @"No items here";
+    
+    [self.objects addObject:message];
 }
 
 

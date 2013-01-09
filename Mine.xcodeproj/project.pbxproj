@@ -115,6 +115,9 @@
 		BB02121C169E06FE00A659E3 /* DWShareProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB02121A169E06FE00A659E3 /* DWShareProfileViewController.m */; };
 		BB02121D169E06FE00A659E3 /* DWShareProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB02121B169E06FE00A659E3 /* DWShareProfileViewController.xib */; };
 		BB021223169E2AD800A659E3 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB021222169E2AD600A659E3 /* MessageUI.framework */; };
+		BB021226169E34A700A659E3 /* DWMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BB021225169E34A600A659E3 /* DWMessageCell.m */; };
+		BB021229169E35B700A659E3 /* DWMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = BB021228169E35B700A659E3 /* DWMessage.m */; };
+		BB02122C169E35DF00A659E3 /* DWMessagePresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = BB02122B169E35DF00A659E3 /* DWMessagePresenter.m */; };
 		BB06360C15BF726D001F26E1 /* DWErrorView.m in Sources */ = {isa = PBXBuildFile; fileRef = BB06360B15BF726D001F26E1 /* DWErrorView.m */; };
 		BB06361215BF7DB2001F26E1 /* DWTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BB06360F15BF7DB2001F26E1 /* DWTabBar.m */; };
 		BB06361315BF7DB2001F26E1 /* DWTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB06361115BF7DB2001F26E1 /* DWTabBarController.m */; };
@@ -774,6 +777,12 @@
 		BB02121A169E06FE00A659E3 /* DWShareProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWShareProfileViewController.m; sourceTree = "<group>"; };
 		BB02121B169E06FE00A659E3 /* DWShareProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DWShareProfileViewController.xib; sourceTree = "<group>"; };
 		BB021222169E2AD600A659E3 /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		BB021224169E34A600A659E3 /* DWMessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWMessageCell.h; sourceTree = "<group>"; };
+		BB021225169E34A600A659E3 /* DWMessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWMessageCell.m; sourceTree = "<group>"; };
+		BB021227169E35B700A659E3 /* DWMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWMessage.h; sourceTree = "<group>"; };
+		BB021228169E35B700A659E3 /* DWMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWMessage.m; sourceTree = "<group>"; };
+		BB02122A169E35DF00A659E3 /* DWMessagePresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWMessagePresenter.h; sourceTree = "<group>"; };
+		BB02122B169E35DF00A659E3 /* DWMessagePresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWMessagePresenter.m; sourceTree = "<group>"; };
 		BB06360615BF7258001F26E1 /* DWErrorViewProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWErrorViewProtocol.h; sourceTree = "<group>"; };
 		BB06360715BF7258001F26E1 /* DWModelPresenterProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWModelPresenterProtocol.h; sourceTree = "<group>"; };
 		BB06360A15BF726D001F26E1 /* DWErrorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWErrorView.h; sourceTree = "<group>"; };
@@ -2363,6 +2372,8 @@
 				262200A215C769EF003DC1DF /* DWProduct.m */,
 				BB26987B15BB956700037453 /* DWPurchase.h */,
 				BB26987C15BB956700037453 /* DWPurchase.m */,
+				BB021227169E35B700A659E3 /* DWMessage.h */,
+				BB021228169E35B700A659E3 /* DWMessage.m */,
 				BB2BC0AD15D1DCA000CCC4BB /* DWSetting.h */,
 				BB2BC0AE15D1DCA000CCC4BB /* DWSetting.m */,
 				BB26987E15BBA2E300037453 /* DWStore.h */,
@@ -2612,6 +2623,8 @@
 				BB9F317615FCAB47009C1385 /* DWInviteFriendPresenter.m */,
 				BB677339162B6A7400C3A1E1 /* DWNotificationPresenter.h */,
 				BB67733A162B6A7400C3A1E1 /* DWNotificationPresenter.m */,
+				BB02122A169E35DF00A659E3 /* DWMessagePresenter.h */,
+				BB02122B169E35DF00A659E3 /* DWMessagePresenter.m */,
 				BB06367D15C31968001F26E1 /* DWPaginationPresenter.h */,
 				BB06367E15C31968001F26E1 /* DWPaginationPresenter.m */,
 				262200AB15C76A39003DC1DF /* DWProductPresenter.h */,
@@ -2639,10 +2652,14 @@
 				BBC0609015C74483000D3480 /* DWCommentCell.m */,
 				2622005F15C713EE003DC1DF /* DWDoubleLineCell.h */,
 				2622006015C713EE003DC1DF /* DWDoubleLineCell.m */,
+				262625E21649A12F004CFB1E /* DWEmailConnectCell.h */,
+				262625E31649A12F004CFB1E /* DWEmailConnectCell.m */,
 				BB9F317215FCA9BD009C1385 /* DWInviteFriendCell.h */,
 				BB9F317315FCA9BE009C1385 /* DWInviteFriendCell.m */,
 				BB677336162B668700C3A1E1 /* DWNotificationCell.h */,
 				BB677337162B668700C3A1E1 /* DWNotificationCell.m */,
+				BB021224169E34A600A659E3 /* DWMessageCell.h */,
+				BB021225169E34A600A659E3 /* DWMessageCell.m */,
 				BB06368015C31973001F26E1 /* DWPaginationCell.h */,
 				BB06368115C31973001F26E1 /* DWPaginationCell.m */,
 				BBE42F4715BCCA52000F6AE1 /* DWPurchaseFeedCell.h */,
@@ -2657,8 +2674,6 @@
 				BB9F314E15F645C5009C1385 /* DWUserProfileCell.m */,
 				2618C0FC15FEAE9500CA41B9 /* DWStoreCell.h */,
 				2618C0FD15FEAE9500CA41B9 /* DWStoreCell.m */,
-				262625E21649A12F004CFB1E /* DWEmailConnectCell.h */,
-				262625E31649A12F004CFB1E /* DWEmailConnectCell.m */,
 			);
 			path = TableViewCells;
 			sourceTree = "<group>";
@@ -3374,6 +3389,9 @@
 				BB0211FA169BABB500A659E3 /* UIImageView+NavStackSelectors.m in Sources */,
 				BB021218169D1BB500A659E3 /* UIActivityIndicatorView+NavStackSelectors.m in Sources */,
 				BB02121C169E06FE00A659E3 /* DWShareProfileViewController.m in Sources */,
+				BB021226169E34A700A659E3 /* DWMessageCell.m in Sources */,
+				BB021229169E35B700A659E3 /* DWMessage.m in Sources */,
+				BB02122C169E35DF00A659E3 /* DWMessagePresenter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

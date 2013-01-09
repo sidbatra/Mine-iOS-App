@@ -12,8 +12,10 @@
 #import "DWPaginationPresenter.h"
 #import "DWUserPresenter.h"
 #import "DWEmailConnectPresenter.h"
+#import "DWMessagePresenter.h"
 
 #import "DWUnion.h"
+#import "DWMessage.h"
 #import "DWUser.h"
 #import "DWPagination.h"
 #import "DWConstants.h"
@@ -54,6 +56,10 @@
         [self addModelPresenterForClass:[DWUnion class]
                               withStyle:kDefaultModelPresenter
                           withPresenter:[DWEmailConnectPresenter class]];
+        
+        [self addModelPresenterForClass:[DWMessage class]
+                              withStyle:kDefaultModelPresenter
+                          withPresenter:[DWMessagePresenter class]];
         
         [self addModelPresenterForClass:[DWPagination class]
                               withStyle:kDefaultModelPresenter 
