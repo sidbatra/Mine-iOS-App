@@ -66,6 +66,8 @@ static NSString* const kImgHeader = @"connect-steps.png";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    self.navigationItem.hidesBackButton = YES;
+    
     if(!self.headerView) {
         self.headerView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
         self.headerView.image = [UIImage imageNamed:kImgHeader];

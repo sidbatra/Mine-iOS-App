@@ -66,7 +66,6 @@ static NSString* const kExampleText = @"Example: '%@ bought %@ iPhone 5...'";
 @synthesize sessionController       = _sessionController;
 @synthesize selectedButtonIndex     = _selectedButtonIndex;
 @synthesize genderDataSource        = _genderDataSource;
-@synthesize titleLabel              = _titleLabel;
 @synthesize exampleLabel            = _exampleLabel;
 @synthesize emailTextField          = _emailTextField;
 @synthesize maleButton              = _maleButton;
@@ -93,13 +92,12 @@ static NSString* const kExampleText = @"Example: '%@ bought %@ iPhone 5...'";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navigationItem.titleView           = [DWGUIManager navBarTitleViewWithText:@"New Account"];
+    self.navigationItem.titleView           = [DWGUIManager navBarTitleViewWithText:@"Your Account"];
     self.navigationItem.rightBarButtonItem  = [DWGUIManager navBarNextButtonWithTarget:self];
     self.navigationItem.hidesBackButton     = YES;
     
-    self.titleLabel.text    = [NSString stringWithFormat:@"Welcome %@!",[DWSession sharedDWSession].currentUser.firstName];
     self.exampleLabel.text  = [NSString stringWithFormat:kExampleText,[DWSession sharedDWSession].currentUser.firstName,@"his"];
-    
+
     [self.emailTextField becomeFirstResponder];
     
     [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Welcome Info"];
