@@ -21,8 +21,8 @@
 #import "DWSession.h"
 
 static NSString* const kItunesURLPrefix     = @"https://itunes.apple.com";
-static NSString* const kInviteText          = @"Invite Text";
-static NSString* const kInviteURL           = @"http://getmine.com";
+static NSString* const kInviteText          = @"Check out Mine ... to see what I bought recently!";
+static NSString* const kInviteURL           = @"https://itunes.apple.com/us/app/mine./id567558757";
 static NSString* const kMsgErrorTitle       = @"Error";
 static NSString* const kMsgCancelTitle      = @"Dismiss";
 static NSString* const kMsgError            = @"Can't send text messages from your device.";
@@ -180,7 +180,7 @@ static NSString* const kMsgError            = @"Can't send text messages from yo
         if([MFMessageComposeViewController canSendText]) {
             MFMessageComposeViewController *messageComposeViewController = [[MFMessageComposeViewController alloc] init];
             
-            messageComposeViewController.body                       = [NSString stringWithFormat:@"%@ - %@", kInviteText, kInviteURL];
+            messageComposeViewController.body                       = [NSString stringWithFormat:@"%@ %@", kInviteText, kInviteURL];
             messageComposeViewController.messageComposeDelegate     = self;
             
             [self.customTabBarController presentModalViewController:messageComposeViewController animated:YES];
