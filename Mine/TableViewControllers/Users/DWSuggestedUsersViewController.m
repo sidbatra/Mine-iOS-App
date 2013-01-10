@@ -10,6 +10,7 @@
 #import "DWSuggestedUsersViewDataSource.h"
 #import "DWUnion.h"
 #import "DWInviteFriendPresenter.h"
+#import "DWUserPresenter.h"
 #import "DWConstants.h"
 
 
@@ -32,6 +33,10 @@
     
     if(self) {
         self.tableViewDataSource = [[DWSuggestedUsersViewDataSource alloc] init];
+        
+        [self addModelPresenterForClass:[DWUser class]
+                              withStyle:kUserPresenterStyleSuggested
+                          withPresenter:[DWUserPresenter class]];
         
         [self addModelPresenterForClass:[DWUnion class]
                               withStyle:kDefaultModelPresenter
