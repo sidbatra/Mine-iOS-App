@@ -92,7 +92,7 @@ static NSString* const kExampleText = @"Example: '%@ bought %@ iPhone 5...'";
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navigationItem.titleView           = [DWGUIManager navBarTitleViewWithText:@"Your Account"];
+    self.navigationItem.titleView           = [DWGUIManager navBarTitleViewWithText:@"Hi there"];
     self.navigationItem.rightBarButtonItem  = [DWGUIManager navBarNextButtonWithTarget:self];
     self.navigationItem.hidesBackButton     = YES;
     
