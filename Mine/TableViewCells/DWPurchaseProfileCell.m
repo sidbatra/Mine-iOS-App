@@ -29,8 +29,8 @@ static NSString* const kImgMiniChevron = @"doink-up-8.png";
 static NSString* const kImgSpinnerBackground = @"delete-loading.png";
 static NSString* const kImgCrossButtonOn = @"feed-btn-x-on.png";
 static NSString* const kImgCrossButtonOff = @"feed-btn-x-off.png";
-static NSString* const kImgShopButtonOn = @"feed-btn-x-on.png";
-static NSString* const kImgShopButtonOff = @"feed-btn-x-off.png";
+static NSString* const kImgShopButtonOn = @"profile-btn-buy-on.png";
+static NSString* const kImgShopButtonOff = @"profile-btn-buy-off.png";
 
 #define kTitleFont [UIFont fontWithName:@"HelveticaNeue" size:10]
 #define kColorImageBackground [UIColor colorWithRed:0.862 green:0.862 blue:0.862 alpha:1.0]
@@ -349,7 +349,7 @@ static NSString* const kImgShopButtonOff = @"feed-btn-x-off.png";
     for(NSInteger i=0 ; i<kColumnsInPurchaseSearch; i++) {
         UIButton *imageButton = [self.imageButtons objectAtIndex:i];
         
-        UIButton *shopButton = [[UIButton alloc] initWithFrame:CGRectMake(imageButton.frame.origin.x+114, imageButton.frame.origin.y+imageButton.frame.size.height-10, 25, 25)];
+        UIButton *shopButton = [[UIButton alloc] initWithFrame:CGRectMake(imageButton.frame.origin.x+imageButton.frame.size.width-45, imageButton.frame.origin.y, 45, 45)];
         
         shopButton.hidden = YES;
         

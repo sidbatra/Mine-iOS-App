@@ -118,6 +118,8 @@
 		BB021226169E34A700A659E3 /* DWMessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BB021225169E34A600A659E3 /* DWMessageCell.m */; };
 		BB021229169E35B700A659E3 /* DWMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = BB021228169E35B700A659E3 /* DWMessage.m */; };
 		BB02122C169E35DF00A659E3 /* DWMessagePresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = BB02122B169E35DF00A659E3 /* DWMessagePresenter.m */; };
+		BB021238169F847500A659E3 /* profile-btn-buy-off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB021236169F847500A659E3 /* profile-btn-buy-off@2x.png */; };
+		BB021239169F847500A659E3 /* profile-btn-buy-on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB021237169F847500A659E3 /* profile-btn-buy-on@2x.png */; };
 		BB06360C15BF726D001F26E1 /* DWErrorView.m in Sources */ = {isa = PBXBuildFile; fileRef = BB06360B15BF726D001F26E1 /* DWErrorView.m */; };
 		BB06361215BF7DB2001F26E1 /* DWTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BB06360F15BF7DB2001F26E1 /* DWTabBar.m */; };
 		BB06361315BF7DB2001F26E1 /* DWTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB06361115BF7DB2001F26E1 /* DWTabBarController.m */; };
@@ -783,6 +785,8 @@
 		BB021228169E35B700A659E3 /* DWMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWMessage.m; sourceTree = "<group>"; };
 		BB02122A169E35DF00A659E3 /* DWMessagePresenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWMessagePresenter.h; sourceTree = "<group>"; };
 		BB02122B169E35DF00A659E3 /* DWMessagePresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DWMessagePresenter.m; sourceTree = "<group>"; };
+		BB021236169F847500A659E3 /* profile-btn-buy-off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profile-btn-buy-off@2x.png"; sourceTree = "<group>"; };
+		BB021237169F847500A659E3 /* profile-btn-buy-on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profile-btn-buy-on@2x.png"; sourceTree = "<group>"; };
 		BB06360615BF7258001F26E1 /* DWErrorViewProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWErrorViewProtocol.h; sourceTree = "<group>"; };
 		BB06360715BF7258001F26E1 /* DWModelPresenterProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWModelPresenterProtocol.h; sourceTree = "<group>"; };
 		BB06360A15BF726D001F26E1 /* DWErrorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWErrorView.h; sourceTree = "<group>"; };
@@ -1844,6 +1848,8 @@
 		BB350EB71617D1FA00531A80 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				BB021236169F847500A659E3 /* profile-btn-buy-off@2x.png */,
+				BB021237169F847500A659E3 /* profile-btn-buy-on@2x.png */,
 				BB02120A169CDE9800A659E3 /* nav-btn-add-off@2x.png */,
 				BB02120B169CDE9900A659E3 /* nav-btn-add-on@2x.png */,
 				BB02120C169CDE9900A659E3 /* tab-center-profile-off@2x.png */,
@@ -3180,6 +3186,8 @@
 				BB021214169CDE9C00A659E3 /* tab-right-people-off@2x.png in Resources */,
 				BB021215169CDE9C00A659E3 /* tab-right-people-on@2x.png in Resources */,
 				BB02121D169E06FE00A659E3 /* DWShareProfileViewController.xib in Resources */,
+				BB021238169F847500A659E3 /* profile-btn-buy-off@2x.png in Resources */,
+				BB021239169F847500A659E3 /* profile-btn-buy-on@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
