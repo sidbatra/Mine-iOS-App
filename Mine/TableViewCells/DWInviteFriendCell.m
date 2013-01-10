@@ -39,7 +39,7 @@ static NSInteger const kInviteFriendCellHeight = 51;
         
         [self createBorders];
         [self createMessageLabel];
-        [self createChevron];
+        //[self createChevron];
         
 		self.selectionStyle = UITableViewCellSelectionStyleBlue;	
 	}
