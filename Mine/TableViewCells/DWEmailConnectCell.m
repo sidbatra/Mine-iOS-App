@@ -49,7 +49,7 @@ static NSString* const kImgHotmailDisabled  = @"feed-btn-hotmail-checked.png";
 				reuseIdentifier:reuseIdentifier];
 	
     if (self) {
-        self.contentView.backgroundColor = [UIColor colorWithRed:0.933 green:0.933 blue:0.933 alpha:1.0];
+        self.contentView.backgroundColor = [UIColor colorWithRed:0.2 green:0.2 blue:0.2 alpha:1.0];
         
         [self createBorders];
         [self createTitleLabel];
@@ -66,7 +66,7 @@ static NSString* const kImgHotmailDisabled  = @"feed-btn-hotmail-checked.png";
 - (void)createBorders {
     
     UILabel *bottomBorder = [[UILabel alloc] initWithFrame:CGRectMake(0, kEmailConnectCellHeight-1, self.contentView.frame.size.width,1)];
-    bottomBorder.backgroundColor = [UIColor colorWithRed:0.862 green:0.862 blue:0.862 alpha:1.0];
+    bottomBorder.backgroundColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0];
     
     [self.contentView addSubview:bottomBorder];
 }
@@ -77,7 +77,7 @@ static NSString* const kImgHotmailDisabled  = @"feed-btn-hotmail-checked.png";
     
     titleLabel.backgroundColor      = [UIColor clearColor];
     titleLabel.font                 = [UIFont fontWithName:@"HelveticaNeue-Bold" size:15];
-    titleLabel.textColor            = [UIColor colorWithRed:0.2 green:0.2 blue:0.2 alpha:1.0];
+    titleLabel.textColor            = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0];
     titleLabel.textAlignment        = UITextAlignmentLeft;
     
     [self.contentView addSubview:titleLabel];
@@ -89,7 +89,7 @@ static NSString* const kImgHotmailDisabled  = @"feed-btn-hotmail-checked.png";
     
     subtitleLabel.backgroundColor       = [UIColor clearColor];
     subtitleLabel.font                  = [UIFont fontWithName:@"HelveticaNeue" size:11];
-    subtitleLabel.textColor             = [UIColor colorWithRed:0.5372 green:0.5372 blue:0.5372 alpha:1.0];
+    subtitleLabel.textColor             = [UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1.0];
     subtitleLabel.textAlignment         = UITextAlignmentLeft;
 
     [self.contentView addSubview:subtitleLabel];
