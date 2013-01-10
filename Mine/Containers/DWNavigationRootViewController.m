@@ -20,7 +20,12 @@
 #import "DWSetting.h"
 #import "DWSession.h"
 
-static NSString* const kItunesURLPrefix = @"https://itunes.apple.com";
+static NSString* const kItunesURLPrefix     = @"https://itunes.apple.com";
+static NSString* const kInviteText          = @"Invite Text";
+static NSString* const kInviteURL           = @"http://getmine.com";
+static NSString* const kMsgErrorTitle       = @"Error";
+static NSString* const kMsgCancelTitle      = @"Dismiss";
+static NSString* const kMsgError            = @"Can't send text messages from your device.";
 
 
 /**
@@ -58,6 +63,11 @@ static NSString* const kItunesURLPrefix = @"https://itunes.apple.com";
 //----------------------------------------------------------------------------------------------------
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (BOOL)isActivityControllerAvailable {
+    return SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"6.0");
 }
 
 
@@ -149,11 +159,43 @@ static NSString* const kItunesURLPrefix = @"https://itunes.apple.com";
 //----------------------------------------------------------------------------------------------------
 - (void)displayInvite {
     
-    DWInviteViewController *inviteViewController = [[DWInviteViewController alloc] init];
+    if([self isActivityControllerAvailable]) {
+        
+        NSArray *activityItems = [NSArray arrayWithObjects:kInviteText,kInviteURL,nil];
+        UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:activityItems
+                                                                                         applicationActivities:Nil];
+        
+        activityViewController.excludedActivityTypes = [NSArray arrayWithObjects:
+                                                        UIActivityTypePostToWeibo,
+                                                        UIActivityTypePrint,
+                                                        UIActivityTypeCopyToPasteboard,
+                                                        UIActivityTypeAssignToContact,
+                                                        UIActivityTypeSaveToCameraRoll,
+                                                        nil];
     
-    [self.navigationController pushViewController:inviteViewController
-                                         animated:YES];
+        [self presentViewController:activityViewController animated:TRUE completion:nil];
+    }
+    else {
+        
+        if([MFMessageComposeViewController canSendText]) {
+            MFMessageComposeViewController *messageComposeViewController = [[MFMessageComposeViewController alloc] init];
+            
+            messageComposeViewController.body                       = [NSString stringWithFormat:@"%@ - %@", kInviteText, kInviteURL];
+            messageComposeViewController.messageComposeDelegate     = self;
+            
+            [self presentModalViewController:messageComposeViewController animated:YES];
+        }
+        else {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:kMsgErrorTitle
+                                                            message:kMsgError
+                                                           delegate:nil
+                                                  cancelButtonTitle:kMsgCancelTitle
+                                                  otherButtonTitles:nil];
+            [alert show];
+        }
+    }
 }
+
 //----------------------------------------------------------------------------------------------------
 - (void)displayGoogleAuth {
     
@@ -352,7 +394,6 @@ static NSString* const kItunesURLPrefix = @"https://itunes.apple.com";
 }
 
 
-
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
@@ -447,6 +488,17 @@ static NSString* const kItunesURLPrefix = @"https://itunes.apple.com";
 
 //----------------------------------------------------------------------------------------------------
 - (void)shareProfileViewControllerFinished {
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark MFMessageComposeViewControllerDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult)result {
+    [self dismissModalViewControllerAnimated:YES];
 }
 
 
