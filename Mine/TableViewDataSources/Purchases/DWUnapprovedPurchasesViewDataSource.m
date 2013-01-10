@@ -166,6 +166,11 @@
 }
 
 //----------------------------------------------------------------------------------------------------
+- (NSInteger)totalPurchases {
+    return self.selectedIDs.count + self.rejectedIDs.count;
+}
+
+//----------------------------------------------------------------------------------------------------
 - (void)approveSelectedPurchases {
     [self.purchasesController approveMultiplePurchases:self.selectedIDs
                                            rejectedIDs:self.rejectedIDs];

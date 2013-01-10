@@ -23,6 +23,7 @@
 
 @property (nonatomic,strong) NSMutableArray *rejectedIDs;
 @property (nonatomic,readonly) NSMutableArray *selectedIDs;
+@property (nonatomic,readonly) NSInteger totalPurchases;
 
 @property (nonatomic,weak) id<DWTableViewDataSourceDelegate,DWUnapprovedPurchasesViewDataSourceDelegate,NSObject> delegate;
 

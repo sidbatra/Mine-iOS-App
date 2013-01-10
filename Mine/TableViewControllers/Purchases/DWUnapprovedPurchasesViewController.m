@@ -138,6 +138,27 @@
 }
 
 //----------------------------------------------------------------------------------------------------
+- (BOOL)testForPurchasesWiped {
+    BOOL wiped = NO;
+    
+    DWUnapprovedPurchasesViewDataSource *dataSource = (DWUnapprovedPurchasesViewDataSource*)self.tableViewDataSource;
+    
+    if(dataSource.arePurchasesFinished &&
+       dataSource.totalPurchases !=0 &&
+       dataSource.rejectedIDs.count == dataSource.totalPurchases) {
+        
+        [self.spinner stopAnimating];
+        self.importButton.hidden = YES;
+        
+        self.navigationItem.rightBarButtonItem = [DWGUIManager navBarDoneButtonWithTarget:self];
+        
+        wiped = YES;
+    }
+    
+    return wiped;
+}
+
+//----------------------------------------------------------------------------------------------------
 - (void)displayImportButton {
     [self.spinner stopAnimating];
     
@@ -162,6 +183,17 @@
     self.storeLogo.frame = frame;
     self.storeLogo.image = store.mediumImage;
     self.storeLogo.hidden = NO;
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark UI Events
+
+//----------------------------------------------------------------------------------------------------
+- (void)doneButtonClicked {
+    [self importButtonClicked];
 }
 
 
@@ -199,7 +231,8 @@
     [self.progressView updateDisplayWithTotalActive:1 totalFailed:0 totalProgress:1.0];
     
     if(count) {
-        [self performSelector:@selector(displayImportButton) withObject:nil afterDelay:0.5];
+        if(![self testForPurchasesWiped])
+            [self performSelector:@selector(displayImportButton) withObject:nil afterDelay:0.5];
     }
     else {
         [self.spinner stopAnimating];
@@ -268,6 +301,7 @@
 //----------------------------------------------------------------------------------------------------
 - (void)purchaseCrossClicked:(NSInteger)purchaseID {
     [(DWUnapprovedPurchasesViewDataSource*)self.tableViewDataSource removePurchase:purchaseID];
+    [self testForPurchasesWiped];
 }
 
 
