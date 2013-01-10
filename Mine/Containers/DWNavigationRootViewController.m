@@ -233,6 +233,7 @@ static NSString* const kMsgError            = @"Can't send text messages from yo
 //----------------------------------------------------------------------------------------------------
 - (void)displayUnapprovedPurchases:(BOOL)isLive {
     DWUnapprovedPurchasesViewController *unapprovedPurchasesViewController = [[DWUnapprovedPurchasesViewController alloc] initWithModeIsLive:isLive];
+    unapprovedPurchasesViewController.isUpdate = !isLive || [DWSession sharedDWSession].currentUser.isEmailAuthorized;
     
     unapprovedPurchasesViewController.delegate = self;
     

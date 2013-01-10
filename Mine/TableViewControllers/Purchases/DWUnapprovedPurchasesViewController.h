@@ -16,9 +16,12 @@
     __weak id<DWUnapprovedPurchasesViewControllerDelegate> _delegate;
 }
 
+@property (nonatomic,assign) BOOL isUpdate;
 @property (nonatomic,weak) id<DWUnapprovedPurchasesViewControllerDelegate> delegate;
 
 - (id)initWithModeIsLive:(BOOL)isLive;
+
+
 
 @end
 

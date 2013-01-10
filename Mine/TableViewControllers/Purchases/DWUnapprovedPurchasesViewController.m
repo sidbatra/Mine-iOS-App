@@ -29,6 +29,7 @@
     UIImageView *_storeLogo;
     
     BOOL _isLive;
+    BOOL _isUpdate;
 }
 
 @property (nonatomic,strong) DWQueueProgressView *progressView;
@@ -51,6 +52,7 @@
 @synthesize spinner = _spinner;
 @synthesize storeLogo = _storeLogo;
 @synthesize isLive = _isLive;
+@synthesize isUpdate = _isUpdate;
 @synthesize delegate = _delegate;
 
 //----------------------------------------------------------------------------------------------------
@@ -121,7 +123,7 @@
     }
     
     if(!self.importButton) {
-        self.importButton = [[DWImportButton alloc] initWithFrame:self.isLive ? CGRectMake(193,7,120,30) : CGRectMake(223, 7, 90, 30)];
+        self.importButton = [[DWImportButton alloc] initWithFrame:self.isUpdate ? CGRectMake(223, 7, 90, 30) : CGRectMake(193,7,120,30)];
         self.importButton.delegate = self;
         self.importButton.hidden = YES;
     }
@@ -139,10 +141,10 @@
 - (void)displayImportButton {
     [self.spinner stopAnimating];
     
-    if(self.isLive)
-        [self.importButton enterCreateState];
-    else
+    if(self.isUpdate)
         [self.importButton enterAddState];
+    else
+        [self.importButton enterCreateState];
     
     self.importButton.hidden = NO;
 }
