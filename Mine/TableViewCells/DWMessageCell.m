@@ -43,13 +43,13 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)createMessageLabel {
-    messageLabel = [[UILabel alloc] initWithFrame:CGRectMake(11,0,288,43)];
+    messageLabel = [[UILabel alloc] initWithFrame:CGRectMake(0,20,self.frame.size.width,30)];
     
     messageLabel.numberOfLines        = 1;
     messageLabel.backgroundColor      = [UIColor clearColor];
-    messageLabel.font                 = [UIFont fontWithName:@"HelveticaNeue-Bold" size:16];
-    messageLabel.textColor            = [UIColor colorWithRed:0.2 green:0.2 blue:0.2 alpha:1.0];
-    messageLabel.textAlignment        = UITextAlignmentLeft;
+    messageLabel.font                 = [UIFont fontWithName:@"HelveticaNeue" size:13];
+    messageLabel.textColor            = [UIColor colorWithRed:0.6 green:0.6 blue:0.6 alpha:1.0];
+    messageLabel.textAlignment        = UITextAlignmentCenter;
     
     [self.contentView addSubview:messageLabel];
 }
@@ -69,7 +69,7 @@
 
 //----------------------------------------------------------------------------------------------------
 + (NSInteger)height {
-    return 30;
+    return 60;
 }
 
 @end
