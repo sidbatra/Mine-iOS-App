@@ -64,6 +64,10 @@
             [cell displayCrossButtonForIndex:i
                               withPurchaseID:purchase.databaseID];
         }
+        else {
+            [cell displayShopButtonForIndex:i
+                             withPurchaseID:purchase.databaseID];
+        }
         
         if(purchase.isDestroying)
             [cell enterSpinningStateForIndex:i];
