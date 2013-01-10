@@ -173,7 +173,7 @@ static NSString* const kMsgError            = @"Can't send text messages from yo
                                                         UIActivityTypeSaveToCameraRoll,
                                                         nil];
     
-        [self presentViewController:activityViewController animated:TRUE completion:nil];
+        [self.customTabBarController presentViewController:activityViewController animated:YES completion:nil];
     }
     else {
         
@@ -183,7 +183,7 @@ static NSString* const kMsgError            = @"Can't send text messages from yo
             messageComposeViewController.body                       = [NSString stringWithFormat:@"%@ - %@", kInviteText, kInviteURL];
             messageComposeViewController.messageComposeDelegate     = self;
             
-            [self presentModalViewController:messageComposeViewController animated:YES];
+            [self.customTabBarController presentModalViewController:messageComposeViewController animated:YES];
         }
         else {
             UIAlertView *alert = [[UIAlertView alloc] initWithTitle:kMsgErrorTitle
@@ -498,7 +498,7 @@ static NSString* const kMsgError            = @"Can't send text messages from yo
 
 //----------------------------------------------------------------------------------------------------
 - (void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult)result {
-    [self dismissModalViewControllerAnimated:YES];
+    [self.customTabBarController dismissModalViewControllerAnimated:YES];
 }
 
 
