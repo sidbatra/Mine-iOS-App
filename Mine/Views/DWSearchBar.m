@@ -58,7 +58,7 @@ static NSString* const kMsgSearchPlaceholder    = @"Search for people";
 
 //----------------------------------------------------------------------------------------------------
 - (void)createBackground {
-    UIImageView *background = [[UIImageView alloc] initWithFrame:CGRectMake(2,6,250,32)];
+    UIImageView *background = [[UIImageView alloc] initWithFrame:CGRectMake(0,6,316,32)];
     background.contentMode = UIViewContentModeCenter;
     background.image = [UIImage imageNamed:kImgSearchBackground];
     background.userInteractionEnabled    = NO;
@@ -68,7 +68,7 @@ static NSString* const kMsgSearchPlaceholder    = @"Search for people";
 
 //----------------------------------------------------------------------------------------------------
 - (void)createSearchField {
-    searchTextField                         = [[UITextField alloc] initWithFrame:CGRectMake(38,12,212,20)];
+    searchTextField                         = [[UITextField alloc] initWithFrame:CGRectMake(36,12,273,20)];
     searchTextField.delegate                = self;
     searchTextField.autocorrectionType      = UITextAutocorrectionTypeNo;
     searchTextField.autocapitalizationType  = UITextAutocapitalizationTypeWords;
