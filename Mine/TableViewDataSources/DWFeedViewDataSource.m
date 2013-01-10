@@ -173,7 +173,7 @@ static NSInteger const kEmailConnectIndex = 0;
         pagination.owner            = self;
         [self.objects addObject:pagination];
     }
-    else {
+    else if(self.objects.count == 1) {
         [self addEmptyMessageObject];
     }
     
