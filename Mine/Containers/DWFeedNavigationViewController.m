@@ -109,7 +109,7 @@ static NSString* const kImgCreationOn     = @"nav-btn-add-on.png";
                action:@selector(createButtonClicked)
      forControlEvents:UIControlEventTouchUpInside];
     
-	[button setFrame:CGRectMake(0, 0,40,30)];
+	[button setFrame:CGRectMake(0, 0,46,30)];
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
 }
