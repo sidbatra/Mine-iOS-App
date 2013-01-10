@@ -16,8 +16,8 @@
 
 static NSInteger const kInitialPurchasesRetryInterval = 5;
 static NSInteger const kInitialUserRetryInterval = 3;
-static NSInteger const kPurchasesRetryInterval = 5;
-static NSInteger const kUserRetryInterval = 3;
+static NSInteger const kPurchasesRetryInterval = 3;
+static NSInteger const kUserRetryInterval = 1.5;
 
 
 @interface DWLivePurchasesViewDataSource() {
@@ -62,7 +62,7 @@ static NSInteger const kUserRetryInterval = 3;
 //----------------------------------------------------------------------------------------------------
 - (void)loadDelayedPurchases {
     [self.purchasesController getUnapprovedLivePurchasesAtOffset:self.offset
-                                                         perPage:50];
+                                                         perPage:100];
 }
 
 //----------------------------------------------------------------------------------------------------
