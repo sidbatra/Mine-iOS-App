@@ -70,6 +70,7 @@ static NSString* const kFacebookURLPrefix = @"fb";
 @synthesize welcomeNavController    = _welcomeNavController;
 @synthesize feedNavController       = _feedNavController;
 @synthesize profileNavController    = _profileNavController;
+@synthesize usersNavController      = _usersNavController;
 
 //----------------------------------------------------------------------------------------------------
 - (void)setupApplication {
@@ -113,11 +114,12 @@ static NSString* const kFacebookURLPrefix = @"fb";
     ((DWNavigationRootViewController*)self.welcomeNavController.topViewController).customTabBarController = self.tabBarController;
     ((DWNavigationRootViewController*)self.feedNavController.topViewController).customTabBarController = self.tabBarController;
     ((DWNavigationRootViewController*)self.profileNavController.topViewController).customTabBarController = self.tabBarController;
+    ((DWNavigationRootViewController*)self.usersNavController.topViewController).customTabBarController = self.tabBarController;
 
     
     [self.tabBarController addSubController:self.feedNavController];
     [self.tabBarController addSubController:self.profileNavController];
-    [self.tabBarController addSubController:[[UIViewController alloc] init]];
+    [self.tabBarController addSubController:self.usersNavController];
     
     
     self.tabBarController.tabBar.frame = CGRectMake(0, [DWDevice sharedDWDevice].screenHeightMinusStatusBar - kTabBarHeight, 320, kTabBarHeight);
@@ -140,7 +142,7 @@ static NSString* const kFacebookURLPrefix = @"fb";
                                   normalImageName:@"tab-right-people-off.png"
                                 selectedImageName:@"tab-right-people-on.png"
                              highlightedImageName:nil
-                             isMappedToController:NO
+                             isMappedToController:YES
                                        isSelected:NO];
     
     
@@ -158,10 +160,12 @@ static NSString* const kFacebookURLPrefix = @"fb";
     [self.welcomeNavController popToRootViewControllerAnimated:NO];
     [self.feedNavController popToRootViewControllerAnimated:NO];
     [self.profileNavController popToRootViewControllerAnimated:NO];
+    [self.usersNavController popToRootViewControllerAnimated:NO];
     
     self.welcomeNavController.viewControllers = [NSArray arrayWithObject:[[DWWelcomeNavigationRootViewController alloc] init]];
     self.feedNavController.viewControllers  = [NSArray arrayWithObject:[[DWFeedNavigationViewController alloc] init]];
     self.profileNavController.viewControllers  = [NSArray arrayWithObject:[[DWProfileNavigationViewController alloc] init]];
+    self.usersNavController.viewControllers  = [NSArray arrayWithObject:[[DWUsersNavigationViewController alloc] init]];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -192,17 +196,6 @@ static NSString* const kFacebookURLPrefix = @"fb";
 //----------------------------------------------------------------------------------------------------
 - (void)selectedTabModifiedFrom:(NSInteger)oldSelectedIndex 
                              to:(NSInteger)newSelectedIndex {
-    
-    if(newSelectedIndex == kUsersTabIndex) {
-        
-        DWUsersNavigationViewController *usersRootViewController = [[DWUsersNavigationViewController alloc] init];
-        usersRootViewController.delegate = self;
-        
-        UINavigationController *usersNavController = [[UINavigationController alloc] initWithRootViewController:usersRootViewController];
-        
-        [self.tabBarController presentModalViewController:usersNavController
-                                                  animated:NO];
-    }        
 }
 
 
