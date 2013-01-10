@@ -105,7 +105,7 @@
         self.progressView.delegate	= self;
         [self.progressView removeInteractiveElements];
         
-        [self.progressView updateDisplayWithTotalActive:1 totalFailed:0 totalProgress:0.0];
+        [self.progressView updateDisplayWithTotalActive:1 totalFailed:0 totalProgress:1.0];
     }
     
     if(!self.spinner) {
