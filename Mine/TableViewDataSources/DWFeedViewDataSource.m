@@ -30,6 +30,8 @@ static NSInteger const kEmailConnectIndex = 0;
     NSMutableArray          *_users;
     NSMutableArray          *_purchases;
     
+    DWMessage               *_message;
+    
     NSInteger _oldestTimestamp;
 }
 
@@ -41,7 +43,10 @@ static NSInteger const kEmailConnectIndex = 0;
 /**
  * Data controller for the purchases model.
  */
+
 @property (nonatomic,strong) DWPurchasesController *purchasesController;
+
+@property (nonatomic,strong) DWMessage *message;
 
 
 /**
@@ -68,6 +73,7 @@ static NSInteger const kEmailConnectIndex = 0;
 
 @synthesize feedController          = _feedController;
 @synthesize purchasesController     = _purchasesController;
+@synthesize message                 = _message;
 
 @synthesize purchases               = _purchases;
 @synthesize oldestTimestamp         = _oldestTimestamp;
@@ -214,10 +220,10 @@ static NSInteger const kEmailConnectIndex = 0;
 
 //----------------------------------------------------------------------------------------------------
 - (void)addEmptyMessageObject {
-    DWMessage *message = [[DWMessage alloc] init];
-    message.title = @"No items here";
+    self.message = [[DWMessage alloc] init];
+    self.message.title = @"Nothing in your feed right now.";
     
-    [self.objects addObject:message];
+    [self.objects addObject:self.message];
 }
 
 
@@ -247,6 +253,9 @@ static NSInteger const kEmailConnectIndex = 0;
 //----------------------------------------------------------------------------------------------------
 - (void)purchaseCreated:(DWPurchase *)purchase 
          fromResourceID:(NSNumber *)resourceID {
+    [self removeObject:self.message
+         withAnimation:UITableViewRowAnimationNone];
+    
     [self addObject:purchase
             atIndex:kEmailConnectIndex+1
       withAnimation:UITableViewRowAnimationTop];
