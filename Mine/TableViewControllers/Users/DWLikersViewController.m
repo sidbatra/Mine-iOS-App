@@ -57,6 +57,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self disablePullToRefresh];
+    
     self.navigationItem.titleView = [DWGUIManager navBarTitleViewWithText:@"Likes"];
     
     [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Likers View"];

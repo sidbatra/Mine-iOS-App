@@ -40,6 +40,9 @@
 //----------------------------------------------------------------------------------------------------
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [self disablePullToRefresh];
+    
     self.loadingView.hidden = YES;
 }
 

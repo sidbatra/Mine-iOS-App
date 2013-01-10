@@ -53,6 +53,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self disablePullToRefresh];
+    
     self.navigationItem.titleView = [DWGUIManager navBarTitleViewWithText:@"Following"];
     
     [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Inverse Followers View"];
