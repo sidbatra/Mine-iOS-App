@@ -26,8 +26,8 @@ static NSString* const kImgLikeOff      = @"feed-btn-like-off.png";
 static NSString* const kImgLikePushed   = @"feed-btn-like-pushed.png";
 static NSString* const kImgCommentOn    = @"feed-btn-comment-on.png";
 static NSString* const kImgCommentOff   = @"feed-btn-comment-off.png";
-static NSString* const kImgURLOn        = @"feed-btn-explore-on.png";
-static NSString* const kImgURLOff       = @"feed-btn-explore-off.png";
+static NSString* const kImgURLOn        = @"feed-btn-buy-on.png";
+static NSString* const kImgURLOff       = @"feed-btn-buy-off.png";
 static NSString* const kUserURLScheme   = @"user";
 
 static NSInteger const kPurchaseFeedCellHeight  = 224 + 16 + 16 + 11; //image, image y, info background margin, user image margin, endorsement margin
@@ -344,7 +344,7 @@ static NSInteger const kUserImageSide           = 34;
 //----------------------------------------------------------------------------------------------------
 - (void)createURLButton {
     
-    urlButton = [[UIButton alloc] initWithFrame:CGRectMake(248,0,50,25)];
+    urlButton = [[UIButton alloc] initWithFrame:CGRectMake(248,0,61,61)];
     
     [urlButton setImage:[UIImage imageNamed:kImgURLOff]
                    forState:UIControlStateNormal];
@@ -545,16 +545,16 @@ static NSInteger const kUserImageSide           = 34;
         frame = commentButton.frame;
         frame.origin.y = likeButton.frame.origin.y;
         commentButton.frame = frame;
-        
-        
-        frame = urlButton.frame;
-        frame.origin.y = likeButton.frame.origin.y;
-        urlButton.frame = frame;
-        
+
         
         CGRect infoFrame = infoBackground.frame;
         infoFrame.size.height = likeButton.frame.origin.y + likeButton.frame.size.height - infoFrame.origin.y + 12;
-        infoBackground.frame = infoFrame;        
+        infoBackground.frame = infoFrame;
+        
+        
+        frame = urlButton.frame;
+        frame.origin.y = infoBackground.frame.origin.y + infoBackground.frame.size.height - urlButton.frame.size.height;
+        urlButton.frame = frame;
     }
     else {
         likeButton.hidden = YES;
