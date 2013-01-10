@@ -18,6 +18,9 @@
     DWSuggestedUsersViewController *_suggestedUsersViewController;
 
     DWSearchBar                 *_searchBar;
+    
+    UILongPressGestureRecognizer *_suggestedUsersGestureRecognizer;
+    UILongPressGestureRecognizer *_usersSearchGestureRecognizer;
 }
 
 @property (nonatomic,strong) DWUsersViewController *usersSearchViewController;
@@ -27,6 +30,9 @@
  * Nav bar search input field for searching users.
  */
 @property (nonatomic,strong) DWSearchBar *searchBar;
+
+@property (nonatomic,strong) UILongPressGestureRecognizer *suggestedUsersGestureRecognizer;
+@property (nonatomic,strong) UILongPressGestureRecognizer *usersSearchGestureRecognizer;
 
 @end
 
@@ -39,6 +45,8 @@
 
 @synthesize usersSearchViewController       = _usersSearchViewController;
 @synthesize suggestedUsersViewController    = _suggestedUsersViewController;
+@synthesize suggestedUsersGestureRecognizer = _suggestedUsersGestureRecognizer;
+@synthesize usersSearchGestureRecognizer    = _usersSearchGestureRecognizer;
 @synthesize searchBar                       = _searchBar;
 @synthesize delegate                        = _delegate;
 
@@ -68,10 +76,12 @@
         self.usersSearchViewController.view.hidden = YES;
 
         
-        UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self
-                                                                                            action:@selector(usersSearchViewControllerTapped)];
-        gestureRecognizer.cancelsTouchesInView = NO;
-        [self.usersSearchViewController.view addGestureRecognizer:gestureRecognizer];
+        self.usersSearchGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self
+                                                                                          action:@selector(usersSearchViewControllerTapped)];
+        self.usersSearchGestureRecognizer.cancelsTouchesInView = YES;
+        self.usersSearchGestureRecognizer.minimumPressDuration = 0.01;
+        self.usersSearchGestureRecognizer.enabled = NO;
+        [self.usersSearchViewController.view addGestureRecognizer:self.usersSearchGestureRecognizer];
     }
     
     [self.view addSubview:self.usersSearchViewController.view];
@@ -82,10 +92,12 @@
         self.suggestedUsersViewController.delegate = self;
         self.suggestedUsersViewController.view.hidden = NO;
         
-        UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self
-                                                                                            action:@selector(suggestedUsersViewControllerTapped)];
-        gestureRecognizer.cancelsTouchesInView = NO;
-        [self.suggestedUsersViewController.view addGestureRecognizer:gestureRecognizer];
+        self.suggestedUsersGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self
+                                                                                              action:@selector(suggestedUsersViewControllerTapped)];
+        self.suggestedUsersGestureRecognizer.cancelsTouchesInView = YES;
+        self.suggestedUsersGestureRecognizer.minimumPressDuration = 0.01;
+        self.suggestedUsersGestureRecognizer.enabled = NO;
+        [self.suggestedUsersViewController.view addGestureRecognizer:self.suggestedUsersGestureRecognizer];
     }
     
     [self.view addSubview:self.suggestedUsersViewController.view];
@@ -111,11 +123,24 @@
 - (void)viewDidAppear:(BOOL)animated {
 }
 
+//----------------------------------------------------------------------------------------------------
+- (void)hideKeyboard {
+    self.usersSearchGestureRecognizer.enabled = NO;
+    self.suggestedUsersGestureRecognizer.enabled = NO;
+    [self.searchBar hideKeyboard];
+}
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
 #pragma mark DWSearchBarDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)searchFocused {
+    self.usersSearchGestureRecognizer.enabled = YES;
+    self.suggestedUsersGestureRecognizer.enabled = YES;
+}
 
 //----------------------------------------------------------------------------------------------------
 - (void)searchCancelled {
@@ -168,12 +193,12 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)usersSearchViewControllerTapped {
-    [self.searchBar hideKeyboard];
+    [self hideKeyboard];
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)suggestedUsersViewControllerTapped {
-    [self.searchBar hideKeyboard];
+    [self hideKeyboard];
 }
 
 

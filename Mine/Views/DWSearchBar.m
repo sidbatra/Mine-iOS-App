@@ -50,7 +50,7 @@ static NSString* const kMsgSearchPlaceholder    = @"Search for people";
     if (self) {
         [self createBackground];
         [self createSearchField];
-        [self createCancelButton];        
+        //[self createCancelButton];
     }
     
     return self;
@@ -124,6 +124,11 @@ static NSString* const kMsgSearchPlaceholder    = @"Search for people";
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
 #pragma mark UISearchBarDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+    [self.delegate searchFocused];
+}
 
 //----------------------------------------------------------------------------------------------------
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {

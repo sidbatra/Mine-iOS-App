@@ -65,4 +65,6 @@
 
 - (void)searchQueryCleared;
 
+- (void)searchFocused;
+
 @end
