@@ -122,6 +122,44 @@
 		BB021239169F847500A659E3 /* profile-btn-buy-on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB021237169F847500A659E3 /* profile-btn-buy-on@2x.png */; };
 		BB02123C169F87DD00A659E3 /* feed-btn-buy-off@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB02123A169F87DD00A659E3 /* feed-btn-buy-off@2x.png */; };
 		BB02123D169F87DD00A659E3 /* feed-btn-buy-on@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB02123B169F87DD00A659E3 /* feed-btn-buy-on@2x.png */; };
+		BB021264169FB13700A659E3 /* connect-btn-gmail-off.png in Resources */ = {isa = PBXBuildFile; fileRef = BB02123E169FB13600A659E3 /* connect-btn-gmail-off.png */; };
+		BB021265169FB13700A659E3 /* connect-btn-gmail-on.png in Resources */ = {isa = PBXBuildFile; fileRef = BB02123F169FB13600A659E3 /* connect-btn-gmail-on.png */; };
+		BB021266169FB13700A659E3 /* connect-btn-yahoo-off.png in Resources */ = {isa = PBXBuildFile; fileRef = BB021240169FB13600A659E3 /* connect-btn-yahoo-off.png */; };
+		BB021267169FB13700A659E3 /* connect-btn-yahoo-on.png in Resources */ = {isa = PBXBuildFile; fileRef = BB021241169FB13600A659E3 /* connect-btn-yahoo-on.png */; };
+		BB021268169FB13700A659E3 /* connect-gmail-off.png in Resources */ = {isa = PBXBuildFile; fileRef = BB021242169FB13600A659E3 /* connect-gmail-off.png */; };
+		BB021269169FB13700A659E3 /* connect-gmail-on.png in Resources */ = {isa = PBXBuildFile; fileRef = BB021243169FB13600A659E3 /* connect-gmail-on.png */; };
+		BB02126A169FB13700A659E3 /* connect-hotmail-off.png in Resources */ = {isa = PBXBuildFile; fileRef = BB021244169FB13600A659E3 /* connect-hotmail-off.png */; };
+		BB02126B169FB13700A659E3 /* connect-hotmail-on.png in Resources */ = {isa = PBXBuildFile; fileRef = BB021245169FB13600A659E3 /* connect-hotmail-on.png */; };
+		BB02126C169FB13700A659E3 /* connect-star.png in Resources */ = {isa = PBXBuildFile; fileRef = BB021246169FB13600A659E3 /* connect-star.png */; };
+		BB02126D169FB13700A659E3 /* connect-steps.png in Resources */ = {isa = PBXBuildFile; fileRef = BB021247169FB13600A659E3 /* connect-steps.png */; };
+		BB02126E169FB13700A659E3 /* connect-yahoo-off.png in Resources */ = {isa = PBXBuildFile; fileRef = BB021248169FB13600A659E3 /* connect-yahoo-off.png */; };
+		BB02126F169FB13700A659E3 /* connect-yahoo-on.png in Resources */ = {isa = PBXBuildFile; fileRef = BB021249169FB13600A659E3 /* connect-yahoo-on.png */; };
+		BB021270169FB13700A659E3 /* feed-btn-buy-off.png in Resources */ = {isa = PBXBuildFile; fileRef = BB02124A169FB13600A659E3 /* feed-btn-buy-off.png */; };
+		BB021271169FB13700A659E3 /* feed-btn-buy-on.png in Resources */ = {isa = PBXBuildFile; fileRef = BB02124B169FB13600A659E3 /* feed-btn-buy-on.png */; };
+		BB021272169FB13700A659E3 /* feed-btn-gmail-checked.png in Resources */ = {isa = PBXBuildFile; fileRef = BB02124C169FB13600A659E3 /* feed-btn-gmail-checked.png */; };
+		BB021273169FB13700A659E3 /* feed-btn-hotmail-checked.png in Resources */ = {isa = PBXBuildFile; fileRef = BB02124D169FB13700A659E3 /* feed-btn-hotmail-checked.png */; };
+		BB021274169FB13700A659E3 /* feed-btn-hotmail-off.png in Resources */ = {isa = PBXBuildFile; fileRef = BB02124E169FB13700A659E3 /* feed-btn-hotmail-off.png */; };
+		BB021275169FB13700A659E3 /* feed-btn-hotmail-on.png in Resources */ = {isa = PBXBuildFile; fileRef = BB02124F169FB13700A659E3 /* feed-btn-hotmail-on.png */; };
+		BB021276169FB13700A659E3 /* feed-btn-yahoo-checked.png in Resources */ = {isa = PBXBuildFile; fileRef = BB021250169FB13700A659E3 /* feed-btn-yahoo-checked.png */; };
+		BB021277169FB13700A659E3 /* login-bg-hulu.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BB021251169FB13700A659E3 /* login-bg-hulu.jpg */; };
+		BB021278169FB13700A659E3 /* login-logo.png in Resources */ = {isa = PBXBuildFile; fileRef = BB021252169FB13700A659E3 /* login-logo.png */; };
+		BB021279169FB13700A659E3 /* nav-btn-add-off.png in Resources */ = {isa = PBXBuildFile; fileRef = BB021253169FB13700A659E3 /* nav-btn-add-off.png */; };
+		BB02127A169FB13700A659E3 /* nav-btn-add-on.png in Resources */ = {isa = PBXBuildFile; fileRef = BB021254169FB13700A659E3 /* nav-btn-add-on.png */; };
+		BB02127B169FB13700A659E3 /* nav-btn-add-to-mine-off.png in Resources */ = {isa = PBXBuildFile; fileRef = BB021255169FB13700A659E3 /* nav-btn-add-to-mine-off.png */; };
+		BB02127C169FB13700A659E3 /* nav-btn-add-to-mine-on.png in Resources */ = {isa = PBXBuildFile; fileRef = BB021256169FB13700A659E3 /* nav-btn-add-to-mine-on.png */; };
+		BB02127D169FB13700A659E3 /* nav-btn-create-mine-off.png in Resources */ = {isa = PBXBuildFile; fileRef = BB021257169FB13700A659E3 /* nav-btn-create-mine-off.png */; };
+		BB02127E169FB13700A659E3 /* nav-btn-create-mine-on.png in Resources */ = {isa = PBXBuildFile; fileRef = BB021258169FB13700A659E3 /* nav-btn-create-mine-on.png */; };
+		BB02127F169FB13700A659E3 /* profile-btn-buy-off.png in Resources */ = {isa = PBXBuildFile; fileRef = BB021259169FB13700A659E3 /* profile-btn-buy-off.png */; };
+		BB021280169FB13700A659E3 /* profile-btn-buy-on.png in Resources */ = {isa = PBXBuildFile; fileRef = BB02125A169FB13700A659E3 /* profile-btn-buy-on.png */; };
+		BB021281169FB13700A659E3 /* share-btn-facebook-off.png in Resources */ = {isa = PBXBuildFile; fileRef = BB02125B169FB13700A659E3 /* share-btn-facebook-off.png */; };
+		BB021282169FB13700A659E3 /* share-btn-facebook-on.png in Resources */ = {isa = PBXBuildFile; fileRef = BB02125C169FB13700A659E3 /* share-btn-facebook-on.png */; };
+		BB021283169FB13700A659E3 /* share-btn-twitter-off.png in Resources */ = {isa = PBXBuildFile; fileRef = BB02125D169FB13700A659E3 /* share-btn-twitter-off.png */; };
+		BB021284169FB13700A659E3 /* share-btn-twitter-on.png in Resources */ = {isa = PBXBuildFile; fileRef = BB02125E169FB13700A659E3 /* share-btn-twitter-on.png */; };
+		BB021285169FB13700A659E3 /* share-star.png in Resources */ = {isa = PBXBuildFile; fileRef = BB02125F169FB13700A659E3 /* share-star.png */; };
+		BB021286169FB13700A659E3 /* tab-center-profile-off.png in Resources */ = {isa = PBXBuildFile; fileRef = BB021260169FB13700A659E3 /* tab-center-profile-off.png */; };
+		BB021287169FB13700A659E3 /* tab-center-profile-on.png in Resources */ = {isa = PBXBuildFile; fileRef = BB021261169FB13700A659E3 /* tab-center-profile-on.png */; };
+		BB021288169FB13700A659E3 /* tab-right-people-off.png in Resources */ = {isa = PBXBuildFile; fileRef = BB021262169FB13700A659E3 /* tab-right-people-off.png */; };
+		BB021289169FB13700A659E3 /* tab-right-people-on.png in Resources */ = {isa = PBXBuildFile; fileRef = BB021263169FB13700A659E3 /* tab-right-people-on.png */; };
 		BB06360C15BF726D001F26E1 /* DWErrorView.m in Sources */ = {isa = PBXBuildFile; fileRef = BB06360B15BF726D001F26E1 /* DWErrorView.m */; };
 		BB06361215BF7DB2001F26E1 /* DWTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = BB06360F15BF7DB2001F26E1 /* DWTabBar.m */; };
 		BB06361315BF7DB2001F26E1 /* DWTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB06361115BF7DB2001F26E1 /* DWTabBarController.m */; };
@@ -791,6 +829,44 @@
 		BB021237169F847500A659E3 /* profile-btn-buy-on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profile-btn-buy-on@2x.png"; sourceTree = "<group>"; };
 		BB02123A169F87DD00A659E3 /* feed-btn-buy-off@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "feed-btn-buy-off@2x.png"; sourceTree = "<group>"; };
 		BB02123B169F87DD00A659E3 /* feed-btn-buy-on@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "feed-btn-buy-on@2x.png"; sourceTree = "<group>"; };
+		BB02123E169FB13600A659E3 /* connect-btn-gmail-off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "connect-btn-gmail-off.png"; sourceTree = "<group>"; };
+		BB02123F169FB13600A659E3 /* connect-btn-gmail-on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "connect-btn-gmail-on.png"; sourceTree = "<group>"; };
+		BB021240169FB13600A659E3 /* connect-btn-yahoo-off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "connect-btn-yahoo-off.png"; sourceTree = "<group>"; };
+		BB021241169FB13600A659E3 /* connect-btn-yahoo-on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "connect-btn-yahoo-on.png"; sourceTree = "<group>"; };
+		BB021242169FB13600A659E3 /* connect-gmail-off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "connect-gmail-off.png"; sourceTree = "<group>"; };
+		BB021243169FB13600A659E3 /* connect-gmail-on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "connect-gmail-on.png"; sourceTree = "<group>"; };
+		BB021244169FB13600A659E3 /* connect-hotmail-off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "connect-hotmail-off.png"; sourceTree = "<group>"; };
+		BB021245169FB13600A659E3 /* connect-hotmail-on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "connect-hotmail-on.png"; sourceTree = "<group>"; };
+		BB021246169FB13600A659E3 /* connect-star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "connect-star.png"; sourceTree = "<group>"; };
+		BB021247169FB13600A659E3 /* connect-steps.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "connect-steps.png"; sourceTree = "<group>"; };
+		BB021248169FB13600A659E3 /* connect-yahoo-off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "connect-yahoo-off.png"; sourceTree = "<group>"; };
+		BB021249169FB13600A659E3 /* connect-yahoo-on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "connect-yahoo-on.png"; sourceTree = "<group>"; };
+		BB02124A169FB13600A659E3 /* feed-btn-buy-off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "feed-btn-buy-off.png"; sourceTree = "<group>"; };
+		BB02124B169FB13600A659E3 /* feed-btn-buy-on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "feed-btn-buy-on.png"; sourceTree = "<group>"; };
+		BB02124C169FB13600A659E3 /* feed-btn-gmail-checked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "feed-btn-gmail-checked.png"; sourceTree = "<group>"; };
+		BB02124D169FB13700A659E3 /* feed-btn-hotmail-checked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "feed-btn-hotmail-checked.png"; sourceTree = "<group>"; };
+		BB02124E169FB13700A659E3 /* feed-btn-hotmail-off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "feed-btn-hotmail-off.png"; sourceTree = "<group>"; };
+		BB02124F169FB13700A659E3 /* feed-btn-hotmail-on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "feed-btn-hotmail-on.png"; sourceTree = "<group>"; };
+		BB021250169FB13700A659E3 /* feed-btn-yahoo-checked.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "feed-btn-yahoo-checked.png"; sourceTree = "<group>"; };
+		BB021251169FB13700A659E3 /* login-bg-hulu.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "login-bg-hulu.jpg"; sourceTree = "<group>"; };
+		BB021252169FB13700A659E3 /* login-logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "login-logo.png"; sourceTree = "<group>"; };
+		BB021253169FB13700A659E3 /* nav-btn-add-off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-btn-add-off.png"; sourceTree = "<group>"; };
+		BB021254169FB13700A659E3 /* nav-btn-add-on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-btn-add-on.png"; sourceTree = "<group>"; };
+		BB021255169FB13700A659E3 /* nav-btn-add-to-mine-off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-btn-add-to-mine-off.png"; sourceTree = "<group>"; };
+		BB021256169FB13700A659E3 /* nav-btn-add-to-mine-on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-btn-add-to-mine-on.png"; sourceTree = "<group>"; };
+		BB021257169FB13700A659E3 /* nav-btn-create-mine-off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-btn-create-mine-off.png"; sourceTree = "<group>"; };
+		BB021258169FB13700A659E3 /* nav-btn-create-mine-on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav-btn-create-mine-on.png"; sourceTree = "<group>"; };
+		BB021259169FB13700A659E3 /* profile-btn-buy-off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profile-btn-buy-off.png"; sourceTree = "<group>"; };
+		BB02125A169FB13700A659E3 /* profile-btn-buy-on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profile-btn-buy-on.png"; sourceTree = "<group>"; };
+		BB02125B169FB13700A659E3 /* share-btn-facebook-off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "share-btn-facebook-off.png"; sourceTree = "<group>"; };
+		BB02125C169FB13700A659E3 /* share-btn-facebook-on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "share-btn-facebook-on.png"; sourceTree = "<group>"; };
+		BB02125D169FB13700A659E3 /* share-btn-twitter-off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "share-btn-twitter-off.png"; sourceTree = "<group>"; };
+		BB02125E169FB13700A659E3 /* share-btn-twitter-on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "share-btn-twitter-on.png"; sourceTree = "<group>"; };
+		BB02125F169FB13700A659E3 /* share-star.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "share-star.png"; sourceTree = "<group>"; };
+		BB021260169FB13700A659E3 /* tab-center-profile-off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab-center-profile-off.png"; sourceTree = "<group>"; };
+		BB021261169FB13700A659E3 /* tab-center-profile-on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab-center-profile-on.png"; sourceTree = "<group>"; };
+		BB021262169FB13700A659E3 /* tab-right-people-off.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab-right-people-off.png"; sourceTree = "<group>"; };
+		BB021263169FB13700A659E3 /* tab-right-people-on.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "tab-right-people-on.png"; sourceTree = "<group>"; };
 		BB06360615BF7258001F26E1 /* DWErrorViewProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWErrorViewProtocol.h; sourceTree = "<group>"; };
 		BB06360715BF7258001F26E1 /* DWModelPresenterProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWModelPresenterProtocol.h; sourceTree = "<group>"; };
 		BB06360A15BF726D001F26E1 /* DWErrorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DWErrorView.h; sourceTree = "<group>"; };
@@ -1852,6 +1928,44 @@
 		BB350EB71617D1FA00531A80 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				BB02123E169FB13600A659E3 /* connect-btn-gmail-off.png */,
+				BB02123F169FB13600A659E3 /* connect-btn-gmail-on.png */,
+				BB021240169FB13600A659E3 /* connect-btn-yahoo-off.png */,
+				BB021241169FB13600A659E3 /* connect-btn-yahoo-on.png */,
+				BB021242169FB13600A659E3 /* connect-gmail-off.png */,
+				BB021243169FB13600A659E3 /* connect-gmail-on.png */,
+				BB021244169FB13600A659E3 /* connect-hotmail-off.png */,
+				BB021245169FB13600A659E3 /* connect-hotmail-on.png */,
+				BB021246169FB13600A659E3 /* connect-star.png */,
+				BB021247169FB13600A659E3 /* connect-steps.png */,
+				BB021248169FB13600A659E3 /* connect-yahoo-off.png */,
+				BB021249169FB13600A659E3 /* connect-yahoo-on.png */,
+				BB02124A169FB13600A659E3 /* feed-btn-buy-off.png */,
+				BB02124B169FB13600A659E3 /* feed-btn-buy-on.png */,
+				BB02124C169FB13600A659E3 /* feed-btn-gmail-checked.png */,
+				BB02124D169FB13700A659E3 /* feed-btn-hotmail-checked.png */,
+				BB02124E169FB13700A659E3 /* feed-btn-hotmail-off.png */,
+				BB02124F169FB13700A659E3 /* feed-btn-hotmail-on.png */,
+				BB021250169FB13700A659E3 /* feed-btn-yahoo-checked.png */,
+				BB021251169FB13700A659E3 /* login-bg-hulu.jpg */,
+				BB021252169FB13700A659E3 /* login-logo.png */,
+				BB021253169FB13700A659E3 /* nav-btn-add-off.png */,
+				BB021254169FB13700A659E3 /* nav-btn-add-on.png */,
+				BB021255169FB13700A659E3 /* nav-btn-add-to-mine-off.png */,
+				BB021256169FB13700A659E3 /* nav-btn-add-to-mine-on.png */,
+				BB021257169FB13700A659E3 /* nav-btn-create-mine-off.png */,
+				BB021258169FB13700A659E3 /* nav-btn-create-mine-on.png */,
+				BB021259169FB13700A659E3 /* profile-btn-buy-off.png */,
+				BB02125A169FB13700A659E3 /* profile-btn-buy-on.png */,
+				BB02125B169FB13700A659E3 /* share-btn-facebook-off.png */,
+				BB02125C169FB13700A659E3 /* share-btn-facebook-on.png */,
+				BB02125D169FB13700A659E3 /* share-btn-twitter-off.png */,
+				BB02125E169FB13700A659E3 /* share-btn-twitter-on.png */,
+				BB02125F169FB13700A659E3 /* share-star.png */,
+				BB021260169FB13700A659E3 /* tab-center-profile-off.png */,
+				BB021261169FB13700A659E3 /* tab-center-profile-on.png */,
+				BB021262169FB13700A659E3 /* tab-right-people-off.png */,
+				BB021263169FB13700A659E3 /* tab-right-people-on.png */,
 				BB02123A169F87DD00A659E3 /* feed-btn-buy-off@2x.png */,
 				BB02123B169F87DD00A659E3 /* feed-btn-buy-on@2x.png */,
 				BB021236169F847500A659E3 /* profile-btn-buy-off@2x.png */,
@@ -3196,6 +3310,44 @@
 				BB021239169F847500A659E3 /* profile-btn-buy-on@2x.png in Resources */,
 				BB02123C169F87DD00A659E3 /* feed-btn-buy-off@2x.png in Resources */,
 				BB02123D169F87DD00A659E3 /* feed-btn-buy-on@2x.png in Resources */,
+				BB021264169FB13700A659E3 /* connect-btn-gmail-off.png in Resources */,
+				BB021265169FB13700A659E3 /* connect-btn-gmail-on.png in Resources */,
+				BB021266169FB13700A659E3 /* connect-btn-yahoo-off.png in Resources */,
+				BB021267169FB13700A659E3 /* connect-btn-yahoo-on.png in Resources */,
+				BB021268169FB13700A659E3 /* connect-gmail-off.png in Resources */,
+				BB021269169FB13700A659E3 /* connect-gmail-on.png in Resources */,
+				BB02126A169FB13700A659E3 /* connect-hotmail-off.png in Resources */,
+				BB02126B169FB13700A659E3 /* connect-hotmail-on.png in Resources */,
+				BB02126C169FB13700A659E3 /* connect-star.png in Resources */,
+				BB02126D169FB13700A659E3 /* connect-steps.png in Resources */,
+				BB02126E169FB13700A659E3 /* connect-yahoo-off.png in Resources */,
+				BB02126F169FB13700A659E3 /* connect-yahoo-on.png in Resources */,
+				BB021270169FB13700A659E3 /* feed-btn-buy-off.png in Resources */,
+				BB021271169FB13700A659E3 /* feed-btn-buy-on.png in Resources */,
+				BB021272169FB13700A659E3 /* feed-btn-gmail-checked.png in Resources */,
+				BB021273169FB13700A659E3 /* feed-btn-hotmail-checked.png in Resources */,
+				BB021274169FB13700A659E3 /* feed-btn-hotmail-off.png in Resources */,
+				BB021275169FB13700A659E3 /* feed-btn-hotmail-on.png in Resources */,
+				BB021276169FB13700A659E3 /* feed-btn-yahoo-checked.png in Resources */,
+				BB021277169FB13700A659E3 /* login-bg-hulu.jpg in Resources */,
+				BB021278169FB13700A659E3 /* login-logo.png in Resources */,
+				BB021279169FB13700A659E3 /* nav-btn-add-off.png in Resources */,
+				BB02127A169FB13700A659E3 /* nav-btn-add-on.png in Resources */,
+				BB02127B169FB13700A659E3 /* nav-btn-add-to-mine-off.png in Resources */,
+				BB02127C169FB13700A659E3 /* nav-btn-add-to-mine-on.png in Resources */,
+				BB02127D169FB13700A659E3 /* nav-btn-create-mine-off.png in Resources */,
+				BB02127E169FB13700A659E3 /* nav-btn-create-mine-on.png in Resources */,
+				BB02127F169FB13700A659E3 /* profile-btn-buy-off.png in Resources */,
+				BB021280169FB13700A659E3 /* profile-btn-buy-on.png in Resources */,
+				BB021281169FB13700A659E3 /* share-btn-facebook-off.png in Resources */,
+				BB021282169FB13700A659E3 /* share-btn-facebook-on.png in Resources */,
+				BB021283169FB13700A659E3 /* share-btn-twitter-off.png in Resources */,
+				BB021284169FB13700A659E3 /* share-btn-twitter-on.png in Resources */,
+				BB021285169FB13700A659E3 /* share-star.png in Resources */,
+				BB021286169FB13700A659E3 /* tab-center-profile-off.png in Resources */,
+				BB021287169FB13700A659E3 /* tab-center-profile-on.png in Resources */,
+				BB021288169FB13700A659E3 /* tab-right-people-off.png in Resources */,
+				BB021289169FB13700A659E3 /* tab-right-people-on.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
