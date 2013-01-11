@@ -20,7 +20,7 @@
 #import "DWSetting.h"
 #import "DWSession.h"
 
-static NSString* const kItunesURLPrefix     = @"https://itunes.apple.com";
+static NSString* const kItunesURL           = @"itunes.apple.com";
 static NSString* const kInviteText          = @"Check out Mine ... to see what I bought recently!";
 static NSString* const kInviteURL           = @"https://itunes.apple.com/us/app/mine./id567558757";
 static NSString* const kMsgErrorTitle       = @"Error";
@@ -124,8 +124,10 @@ static NSString* const kMsgError            = @"Can't send text messages from yo
 
 //----------------------------------------------------------------------------------------------------
 - (void)displayExternalURL:(NSString*)url {
-
-    if([url hasPrefix:kItunesURLPrefix]) {
+    
+    NSRange range = [url rangeOfString:kItunesURL];
+    
+    if(range.length) {
         [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
     }
     else {
