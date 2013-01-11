@@ -3673,8 +3673,8 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Siddharth Batra";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Siddharth Batra";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
@@ -3687,8 +3687,8 @@
 					"-all_load",
 					"-ObjC",
 				);
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				PROVISIONING_PROFILE = "4EB7FE41-3116-44C7-83C6-F01EA0B4BE42";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "4EB7FE41-3116-44C7-83C6-F01EA0B4BE42";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -3725,7 +3725,8 @@
 		BBC8A0AA15B9D26D00DF58F6 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Siddharth Batra";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Siddharth Batra";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/External/Facebook\"",
@@ -3744,7 +3745,8 @@
 					"-lsqlite3.0",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "4EB7FE41-3116-44C7-83C6-F01EA0B4BE42";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "4EB7FE41-3116-44C7-83C6-F01EA0B4BE42";
 				"WARNING_CFLAGS[arch=*]" = "-Wno-arc-performSelector-leaks";
 				WRAPPER_EXTENSION = app;
 			};
