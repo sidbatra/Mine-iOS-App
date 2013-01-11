@@ -49,7 +49,7 @@ static NSString* const kImgHotmailDisabled  = @"feed-btn-hotmail-checked.png";
 				reuseIdentifier:reuseIdentifier];
 	
     if (self) {
-        self.contentView.backgroundColor = [UIColor colorWithRed:0.2 green:0.2 blue:0.2 alpha:1.0];
+        self.contentView.backgroundColor = [UIColor colorWithRed:0.2235 green:0.2235 blue:0.2235 alpha:1.0];
         
         [self createBorders];
         [self createTitleLabel];
@@ -89,7 +89,7 @@ static NSString* const kImgHotmailDisabled  = @"feed-btn-hotmail-checked.png";
     
     subtitleLabel.backgroundColor       = [UIColor clearColor];
     subtitleLabel.font                  = [UIFont fontWithName:@"HelveticaNeue" size:11];
-    subtitleLabel.textColor             = [UIColor colorWithRed:0.8 green:0.8 blue:0.8 alpha:1.0];
+    subtitleLabel.textColor             = [UIColor colorWithRed:0.6 green:0.6 blue:0.6  alpha:1.0];
     subtitleLabel.textAlignment         = UITextAlignmentLeft;
 
     [self.contentView addSubview:subtitleLabel];
