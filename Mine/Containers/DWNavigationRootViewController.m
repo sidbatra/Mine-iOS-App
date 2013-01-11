@@ -21,7 +21,7 @@
 #import "DWSession.h"
 
 static NSString* const kItunesURL           = @"itunes.apple.com";
-static NSString* const kInviteText          = @"Check out Mine ... to see what I bought recently!";
+static NSString* const kInviteText          = @"Check out Mine ... see what I bought recently!";
 static NSString* const kInviteURL           = @"https://itunes.apple.com/us/app/mine./id567558757";
 static NSString* const kMsgErrorTitle       = @"Error";
 static NSString* const kMsgCancelTitle      = @"Dismiss";
