@@ -24,12 +24,16 @@ static NSInteger const kUserRetryInterval = 1.5;
     DWUsersController   *_usersController;
     
     BOOL _isInitialTry;
+    BOOL _purchasesLoading;
+    BOOL _waitingForPurchases;
     
     NSInteger _offset;
 }
 
 @property (nonatomic,strong) DWUsersController *usersController;
 @property (nonatomic,assign) BOOL isInitialTry;
+@property (nonatomic,assign) BOOL purchasesLoading;
+@property (nonatomic,assign) BOOL waitingForPurchases;
 @property (nonatomic,assign) NSInteger offset;
 
 @end
@@ -44,6 +48,8 @@ static NSInteger const kUserRetryInterval = 1.5;
 @synthesize usersController = _usersController;
 @synthesize offset = _offset;
 @synthesize isInitialTry = _isInitialTry;
+@synthesize purchasesLoading = _purchasesLoading;
+@synthesize waitingForPurchases = _waitingForPurchases;
 
 //----------------------------------------------------------------------------------------------------
 - (id)init {
@@ -76,6 +82,8 @@ static NSInteger const kUserRetryInterval = 1.5;
         self.isInitialTry = NO;
     }
     else {
+        self.purchasesLoading = YES;
+
         [self performSelector:@selector(loadDelayedPurchases)
                    withObject:nil
                    afterDelay:kPurchasesRetryInterval];
@@ -105,6 +113,18 @@ static NSInteger const kUserRetryInterval = 1.5;
 
 //----------------------------------------------------------------------------------------------------
 - (void)paginate {
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)finishProcessing {
+    [self.delegate unapprovedPurchasesStatus:nil
+                                    progress:1.0];
+    
+    [super unapprovedPurchasesLoaded:[NSArray array]];
+    
+    self.usersController = nil;
+    self.arePurchasesFinished = YES;
+    [self.delegate unapprovedPurchasesFinished:self.selectedIDs.count+self.rejectedIDs.count];
 }
 
 
@@ -139,14 +159,10 @@ static NSInteger const kUserRetryInterval = 1.5;
         [self loadUser];
     }
     else {
-        [self.delegate unapprovedPurchasesStatus:nil
-                                        progress:1.0];
-        
-        [super unapprovedPurchasesLoaded:[NSArray array]];
-        
-        self.usersController = nil;
-        self.arePurchasesFinished = YES;
-        [self.delegate unapprovedPurchasesFinished:self.selectedIDs.count+self.rejectedIDs.count];
+        if(self.purchasesLoading)
+            self.waitingForPurchases = YES;
+        else
+            [self finishProcessing];
     }
 }
 
@@ -176,13 +192,18 @@ static NSInteger const kUserRetryInterval = 1.5;
 //----------------------------------------------------------------------------------------------------
 - (void)unapprovedPurchasesLoaded:(NSMutableArray *)purchases {
     
+    self.purchasesLoading = NO;
+    
     if([purchases count]) {
         [super unapprovedPurchasesLoaded:purchases];
         
         self.offset += [purchases count];
     }
     
-    [self loadPurchases];
+    if(self.waitingForPurchases)
+        [self finishProcessing];
+    else
+        [self loadPurchases];
 }
 
 @end
