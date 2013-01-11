@@ -11,9 +11,13 @@
 #import "DWPurchase.h"
 #import "DWFollowing.h"
 #import "DWUnion.h"
+#import "DWMessage.h"
 #import "DWSession.h"
 #import "DWFollowingManager.h"
 #import "DWPagination.h"
+
+static NSInteger const kEmailConnectIndex = 0;
+
 
 /**
  * Private declarations.
@@ -22,11 +26,11 @@
         
     DWFeedController        *_feedController;
     DWPurchasesController   *_purchasesController;
-    DWUsersController       *_usersController;
-    DWFollowingsController  *_followingsController;
     
     NSMutableArray          *_users;
     NSMutableArray          *_purchases;
+    
+    DWMessage               *_message;
     
     NSInteger _oldestTimestamp;
 }
@@ -39,22 +43,11 @@
 /**
  * Data controller for the purchases model.
  */
+
 @property (nonatomic,strong) DWPurchasesController *purchasesController;
 
-/**
- * Data controller for the users model.
- */
-@property (nonatomic,strong) DWUsersController *usersController;
+@property (nonatomic,strong) DWMessage *message;
 
-/**
- * Data controller for the followings model.
- */
-@property (nonatomic,strong) DWFollowingsController *followingsController;
-
-/**
- * Users suggested for who to follow
- */
-@property (nonatomic,strong) NSMutableArray *users;
 
 /**
  * Holds the last page of purchases loaded from the server to break deadlocks
@@ -80,10 +73,8 @@
 
 @synthesize feedController          = _feedController;
 @synthesize purchasesController     = _purchasesController;
-@synthesize usersController         = _usersController;
-@synthesize followingsController    = _followingsController;
+@synthesize message                 = _message;
 
-@synthesize users                   = _users;
 @synthesize purchases               = _purchases;
 @synthesize oldestTimestamp         = _oldestTimestamp;
 
@@ -99,12 +90,6 @@
         
         self.purchasesController = [[DWPurchasesController alloc] init];
         self.purchasesController.delegate = self;
-        
-        self.usersController = [[DWUsersController alloc] init];
-        self.usersController.delegate = self;
-        
-        self.followingsController = [[DWFollowingsController alloc] init];
-        self.followingsController.delegate = self;
     }
     
     return self;
@@ -113,11 +98,6 @@
 //----------------------------------------------------------------------------------------------------
 - (void)loadFeed {
     [self.feedController getPurchasesBefore:self.oldestTimestamp];
-}
-
-//----------------------------------------------------------------------------------------------------
-- (void)loadUserSuggestions {
-    [self.usersController getUserSuggestions];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -132,19 +112,6 @@
     
     [self removeObject:purchase
          withAnimation:UITableViewRowAnimationBottom];
-}
-
-//----------------------------------------------------------------------------------------------------
-- (void)toggleFollowForUserID:(NSInteger)userID {
-    DWFollowing *following = [[DWFollowingManager sharedDWFollowingManager] followingForUserID:userID];
-    
-    if(following) {
-        [self.followingsController destroyFollowing:following.databaseID
-                                          ForUserID:userID];
-    }
-    else {
-        [self.followingsController createFollowingForUserID:userID];
-    }
 }
 
 
@@ -163,9 +130,6 @@
         ((DWPagination*)lastObject).isDisabled = YES;
     }
     
-    self.users = nil;
-    
-    [self loadUserSuggestions];
     [self loadFeed];
 }
 
@@ -175,9 +139,9 @@
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)displayFeedAndUserSuggestions {
+- (void)displayFeed {
     
-    if(!self.purchases || !self.users)
+    if(!self.purchases)
         return;
     
     id lastObject   = [self.objects lastObject];
@@ -190,7 +154,9 @@
     
     if(!paginate) {
         [self clean];
-        self.objects = [NSMutableArray arrayWithArray:self.users];
+        self.objects = [NSMutableArray array];
+
+        [self addEmailConnectObject];
         scroll = YES;
     }
     else {
@@ -207,13 +173,57 @@
         pagination.owner            = self;
         [self.objects addObject:pagination];
     }
+    else if(self.objects.count == 1) {
+        [self addEmptyMessageObject];
+    }
     
     self.purchases = nil;
     
     [self.delegate reloadTableView];
     
     if (scroll)
-        [self.delegate scrollToRowAtIndex:[self.users count]];
+        [self.delegate scrollToRowAtIndex:kEmailConnectIndex+1];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+- (void)addEmailConnectObject {
+    DWUser *user = [DWSession sharedDWSession].currentUser;
+    DWUnion *uni = [[DWUnion alloc] init];
+    
+    if(user.isEmailAuthorized) {
+        
+        NSDateFormatter* dateFormatter = [[NSDateFormatter alloc] init];
+        [dateFormatter setDateFormat:@"e"];
+        
+        NSInteger days = (7 - [[dateFormatter stringFromDate:[NSDate date]] integerValue]  + 4) % 7;
+        
+        if(days == 0)
+            days = 7;
+        
+        uni.title       = @"Connected";
+        uni.subtitle    = [NSString stringWithFormat:@"Next check: %d %@",days,(days == 1 ? @"day" : @"days")];
+    }
+    else {
+        uni.title       = @"Start your Mine";
+        uni.subtitle    = @"Connect an email";
+    }
+    
+    [uni setCustomKeyValue:kKeyIsGoogleAuthorized value:[NSNumber numberWithBool:user.isGoogleAuthorized]];
+    [uni setCustomKeyValue:kKeyIsYahooAuthorized value:[NSNumber numberWithBool:user.isYahooAuthorized]];
+    [uni setCustomKeyValue:kKeyIsHotmailAuthorized value:[NSNumber numberWithBool:user.isHotmailAuthorized]];
+    
+    
+    [self.objects insertObject:uni
+                       atIndex:kEmailConnectIndex];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)addEmptyMessageObject {
+    self.message = [[DWMessage alloc] init];
+    self.message.title = @"Nothing in your feed right now.";
+    
+    [self.objects addObject:self.message];
 }
 
 
@@ -225,39 +235,11 @@
 //----------------------------------------------------------------------------------------------------
 - (void)feedLoaded:(NSMutableArray *)purchases {
     self.purchases = purchases;
-    [self displayFeedAndUserSuggestions];
+    [self displayFeed];
 }
 
 //----------------------------------------------------------------------------------------------------
 - (void)feedLoadError:(NSString *)error {
-    [self.delegate displayError:error
-                  withRefreshUI:YES];
-}
-
-
-//----------------------------------------------------------------------------------------------------
-//----------------------------------------------------------------------------------------------------
-#pragma mark -
-#pragma mark DWUsersControllerDelegate
-
-//----------------------------------------------------------------------------------------------------
-- (void)userSuggestionsLoaded:(NSMutableArray *)users forUserID:(NSNumber *)userID {
-    self.users = users;
-    
-    if(![DWSession sharedDWSession].currentUser.isEmailAuthorized) {
-        DWUnion *uni = [[DWUnion alloc] init];
-        
-        uni.title       = @"Import recent purchases";
-        uni.subtitle    = @"Connect to preview your items";
-        
-        [self.users insertObject:uni atIndex:0];
-    }
-    
-    [self displayFeedAndUserSuggestions];
-}
-
-//----------------------------------------------------------------------------------------------------
-- (void)userSuggestionsLoadError:(NSString *)error forUserID:(NSNumber *)userID {
     [self.delegate displayError:error
                   withRefreshUI:YES];
 }
@@ -271,8 +253,11 @@
 //----------------------------------------------------------------------------------------------------
 - (void)purchaseCreated:(DWPurchase *)purchase 
          fromResourceID:(NSNumber *)resourceID {
+    [self removeObject:self.message
+         withAnimation:UITableViewRowAnimationNone];
+    
     [self addObject:purchase
-            atIndex:[self.users count]
+            atIndex:kEmailConnectIndex+1
       withAnimation:UITableViewRowAnimationTop];
 }
 
@@ -280,32 +265,6 @@
 - (void)purchaseDeleted:(NSNumber *)purchaseID {
     [self removeObject:[DWPurchase fetch:[purchaseID integerValue]] 
          withAnimation:UITableViewRowAnimationBottom];
-}
-
-
-//----------------------------------------------------------------------------------------------------
-//----------------------------------------------------------------------------------------------------
-#pragma mark -
-#pragma mark DWFollowingsControllerDelegate
-
-//----------------------------------------------------------------------------------------------------
-- (void)followingCreated:(DWFollowing *)following forUserID:(NSNumber *)userID {    
-    [self.delegate followingModifiedForUserID:[userID integerValue] toStatus:YES];
-}
-
-//----------------------------------------------------------------------------------------------------
-- (void)followingCreateError:(NSString *)message forUserID:(NSNumber *)userID {
-    
-}
-
-//----------------------------------------------------------------------------------------------------
-- (void)followingDestroyed:(DWFollowing *)following forUserID:(NSNumber *)userID {
-    [self.delegate followingModifiedForUserID:[userID integerValue] toStatus:NO];
-}
-
-//----------------------------------------------------------------------------------------------------
-- (void)followingDestroyError:(NSString *)message forUserID:(NSNumber *)userID {
-    
 }
 
 

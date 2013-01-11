@@ -99,6 +99,13 @@ static NSString* const kImgBackground       = @"nav-concave-bg.png";
 }
 
 //----------------------------------------------------------------------------------------------------
+- (void)removeInteractiveElements {
+    [retryButton removeFromSuperview];
+    [deleteButton removeFromSuperview];
+    [statusLabel removeFromSuperview];
+}
+
+//----------------------------------------------------------------------------------------------------
 - (void)updateProgressBar:(float)progress 
             withAnimation:(BOOL)animation {
     

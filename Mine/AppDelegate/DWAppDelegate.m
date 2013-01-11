@@ -70,6 +70,7 @@ static NSString* const kFacebookURLPrefix = @"fb";
 @synthesize welcomeNavController    = _welcomeNavController;
 @synthesize feedNavController       = _feedNavController;
 @synthesize profileNavController    = _profileNavController;
+@synthesize usersNavController      = _usersNavController;
 
 //----------------------------------------------------------------------------------------------------
 - (void)setupApplication {
@@ -113,11 +114,12 @@ static NSString* const kFacebookURLPrefix = @"fb";
     ((DWNavigationRootViewController*)self.welcomeNavController.topViewController).customTabBarController = self.tabBarController;
     ((DWNavigationRootViewController*)self.feedNavController.topViewController).customTabBarController = self.tabBarController;
     ((DWNavigationRootViewController*)self.profileNavController.topViewController).customTabBarController = self.tabBarController;
+    ((DWNavigationRootViewController*)self.usersNavController.topViewController).customTabBarController = self.tabBarController;
 
     
     [self.tabBarController addSubController:self.feedNavController];
-    [self.tabBarController addSubController:[[UIViewController alloc] init]];
     [self.tabBarController addSubController:self.profileNavController];
+    [self.tabBarController addSubController:self.usersNavController];
     
     
     self.tabBarController.tabBar.frame = CGRectMake(0, [DWDevice sharedDWDevice].screenHeightMinusStatusBar - kTabBarHeight, 320, kTabBarHeight);
@@ -130,15 +132,15 @@ static NSString* const kFacebookURLPrefix = @"fb";
                                        isSelected:YES];
     
     [self.tabBarController.tabBar addTabWithWidth:92
-                                  normalImageName:@"tab-center-add-off.png"
-                                selectedImageName:@"tab-center-add-off.png"
+                                  normalImageName:@"tab-center-profile-off.png"
+                                selectedImageName:@"tab-center-profile-on.png"
                              highlightedImageName:nil
-                             isMappedToController:NO
+                             isMappedToController:YES
                                        isSelected:NO];
     
     [self.tabBarController.tabBar addTabWithWidth:114
-                                  normalImageName:@"tab-right-profile-off.png"
-                                selectedImageName:@"tab-right-profile-on.png"
+                                  normalImageName:@"tab-right-people-off.png"
+                                selectedImageName:@"tab-right-people-on.png"
                              highlightedImageName:nil
                              isMappedToController:YES
                                        isSelected:NO];
@@ -158,10 +160,12 @@ static NSString* const kFacebookURLPrefix = @"fb";
     [self.welcomeNavController popToRootViewControllerAnimated:NO];
     [self.feedNavController popToRootViewControllerAnimated:NO];
     [self.profileNavController popToRootViewControllerAnimated:NO];
+    [self.usersNavController popToRootViewControllerAnimated:NO];
     
     self.welcomeNavController.viewControllers = [NSArray arrayWithObject:[[DWWelcomeNavigationRootViewController alloc] init]];
     self.feedNavController.viewControllers  = [NSArray arrayWithObject:[[DWFeedNavigationViewController alloc] init]];
     self.profileNavController.viewControllers  = [NSArray arrayWithObject:[[DWProfileNavigationViewController alloc] init]];
+    self.usersNavController.viewControllers  = [NSArray arrayWithObject:[[DWUsersNavigationViewController alloc] init]];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -192,27 +196,16 @@ static NSString* const kFacebookURLPrefix = @"fb";
 //----------------------------------------------------------------------------------------------------
 - (void)selectedTabModifiedFrom:(NSInteger)oldSelectedIndex 
                              to:(NSInteger)newSelectedIndex {
-    
-    if(newSelectedIndex == kCreateTabIndex) {
-        
-        DWCreationNavigationViewController *creationRootViewController = [[DWCreationNavigationViewController alloc] init];        
-        creationRootViewController.delegate = self;
-        
-        UINavigationController *creationNavController =  [[UINavigationController alloc] initWithRootViewController:creationRootViewController];
-
-        [self.tabBarController presentModalViewController:creationNavController
-                                                 animated:NO];
-    }        
 }
 
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
-#pragma mark DWCreationNavigationViewControllerDelegate
+#pragma mark DWUsersNavigationViewControllerDelegate
 
 //----------------------------------------------------------------------------------------------------
-- (void)dismissCreateView {
+- (void)usersNavViewDismiss {
     [self.tabBarController dismissModalViewControllerAnimated:YES];
 }
 

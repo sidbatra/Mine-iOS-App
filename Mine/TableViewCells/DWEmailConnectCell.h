@@ -21,6 +21,10 @@
 - (void)setTitle:(NSString*)title
      andSubtitle:(NSString*)subtitle;
 
+- (void)updateConnectStatusForGoogle:(BOOL)google
+                               yahoo:(BOOL)yahoo
+                             hotmail:(BOOL)hotmail;
+
 + (NSInteger)heightForCell;
 
 @end
@@ -36,5 +40,6 @@
 
 - (void)googleConnectClicked;
 - (void)yahooConnectClicked;
+- (void)hotmailConnectClicked;
 
 @end

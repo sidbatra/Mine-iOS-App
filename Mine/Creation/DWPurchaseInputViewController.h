@@ -10,6 +10,7 @@
 
 #import "DWStorePickerViewController.h"
 #import "DWFacebookConnectViewController.h"
+#import "DWTwitterIOSConnect.h"
 #import "DWTwitterConnectViewController.h"
 #import "DWTumblrConnectViewController.h"
 
@@ -17,7 +18,7 @@
 @class DWProduct;
 @class DWPurchase;
 
-@interface DWPurchaseInputViewController : UIViewController<UITextFieldDelegate,DWStorePickerViewControllerDelegate,DWFacebookConnectViewControllerDelegate,DWTwitterConnectViewControllerDelegate,DWTumblrConnectViewControllerDelegate> {
+@interface DWPurchaseInputViewController : UIViewController<UITextFieldDelegate,DWStorePickerViewControllerDelegate,DWFacebookConnectViewControllerDelegate,DWTwitterIOSConnectDelegate,DWTwitterConnectViewControllerDelegate,DWTumblrConnectViewControllerDelegate> {
     
     UITextField     *_nameTextField;
     UITextField     *_reviewTextField; 

@@ -11,10 +11,12 @@
 #import "DWUserProfilePresenter.h"
 #import "DWPurchaseProfilePresenter.h"
 #import "DWPaginationPresenter.h"
+#import "DWMessagePresenter.h"
 #import "DWAnalyticsManager.h"
 #import "DWPurchase.h"
 #import "DWPagination.h"
 #import "DWModelSet.h"
+#import "DWMessage.h"
 #import "DWUser.h"
 
 #import "DWSession.h"
@@ -63,6 +65,10 @@
         [self addModelPresenterForClass:[DWModelSet class]
                               withStyle:kDefaultModelPresenter 
                           withPresenter:[DWPurchaseProfilePresenter class]];
+        
+        [self addModelPresenterForClass:[DWMessage class]
+                              withStyle:kDefaultModelPresenter
+                          withPresenter:[DWMessagePresenter class]];
         
         [self addModelPresenterForClass:[DWPagination class]
                               withStyle:kDefaultModelPresenter 

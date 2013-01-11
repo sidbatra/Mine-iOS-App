@@ -50,7 +50,7 @@ static NSString* const kMsgSearchPlaceholder    = @"Search for people";
     if (self) {
         [self createBackground];
         [self createSearchField];
-        [self createCancelButton];        
+        //[self createCancelButton];
     }
     
     return self;
@@ -58,7 +58,7 @@ static NSString* const kMsgSearchPlaceholder    = @"Search for people";
 
 //----------------------------------------------------------------------------------------------------
 - (void)createBackground {
-    UIImageView *background = [[UIImageView alloc] initWithFrame:CGRectMake(2,6,250,32)];
+    UIImageView *background = [[UIImageView alloc] initWithFrame:CGRectMake(0,6,316,32)];
     background.contentMode = UIViewContentModeCenter;
     background.image = [UIImage imageNamed:kImgSearchBackground];
     background.userInteractionEnabled    = NO;
@@ -68,7 +68,7 @@ static NSString* const kMsgSearchPlaceholder    = @"Search for people";
 
 //----------------------------------------------------------------------------------------------------
 - (void)createSearchField {
-    searchTextField                         = [[UITextField alloc] initWithFrame:CGRectMake(38,12,212,20)];
+    searchTextField                         = [[UITextField alloc] initWithFrame:CGRectMake(36,12,273,20)];
     searchTextField.delegate                = self;
     searchTextField.autocorrectionType      = UITextAutocorrectionTypeNo;
     searchTextField.autocapitalizationType  = UITextAutocapitalizationTypeWords;
@@ -126,6 +126,11 @@ static NSString* const kMsgSearchPlaceholder    = @"Search for people";
 #pragma mark UISearchBarDelegate
 
 //----------------------------------------------------------------------------------------------------
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+    [self.delegate searchFocused];
+}
+
+//----------------------------------------------------------------------------------------------------
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     
     if([searchTextField.text length] < _minimumQueryLength)
@@ -135,6 +140,21 @@ static NSString* const kMsgSearchPlaceholder    = @"Search for people";
     
     [self.delegate searchWithQuery:searchTextField.text];
     
+    return YES;
+}
+
+//----------------------------------------------------------------------------------------------------
+-(BOOL)textFieldShouldClear:(UITextField *)textField {
+    [self.delegate searchQueryCleared];
+    return YES;
+}
+
+//----------------------------------------------------------------------------------------------------
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+    if (NSEqualRanges(range, NSMakeRange(0,[textField.text length])) && [string length] == 0) {
+        [self.delegate searchQueryCleared];
+    }
+
     return YES;
 }
 

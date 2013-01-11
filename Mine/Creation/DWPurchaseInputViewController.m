@@ -14,6 +14,7 @@
 #import "DWPurchase.h"
 #import "DWSetting.h"
 #import "DWSession.h"
+#import "DWFacebookConnect.h"
 #import "DWAnalyticsManager.h"
 #import "DWConstants.h"
 
@@ -34,6 +35,7 @@ static NSString* const kMsgCancelTitle          = @"Dismiss";
     
     DWStorePickerViewController         *_storePickerViewController;
     DWFacebookConnectViewController     *_facebookConnectViewController;
+    DWTwitterIOSConnect                 *_twitterIOSConnect;
     DWTwitterConnectViewController      *_twitterConnectViewController;
     DWTumblrConnectViewController       *_tumblrConnectViewController;
 }
@@ -57,6 +59,7 @@ static NSString* const kMsgCancelTitle          = @"Dismiss";
  * UIViewControllers for connecting with third party apps
  */
 @property (nonatomic,strong) DWFacebookConnectViewController *facebookConnectViewController;
+@property (nonatomic,strong) DWTwitterIOSConnect *twitterIOSConnect;
 @property (nonatomic,strong) DWTwitterConnectViewController *twitterConnectViewController;
 @property (nonatomic,strong) DWTumblrConnectViewController *tumblrConnectViewController;
 
@@ -103,6 +106,7 @@ static NSString* const kMsgCancelTitle          = @"Dismiss";
 @synthesize storePickerViewController       = _storePickerViewController;
 @synthesize facebookConnectViewController   = _facebookConnectViewController;
 @synthesize twitterConnectViewController    = _twitterConnectViewController;
+@synthesize twitterIOSConnect               = _twitterIOSConnect;
 @synthesize tumblrConnectViewController     = _tumblrConnectViewController;
 @synthesize delegate                        = _delegate;
 
@@ -160,9 +164,12 @@ static NSString* const kMsgCancelTitle          = @"Dismiss";
 #pragma mark Private Methods
 
 //----------------------------------------------------------------------------------------------------
-- (void)setupSharingUI {    
+- (void)setupSharingUI {
     
-    if([[DWSession sharedDWSession].currentUser isFacebookAuthorized]) {
+    DWFacebookConnect *fbConnect = [[DWFacebookConnect alloc] init];
+    
+    
+    if([[DWSession sharedDWSession].currentUser isFacebookAuthorized] && [fbConnect hasWritePermission]) {
         self.facebookConfigureButton.hidden = YES;
         
         self.facebookSwitch.hidden  = NO; 
@@ -264,6 +271,45 @@ static NSString* const kMsgCancelTitle          = @"Dismiss";
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
+#pragma mark DWTwitterIOSConnectDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)twitterIOSPermissionGranted {
+    [self.twitterIOSConnect startReverseAuth:self.navigationController.view];
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Twitter IOS Accepted"];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)twitterIOSPermissionCancelled {
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)twitterIOSNoAccountsFound {
+    self.twitterConnectViewController           = [[DWTwitterConnectViewController alloc] init];
+    self.twitterConnectViewController.delegate  = self;
+    
+    [self.navigationController pushViewController:self.twitterConnectViewController
+                                         animated:YES];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)twitterIOSPermissionDenied {
+    [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Twitter IOS Denied"];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)twitterIOSConfigured {
+    self.twitterConfigureButton.hidden  = YES;
+    
+    self.twitterSwitch.hidden           = NO;
+    self.twitterSwitch.on               = YES;
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
 #pragma mark DWTwitterConnectViewControllerDelegate
 
 //----------------------------------------------------------------------------------------------------
@@ -318,11 +364,11 @@ static NSString* const kMsgCancelTitle          = @"Dismiss";
 //----------------------------------------------------------------------------------------------------
 - (IBAction)twitterConfigureButtonClicked:(id)sender {
     
-    self.twitterConnectViewController           = [[DWTwitterConnectViewController alloc] init];
-    self.twitterConnectViewController.delegate  = self;
+    self.twitterIOSConnect = [[DWTwitterIOSConnect alloc] init];
+    self.twitterIOSConnect.updateCurrentUser = YES;
+    self.twitterIOSConnect.delegate = self;
     
-    [self.navigationController pushViewController:self.twitterConnectViewController
-                                         animated:YES];    
+    [self.twitterIOSConnect seekPermission];
 }
 
 //----------------------------------------------------------------------------------------------------

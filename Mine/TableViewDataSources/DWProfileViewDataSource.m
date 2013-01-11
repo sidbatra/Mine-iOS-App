@@ -13,6 +13,7 @@
 #import "DWPurchase.h"
 #import "DWuser.h"
 #import "DWFollowing.h"
+#import "DWMessage.h"
 #import "DWSession.h"
 #import "DWConstants.h"
 
@@ -25,6 +26,8 @@
     DWUser                  *_user;
     
     NSMutableArray          *_purchases;
+    
+    DWMessage               *_message;
     
     NSInteger _oldestTimestamp;
 }
@@ -56,6 +59,8 @@
  */
 @property (nonatomic,strong) NSMutableArray *purchases;
 
+@property (nonatomic,strong) DWMessage *message;
+
 /**
  * Timestamp of the last item in the feed. Used to fetch more items.
  */
@@ -76,6 +81,7 @@
 @synthesize usersController         = _usersController;
 @synthesize user                    = _user;
 @synthesize purchases               = _purchases;
+@synthesize message                 = _message;
 @synthesize oldestTimestamp         = _oldestTimestamp;
 @dynamic delegate;
 
@@ -170,6 +176,14 @@
 }
 
 //----------------------------------------------------------------------------------------------------
+- (void)addEmptyMessageObject {
+    self.message = [[DWMessage alloc] init];
+    self.message.title = @"Empty profile. Sad.";
+    
+    [self.objects addObject:self.message];
+}
+
+//----------------------------------------------------------------------------------------------------
 - (void)displayPurchasesAndUser {
     
     if(!self.purchases || !self.user)
@@ -213,6 +227,9 @@
         pagination.owner            = self;
         [self.objects addObject:pagination];
     }
+    else if(self.objects.count == 1) {
+        [self addEmptyMessageObject];
+    }
     
     self.purchases = nil;
     
@@ -255,6 +272,9 @@
     
     if(purchase.user.databaseID != self.userID)
         return;
+    
+    [self removeObject:self.message
+         withAnimation:UITableViewRowAnimationNone];
 
     self.purchases = [NSMutableArray array];
     [self.purchases addObject:purchase];

@@ -10,7 +10,7 @@
 
 
 //----------------------------------------------------------------------------------------------------
-NSString* const kVersion            = @"1.2.1";
+NSString* const kVersion            = @"1.3.0";
 NSString* const kGet				= @"GET";
 NSString* const kPost               = @"POST";
 NSString* const kPut				= @"PUT";
@@ -19,6 +19,7 @@ NSString* const kAppProtocol        = @"http://";
 NSString* const kClientName         = @"iphone";
 NSString* const kUserAgent          = @"Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.8.1.6) Gecko/20070802 SeaMonkey/1.1.4";
 NSString* const kInternalAppScheme  = @"mine-internal";
+NSString* const kContactEmail       = @"contact@getmine.com";
 
 #if ENVIRONMENT == DEVELOPMENT
 NSString* const kAppServer      = @"sbat.getmine.com";
@@ -87,15 +88,17 @@ NSString* const kKeyResetType           = @"reset_type";
 NSString* const kKeyCount               = @"count";
 NSString* const kKeyCreatedAt           = @"created_at";
 NSString* const kKeyImageURL            = @"image_url";
-
+NSString* const kKeyStatus              = @"status";
+NSString* const kKeyProgress            = @"progress";
+NSString *const kKeyNavigationBar       = @"navigationBar";
 
 //----------------------------------------------------------------------------------------------------
 NSString* const kRailsDateTimeFormat = @"yyyy-MM-dd HH:mm:ss ZZZ";
 
 //----------------------------------------------------------------------------------------------------
 NSInteger const kFeedTabIndex       = 0;
-NSInteger const kCreateTabIndex     = 1;
-NSInteger const kProfileTabIndex    = 2;
+NSInteger const kProfileTabIndex    = 1;
+NSInteger const kUsersTabIndex      = 2;
 NSInteger const kTabBarHeight       = 44;
 
 //----------------------------------------------------------------------------------------------------

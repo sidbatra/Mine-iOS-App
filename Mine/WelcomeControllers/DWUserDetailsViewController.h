@@ -15,7 +15,6 @@
 
 
 @interface DWUserDetailsViewController : UIViewController<DWUsersControllerDelegate,DWSessionControllerDelegate,UIAlertViewDelegate> {
-    UILabel                 *_titleLabel;
     UILabel                 *_exampleLabel;
     UITextField             *_emailTextField;
     UIButton                *_maleButton;
@@ -28,7 +27,6 @@
 /**
  * IBOutlets
  */
-@property (nonatomic) IBOutlet UILabel *titleLabel;
 @property (nonatomic) IBOutlet UILabel *exampleLabel;
 @property (nonatomic) IBOutlet UITextField *emailTextField;
 @property (nonatomic) IBOutlet UIButton *maleButton;

@@ -41,7 +41,7 @@ static NSInteger const kSpinnerSize = 20;
 
 //----------------------------------------------------------------------------------------------------
 - (void)createImageView {
-
+    
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(40,
                                                                            ([DWDevice sharedDWDevice].screenHeightMinusStatusBar - 135) / 2 - [DWDevice sharedDWDevice].navBarHeight - 21,
                                                                            240,
@@ -70,7 +70,7 @@ static NSInteger const kSpinnerSize = 20;
 	messageLabel.font				= [UIFont fontWithName:@"HelveticaNeue" size:17];
 	messageLabel.textColor			= [UIColor colorWithRed:0.454 green:0.454 blue:0.454 alpha:1.0];
 	messageLabel.textAlignment		= UITextAlignmentCenter;
-	messageLabel.text				= @"We'll only be a moment...";
+	messageLabel.text				= @"Loading your purchases...";
     
 	[self addSubview:messageLabel];
 }

@@ -20,6 +20,14 @@
 #import "DWSetting.h"
 #import "DWSession.h"
 
+static NSString* const kItunesURL           = @"itunes.apple.com";
+static NSString* const kInviteText          = @"Check out Mine ... see what I bought recently!";
+static NSString* const kInviteURL           = @"https://itunes.apple.com/us/app/mine./id567558757";
+static NSString* const kMsgErrorTitle       = @"Error";
+static NSString* const kMsgCancelTitle      = @"Dismiss";
+static NSString* const kMsgError            = @"Can't send text messages from your device.";
+
+
 /**
  * Private declarations
  */
@@ -55,6 +63,11 @@
 //----------------------------------------------------------------------------------------------------
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (BOOL)isActivityControllerAvailable {
+    return SYSTEM_VERSION_GREATER_THAN_OR_EQUAL_TO(@"6.0");
 }
 
 
@@ -111,11 +124,18 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)displayExternalURL:(NSString*)url {
-
-    DWWebViewController *webViewController = [[DWWebViewController alloc] initWithURL:url];
     
-    [self.navigationController pushViewController:webViewController
-                                         animated:YES];
+    NSRange range = [url rangeOfString:kItunesURL];
+    
+    if(range.length) {
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:url]];
+    }
+    else {
+        DWWebViewController *webViewController = [[DWWebViewController alloc] initWithURL:url];
+    
+        [self.navigationController pushViewController:webViewController
+                                             animated:YES];
+    }
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -141,11 +161,43 @@
 //----------------------------------------------------------------------------------------------------
 - (void)displayInvite {
     
-    DWInviteViewController *inviteViewController = [[DWInviteViewController alloc] init];
+    if([self isActivityControllerAvailable]) {
+        
+        NSArray *activityItems = [NSArray arrayWithObjects:kInviteText,kInviteURL,nil];
+        UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:activityItems
+                                                                                         applicationActivities:Nil];
+        
+        activityViewController.excludedActivityTypes = [NSArray arrayWithObjects:
+                                                        UIActivityTypePostToWeibo,
+                                                        UIActivityTypePrint,
+                                                        UIActivityTypeCopyToPasteboard,
+                                                        UIActivityTypeAssignToContact,
+                                                        UIActivityTypeSaveToCameraRoll,
+                                                        nil];
     
-    [self.navigationController pushViewController:inviteViewController
-                                         animated:YES];
+        [self.customTabBarController presentViewController:activityViewController animated:YES completion:nil];
+    }
+    else {
+        
+        if([MFMessageComposeViewController canSendText]) {
+            MFMessageComposeViewController *messageComposeViewController = [[MFMessageComposeViewController alloc] init];
+            
+            messageComposeViewController.body                       = [NSString stringWithFormat:@"%@ %@", kInviteText, kInviteURL];
+            messageComposeViewController.messageComposeDelegate     = self;
+            
+            [self.customTabBarController presentModalViewController:messageComposeViewController animated:YES];
+        }
+        else {
+            UIAlertView *alert = [[UIAlertView alloc] initWithTitle:kMsgErrorTitle
+                                                            message:kMsgError
+                                                           delegate:nil
+                                                  cancelButtonTitle:kMsgCancelTitle
+                                                  otherButtonTitles:nil];
+            [alert show];
+        }
+    }
 }
+
 //----------------------------------------------------------------------------------------------------
 - (void)displayGoogleAuth {
     
@@ -169,13 +221,42 @@
 }
 
 //----------------------------------------------------------------------------------------------------
+- (void)displayHotmailAuth {
+    
+    DWHotmailAuthViewController *hotmailAuthViewController = [[DWHotmailAuthViewController alloc] init];
+    
+    hotmailAuthViewController.delegate = self;
+    
+    [self.navigationController pushViewController:hotmailAuthViewController
+                                         animated:YES];
+    
+}
+
+//----------------------------------------------------------------------------------------------------
 - (void)displayUnapprovedPurchases:(BOOL)isLive {
     DWUnapprovedPurchasesViewController *unapprovedPurchasesViewController = [[DWUnapprovedPurchasesViewController alloc] initWithModeIsLive:isLive];
+    unapprovedPurchasesViewController.isUpdate = !isLive || [DWSession sharedDWSession].currentUser.isEmailAuthorized;
     
     unapprovedPurchasesViewController.delegate = self;
     
     [self.navigationController pushViewController:unapprovedPurchasesViewController
                                          animated:YES];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)displayShareProfileView:(BOOL)isOnboarding {
+    
+    DWShareProfileViewController *shareProfileViewController = [[DWShareProfileViewController alloc] init];
+    shareProfileViewController.isOnboarding = isOnboarding;
+    shareProfileViewController.delegate = self;
+    
+    if(shareProfileViewController.isAnyConnectAvailable) {
+        [self.navigationController pushViewController:shareProfileViewController
+                                             animated:YES];
+    }
+    else {
+        [shareProfileViewController.delegate shareProfileViewControllerFinished];
+    }
 }
 
 
@@ -308,13 +389,12 @@
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
-#pragma mark DWCreationViewControllerDelegate
+#pragma mark DWCommentsCreationViewControllerDelegate
 
 //----------------------------------------------------------------------------------------------------
 - (void)commentsCreateViewUserClicked:(DWUser *)user {
     [self displayUserProfile:user];
 }
-
 
 
 //----------------------------------------------------------------------------------------------------
@@ -327,7 +407,8 @@
     [self.navigationController popViewControllerAnimated:NO];
     
     [self displayUnapprovedPurchases:YES];
-    [[DWSession sharedDWSession] emailAuthorized];    
+    [DWSession sharedDWSession].currentUser.isGoogleAuthorized = YES;
+    [[DWSession sharedDWSession] update];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -353,7 +434,8 @@
     [self.navigationController popViewControllerAnimated:NO];
     
     [self displayUnapprovedPurchases:YES];
-    [[DWSession sharedDWSession] emailAuthorized];
+    [DWSession sharedDWSession].currentUser.isYahooAuthorized = YES;
+    [[DWSession sharedDWSession] update];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -372,6 +454,25 @@
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
+#pragma mark DWHotmailAuthViewControllerDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)hotmailAuthAccepted {
+    [self.navigationController popViewControllerAnimated:NO];
+    
+    [self displayUnapprovedPurchases:YES];
+    [DWSession sharedDWSession].currentUser.isHotmailAuthorized = YES;
+    [[DWSession sharedDWSession] update];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)hotmailAuthRejected {
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
 #pragma mark DWUnapprovedPurchasesViewControllerDelegate
 
 //----------------------------------------------------------------------------------------------------
@@ -380,6 +481,27 @@
 
 //----------------------------------------------------------------------------------------------------
 - (void)unapprovedPurchasesNoPurchasesApproved { 
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWShareProfileViewControllerDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)shareProfileViewControllerFinished {
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark MFMessageComposeViewControllerDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult)result {
+    [self.customTabBarController dismissModalViewControllerAnimated:YES];
 }
 
 

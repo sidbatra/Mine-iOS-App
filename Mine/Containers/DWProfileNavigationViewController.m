@@ -16,6 +16,7 @@
 #import "DWConstants.h"
 
 
+
 static NSString* const kImgSettingsOff          = @"nav-btn-settings-off.png";
 static NSString* const kImgSettingsOn           = @"nav-btn-settings-on.png";
 static NSString* const kImgInviteOff            = @"nav-btn-invite-off.png";
@@ -153,11 +154,17 @@ static NSInteger const kSettingsActionSheetTag  = -1;
                                                               delegate:self 
                                                      cancelButtonTitle:@"Cancel"
                                                 destructiveButtonTitle:nil
-                                                     otherButtonTitles:@"Edit Bio",@"About",@"FAQ",@"Log Out",nil];
-    actionSheet.destructiveButtonIndex = 3;
+                                                     otherButtonTitles:@"Edit Bio",@"About",@"FAQ",@"Contact",@"Log Out",nil];
+    actionSheet.destructiveButtonIndex = 4;
     actionSheet.tag = kSettingsActionSheetTag;
     
     [actionSheet showInView:self.customTabBarController.view];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+- (void)inviteButtonClicked {
+    [self displayInvite];
 }
 
 
@@ -192,7 +199,21 @@ static NSInteger const kSettingsActionSheetTag  = -1;
             [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"FAQ View"];
             break;
             
-        case 3:
+        case 3: {
+            
+            MFMailComposeViewController *emailComposeController = [[MFMailComposeViewController alloc] init];
+            emailComposeController.mailComposeDelegate = self;
+            [emailComposeController setSubject:@"Feedback"];
+            [emailComposeController setToRecipients:[NSArray arrayWithObject:kContactEmail]];
+            
+            [self.customTabBarController presentModalViewController:emailComposeController
+                                                           animated:YES];
+
+            
+            [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Contact View"];
+            break;
+        }
+        case 4:
             [[NSNotificationCenter defaultCenter] postNotificationName:kNUserLoggedOut
                                                                 object:nil
                                                               userInfo:nil];
@@ -206,8 +227,8 @@ static NSInteger const kSettingsActionSheetTag  = -1;
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)inviteButtonClicked {
-    [self displayInvite];
+- (void)mailComposeController:(MFMailComposeViewController*)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error {
+	[self.customTabBarController dismissModalViewControllerAnimated:YES];
 }
 
 

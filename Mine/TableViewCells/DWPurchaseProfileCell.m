@@ -29,6 +29,8 @@ static NSString* const kImgMiniChevron = @"doink-up-8.png";
 static NSString* const kImgSpinnerBackground = @"delete-loading.png";
 static NSString* const kImgCrossButtonOn = @"feed-btn-x-on.png";
 static NSString* const kImgCrossButtonOff = @"feed-btn-x-off.png";
+static NSString* const kImgShopButtonOn = @"profile-btn-buy-on.png";
+static NSString* const kImgShopButtonOff = @"profile-btn-buy-off.png";
 
 #define kTitleFont [UIFont fontWithName:@"HelveticaNeue" size:10]
 #define kColorImageBackground [UIColor colorWithRed:0.862 green:0.862 blue:0.862 alpha:1.0]
@@ -43,6 +45,7 @@ static NSString* const kImgCrossButtonOff = @"feed-btn-x-off.png";
     NSMutableArray  *_spinners;
     NSMutableArray  *_spinnerBackgrounds;
     NSMutableArray  *_crossButtons;
+    NSMutableArray  *_shopButtons;
 }
 
 
@@ -54,6 +57,7 @@ static NSString* const kImgCrossButtonOff = @"feed-btn-x-off.png";
 @property (nonatomic,strong) NSMutableArray *spinners;
 @property (nonatomic,strong) NSMutableArray *spinnerBackgrounds;
 @property (nonatomic,strong) NSMutableArray *crossButtons;
+@property (nonatomic,strong) NSMutableArray *shopButtons;
 
 @end
 
@@ -73,6 +77,7 @@ static NSString* const kImgCrossButtonOff = @"feed-btn-x-off.png";
 @synthesize spinners            = _spinners;
 @synthesize spinnerBackgrounds  = _spinnerBackgrounds;
 @synthesize crossButtons        = _crossButtons;
+@synthesize shopButtons         = _shopButtons;
 @synthesize delegate            = _delegate;
 
 //----------------------------------------------------------------------------------------------------
@@ -336,6 +341,34 @@ static NSString* const kImgCrossButtonOff = @"feed-btn-x-off.png";
     }
 }
 
+//----------------------------------------------------------------------------------------------------
+- (void)createShopButtons {
+    
+    self.shopButtons = [NSMutableArray arrayWithCapacity:kColumnsInPurchaseSearch];
+    
+    for(NSInteger i=0 ; i<kColumnsInPurchaseSearch; i++) {
+        UIButton *imageButton = [self.imageButtons objectAtIndex:i];
+        
+        UIButton *shopButton = [[UIButton alloc] initWithFrame:CGRectMake(imageButton.frame.origin.x+imageButton.frame.size.width-45, imageButton.frame.origin.y, 45, 45)];
+        
+        shopButton.hidden = YES;
+        
+        [shopButton setImage:[UIImage imageNamed:kImgShopButtonOff]
+                    forState:UIControlStateNormal];
+        
+        [shopButton setImage:[UIImage imageNamed:kImgShopButtonOn]
+                    forState:UIControlStateHighlighted];
+        
+        [shopButton addTarget:self
+                       action:@selector(didTapShopButton:)
+              forControlEvents:UIControlEventTouchUpInside];
+        
+        [self.shopButtons addObject:shopButton];
+        
+        [self.contentView addSubview:shopButton];
+    }
+}
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
@@ -370,6 +403,9 @@ static NSString* const kImgCrossButtonOff = @"feed-btn-x-off.png";
     
     for(UIButton *crossButton in self.crossButtons)
         crossButton.hidden = YES;
+    
+    for(UIButton *shopButton in self.shopButtons)
+        shopButton.hidden = YES;
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -491,6 +527,17 @@ static NSString* const kImgCrossButtonOff = @"feed-btn-x-off.png";
     crossButton.hidden = NO;
 }
 
+//----------------------------------------------------------------------------------------------------
+- (void)displayShopButtonForIndex:(NSInteger)index
+                   withPurchaseID:(NSInteger)purchaseID {
+    
+    if(!self.shopButtons)
+        [self createShopButtons];
+    
+    UIButton *shopButton = [self.shopButtons objectAtIndex:index];
+    shopButton.tag = purchaseID;
+    shopButton.hidden = NO;
+}
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
@@ -529,4 +576,14 @@ static NSString* const kImgCrossButtonOff = @"feed-btn-x-off.png";
     [self.delegate purchaseCrossClicked:button.tag];
 }
 
+//----------------------------------------------------------------------------------------------------
+- (void)didTapShopButton:(UIButton*)button {
+    SEL sel = @selector(purchaseURLClicked:);
+    
+    if(![self.delegate respondsToSelector:sel])
+        return;
+    
+    
+    [self.delegate purchaseURLClicked:button.tag];
+}
 @end

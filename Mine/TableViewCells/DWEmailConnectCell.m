@@ -12,10 +12,15 @@
 
 static NSInteger const kEmailConnectCellHeight = 51;
 
-static NSString* const kImgGoogleOff    = @"feed-btn-gmail-off.png";
-static NSString* const kImgGoogleOn     = @"feed-btn-gmail-on.png";
-static NSString* const kImgYahooOff     = @"feed-btn-yahoo-off.png";
-static NSString* const kImgYahooOn      = @"feed-btn-yahoo-on.png";
+static NSString* const kImgGoogleOff        = @"feed-btn-gmail-off.png";
+static NSString* const kImgGoogleOn         = @"feed-btn-gmail-on.png";
+static NSString* const kImgGoogleDisabled   = @"feed-btn-gmail-checked.png";
+static NSString* const kImgYahooOff         = @"feed-btn-yahoo-off.png";
+static NSString* const kImgYahooOn          = @"feed-btn-yahoo-on.png";
+static NSString* const kImgYahooDisabled    = @"feed-btn-yahoo-checked.png";
+static NSString* const kImgHotmailOff       = @"feed-btn-hotmail-off.png";
+static NSString* const kImgHotmailOn        = @"feed-btn-hotmail-on.png";
+static NSString* const kImgHotmailDisabled  = @"feed-btn-hotmail-checked.png";
 
 
 @interface DWEmailConnectCell() {
@@ -23,6 +28,7 @@ static NSString* const kImgYahooOn      = @"feed-btn-yahoo-on.png";
     UILabel     *subtitleLabel;
     UIButton    *googleButton;
     UIButton    *yahooButton;
+    UIButton    *hotmailButton;
 }
 @end
 
@@ -43,7 +49,7 @@ static NSString* const kImgYahooOn      = @"feed-btn-yahoo-on.png";
 				reuseIdentifier:reuseIdentifier];
 	
     if (self) {
-        self.contentView.backgroundColor = [UIColor colorWithRed:0.933 green:0.933 blue:0.933 alpha:1.0];
+        self.contentView.backgroundColor = [UIColor colorWithRed:0.2235 green:0.2235 blue:0.2235 alpha:1.0];
         
         [self createBorders];
         [self createTitleLabel];
@@ -60,7 +66,7 @@ static NSString* const kImgYahooOn      = @"feed-btn-yahoo-on.png";
 - (void)createBorders {
     
     UILabel *bottomBorder = [[UILabel alloc] initWithFrame:CGRectMake(0, kEmailConnectCellHeight-1, self.contentView.frame.size.width,1)];
-    bottomBorder.backgroundColor = [UIColor colorWithRed:0.862 green:0.862 blue:0.862 alpha:1.0];
+    bottomBorder.backgroundColor = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0];
     
     [self.contentView addSubview:bottomBorder];
 }
@@ -71,7 +77,7 @@ static NSString* const kImgYahooOn      = @"feed-btn-yahoo-on.png";
     
     titleLabel.backgroundColor      = [UIColor clearColor];
     titleLabel.font                 = [UIFont fontWithName:@"HelveticaNeue-Bold" size:15];
-    titleLabel.textColor            = [UIColor colorWithRed:0.2 green:0.2 blue:0.2 alpha:1.0];
+    titleLabel.textColor            = [UIColor colorWithRed:1.0 green:1.0 blue:1.0 alpha:1.0];
     titleLabel.textAlignment        = UITextAlignmentLeft;
     
     [self.contentView addSubview:titleLabel];
@@ -83,7 +89,7 @@ static NSString* const kImgYahooOn      = @"feed-btn-yahoo-on.png";
     
     subtitleLabel.backgroundColor       = [UIColor clearColor];
     subtitleLabel.font                  = [UIFont fontWithName:@"HelveticaNeue" size:11];
-    subtitleLabel.textColor             = [UIColor colorWithRed:0.5372 green:0.5372 blue:0.5372 alpha:1.0];
+    subtitleLabel.textColor             = [UIColor colorWithRed:0.6 green:0.6 blue:0.6  alpha:1.0];
     subtitleLabel.textAlignment         = UITextAlignmentLeft;
 
     [self.contentView addSubview:subtitleLabel];
@@ -91,13 +97,16 @@ static NSString* const kImgYahooOn      = @"feed-btn-yahoo-on.png";
 
 //----------------------------------------------------------------------------------------------------
 - (void)createConnectButtons {
-    googleButton = [[UIButton alloc] initWithFrame:CGRectMake(196,0,56,50)];
+    googleButton = [[UIButton alloc] initWithFrame:CGRectMake(131,0,60,50)];
     
     [googleButton setBackgroundImage:[UIImage imageNamed:kImgGoogleOff]
                             forState:UIControlStateNormal];
     
     [googleButton setBackgroundImage:[UIImage imageNamed:kImgGoogleOn]
                             forState:UIControlStateHighlighted];
+    
+    [googleButton setBackgroundImage:[UIImage imageNamed:kImgGoogleDisabled]
+                            forState:UIControlStateDisabled];
     
     [googleButton addTarget:self
                      action:@selector(didTapGoogleButton:)
@@ -107,7 +116,7 @@ static NSString* const kImgYahooOn      = @"feed-btn-yahoo-on.png";
     
     
     
-    yahooButton = [[UIButton alloc] initWithFrame:CGRectMake(252,0,55,50)];
+    yahooButton = [[UIButton alloc] initWithFrame:CGRectMake(250,0,59,50)];
     
     [yahooButton setBackgroundImage:[UIImage imageNamed:kImgYahooOff]
                             forState:UIControlStateNormal];
@@ -115,11 +124,33 @@ static NSString* const kImgYahooOn      = @"feed-btn-yahoo-on.png";
     [yahooButton setBackgroundImage:[UIImage imageNamed:kImgYahooOn]
                             forState:UIControlStateHighlighted];
     
+    [yahooButton setBackgroundImage:[UIImage imageNamed:kImgYahooDisabled]
+                           forState:UIControlStateDisabled];
+    
     [yahooButton addTarget:self
                     action:@selector(didTapYahooButton:)
            forControlEvents:UIControlEventTouchUpInside];
     
-    [self.contentView addSubview:yahooButton];    
+    [self.contentView addSubview:yahooButton];
+    
+    
+    
+    hotmailButton = [[UIButton alloc] initWithFrame:CGRectMake(191,0,59,50)];
+    
+    [hotmailButton setBackgroundImage:[UIImage imageNamed:kImgHotmailOff]
+                           forState:UIControlStateNormal];
+    
+    [hotmailButton setBackgroundImage:[UIImage imageNamed:kImgHotmailOn]
+                           forState:UIControlStateHighlighted];
+    
+    [hotmailButton setBackgroundImage:[UIImage imageNamed:kImgHotmailDisabled]
+                             forState:UIControlStateDisabled];
+    
+    [hotmailButton addTarget:self
+                    action:@selector(didTapHotmailButton:)
+          forControlEvents:UIControlEventTouchUpInside];
+    
+    [self.contentView addSubview:hotmailButton];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -128,6 +159,16 @@ static NSString* const kImgYahooOn      = @"feed-btn-yahoo-on.png";
     
     titleLabel.text     = title;
     subtitleLabel.text  = subtitle;    
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)updateConnectStatusForGoogle:(BOOL)google
+                               yahoo:(BOOL)yahoo
+                             hotmail:(BOOL)hotmail {
+    
+    googleButton.enabled = !google;
+    yahooButton.enabled = !yahoo;
+    hotmailButton.enabled = !hotmail;
 }
 
 
@@ -148,6 +189,13 @@ static NSString* const kImgYahooOn      = @"feed-btn-yahoo-on.png";
     [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Yahoo Auth Initiated"];
     
     [self.delegate yahooConnectClicked];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)didTapHotmailButton:(UIButton*)button {
+    [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Hotmail Auth Initiated"];
+    
+    [self.delegate hotmailConnectClicked];
 }
 
 

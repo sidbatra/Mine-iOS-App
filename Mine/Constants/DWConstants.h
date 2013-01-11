@@ -13,7 +13,7 @@
 #define STAGING     1
 #define PRODUCTION  2
 
-#define ENVIRONMENT DEVELOPMENT
+#define ENVIRONMENT PRODUCTION
 
 
 
@@ -55,6 +55,7 @@ extern NSString* const kAppServer;
 extern NSString* const kClientName;
 extern NSString* const kUserAgent;
 extern NSString* const kInternalAppScheme;
+extern NSString* const kContactEmail;
 
 /**
  * Encryption related
@@ -121,6 +122,10 @@ extern NSString* const kKeyResetType;
 extern NSString* const kKeyCount;
 extern NSString* const kKeyCreatedAt;
 extern NSString* const kKeyImageURL;
+extern NSString* const kKeyStatus;
+extern NSString* const kKeyProgress;
+extern NSString *const kKeyNavigationBar;
+
 
 /**
  * Misc
@@ -131,7 +136,7 @@ extern NSString* const kRailsDateTimeFormat;
  * Tab bar
  */ 
 extern NSInteger const kFeedTabIndex;
-extern NSInteger const kCreateTabIndex;
+extern NSInteger const kUsersTabIndex;
 extern NSInteger const kProfileTabIndex;
 extern NSInteger const kTabBarHeight;
 

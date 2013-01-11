@@ -8,10 +8,11 @@
 
 #import "DWImportButton.h"
 
-static NSString* const kImgInactiveButton   = @"nav-btn-import-disabled.png";
 static NSString* const kImgLoadingButton    = @"nav-btn-import-loading.png";
-static NSString* const kImgActiveButtonOff  = @"nav-btn-import-off.png";
-static NSString* const kImgActiveButtonOn   = @"nav-btn-import-on.png";
+static NSString* const kImgAddButtonOff     = @"nav-btn-add-to-mine-off.png";
+static NSString* const kImgAddButtonOn      = @"nav-btn-add-to-mine-on.png";
+static NSString* const kImgCreateButtonOff  = @"nav-btn-create-mine-off.png";
+static NSString* const kImgCreateButtonOn   = @"nav-btn-create-mine-on.png";
 
 
 
@@ -33,7 +34,7 @@ static NSString* const kImgActiveButtonOn   = @"nav-btn-import-on.png";
         [self createUnderlayButton];
         [self createSpinner];
         
-        [self enterInactiveState];
+        [self enterAddState];
     }
     return self;
 }
@@ -86,28 +87,26 @@ static NSString* const kImgActiveButtonOn   = @"nav-btn-import-on.png";
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)enterActiveState {
+- (void)enterAddState {
     [self reset];
         
-    [underlayButton setBackgroundImage:[UIImage imageNamed:kImgActiveButtonOff]
+    [underlayButton setBackgroundImage:[UIImage imageNamed:kImgAddButtonOff]
                               forState:UIControlStateNormal];
     
-    [underlayButton setBackgroundImage:[UIImage imageNamed:kImgActiveButtonOn]
+    [underlayButton setBackgroundImage:[UIImage imageNamed:kImgAddButtonOn]
                               forState:UIControlStateHighlighted];
     
 }
 
 //----------------------------------------------------------------------------------------------------
-- (void)enterInactiveState {
+- (void)enterCreateState {
     [self reset];
         
-    [underlayButton setBackgroundImage:[UIImage imageNamed:kImgInactiveButton]
+    [underlayButton setBackgroundImage:[UIImage imageNamed:kImgCreateButtonOff]
                               forState:UIControlStateNormal];
     
-    [underlayButton setBackgroundImage:[UIImage imageNamed:kImgInactiveButton]
-                              forState:UIControlStateDisabled];
-    
-    underlayButton.enabled = NO;
+    [underlayButton setBackgroundImage:[UIImage imageNamed:kImgCreateButtonOn]
+                              forState:UIControlStateHighlighted];
 }
 
 //----------------------------------------------------------------------------------------------------

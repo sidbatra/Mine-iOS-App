@@ -17,6 +17,11 @@
  */
 extern NSString* const kKeySquareImageURL;
 extern NSString* const kKeyLargeUserImageURL;
+
+extern NSString* const kKeyIsGoogleAuthorized;
+extern NSString* const kKeyIsYahooAuthorized;
+extern NSString* const kKeyIsHotmailAuthorized;
+
 extern NSString* const kNImgUserSquareLoaded;
 extern NSString* const kNImgUserSquareLoadError;
 extern NSString* const kNImgUserLargeLoaded;
@@ -44,13 +49,18 @@ extern NSString* const kNImgUserLargeLoadError;
     NSString        *_squareImageURL;
     NSString        *_largeImageURL;
     
+    NSString        *_emailMiningMetadata;
+    
     NSInteger       _age;
     NSInteger       _purchasesCount;
     NSInteger       _followingsCount;
     NSInteger       _inverseFollowingsCount;
     NSInteger       _unreadNotificationsCount;
     
-    BOOL            _isEmailAuthorized;
+    BOOL            _isGoogleAuthorized;
+    BOOL            _isYahooAuthorized;
+    BOOL            _isHotmailAuthorized;
+    BOOL            _isMiningPurchases;
     
     DWSetting       *_setting;
 }
@@ -135,6 +145,8 @@ extern NSString* const kNImgUserLargeLoadError;
  */
 @property (nonatomic,copy) NSString *largeImageURL;
 
+@property (nonatomic,copy) NSString *emailMiningMetadata;
+
 /**
  * Returns the square UIImage if it has been downloaded or nil.
  */
@@ -149,6 +161,8 @@ extern NSString* const kNImgUserLargeLoadError;
  * his or her.
  */
 @property (nonatomic,readonly) NSString *pronoun;
+
+@property (nonatomic,readonly) BOOL isEmailAuthorized;
 
 
 /**
@@ -173,7 +187,10 @@ extern NSString* const kNImgUserLargeLoadError;
 
 
 @property (nonatomic,assign) NSInteger unreadNotificationsCount;
-@property (nonatomic,assign) BOOL isEmailAuthorized;
+@property (nonatomic,assign) BOOL isGoogleAuthorized;
+@property (nonatomic,assign) BOOL isYahooAuthorized;
+@property (nonatomic,assign) BOOL isHotmailAuthorized;
+@property (nonatomic,assign) BOOL isMiningPurchases;
 
 
 /**

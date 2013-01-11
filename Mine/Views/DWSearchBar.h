@@ -63,4 +63,8 @@
  */
 - (void)searchCancelled;
 
+- (void)searchQueryCleared;
+
+- (void)searchFocused;
+
 @end

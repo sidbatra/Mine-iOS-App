@@ -8,6 +8,7 @@
 
 #import "DWEmailConnectPresenter.h"
 #import "DWUnion.h"
+#import "DWUser.h"
 #import "DWEmailConnectCell.h"
 
 
@@ -32,6 +33,10 @@
                                          reuseIdentifier:identifier];
     
     cell.delegate = delegate;
+    
+    [cell updateConnectStatusForGoogle:[[uni customValueforKey:kKeyIsGoogleAuthorized] boolValue]
+                                 yahoo:[[uni customValueforKey:kKeyIsYahooAuthorized] boolValue]
+                               hotmail:[[uni customValueforKey:kKeyIsHotmailAuthorized] boolValue]];
     
     [cell setTitle:uni.title
        andSubtitle:uni.subtitle];

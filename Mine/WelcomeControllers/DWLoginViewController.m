@@ -8,11 +8,12 @@
 
 #import "DWLoginViewController.h"
 
-#import <MediaPlayer/MediaPlayer.h>
-
 #import "DWAnalyticsManager.h"
 #import "DWGUIManager.h"
 #import "DWConstants.h"
+
+
+#import <MediaPlayer/MediaPlayer.h>
 
 
 static NSString* const kVideoIntro = @"mine_intro_640x280.mp4";
@@ -70,6 +71,7 @@ static NSString* const kVideoIntro = @"mine_intro_640x280.mp4";
     DWUsersController *_usersController;
     
     DWFacebookConnect *_facebookConnect;
+    DWTwitterIOSConnect *_twitterIOSConnect;
     DWTwitterConnectViewController  *_twitterConnectViewController;
     
     DWMoviePlayerController *_moviePlayerController;
@@ -86,6 +88,8 @@ static NSString* const kVideoIntro = @"mine_intro_640x280.mp4";
  * Interface for implementing a FB connect.
  */
 @property (nonatomic,strong) DWFacebookConnect *facebookConnect;
+
+@property (nonatomic,strong) DWTwitterIOSConnect *twitterIOSConnect;
 
 /**
  * Interface for implementing a TW connect.
@@ -116,6 +120,7 @@ static NSString* const kVideoIntro = @"mine_intro_640x280.mp4";
 @synthesize delegate                        = _delegate;
 @synthesize usersController                 = _usersController;
 @synthesize facebookConnect                 = _facebookConnect;
+@synthesize twitterIOSConnect               = _twitterIOSConnect;
 @synthesize twitterConnectViewController    = _twitterConnectViewController;
 @synthesize moviePlayerController           = _moviePlayerController;
 
@@ -129,6 +134,9 @@ static NSString* const kVideoIntro = @"mine_intro_640x280.mp4";
         
         self.facebookConnect = [[DWFacebookConnect alloc] init];
         self.facebookConnect.delegate = self;
+        
+        self.twitterIOSConnect = [[DWTwitterIOSConnect alloc] init];
+        self.twitterIOSConnect.delegate = self;
         
         self.twitterConnectViewController = [[DWTwitterConnectViewController alloc] init];
         self.twitterConnectViewController.updateCurrentUser = NO;
@@ -153,6 +161,10 @@ static NSString* const kVideoIntro = @"mine_intro_640x280.mp4";
 //----------------------------------------------------------------------------------------------------
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [[UIApplication sharedApplication] setStatusBarHidden:YES];
+    
+    [self.delegate loginViewNavigationController].navigationBar.hidden = YES;
 
     [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Home View"];
 }
@@ -225,16 +237,15 @@ static NSString* const kVideoIntro = @"mine_intro_640x280.mp4";
 //----------------------------------------------------------------------------------------------------
 - (IBAction)loginWithFBButtonClicked:(id)sender {
     _isAwaitingResponse = YES;
-    [self.facebookConnect authorize];
+    [self.facebookConnect authorizeRead];
     
     [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Facebook Signup Button Clicked"];
 }
 
 //----------------------------------------------------------------------------------------------------
 - (IBAction)loginWithTWButtonClicked:(id)sender {
-    [[self.delegate loginViewNavigationController] pushViewController:self.twitterConnectViewController
-                                                             animated:YES];
-    
+    [self.twitterIOSConnect seekPermission];
+
     [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Twitter Signup Button Clicked"];
 }
 
@@ -265,7 +276,7 @@ static NSString* const kVideoIntro = @"mine_intro_640x280.mp4";
 #pragma mark DWFacebookConnectDelegate
 
 //----------------------------------------------------------------------------------------------------
-- (void)fbAuthenticatedWithToken:(NSString *)accessToken {
+- (void)fbReadAuthenticatedWithToken:(NSString *)accessToken {
     
     if(_isAwaitingResponse) {
         _isAwaitingResponse = NO;
@@ -283,6 +294,50 @@ static NSString* const kVideoIntro = @"mine_intro_640x280.mp4";
         
         [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Facebook Connect Failed"];
     }
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWTwitterIOSConnectDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)twitterIOSPermissionGranted {
+    [self startLoadingTW];
+    
+    [self.twitterIOSConnect startReverseAuth:[self.delegate loginViewNavigationController].view];
+    
+    [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Twitter IOS Accepted"];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)twitterIOSPermissionCancelled {
+    [self stopLoadingTW];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)twitterIOSNoAccountsFound {
+    [[self.delegate loginViewNavigationController] pushViewController:self.twitterConnectViewController
+                                                             animated:YES];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)twitterIOSPermissionDenied {
+    [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Twitter IOS Denied"];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)twitterIOSSuccessfulWithToken:(NSString*)accessToken
+                            andSecret:(NSString*)accessTokenSecret {
+    
+    [self.usersController createUserFromTwitterWithAccessToken:accessToken
+                                          andAccessTokenSecret:accessTokenSecret];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)twitterIOSFailed {
+    [self stopLoadingTW];
 }
 
 

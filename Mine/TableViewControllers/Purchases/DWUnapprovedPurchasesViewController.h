@@ -7,17 +7,21 @@
 //
 
 #import "DWTableViewController.h"
+#import "DWQueueProgressView.h"
 #import "DWImportButton.h"
 
 @protocol DWUnapprovedPurchasesViewControllerDelegate;
 
-@interface DWUnapprovedPurchasesViewController : DWTableViewController<DWImportButtonDelegate> {
+@interface DWUnapprovedPurchasesViewController : DWTableViewController<DWImportButtonDelegate,DWQueueProgressViewDelegate> {
     __weak id<DWUnapprovedPurchasesViewControllerDelegate> _delegate;
 }
 
+@property (nonatomic,assign) BOOL isUpdate;
 @property (nonatomic,weak) id<DWUnapprovedPurchasesViewControllerDelegate> delegate;
 
 - (id)initWithModeIsLive:(BOOL)isLive;
+
+
 
 @end
 

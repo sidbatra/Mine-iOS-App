@@ -11,6 +11,7 @@
 #import "DWUsersController.h"
 #import "DWFacebookConnect.h"
 #import "DWTwitterConnectViewController.h"
+#import "DWTwitterIOSConnect.h"
 
 
 @protocol DWLoginViewControllerDelegate;
@@ -18,7 +19,7 @@
 /**
  * Displays view for logging in existing users.
  */
-@interface DWLoginViewController : UIViewController<DWUsersControllerDelegate,DWFacebookConnectDelegate,DWTwitterConnectViewControllerDelegate> {
+@interface DWLoginViewController : UIViewController<DWUsersControllerDelegate,DWFacebookConnectDelegate,DWTwitterIOSConnectDelegate,DWTwitterConnectViewControllerDelegate> {
     
     UIButton *_playButton;
     UIButton *_loginWithFBButton;

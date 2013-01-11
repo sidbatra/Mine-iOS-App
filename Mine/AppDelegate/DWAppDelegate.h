@@ -9,15 +9,16 @@
 #import <UIKit/UIKit.h>
 
 #import "DWTabBarController.h"
-#import "DWCreationNavigationViewController.h"
+#import "DWUsersNavigationViewController.h"
 
 /**
  * Custom app delegate
  */
-@interface DWAppDelegate : UIResponder<UIApplicationDelegate,DWTabBarControllerDelegate,DWCreationNavigationViewControllerDelegate> {
+@interface DWAppDelegate : UIResponder<UIApplicationDelegate,DWTabBarControllerDelegate,DWUsersNavigationViewControllerDelegate> {
     UINavigationController	*_welcomeNavController;
     UINavigationController  *_feedNavController;
     UINavigationController  *_profileNavController;
+    UINavigationController  *_usersNavController;
 }
 
 /**
@@ -31,5 +32,6 @@
 @property (nonatomic) IBOutlet UINavigationController *welcomeNavController;
 @property (nonatomic) IBOutlet UINavigationController *feedNavController;
 @property (nonatomic) IBOutlet UINavigationController *profileNavController;
+@property (nonatomic) IBOutlet UINavigationController *usersNavController;
 
 @end

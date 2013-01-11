@@ -55,6 +55,9 @@
 - (void)displayCrossButtonForIndex:(NSInteger)index
                     withPurchaseID:(NSInteger)purchaseID;
 
+- (void)displayShopButtonForIndex:(NSInteger)index
+                   withPurchaseID:(NSInteger)purchaseID;
+
 
 /**
  * Compute the height for the cell.

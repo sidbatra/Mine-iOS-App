@@ -12,8 +12,11 @@
 #import "DWPaginationPresenter.h"
 #import "DWUserPresenter.h"
 #import "DWEmailConnectPresenter.h"
+#import "DWMessagePresenter.h"
 
 #import "DWUnion.h"
+#import "DWMessage.h"
+#import "DWUser.h"
 #import "DWPagination.h"
 #import "DWConstants.h"
 
@@ -54,6 +57,10 @@
                               withStyle:kDefaultModelPresenter
                           withPresenter:[DWEmailConnectPresenter class]];
         
+        [self addModelPresenterForClass:[DWMessage class]
+                              withStyle:kDefaultModelPresenter
+                          withPresenter:[DWMessagePresenter class]];
+        
         [self addModelPresenterForClass:[DWPagination class]
                               withStyle:kDefaultModelPresenter 
                           withPresenter:[DWPaginationPresenter class]];
@@ -92,20 +99,8 @@
     self.isFeedLoaded = YES;
     
     [(DWFeedViewDataSource*)self.tableViewDataSource loadFeed];
-    [(DWFeedViewDataSource*)self.tableViewDataSource loadUserSuggestions];
     
     [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Feed View"];
-}
-
-
-//----------------------------------------------------------------------------------------------------
-//----------------------------------------------------------------------------------------------------
-#pragma mark -
-#pragma mark DWUserCellDelegate
-
-//----------------------------------------------------------------------------------------------------
-- (void)userCellFollowClickedForUserID:(NSInteger)userID {
-    [(DWFeedViewDataSource*)self.tableViewDataSource toggleFollowForUserID:userID];
 }
 
 
@@ -124,17 +119,9 @@
     [self.delegate yahooConnectInitiated];
 }
 
-
 //----------------------------------------------------------------------------------------------------
-//----------------------------------------------------------------------------------------------------
-#pragma mark -
-#pragma mark DWFeedViewDataSourceDelegate
-
-//----------------------------------------------------------------------------------------------------
-- (void)followingModifiedForUserID:(NSInteger)userID toStatus:(BOOL)isActive {
-    [self provideResourceToVisibleCells:[DWUser class]
-                               objectID:userID
-                              objectKey:isActive ? kKeyFollowingCreated : kKeyFollowingDestroyed];
+- (void)hotmailConnectClicked {
+    [self.delegate hotmailConnectInitiated];
 }
 
 

@@ -8,6 +8,8 @@
 
 #import "DWUnapprovedPurchasesViewDataSource.h"
 
-@interface DWLivePurchasesViewDataSource : DWUnapprovedPurchasesViewDataSource
+#import "DWUsersController.h"
+
+@interface DWLivePurchasesViewDataSource : DWUnapprovedPurchasesViewDataSource<DWUsersControllerDelegate>
 
 @end

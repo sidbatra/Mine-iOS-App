@@ -11,23 +11,29 @@
 #import "DWPoolObject.h"
 
 
+extern NSString* const kNImgStoreMediumLoaded;
+extern NSString* const kNImgStoreMediumLoadError;
+
+
 /**
  * Representation of the Store model mounted on the MemoryPool.
  */
 @interface DWStore : DWPoolObject {
     NSString    *_name;
-    NSString    *_domain;
+    NSString    *_mediumImageURL;
 }
 
 /**
  * Name of the store.
  */
 @property (nonatomic,copy) NSString* name;
+@property (nonatomic,copy) NSString* mediumImageURL;
 
-/**
- * Domain of the store website.
- */
-@property (nonatomic,copy) NSString* domain;
+
+@property (nonatomic,readonly) UIImage *mediumImage;
+
+
+- (void)downloadMediumImage;
 
 
 /**

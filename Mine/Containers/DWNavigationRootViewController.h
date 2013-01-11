@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MessageUI/MFMessageComposeViewController.h>
+
 
 #import "DWProfileViewController.h"
 #import "DWUsersViewController.h"
@@ -18,7 +20,9 @@
 #import "DWCommentsCreateViewController.h"
 #import "DWGoogleAuthViewController.h"
 #import "DWYahooAuthViewController.h"
+#import "DWHotmailAuthViewController.h"
 #import "DWUnapprovedPurchasesViewController.h"
+#import "DWShareProfileViewController.h"
 
 
 @class DWUser;
@@ -28,7 +32,7 @@
  * Base class for navigation root view controllers which are used as
  * sub controllers of the custom tab bar controller.
  */
-@interface DWNavigationRootViewController : UIViewController<UINavigationControllerDelegate,DWProfileViewControllerDelegate,DWUsersViewControllerDelegate,DWPurchasesViewControllerDelegate,DWCreationViewControllerDelegate,DWPurchaseInputViewControllerDelegate,DWCommentsCreateViewControllerDelegate,DWGoogleAuthViewControllerDelegate,DWYahooAuthViewControllerDelegate,DWUnapprovedPurchasesViewControllerDelegate> {
+@interface DWNavigationRootViewController : UIViewController<UINavigationControllerDelegate,MFMessageComposeViewControllerDelegate,DWProfileViewControllerDelegate,DWUsersViewControllerDelegate,DWPurchasesViewControllerDelegate,DWCreationViewControllerDelegate,DWPurchaseInputViewControllerDelegate,DWCommentsCreateViewControllerDelegate,DWGoogleAuthViewControllerDelegate,DWYahooAuthViewControllerDelegate,DWHotmailAuthViewControllerDelegate,DWUnapprovedPurchasesViewControllerDelegate,DWShareProfileViewControllerDelegate> {
     
     __weak DWTabBarController *_customTabBarController;
 }
@@ -76,6 +80,10 @@
 
 - (void)displayYahooAuth;
 
+- (void)displayHotmailAuth;
+
 - (void)displayUnapprovedPurchases:(BOOL)isLive;
+
+- (void)displayShareProfileView:(BOOL)isOnboarding;
 
 @end

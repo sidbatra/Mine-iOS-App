@@ -8,6 +8,7 @@
 
 #import "DWTableViewDataSource.h"
 #import "DWPurchasesController.h"
+#import "DWStore.h"
 
 
 @protocol DWUnapprovedPurchasesViewDataSourceDelegate;
@@ -22,6 +23,7 @@
 
 @property (nonatomic,strong) NSMutableArray *rejectedIDs;
 @property (nonatomic,readonly) NSMutableArray *selectedIDs;
+@property (nonatomic,readonly) NSInteger totalPurchases;
 
 @property (nonatomic,weak) id<DWTableViewDataSourceDelegate,DWUnapprovedPurchasesViewDataSourceDelegate,NSObject> delegate;
 
@@ -36,6 +38,9 @@
 @protocol DWUnapprovedPurchasesViewDataSourceDelegate
 
 @required
+
+- (void)unapprovedPurchasesStatus:(DWStore*)store
+                         progress:(CGFloat)progress;
 
 - (void)unapprovedPurchasesFinished:(NSInteger)count;
 

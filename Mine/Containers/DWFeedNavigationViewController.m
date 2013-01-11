@@ -21,18 +21,16 @@
 #import "DWConstants.h"
 
 
-static NSString* const kImgSearchOff    = @"nav-btn-search-off.png";
-static NSString* const kImgSearchOn     = @"nav-btn-search-on.png";
+static NSString* const kImgCreationOff    = @"nav-btn-add-off.png";
+static NSString* const kImgCreationOn     = @"nav-btn-add-on.png";
 
 
 
 @interface DWFeedNavigationViewController () {
     DWFeedViewController        *_feedViewController;
-    DWUsersViewController       *_usersSearchViewController;
     
     DWNavigationBarTitleView    *_navTitleView;
     DWQueueProgressView         *_queueProgressView;
-    DWSearchBar                 *_searchBar;
     DWNavigationBarCountView    *_navNotificationsView;
     
     BOOL    _isProgressBarActive;
@@ -44,11 +42,6 @@ static NSString* const kImgSearchOn     = @"nav-btn-search-on.png";
 @property (nonatomic,strong) DWFeedViewController *feedViewController;
 
 /**
- * Table view for displaying search results.
- */
-@property (nonatomic,strong) DWUsersViewController *usersSearchViewController;
-
-/**
  * Tile view inserted onto the navigation bar.
  */
 @property (nonatomic,strong) DWNavigationBarTitleView *navTitleView;
@@ -57,11 +50,6 @@ static NSString* const kImgSearchOn     = @"nav-btn-search-on.png";
  * Nav bar queue progress view for displaying progress from the background queue.
  */
 @property (nonatomic,strong) DWQueueProgressView *queueProgressView;
-
-/**
- * Nav bar search input field for searching users.
- */
-@property (nonatomic,strong) DWSearchBar *searchBar;
 
 @property (nonatomic,strong) DWNavigationBarCountView *navNotificationsView;
 
@@ -80,10 +68,8 @@ static NSString* const kImgSearchOn     = @"nav-btn-search-on.png";
 @implementation DWFeedNavigationViewController
 
 @synthesize feedViewController          = _feedViewController;
-@synthesize usersSearchViewController   = _usersSearchViewController;
 @synthesize navTitleView                = _navTitleView;
 @synthesize queueProgressView           = _queueProgressView;
-@synthesize searchBar                   = _searchBar;
 @synthesize navNotificationsView        = _navNotificationsView;
 @synthesize isProgressBarActive         = _isProgressBarActive;
 
@@ -113,17 +99,17 @@ static NSString* const kImgSearchOn     = @"nav-btn-search-on.png";
     
     UIButton *button =  [UIButton buttonWithType:UIButtonTypeCustom];
 
-    [button setBackgroundImage:[UIImage imageNamed:kImgSearchOff] 
+    [button setBackgroundImage:[UIImage imageNamed:kImgCreationOff]
                       forState:UIControlStateNormal];
     
-    [button setBackgroundImage:[UIImage imageNamed:kImgSearchOn] 
+    [button setBackgroundImage:[UIImage imageNamed:kImgCreationOn]
                       forState:UIControlStateHighlighted];
     
 	[button addTarget:self
-               action:@selector(searchButtonClicked)
+               action:@selector(createButtonClicked)
      forControlEvents:UIControlEventTouchUpInside];
     
-	[button setFrame:CGRectMake(0, 0,40,30)];
+	[button setFrame:CGRectMake(0, 0,46,30)];
     
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
 }
@@ -163,21 +149,6 @@ static NSString* const kImgSearchOn     = @"nav-btn-search-on.png";
     }
     
     [self.view addSubview:self.feedViewController.view];
-    
-    
-    if(!self.usersSearchViewController) {
-        self.usersSearchViewController = [[DWUsersSearchViewController alloc] init];
-        self.usersSearchViewController.delegate = self;
-        self.usersSearchViewController.view.hidden = YES;
-        
-        
-        UITapGestureRecognizer *gestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self
-                                                                                            action:@selector(usersSearchViewControllerTapped)];
-        gestureRecognizer.cancelsTouchesInView = NO;
-        [self.usersSearchViewController.view addGestureRecognizer:gestureRecognizer];
-    }
-    
-    [self.view addSubview:self.usersSearchViewController.view];
 
     
     if(!self.navTitleView) {
@@ -187,13 +158,6 @@ static NSString* const kImgSearchOn     = @"nav-btn-search-on.png";
     if(!self.queueProgressView) {    
         self.queueProgressView			= [[DWQueueProgressView alloc] initWithFrame:CGRectMake(60,0,200,44)];
         self.queueProgressView.delegate	= self;
-    }
-    
-    if(!self.searchBar) {
-        self.searchBar                      = [[DWSearchBar alloc] initWithFrame:CGRectMake(0,0,320,44)];
-        self.searchBar.minimumQueryLength   = 1;
-        self.searchBar.delegate             = self;
-        self.searchBar.hidden               = YES;
     }
     
     
@@ -266,7 +230,7 @@ static NSString* const kImgSearchOn     = @"nav-btn-search-on.png";
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
-#pragma mark DWPostProgressViewDelegate
+#pragma mark DWQueueProgressView
 
 //----------------------------------------------------------------------------------------------------
 - (void)deleteButtonPressed {
@@ -285,51 +249,26 @@ static NSString* const kImgSearchOn     = @"nav-btn-search-on.png";
 #pragma mark UI Events
 
 //----------------------------------------------------------------------------------------------------
-- (void)searchButtonClicked {
+- (void)createButtonClicked {
     
-    self.feedViewController.view.hidden             = YES;
-    self.navTitleView.hidden                        = YES;
-    self.queueProgressView.hidden                   = YES;
-    self.usersSearchViewController.tableView.backgroundColor = [UIColor colorWithRed:0.223 green:0.223 blue:0.223 alpha:1.0];
-    self.usersSearchViewController.view.hidden      = NO;
-    self.searchBar.hidden                           = NO;
+    DWCreationNavigationViewController *creationRootViewController = [[DWCreationNavigationViewController alloc] init];
+    creationRootViewController.delegate = self;
     
-    [self.customTabBarController enableFullScreen];    
-    [self.searchBar becomeActive];
+    UINavigationController *creationNavController = [[UINavigationController alloc] initWithRootViewController:creationRootViewController];
     
-    [self removeSideButtons];
-    
-    [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Users Search View"];
+    [self.customTabBarController presentModalViewController:creationNavController
+                                                   animated:NO];
 }
 
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
-#pragma mark DWSearchBarDelegate
+#pragma mark DWCreationNavigationViewControllerDelegate
 
 //----------------------------------------------------------------------------------------------------
-- (void)searchCancelled {
-    
-    self.usersSearchViewController.view.hidden      = YES;
-    self.searchBar.hidden                           = YES;
-    self.feedViewController.view.hidden             = NO; 
-    self.navTitleView.hidden                        = NO;
-    self.queueProgressView.hidden                   = NO;
-    
-    [self.customTabBarController disableFullScreen];
-    
-    [(DWUsersSearchViewController*)self.usersSearchViewController reset];
-    [self.searchBar resignActive];
-    
-    [self loadSideButtons];
-}
-
-//----------------------------------------------------------------------------------------------------
-- (void)searchWithQuery:(NSString*)query {
-    [(DWUsersSearchViewController*)self.usersSearchViewController loadUsersForQuery:query];
-    
-    [[DWAnalyticsManager sharedDWAnalyticsManager] track:@"Users Searched"];
+- (void)dismissCreateView {
+    [self.customTabBarController dismissModalViewControllerAnimated:YES];
 }
 
 
@@ -373,17 +312,6 @@ static NSString* const kImgSearchOn     = @"nav-btn-search-on.png";
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
 #pragma mark -
-#pragma mark DWUsersSearchViewControllerDelegate
-
-//----------------------------------------------------------------------------------------------------
-- (void)searchViewInviteFriendClicked {
-    [self displayInvite];
-}
-
-
-//----------------------------------------------------------------------------------------------------
-//----------------------------------------------------------------------------------------------------
-#pragma mark -
 #pragma mark DWFeedViewControllerDelegate
 
 //----------------------------------------------------------------------------------------------------
@@ -401,6 +329,11 @@ static NSString* const kImgSearchOn     = @"nav-btn-search-on.png";
     [self displayYahooAuth];
 }
 
+//----------------------------------------------------------------------------------------------------
+- (void)hotmailConnectInitiated {
+    [self displayHotmailAuth];
+}
+
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
@@ -409,6 +342,23 @@ static NSString* const kImgSearchOn     = @"nav-btn-search-on.png";
 
 //----------------------------------------------------------------------------------------------------
 - (void)unapprovedPurchasesSuccessfullyApproved {
+    [self displayShareProfileView:NO];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)unapprovedPurchasesNoPurchasesApproved {
+    [self.feedViewController forceRefresh];    
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWShareProfileViewControllerDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)shareProfileViewControllerFinished {
     [self.navigationController popToRootViewControllerAnimated:NO];
     [self.feedViewController forceRefresh];
     
@@ -422,23 +372,6 @@ static NSString* const kImgSearchOn     = @"nav-btn-search-on.png";
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-//----------------------------------------------------------------------------------------------------
-- (void)unapprovedPurchasesNoPurchasesApproved {
-    [self.feedViewController forceRefresh];    
-    [self.navigationController popViewControllerAnimated:YES];
-}
-
-
-//----------------------------------------------------------------------------------------------------
-//----------------------------------------------------------------------------------------------------
-#pragma mark -
-#pragma mark UITapGestureRecognizer
-
-//----------------------------------------------------------------------------------------------------
-- (void)usersSearchViewControllerTapped {
-    [self.searchBar hideKeyboard];
-}
-
 
 //----------------------------------------------------------------------------------------------------
 //----------------------------------------------------------------------------------------------------
@@ -450,14 +383,9 @@ static NSString* const kImgSearchOn     = @"nav-btn-search-on.png";
 	  willShowViewController:(UIViewController *)viewController
 					animated:(BOOL)animated {
     
-    self.searchBar.hidden = viewController != self || self.usersSearchViewController.view.hidden;
-    
     [super navigationController:navigationController 
          willShowViewController:viewController 
                        animated:animated];
-    
-    if(!self.usersSearchViewController.view.hidden)
-        [self.customTabBarController enableFullScreen];
 }
 
 
@@ -467,9 +395,7 @@ static NSString* const kImgSearchOn     = @"nav-btn-search-on.png";
 #pragma mark Nav Stack Selectors
 
 //----------------------------------------------------------------------------------------------------
-- (void)willShowOnNav {
-    [self.navigationController.navigationBar addSubview:self.searchBar];
-    
+- (void)willShowOnNav {    
     if(_isProgressBarActive)
         [self.navigationController.navigationBar addSubview:self.queueProgressView];        
     else

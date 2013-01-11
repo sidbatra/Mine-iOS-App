@@ -63,7 +63,7 @@ extern NSString* const kNUserManualUpdated;
 /**
  * Fetch the user suggestions for who to follow
  */
-- (NSInteger)getUserSuggestions;
+- (NSInteger)getUserSuggestions:(NSInteger)perPage;
 
 /**
  * Search for users matching the given query.

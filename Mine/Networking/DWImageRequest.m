@@ -52,6 +52,7 @@ static NSInteger const kCacheTimeout = 15 * 24 * 60 * 60;
     
 	info = [NSDictionary dictionaryWithObjectsAndKeys:
             [NSNumber numberWithInt:self.resourceID]	,kKeyResourceID,
+            self.dwImageURL                             ,kKeyImageURL,
             image                                       ,kKeyImage,
             nil];
 		

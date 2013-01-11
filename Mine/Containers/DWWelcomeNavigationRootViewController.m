@@ -95,7 +95,7 @@ static NSString* const kInfoURL = @"/?web_view_mode=true";
     if(!user.email || ![user.email length] || !user.gender || ![user.gender length])
         [self showUserDetailsView];
     else
-        [self showGlobalFeedView];
+        [self showEmailConnectView];
 }
 
 //----------------------------------------------------------------------------------------------------
@@ -214,6 +214,9 @@ static NSString* const kInfoURL = @"/?web_view_mode=true";
 
 //----------------------------------------------------------------------------------------------------
 - (void)userLoggedIn:(DWUser*)user {
+    [[UIApplication sharedApplication] setStatusBarHidden:NO];
+    self.navigationController.navigationBar.hidden = NO;
+    
     [[NSNotificationCenter defaultCenter] postNotificationName:kNUserLoggedIn
                                                         object:nil
                                                       userInfo:[NSDictionary dictionaryWithObjectsAndKeys:user,kKeyUser,nil]];
@@ -237,7 +240,7 @@ static NSString* const kInfoURL = @"/?web_view_mode=true";
 
 //----------------------------------------------------------------------------------------------------
 - (void)userDetailsUpdated {
-    [self showGlobalFeedView];
+    [self showEmailConnectView];
 }
 
 
@@ -276,6 +279,11 @@ static NSString* const kInfoURL = @"/?web_view_mode=true";
 }
 
 //----------------------------------------------------------------------------------------------------
+- (void)emailConnectHotmailAuthInitiated {
+    [self displayHotmailAuth];
+}
+
+//----------------------------------------------------------------------------------------------------
 - (void)emailConnectSkipped {
     [self endWelcomeNavigation];
 }
@@ -288,7 +296,22 @@ static NSString* const kInfoURL = @"/?web_view_mode=true";
 
 //----------------------------------------------------------------------------------------------------
 - (void)unapprovedPurchasesSuccessfullyApproved {
-    
+    [self displayShareProfileView:YES];
+}
+
+//----------------------------------------------------------------------------------------------------
+- (void)unapprovedPurchasesNoPurchasesApproved {
+    [self endWelcomeNavigation];
+}
+
+
+//----------------------------------------------------------------------------------------------------
+//----------------------------------------------------------------------------------------------------
+#pragma mark -
+#pragma mark DWShareProfileViewControllerDelegate
+
+//----------------------------------------------------------------------------------------------------
+- (void)shareProfileViewControllerFinished {
     [[NSNotificationCenter defaultCenter] postNotificationName:kNRequestTabBarIndexChange
                                                         object:nil
                                                       userInfo:[NSDictionary dictionaryWithObjectsAndKeys:
@@ -296,11 +319,6 @@ static NSString* const kInfoURL = @"/?web_view_mode=true";
                                                                 [NSNumber numberWithInteger:DWTabBarResetTypeNone],kKeyResetType,
                                                                 nil]];
     
-    [self endWelcomeNavigation];
-}
-
-//----------------------------------------------------------------------------------------------------
-- (void)unapprovedPurchasesNoPurchasesApproved {
     [self endWelcomeNavigation];
 }
 
