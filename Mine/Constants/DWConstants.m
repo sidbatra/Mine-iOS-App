@@ -10,7 +10,7 @@
 
 
 //----------------------------------------------------------------------------------------------------
-NSString* const kVersion            = @"1.3.0";
+NSString* const kVersion            = @"1.3.1";
 NSString* const kGet				= @"GET";
 NSString* const kPost               = @"POST";
 NSString* const kPut				= @"PUT";
